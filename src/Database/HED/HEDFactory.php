@@ -45,13 +45,13 @@ class HEDFactory {
 		'\Database\Models\Album'=>'album',
 	);
 		
-	function type_to_class($type){
+	private static function type_to_class($type){
 		return self::$types[$type];
 	}
-	function class_to_type($class){
+	private static function class_to_type($class){
 		return self::$classes[$class];
 	}
-	private function print_hed_header(){
+	private static function print_hed_header(){
         print "<!DOCTYPE html>\n";
         print "<html xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"en\" lang=\"en\">\n";
         print "<head>\n";
@@ -59,7 +59,7 @@ class HEDFactory {
         print "</head>\n";
         print "<body>\n";
 	}
-	private function print_hed_footer(){
+	private static function print_hed_footer(){
         print "\n</body>\n";
         print "</html>";
 	}
@@ -67,7 +67,7 @@ class HEDFactory {
     ** Create the HED version of an item completely - this preserves
     ** the format of the file.
     */
-    function create($file_path, $type, $trip, $slug, $field_values){
+    private static function create($file_path, $type, $trip, $slug, $field_values){
         $class_name = self::type_to_class($type);
         $fields = $class_name::get_fields();
 
@@ -77,7 +77,7 @@ class HEDFactory {
         $content_dir = dirname($item_dir);
         $file_name = $file_path;
         ob_start(); 
-        $this->print_hed_header();
+        self::print_hed_header();
         foreach($fields as $f=>$v){
             if( $f == 'slug')
                 print "\t<div id=\"$f\">".$slug."</div>\n";
@@ -97,7 +97,7 @@ class HEDFactory {
                     . ((array_key_exists($f, $field_values))? $field_values[$f] : "ABCDEFG") 
                     ."</div>\n";
         }
-        $this->print_hed_footer();
+        self::print_hed_footer();
     
         $s = ob_get_clean();
 		$d = $item_dir;
@@ -115,34 +115,34 @@ class HEDFactory {
             chmod($item_dir."/Thumbnails", 511);            
         }
     }
-    function create_journal_entry($file_path, $trip, $slug, $dte, $parms = array()){
+    static function create_journal_entry($file_path, $trip, $slug, $dte, $parms = array()){
         $parms['trip'] =  $trip;
         $parms['version'] =  "2.0";
         $parms['status'] =  "draft";
         $parms['creation_date'] = $dte;
         $parms['published_date'] = $dte;
         $parms['last_modified_date'] = $dte;
-        $obj = $this->create($file_path, "entry", $trip, $slug, $parms);
+        $obj = self::create($file_path, "entry", $trip, $slug, $parms);
         //print __CLASS__.":".__METHOD__."<br>";
     }
-    function create_post($file_path, $trip, $slug, $dte, $parms = array()){
+    static function create_post($file_path, $trip, $slug, $dte, $parms = array()){
         $parms['trip'] = $trip;
         $parms['version'] = "2.0";
         $parms['status'] = "draft";
         $parms['creation_date'] = $dte;
         $parms['published_date'] = $dte;
         $parms['last_modified_date'] = $dte;
-        $obj = $this->create($file_path, "post", $trip, $slug, $parms);
+        $obj = self::create($file_path, "post", $trip, $slug, $parms);
         //print __CLASS__.":".__METHOD__."<br>";
     }
-    function create_album($file_path, $trip, $slug, $dte, $parms = array()){
+    static function create_album($file_path, $trip, $slug, $dte, $parms = array()){
         $parms['trip'] = $trip;
         $parms['version'] = "2.0";
         $parms['status'] = "draft";
         $parms['creation_date'] = $dte;
         $parms['published_date'] = $dte;
         $parms['last_modified_date'] = $dte;
-        $obj = $this->create($file_path, "album", $trip, $slug, $parms);
+        $obj = self::create($file_path, "album", $trip, $slug, $parms);
         //print __CLASS__.":".__METHOD__."<br>";
     }
 

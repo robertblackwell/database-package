@@ -67,25 +67,22 @@ class Test_hed extends UnitTestCase{
     function test_3(){
         print __METHOD__."\n";
         system("rm -R ".dirname(__FILE__)."/data/test_entry");
-        $f = new HEDFactory();
         $p = dirname(__FILE__)."/data/test_entry/content.php";
-        $f->create_journal_entry($p, 'trip', 'slug', '120304', array('one'=>'111'));
+        HEDFactory::create_journal_entry($p, 'trip', 'slug', '120304', array('one'=>'111'));
         print __METHOD__."\n";
     }
     function test_4(){
         print __METHOD__."\n";
         system("rm -R ".dirname(__FILE__)."/data/test_post");
-        $f = new HEDFactory();
         $p = dirname(__FILE__)."/data/test_post/content.php";
-        $f->create_post($p, 'trip', 'slug', 'apost', array('one'=>'111'));
+        HEDFactory::create_post($p, 'trip', 'slug', 'apost', array('one'=>'111'));
         print __METHOD__."\n";
     }
     function test_5(){
         print __METHOD__."\n";
         system("rm -R ".dirname(__FILE__)."/data/test_album");
-        $f = new HEDFactory();
         $p = dirname(__FILE__)."/data/test_album/content.php";
-        $f->create_album($p, 'trip', 'slug', '120304', array('title'=>'A Title'));
+        HEDFactory::create_album($p, 'trip', 'slug', '120304', array('title'=>'A Title'));
         print __METHOD__."\n";
     }
     function test_6(){

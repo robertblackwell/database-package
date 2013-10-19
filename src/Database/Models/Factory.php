@@ -43,13 +43,13 @@ class Factory {
 		'\Database\Models\Album'=>'album',
 	);
 		
-	static function type_to_class($type){
+	private static function type_to_class($type){
 		return self::$types[$type];
 	}
-	static function class_to_type($class){
+	private static function class_to_type($class){
 		return self::$classes[$class];
 	}
-        /*!
+    /*!
     * Returns the site relative URL (suitable for use in a <img src=> construct)
     * of the entries featured image. NULL is no featured image.
 	*
