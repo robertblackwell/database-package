@@ -1,0 +1,19 @@
+/*!
+@mainpage
+@section mp-intro  Introduction
+
+This package implements the blog database that is behind the whiteacorn.com
+travel website.
+
+In this incarnation I have sought to make it a standalone, reusable, and independently testable package.
+
+Almost all of the public interface to the database, as would be required by a web builder making another blog site,
+is contained in the class Database.Object as instance methods. This is a bit monolithic but avoids the proliferation
+of small classes.
+
+So I suggest if you are trying to understand this package or work out how to use it start with the Database namespace.
+
+
+
+
+*/

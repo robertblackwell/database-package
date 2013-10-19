@@ -1,0 +1,304 @@
+<?php
+namespace Database;
+
+/*!
+* @ingroup locator
+*
+*   This class provides 
+*	-	path, 
+*	-	url and 
+*	-	filename 
+*	information about the location of content item directories, files and attachments that reside
+*   in the HED part of the database.
+*
+*	@note This class only supports the structure of "new" style content items and is not compatible
+*	with the old style items used in theamericas trip. 
+*
+*   @note This class is a singleton
+*
+*   The Locator class is now required to support multiple "entities" - 'content_items' and 'albums'
+*   and maybe more in the future.
+*
+*   The interface must reflect that.
+*   -   relative_dir(type, trip, slug) -    get the path name relative to doc root of the directory 
+*                                           representing this
+*                                           entity
+*   -   absolute_dir(type, trip, slug) -    get the full path of the directory representing this entity
+*    
+*   Each content item is a directory. 
+*
+*   At a minimum such a directory holds a file called content.php which contains attribute data for the item
+*	and for entry and post items it also contains the main content. For articles the main content is in
+* 	another file called main_content.
+*
+*	Content items may also contain
+*	-	a default photo gallery that is composed of two subdirectories  Images and Thumbnails
+*	-	named photo galleries.
+*		-	such a gallery is a subdirectory (whose name is the gallery name) which contains Image and Thumbnail
+*			sub directories		 
+*
+* @todo - make all the functions instance methods rather than static
+*/
+class Locator{
+    
+    private static $_instance;
+        
+	var $data_root;		//the full path to the top directory of the HED database
+	var $url_root;		//the (site relative) URL to the top level directory of the HED database
+	var $full_url_root;	//the full URL (including protocol such as http) to the 
+						// top level directory of the HED database
+    var $doc_root;		//the full file system path of the sites document root
+    
+    static function init($configuration){
+        $inst = new Locator();
+        
+        $inst->doc_root = $configuration['doc_root'];
+        $inst->data_root = $configuration['data_root'];
+        $inst->full_url_root = $configuration['full_url_root'];
+        $inst->url_root = $configuration['url_root'];
+        self::$_instance = $inst;
+    }
+    static function get_instance(){
+        return self::$_instance;
+    }
+
+
+    /*!
+	* Usefull only for theamericas trip
+	* 
+	* @parms $trip A trip code
+    * @return string The path to the "journals" directory for a trip.
+    */
+    function journals_root($trip='theamericas'){
+        return $this->data_root."/".$trip."/journals";
+    }
+    /*!
+	* Usefull only for theamericas trip
+	* 
+	* @parms $trip A trip code
+    * @return string The path to the "entries" directory for a trip.
+    */
+    function entries_root($trip='theamericas'){
+        //var_dump($this->journals_root($trip)."/entries"); exit();
+        return $this->journals_root($trip)."/entries";
+    }
+	function journal_introfile_path($trip="theamericas"){
+		return $this->journals_root($trip)."/intro.html";
+	}
+	function message_file_path(){
+		return $this->data_root."/message.txt";
+	}
+	private function trip_root($trip){
+        return $this->data_root."/".$trip;		
+	}
+//////////	
+//start of content item path methods
+/////////	
+    /*!
+	* @parms $trip A trip code
+    * @return string The path to the directory that contains all content items for a trip. Remember that each
+    * content item is a directory that contains the properties of the item in a file and any attached objects as separate
+    * subdirectories or files
+    */
+    function content_root($trip='rtw'){
+		if( $trip == 'theamericas') return $this->entries_root(); 
+        return $this->trip_root($trip)."/content";
+    }
+	/*!
+	* @parms $trip A trip code
+	* @return string The path to the trips content directory relative to the sites document root
+	*/
+    private function content_relative($trip='rtw'){
+        return str_replace($this->doc_root, "", $this->content_root($trip));
+    }
+    /*!
+    * @return string The name of the file containing the fields/properties/meta data for a
+    * VOItem. This is constant across all content items.
+    */
+    private function item_filename(){
+        return "content.php";
+    }
+    /*!
+	* @parms $trip A trip code
+    * @param $slug. The unique slug for a content item
+    * @return string The site relative path to the directory for the item whose slug was given.
+    */
+    public function item_relative_dir($trip, $slug){
+        return $this->content_relative($trip)."/$slug";
+    }
+    /*!
+	* @parms $trip A trip code
+    * @param $slug. The unique slug for a content item
+    * @return string The full path to the directory for the item.
+	* 
+	* This one will work for theamericas trip as well as rtw
+    */
+    public function item_dir($trip, $slug){
+        $fn =  $this->content_root($trip)."/$slug";
+    	//print "<p>".__METHOD__."($trip, $slug) -- $fn</p>";
+        return $this->content_root($trip)."/$slug";
+    }
+    /*!
+	* @parms $trip A trip code
+    * @param $slug. The unique slug for a content item
+    * @return string The full path to the content/attribute  file for a given content item.
+    */
+    public function item_filepath($trip, $slug){
+        return $this->content_root($trip)."/$slug/".$this->item_filename();
+    }
+//////////	
+//end of content item path methods
+/////////	
+//////////	
+//start of content item url methods
+/////////	
+   
+    /*!
+	* @parms $trip A trip code
+    * @param $slug. The unique slug for an item
+    * @return A site relative URL for the item
+    */
+    public function url_item_dir($trip, $slug){
+        return $this->url_root."/".$trip."/content/$slug";
+    }
+	/*!
+	* @parms $trip A trip code
+    * @param $slug. The unique slug for an item
+	* @parm  $gal the name of a gallery within the specified item - defaults to ""
+	* @parm  $img the basename of an thumbnail image in the items default gallery
+    * @return A site relative URL for the item
+    */
+	public function url_item_thumbnail($trip, $slug, $gal, $img){
+        if(is_null($gal) || (trim($gal)=="") ) 
+            $r = $this->url_item_dir( $trip, $slug )."/Thumbnails/$img";
+        else
+            $r = $this->url_item_dir( $trip, $slug )."/$gal/Thumbnails/$img";
+        
+        return $r;
+    }
+	/*
+	* An attachment to an item it a subdirectory of the items directory or a file
+	* within the items directory.
+	* @parms $trip A trip code
+    * @param $slug. The unique slug for an item
+	* @return a site relative URL for the attachment
+	*
+	*/
+    public function url_item_attachment($trip, $slug, $ref){
+        return $this->item_relative_dir($trip, $slug)."/$ref";
+    }
+//////////	
+//end of content item url methods
+/////////	
+   
+   
+    
+//////////	
+//start of album item path methods
+/////////	
+    
+    function album_root($trip='rtw'){
+//		if( $trip == 'theamericas') return $this->entries_root(); 
+        return $this->trip_root($trip)."/photos/galleries";
+    }
+    private function album_relative($trip='rtw'){
+        return str_replace($this->doc_root, "", $this->album_root($trip));
+    }
+   /*!
+    * @return string The name of the file containing the fields/properties/meta data for a
+    * VOItem. This is constant across all content items.
+    */
+    private function album_filename(){
+        return "content.php";
+    }
+    /*!
+	* @parms $trip A trip code
+    * @param $slug. The unique slug for a content item
+    * @return string The site relative path to the directory for the item whose slug was given.
+    */
+    public function album_relative_dir($trip, $slug){
+        return $this->album_relative($trip)."/$slug";
+    }
+    /*!
+	* @parms $trip A trip code
+    * @param $slug. The unique slug for a content item
+    * @return string The full path to the directory for the item.
+	* 
+	* This one will work for theamericas trip as well as rtw
+    */
+    public function album_dir($trip, $slug){
+        $fn =  $this->album_root($trip)."/$slug";
+    	//print "<p>".__METHOD__."($trip, $slug) -- $fn</p>";
+        return $this->album_root($trip)."/$slug";
+    }
+    /*!
+	* @parms $trip A trip code
+    * @param $slug. The unique slug for a content item
+    * @return string The full path to the content/attribute  file for a given content item.
+    */
+    public function album_filepath($trip, $slug){
+        return $this->album_root($trip)."/$slug/".$this->album_filename();
+    }
+//////////	
+//end of album item path methods
+/////////	
+
+
+//////////	
+//start of album url methods
+/////////	
+    
+    /*!
+	* @parms $trip A trip code
+    * @param $slug. The unique slug for an album
+    * @return A site relative URL for the album
+    */
+    public function url_album_dir($trip, $slug){
+        return $this->url_root."/".$trip."/photos/galleries/$slug";
+    }
+	/*!
+	* @parms $trip A trip code
+    * @param $slug. The unique slug for an album
+	* @parm  $img the basename of an thumbnail image in the items default gallery
+    * @return A site relative URL for the thumbnail iimage
+    */
+	public function url_album_thumbnail($trip, $slug, $img){
+        $r = $this->url_album_dir( $trip, $slug )."/Thumbnails/$img";        
+        return $r;
+    }
+	/*!
+	* @parms $trip A trip code
+    * @param $slug. The unique slug for an album
+	* @parm  $img the basename of a large image in the album
+    * @return A site relative URL for the image
+    */
+	public function url_album_image($trip, $slug, $img){
+        $r = $this->url_album_dir( $trip, $slug )."/Images/$img";        
+        return $r;
+    }
+
+//////////	
+//end of album url methods
+/////////	
+
+
+    /*!
+    * Remember that VOArticles have their main content stored in an auxiliary file in
+    * the same directory as the properties/metas data file. This function returns the filename
+    * used for that auxiliary file.
+    * @return string The filename of the auxiliary file used for storying the main content of VOArtticles.
+    */
+    private function article_main_content_filename(){
+        return "main_content.php";
+    }
+    /*!
+    * Gets the fullpath to an Articles auxiliary file 
+	* @parms $trip A trip code
+    * @param $slug. The unique slug for an Article item
+    * @return string The full path to the auxiliary file.
+    */
+    function article_main_content_filepath($trip, $slug){
+        return $this->content_root($trip)."/$slug/".$this->article_main_content_filename();
+    }
+}
+?>
