@@ -177,7 +177,7 @@ class NextPrev{
         if( ($criteria != null ) ){
             if( !is_array($criteria) ) {
                 $c = (is_object($criteria)? get_class($criteria): gettype($criteria));
-                throw new Exception(__CLASS__.'::'.__FUNCTION__." criteria is not array is: ".$c);
+                throw new \Exception(__CLASS__.'::'.__FUNCTION__." criteria is not array is: ".$c);
             }
             if( count($criteria)  == 1 ){
                 if( array_key_exists('category', $criteria) ) {
@@ -218,7 +218,7 @@ class NextPrev{
         if( ($criteria != null ) ){
             if( !is_array($criteria) ) {
                 $c = (is_object($criteria)? get_class($criteria): gettype($criteria));
-                throw new Exception(__CLASS__.'::'.__FUNCTION__." criteria is not array is: ".$c);
+                throw new \Exception(__CLASS__.'::'.__FUNCTION__." criteria is not array is: ".$c);
             }
             if( count($criteria)  == 1 ){
                 if( array_key_exists('category', $criteria) ) {
@@ -231,11 +231,11 @@ class NextPrev{
                     $month = $criteria['months'];
                     return $this->prev_within_month($month, $class);
                 }else{
-                    throw new Exception(__CLASS__.'::'.__FUNCTION__." criteria is not category is: "
+                    throw new \Exception(__CLASS__.'::'.__FUNCTION__." criteria is not category is: "
                     . print_r($criteria, true));
                 }
             }else{
-                throw new Exception(__CLASS__.'::'.__FUNCTION__." too many/few["
+                throw new \Exception(__CLASS__.'::'.__FUNCTION__." too many/few["
                     . count($criteria) ."]array elements : "
                     . print_r($criteria, true));
             }

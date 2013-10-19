@@ -1,10 +1,8 @@
 <?php
 namespace Database;
-use \Database as DataBase;
-use \XYFactory as XYFactory;
-use \XYItem as XYItem;
 use \Database\Locator as DAConfig;
-
+use \Database\Models\Item as Item;
+use \Database\Models\Album as Album;
 /*!
 ** This class is a catchall for methods that do a whole range of things with the database
 */
@@ -113,8 +111,9 @@ EOD;
     }  
     
     function fix_country($e){
-        if( get_class($e) != 'VOEntry')
+        if( get_class($e) != '\Database\Models\Entry'){
             return;
+        }
         $t = array("North West Territory"=>"NWT", "British Columbia"=>"BC","Alberta"=>"Alberta", "Yukon"=>"Yukon");
             
         $c = Country::look_up($e->country);
@@ -130,30 +129,59 @@ EOD;
     ** Import an item from its HED form into the sql database - this is the
     ** equivalent of "publish"
     */
-    static function import_item($trip, $slug){
-        $fn = DAConfig::item_filepath($trip,$slug);
-        $x = XYFactory::from_file($fn);
-        print "<p> Importing trip : $trip item: $slug type ".get_class($x)." from file $fn</p>";
-        print "<p>import item featured_image : ". $x->get_text('featured_image') ."</p>";
-        print "<p>import item featured_image : ". $x->featured_image ."</p>";
-        print "<p>import item featured_image : ". $x->get_text('featured_image') ."</p>";
-        //var_dump($x);
+    function import_item($trip, $slug){
+        $x = Item::get_by_trip_slug($trip, $slug);
+
+        print "<p> Importing trip : $trip item: $slug type ".get_class($x)."</p>\n";
+        print "<p>import item featured_image : ". $x->get_text('featured_image') ."</p>\n";
+        print "<p>import item featured_image : ". $x->featured_image ."</p>\n";
+        print "<p>import item featured_image : ". $x->get_text('featured_image') ."</p>\n";
+
         if( $slug != $x->slug )
-            throw new Exception(__METHOD__."($slug) file name and slug do not match file:$fn slug:".$x->slug);
-        $items[] = $x;
+            throw new \Exception(__METHOD__."($slug) file name and slug do not match file:$fn slug:".$x->slug);
         self::fix_country($x);
-        $dd = DataBase::getInstance();//force initialize of database connection
-        $x->sql_insert();
+        $x->sql_insert();    
     }
     /*!
     ** Remove an item (defined by $slug) from the sql database. This is the equivalent of "unpublish"
     */
-    static function deport_item($slug){
+    function deport_item($slug){
         //print "<p>".__METHOD__."($slug)</p>"; 
-        $x = XYItem::getBySlug($slug);
+        $x = Item::get_by_slug($slug);
+        if( is_null( $x ) ){
+            throw new \Exception(__METHOD__."($slug) x is null");
+        }
         //print "<p> Deporting (removing from sql database) item $slug type ";
         if( $slug != $x->slug )
-            throw new Exception(__METHOD__."($slug)  slug:".$x->slug);
+            throw new \Exception(__METHOD__."($slug)  slug:".$x->slug);
+        $x->sql_delete();
+    }
+    /*!
+    ** Import an albu from its HED form into the sql database - this is the
+    ** equivalent of "publish"
+    */
+    function import_album($trip, $slug){
+        $x = Album::get_by_trip_slug($trip, $slug);
+
+        print "<p> Importing trip : $trip item: $slug type ".get_class($x)."</p>\n";
+
+        if( $slug != $x->slug )
+            throw new \Exception(__METHOD__."($slug) file name and slug do not match file:$fn slug:".$x->slug);
+        $x->sql_insert();    
+    }
+    /*!
+    ** Remove an album (defined by $slug) from the sql database. This is the equivalent of "unpublish"
+    */
+    function deport_album($slug){
+        //print "<p>".__METHOD__."($slug)</p>"; 
+        $x = Album::get_by_slug($slug);
+        //var_dump($x);
+        if( is_null( $x ) ){
+            throw new \Exception(__METHOD__."($slug) x is null");
+        }
+        //print "<p> Deporting (removing from sql database) item $slug type ";
+        if( $slug != $x->slug )
+            throw new \Exception(__METHOD__."($slug)  slug:".$x->slug);
         $x->sql_delete();
     }
     function get_item_names($dir){
@@ -180,7 +208,7 @@ EOD;
             print "starting $items_dir/$iname\n";
             $o = new \Database\HED\HEDObject();
             $o->get_from_file($items_dir."/".$iname."/content.php");
-            $obj = Database\Models\Factory::model_from_hed($o);
+            $obj = \Database\Models\Factory::model_from_hed($o);
             if( $iname != $obj->slug )
                 throw new \Exception(
                     __METHOD__."($items_dir) file name and slug do not match file:$iname slug:".$obj->slug);
