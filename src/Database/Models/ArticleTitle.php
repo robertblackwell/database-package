@@ -1,6 +1,6 @@
 <?php
 /*!
-** @ingroup XYModel
+** @ingroup Models
 ** This class provides a view of the my_items table that returns all the titles of
 ** items of type "article".
 */

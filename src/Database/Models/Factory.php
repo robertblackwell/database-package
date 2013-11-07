@@ -2,6 +2,8 @@
 namespace Database\Models;
 
 use Database\Models\Entry as Entry;
+use Database\HED\HEDObject;
+use Database\HED\HEDFactory;
 
 /*!
 ** @ingroup Models
@@ -26,8 +28,9 @@ class Factory {
     * Constructor - DO NOT SET UP NULL FIELD VALUES WE ARE RELYING ON THE __GET METHOD
     * WHICH ONLY GETS CALLED IS THE PROPERTY DOES NOT EXIST
     */
-    private function __construct(){
-        // Only used in a static content
+	
+    public static function werhere(){
+        print "<h2>we r here</h2>";
     }
 	private static $types = array(
 		'post'=>'\Database\Models\Post',
@@ -188,8 +191,8 @@ class Factory {
             $vals[$k] = $hed_obj->$method($k);
         }
         // now add the tricky ones back in as derived values
-        $vals['file_path'] = $hed_obj->_file_path; 
-        $vals['entry_path'] = dirname($hed_obj->_file_path);         
+        $vals['content_path'] = $hed_obj->_file_path; 
+        $vals['entity_path'] = dirname($hed_obj->_file_path); 
         $vals['featured_image'] = self::featured_image($hed_obj);
         $vals['excerpt'] = $hed_obj->get_first_p('main_content');
         ;
@@ -214,8 +217,8 @@ class Factory {
             $method = "get_".$t;
             $vals[$k] = $hed_obj->$method($k);
         }
-        $vals['file_path'] = $hed_obj->_file_path; 
-        $vals['entry_path'] = dirname($hed_obj->_file_path); 
+        $vals['content_path'] = $hed_obj->_file_path; 
+        $vals['entity_path'] = dirname($hed_obj->_file_path); 
         $vals['featured_image'] = self::featured_image($hed_obj);
         $vals['excerpt'] = $hed_obj->get_first_p('main_content');
         $x = new Post($vals);
@@ -239,8 +242,8 @@ class Factory {
             $method = "get_".$t;
             $vals[$k] = $hed_obj->$method($k);
         }
-        $vals['file_path'] = $hed_obj->_file_path; 
-        $vals['entry_path'] = dirname($hed_obj->_file_path); 
+        $vals['content_path'] = $hed_obj->_file_path; 
+        $vals['entity_path'] = dirname($hed_obj->_file_path); 
         $vals['featured_image'] = self::featured_image($hed_obj);
         //$vals['excerpt'] = $hed_obj->get_first_p('main_content');
         $x = new Article($vals);
@@ -258,9 +261,9 @@ class Factory {
             $method = "get_".$t;
             $vals[$k] = $hed_obj->$method($k);
         }
-        $vals['file_path'] = $hed_obj->_file_path; 
-        $vals['album_path'] = dirname($hed_obj->_file_path); 
-        $vals['mascot_path'] = $vals['album_path']."/mascot.jpg";
+        $vals['content_path'] = $hed_obj->_file_path; 
+        $vals['entity_path'] = dirname($hed_obj->_file_path); 
+        $vals['mascot_path'] = $vals['entity_path']."/mascot.jpg";
         $vals['mascot_url'] =  str_replace(\Registry::$globals->doc_root, "", $vals['mascot_path']);
         //print_r($vals);
         $x = new Album($vals);
@@ -277,5 +280,26 @@ class Factory {
     }
     static function model_from_entity(){
     }
+
+    public static function create_entry($trip, $slug, $dte, $parms){
+        $p = self::$locator->item_filepath($trip, $slug);
+        HEDFactory::create_journal_entry($p, $trip, $slug, $dte, $parms);
+    }
+
+    static function create_post($trip, $slug, $dte, $parms){
+        $p = self::$locator->item_filepath($trip, $slug);
+        HEDFactory::create_post($p, $trip, $slug, $dte, $parms);
+    }
+
+    static function create_article($trip, $slug, $dte, $parms){
+        $p = self::$locator->item_filepath($trip, $slug);
+        HEDFactory::create_article($p, $trip, $slug, $dte, $parms);
+    }
+
+    static function create_album($trip, $slug, $dte, $name, $parms){
+        $p = self::$locator->album_filepath($trip, $slug);
+        HEDFactory::create_album($p, $trip, $slug, $dte, $name, $parms);
+    }
+    
 } 
 ?>

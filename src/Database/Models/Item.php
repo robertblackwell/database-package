@@ -4,7 +4,7 @@ use Database\HED\HEDObject;
 use Database\Models\Factory;
 use \Exception as Exception;
 /*!
-** @ingroup XYModel
+** @ingroup Models
 * This class is a value object for all types of items when they a set of them is retrieved and
 * only summary data (stored in the mysql database) is required.
 *
@@ -111,17 +111,17 @@ class Item extends ItemBase
     * @param $count - optional can limit the number returned
     * @return void
     */
-    static function find_for_latest_month($count=null){
-        $mths = XYPostMonth::find();
-        //var_dump($mths);
-        $m = $mths[0]->month;
-        $y = $mths[0]->year;
-        //var_dump($m);
-        $ym = sprintf("%d%02d", (int)$y, (int)$m);
-        //var_dump($ym);
-        $a = self::find_for_month($y.$m, $count);
-        return $a;
-    }
+//     static function find_for_latest_month($count=null){
+//         $mths = XYPostMonth::find();
+//         //var_dump($mths);
+//         $m = $mths[0]->month;
+//         $y = $mths[0]->year;
+//         //var_dump($m);
+//         $ym = sprintf("%d%02d", (int)$y, (int)$m);
+//         //var_dump($ym);
+//         $a = self::find_for_month($y.$m, $count);
+//         return $a;
+//     }
     /*!
     * Finds all the entry (Entry) items for a given calendar month.
     * @param $year_month a string representing a calendar month in YYMM or YYYYMM format
@@ -168,7 +168,7 @@ class Item extends ItemBase
             ."$where "
             ." order by published_date asc, slug asc ";
         //var_dump($query);
-        $r = DataBase::getInstance()->query_objects($query, __CLASS__);
+        $r = self::$sql->query_objects($query, __CLASS__);
         //var_dump($r);
         //exit();
         return $r;
@@ -188,7 +188,7 @@ class Item extends ItemBase
             ."$category_str "
             ." order by published_date asc, slug asc $count_str;";
         //var_dump($query);
-        $r = DataBase::getInstance()->query_objects($query, __CLASS__);
+        $r = self::$sql->query_objects($query, __CLASS__);
         //var_dump($r);
         //exit();
         return $r;

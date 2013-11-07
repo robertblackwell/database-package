@@ -20,6 +20,7 @@ class BigAllTests extends TestSuite {
         $this->addFile(dirname(dirname(__FILE__))."/import/index.php");
         $this->addFile(dirname(dirname(__FILE__))."/locator/index.php");
         $this->addFile(dirname(dirname(__FILE__))."/nextprev/index.php");
+        $this->addFile(dirname(dirname(__FILE__))."/paths/index.php");
         $this->addFile(dirname(dirname(__FILE__))."/utest/index.php");
         $this->addFile(dirname(dirname(__FILE__))."/utility/index.php");
     }

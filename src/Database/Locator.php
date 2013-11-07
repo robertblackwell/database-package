@@ -88,7 +88,7 @@ class Locator{
 	function message_file_path(){
 		return $this->data_root."/message.txt";
 	}
-	private function trip_root($trip){
+	function trip_root($trip){
         return $this->data_root."/".$trip;		
 	}
 //////////	

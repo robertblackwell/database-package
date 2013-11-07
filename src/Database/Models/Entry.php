@@ -41,12 +41,6 @@ class Entry extends ItemBase
         $this->table = self::$table_name;
         parent::__construct($obj);
     }
-    /*!
-    * This returns the html (a single <p></p>) excerpt for this journal entry.
-    */
-    function excerpt(){
-        return $this->get_first_p("main_content");
-    }
 	static function find($count=null){
         $count_str = ($count)? "limit 0, $count": "" ;
         $c = " where type='entry' order by last_modified_date desc $count_str ";

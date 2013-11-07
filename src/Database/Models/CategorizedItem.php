@@ -2,7 +2,7 @@
 namespace Database\Models;
 
 /*!
-** @ingroup XYModel
+** @ingroup Models
 * This class represents a view of the items table that allows selection of a set of items by category
 */
 class CategorizedItem extends Base\ModelBase

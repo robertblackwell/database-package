@@ -135,13 +135,14 @@ class HEDFactory {
         $obj = self::create($file_path, "post", $trip, $slug, $parms);
         //print __CLASS__.":".__METHOD__."<br>";
     }
-    static function create_album($file_path, $trip, $slug, $dte, $parms = array()){
+    static function create_album($file_path, $trip, $slug, $dte, $name, $parms = array()){
         $parms['trip'] = $trip;
         $parms['version'] = "2.0";
         $parms['status'] = "draft";
         $parms['creation_date'] = $dte;
         $parms['published_date'] = $dte;
         $parms['last_modified_date'] = $dte;
+        $parms['title'] = $name;
         $obj = self::create($file_path, "album", $trip, $slug, $parms);
         //print __CLASS__.":".__METHOD__."<br>";
     }

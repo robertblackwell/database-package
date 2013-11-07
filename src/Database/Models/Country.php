@@ -1,6 +1,6 @@
 <?php
 /*! 
-* @ingroup   XYModel
+* @ingroup   Models
 * A class a country or region. Outside US/Canada it represents a country. Inside US/Canada
 * it is a state or province.
 *

@@ -1,7 +1,7 @@
 <?php
 namespace Database\Models;
 /*!
-** @ingroup XYModel
+** @ingroup Models
 * This class represents a view of the item table that lists content items by month
 * of publication
 */

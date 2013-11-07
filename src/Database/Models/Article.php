@@ -1,7 +1,7 @@
 <?php
 namespace Database\Models;
 /*!
-** @ingroup XYModel
+** @ingroup Models
 * This class represents content that is an article
 */
 class Article extends ItemBase

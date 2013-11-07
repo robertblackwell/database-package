@@ -20,7 +20,7 @@ use \Database\Locator as Locator;
 use \Exception as Exception;
 use \Database\Models\RowObject as RowObject;
 use \Database\HED\HEDObject as HEDObject;
-
+use \Registry as Registry;
 class Object
 {
 	static $sql;  //an object that knows how to interface to the sql database
@@ -40,6 +40,23 @@ class Object
 		Models\Base\ModelBase::$locator = self::$locator;
 		Models\Factory::$sql = self::$sql;
 		Models\Factory::$locator = self::$locator;
+	}
+	static function setConfig($config_object){
+	    $config = array();
+	    $config['sql'] = array(
+				'db_name'=>Registry::$globals->db['db_name'],
+				'db_user'=>Registry::$globals->db['db_user'],
+				'db_host'=>Registry::$globals->db['db_host'],
+				'db_passwd'=>Registry::$globals->db['db_passwd'],
+				);
+	    
+	    $config['hed'] = array(
+				'data_root'=>Registry::$globals->data_root,
+				'doc_root'=>Registry::$globals->doc_root,
+				'full_url_root'=>Registry::$globals->url_root,
+				'url_root'=>Registry::$globals->url_root,
+				);
+		self::init($config);
 	}
 	static function get_instance(){
 		return self::$_instance;

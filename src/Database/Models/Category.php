@@ -1,7 +1,7 @@
 <?php
 namespace Database\Models;
 /*!
-** @ingroup XYModel
+** @ingroup Models
 * This class is an active record for categories
 */
 class Category extends Base\ModelBase

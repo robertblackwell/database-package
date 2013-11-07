@@ -4,7 +4,7 @@ require_once(dirname(dirname(dirname(__FILE__)))."/include/header.php");
 use Database\Object as Db;
 use Database\Models\Item;
 
-class Test_database_utility extends UnitTestCase{
+class Test_database_build extends UnitTestCase{
     function setUp(){
         global $config;
 		Db::init($config);
@@ -13,9 +13,10 @@ class Test_database_utility extends UnitTestCase{
     }
     function test_1(){    
         print __METHOD__." \n";
+        $builder = new \Database\Builder();
         $utility = new \Database\Utility();
-        $utility->drop_tables();
-        $utility->create_tables();
+        $builder->drop_tables();
+        $builder->create_tables();
         $utility->load_content_items('rtw');
         $utility->load_albums('rtw');
 //        $utility->rebuild_db_from($this->locator->content_root('rtw'));

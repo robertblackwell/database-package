@@ -25,7 +25,7 @@ class ItemBase extends Base\ModelBase
     ** Gets the next post in order based on the criteria. 
     ** The only valid criteria is a  'category'
     ** @parms  array('category'=> some category)
-    ** @return XYPost object   
+    ** @return Models\Post object   
     */
     function next($criteria=null, $class= '\Database\Models\Item'){
         return $this->next_prev->next($criteria, $class);
@@ -34,7 +34,7 @@ class ItemBase extends Base\ModelBase
     ** Gets the prev post in order based on the criteria. 
     ** The only valid criteria is a  'category'
     ** @parms  array('category'=> some category)
-    ** @return XYPost object   
+    ** @return Models\Post object   
     */
     function prev($criteria=null, $class='\Database\Models\Item'){
         return $this->next_prev->prev($criteria, $class);
