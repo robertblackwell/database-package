@@ -1,6 +1,5 @@
 <?php
 namespace Database;
-
 /*!
 * @ingroup locator
 *

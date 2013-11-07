@@ -1,8 +1,8 @@
 <?php
 namespace Database\Models;
 /*!
-** @ingroup ValueObjects
-* This class is a value object for post style/type content
+** @ingroup Models
+* This class represents a post content item
 */
 class Post extends ItemBase
 {

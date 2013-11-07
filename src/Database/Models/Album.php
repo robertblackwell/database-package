@@ -1,15 +1,15 @@
 <?php
 namespace Database\Models;
+use Database\HED\HEDObject;
  
 /*!
-** @ingroup Model
+** @ingroup Models
 * This object represents photo albums as displayed on the sites various "photo" pages and as contained
 * within content items.
 *
 * static methods are provided for geting/finding lists of albums and individual albums.
 *
 */
-use Database\HED\HEDObject;
 class Album extends Base\ModelBase
 {
     static $table_name = "albums";
@@ -43,14 +43,10 @@ class Album extends Base\ModelBase
     * Post, Entry, Article
     */
     public static function get_by_slug($slug){
-        $query = "select trip from albums where slug='".$slug."'";
-        $result = self::$sql->query($query);
-        $a = mysql_fetch_assoc($result);
-        if( is_null($a) || !$a || (count($a) == 0  )) return null; 
-//         if( is_null($a) || !$a || (count($a) != 1)){
-//             throw new Exception(__METHOD__." result is null or count(result) != 1");
-//         }
-        $trip = $a['trip'];
+        $q = "WHERE slug='".$slug."'";
+        $r = self::$sql->select_objects(self::$table_name, __CLASS__, $q, false);
+        if( is_null($r) || !$r   ) return null;
+        $trip = $r->trip;
         $obj = new HEDObject();
         $fn = self::$locator->album_filepath($trip, $slug);
         $obj->get_from_file($fn);

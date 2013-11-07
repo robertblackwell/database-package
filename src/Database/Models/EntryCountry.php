@@ -1,7 +1,7 @@
 <?php
 namespace Database\Models;
 /*!
-** @ingroup Model
+** @ingroup Models
 * This class provides access to journal entry by country and hence represents a view
 */
 class EntryCountry extends Base\ModelBase

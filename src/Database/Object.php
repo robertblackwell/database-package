@@ -1,26 +1,25 @@
 <?php
 /*! 
+* @namespace
 * The namespace Database is the top level namespace for this package.
 *
-*	-	Database.Object which is the main interface object
+*	-	Database.Object is the object through which the database can be initialized and configured
 *	
-*	-	Database.Locator. This object provides methods for navigating around and finding things in the
-* 		flat file database which is the core long term repository of blog content in this database. Go to the
-*		documentation for this class Database.Locator for details of how the flat file structure works.
-*	
-*	-	Database.SqlObject provides a simple layer over the top of mysql(i) for accessing the sql database that is
-*		used as an index to provide filtered access to sets of blog posts and selections of otehr objects.
-*
-* 
 *
 */
 namespace Database;
+/*!
+** Documentation for a name space
+*/
 use \Database\SqlObject as SQLObject;
 use \Database\Locator as Locator;
 use \Exception as Exception;
 use \Database\Models\RowObject as RowObject;
 use \Database\HED\HEDObject as HEDObject;
 use \Registry as Registry;
+/*!
+** Documentation for a class
+*/
 class Object
 {
 	static $sql;  //an object that knows how to interface to the sql database

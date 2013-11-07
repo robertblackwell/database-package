@@ -1,8 +1,8 @@
 <?php
 namespace Database\Models;
 /*!
-** @ingroup ValueObjects
-* This is the base class for those objects that are derived from HED files
+** @ingroup Models
+* This class represents a journal entry
 */
 class Entry extends ItemBase
 {

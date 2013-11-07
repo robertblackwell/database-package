@@ -3,7 +3,11 @@ namespace Database;
 use \Database\Models\Item as Item;
 use \Database\Models\Album as Album;
 /*!
-** This class creates the sql tables
+** This class creates knows how to sql tables, one method per tables and one method for
+** all tables.
+**
+** Also methods are provided for upgrades that have taken place to the sql database.
+** These upgrade methods will amend a live database
 */
 class Builder{
     var $sql;

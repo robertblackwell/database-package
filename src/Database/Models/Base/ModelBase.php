@@ -3,12 +3,19 @@ namespace Database\Models\Base;
 use Database\Models\CategorizedItem;
 
 /*!
-** @ingroup Models
+** @defgroup Models
+** Models are classes that represent entities in the database and are defined to suite the application
+** domain.
+**
+** Each model should be derived from the class ModelBase
+*/
+
+/*!
+** @infgroup Models
 **  This is the base class for all model classes.
 **  It is the first place in the class hierarchy that knows about field names
 **
 */
-
 class ModelBase extends RowBase
 {
     static $sql;    //access to an sql interface - setup during initialization

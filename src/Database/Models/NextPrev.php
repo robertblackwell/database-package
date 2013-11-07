@@ -14,7 +14,8 @@ class QueryMaker{
     }
 }
 /*!
-** The intent is that each of Entry, Article, Post will have an iterator
+** This class provides an iterator to move throug next/prev
+** different sets of content items. The intent is that each of Entry, Article, Post will have an iterator
 ** as a delegate. This will be provided by ItemBase the abstract base class
 **
 ** The iterator only returns an instance of Item or null 

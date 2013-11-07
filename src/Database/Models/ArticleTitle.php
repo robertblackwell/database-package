@@ -1,11 +1,11 @@
 <?php
+namespace Database\Models;
+
 /*!
 ** @ingroup Models
 ** This class provides a view of the my_items table that returns all the titles of
 ** items of type "article".
 */
-namespace Database\Models;
-
 class ArticleTitle extends Base\ModelBase
 {
     // var year, month - see DAEntryMonth for confirmation of the attribute names

@@ -1,7 +1,7 @@
 <?php
 namespace Database\Models\Base;
 /*!
-** @ingroup Model
+** @ingroup Models
 ** This class provides an object that wraps a hashed array
 ** and provides types accessor methods for reading and writing the values of the
 ** key'd hash.

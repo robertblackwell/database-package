@@ -5,10 +5,11 @@ use Database\Models\Factory;
 use \Exception as Exception;
 /*!
 ** @ingroup Models
-* This class is a value object for all types of items when they a set of them is retrieved and
-* only summary data (stored in the mysql database) is required.
+* This class represents all types of content items (posts, entry, article) when there
+* are a set of them retrieved and
+* only summary data (stored in the sql database) is required.
 *
-* This class provides static methods for finding sets of content items
+* This class provides all static methods for finding individual or sets of content items
 * 
 * It also defines (from SQL tables) the set of fields/properties that are available is a 
 * summary of a content item. 
@@ -76,14 +77,11 @@ class Item extends ItemBase
     * Post, Entry, Article
     */
     public static function get_by_slug($slug){
-        $query = "select trip from my_items where slug='".$slug."'";
-        $result = self::$sql->query($query);
-        $a = mysql_fetch_assoc($result);
-        if( is_null($a) || !$a || (count($a) == 0  )) return null; 
-//         if( is_null($a) || !$a || (count($a) != 1)){
-//             throw new Exception(__METHOD__." result is null or count(result) != 1");
-//         }
-        $trip = $a['trip'];
+        $q = "WHERE slug='".$slug."'";
+        $r = self::$sql->select_objects(self::$table_name, __CLASS__, $q, false);
+        if( is_null($r) || !$r   ) return null;
+        $trip = $r->trip;
+               
         $obj = new HEDObject();
         $fn = self::$locator->item_filepath($trip, $slug);
         $obj->get_from_file($fn);

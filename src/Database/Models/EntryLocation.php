@@ -1,8 +1,8 @@
 <?php
 namespace Database\Models;
 /*!
-** @ingroup Model
-* This is the Value Object for fields/properties of a Journal Entry
+** @ingroup Models
+* This is the Model class for fields/properties of a Journal Entry
 * that are GPS locations related.
 * BUT ONLY those fields held within the SQL table.
 * There is no need to load the item file

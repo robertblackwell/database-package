@@ -1,4 +1,6 @@
 <?php
+namespace Database\Models
+
 /*! 
 * @ingroup   Models
 * A class a country or region. Outside US/Canada it represents a country. Inside US/Canada
@@ -6,7 +8,6 @@
 *
 * This class represents country/region as an active record model
 */
-namespace Database\Models
 class Country
 {
     public $code;

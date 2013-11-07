@@ -9,15 +9,8 @@ use Database\HED\HEDFactory;
 ** @ingroup Models
 **
 ** The purpose of this class is to create model object from HEDObjects 
+** and to create new empty HEDObjects in the appropriate file
 **
-** I have tried to keep all trickery related to transforming HEDObject fields into
-** model object properties in this class.
-** 
-** So for example all properties of model objects that are derived are computed here
-** an example of this would be the featured_image field
-**
-** The class model of model object to create is determined by the type field
-** value in the HEDObject
 **
 ** 
 */

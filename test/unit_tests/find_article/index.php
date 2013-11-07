@@ -11,7 +11,7 @@ class TestFindArticle extends UnitTestCase{
     }
     function test_1(){    
         $result = Database\Models\Article::find();
-        //var_dump($result);
+        //var_dump($result);exit();
         $this->assertNotEqual($result, null);
         $this->assertTrue(is_array($result));
         $this->assertNotEqual(count($result), 0);

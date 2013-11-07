@@ -2,7 +2,7 @@
 namespace Database\Models\Base;
 use Database\Models\Base\RowObject;
 /*!
-** @ingroup Model
+** @ingroup Models
 ** This class provides an object that catches all read access to object 
 ** non existent properties and hence turns a RowObject into an object that
 ** appears to have real propoerties

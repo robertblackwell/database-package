@@ -7,9 +7,13 @@ namespace Database\Models;
 class Category extends Base\ModelBase
 {
     static $table_name = "categories";
-    
-    function __construct($row){
-        parent::__construct($row);
+    static $field_names = array(
+        "category"=>"text",
+        );
+    function __construct($obj=null){       
+        $this->vo_fields = self::$field_names;
+        $this->table = self::$table_name;
+        parent::__construct($obj);
     }
     /*!
     * Find all the categories and return them in an array of VOCategory objects
@@ -32,10 +36,11 @@ class Category extends Base\ModelBase
     */
     static function add($category){
         //print "<p>".__METHOD__."($category)</p>";
-        $query = "insert into categories(category) values('$category')";
-        $result = mysql_query($query);
-        //var_dump($query);
-        //var_dump($result);
+        // try to insert the object and ignore fails that means it is already there
+        $a = array('category'=>$category);
+        $obj = new category($a);
+        self::$sql->insert(self::$table_name, $obj, false);
+        return;
         //print "<p>".__METHOD__."</p>";
     }
 

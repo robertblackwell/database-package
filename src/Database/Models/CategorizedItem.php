@@ -8,9 +8,14 @@ namespace Database\Models;
 class CategorizedItem extends Base\ModelBase
 {
     static $table_name = "categorized_items";
-    
-    function __construct($row){
-        parent::__construct($row);
+    static $field_names = array(
+        "category"=>"text",
+        "item_slug"=>"text",
+        );
+    function __construct($obj=null){       
+        $this->vo_fields = self::$field_names;
+        $this->table = self::$table_name;
+        parent::__construct($obj);
     }
     /*!
     * Finds all the rows in the categorized_items table and returns them as an array of VOCategorizedItem objects
@@ -30,10 +35,14 @@ class CategorizedItem extends Base\ModelBase
     static function add($category, $slug){
         //print "<p>".__METHOD__."($category, $slug)</p>";
         Category::add($category);
+        $a = array('category'=>$category, 'item_slug'=>$slug);
+        $obj = new CategorizedItem($a);
+        self::$sql->insert(self::$table_name, $obj, false);
+        return;
         $query = "insert into categorized_items(category, item_slug) values('$category', '$slug')";
         $result = self::$sql->query($query);
         if( !$result )
-            throw new Exception(__CLASS__."::".__FUNCTION__." sql result false msg: ". mysql_error() );
+            throw new Exception(__CLASS__."::".__FUNCTION__." sql result false msg: ". self::$sql->error() );
         //var_dump($query);var_dump($result);
         //print "<p>".__METHOD__."</p>";
     }
