@@ -15,7 +15,7 @@ class Test_meta_db extends UnitTestCase{
 	    print __METHOD__."\n";
 	    $r = $this->sql->getTables();
 	    //var_dump($r);
-	    $t = array('albums', 'my_items', 'categorized_items');
+	    $t = array('albums', 'my_items', 'categorized_items', 'categories');
 	    $this->assertEqual(count($t), count($r));
 	    foreach($t as $tn){
 	        $this->assertTrue(in_array($tn, $r));

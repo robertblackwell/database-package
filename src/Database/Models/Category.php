@@ -2,7 +2,9 @@
 namespace Database\Models;
 /*!
 ** @ingroup Models
-* This class is an active record for categories
+* This class is a standard Model but it is a little different in that
+* it does not have a table hiding behind it but rather a view that uses a selection of all the distinct
+* categorized_items(category) values. 
 */
 class Category extends Base\ModelBase
 {
@@ -18,20 +20,23 @@ class Category extends Base\ModelBase
     /*!
     * Find all the categories and return them in an array of Category objects
     * @note - in this incarnation of the package categories only exist in the 
-    * categorized_items table. There is no active categories table
+    * categorized_items table and hence the categories table is actually a view
     * @param count - Limits the number returned
     * @return array of Category objects
     */
     static function find($count=NULL){
         $count_str = ($count)? "limit 0, $count": "" ;
-        $q = "select distinct category from categorized_items order by category asc $count_str ";
-        $r = self::$sql->query_objects($q, __CLASS__ , true);
+        $q = "  order by category asc $count_str ";
+        $r = self::$sql->select_objects(self::$table_name, __CLASS__ , $q, true);
         //var_dump($r);exit();
         return $r;
     }
+    /*!
+    ** Tests a string to see if it exists as a category in the categorized_items table
+    */
     static function exists($category){
-        $q = "select distinct category from categorized_items where category = '".$category."'";
-        $r = self::$sql->query_objects($q, __CLASS__ , false);
+        $q = " where category = '".$category."'";
+        $r = self::$sql->select_objects(self::$table_name, __CLASS__ ,$q, false);
         //var_dump($r);exit();
         return !is_null($r);
     }

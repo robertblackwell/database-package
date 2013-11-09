@@ -20,15 +20,15 @@ class Builder{
     }
     function drop_tables(){        
         $this->sql->query("DROP table IF EXISTS categorized_items");
-        $this->sql->query("DROP table IF EXISTS categories");
+        $this->sql->query("DROP view IF EXISTS categories");
         $this->sql->query("DROP table IF EXISTS albums");
         $this->sql->query("DROP table IF EXISTS my_items");
     }
     function create_tables(){
         $this->drop_tables();
         $this->create_table_my_items();
-        //$this->create_table_categories();
         $this->create_table_categorized_items();
+        $this->create_view_categories();
         $this->create_table_albums();
         
     }
@@ -82,6 +82,16 @@ class Builder{
         var_dump($this->sql->query($query_my_items));
         print "<p>".__CLASS__.":".__METHOD__."</p>\n";
     }
+    function create_view_categories(){
+        print "<p>".__CLASS__.":".__METHOD__."</p>\n";
+    
+        $query_categories=<<<EOD
+        create view categories as select distinct category from categorized_items;    
+EOD;
+        $this->sql->query($query_categories);
+        print "<p>".__CLASS__.":".__METHOD__."</p>\n";
+    }
+    
     function create_table_categories(){
         print "<p>".__CLASS__.":".__METHOD__."</p>\n";
         $query_categories=<<<EOD
