@@ -26,6 +26,12 @@ class CategorizedItem extends Base\ModelBase
         $c = "   order by category asc $count_str ";
         return self::$sql->select_objects("categorized_items", __CLASS__, $c);
     }
+    static function exists($category, $slug){
+        $q = "select * from categorized_items where category='".$category."' and item_slug='".$slug."'";
+        $r = self::$sql->query_objects($q, __CLASS__ , false);
+        //var_dump($r);exit();
+        return !is_null($r);
+    }
     /*!
     * Ensures a category, slug pair are in the categorized_items table. Insert of not there.
     * @param $category a string value of a category
@@ -34,16 +40,11 @@ class CategorizedItem extends Base\ModelBase
     */
     static function add($category, $slug){
         //print "<p>".__METHOD__."($category, $slug)</p>";
-        Category::add($category);
+//        Category::add($category);
         $a = array('category'=>$category, 'item_slug'=>$slug);
         $obj = new CategorizedItem($a);
         self::$sql->insert(self::$table_name, $obj, false);
         return;
-        $query = "insert into categorized_items(category, item_slug) values('$category', '$slug')";
-        $result = self::$sql->query($query);
-        if( !$result )
-            throw new Exception(__CLASS__."::".__FUNCTION__." sql result false msg: ". self::$sql->error() );
-        //var_dump($query);var_dump($result);
         //print "<p>".__METHOD__."</p>";
     }
     static function delete($category, $slug){

@@ -6,7 +6,7 @@ use \DOMDocument as DOMDocument;
  * @copyright whiteacorn.com
  * @license   MIT License
  */
-/*! @ingroup Extensions
+/*! @ingroup HED
  * This class extends the DOM class DOMNode to add a couple of extra methods that I loke to have available
  *
 */

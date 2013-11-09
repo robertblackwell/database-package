@@ -1,7 +1,7 @@
 <?php
 namespace Database;
 /*!
-* @ingroup locator
+* @ingroup database
 *
 *   This class provides 
 *	-	path, 

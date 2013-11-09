@@ -3,8 +3,10 @@ namespace Database;
 use \Database\Models\Item as Item;
 use \Database\Models\Album as Album;
 /*!
-** This class provides some utility functions for loading various objects into the 
-** sql database
+** @ingroup database
+**
+** This class provides some utility functions for loading various objects from
+** the flat file store into the sql database
 */
 class Utility{
     var $sql;

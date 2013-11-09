@@ -2,7 +2,8 @@
 namespace Database\Models;
 /*!
 ** @ingroup Models
-* This class represents content that is an article
+** This class represents content that is an article and provides
+** static methods for accessing collections of articles.
 */
 class Article extends ItemBase
 {

@@ -18,7 +18,9 @@ use \Database\Models\RowObject as RowObject;
 use \Database\HED\HEDObject as HEDObject;
 use \Registry as Registry;
 /*!
-** Documentation for a class
+** @defgroup database
+**
+** The class Database provides a means of initializing and configuring the blog database machinery
 */
 class Object
 {

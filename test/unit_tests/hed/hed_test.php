@@ -47,6 +47,54 @@ class Test_hed extends UnitTestCase{
         print __METHOD__."\n";
         
     }
+    function test_1_post(){    
+        print __METHOD__."\n";
+        $o = new HEDObject();
+        $o->get_from_file(dirname(__FILE__)."/data/post_1/content.php");
+        //var_dump($o);
+        $post = Database\Models\Factory::model_from_hed($o);
+        $this->assertNotEqual($post, null);
+        $this->assertEqual(get_class($post), 'Database\Models\Post');
+
+        $this->assertEqual($post->version, "2.0");
+        $this->assertEqual($post->type, "post");
+        $this->assertEqual($post->slug, "130427B");
+        $this->assertEqual($post->status, "draft");
+        $this->assertEqual($post->creation_date, "2013-04-27");
+        $this->assertEqual($post->published_date, "2013-04-27");
+        $this->assertEqual($post->last_modified_date, "2013-04-27");
+        $this->assertEqual($post->trip, "rtw");
+        $this->assertTrue(is_array($post->categories));
+        $this->assertEqual(2, count($post->categories));
+        print __METHOD__."\n";
+        
+    }
+    function test_1_post_2(){    
+        print __METHOD__."\n";
+        $o = new HEDObject();
+        $o->get_from_file(dirname(__FILE__)."/data/post_2/content.php");
+        //var_dump($o);
+        $post = Database\Models\Factory::model_from_hed($o);
+        $this->assertNotEqual($post, null);
+        $this->assertEqual(get_class($post), 'Database\Models\Post');
+
+        $this->assertEqual($post->version, "2.0");
+        $this->assertEqual($post->type, "post");
+        $this->assertEqual($post->slug, "130427B");
+        $this->assertEqual($post->status, "draft");
+        $this->assertEqual($post->creation_date, "2013-04-27");
+        $this->assertEqual($post->published_date, "2013-04-27");
+        $this->assertEqual($post->last_modified_date, "2013-04-27");
+        $this->assertEqual($post->trip, "rtw");
+        var_dump($post->categories);
+        var_dump($o->categories);
+        $this->assertTrue(is_array($post->categories));
+        $this->assertEqual(0, count($post->categories));
+        print __METHOD__."\n";
+        
+    }
+
+
     function test_2(){    
         print __METHOD__."\n";
         $o = new HEDObject();

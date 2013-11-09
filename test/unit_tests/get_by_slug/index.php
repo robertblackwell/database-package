@@ -76,7 +76,7 @@ class Test_get_by_slug extends UnitTestCase{
     }
     function test_6(){    
         print __METHOD__." \n";
-        $r = Item::get_by_slug('tires');
+        $r = Item::get_by_slug('tires');//var_dump($r);exit();
         $this->assertNotEqual($r, null);
         $this->assertEqual(get_class($r), "Database\Models\Article");
         $this->assertEqual($r->slug, 'tires');

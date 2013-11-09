@@ -16,33 +16,56 @@ class Category extends Base\ModelBase
         parent::__construct($obj);
     }
     /*!
-    * Find all the categories and return them in an array of VOCategory objects
+    * Find all the categories and return them in an array of Category objects
+    * @note - in this incarnation of the package categories only exist in the 
+    * categorized_items table. There is no active categories table
     * @param count - Limits the number returned
-    * @return array of VOCategory objects
+    * @return array of Category objects
     */
     static function find($count=NULL){
         $count_str = ($count)? "limit 0, $count": "" ;
-        $c = " order by category asc $count_str ";
-        $r = self::$sql->select_objects(self::$table_name, __CLASS__ , $c);
+        $q = "select distinct category from categorized_items order by category asc $count_str ";
+        $r = self::$sql->query_objects($q, __CLASS__ , true);
         //var_dump($r);exit();
         return $r;
     }
-    
-    /*!
-    * Ensures a category is in the category table. Insert if not there.
-    * (Actually insert and ignore the error of duplicate entry
-    * @param $category a string value of a category
-    * @return void
-    */
-    static function add($category){
-        //print "<p>".__METHOD__."($category)</p>";
-        // try to insert the object and ignore fails that means it is already there
-        $a = array('category'=>$category);
-        $obj = new category($a);
-        self::$sql->insert(self::$table_name, $obj, false);
-        return;
-        //print "<p>".__METHOD__."</p>";
+    static function exists($category){
+        $q = "select distinct category from categorized_items where category = '".$category."'";
+        $r = self::$sql->query_objects($q, __CLASS__ , false);
+        //var_dump($r);exit();
+        return !is_null($r);
     }
+    
+//     /*!
+//     * Ensures a category is in the category table. Insert if not there.
+//     * (Actually insert and ignore the error of duplicate entry
+//     * @param $category a string value of a category
+//     * @return void
+//     */
+//     static function add($category){
+//         //print "<p>".__METHOD__."($category)</p>";
+//         // try to insert the object and ignore fails that means it is already there
+//         $a = array('category'=>$category);
+//         $obj = new category($a);
+//         self::$sql->insert(self::$table_name, $obj, false);
+//         return;
+//         //print "<p>".__METHOD__."</p>";
+//     }
+//     /*!
+//     * Ensures a category is NOT in the category table. Delete if there.
+//     * (Actually insert and ignore the error of duplicate entry
+//     * @param $category a string value of a category
+//     * @return void
+//     */
+//     static function remove($category){
+//         //print "<p>".__METHOD__."($category)</p>";
+//         // try to insert the object and ignore fails that means it is already there
+//         $a = array('category'=>$category);
+//         $obj = new category($a);
+//         self::$sql->delete(self::$table_name, $obj, false);
+//         return;
+//         //print "<p>".__METHOD__."</p>";
+//     }
 
 }
 

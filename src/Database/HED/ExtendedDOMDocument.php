@@ -6,10 +6,7 @@ use \DOMDocument as DOMDocument;
  * @author    Robert Blackwell rob@whiteacorn.com
  * @copyright whiteacorn.com
  * @license   MIT License
- * @defgroup Extensions
- * these classes provide extension or alternatives to standard PHP classes. They are conveniences only.
- */
-/*! @ingroup Extensions
+ * @ingroup HED
  * This class extends the DOM class DOMDocument to add a couple of extra methods that I loke to have available
  *
 */

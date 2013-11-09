@@ -50,15 +50,20 @@ class RowObject{
 	    return (int)$this->get_text($field);
 	}
 	function get_list($field){
+	    //print __METHOD__."\n";
 	    //print "get_list $field \n";
 	    $s = $this->get_text($field);
-	    //var_dump($s);
+	    //print "the string is [$s] length is : ".strlen($s)." \n";
+//	    var_dump($s);
 	    if( is_array($s) ){
 	        print_r($this->row);
 	        exit();
 	    }
+	    if( strlen($s) == 0 ) return array();
         $s = str_replace(" ", "", $s);
         $a = explode(",", $s);
+        //print "after explode : \n";var_dump($a);
+	    //print __METHOD__."\n";
         return $a;	    
 	}
 	function get_longitude($field){
