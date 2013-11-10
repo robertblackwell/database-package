@@ -1,26 +1,13 @@
 <?php
 namespace Database\HED;
 /*!
-** @ingroup database_utilities
+** @ingroup HED
 **
-** The purpose of this class is to create value object (XYxxxxx objects)  under a variety of circumstances and from a 
-** variety of sources. In that regard it is a factory class.
+** This class knows how to create new HTML encoded files of various types.
 **
-** I have chosen to use a factory class in order to keep the code in the XYBase base class
-** simple and focused on its role as a Value 
-**
-** This factory class is designed to only be used in a <strong>static</strong> manner,
-** hence all methods are static methods.
-**
-** In many cases the factory determines the specific class that needs to be created by using a 
-** naming convention. Each content item contains a type field, whose values correspond to the 
-** name of a value class as follows:
-**  -   entry --> Database\VO\Entry, is a journal entry
-**  -   post --> Database\VO\Post,  a blog post
-**  -   article --> Database\VO\Article,   a self contained article
-** 
-** There is only one case where the factory must be told the type of item to be created and that 
-** is when creating an empty (or template) of a specific item
+** @note This class uses a mapping between "type" and class
+** That mapping is coded as a pair of static arrays and should be examined if class names
+** change or new Model classes are added to the database
 ** 
 */
 use \Database\Models\Entry as VOEntry;

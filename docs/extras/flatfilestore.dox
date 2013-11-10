@@ -1,0 +1,154 @@
+/*!
+
+@page content The Flat File Store 
+
+The Flat File Store is described in the following pages
+
+-   @ref ffs_directory 
+-   @ref ffs_content_items 
+-   @ref ffs_slugs 
+-   @ref ffs_hed 
+-   @ref ffs_locator
+
+@page ffs_directory Directory Structure
+
+The Flat File Store conventionally resides under a top level directory called <strong>data</strong>.
+
+At the next level the content is subdivided by <strong>trip</strong> and there is a sub directory under <strong>data</strong> for each trip that  exists within the database.
+
+At the next level (within a trip) the content is subdivided by type, so at the moment
+-   content items such as posts, journal entries and articles live in a sub directory called <strong>content</strong>
+-   photo albums reside within a sub directory called <strong>photos/galleries</strong>
+-   page header photos or <strong>banners</strong> as we cal them reside in a subdirectory called <strong>banners</strong>
+
+This gives a directory structure that looks like this:
+@code
+    data
+        rtw
+            content
+            photos/galleries
+            banners
+        theamericas
+            content
+            photos/galleries
+            banners
+@endcode
+
+Inside each of the type directories (content, galleries, banners) an individual item of that type is represented by
+another directory, so for example the journal entry for 17th April 2013 will be in the directory
+@code
+    data/rtw/content/130417
+@endcode
+
+And similarly the photo album named Peru will be in the directory named
+@code
+    data/theamericas/photos/galleries/Peru
+@endcode
+
+@page ffs_content_items The Structure of Content Items
+
+So what is inside one of the content item directories. Not surprisingly each is slightly 
+different.
+
+@section post_items Posts, and Journal Entries
+
+The directory representing these types of items all contain 
+-   a file called <strong>content.php</strong> that contains both some attribute data associated with the item
+    plus the actual text(html) of that entry
+-   directories called <strong>Images</strong> and <strong>Thumbnails</strong> which together comprise a photo gallery attached to this item
+-   other directories that themselves contain subdirectories called <strong>Images</strong> and <strong>Thumbnails</strong> and which are additional photo galleries attached to this item.
+
+Thus the journal entry associated with the trip <strong>rtw</strong> for April 17th 2013 with its attached default photo gallery and an additional photo gallery called <strong>pics</strong> would look like:
+@code
+        data/rtw/content/130417/
+                                content.php
+                                Images
+                                Thumbnails
+                                pics/
+                                    Images
+                                    Thumbnails
+@endcode
+
+The attribute data provided inside <strong>content.php</strong> will be different for a journal entry and a plain post.
+
+For example journal entries have GPS data related to a days camping spot.
+
+@section article_items Articles
+
+Are almost identical to posts and journal entries except that for an article the file <strong>content.php</strong>
+contains only the attribute data and the actual html text content of the article is in another file called <strong>main_content.php</strong> and an article does not have a default photo gallery.
+
+Thus an article named tires with two photo galleries would have the following structure 
+
+@code
+        data/rtw/content/tires/
+                                content.php
+                                main_content.php
+                                pics1/
+                                    Images
+                                    Thumbnails
+                                pics2/
+                                    Images
+                                    Thumbnails
+@endcode
+
+@section albums Photo Albums
+
+All Photo Album has the following structure:
+
+@code
+        data/rtw/photos/galleries/<name>/
+                                content.php
+                                mascot.jpeg
+                                Images
+                                Thumbnails
+@endcode
+
+The file content.php holds a small amount of attribute data.
+
+The file mascot.jpeg is a visual representation of the album and is typically dispayed
+when a list of albums is being displayed for user selection.
+
+Images and Thumbnails are the images of the album.
+
+@page ffs_slugs  Uniquely Identifying Items
+
+All items have a name or "slug" which is the same as the name of the directory containing the item.
+
+By convention Journal entries are always named by the day they represent and the name is in yymmdd
+format. Hence the journal entry for April 17th 2013  will have the name or slug 130417
+
+Posts, articles, albums and banners may be named with any suitable name string.
+
+Names/slugs MUST be unique across trips except that the name spaces for photo albums, banners 
+and (posts, journal entries, articles) are independent.
+
+@page ffs_hed HTML Encode Data (HED)
+
+A number of times we have stated that the files <strong>content.php</strong> contain some attribute data
+as well as the html text of (some) items.
+
+These files are all valid html5 files.
+
+The value of an attribute is stored as the text content of a div and the name of the attribute
+is the value of the <string>id</strong> o the div.
+
+Hence the attribute/value pair for status is encoded in a content.php file
+as
+@code
+<div id='status'>the value of status</div>
+@endcode
+
+Two classes are provided for handling and creating these types of files, they are:
+-   Database::HED::HEDObject, this class allows access to the attributes of a content.php file as a PHP object
+-   Database::HED::HEDFactory, this class knows how to create new empty content.php files of the various types
+
+@page ffs_locator The Locator
+
+The details of the structure of Flat File Store are encoded in the The Database::Locator class.
+
+This class enables client code (that is code needing to access various content items and parts of
+content items) to access entities in the Flat File Store without any knowledge of the structure of
+the Flat File Store
+
+*/

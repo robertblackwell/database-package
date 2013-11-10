@@ -2,13 +2,13 @@
 namespace Database\HED;
 use Database\HED\ExtendedDOMNode;
 /*!
-** @ingroup database_hed
-** This provides a means by which HTML coded files can be loaded
-** an object and the values accessed by get_ methods.
+** @defgroup HED
+*/
+/*!
+** @ingroup HED
 **
-** This class provides the basic file loading/putting functions as well as a 
-** set of typed getter and setter methods for accessing values.
-**
+** This provides a means by which HTML encoded files can be loaded
+** as a PHP object the attribute/values pairs accessed by as properties of that object.
 **
 ** @todo    complete the set_XXX functions so that all types of elements can be updated
 **

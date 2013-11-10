@@ -8,23 +8,30 @@ travel website.
 In this incarnation I have sought to make it a standalone, reusable, and independently testable package.
 
 The intent is that all the "content" (posts, journal entries, articles, photo albums, banner photos,
-and home page editorials) for our blog is stored in this database.
+and home page editorials) for our blog be stored in this database. That ideal has not yet been achieved
 
-All content items are initially created as a file or directory in a set of structured directories and
-files and then some parts of that structure are added to an sql database as part of a publishing process.
+All content items are initially created as a directory in a set of structured directories 
+called @ref content "The Flat File Store" 
+and then some parts of that structure are added to an sql database as part of a publishing process.
 
 The primary role of the sql database is as an index so that subsets of the content can be
 retrieved efficiently and as a publication control. Only content items referenced by the sql data
 base are accessible through the blog front end.
 
-This allows content to be created offline with standard tools, uploaded and only "hooked in to" or
+This allows content to be created offline with standard tools such as text editors
+and photo management programs, uploaded and only "hooked in to" or
 "published" when required.
 
 Thus the permanent storage for all content is the set of structured directories.  
 
 The sql database can be recreated at any time from the directory structure.
 
+There are different types of content items - currently journal entries, posts, articles, photo albums,
+and photo galleries connected to posts,journal entries, articles.
 
+The contents of the directory that represents a content item varies with the type of the content item.
 
+More details on this topic can be found at @ref content "Flat File Store" 
 
+Also see @ref sql and @ref dbinterface
 */
