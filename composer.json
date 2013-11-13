@@ -1,6 +1,6 @@
 
 {
-    "name":"robertblackwell/trace",
+    "name":"robertblackwell/database-package",
     "description": "A simple tracing library with easy on/off",
     "keywords": ["trace", "php", "debug"],
     "type": "library",
