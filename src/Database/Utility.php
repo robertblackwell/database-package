@@ -94,6 +94,7 @@ class Utility{
         $x->sql_delete();
     }
     function get_item_names($dir){
+        
         $a = scandir($dir);
         $b = array();
         foreach($a as $d){
@@ -111,6 +112,7 @@ class Utility{
         $this->load_db_from($dir);
     }
     function load_db_from($items_dir){
+        \Trace::function_entry();
         $item_names = $this->get_item_names($items_dir);
         $items = array();
         foreach($item_names as $iname){
@@ -127,6 +129,7 @@ class Utility{
             \Trace::debug("<p>ending $iname</p>");
             
         }
+        \Trace::function_exit();
 	}
         
     function rebuild_db_from($items_dir){

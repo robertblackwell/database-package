@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "e31e29f5419b55fb012044254be38ebc",
+    "hash": "b7ec390b1696a0a67023cda1dbbd2539",
     "packages": [
         {
             "name": "robertblackwell/gpscoordinates",
