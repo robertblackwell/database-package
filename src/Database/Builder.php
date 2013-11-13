@@ -18,11 +18,13 @@ class Builder{
         $this->sql = \Database\SqlObject::get_instance();
         $this->locator = \Database\Locator::get_instance();
     }
-    function drop_tables(){        
+    function drop_tables(){  
+	    \Trace::function_entry();
         $this->sql->query("DROP table IF EXISTS categorized_items");
         $this->sql->query("DROP view IF EXISTS categories");
         $this->sql->query("DROP table IF EXISTS albums");
         $this->sql->query("DROP table IF EXISTS my_items");
+	    \Trace::function_exit();
     }
     function create_tables(){
         $this->drop_tables();
@@ -33,7 +35,7 @@ class Builder{
         
     }
     function create_table_my_items(){
-        print "<p>".__CLASS__.":".__METHOD__."</p>\n";
+	    \Trace::function_entry();
         $query_my_items = " 
         CREATE TABLE `my_items` (
               `slug` varchar(20)   CHARSET UTF8 NOT NULL DEFAULT '',
@@ -58,12 +60,14 @@ class Builder{
               PRIMARY KEY (`slug`),
               KEY `country` (`country`)
         ) ENGINE=InnoDB DEFAULT CHARSET UTF8;";
+
+        $result = $this->sql->query($query_my_items);
                 
-        var_dump($this->sql->query($query_my_items));
-        print "<p>".__CLASS__.":".__METHOD__."</p>\n";
+        \Trace::debug("query result ".var_export($result,true));
+	    \Trace::function_exit();
     }
     function create_table_albums(){
-        print "<p>".__CLASS__.":".__METHOD__."</p>\n";
+	    \Trace::function_entry();
         $query_my_items = " 
         CREATE TABLE `albums` (
               `slug` varchar(20) CHARSET UTF8  NOT NULL DEFAULT '',
@@ -79,21 +83,23 @@ class Builder{
               PRIMARY KEY (`slug`)
         ) ENGINE=InnoDB DEFAULT CHARSET UTF8;";
                 
-        var_dump($this->sql->query($query_my_items));
-        print "<p>".__CLASS__.":".__METHOD__."</p>\n";
+        $result = $this->sql->query($query_my_items);
+                
+        \Trace::debug("query result ".var_export($result,true));
+	    \Trace::function_exit();
     }
     function create_view_categories(){
-        print "<p>".__CLASS__.":".__METHOD__."</p>\n";
+	    \Trace::function_entry();
     
         $query_categories=<<<EOD
         create view categories as select distinct category from categorized_items;    
 EOD;
         $this->sql->query($query_categories);
-        print "<p>".__CLASS__.":".__METHOD__."</p>\n";
+	    \Trace::function_exit();
     }
     
     function create_table_categories(){
-        print "<p>".__CLASS__.":".__METHOD__."</p>\n";
+	    \Trace::function_entry();
         $query_categories=<<<EOD
         CREATE TABLE `categories` (
               `category` varchar(20) CHARSET UTF8 NOT NULL DEFAULT '',
@@ -101,10 +107,10 @@ EOD;
         ) ENGINE=InnoDB DEFAULT CHARSET UTF8;
 EOD;
         $this->sql->query($query_categories);
-        print "<p>".__CLASS__.":".__METHOD__."</p>\n";
+	    \Trace::function_exit();
     }
     function create_table_categorized_items(){
-        print "<p>".__CLASS__.":".__METHOD__."</p>\n";
+	    \Trace::function_entry();
         $query_categorized_items=<<<EOD
         CREATE TABLE `categorized_items` (
               `category` varchar(20) CHARSET UTF8 NOT NULL DEFAULT '',
@@ -118,15 +124,15 @@ EOD;
         ) ENGINE=InnoDB DEFAULT CHARSET UTF8;
 EOD;
         $this->sql->query($query_categorized_items);
-        print "<p>".__CLASS__.":".__METHOD__."</p>\n";
+	    \Trace::function_exit();
 
     }
     function add_camping(){
-        print "<p>".__CLASS__.":".__METHOD__."</p>\n";
+	    \Trace::function_entry();
         $query_my_items = "ALTER TABLE `my_items` ADD `camping` MEDIUMTEXT after `featured_image`";
                 
-        var_dump($this->sql->query($query_my_items));
-        print "<p>".__CLASS__.":".__METHOD__."</p>\n";
+//        var_dump($this->sql->query($query_my_items));
+	    \Trace::function_exit();
     }  
     
     static function fix_country($e){

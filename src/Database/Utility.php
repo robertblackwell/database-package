@@ -36,23 +36,25 @@ class Utility{
     ** equivalent of "publish"
     */
     function import_item($trip, $slug){
+	    \Trace::function_entry();
         $x = Item::get_by_trip_slug($trip, $slug);
 
-        print "<p> Importing trip : $trip item: $slug type ".get_class($x)."</p>\n";
-        print "<p>import item featured_image : ". $x->get_text('featured_image') ."</p>\n";
-        print "<p>import item featured_image : ". $x->featured_image ."</p>\n";
-        print "<p>import item featured_image : ". $x->get_text('featured_image') ."</p>\n";
+        \Trace::debug("<p> Importing trip : $trip item: $slug type ".get_class($x)."</p>");
+        \Trace::debug( "<p>import item featured_image : ". $x->get_text('featured_image') ."</p>");
+        \Trace::debug( "<p>import item featured_image : ". $x->featured_image ."</p>");
+        \Trace::debug( "<p>import item featured_image : ". $x->get_text('featured_image') ."</p>");
 
         if( $slug != $x->slug )
             throw new \Exception(__METHOD__."($slug) file name and slug do not match file:$fn slug:".$x->slug);
         self::fix_country($x);
         $x->sql_insert();    
+	    \Trace::function_exit();
     }
     /*!
     ** Remove an item (defined by $slug) from the sql database. This is the equivalent of "unpublish"
     */
     function deport_item($slug){
-        //print "<p>".__METHOD__."($slug)</p>"; 
+	    \Trace::function_entry();
         $x = Item::get_by_slug($slug);
         if( is_null( $x ) ){
             throw new \Exception(__METHOD__."($slug) x is null");
@@ -61,6 +63,7 @@ class Utility{
         if( $slug != $x->slug )
             throw new \Exception(__METHOD__."($slug)  slug:".$x->slug);
         $x->sql_delete();
+	    \Trace::function_exit();
     }
     /*!
     ** Import an albu from its HED form into the sql database - this is the
@@ -69,7 +72,7 @@ class Utility{
     function import_album($trip, $slug){
         $x = Album::get_by_trip_slug($trip, $slug);
 
-        print "<p> Importing trip : $trip item: $slug type ".get_class($x)."</p>\n";
+        \Trace::alert("<p> Importing trip : $trip item: $slug type ".get_class($x)."</p>");
 
         if( $slug != $x->slug )
             throw new \Exception(__METHOD__."($slug) file name and slug do not match file:$fn slug:".$x->slug);
@@ -111,7 +114,7 @@ class Utility{
         $item_names = $this->get_item_names($items_dir);
         $items = array();
         foreach($item_names as $iname){
-            print "starting $items_dir/$iname\n";
+            \Trace::debug( "starting $items_dir/$iname");
             $o = new \Database\HED\HEDObject();
             $o->get_from_file($items_dir."/".$iname."/content.php");
             $obj = \Database\Models\Factory::model_from_hed($o);
@@ -121,7 +124,7 @@ class Utility{
             $items[] = $obj;
             $this->fix_country($obj);
             $obj->sql_insert();
-            print "<p>ending $iname</p>\n";
+            \Trace::debug("<p>ending $iname</p>");
             
         }
 	}
@@ -131,7 +134,7 @@ class Utility{
         $item_names = $this->get_item_names($items_dir);
         $items = array();
         foreach($item_names as $iname){
-            print "starting $items_dir/$iname\n";
+            \Trace::alert( "starting $items_dir/$iname");
             $o = new \Database\HED\HEDObject();
             $o->get_from_file($items_dir."/".$iname."/content.php");
             $obj = Database\Models\Factory::model_from_hed($o);
@@ -141,7 +144,7 @@ class Utility{
             $items[] = $obj;
             $this->fix_country($obj);
             $obj->sql_insert();
-            print "<p>ending $iname</p>\n";
+            \Trace::alert("<p>ending $iname</p>");
             
         }
 	}

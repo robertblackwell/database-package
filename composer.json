@@ -1,0 +1,38 @@
+
+{
+    "name":"robblackwell/trace",
+    "description": "A simple tracing library with easy on/off",
+    "keywords": ["trace", "php", "debug"],
+    "type": "library",
+    "homepage": "https://github.com/robertblackwell/trace",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Robert Blackwell",
+            "homepage": "https://github.com/robertblackwell"
+        }
+    ],
+    
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "/Users/rob/git-repos/trace"
+        }
+    ],
+    
+    "require":{
+        "robertblackwell/trace":"@dev"
+    },
+    "require-dev":{
+        "simpletest/simpletest":"dev-master"
+    },
+
+    "autoload": {
+        "psr-0": {
+            "Database": "src/"
+        },
+        "classmap":["test/mock/Framework", 
+                    "test/mock/Classes",
+                    "test/mock/Gallery"]
+    }
+}

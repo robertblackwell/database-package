@@ -120,7 +120,6 @@ class HEDFactory {
         $parms['published_date'] = $dte;
         $parms['last_modified_date'] = $dte;
         $obj = self::create($file_path, "post", $trip, $slug, $parms);
-        //print __CLASS__.":".__METHOD__."<br>";
     }
     static function create_album($file_path, $trip, $slug, $dte, $name, $parms = array()){
         $parms['trip'] = $trip;
@@ -131,7 +130,6 @@ class HEDFactory {
         $parms['last_modified_date'] = $dte;
         $parms['title'] = $name;
         $obj = self::create($file_path, "album", $trip, $slug, $parms);
-        //print __CLASS__.":".__METHOD__."<br>";
     }
 
 } 

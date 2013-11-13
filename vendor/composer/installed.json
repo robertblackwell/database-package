@@ -1,0 +1,117 @@
+[
+    {
+        "name": "simpletest/simpletest",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/simpletest/simpletest.git",
+            "reference": "9084dc924a3d76a518e8c1cde3651ddeef7c6220"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/simpletest/simpletest/zipball/9084dc924a3d76a518e8c1cde3651ddeef7c6220",
+            "reference": "9084dc924a3d76a518e8c1cde3651ddeef7c6220",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.0.5"
+        },
+        "replace": {
+            "lastcraft/simpletest": "self.version",
+            "vierbergenlars/simpletest": "self.version"
+        },
+        "time": "2013-09-21 20:58:43",
+        "type": "library",
+        "installation-source": "source",
+        "autoload": {
+            "classmap": [
+                "."
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "LGPL-2.0+"
+        ],
+        "authors": [
+            {
+                "name": "Lars Vierbergen",
+                "email": "vierbergenlars@gmail.com"
+            },
+            {
+                "name": "Lachlan Donald",
+                "email": "lachlan@ljd.cc"
+            },
+            {
+                "name": "Marcus Baker",
+                "email": "marcus@lastcraft.com",
+                "role": "Original project lead"
+            },
+            {
+                "name": "Jason Sweat",
+                "role": "Original developer"
+            },
+            {
+                "name": "Travis Swicegood",
+                "role": "Original developer"
+            },
+            {
+                "name": "Perrick Penet",
+                "role": "Original developer"
+            },
+            {
+                "name": "Edward Z. Yang",
+                "role": "Original developer"
+            }
+        ],
+        "description": "Unit testing, mock objects and web testing framework for PHP built around test cases.",
+        "homepage": "http://simpletest.org/",
+        "keywords": [
+            "SimpleTest",
+            "code-coverage",
+            "junit",
+            "php",
+            "selenium",
+            "testing",
+            "unit-test",
+            "xunit"
+        ]
+    },
+    {
+        "name": "robertblackwell/trace",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "/Users/rob/git-repos/trace",
+            "reference": "62c24b26e4dd7fe9d1ad241ce16e39d8b75d5282"
+        },
+        "require": {
+            "simpletest/simpletest": "dev-master"
+        },
+        "time": "2013-11-13 13:13:20",
+        "type": "library",
+        "installation-source": "source",
+        "autoload": {
+            "psr-0": {
+                "Trace": "src/"
+            }
+        },
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Robert Blackwell",
+                "homepage": "https://github.com/robertblackwell"
+            }
+        ],
+        "description": "A simple tracing library with easy on/off",
+        "homepage": "https://github.com/robertblackwell/trace",
+        "keywords": [
+            "debug",
+            "php",
+            "trace"
+        ]
+    }
+]
