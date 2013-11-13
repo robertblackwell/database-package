@@ -1,6 +1,6 @@
 
 {
-    "name":"robblackwell/trace",
+    "name":"robertblackwell/trace",
     "description": "A simple tracing library with easy on/off",
     "keywords": ["trace", "php", "debug"],
     "type": "library",
@@ -14,14 +14,8 @@
     ],
     
     "repositories": [
-        {
-            "type": "vcs",
-            "url": "/Users/rob/git-repos/gps"
-        },
-        {
-            "type": "vcs",
-            "url": "/Users/rob/git-repos/trace"
-        }
+        {"type": "vcs","url": "/Users/rob/git-repos/gps"},
+        {"type": "vcs","url": "/Users/rob/git-repos/trace"}
     ],
     
     "require":{
