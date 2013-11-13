@@ -113,5 +113,43 @@
             "php",
             "trace"
         ]
+    },
+    {
+        "name": "robertblackwell/gpscoordinates",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "/Users/rob/git-repos/gps",
+            "reference": "ae87f9f5c24af58f7803e2c15fd8fdab1a3cbbda"
+        },
+        "require": {
+            "robertblackwell/trace": "@dev"
+        },
+        "require-dev": {
+            "simpletest/simpletest": "dev-master"
+        },
+        "time": "2013-11-13 18:39:41",
+        "type": "library",
+        "installation-source": "source",
+        "autoload": {
+            "psr-0": {
+                "GPS": "src/"
+            }
+        },
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Robert Blackwell",
+                "homepage": "https://github.com/robertblackwell"
+            }
+        ],
+        "description": "An object for managing GPS coordinates in many formats",
+        "homepage": "https://github.com/robertblackwell/gps",
+        "keywords": [
+            "gps"
+        ]
     }
 ]

@@ -16,11 +16,16 @@
     "repositories": [
         {
             "type": "vcs",
+            "url": "/Users/rob/git-repos/gps"
+        },
+        {
+            "type": "vcs",
             "url": "/Users/rob/git-repos/trace"
         }
     ],
     
     "require":{
+        "robertblackwell/gpscoordinates":"@dev",
         "robertblackwell/trace":"@dev"
     },
     "require-dev":{
@@ -31,8 +36,8 @@
         "psr-0": {
             "Database": "src/"
         },
-        "classmap":["test/mock/Framework", 
-                    "test/mock/Classes",
-                    "test/mock/Gallery"]
+        "classmap":["tests/mock/Framework", 
+                    "tests/mock/Classes",
+                    "tests/mock/Gallery"]
     }
 }
