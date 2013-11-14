@@ -25,7 +25,6 @@
     "require-dev":{
         "simpletest/simpletest":"dev-master"
     },
-
     "autoload": {
         "psr-0": {
             "Database": "src/"
