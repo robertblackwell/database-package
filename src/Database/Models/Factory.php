@@ -123,7 +123,8 @@ class Factory {
     			if($debug) print "<p>gal_name :default index: $index</p>";
 			}	
 			$image = ( count($gal->images) > $index ) ? $gal->images[$index] : NULL;
-			$res = ( count($gal->images) > $index ) ? $gal->images[$index]->getSiteRelativeThumbnailURL() : NULL;
+			//$res = ( count($gal->images) > $index ) ? $gal->images[$index]->getSiteRelativeThumbnailURL() : NULL;
+			$res = ( count($gal->images) > $index ) ? $gal->images[$index]->getThumbnailPath() : NULL;
 		/*
 		** Its the default - use the first image in the default gallery 
 		*/	
