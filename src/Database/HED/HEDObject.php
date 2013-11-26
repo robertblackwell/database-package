@@ -1,6 +1,7 @@
 <?php
 namespace Database\HED;
 use Database\HED\ExtendedDOMNode;
+use \Exception as Exception;
 /*!
 ** @defgroup HED
 */

@@ -1,6 +1,7 @@
 <?php
 namespace Database\Models\Base;
 use Database\Models\Base\RowObject;
+use \Exception as Exception;
 /*!
 ** @ingroup Models
 ** This class provides an object that catches all read access to object 

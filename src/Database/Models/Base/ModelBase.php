@@ -1,6 +1,7 @@
 <?php
 namespace Database\Models\Base;
 use Database\Models\CategorizedItem;
+use \Exception as Exception;
 
 /*!
 ** @defgroup Models

@@ -2,6 +2,7 @@
 namespace Database;
 use \Database\Models\Item as Item;
 use \Database\Models\Album as Album;
+use \Exception as Exception;
 /*!
 ** @ingroup database
 **

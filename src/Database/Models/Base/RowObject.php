@@ -1,5 +1,6 @@
 <?php
 namespace Database\Models\Base;
+use \Exception as Exception;
 /*!
 ** @ingroup Models
 ** This class provides an object that wraps a hashed array
