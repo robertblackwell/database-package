@@ -9,7 +9,7 @@ use Database\HED\HEDObject;
 use Database\HED\HEDFactory;
 use Database\Locator;
 
-class Test_fi_2 extends UnitTestCase{
+class Test_Factory extends UnitTestCase{
     function setUp(){
         global $config;
         Db::init($config);
