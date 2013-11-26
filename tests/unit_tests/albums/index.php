@@ -37,5 +37,35 @@ class TestFindArticle extends UnitTestCase{
         //$this->assertEqual($result[3]->slug, "bolivia-1");
 	    Trace::function_exit();
     }
+    function test_where_rtw(){
+	    Trace::function_entry();
+        $result = Database\Models\Album::find("rtw");
+        foreach($result as $a){
+            $this->assertNotEqual($a, null);
+            $this->assertEqual(get_class($a), "Database\Models\Album");
+    
+            $this->assertNotEqual($a->gallery, null);
+            $this->assertEqual(get_class($a->gallery), "Gallery\Object");
+            var_dump($a->gallery->mascotPath());
+            $this->assertEqual($a->trip,'rtw');
+        }
+        //$this->assertEqual($result[3]->slug, "bolivia-1");
+	    Trace::function_exit();
+    }
+    function test_where_theamericas(){
+	    Trace::function_entry();
+        $result = Database\Models\Album::find("theamericas");
+        foreach($result as $a){
+            $this->assertNotEqual($a, null);
+            $this->assertEqual(get_class($a), "Database\Models\Album");
+    
+            $this->assertNotEqual($a->gallery, null);
+            $this->assertEqual(get_class($a->gallery), "Gallery\Object");
+            var_dump($a->gallery->mascotPath());
+            $this->assertEqual($a->trip,'theamericas');
+        }
+        //$this->assertEqual($result[3]->slug, "bolivia-1");
+	    Trace::function_exit();
+    }
 }
 ?>

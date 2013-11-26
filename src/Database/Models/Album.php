@@ -60,9 +60,10 @@ class Album extends Base\ModelBase
     * @param count - Limits the number returned
     * @return array of VOCategory objects
     */
-    static function find($count=NULL){
+    static function find($trip=null, $count=NULL){
+        $where = ( is_null($trip) )? "": "where trip=\"".$trip."\" "; 
         $count_str = ($count)? "limit 0, $count": "" ;
-        $c = " order by last_modified_date desc, slug desc $count_str ";
+        $c = $where." order by last_modified_date desc, slug desc $count_str ";
         $r = self::$sql->select_objects(self::$table_name, __CLASS__ , $c);
         foreach($r as $a){
             $a->gallery = \Gallery\Object::create(Locator::get_instance()->album_dir('rtw', $a->slug));
