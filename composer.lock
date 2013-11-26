@@ -3,15 +3,15 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "b7ec390b1696a0a67023cda1dbbd2539",
+    "hash": "b825a4e78794a5ec8f664242dee7cd62",
     "packages": [
         {
-            "name": "robertblackwell/gpscoordinates",
+            "name": "robertblackwell/gallery",
             "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "/Users/rob/git-repos/gps",
-                "reference": "ae87f9f5c24af58f7803e2c15fd8fdab1a3cbbda"
+                "url": "/Users/rob/git-repos/gallery",
+                "reference": "397e00744139bda28328cd9c438b4dd72d95f8a8"
             },
             "require": {
                 "robertblackwell/trace": "@dev"
@@ -22,8 +22,46 @@
             "type": "library",
             "autoload": {
                 "psr-0": {
-                    "GPS": "src/"
+                    "Gallery": "src/"
                 }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Robert Blackwell",
+                    "homepage": "https://github.com/robertblackwell"
+                }
+            ],
+            "description": "A simple photo gallery library ",
+            "homepage": "https://github.com/robertblackwell/gallery",
+            "keywords": [
+                "gallery",
+                "photo",
+                "php"
+            ],
+            "time": "2013-11-26 10:28:08"
+        },
+        {
+            "name": "robertblackwell/gpscoordinates",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "/Users/rob/git-repos/gps",
+                "reference": "348cfd1c4c42f2001d167f1b4ad6409a92ddddf0"
+            },
+            "require": {
+                "robertblackwell/trace": "@dev"
+            },
+            "require-dev": {
+                "simpletest/simpletest": "dev-master"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "src/"
+                ]
             },
             "license": [
                 "MIT"
@@ -39,7 +77,7 @@
             "keywords": [
                 "gps"
             ],
-            "time": "2013-11-13 18:39:41"
+            "time": "2013-11-14 18:31:41"
         },
         {
             "name": "robertblackwell/trace",
@@ -47,9 +85,9 @@
             "source": {
                 "type": "git",
                 "url": "/Users/rob/git-repos/trace",
-                "reference": "62c24b26e4dd7fe9d1ad241ce16e39d8b75d5282"
+                "reference": "95232bda0eeb9c5efb908e185eca8ca3fe611678"
             },
-            "require": {
+            "require-dev": {
                 "simpletest/simpletest": "dev-master"
             },
             "type": "library",
@@ -74,8 +112,10 @@
                 "php",
                 "trace"
             ],
-            "time": "2013-11-13 13:13:20"
-        },
+            "time": "2013-11-26 11:28:35"
+        }
+    ],
+    "packages-dev": [
         {
             "name": "simpletest/simpletest",
             "version": "dev-master",
@@ -153,15 +193,13 @@
             "time": "2013-09-21 20:58:43"
         }
     ],
-    "packages-dev": [
-
-    ],
     "aliases": [
 
     ],
     "minimum-stability": "stable",
     "stability-flags": {
         "robertblackwell/gpscoordinates": 20,
+        "robertblackwell/gallery": 20,
         "robertblackwell/trace": 20,
         "simpletest/simpletest": 20
     },

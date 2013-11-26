@@ -11,7 +11,7 @@ use Database\HED\HEDFactory;
 class Test_hed extends UnitTestCase{
     function setUp(){
         global $config;
-        $this->db = new Db($config);
+        Db::init($config);
     }
     function test_1(){    
 	    Trace::function_entry();

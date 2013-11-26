@@ -7,6 +7,6 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'Trace' => array($vendorDir . '/robertblackwell/trace/src'),
-    'GPS' => array($vendorDir . '/robertblackwell/gpscoordinates/src'),
+    'Gallery' => array($vendorDir . '/robertblackwell/gallery/src'),
     'Database' => array($baseDir . '/src'),
 );

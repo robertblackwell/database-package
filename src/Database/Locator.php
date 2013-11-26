@@ -61,7 +61,9 @@ class Locator{
         return self::$_instance;
     }
 
-
+    function doc_root(){
+        return $this->doc_root;
+    }
     /*!
 	* Usefull only for theamericas trip
 	* 

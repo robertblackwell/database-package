@@ -78,18 +78,96 @@
         ]
     },
     {
+        "name": "robertblackwell/gallery",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "/Users/rob/git-repos/gallery",
+            "reference": "397e00744139bda28328cd9c438b4dd72d95f8a8"
+        },
+        "require": {
+            "robertblackwell/trace": "@dev"
+        },
+        "require-dev": {
+            "simpletest/simpletest": "dev-master"
+        },
+        "time": "2013-11-26 10:28:08",
+        "type": "library",
+        "installation-source": "source",
+        "autoload": {
+            "psr-0": {
+                "Gallery": "src/"
+            }
+        },
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Robert Blackwell",
+                "homepage": "https://github.com/robertblackwell"
+            }
+        ],
+        "description": "A simple photo gallery library ",
+        "homepage": "https://github.com/robertblackwell/gallery",
+        "keywords": [
+            "gallery",
+            "photo",
+            "php"
+        ]
+    },
+    {
+        "name": "robertblackwell/gpscoordinates",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "/Users/rob/git-repos/gps",
+            "reference": "348cfd1c4c42f2001d167f1b4ad6409a92ddddf0"
+        },
+        "require": {
+            "robertblackwell/trace": "@dev"
+        },
+        "require-dev": {
+            "simpletest/simpletest": "dev-master"
+        },
+        "time": "2013-11-14 18:31:41",
+        "type": "library",
+        "installation-source": "source",
+        "autoload": {
+            "classmap": [
+                "src/"
+            ]
+        },
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Robert Blackwell",
+                "homepage": "https://github.com/robertblackwell"
+            }
+        ],
+        "description": "An object for managing GPS coordinates in many formats",
+        "homepage": "https://github.com/robertblackwell/gps",
+        "keywords": [
+            "gps"
+        ]
+    },
+    {
         "name": "robertblackwell/trace",
         "version": "dev-master",
         "version_normalized": "9999999-dev",
         "source": {
             "type": "git",
             "url": "/Users/rob/git-repos/trace",
-            "reference": "62c24b26e4dd7fe9d1ad241ce16e39d8b75d5282"
+            "reference": "95232bda0eeb9c5efb908e185eca8ca3fe611678"
         },
-        "require": {
+        "require-dev": {
             "simpletest/simpletest": "dev-master"
         },
-        "time": "2013-11-13 13:13:20",
+        "time": "2013-11-26 11:28:35",
         "type": "library",
         "installation-source": "source",
         "autoload": {
@@ -112,44 +190,6 @@
             "debug",
             "php",
             "trace"
-        ]
-    },
-    {
-        "name": "robertblackwell/gpscoordinates",
-        "version": "dev-master",
-        "version_normalized": "9999999-dev",
-        "source": {
-            "type": "git",
-            "url": "/Users/rob/git-repos/gps",
-            "reference": "ae87f9f5c24af58f7803e2c15fd8fdab1a3cbbda"
-        },
-        "require": {
-            "robertblackwell/trace": "@dev"
-        },
-        "require-dev": {
-            "simpletest/simpletest": "dev-master"
-        },
-        "time": "2013-11-13 18:39:41",
-        "type": "library",
-        "installation-source": "source",
-        "autoload": {
-            "psr-0": {
-                "GPS": "src/"
-            }
-        },
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Robert Blackwell",
-                "homepage": "https://github.com/robertblackwell"
-            }
-        ],
-        "description": "An object for managing GPS coordinates in many formats",
-        "homepage": "https://github.com/robertblackwell/gps",
-        "keywords": [
-            "gps"
         ]
     }
 ]
