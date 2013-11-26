@@ -18,6 +18,14 @@ class Builder{
         $this->sql = \Database\SqlObject::get_instance();
         $this->locator = \Database\Locator::get_instance();
     }
+    function truncate_tables(){  
+	    \Trace::function_entry();
+        $this->sql->query("TRUNCATE table IF EXISTS categorized_items");
+        $this->sql->query("TRUNCATE view IF EXISTS categories");
+        $this->sql->query("TRUNCATE table IF EXISTS albums");
+        $this->sql->query("TRUNCATE table IF EXISTS my_items");
+	    \Trace::function_exit();
+    }
     function drop_tables(){  
 	    \Trace::function_entry();
         $this->sql->query("DROP table IF EXISTS categorized_items");

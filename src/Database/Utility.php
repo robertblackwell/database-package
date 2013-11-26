@@ -151,11 +151,5 @@ class Utility{
             
         }
 	}
-	function truncate_db(){
-        $this->sql->truncate('categorized_items');
-        $this->sql->truncate('categories');
-        $this->sql->truncate('my_items');
-	}
-  
 }
 ?>
