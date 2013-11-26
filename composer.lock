@@ -11,7 +11,7 @@
             "source": {
                 "type": "git",
                 "url": "/Users/rob/git-repos/gallery",
-                "reference": "397e00744139bda28328cd9c438b4dd72d95f8a8"
+                "reference": "a3d37356b0440d8f18ed447677323073ba9de53f"
             },
             "require": {
                 "robertblackwell/trace": "@dev"
@@ -41,7 +41,7 @@
                 "photo",
                 "php"
             ],
-            "time": "2013-11-26 10:28:08"
+            "time": "2013-11-26 13:15:47"
         },
         {
             "name": "robertblackwell/gpscoordinates",

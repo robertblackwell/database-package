@@ -1,6 +1,7 @@
 <?php
 namespace Database\Models;
 use Database\HED\HEDObject;
+use Database\Locator;
  
 /*!
 ** @ingroup Models
@@ -35,7 +36,8 @@ class Album extends Base\ModelBase
         $obj = new HEDObject();
         $fn = self::$locator->album_filepath($trip, $slug);
         $obj->get_from_file($fn);
-        $item = Factory::model_from_hed($obj);        
+        $item = Factory::model_from_hed($obj);    
+        $item->gallery = \Gallery\Object::create(dirname($fn));    
         return $item;
     }
     /*!
@@ -53,6 +55,21 @@ class Album extends Base\ModelBase
         $item = Factory::model_from_hed($obj);
         return $item;
     }
-    
+        /*!
+    * Find all the articles and return them in an array of VOCategory objects
+    * @param count - Limits the number returned
+    * @return array of VOCategory objects
+    */
+    static function find($count=NULL){
+        $count_str = ($count)? "limit 0, $count": "" ;
+        $c = " order by last_modified_date desc, slug desc $count_str ";
+        $r = self::$sql->select_objects(self::$table_name, __CLASS__ , $c);
+        foreach($r as $a){
+            $a->gallery = \Gallery\Object::create(Locator::get_instance()->album_dir('rtw', $a->slug));
+        }
+        //var_dump($r);exit();
+        return $r;
+    }
+
 }
 ?>
