@@ -66,7 +66,8 @@ class Album extends Base\ModelBase
         $c = $where." order by last_modified_date desc, slug desc $count_str ";
         $r = self::$sql->select_objects(self::$table_name, __CLASS__ , $c);
         foreach($r as $a){
-            $a->gallery = \Gallery\Object::create(Locator::get_instance()->album_dir('rtw', $a->slug));
+            $trip = $a->trip;
+            $a->gallery = \Gallery\Object::create(Locator::get_instance()->album_dir($trip, $a->slug));
         }
         //var_dump($r);exit();
         return $r;
