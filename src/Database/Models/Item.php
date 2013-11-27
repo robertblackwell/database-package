@@ -91,7 +91,7 @@ class Item extends ItemBase
     public static function find($trip='rtw', $count=NULL){
         $where = " where trip='".$trip."'";
         $count_str = ($count)? "limit 0, $count": "" ;
-        $c = " order by published_date desc, slug desc $count_str ";
+        $c = $where." order by published_date desc, slug desc $count_str ";
         return self::$sql->select_objects(self::$table_name, __CLASS__, $c, true);
     }
     /*!
