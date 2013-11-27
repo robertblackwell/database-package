@@ -88,7 +88,8 @@ class Item extends ItemBase
         $item = Factory::model_from_hed($obj);
         return $item;
     }
-    public static function find($count=NULL){
+    public static function find($trip='rtw', $count=NULL){
+        $where = " where trip='".$trip."'";
         $count_str = ($count)? "limit 0, $count": "" ;
         $c = " order by published_date desc, slug desc $count_str ";
         return self::$sql->select_objects(self::$table_name, __CLASS__, $c, true);

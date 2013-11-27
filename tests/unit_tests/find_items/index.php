@@ -12,7 +12,7 @@ class TestFindItems extends UnitTestCase{
     }
     function test_1(){    
 	    Trace::function_entry();
-        $result = Item::find(3);
+        $result = Item::find('rtw', 3);
         $this->assertNotEqual($result, null);
         $this->assertTrue(is_array($result));
         $this->assertEqual(count($result), 3);
