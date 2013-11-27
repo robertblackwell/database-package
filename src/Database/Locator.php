@@ -102,7 +102,6 @@ class Locator{
     * subdirectories or files
     */
     function content_root($trip='rtw'){
-		if( $trip == 'theamericas') return $this->entries_root(); 
         return $this->trip_root($trip)."/content";
     }
 	/*!
@@ -136,7 +135,6 @@ class Locator{
     */
     public function item_dir($trip, $slug){
         $fn =  $this->content_root($trip)."/$slug";
-    	//print "<p>".__METHOD__."($trip, $slug) -- $fn</p>";
         return $this->content_root($trip)."/$slug";
     }
     /*!
@@ -199,7 +197,6 @@ class Locator{
 /////////	
     
     function album_root($trip='rtw'){
-//		if( $trip == 'theamericas') return $this->entries_root(); 
         return $this->trip_root($trip)."/photos/galleries";
     }
     private function album_relative($trip='rtw'){

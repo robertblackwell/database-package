@@ -1,0 +1,1563 @@
+index.php
+setup fired 
+object(Database\Conversion\Object)#21 (3) {
+  ["trip"]=>
+  string(3) "rtw"
+  ["destination_dir"]=>
+  string(89) "/Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted"
+  ["content_dir"]=>
+  string(89) "/Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted"
+}
+Database\Conversion\Object->convert Alert Convert Old Format Journal Entries for theamericas To New Format
+Database\Conversion\Object->convert Alert Create converted journal entries in /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 101013 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/101013/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 101012 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/101012/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 101011 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/101011/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 101004 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/101004/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 101003 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/101003/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 101002 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/101002/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 101001 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/101001/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100930 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100930/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100929 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100929/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100928 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100928/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100927 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100927/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100926 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100926/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100923 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100923/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100922 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100922/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100921 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100921/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100920 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100920/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100919 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100919/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100918 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100918/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100917 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100917/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100916 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100916/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100915 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100915/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100914 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100914/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100913 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100913/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100912 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100912/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100911 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100911/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100910 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100910/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100909 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100909/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100908 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100908/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100907 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100907/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100906 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100906/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100905 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100905/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100904 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100904/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100903 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100903/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100902 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100902/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100901 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100901/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100831 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100831/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100830 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100830/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100829 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100829/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100828 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100828/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100827 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100827/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100825 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100825/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100824 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100824/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100823 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100823/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100822 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100822/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100806 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100806/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100805 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100805/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100804 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100804/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100803 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100803/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100802 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100802/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100801 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100801/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100731 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100731/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100730 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100730/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100729 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100729/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100728 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100728/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100727 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100727/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100726 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100726/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100725 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100725/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100724 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100724/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100723 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100723/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100722 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100722/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100721 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100721/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100720 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100720/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100719 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100719/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100718 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100718/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100717 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100717/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100716 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100716/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100715 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100715/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100714 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100714/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100711 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100711/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100710 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100710/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100709 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100709/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100708 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100708/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100707 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100707/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100706 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100706/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100705 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100705/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100704 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100704/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100703 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100703/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100702 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100702/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100701 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100701/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100630 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100630/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100629 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100629/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100628 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100628/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100627 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100627/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100626 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100626/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100625 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100625/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100624 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100624/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100623 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100623/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100622 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100622/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100621 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100621/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100620 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100620/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100619 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100619/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100618 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100618/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100612 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100612/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100611 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100611/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100610 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100610/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100609 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100609/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100608 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100608/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100607 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100607/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100606 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100606/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100605 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100605/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100604 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100604/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100603 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100603/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100602 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100602/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100601 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100601/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100531 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100531/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100530 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100530/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100529 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100529/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100528 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100528/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100527 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100527/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100526 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100526/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100525 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100525/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100524 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100524/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100523 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100523/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100522 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100522/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100521 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100521/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100520 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100520/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100519 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100519/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100518 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100518/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100517 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100517/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100516 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100516/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100515 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100515/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100514 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100514/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100513 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100513/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100512 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100512/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100511 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100511/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100510 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100510/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100509 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100509/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100508 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100508/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100507 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100507/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100506 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100506/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100505 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100505/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100504 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100504/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100503 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100503/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100502 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100502/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100501 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100501/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100430 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100430/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100429 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100429/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100428 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100428/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100427 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100427/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100426 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100426/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100425 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100425/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100424 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100424/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100423 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100423/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100422 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100422/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100421 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100421/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100420 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100420/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100419 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100419/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100418 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100418/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100417 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100417/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100416 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100416/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100415 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100415/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100414 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100414/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100413 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100413/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100412 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100412/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100411 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100411/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100410 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100410/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100409 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100409/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100408 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100408/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100407 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100407/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100406 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100406/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100405 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100405/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100404 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100404/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100403 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100403/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100402 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100402/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100401 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100401/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100331 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100331/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100330 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100330/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100329 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100329/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100328 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100328/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100327 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100327/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100326 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100326/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100325 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100325/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100324 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100324/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100323 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100323/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100309 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100309/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100308 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100308/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100307 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100307/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100306 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100306/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100305 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100305/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100304 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100304/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100303 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100303/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100302 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100302/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100301 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100301/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100228 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100228/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100227 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100227/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100226 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100226/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100225 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100225/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100224 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100224/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100223 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100223/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100222 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100222/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100221 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100221/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100220 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100220/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100219 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100219/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100218 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100218/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100217 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100217/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100216 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100216/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100215 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100215/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100214 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100214/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100213 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100213/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100212 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100212/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100211 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100211/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100210 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100210/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100209 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100209/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100208 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100208/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100207 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100207/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100206 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100206/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100205 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100205/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100204 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100204/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100203 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100203/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100130 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100130/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100129 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100129/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100128 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100128/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100127 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100127/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100126 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100126/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100125 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100125/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100124 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100124/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100123 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100123/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100122 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100122/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100121 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100121/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100120 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100120/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100119 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100119/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100118 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100118/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100117 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100117/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100116 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100116/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100115 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100115/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100114 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100114/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100113 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100113/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100112 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100112/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100111 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100111/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100110 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100110/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100109 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100109/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100108 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100108/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100107 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100107/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100106 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100106/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100105 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100105/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100104 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100104/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100103 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100103/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100102 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100102/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 100101 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/100101/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 091231 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/091231/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 091230 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/091230/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 091229 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/091229/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 091228 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/091228/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 091227 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/091227/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 091226 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/091226/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 091225 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/091225/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 091224 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/091224/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 091223 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/091223/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 091222 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/091222/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 091221 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/091221/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 091220 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/091220/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 091219 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/091219/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 091218 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/091218/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 091217 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/091217/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 091216 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/091216/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 091215 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/091215/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 091214 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/091214/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 091213 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/091213/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 091212 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/091212/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 091211 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/091211/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 091210 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/091210/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 091209 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/091209/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 091208 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/091208/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 091207 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/091207/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 091206 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/091206/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 091205 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/091205/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 091204 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/091204/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 091203 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/091203/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 091202 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/091202/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 091201 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/091201/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 091130 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/091130/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 091129 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/091129/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 091128 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/091128/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 091127 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/091127/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 091126 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/091126/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 091125 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/091125/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 091124 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/091124/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 091123 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/091123/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 091122 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/091122/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 091121 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/091121/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 091120 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/091120/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 091119 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/091119/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 091118 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/091118/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 091117 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/091117/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 091116 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/091116/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 091115 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/091115/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 091114 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/091114/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 091113 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/091113/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 091112 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/091112/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 091111 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/091111/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 091110 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/091110/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 091109 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/091109/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 091108 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/091108/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 091107 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/091107/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 091106 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/091106/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 091105 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/091105/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 091104 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/091104/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 091103 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/091103/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 091102 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/091102/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 091101 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/091101/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 091030 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/091030/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 091029 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/091029/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 091028 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/091028/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 091027 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/091027/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 091026 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/091026/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 091025 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/091025/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 091024 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/091024/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 091023 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/091023/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 091022 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/091022/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 091021 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/091021/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 091020 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/091020/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 091019 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/091019/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 091018 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/091018/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 091017 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/091017/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 091016 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/091016/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 091015 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/091015/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 091014 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/091014/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 091013 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/091013/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 091012 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/091012/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 091011 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/091011/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 091004 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/091004/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 091003 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/091003/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 091002 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/091002/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 091001 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/091001/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090930 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090930/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090929 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090929/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090928 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090928/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090927 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090927/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090926 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090926/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090925 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090925/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090924 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090924/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090923 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090923/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090922 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090922/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090921 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090921/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090920 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090920/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090919 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090919/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090918 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090918/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090917 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090917/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090916 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090916/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090915 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090915/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090914 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090914/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090913 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090913/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090912 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090912/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090911 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090911/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090910 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090910/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090909 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090909/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090908 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090908/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090907 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090907/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090906 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090906/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090905 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090905/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090904 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090904/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090903 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090903/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090902 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090902/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090901 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090901/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090831 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090831/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090830 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090830/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090829 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090829/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090828 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090828/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090827 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090827/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090826 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090826/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090825 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090825/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090824 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090824/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090823 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090823/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090822 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090822/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090821 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090821/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090820 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090820/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090819 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090819/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090818 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090818/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090817 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090817/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090816 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090816/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090815 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090815/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090814 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090814/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090813 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090813/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090812 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090812/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090811 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090811/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090810 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090810/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090809 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090809/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090808 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090808/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090807 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090807/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090806 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090806/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090805 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090805/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090804 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090804/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090803 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090803/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090802 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090802/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090801 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090801/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090731 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090731/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090730 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090730/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090729 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090729/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090728 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090728/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090726 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090726/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090725 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090725/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090724 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090724/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090723 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090723/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090722 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090722/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090721 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090721/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090720 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090720/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090719 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090719/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090718 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090718/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090717 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090717/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090716 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090716/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090715 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090715/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090714 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090714/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090713 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090713/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090712 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090712/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090711 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090711/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090710 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090710/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090709 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090709/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090708 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090708/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090707 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090707/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090706 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090706/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090705 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090705/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090704 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090704/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090703 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090703/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090702 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090702/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090701 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090701/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090630 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090630/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090629 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090629/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090628 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090628/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090627 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090627/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090626 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090626/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090625 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090625/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090624 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090624/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090623 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090623/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090622 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090622/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090620 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090620/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090619 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090619/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090618 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090618/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090617 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090617/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090616 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090616/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090609 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090609/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090608 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090608/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090607 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090607/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090606 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090606/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090605 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090605/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090604 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090604/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090603 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090603/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090602 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090602/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090601 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090601/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090531 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090531/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090530 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090530/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090529 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090529/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090528 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090528/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090527 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090527/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090526 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090526/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090525 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090525/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090524 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090524/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090523 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090523/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090522 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090522/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090521 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090521/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090520 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090520/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090519 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090519/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090518 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090518/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090517 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090517/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090516 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090516/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090515 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090515/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090514 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090514/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090513 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090513/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090512 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090512/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090511 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090511/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090510 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090510/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090509 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090509/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090508 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090508/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090507 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090507/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090506 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090506/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090505 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090505/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090504 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090504/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090503 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090503/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090502 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090502/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090501 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090501/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090430 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090430/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090429 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090429/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090428 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090428/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090427 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090427/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090426 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090426/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090425 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090425/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090424 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090424/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090423 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090423/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090422 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090422/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090421 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090421/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090420 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090420/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090419 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090419/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090418 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090418/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090417 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090417/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090416 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090416/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090415 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090415/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090414 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090414/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090413 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090413/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090412 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090412/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090411 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090411/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090410 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090410/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090409 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090409/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090408 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090408/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090407 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090407/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090406 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090406/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090405 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090405/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090404 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090404/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090403 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090403/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090402 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090402/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090401 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090401/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090331 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090331/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090330 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090330/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090329 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090329/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090328 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090328/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090327 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090327/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090326 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090326/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090325 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090325/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090324 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090324/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090323 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090323/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090322 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090322/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090321 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090321/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090320 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090320/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090317 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090317/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090316 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090316/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090315 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090315/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090314 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090314/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Entry trip: theamericas Slug: 090310 to file : /Users/rob/MyPackages/database-package/tests/test_data/data/theamericas/content-converted/090310/content.php
+Database\Conversion\Factory::string_from_oldstyle_Entry( Object of class:[Entry],  ) Entered []
+Database\Conversion\Factory::string_from_oldstyle_Entry Exited []
+Database\Conversion\Object->convert Alert Conversion Complete
+OK
+Test cases run: 1/1, Passes: 0, Failures: 0, Exceptions: 0

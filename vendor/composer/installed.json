@@ -159,7 +159,7 @@
         "source": {
             "type": "git",
             "url": "/Users/rob/git-repos/gallery",
-            "reference": "a3d37356b0440d8f18ed447677323073ba9de53f"
+            "reference": "401e67a4e57eff9a9a727841ca0689555f683cf2"
         },
         "require": {
             "robertblackwell/trace": "@dev"
@@ -167,7 +167,7 @@
         "require-dev": {
             "simpletest/simpletest": "dev-master"
         },
-        "time": "2013-11-26 13:15:47",
+        "time": "2013-11-26 18:38:36",
         "type": "library",
         "installation-source": "source",
         "autoload": {
