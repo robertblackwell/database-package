@@ -205,6 +205,19 @@ class Item extends ItemBase
         //exit();
         return $r;
     }
+    static function find_camping_for_trip($trip){
+        //print "<p>".__METHOD__."</p>";
+        $where = " where b.category = 'camping' and a.trip = '".$trip."' " ;
+        $query = 
+        "select a.* from my_items a INNER JOIN categorized_items b on a.slug = b.item_slug "
+            ."$where "
+            ." order by published_date asc, slug asc ";
+        //var_dump($query);
+        $r = self::$sql->query_objects($query, __CLASS__);
+        //var_dump($r);
+        //exit();
+        return $r;
+    }
     static function find_camping_for_trip_country($trip, $country){
         //print "<p>".__METHOD__."</p>";
         $where = " where b.category = 'camping' and a.country='$country' and a.trip = '".$trip."' " ;
