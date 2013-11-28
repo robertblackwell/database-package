@@ -6,6 +6,7 @@ use Database\Models\Item;
 
 class Test_database_build extends UnitTestCase{
     function setUp(){
+        \Trace::disable();
         global $config;
 		Db::init($config);
 		$this->db = Db::get_instance();

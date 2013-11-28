@@ -6,9 +6,25 @@ use Database\Models\Item;
 
 class TestFindItems extends UnitTestCase{
     function setUp(){
+        \Trace::disable();
         global $config;
 		Db::init($config);
 		$db = Db::get_instance();
+    }
+    function test_camping_trip_country(){ 
+        //Trace::on();   
+	    Trace::function_entry();
+        $result = Item::find_camping_for_trip_country('rtw', 'Russia');
+        $this->assertNotEqual($result, null);
+        $this->assertTrue(is_array($result));
+        $this->assertNotEqual(count($result), 0);
+        $this->assertEqual(get_class($result[0]), "Database\Models\Item");
+        foreach($result as $i){
+            $f = Item::get_by_trip_slug($i->trip, $i->slug);
+            \Trace::debug("slug: ".$i->slug." has camping: ".(int)$f->has_camping);
+            $this->assertTrue($f->has_camping);
+        }
+	    Trace::function_exit();
     }
     function test_1(){    
 	    Trace::function_entry();

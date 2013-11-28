@@ -65,7 +65,7 @@ class Builder{
               `country` varchar(20) CHARSET UTF8  DEFAULT NULL,
               `place` varchar(20) CHARSET UTF8  DEFAULT NULL,
               `featured_image` text CHARSET UTF8 ,
-              PRIMARY KEY (`slug`,`trip`),
+              PRIMARY KEY (`slug`),
               KEY `country` (`country`)
         ) ENGINE=InnoDB DEFAULT CHARSET UTF8;";
 

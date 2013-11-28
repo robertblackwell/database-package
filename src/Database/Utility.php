@@ -113,6 +113,7 @@ class Utility{
         $this->load_db_from($dir);
     }
     function load_db_from($items_dir){
+        \Trace::on();
         \Trace::function_entry();
         $item_names = $this->get_item_names($items_dir);
         $items = array();
@@ -124,10 +125,23 @@ class Utility{
             if( $iname != $obj->slug )
                 throw new \Exception(
                     __METHOD__."($items_dir) file name and slug do not match file:$iname slug:".$obj->slug);
-            $items[] = $obj;
+            $items[] = $obj->slug;
             $this->fix_country($obj);
             $obj->sql_insert();
+//             if( 
+//                 (get_class($obj) == 'Database\\Models\\Entry')||
+//                 (get_class($obj) == 'Database\\Models\\Post')||
+//                 (get_class($obj) == 'Database\\Models\\Article')||
+//                 (get_class($obj) == 'Database\\Models\\Item') ){
+//                 $x = \Database\Models\Item::get_by_slug($obj->slug);
+//                 \Trace::debug("YYYY retreieved slug : ".$x->slug);
+//                 if( is_null($x) ){
+//                     \Trace::debug("XXXX did not insert correctly slug: ". $obj->slug);
+//                     exit();
+//                 }
+//             }
             \Trace::debug("<p>ending $iname</p>");
+            //if( $o->slug == "130702") exit();
             
         }
         \Trace::function_exit();

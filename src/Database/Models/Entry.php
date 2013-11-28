@@ -47,19 +47,17 @@ class Entry extends ItemBase
         return DataBase::getInstance()->select_objects(self::$table_name, __CLASS__, $c, true);
 	}
     function sql_insert(){
-        //print "<p>".__METHOD__."</p>\n";
-        //$dd = DataBase::getInstance();
+        \Trace::function_entry("");
+        // Insert the item first otherwise a foreign key constraint will fail
+        parent::sql_insert();    
         if( $this->has_camping ){
-            //print "<p>adding camping</p>";
+            \Trace::debug("adding camping to categorized_items");
             CategorizedItem::add("camping", $this->slug);
-        //print "<p>".__METHOD__."camping </p>";
         }
         if( $this->has_border ){
             CategorizedItem::add("border", $this->slug);
-        //print "<p>".__METHOD__."border </p>";
         }
-        parent::sql_insert();    
-        //print "<p>".__METHOD__."</p>\n";
+        \Trace::function_exit();
     }    
     function sql_delete(){
         //print "<p>".__METHOD__."</p>";

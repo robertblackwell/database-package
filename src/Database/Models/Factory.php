@@ -83,6 +83,7 @@ class Factory {
 	*
 	*/    
 	static function featured_image($o){
+	    \Trace::off();
         \Trace::function_entry();
 	    $text = $o->get_text('featured_image');
 		if( is_null($text) || ($text == '') ){
@@ -202,6 +203,7 @@ class Factory {
         ;
         $x = new Entry($vals);
         //print __METHOD__."\n";
+        //print "<p>".__METHOD__." entry ".$x->slug. " trip: ".$x->trip." has camping ". (int)$x->has_camping."</p>";
         return $x;      
     }
     static function post_from_hed($hed_obj){

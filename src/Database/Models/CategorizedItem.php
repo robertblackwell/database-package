@@ -39,13 +39,11 @@ class CategorizedItem extends Base\ModelBase
     * @return void
     */
     static function add($category, $slug){
-        //print "<p>".__METHOD__."($category, $slug)</p>";
-//        Category::add($category);
+        \Trace::function_entry();
         $a = array('category'=>$category, 'item_slug'=>$slug);
         $obj = new CategorizedItem($a);
-        self::$sql->insert(self::$table_name, $obj, false);
-        return;
-        //print "<p>".__METHOD__."</p>";
+        
+        self::$sql->insert(self::$table_name, $obj, true);
     }
     static function delete($category, $slug){
         //print "<p>".__METHOD__."($category, $slug)</p>";

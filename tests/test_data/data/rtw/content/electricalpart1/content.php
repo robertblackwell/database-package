@@ -12,7 +12,7 @@
 	<div id="featured_image">/pics/Thumbnails/pict-1.jpg</div>
 	<div id="last_modified_date">2012-11-01</div>
 	<div id="trip">rtw</div>
-	<div id="categories">vehicle,electrical</div>
+	<div id="categories">vehicle,electrical,testcategory</div>
 	<div id="tags">one, two </div>
     <div id="title">Electrical, Part 1</div>
 	<div id="abstract">
