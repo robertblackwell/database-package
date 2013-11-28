@@ -57,6 +57,7 @@ class Builder{
               `title` mediumtext  CHARSET UTF8,
               `abstract` mediumtext  CHARSET UTF8,
               `excerpt` mediumtext  CHARSET UTF8,
+              `camping` mediumtext  CHARSET UTF8,
               `miles` int(11) DEFAULT NULL,
               `odometer` int(11) DEFAULT NULL,
               `day_number` int(11) DEFAULT NULL,
