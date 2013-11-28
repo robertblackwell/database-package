@@ -110,6 +110,12 @@ class Item extends ItemBase
         $c = " order by last_modified_date desc, slug desc $count_str ";
         return self::$sql->select_objects(self::$table_name, __CLASS__, $c, true);
     }
+    static function find_latest_for_trip($trip, $count=NULL){
+        $where = " where trip='".$trip."' ";
+        $count_str = ($count)? "limit 0, $count": "" ;
+        $c = $where . " order by last_modified_date desc, slug desc $count_str ";
+        return self::$sql->select_objects(self::$table_name, __CLASS__, $c, true);
+    }
     /*!
     * Finds all the entry (Entry) items for the most recent  calendar month.
     * @param $count - optional can limit the number returned
@@ -140,9 +146,25 @@ class Item extends ItemBase
         //var_dump($start);var_dump($end);
         $count_str = ($count)? "limit 0, $count": "" ;
         $c = " WHERE (type='entry' or type = 'post') and ".
-        " (published_date >= \"$start\" ) and ".
-        " (published_date <=\"$end\") ".
-        " order by published_date asc, slug asc $count_str ";
+            " (published_date >= \"$start\" ) and ".
+            " (published_date <=\"$end\") ".
+            " order by published_date asc, slug asc $count_str ";
+        //var_dump($c);
+        $res = self::$sql->select_objects(self::$table_name, __CLASS__, $c);
+        return $res;
+    }
+    static function find_for_trip_month($trip, $year_month, $count=NULL){
+        //$klass = get_called_class();
+        //$ty_str = ($klass == __CLASS__)? " ":  type="\"". strtolower(substr($klass,2)) ."\"";
+        $start = $year_month."-01";
+        $end =  $year_month."-99";
+        //var_dump($start);var_dump($end);
+        $count_str = ($count)? "limit 0, $count": "" ;
+        $c = " WHERE trip = '".$trip."' and ".
+            " (type='entry' or type = 'post') and ".
+            " (published_date >= \"$start\" ) and ".
+            " (published_date <=\"$end\") ".
+            " order by published_date asc, slug asc $count_str ";
         //var_dump($c);
         $res = self::$sql->select_objects(self::$table_name, __CLASS__, $c);
         return $res;
@@ -156,6 +178,12 @@ class Item extends ItemBase
     static function find_for_country($country, $count=NULL){
         $count_str = ($count)? "limit 0, $count": "" ;
         $c = " WHERE  (type='entry' or type = 'post')  and country = \"$country\" "
+        . " order by published_date asc,  slug asc $count_str ";
+        return self::$sql->select_objects(self::$table_name, __CLASS__, $c);
+    }
+    static function find_for_trip_country($trip, $country, $count=NULL){
+        $count_str = ($count)? "limit 0, $count": "" ;
+        $c = " WHERE (trip='".$trip."' and (type='entry' or type = 'post')  and country = \"$country\") "
         . " order by published_date asc,  slug asc $count_str ";
         return self::$sql->select_objects(self::$table_name, __CLASS__, $c);
     }
@@ -177,16 +205,42 @@ class Item extends ItemBase
         //exit();
         return $r;
     }
+    static function find_camping_for_trip_country($country){
+        //print "<p>".__METHOD__."</p>";
+        $where = " where b.category = 'camping' and a.country='$country' and a.trip = '".$trip."' " ;
+        $query = 
+        "select a.* from my_items a INNER JOIN categorized_items b on a.slug = b.item_slug "
+            ."$where "
+            ." order by published_date asc, slug asc ";
+        //var_dump($query);
+        $r = self::$sql->query_objects($query, __CLASS__);
+        //var_dump($r);
+        //exit();
+        return $r;
+    }
     /*!
-    * Adds a category to a VOItem or adds a VOItem to a category.
-    * @param $item VOItem object
-    * @param $category String
-    * @return array of VO objects
     */
     static function find_for_category($category=null, $count=NULL){
         //print "<p>".__METHOD__."</p>";
         $count_str = ($count)? "limit 0, $count": "" ;
         $category_str = ($category)? " where b.category = '$category' ": " " ;
+        $query = 
+        "select a.* from my_items a INNER JOIN categorized_items b on a.slug = b.item_slug "
+            ."$category_str "
+            ." order by published_date asc, slug asc $count_str;";
+        //var_dump($query);
+        $r = self::$sql->query_objects($query, __CLASS__);
+        //var_dump($r);
+        //exit();
+        return $r;
+    }
+    /*!
+    */
+    static function find_for_trip_category($trip, $category=null, $count=NULL){
+        //print "<p>".__METHOD__."</p>";
+        $count_str = ($count)? "limit 0, $count": "" ;
+        $category_str = ($category)? " and b.category = '$category' ": " " ;
+        $where = " where a.trip='".$trip."' ".$category_str ;
         $query = 
         "select a.* from my_items a INNER JOIN categorized_items b on a.slug = b.item_slug "
             ."$category_str "
