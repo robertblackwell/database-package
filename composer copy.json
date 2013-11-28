@@ -1,0 +1,50 @@
+
+{
+    "name":"robertblackwell/database-package",
+    "description": "A simple tracing library with easy on/off",
+    "keywords": ["trace", "php", "debug"],
+    "type": "library",
+    "homepage": "https://github.com/robertblackwell/trace",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Robert Blackwell",
+            "homepage": "https://github.com/robertblackwell"
+        }
+    ],
+    
+    "repositories": [
+        {"packagist": false },
+
+        {"type": "package",
+            "package": {
+                "name": "simpletest/simpletest",
+                "version": "1.1.0",
+                "dist": {
+                    "url": "/Users/rob/git-repos/simpletest/SimpleTest-master.zip",
+                    "type": "zip"
+                }
+            }
+        },
+        
+        {"type": "vcs","url": "/Users/rob/git-repos/gps"},
+        {"type": "vcs","url": "/Users/rob/git-repos/gallery"},
+        {"type": "vcs","url": "/Users/rob/git-repos/trace"}
+    ],
+    
+    "require":{
+        "robertblackwell/gpscoordinates":"@dev",
+        "robertblackwell/gallery":"@dev",
+        "robertblackwell/trace":"@dev"
+    },
+    "require-dev":{
+        "simpletest/simpletest":"1.1.0"
+    },
+    "autoload": {
+        "psr-0": {
+            "Database": "src/"
+        },
+        "classmap":["tests/mock/Framework", 
+                    "tests/mock/Classes"]
+    }
+}
