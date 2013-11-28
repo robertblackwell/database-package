@@ -14,6 +14,19 @@
     ],
     
     "repositories": [
+        {"packagist": false },
+
+        {"type": "package",
+            "package": {
+                "name": "simpletest/simpletest",
+                "version": "1.1.0",
+                "dist": {
+                    "url": "/Users/rob/git-repos/simpletest/SimpleTest-master.zip",
+                    "type": "zip"
+                }
+            }
+        },
+        
         {"type": "vcs","url": "/Users/rob/git-repos/gps"},
         {"type": "vcs","url": "/Users/rob/git-repos/gallery"},
         {"type": "vcs","url": "/Users/rob/git-repos/trace"}
@@ -25,7 +38,7 @@
         "robertblackwell/trace":"@dev"
     },
     "require-dev":{
-        "simpletest/simpletest":"dev-master"
+        "simpletest/simpletest":"1.1.0"
     },
     "autoload": {
         "psr-0": {
