@@ -11,6 +11,14 @@ class PostMonth extends Base\ModelBase
     function __construct($row){
         parent::__construct($row);
     }
+    static function find_for_trip($trip, $count=NULL){
+        //print "<p>".__METHOD__."</p>";
+        $where = " where ( (trip = '".$trip."') and (type='post' or type='entry') )";
+        $count_str = ($count)? "limit 0, $count": "" ;
+        $c = "SELECT distinct trip, year(creation_date) as `year`, month(creation_date) as `month` "
+        ." FROM my_items $where order by creation_date desc";
+        return self::$sql->query_objects($c, __CLASS__);
+    }
     /*!
     * Find all the months (yyy-mm) referenced by creation_date field of "post" or "entry" items in the my_items table
     * return them as an array of PostMonth objects

@@ -25,6 +25,22 @@ class TestFindCategory extends UnitTestCase{
         $this->assertEqual(get_class($result[0]), "Database\Models\Category");
 	    Trace::function_exit();
     }
+    function test_1_1(){    
+	    Trace::function_entry();
+	    $trip='rtw';
+        $result = Category::find_for_trip($trip);
+        $cats = array();
+        foreach($result as $c){
+            $cats[] = $c->category;
+            $this->assertEqual($c->trip,$trip);
+        }
+//        var_dump($cats);
+        $this->assertNotEqual($result, null);
+        $this->assertTrue(is_array($result));
+        $this->assertNotEqual(count($result), 0);
+        $this->assertEqual(get_class($result[0]), "Database\Models\Category");
+	    Trace::function_exit();
+    }
     function test_2(){    
 	    Trace::function_entry();
         $result = Category::exists('vehicle');

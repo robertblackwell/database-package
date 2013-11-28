@@ -17,6 +17,20 @@ class Category extends Base\ModelBase
         $this->table = self::$table_name;
         parent::__construct($obj);
     }
+
+
+    static function find_for_trip($trip, $count=NULL){
+        $count_str = ($count)? "limit 0, $count": "" ;
+        $q = "select distinct categorized_items.category, my_items.trip ".
+                " from categorized_items". 
+                " inner join".
+                    " my_items on categorized_items.item_slug = my_items.slug".
+                    " where trip='".$trip."' ".
+                    " order by category asc $count_str "; 
+        $r = self::$sql->query_objects($q, __CLASS__ , true);
+        //var_dump($r);exit();
+        return $r;
+    }
     /*!
     * Find all the categories and return them in an array of Category objects
     * @note - in this incarnation of the package categories only exist in the 
@@ -26,8 +40,12 @@ class Category extends Base\ModelBase
     */
     static function find($count=NULL){
         $count_str = ($count)? "limit 0, $count": "" ;
-        $q = "  order by category asc $count_str ";
-        $r = self::$sql->select_objects(self::$table_name, __CLASS__ , $q, true);
+        $q = "select distinct categorized_items.category, my_items.trip ".
+                " from categorized_items ". 
+                " inner join".
+                    " my_items on categorized_items.item_slug = my_items.slug".
+                    " order by category asc $count_str "; 
+        $r = self::$sql->query_objects($q, __CLASS__, true);
         //var_dump($r);exit();
         return $r;
     }

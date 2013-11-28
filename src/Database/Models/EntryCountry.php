@@ -12,6 +12,12 @@ class EntryCountry extends Base\ModelBase
         );
         parent::__construct($obj);
     }
+    static function find_for_trip($trip, $count=NULL){
+        $where = " where trip='".$trip."' and type='entry' ";
+        $count_str = ($count)? "limit 0, $count": "" ;
+        $c = "SELECT distinct country, trip FROM my_items $where order by country asc";
+        return self::$sql->query_objects($c, __CLASS__);
+    }
     /*!
     * Find all the countries referenced by "entry" items in the my_items table
     * return them as an array of EntryCountry objects

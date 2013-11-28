@@ -14,7 +14,7 @@ class Test_Factory extends UnitTestCase{
         global $config;
         Db::init($config);
 //        $this->db = new Db($config);
-        var_dump(Locator::get_instance()->doc_root());//exit();
+        //var_dump(Locator::get_instance()->doc_root());//exit();
     }
     function test_default_gal(){
 	    Trace::function_entry();

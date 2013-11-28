@@ -19,6 +19,19 @@ class TestVOClass extends UnitTestCase{
         $this->assertEqual(get_class($result[0]), "Database\Models\EntryCountry");
 	    Trace::function_exit();
     }
+    function test_2(){    
+	    Trace::function_entry();
+	    $trip='rtw';
+        $result = EntryCountry::find_for_trip($trip);
+        $this->assertNotEqual($result, null);
+        $this->assertTrue(is_array($result));
+        $this->assertNotEqual(count($result), 0);
+        $this->assertEqual(get_class($result[0]), "Database\Models\EntryCountry");
+        foreach($result as $i){
+            $this->assertEqual($trip, $i->trip);
+        }
+	    Trace::function_exit();
+    }
 
 }
 ?>

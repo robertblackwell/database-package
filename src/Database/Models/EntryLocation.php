@@ -34,7 +34,12 @@ class EntryLocation extends Base\ModelBase
         $c = "SELECT slug, trip, title, excerpt, published_date, country, place, latitude, longitude FROM my_items WHERE (type='entry' and trip='".$trip."')   order by country asc";
         return self::$sql->query_objects($c, __CLASS__);
     }
-    
+    static function find($count=NULL){
+        //print "<p>".__METHOD__."</p>";
+        $count_str = ($count)? "limit 0, $count": "" ;
+        $c = "SELECT slug, trip, title, excerpt, published_date, country, place, latitude, longitude FROM my_items WHERE (type='entry')   order by country asc";
+        return self::$sql->query_objects($c, __CLASS__);
+    }    
 }
 
 ?>

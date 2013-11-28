@@ -23,7 +23,7 @@ class TestAddCategory extends UnitTestCase{
 	    Trace::function_exit();
     }
     function test_1(){   
-	    Trace::function_entry();
+	 return;   Trace::function_entry();
     
         $this->assertFalse($this->category_exists("my_category"));
         Category::add('my_category'); 

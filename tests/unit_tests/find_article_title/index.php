@@ -18,5 +18,18 @@ class TestArticleTitles extends UnitTestCase{
         $this->assertEqual(get_class($result[0]), "Database\Models\ArticleTitle");
 	    Trace::function_exit();
     }
+    function test_2(){    
+	    Trace::function_entry();
+	    $trip='rtw';
+        $result = Database\Models\ArticleTitle::find_for_trip($trip);
+        $this->assertNotEqual($result, null);
+        $this->assertTrue(is_array($result));
+        $this->assertNotEqual(count($result), 0);
+        $this->assertEqual(get_class($result[0]), "Database\Models\ArticleTitle");
+        foreach($result as $i){
+            $this->assertEqual($i->trip, $trip);
+        }
+	    Trace::function_exit();
+    }
 }
 ?>

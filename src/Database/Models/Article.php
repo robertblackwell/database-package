@@ -30,6 +30,14 @@ class Article extends ItemBase
         $this->table = self::$table_name;
         parent::__construct($obj);
     }
+    static function find_for_trip($trip, $count=NULL){
+        $where = " where ( trip='".$trip."' and type = 'article' )";
+        $count_str = ($count)? "limit 0, $count": "" ;
+        $c = " $where order by last_modified_date desc, slug desc $count_str ";
+        $r = self::$sql->select_objects(self::$table_name, __CLASS__ , $c);
+        //var_dump($r);exit();
+        return $r;
+    }
     /*!
     * Find all the articles and return them in an array of VOCategory objects
     * @param count - Limits the number returned
