@@ -205,7 +205,7 @@ class Item extends ItemBase
         //exit();
         return $r;
     }
-    static function find_camping_for_trip_country($country){
+    static function find_camping_for_trip_country($trip, $country){
         //print "<p>".__METHOD__."</p>";
         $where = " where b.category = 'camping' and a.country='$country' and a.trip = '".$trip."' " ;
         $query = 
