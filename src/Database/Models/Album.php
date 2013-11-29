@@ -55,12 +55,28 @@ class Album extends Base\ModelBase
         $item = Factory::model_from_hed($obj);
         return $item;
     }
-        /*!
+    /*!
     * Find all the articles and return them in an array of VOCategory objects
     * @param count - Limits the number returned
     * @return array of VOCategory objects
     */
-    static function find($trip=null, $count=NULL){
+    static function find($count=NULL){
+        $count_str = ($count)? "limit 0, $count": "" ;
+        $c = " order by last_modified_date desc, slug desc $count_str ";
+        $r = self::$sql->select_objects(self::$table_name, __CLASS__ , $c);
+        foreach($r as $a){
+            $trip = $a->trip;
+            $a->gallery = \Gallery\Object::create(Locator::get_instance()->album_dir($trip, $a->slug));
+        }
+        //var_dump($r);exit();
+        return $r;
+    }
+    /*!
+    * Find all the articles and return them in an array of VOCategory objects
+    * @param count - Limits the number returned
+    * @return array of VOCategory objects
+    */
+    static function find_for_trip($trip, $count=NULL){
         $where = ( is_null($trip) )? "": "where trip=\"".$trip."\" "; 
         $count_str = ($count)? "limit 0, $count": "" ;
         $c = $where." order by last_modified_date desc, slug desc $count_str ";
