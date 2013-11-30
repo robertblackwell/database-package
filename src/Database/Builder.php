@@ -26,7 +26,7 @@ class Builder{
         $this->sql->query("TRUNCATE table IF EXISTS my_items");
 	    \Trace::function_exit();
     }
-    function truncate_categorized_items_tables(){  
+    function truncate_categorized_items_table(){  
 	    \Trace::function_entry();
         $this->sql->query("TRUNCATE table IF EXISTS categorized_items");
 	    \Trace::function_exit();
@@ -36,12 +36,12 @@ class Builder{
         $this->sql->query("TRUNCATE view IF EXISTS categories");
 	    \Trace::function_exit();
     }
-    function truncate_albums_tables(){  
+    function truncate_albums_table(){  
 	    \Trace::function_entry();
         $this->sql->query("TRUNCATE table IF EXISTS my_items");
 	    \Trace::function_exit();
     }
-    function truncate_my_items_tables(){  
+    function truncate_my_items_table(){  
 	    \Trace::function_entry();
         $this->sql->query("TRUNCATE table IF EXISTS my_items");
 	    \Trace::function_exit();
