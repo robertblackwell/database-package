@@ -109,7 +109,7 @@ class Builder{
               `trip` varchar(20) CHARSET UTF8  DEFAULT NULL,
               `title` mediumtext CHARSET UTF8 ,
               `abstract` mediumtext CHARSET UTF8 ,
-              PRIMARY KEY (`slug`,`trip`)
+              PRIMARY KEY (`slug`)
         ) ENGINE=InnoDB DEFAULT CHARSET UTF8;";
                 
         $result = $this->sql->query($query_my_items);
