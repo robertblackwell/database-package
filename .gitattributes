@@ -1,7 +1,6 @@
 tests export-ignore  
 docs export-ignore
 scripts export-ignore
-vendor export-ignore
 .DS_Store export-ignore
 log export-ignore
 composer.lock export-ignore
