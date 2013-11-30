@@ -88,6 +88,9 @@ class Album extends Base\ModelBase
         //var_dump($r);exit();
         return $r;
     }
+    function sql_delete(){
+        self::$sql->query("DELETE from albums where trip='".$this->trip."' and slug='".$this->slug."'");
+    }
 
 }
 ?>
