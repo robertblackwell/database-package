@@ -38,7 +38,7 @@ class Builder{
     }
     function truncate_albums_table(){  
 	    \Trace::function_entry();
-        $this->sql->query("TRUNCATE table IF EXISTS albums");
+        $this->sql->query("TRUNCATE table albums");
 	    \Trace::function_exit();
     }
     function truncate_my_items_table(){  
