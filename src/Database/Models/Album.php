@@ -62,7 +62,7 @@ class Album extends Base\ModelBase
     */
     static function find($count=NULL){
         $count_str = ($count)? "limit 0, $count": "" ;
-        $c = " order by last_modified_date desc, slug desc $count_str ";
+        $c = " order by last_modified_date desc, slug asc $count_str ";
         $r = self::$sql->select_objects(self::$table_name, __CLASS__ , $c);
         foreach($r as $a){
             $trip = $a->trip;
@@ -79,7 +79,7 @@ class Album extends Base\ModelBase
     static function find_for_trip($trip, $count=NULL){
         $where = ( is_null($trip) )? "": "where trip=\"".$trip."\" "; 
         $count_str = ($count)? "limit 0, $count": "" ;
-        $c = $where." order by last_modified_date desc, slug desc $count_str ";
+        $c = $where." order by last_modified_date desc, slug asc $count_str ";
         $r = self::$sql->select_objects(self::$table_name, __CLASS__ , $c);
         foreach($r as $a){
             $trip = $a->trip;

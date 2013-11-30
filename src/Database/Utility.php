@@ -95,7 +95,7 @@ class Utility{
         $x->sql_delete();
     }
     function get_item_names($dir){
-        
+        \Trace::function_entry();
         $a = scandir($dir);
         $b = array();
         foreach($a as $d){
@@ -116,6 +116,7 @@ class Utility{
         \Trace::on();
         \Trace::function_entry();
         $item_names = $this->get_item_names($items_dir);
+        
         $items = array();
         foreach($item_names as $iname){
             \Trace::debug( "starting $items_dir/$iname");
