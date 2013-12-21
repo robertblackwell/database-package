@@ -1,9 +1,10 @@
 <?php
 namespace Database\Models;
-/*!
-** @ingroup Models
-** This class represents content that is an article and provides
-** static methods for accessing collections of articles.
+/**
+* This class represents content that is an article.
+* It provides static methods for accessing collections of articles.
+*
+* @ingroup Models
 */
 class Article extends ItemBase
 {

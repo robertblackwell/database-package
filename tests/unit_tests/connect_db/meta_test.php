@@ -56,6 +56,7 @@ class Test_meta_db extends UnitTestCase{
                 "title",
                 "abstract",
                 "excerpt",
+				"camping",
                 "miles",
                 "odometer",
                 "day_number",
@@ -67,7 +68,7 @@ class Test_meta_db extends UnitTestCase{
                 );	    
 	    $r = $this->sql->getFields('my_items');
 	    $n = $this->sql->getFieldNames('my_items');
-	    //var_dump($r);
+	    //var_dump($r);exit();
 	    $this->assertEqual(count($flds), count($r));
 	    $this->assertEqual(count($flds), count($n));
 	    $s = array();

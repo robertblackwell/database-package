@@ -1,15 +1,16 @@
 <?php
+/**
+ * @brief The HED namespace contains classes that implement the HTML Encoded Data mechanism
+ */
 namespace Database\HED;
+
 use Database\HED\ExtendedDOMNode;
 use \Exception as Exception;
-/*!
-** @defgroup HED
-*/
-/*!
-** @ingroup HED
-**
-** This provides a means by which HTML encoded files can be loaded
-** as a PHP object the attribute/values pairs accessed by as properties of that object.
+/**
+** This provides a means by which HTML encoded files can be loaded and accessed.
+** 
+** As a PHP object the attribute/values pairs accessed as properties of that object
+** using the __get magic methods.
 **
 ** @todo    complete the set_XXX functions so that all types of elements can be updated
 **

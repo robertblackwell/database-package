@@ -1,14 +1,16 @@
 <?php
 namespace Database\Models;
+
 use Database\HED\HEDObject;
 use Database\Locator;
  
-/*!
-** @ingroup Models
-* This object represents photo albums as displayed on the sites various "photo" pages and as contained
+/**
+* @brief This object represents photo albums as displayed on the sites various "photo" pages and as contained
 * within content items.
 *
 * static methods are provided for geting/finding lists of albums and individual albums.
+* 
+* @ingroup Models
 *
 */
 class Album extends Base\ModelBase

@@ -17,6 +17,10 @@ class RowBase extends RowObject
     function __construct($obj){
         parent::__construct($obj);
     }
+    function __isset($field)
+    {
+    	return array_key_exists($field, $this->vo_fields);
+    }
     function __get($field){
         //print "<h1>".__METHOD__."($field) </h1>";
         if(!is_null($this->vo_fields) && (array_key_exists($field, $this->vo_fields))){

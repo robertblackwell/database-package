@@ -1,13 +1,10 @@
 <?php
 namespace Database\HED;
+
 use \DOMDocument as DOMDocument;
-/*!
- * @author    Robert Blackwell rob@whiteacorn.com
- * @copyright whiteacorn.com
- * @license   MIT License
- */
-/*! @ingroup HED
- * This class extends the DOM class DOMNode to add a couple of extra methods that I loke to have available
+
+/**
+ * This class extends the DOM class DOMNode to add a couple of extra methods that I like to have available
  *
 */
 class ExtendedDOMNode

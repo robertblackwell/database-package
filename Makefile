@@ -4,8 +4,20 @@ RELEASE_FILE 	:= 	$(PACKAGE)_$(TAG)
 LOGNAME 		:= a name
 RELEASE_DIR 	:= releases
 ARCHIVE 		:=$(RELEASE_DIR)/$(RELEASE_FILE).zip
+PHPFILES		:=	$(wildcard src/Database/*.php)\
+ 					$(wildcard src/Database/HED/*.php)\
+ 					$(wildcard src/Database/Models/*.php)\
+ 					$(wildcard src/Database/Models/Base/*.php)
 #
 # target: all - Default target. Does nothing.
+phpdocs:
+	phpdoc -d src/Database -o "HTML:Smarty:PHP" -t docs/htmldocs;
+
+
+docs: docs/html 
+	
+docs/html: $(PHPFILES) $(wildcard docs/extras/*.dox) docs/Doxyfile docs/DoxygenLayout.xml
+		doxygen docs/Doxyfile
 all:
 	echo "Hello $(LOGNAME), nothing to do by default"
 	echo "Hello this is the TAG value $(TAG)"

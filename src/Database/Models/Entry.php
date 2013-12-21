@@ -1,8 +1,9 @@
 <?php
 namespace Database\Models;
-/*!
+/**
+** This class represents a journal entry
+**
 ** @ingroup Models
-* This class represents a journal entry
 */
 class Entry extends ItemBase
 {

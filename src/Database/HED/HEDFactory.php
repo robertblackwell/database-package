@@ -1,23 +1,27 @@
 <?php
 namespace Database\HED;
-/*!
-** @ingroup HED
-**
-** This class knows how to create new HTML encoded files of various types.
-**
-** @note This class uses a mapping between "type" and class
-** That mapping is coded as a pair of static arrays and should be examined if class names
-** change or new Model classes are added to the database
-** 
+
+/**
+ * This class knows how to create new HTML encoded files of various types.
+ *
+ * @note This class uses a mapping between "type" and class
+ * That mapping is coded as a pair of static arrays and should be examined if class names
+ * change or new Model classes are added to the database
+ * 
 */
 use \Database\Models\Entry as VOEntry;
 use \Database\Models\Entry as VOPost;
 use \Database\Models\Entry as VOArticle;
 use \Exception as Exception;
-
-class HEDFactory {
+/**
+ * \brief This is the breif description of the class
+ *
+ * This is class documentation for the HEDFactory
+ */
+class HEDFactory 
+{
 	var $db;
-	
+	var $justtotestwearehere;
 	private static $types = array(
 		'post'=>'\Database\Models\Post',
 		'entry'=>'\Database\Models\Entry',
@@ -32,13 +36,16 @@ class HEDFactory {
 		'\Database\Models\Album'=>'album',
 	);
 		
-	private static function type_to_class($type){
+	private static function type_to_class($type)
+	{
 		return self::$types[$type];
 	}
-	private static function class_to_type($class){
+	private static function class_to_type($class)
+	{
 		return self::$classes[$class];
 	}
-	private static function print_hed_header(){
+	private static function print_hed_header()
+	{
         print "<!DOCTYPE html>\n";
         print "<html xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"en\" lang=\"en\">\n";
         print "<head>\n";
@@ -46,15 +53,25 @@ class HEDFactory {
         print "</head>\n";
         print "<body>\n";
 	}
-	private static function print_hed_footer(){
-        print "\n</body>\n";
-        print "</html>";
+	private static function print_hed_footer()
+	{
+        print("\n</body>\n");
+        print("</html>");
 	}
-    /*
-    ** Create the HED version of an item completely - this preserves
-    ** the format of the file.
-    */
-    private static function create($file_path, $type, $trip, $slug, $field_values){
+	/**
+	* This actually does the heavy lifting of creating a HED object
+	* @param string $file_path Where to write the newly created content
+	* @param string $type  The type of object to be created 
+	* @param string $trip  The trip for this journal item 
+	* @param string $slug the unique id for this journal item 
+	* @param string $dte  The published date to be recorded in the journal item 
+	* @param string $name The name of title for this journal item 
+	* @param array  $field_values,  An array of key value pairs representing additional dat to be stored for the journal item  
+	* @return
+	*
+	*/
+    private static function create($file_path, $type, $trip, $slug, $field_values)
+	{
         $class_name = self::type_to_class($type);
         $fields = $class_name::get_fields();
 
@@ -102,7 +119,20 @@ class HEDFactory {
             chmod($item_dir."/Thumbnails", 511);            
         }
     }
-    static function create_journal_entry($file_path, $trip, $slug, $dte, $parms = array()){
+
+	/**
+	* Create a new skeleton journal item in HED format and write given file path
+	* @param string $file_path Where to write the newly created content
+	* @param string $trip  The trip for this journal item 
+	* @param string $slug the unique id for this journal item 
+	* @param string $dte  The published date to be recorded in the journal item 
+	* @param string $name The name of title for this journal item 
+	* @param array  $parm An array of key value pairs representing additional dat to be stored for the journal item  
+	* @return
+	*
+	*/
+    public static function create_journal_entry($file_path, $trip, $slug, $dte, $parms = array())
+	{
         $parms['trip'] =  $trip;
         $parms['version'] =  "2.0";
         $parms['status'] =  "draft";
@@ -112,7 +142,20 @@ class HEDFactory {
         $obj = self::create($file_path, "entry", $trip, $slug, $parms);
         //print __CLASS__.":".__METHOD__."<br>";
     }
-    static function create_post($file_path, $trip, $slug, $dte, $parms = array()){
+
+	/**
+	* Create a new skeleton post item in HED format and write given file path
+	* @param string $file_path Where to write the newly created content
+	* @param string $trip  The trip for this post item 
+	* @param string $slug the unique id for this post item 
+	* @param string $dte  The published date to be recorded in the post item 
+	* @param string $name The name of title for this post item 
+	* @param array  $parm An array of key value pairs representing additional dat to be stored for the post item  
+	* @return
+	*
+	*/
+    public static function create_post($file_path, $trip, $slug, $dte, $parms = array())
+	{
         $parms['trip'] = $trip;
         $parms['version'] = "2.0";
         $parms['status'] = "draft";
@@ -121,7 +164,19 @@ class HEDFactory {
         $parms['last_modified_date'] = $dte;
         $obj = self::create($file_path, "post", $trip, $slug, $parms);
     }
-    static function create_album($file_path, $trip, $slug, $dte, $name, $parms = array()){
+	/**
+	* Create a new skeleton album in HED format and write given file path
+	* @param string $file_path Where to write the newly created content
+	* @param string $trip  The trip for this album
+	* @param string $slug the unique id for this album
+	* @param string $dte  The published date to be recorded in the album
+	* @param string $name The name of title for this album
+	* @param array  $parm An array of key value pairs representing additional dat to be stored for the album  
+	* @return
+	*
+	*/
+    public static function create_album($file_path, $trip, $slug, $dte, $name, $parms = array())
+	{
         $parms['trip'] = $trip;
         $parms['version'] = "2.0";
         $parms['status'] = "draft";
@@ -131,7 +186,6 @@ class HEDFactory {
         $parms['title'] = $name;
         $obj = self::create($file_path, "album", $trip, $slug, $parms);
     }
-
 } 
 
 ?>

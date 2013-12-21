@@ -3,21 +3,27 @@ namespace Database;
 use \Database\Models\Item as Item;
 use \Database\Models\Album as Album;
 use \Exception as Exception;
-/*!
-** @ingroup database
-**
-** This class provides some utility functions for loading various objects from
-** the flat file store into the sql database
+/**
+ * This class provides some utility functions for loading various objects from the flat file store into the sql database
+ *
 */
-class Utility{
-    var $sql;
-    var $locator;
+class Utility
+{
+    public $sql;
+    public $locator;
+	/**
+	* Constructor
+	*/
     function __construct(){
         $this->sql = \Database\SqlObject::get_instance();
         $this->locator = \Database\Locator::get_instance();
     }
-    
-    function fix_country($e){
+    /**
+	* Utility that transforms country names
+	* @param Object is updated
+	*/
+    public function fix_country($e)
+	{
         if( get_class($e) != '\Database\Models\Entry'){
             return;
         }
@@ -32,11 +38,17 @@ class Utility{
             $e->country = $country;
         }
     }
-    /*!
-    ** Import an item from its HED form into the sql database - this is the
-    ** equivalent of "publish"
+    
+	/**
+    * Import an item from its HED form into the sql database - this is the
+    * equivalent of "publish"
+	* @param  string $trip
+	* @param  string $slug
+	* @return nothing
+	* @throws Exception is item slug value does not match item_dirs basename
     */
-    function import_item($trip, $slug){
+    public function import_item($trip, $slug)
+	{
 	    \Trace::function_entry();
         $x = Item::get_by_trip_slug($trip, $slug);
 
@@ -51,10 +63,15 @@ class Utility{
         $x->sql_insert();    
 	    \Trace::function_exit();
     }
-    /*!
-    ** Remove an item (defined by $slug) from the sql database. This is the equivalent of "unpublish"
+
+    /**
+    * Remove an item (defined by $slug) from the sql database. This is the equivalent of "unpublish"
+	* @param string $slug
+	* @throws Exception is item does not exist for that $slug value
+	* @throws Exception is item slug value does not match item_dirs basename
     */
-    function deport_item($slug){
+    public function deport_item($slug)
+	{
 	    \Trace::function_entry();
         $x = Item::get_by_slug($slug);
         if( is_null( $x ) ){
@@ -66,11 +83,16 @@ class Utility{
         $x->sql_delete();
 	    \Trace::function_exit();
     }
-    /*!
-    ** Import an albu from its HED form into the sql database - this is the
+    /**
+    ** Import an album from its HED form into the sql database - this is the
     ** equivalent of "publish"
+	* @param  string $trip
+	* @param  string $slug
+	* @return nothing
+	* @throws Exception is item slug value does not match item_dirs basename
     */
-    function import_album($trip, $slug){
+    public function import_album($trip, $slug)
+	{
         $x = Album::get_by_trip_slug($trip, $slug);
 
         \Trace::alert("<p> Importing trip : $trip item: $slug type ".get_class($x)."</p>");
@@ -79,10 +101,15 @@ class Utility{
             throw new \Exception(__METHOD__."($slug) file name and slug do not match file:$fn slug:".$x->slug);
         $x->sql_insert();    
     }
-    /*!
+    
+	/**
     ** Remove an album (defined by $slug) from the sql database. This is the equivalent of "unpublish"
+ 	* @param string $slug
+	* @throws Exception is item does not exist for that $slug value
+	* @throws Exception is item slug value does not match item_dirs basename
     */
-    function deport_album($slug){
+    function deport_album($slug)
+	{
         //print "<p>".__METHOD__."($slug)</p>"; 
         $x = Album::get_by_slug($slug);
         //var_dump($x);
@@ -94,7 +121,11 @@ class Utility{
             throw new \Exception(__METHOD__."($slug)  slug:".$x->slug);
         $x->sql_delete();
     }
-    function get_item_names($dir){
+    /**
+	* Get the basename of all the files/dirs in the given directory leaving out DOT files and dirs
+	*/
+	function get_item_names($dir)
+	{
         \Trace::function_entry();
         $a = scandir($dir);
         $b = array();
@@ -104,15 +135,33 @@ class Utility{
         }
         return $b;
     }
-    function load_content_items($trip){
+
+	/**
+	* Load all the content items for $trip
+	* @param string $trip
+	*/
+    function load_content_items($trip)
+	{
         $dir = $this->locator->content_root($trip);
         $this->load_db_from($dir);
     }
-    function load_albums($trip){
+
+	/**
+	* Load all the photo albums for $trip
+	* @param string $trip
+	*/
+    function load_albums($trip)
+	{
         $dir = $this->locator->album_root($trip);
         $this->load_db_from($dir);
     }
-    function load_db_from($items_dir){
+
+	/**
+	* Load all the content items from the given directory
+	* @param string $items_dir
+	*/
+    function load_db_from($items_dir)
+	{
         \Trace::on();
         \Trace::function_entry();
         $item_names = $this->get_item_names($items_dir);
@@ -129,26 +178,17 @@ class Utility{
             $items[] = $obj->slug;
             $this->fix_country($obj);
             $obj->sql_insert();
-//             if( 
-//                 (get_class($obj) == 'Database\\Models\\Entry')||
-//                 (get_class($obj) == 'Database\\Models\\Post')||
-//                 (get_class($obj) == 'Database\\Models\\Article')||
-//                 (get_class($obj) == 'Database\\Models\\Item') ){
-//                 $x = \Database\Models\Item::get_by_slug($obj->slug);
-//                 \Trace::debug("YYYY retreieved slug : ".$x->slug);
-//                 if( is_null($x) ){
-//                     \Trace::debug("XXXX did not insert correctly slug: ". $obj->slug);
-//                     exit();
-//                 }
-//             }
             \Trace::debug("<p>ending $iname</p>");
-            //if( $o->slug == "130702") exit();
-            
         }
         \Trace::function_exit();
 	}
-        
-    function rebuild_db_from($items_dir){
+
+	/**
+	* Rebuild the sql database from the flat file store given in the directory with path $items_dir
+	* @param string $items_dr
+	*/
+    function rebuild_db_from($items_dir)
+	{
         $this->truncate_db();
         $item_names = $this->get_item_names($items_dir);
         $items = array();

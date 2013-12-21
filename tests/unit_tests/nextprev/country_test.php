@@ -25,7 +25,7 @@ class TestNextPrevCountry extends UnitTestCase{
         $result = Item::get_by_slug('130417');
         $next = $result->next(array('country'=>"Russia"));
         $prev = $result->prev(array('country'=>"Russia"));
-        $this->assertEqual($next->slug, "130713");
+        $this->assertEqual($next->slug, "130709");
         $this->assertEqual($prev->slug, "130416");
 	    Trace::function_exit();
     }
