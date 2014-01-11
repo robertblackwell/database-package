@@ -105,7 +105,7 @@ class HEDObject{
 
 	function __isset($field){
         if(!is_null($this->vo_fields) && (array_key_exists($field, $this->vo_fields))){
-			return truel
+			return true;
 		}
 		return false;
 	}
