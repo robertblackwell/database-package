@@ -95,7 +95,7 @@ class Utility
 	{
         $x = Album::get_by_trip_slug($trip, $slug);
 
-        \Trace::alert("<p> Importing trip : $trip item: $slug type ".get_class($x)."</p>");
+        \Trace::alert("<p> Importing album trip : $trip item: $slug type ".get_class($x)."</p>");
 
         if( $slug != $x->slug )
             throw new \Exception(__METHOD__."($slug) file name and slug do not match file:$fn slug:".$x->slug);

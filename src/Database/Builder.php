@@ -82,6 +82,7 @@ class Builder
 	{	 
 		\Trace::function_entry();
 		$this->sql->query("DROP table IF EXISTS categorized_items");
+		$this->sql->query("DROP table IF EXISTS categories");
 		$this->sql->query("DROP view IF EXISTS categories");
 		$this->sql->query("DROP table IF EXISTS albums");
 		$this->sql->query("DROP table IF EXISTS my_items");
