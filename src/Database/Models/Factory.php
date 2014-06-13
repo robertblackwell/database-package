@@ -278,7 +278,7 @@ class Factory {
         return $x;      
     }
     static function editorial_from_hed($hed_obj){
-        print __METHOD__."\n";
+        //print __METHOD__."\n";
         
 		$locator = \Database\Locator::get_instance();
 		
@@ -301,11 +301,11 @@ class Factory {
 		
 		$vals['banner_folder_path'] = $locator->banner_dir($vals['trip'], $vals['banner']);
 		
-        print_r($vals);
+        //print_r($vals);
 		//exit();
         $x = new Editorial($vals);
-        var_dump($x);
-        print __METHOD__."\n";
+        //var_dump($x);
+        //print __METHOD__."\n";
         return $x;      
     }
     static function model_from_hed($hed_obj){
