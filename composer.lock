@@ -1,9 +1,10 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
+        "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "This file is @generated automatically"
     ],
-    "hash": "b825a4e78794a5ec8f664242dee7cd62",
+    "hash": "b0deaceef53849586b4ac5d241dc6967",
     "packages": [
         {
             "name": "robertblackwell/gallery",
@@ -85,7 +86,7 @@
             "source": {
                 "type": "git",
                 "url": "/Users/rob/git-repos/trace",
-                "reference": "95232bda0eeb9c5efb908e185eca8ca3fe611678"
+                "reference": "96b3727175ee55411e76ad0e1956ab80692880b8"
             },
             "require-dev": {
                 "simpletest/simpletest": "dev-master"
@@ -112,7 +113,7 @@
                 "php",
                 "trace"
             ],
-            "time": "2013-11-26 11:28:35"
+            "time": "2014-06-03 17:28:11"
         }
     ],
     "packages-dev": [

@@ -300,7 +300,6 @@ class Locator
 //end of album item path methods
 /////////	
 
-
 //////////	
 //start of album url methods
 /////////	
@@ -339,6 +338,129 @@ class Locator
 
 //////////	
 //end of album url methods
+/////////	
+
+
+
+//////////	
+//start of banner path methods
+/////////	
+    
+    function banner_root($trip='rtw')
+	{
+        return $this->trip_root($trip)."/banners";
+    }
+    private function banner_relative($trip='rtw')
+	{
+        return str_replace($this->doc_root, "", $this->banner_root($trip));
+    }
+   /*!
+    * @return string The name of the file containing the fields/properties/meta data for a
+    * VOItem. This is constant across all content items.
+    */
+    private function banner_filename()
+	{
+        return "content.php";
+    }
+    /*!
+	* @parms $trip A trip code
+    * @param $slug. The unique slug for a content item
+    * @return string The site relative path to the directory for the item whose slug was given.
+    */
+    public function banner_relative_dir($trip, $slug)
+	{
+        return $this->banner_relative($trip)."/$slug";
+    }
+    /*!
+	* @parms $trip A trip code
+    * @param $slug. The unique slug for a content item
+    * @return string The full path to the directory for the item.
+	* 
+	* This one will work for theamericas trip as well as rtw
+    */
+    public function banner_dir($trip, $slug)
+	{
+        $fn =  $this->banner_root($trip)."/$slug";
+    	//print "<p>".__METHOD__."($trip, $slug) -- $fn</p>";
+        return $this->banner_root($trip)."/$slug";
+    }
+    /*!
+	* @parms $trip A trip code
+    * @param $slug. The unique slug for a content item
+    * @return string The full path to the content/attribute  file for a given content item.
+    */
+    public function banner_filepath($trip, $slug)
+	{
+        return $this->banner_root($trip)."/$slug/".$this->banner_filename();
+    }
+    public function banner_image_filepath($trip, $slug, $image)
+	{
+        return $this->banner_root($trip)."/".$slug."/".$image;
+    }
+//////////	
+//end of banner item path methods
+/////////	
+
+//////////	
+//start of banners url methods
+/////////	
+    
+    /*!
+	* @parms $trip A trip code
+    * @param $slug. The unique slug for an album
+    * @return A site relative URL for the album
+    */
+    public function url_banner_dir($trip, $slug)
+	{
+        return $this->url_root."/".$trip."/banners/$slug";
+    }
+	/*!
+	* @parms $trip A trip code
+    * @param $slug. The unique slug for an album
+	* @parm  $img the basename of a large image in the album
+    * @return A site relative URL for the image
+    */
+	public function url_banner_image($trip, $slug, $img)
+	{
+        $r = $this->url_banner_dir( $trip, $slug )."/$img";        
+        return $r;
+    }
+
+//////////	
+//end of banner url methods
+/////////	
+
+
+////////
+// start of editorial path methods
+////////
+    function editorial_root($trip='rtw')
+	{
+        return $this->trip_root($trip)."/editorial";
+    }
+    private function editorial_relative($trip='rtw')
+	{
+        return str_replace($this->doc_root, "", $this->editorial_root($trip));
+    }
+   /*!
+    * @return string The name of the file containing the fields/properties/meta data for a
+    * VOItem. This is constant across all content items.
+    */
+    private function editorial_filename()
+	{
+        return "content.php";
+    }
+/*!
+* @parms $trip A trip code
+* @param $slug. The unique slug for a content item
+* @return string The full path to the content/attribute  file for a given content item.
+*/
+public function editorial_filepath($trip, $slug)
+{
+    return $this->editorial_root($trip)."/$slug/".$this->editorial_filename();
+}
+//////////	
+//end of editorial item path methods
 /////////	
 
 

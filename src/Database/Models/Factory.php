@@ -277,6 +277,37 @@ class Factory {
         //print __METHOD__."\n";
         return $x;      
     }
+    static function editorial_from_hed($hed_obj){
+        print __METHOD__."\n";
+        
+		$locator = \Database\Locator::get_instance();
+		
+		$fields1 = Editorial::get_fields();
+		
+        // compute the fields that require no trickery
+        $fields = array_diff_key($fields1, array("image_path"=>"", "image_url", "banner_folder_path" ));
+        //print_r($fields1);
+
+        $vals = array();
+        foreach($fields as $k => $t ){
+            $method = "get_".$t;
+            $vals[$k] = $hed_obj->$method($k);
+        }
+        $vals['content_path'] = $hed_obj->_file_path; 
+        $vals['entity_path'] = dirname($hed_obj->_file_path); 
+		
+        $vals['image_path'] = $vals['entity_path']."/".$vals['image'];
+        $vals['image_url'] =  str_replace(\Registry::$globals->doc_root, "", $vals['image_path']);
+		
+		$vals['banner_folder_path'] = $locator->banner_dir($vals['trip'], $vals['banner']);
+		
+        print_r($vals);
+		//exit();
+        $x = new Editorial($vals);
+        var_dump($x);
+        print __METHOD__."\n";
+        return $x;      
+    }
     static function model_from_hed($hed_obj){
         $typ = $hed_obj->get_text('type');
         $func = $typ."_from_hed";
