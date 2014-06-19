@@ -395,7 +395,8 @@ class Locator
     }
     public function banner_image_filepath($trip, $slug, $image)
 	{
-        return $this->banner_root($trip)."/".$slug."/".$image;
+        return str_replace($this->doc_root, "", $this->banner_dir($trip, $slug))."/".$image;
+ 		return $this->banner_root($trip)."/".$slug."/".$image;
     }
 //////////	
 //end of banner item path methods
