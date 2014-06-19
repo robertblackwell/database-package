@@ -412,7 +412,7 @@ class Locator
     */
     public function url_banner_dir($trip, $slug)
 	{
-        return $this->url_root."/data".$trip."/banners/$slug";
+        return $this->url_root."/data/".$trip."/banners/$slug";
     }
 	/*!
 	* @parms $trip A trip code
