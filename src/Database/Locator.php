@@ -395,7 +395,6 @@ class Locator
     }
     public function banner_image_filepath($trip, $slug, $image)
 	{
-        return str_replace($this->doc_root, "", $this->banner_dir($trip, $slug))."/".$image;
  		return $this->banner_root($trip)."/".$slug."/".$image;
     }
 //////////	
@@ -413,7 +412,7 @@ class Locator
     */
     public function url_banner_dir($trip, $slug)
 	{
-        return $this->url_root."/".$trip."/banners/$slug";
+        return $this->url_root."/data".$trip."/banners/$slug";
     }
 	/*!
 	* @parms $trip A trip code
