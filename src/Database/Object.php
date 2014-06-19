@@ -86,6 +86,7 @@ class Object
 	    $config['hed'] = array(
 				'data_root'=>Registry::$globals->data_root,
 				'doc_root'=>Registry::$globals->doc_root,
+				'url_data_root'=>'dataroot',
 				'full_url_root'=>Registry::$globals->url_root,
 				'url_root'=>Registry::$globals->url_root,
 				);

@@ -11,6 +11,7 @@ class TestFindArticle extends UnitTestCase{
     }
     function test_get_one(){    
 	    Trace::function_entry();
+		print "Lets get started\n";
         $result = Database\Models\Editorial::get_by_trip_slug('rtw','active');
 		print "<p>editorial text: ". $result->main_content ."</p>\n";
 		print "<p>editorial image: ". $result->image ."</p>\n";
