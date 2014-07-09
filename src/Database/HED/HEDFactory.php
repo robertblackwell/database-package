@@ -184,6 +184,7 @@ class HEDFactory
         $parms['published_date'] = $dte;
         $parms['last_modified_date'] = $dte;
         $parms['title'] = $name;
+		var_dump($parms);
         $obj = self::create($file_path, "album", $trip, $slug, $parms);
     }
 } 

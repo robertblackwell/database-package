@@ -126,7 +126,7 @@ class Test_hed extends UnitTestCase{
 	    Trace::function_entry();
         system("rm -R ".dirname(__FILE__)."/data/test_album");
         $p = dirname(__FILE__)."/data/test_album/content.php";
-        HEDFactory::create_album($p, 'trip', 'slug', '120304', array('title'=>'A Title'));
+        HEDFactory::create_album($p, 'trip', 'slug', '120304', "aname", array('title'=>'A Title'));
 	    Trace::function_exit();
     }
     function test_6(){

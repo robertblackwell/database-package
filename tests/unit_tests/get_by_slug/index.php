@@ -33,8 +33,8 @@ class Test_get_by_slug extends UnitTestCase{
         $this->assertTrue(is_string($r->creation_date));
         $this->assertTrue(is_string($r->published_date));
         $this->assertTrue(is_string($r->last_modified_date));
-        $this->assertTrue(is_int($r->odometer));
-        $this->assertTrue(is_int($r->day_number));
+        $this->assertTrue(is_string($r->odometer));
+        $this->assertTrue(is_string($r->day_number));
         $this->assertTrue(is_string($r->miles));
         $this->assertTrue(is_string($r->place));
         $this->assertTrue(is_string($r->country));
