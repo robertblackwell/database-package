@@ -113,6 +113,7 @@ class Test_hed extends UnitTestCase{
         system("rm -R ".dirname(__FILE__)."/data/test_entry");
         $p = dirname(__FILE__)."/data/test_entry/content.php";
         HEDFactory::create_journal_entry($p, 'trip', 'slug', '120304', array('one'=>'111'));
+		
 	    Trace::function_exit();
     }
     function test_4(){

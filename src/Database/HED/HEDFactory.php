@@ -89,14 +89,16 @@ class HEDFactory
                 print "\t<div id=\"$f\">".$typ."</div>\n";
             else if($v == "has")
                 ;
-            else if( $f == "main_content" )
+            else if( $f == "main_content" ){
                 print "\t<div id=\"$f\">\n\t\t"
                     . ((array_key_exists($f, $field_values))?   $field_values[$f] : 
         '<p>main content goes here</p>
 		<?php Skin::JournalGalleryThumbnails('.'$'.'trip, '.'$'.'entry); ?>                                                                
         <p>and here</p>' ) 
                     ."\n\t</div>\n";
-            else
+			} else if( ($type == 'entry')  && ( ($f == 'camping') || ($f == 'border') ) ) {
+				
+			} else
                 print "\t<div id=\"$f\">"
                     . ((array_key_exists($f, $field_values))? $field_values[$f] : "ABCDEFG") 
                     ."</div>\n";
