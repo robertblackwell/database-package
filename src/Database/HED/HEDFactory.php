@@ -110,6 +110,7 @@ class HEDFactory
         self::print_hed_footer();
     
         $s = ob_get_clean();
+		print "<pre>$s</pre>";
 		$d = $item_dir;
         if( !mkdir($item_dir, 511, true) )
 			throw new Exception("mkdir failed to make $d ");
