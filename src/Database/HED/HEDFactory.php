@@ -76,6 +76,8 @@ class HEDFactory
 	*/
     private static function create($file_path, $type, $trip, $slug, $field_values)
 	{
+		if( file_exists($file_path) )
+			throw new \Exception("create $type failed $file_path already exists");
         $class_name = self::type_to_class($type);
         $fields = $class_name::get_fields();
         $typ = $type;
