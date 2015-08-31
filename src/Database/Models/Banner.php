@@ -42,7 +42,7 @@ class Banner extends Base\ModelBase
     */
     static function find_latest_for_trip($trip){
         $c = "  where trip='".$trip."' order by last_modified_date, slug limit 0,1 ";
-        $c = "  where trip='".$trip."' ";
+        // $c = "  where trip='".$trip."' ";
         $res = self::$sql->select_objects(self::$table_name, __CLASS__, $c, true);
 		return $res;
     }
