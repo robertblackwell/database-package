@@ -249,8 +249,6 @@ class Utility
     function load_editorials($trip)
 	{
         $dir = $this->locator->editorial_root($trip);
-		var_dump($dir);
-		return;
         $this->load_db_from($dir);
     }
 
@@ -263,9 +261,9 @@ class Utility
         \Trace::on();
         \Trace::function_entry();
         $item_names = $this->get_item_names($items_dir);
-        var_dump($items_dir);
-		print_r($item_names);
-		return;
+		//         var_dump($items_dir);
+		// print_r($item_names);
+		// return;
         $items = array();
         foreach($item_names as $iname){
             \Trace::debug( "starting $items_dir/$iname");
