@@ -44,7 +44,7 @@ class Editorial extends Base\ModelBase
         $fn = self::$locator->editorial_filepath($trip, $slug);
         $obj->get_from_file($fn);
         $item = Factory::model_from_hed($obj); 
-		$item->banner = \Banner\Object::create($trip, $obj->banner);
+		// $item->banner = \Banner\Object::create($trip, $obj->banner);
         return $item;
     }
     /*!
