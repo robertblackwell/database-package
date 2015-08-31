@@ -393,9 +393,12 @@ class Locator
 	{
         return $this->banner_root($trip)."/$slug/".$this->banner_filename();
     }
+	public function banner_images_dir($trip, $slug){
+        return $this->banner_root($trip)."/$slug/Images";
+	}
     public function banner_image_filepath($trip, $slug, $image)
 	{
- 		return $this->banner_root($trip)."/".$slug."/".$image;
+ 		return $this->banner_root($trip)."/".$slug."/Images/".$image;
     }
 //////////	
 //end of banner item path methods
@@ -422,7 +425,7 @@ class Locator
     */
 	public function url_banner_image($trip, $slug, $img)
 	{
-        $r = $this->url_banner_dir( $trip, $slug )."/$img";        
+        $r = $this->url_banner_dir( $trip, $slug )."/Images/$img";        
         return $r;
     }
 
