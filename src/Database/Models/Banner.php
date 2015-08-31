@@ -49,7 +49,7 @@ class Banner extends Base\ModelBase
 	
     public static function get_by_trip_slug($trip, $slug){
         $obj = new HEDObject();
-        $fn = self::$locator->editorial_filepath($trip, $slug);
+        $fn = self::$locator->banner_filepath($trip, $slug);
         $obj->get_from_file($fn);
         $item = Factory::model_from_hed($obj); 
 		$item->banner = \Banner\Object::create($trip, $obj->banner);
