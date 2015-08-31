@@ -232,7 +232,7 @@ class HEDFactory
 	*/
     public static function create_banner($file_path, $trip, $slug, $dte, $name, $parms = array())
 	{
-		print "<h3>Create banner</h3>";
+		print "<h3>Create banner XXX</h3>";
         $parms['trip'] = $trip;
         $parms['version'] = "2.0";
         $parms['status'] = "draft";

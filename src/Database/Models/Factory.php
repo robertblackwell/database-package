@@ -379,7 +379,7 @@ class Factory {
     }
     static function create_banner($trip, $slug, $dte, $name, $parms){
         $p = self::$locator->banner_filepath($trip, $slug);
-        HEDFactory::create_editorial($p, $trip, $slug, $dte, $name, $parms);
+        HEDFactory::create_banner($p, $trip, $slug, $dte, $name, $parms);
     }
     
 } 
