@@ -47,6 +47,23 @@ class Editorial extends Base\ModelBase
 		$item->banner = \Banner\Object::create($trip, $obj->banner);
         return $item;
     }
+    /*!
+    * Retrieve a content item by unique identifier (slug) and hence return one of
+    * Post, Entry, Article
+    */
+    public static function get_by_slug($slug){
+        $q = "WHERE slug='".$slug."'";
+        $r = self::$sql->select_objects(self::$table_name, __CLASS__, $q, false);
+        if( is_null($r) || !$r   ) return null;
+        $trip = $r->trip;
+               
+        $obj = new HEDObject();
+        $fn = self::$locator->editorial_filepath($trip, $slug);
+        $obj->get_from_file($fn);
+        $item = Factory::model_from_hed($obj);
+        return $item;
+    }
+	
 
 }
 ?>
