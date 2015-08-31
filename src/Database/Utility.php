@@ -2,6 +2,8 @@
 namespace Database;
 use \Database\Models\Item as Item;
 use \Database\Models\Album as Album;
+use \Database\Models\Editorial as Editorial;
+use \Database\Models\Banner as Banner;
 use \Exception as Exception;
 /**
  * This class provides some utility functions for loading various objects from the flat file store into the sql database
