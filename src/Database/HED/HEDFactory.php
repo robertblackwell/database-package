@@ -78,7 +78,6 @@ class HEDFactory
 	{
         $class_name = self::type_to_class($type);
         $fields = $class_name::get_fields();
-		print "<pre> create(".$file_path.", ". $type.")</pre>";
         $typ = $type;
         $pi = pathinfo($file_path);
         $item_dir = $pi['dirname'];
@@ -86,7 +85,8 @@ class HEDFactory
         $file_name = $file_path;
         ob_start(); 
         self::print_hed_header();
-        foreach($fields as $f=>$v){
+        foreach($fields as $f=>$v)
+		{
             if( $f == 'slug')
                 print "\t<div id=\"$f\">".$slug."</div>\n";
             else if( $f == 'type')
@@ -110,7 +110,7 @@ class HEDFactory
         self::print_hed_footer();
     
         $s = ob_get_clean();
-		print "<pre>$s </pre>";
+		// print "<pre>$s </pre>";
 		$d = $item_dir;
         if( !mkdir($item_dir, 511, true) )
 			throw new Exception("mkdir failed to make $d ");
@@ -119,9 +119,11 @@ class HEDFactory
         file_put_contents($file_name, $s);
         if( !chmod($file_name, 511) )
 			throw new Exception("chmod failed on file: $file_name");
-        if( $typ == "entry" ){
+        if( ($typ == "entry") || ($type == "banner" )){
             mkdir($item_dir."/Images", 511, true);
             chmod($item_dir."/Images", 511);
+		}
+        if( ($typ == "entry") ){
             mkdir($item_dir."/Thumbnails", 511, true);
             chmod($item_dir."/Thumbnails", 511);            
         }
@@ -214,7 +216,7 @@ class HEDFactory
         $parms['published_date'] = $dte;
         $parms['last_modified_date'] = $dte;
 //        $parms['title'] = $name;
-		var_dump($parms);
+		// var_dump($parms);
         $obj = self::create($file_path, "editorial", $trip, $slug, $parms);
 		return $obj;
     }
@@ -240,7 +242,7 @@ class HEDFactory
         $parms['published_date'] = $dte;
         $parms['last_modified_date'] = $dte;
 //        $parms['title'] = $name;
-		var_dump($parms);
+		// var_dump($parms);
         $obj = self::create($file_path, "banner", $trip, $slug, $parms);
 		return $obj;
 		
