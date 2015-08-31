@@ -41,7 +41,7 @@ class Banner extends Base\ModelBase
     * @return array of objects of types VOEntry, VOPost, VOArticle
     */
     static function find_latest_for_trip($trip){
-        $c = "  where trip='$trip' order by last_modified_date desc, slug limit 0:1 ";
+        $c = "  where trip='$trip' order by last_modified_date desc, slug limit 0,1 ";
         $res = self::$sql->select_objects(self::$table_name, __CLASS__, $c, true);
 		return $res;
     }
