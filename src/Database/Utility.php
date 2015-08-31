@@ -240,6 +240,8 @@ class Utility
     function load_banners($trip)
 	{
         $dir = $this->locator->banner_root($trip);
+		var_dump($dir);
+		return;
         $this->load_db_from($dir);
     }
 	/**
@@ -249,6 +251,8 @@ class Utility
     function load_editorials($trip)
 	{
         $dir = $this->locator->editorial_root($trip);
+		var_dump($dir);
+		return;
         $this->load_db_from($dir);
     }
 
