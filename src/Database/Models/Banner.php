@@ -36,9 +36,16 @@ class Banner extends Base\ModelBase
         $this->table = self::$table_name;
         parent::__construct($obj);
     }  
-	public static function get_active($trip){
-		
-	} 
+    /*!
+    * Finds the latest Banner in reverse chronological order.
+    * @return array of objects of types VOEntry, VOPost, VOArticle
+    */
+    static function find_latest_for_trip($trip){
+        $c = "  where trip='$trip' order by last_modified_date desc, slug limit 0:1 ";
+        $res = self::$sql->select_objects(self::$table_name, __CLASS__, $c, true);
+		return $res;
+    }
+	
     public static function get_by_trip_slug($trip, $slug){
         $obj = new HEDObject();
         $fn = self::$locator->editorial_filepath($trip, $slug);
@@ -47,6 +54,9 @@ class Banner extends Base\ModelBase
 		$item->banner = \Banner\Object::create($trip, $obj->banner);
         return $item;
     }
+	public getImages(){
+		
+	}
 
 }
 ?>
