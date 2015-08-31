@@ -54,7 +54,7 @@ class Banner extends Base\ModelBase
 		$item->banner = \Banner\Object::create($trip, $obj->banner);
         return $item;
     }
-	public getImages(){
+	public function getImages(){
 		
 	}
 
