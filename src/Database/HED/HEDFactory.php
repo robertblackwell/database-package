@@ -215,7 +215,9 @@ class HEDFactory
 //        $parms['title'] = $name;
 		var_dump($parms);
         $obj = self::create($file_path, "editorial", $trip, $slug, $parms);
+		return $obj;
     }
+	
 	/**
 	* Create a new skeleton banner in HED format and write given file path
 	* @param string $file_path Where to write the newly created content
@@ -238,6 +240,8 @@ class HEDFactory
 //        $parms['title'] = $name;
 		var_dump($parms);
         $obj = self::create($file_path, "banner", $trip, $slug, $parms);
+		return $obj;
+		
     }
 
 } 
