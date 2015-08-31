@@ -176,7 +176,6 @@ class Builder
 		$this->sql->query("DROP table IF EXISTS banners");
 	}
 	function drop_table_editorials(){
-		$this->sql->query("DROP table IF EXISTS banners");
 		$this->sql->query("DROP table IF EXISTS editorials");
 	}
 
