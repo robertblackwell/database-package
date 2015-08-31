@@ -15,7 +15,7 @@ use Database\Locator;
 */
 class Editorial extends Base\ModelBase
 {
-    static $table_name = "editorial";
+    static $table_name = "editorials";
     static $field_names = array(
         "version"=>"text",
         "type"=>"text",
@@ -36,6 +36,9 @@ class Editorial extends Base\ModelBase
         $this->table = self::$table_name;
         parent::__construct($obj);
     }  
+	public static function get_active($trip){
+		
+	} 
     public static function get_by_trip_slug($trip, $slug){
         $obj = new HEDObject();
         $fn = self::$locator->editorial_filepath($trip, $slug);

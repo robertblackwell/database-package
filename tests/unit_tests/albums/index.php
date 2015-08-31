@@ -32,6 +32,7 @@ class TestFindArticle extends UnitTestCase{
     
             $this->assertNotEqual($a->gallery, null);
             $this->assertEqual(get_class($a->gallery), "Gallery\Object");
+            var_dump($a);
             var_dump($a->gallery->mascotPath());
         }
         //$this->assertEqual($result[3]->slug, "bolivia-1");

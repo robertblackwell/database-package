@@ -31,6 +31,8 @@ class Factory {
 		'entry'=>'\Database\Models\Entry',
 		'article'=>'\Database\Models\Article',
 		'album'=>'\Database\Models\Album',
+		'editorial'=>'\Database\Models\Editorial',
+		'banner'=>'\Database\Models\Banner',
 	);
 	
 	private static $classes = array(
@@ -38,6 +40,8 @@ class Factory {
 		'\Database\Models\Entry'=>'entry',
 		'\Database\Models\Article'=>'article',
 		'\Database\Models\Album'=>'album',
+		'\Database\Models\Banner'=>'banner',
+		'\Database\Models\Editorial'=>'editorial',
 	);
 		
 	private static function type_to_class($type){
@@ -308,6 +312,37 @@ class Factory {
         //print __METHOD__."\n";
         return $x;      
     }
+    static function banner_from_hed($hed_obj){
+        //print __METHOD__."\n";
+        
+		$locator = \Database\Locator::get_instance();
+		
+		$fields1 = Banner::get_fields();
+		
+        // compute the fields that require no trickery
+        $fields = array_diff_key($fields1, array("image_path"=>"", "image_url", "banner_folder_path" ));
+        //print_r($fields1);
+
+        $vals = array();
+        foreach($fields as $k => $t ){
+            $method = "get_".$t;
+            $vals[$k] = $hed_obj->$method($k);
+        }
+        $vals['content_path'] = $hed_obj->_file_path; 
+        $vals['entity_path'] = dirname($hed_obj->_file_path); 
+		
+//         $vals['image_path'] = $vals['entity_path']."/".$vals['image'];
+//         $vals['image_url'] =  str_replace(\Registry::$globals->doc_root, "", $vals['image_path']);
+// 		
+// 		$vals['banner_folder_path'] = $locator->banner_dir($vals['trip'], $vals['banner']);
+		
+        //print_r($vals);
+		//exit();
+        $x = new Banner($vals);
+        //var_dump($x);
+        //print __METHOD__."\n";
+        return $x;      
+    }
     static function model_from_hed($hed_obj){
         $typ = $hed_obj->get_text('type');
         $func = $typ."_from_hed";
@@ -336,6 +371,15 @@ class Factory {
     static function create_album($trip, $slug, $dte, $name, $parms){
         $p = self::$locator->album_filepath($trip, $slug);
         HEDFactory::create_album($p, $trip, $slug, $dte, $name, $parms);
+    }
+
+    static function create_editorial($trip, $slug, $dte, $name, $parms){
+        $p = self::$locator->editorial_filepath($trip, $slug);
+        HEDFactory::create_editorial($p, $trip, $slug, $dte, $name, $parms);
+    }
+    static function create_banner($trip, $slug, $dte, $name, $parms){
+        $p = self::$locator->banner_filepath($trip, $slug);
+        HEDFactory::create_editorial($p, $trip, $slug, $dte, $name, $parms);
     }
     
 } 

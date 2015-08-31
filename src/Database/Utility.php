@@ -101,6 +101,43 @@ class Utility
             throw new \Exception(__METHOD__."($slug) file name and slug do not match file:$fn slug:".$x->slug);
         $x->sql_insert();    
     }
+
+    /**
+    ** Import an banner from its HED form into the sql database - this is the
+    ** equivalent of "publish"
+	* @param  string $trip
+	* @param  string $slug
+	* @return nothing
+	* @throws Exception is item slug value does not match item_dirs basename
+    */
+    public function import_banner($trip, $slug)
+	{
+        $x = Banner::get_by_trip_slug($trip, $slug);
+
+        \Trace::alert("<p> Importing album trip : $trip item: $slug type ".get_class($x)."</p>");
+
+        if( $slug != $x->slug )
+            throw new \Exception(__METHOD__."($slug) file name and slug do not match file:$fn slug:".$x->slug);
+        $x->sql_insert();    
+    }
+    /**
+    ** Import an editorial from its HED form into the sql database - this is the
+    ** equivalent of "publish"
+	* @param  string $trip
+	* @param  string $slug
+	* @return nothing
+	* @throws Exception is item slug value does not match item_dirs basename
+    */
+    public function import_editorial($trip, $slug)
+	{
+        $x = Editorial::get_by_trip_slug($trip, $slug);
+
+        \Trace::alert("<p> Importing album trip : $trip item: $slug type ".get_class($x)."</p>");
+
+        if( $slug != $x->slug )
+            throw new \Exception(__METHOD__."($slug) file name and slug do not match file:$fn slug:".$x->slug);
+        $x->sql_insert();    
+    }
     
 	/**
     ** Remove an album (defined by $slug) from the sql database. This is the equivalent of "unpublish"
@@ -121,6 +158,47 @@ class Utility
             throw new \Exception(__METHOD__."($slug)  slug:".$x->slug);
         $x->sql_delete();
     }
+
+	/**
+    ** Remove a banner (defined by $slug) from the sql database. This is the equivalent of "unpublish"
+ 	* @param string $slug
+	* @throws Exception is item does not exist for that $slug value
+	* @throws Exception is item slug value does not match item_dirs basename
+    */
+    function deport_banner($slug)
+	{
+        //print "<p>".__METHOD__."($slug)</p>"; 
+        $x = Banner::get_by_slug($slug);
+        //var_dump($x);
+        if( is_null( $x ) ){
+            throw new \Exception(__METHOD__."($slug) x is null");
+        }
+        //print "<p> Deporting (removing from sql database) item $slug type ";
+        if( $slug != $x->slug )
+            throw new \Exception(__METHOD__."($slug)  slug:".$x->slug);
+        $x->sql_delete();
+    }
+	/**
+    ** Remove an editorial (defined by $slug) from the sql database. This is the equivalent of "unpublish"
+ 	* @param string $slug
+	* @throws Exception is item does not exist for that $slug value
+	* @throws Exception is item slug value does not match item_dirs basename
+    */
+    function deport_editorial($slug)
+	{
+        //print "<p>".__METHOD__."($slug)</p>"; 
+        $x = Editorial::get_by_slug($slug);
+        //var_dump($x);
+        if( is_null( $x ) ){
+            throw new \Exception(__METHOD__."($slug) x is null");
+        }
+        //print "<p> Deporting (removing from sql database) item $slug type ";
+        if( $slug != $x->slug )
+            throw new \Exception(__METHOD__."($slug)  slug:".$x->slug);
+        $x->sql_delete();
+    }
+
+
     /**
 	* Get the basename of all the files/dirs in the given directory leaving out DOT files and dirs
 	*/
@@ -153,6 +231,24 @@ class Utility
     function load_albums($trip)
 	{
         $dir = $this->locator->album_root($trip);
+        $this->load_db_from($dir);
+    }
+	/**
+	* Load all the photo banners for $trip
+	* @param string $trip
+	*/
+    function load_banners($trip)
+	{
+        $dir = $this->locator->banner_root($trip);
+        $this->load_db_from($dir);
+    }
+	/**
+	* Load all the editorials for $trip
+	* @param string $trip
+	*/
+    function load_editorials($trip)
+	{
+        $dir = $this->locator->editorial_root($trip);
         $this->load_db_from($dir);
     }
 

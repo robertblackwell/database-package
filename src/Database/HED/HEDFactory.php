@@ -27,6 +27,8 @@ class HEDFactory
 		'entry'=>'\Database\Models\Entry',
 		'article'=>'\Database\Models\Article',
 		'album'=>'\Database\Models\Album',
+		'banner'=>'\Database\Models\Banner',
+		'editorial'=>'\Database\Models\Editorial',
 	);
 	
 	private static $classes = array(
@@ -34,6 +36,8 @@ class HEDFactory
 		'\Database\Models\Entry'=>'entry',
 		'\Database\Models\Article'=>'article',
 		'\Database\Models\Album'=>'album',
+		'\Database\Models\Banner'=>'banner',
+		'\Database\Models\Editorial'=>'editorial',
 	);
 		
 	private static function type_to_class($type)
@@ -189,6 +193,53 @@ class HEDFactory
 		var_dump($parms);
         $obj = self::create($file_path, "album", $trip, $slug, $parms);
     }
+	/**
+	* Create a new skeleton editorial in HED format and write given file path
+	* @param string $file_path Where to write the newly created content
+	* @param string $trip  The trip for this editorial
+	* @param string $slug the unique id for this editorial
+	* @param string $dte  The published date to be recorded
+	* @param string $name The name of title for this editorial
+	* @param array  $parm An array of key value pairs representing additional dat to be stored for the album  
+	* @return
+	*
+	*/
+    public static function create_editorial($file_path, $trip, $slug, $dte, $name, $parms = array())
+	{
+        $parms['trip'] = $trip;
+        $parms['version'] = "2.0";
+        $parms['status'] = "draft";
+        $parms['creation_date'] = $dte;
+        $parms['published_date'] = $dte;
+        $parms['last_modified_date'] = $dte;
+//        $parms['title'] = $name;
+		var_dump($parms);
+        $obj = self::create($file_path, "editorial", $trip, $slug, $parms);
+    }
+	/**
+	* Create a new skeleton banner in HED format and write given file path
+	* @param string $file_path Where to write the newly created content
+	* @param string $trip  The trip for this editorial
+	* @param string $slug the unique id for this editorial
+	* @param string $dte  The published date to be recorded
+	* @param string $name The name of title for this editorial
+	* @param array  $parm An array of key value pairs representing additional dat to be stored for the album  
+	* @return
+	*
+	*/
+    public static function create_banner($file_path, $trip, $slug, $dte, $name, $parms = array())
+	{
+        $parms['trip'] = $trip;
+        $parms['version'] = "2.0";
+        $parms['status'] = "draft";
+        $parms['creation_date'] = $dte;
+        $parms['published_date'] = $dte;
+        $parms['last_modified_date'] = $dte;
+//        $parms['title'] = $name;
+		var_dump($parms);
+        $obj = self::create($file_path, "banner", $trip, $slug, $parms);
+    }
+
 } 
 
 ?>

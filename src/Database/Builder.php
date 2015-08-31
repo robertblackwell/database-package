@@ -34,6 +34,8 @@ class Builder
 		$this->sql->query("TRUNCATE table IF EXISTS categorized_items");
 		$this->sql->query("TRUNCATE view IF EXISTS categories");
 		$this->sql->query("TRUNCATE table IF EXISTS albums");
+		$this->sql->query("TRUNCATE table IF EXISTS banners");
+		$this->sql->query("TRUNCATE table IF EXISTS editorials");
 		$this->sql->query("TRUNCATE table IF EXISTS my_items");
 		\Trace::function_exit();
 	}
@@ -85,6 +87,8 @@ class Builder
 		$this->sql->query("DROP table IF EXISTS categories");
 		$this->sql->query("DROP view IF EXISTS categories");
 		$this->sql->query("DROP table IF EXISTS albums");
+		$this->sql->query("DROP table IF EXISTS banners");
+		$this->sql->query("DROP table IF EXISTS editorials");
 		$this->sql->query("DROP table IF EXISTS my_items");
 		\Trace::function_exit();
 	}
@@ -99,6 +103,8 @@ class Builder
 		$this->create_table_categorized_items();
 		$this->create_view_categories();
 		$this->create_table_albums();
+		$this->create_table_banners();
+		$this->create_table_editorials();
 	}
 
 	/**
@@ -145,7 +151,7 @@ class Builder
 	public function create_table_albums()
 	{
 		\Trace::function_entry();
-		$query_my_items = " 
+		$query = " 
 			CREATE TABLE `albums` (
 				`slug` varchar(20) CHARSET UTF8  NOT NULL DEFAULT '',
 				`version` varchar(20) CHARSET UTF8  DEFAULT NULL,
@@ -160,7 +166,100 @@ class Builder
 				PRIMARY KEY (`slug`)
 			) ENGINE=InnoDB DEFAULT CHARSET UTF8;";
 				
-		$result = $this->sql->query($query_my_items);
+		$result = $this->sql->query($query);
+				
+		\Trace::debug("query result ".var_export($result,true));
+		\Trace::function_exit();
+	}
+
+	function drop_table_banners(){
+		$this->sql->query("DROP table IF EXISTS banners");
+	}
+	function drop_table_editorials(){
+		$this->sql->query("DROP table IF EXISTS banners");
+		$this->sql->query("DROP table IF EXISTS editorials");
+	}
+
+	/**
+	* Create banners table
+    *static $field_names = array(
+    *    "version"=>"text",
+    *    "type"=>"text",
+    *    "slug"=>"text",
+    *    "status"=>"text",
+    *    "creation_date"=>"date",
+    *    "published_date"=>"date",
+    *    "last_modified_date"=>"date",
+    *    "trip"=>"text",
+    *    "title"=>"html",
+    *    'banner'=>'text',
+    *    'image'=>'text',
+	*	'main_content'=>'html',
+    *    'image_url'=>'text',
+	*);  
+	*/
+	public function create_table_banners()
+	{
+		\Trace::function_entry();
+		$query = " 
+			CREATE TABLE `banners` (
+				`version` varchar(20) CHARSET UTF8  DEFAULT NULL,
+				`type` varchar(20) CHARSET UTF8  DEFAULT NULL,
+				`slug` varchar(20) CHARSET UTF8  NOT NULL DEFAULT '',
+				`status` varchar(20) CHARSET UTF8	 DEFAULT NULL,
+				`creation_date` date DEFAULT NULL,
+				`published_date` date DEFAULT NULL,
+				`last_modified_date` date DEFAULT NULL,
+				`trip` varchar(20) CHARSET UTF8  DEFAULT NULL,
+				PRIMARY KEY (`slug`)
+			) ENGINE=InnoDB DEFAULT CHARSET UTF8;";
+				
+		$result = $this->sql->query($query);
+				
+		\Trace::debug("query result ".var_export($result,true));
+		\Trace::function_exit();
+	}
+
+
+	/**
+	* Create editorial table
+    *static $field_names = array(
+    *    "version"=>"text",
+    *    "type"=>"text",
+    *    "slug"=>"text",
+    *    "status"=>"text",
+    *    "creation_date"=>"date",
+    *    "published_date"=>"date",
+    *    "last_modified_date"=>"date",
+    *    "trip"=>"text",
+    *    "title"=>"html",
+    *    'banner'=>'text',
+    *    'image'=>'text',
+	*	'main_content'=>'html',
+    *    'image_url'=>'text',
+	*);  
+	*/
+	public function create_table_editorials()
+	{
+		\Trace::function_entry();
+		$query = " 
+			CREATE TABLE `editorials` (
+				`version` varchar(20) CHARSET UTF8  DEFAULT NULL,
+				`type` varchar(20) CHARSET UTF8  DEFAULT NULL,
+				`slug` varchar(20) CHARSET UTF8  NOT NULL DEFAULT '',
+				`status` varchar(20) CHARSET UTF8	 DEFAULT NULL,
+				`creation_date` date DEFAULT NULL,
+				`published_date` date DEFAULT NULL,
+				`last_modified_date` date DEFAULT NULL,
+				`trip` varchar(20) CHARSET UTF8  DEFAULT NULL,
+				`banner` mediumtext CHARSET UTF8 ,
+				`image` mediumtext CHARSET UTF8 ,
+				`main_content` mediumtext CHARSET UTF8 ,
+				`image_url` mediumtext CHARSET UTF8 ,
+				PRIMARY KEY (`slug`)
+			) ENGINE=InnoDB DEFAULT CHARSET UTF8;";
+				
+		$result = $this->sql->query($query);
 				
 		\Trace::debug("query result ".var_export($result,true));
 		\Trace::function_exit();

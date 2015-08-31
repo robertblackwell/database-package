@@ -20,6 +20,9 @@ class Test_database_build extends UnitTestCase{
         $builder->create_tables();
         $utility->load_content_items('rtw');
         $utility->load_albums('rtw');
+        $utility->load_banners('rtw');
+        $utility->load_editorials('rtw');
+        
 //        $utility->rebuild_db_from($this->locator->content_root('rtw'));
 	    Trace::function_exit();
     }
