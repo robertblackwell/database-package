@@ -41,8 +41,8 @@ class Editorial extends Base\ModelBase
     public static function get_by_trip_slug($trip, $slug){
         $obj = new HEDObject();
         $fn = self::$locator->editorial_filepath($trip, $slug);
-        $obj->get_from_file($fn);
-        $ed = Factory::model_from_hed($obj); 
+        $hobj->get_from_file($fn);
+        $ed = Factory::model_from_hed($hobj); 
 		$ed->image_url = self::$locator->url_editorial_image($trip, $slug, $hobj->image_name);
         return $ed;
     }
