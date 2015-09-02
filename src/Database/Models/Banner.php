@@ -52,12 +52,26 @@ class Banner extends Base\ModelBase
     public static function get_by_trip_slug($trip, $slug){
         $obj = new HEDObject();
         $fn = self::$locator->banner_filepath($trip, $slug);
-		$image_dir = self::$locator->banner_images_dir($trip, $slug);
+		$images_dir = self::$locator->banner_images_dir($trip, $slug);
         $obj->get_from_file($fn);
         $obj = Factory::model_from_hed($obj); 
-		var_dump($image_dir);var_dump($obj);
-		$obj->banner = \Banner\Object::create($trip, $image_dir);
-        return $item;
+		var_dump($images_dir);var_dump($obj);
+
+		$list = scandir($images_dir);
+		$x = array();
+		foreach( $list as $ent){
+			if( ($ent != ".") && ($ent != "..") ){
+				print "\n<p>$ent</p>\n";
+				$tmp = new \stdClass();
+				$tmp->url = $locator->url_banner_image($trip, $banner, $ent);
+				$tmp->path = $locator->banner_image_filepath( $trip, $banner, $ent);
+				$x[] = $tmp;
+					
+			}
+		}
+		$obj->images_list = $x;
+		// $obj->banner = \Banner\Object::create($trip, $image_dir);
+        return $obj;
     }
 	public function getImages(){
 		
