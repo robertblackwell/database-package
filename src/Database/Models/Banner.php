@@ -52,8 +52,9 @@ class Banner extends Base\ModelBase
         $fn = self::$locator->banner_filepath($trip, $slug);
 		$image_dir = self::$locator->banner_images_dir($trip, $slug);
         $obj->get_from_file($fn);
-        $item = Factory::model_from_hed($obj); 
-		$item->banner = \Banner\Object::create($trip, $image_dir);
+        $obj = Factory::model_from_hed($obj); 
+		var_dump($image_dir);var_dump($obj);
+		$obj->banner = \Banner\Object::create($trip, $image_dir);
         return $item;
     }
 	public function getImages(){
