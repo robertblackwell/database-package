@@ -375,7 +375,7 @@ class Factory {
 
     static function create_editorial($trip, $slug, $dte, $name, $parms){
         $p = self::$locator->editorial_filepath($trip, $slug);
-        HEDFactory::create_editorial($p, $trip, $slug, $dte, $name, $parms);
+        return HEDFactory::create_editorial($p, $trip, $slug, $dte, $name, $parms);
     }
     static function create_banner($trip, $slug, $dte, $name, $parms){
         $p = self::$locator->banner_filepath($trip, $slug);
