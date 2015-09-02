@@ -27,10 +27,8 @@ class Editorial extends Base\ModelBase
         "trip"=>"text",
         "title"=>"html",
         'banner'=>'text',
-        'image'=>'text',
 		'main_content'=>'html',
         'image_name'=>'text',
-        'image_url'=>'text',
 	);  
     function __construct($obj){
         $this->vo_fields = self::$field_names;
@@ -44,9 +42,9 @@ class Editorial extends Base\ModelBase
         $obj = new HEDObject();
         $fn = self::$locator->editorial_filepath($trip, $slug);
         $obj->get_from_file($fn);
-        $item = Factory::model_from_hed($obj); 
-		// $item->banner = \Banner\Object::create($trip, $obj->banner);
-        return $item;
+        $ed = Factory::model_from_hed($obj); 
+		$ed->image_url = self::$locator->url_editorial_image($trip, $slug, $hobj->image_name);
+        return $ed;
     }
     /*!
     * Retrieve a content item by unique identifier (slug) and hence return one of
@@ -58,11 +56,12 @@ class Editorial extends Base\ModelBase
         if( is_null($r) || !$r   ) return null;
         $trip = $r->trip;
                
-        $obj = new HEDObject();
+        $hobj = new HEDObject();
         $fn = self::$locator->editorial_filepath($trip, $slug);
-        $obj->get_from_file($fn);
-        $item = Factory::model_from_hed($obj);
-        return $item;
+        $hobj->get_from_file($fn);
+        $ed = Factory::model_from_hed($obj);
+		$ed->image_url = self::$locator->editorial_image_url($trip, $slug, $hobj->image_name);
+        return $ed;
     }
 	
 

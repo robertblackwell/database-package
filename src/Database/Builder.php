@@ -252,10 +252,8 @@ class Builder
 				`last_modified_date` date DEFAULT NULL,
 				`trip` varchar(20) CHARSET UTF8  DEFAULT NULL,
 				`banner` mediumtext CHARSET UTF8 ,
-				`image` mediumtext CHARSET UTF8 ,
 				`main_content` mediumtext CHARSET UTF8 ,
 				`image_name` mediumtext CHARSET UTF8 ,
-				`image_url` mediumtext CHARSET UTF8 ,
 				PRIMARY KEY (`slug`)
 			) ENGINE=InnoDB DEFAULT CHARSET UTF8;";
 				
