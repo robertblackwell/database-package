@@ -58,7 +58,7 @@ class Editorial extends Base\ModelBase
         $hobj = new HEDObject();
         $fn = self::$locator->editorial_filepath($trip, $slug);
         $hobj->get_from_file($fn);
-        $ed = Factory::model_from_hed($obj);
+        $ed = Factory::model_from_hed($hobj);
 		$ed->image_url = self::$locator->editorial_image_url($trip, $slug, $hobj->image_name);
         return $ed;
     }
