@@ -29,6 +29,7 @@ class Editorial extends Base\ModelBase
         'banner'=>'text',
         'image'=>'text',
 		'main_content'=>'html',
+        'image_name'=>'text',
         'image_url'=>'text',
 	);  
     function __construct($obj){
