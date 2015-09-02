@@ -45,7 +45,8 @@ class Banner extends Base\ModelBase
         // $c = "  where trip='".$trip."' ";
         $res = self::$sql->select_objects(self::$table_name, __CLASS__, $c, false);
 		var_dump($res);
-		return $res;
+		$o = self::get_by_trip_slug($res->trip, $res->slug);
+		return $o;
     }
 	
     public static function get_by_trip_slug($trip, $slug){
