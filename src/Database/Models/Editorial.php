@@ -59,7 +59,7 @@ class Editorial extends Base\ModelBase
         $fn = self::$locator->editorial_filepath($trip, $slug);
         $hobj->get_from_file($fn);
         $ed = Factory::model_from_hed($hobj);
-		$ed->image_url = self::$locator->editorial_image_url($trip, $slug, $hobj->image_name);
+		$ed->image_url = self::$locator->url_editorial_image($trip, $slug, $hobj->image_name);
         return $ed;
     }
     static function find_latest_for_trip($trip){
