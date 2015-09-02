@@ -15,6 +15,7 @@ use Database\Locator;
 */
 class Banner extends Base\ModelBase
 {
+	private $images_list;
     static $table_name = "banners";
     static $field_names = array(
         "version"=>"text",
@@ -44,7 +45,7 @@ class Banner extends Base\ModelBase
         $c = "  where trip='".$trip."' order by last_modified_date desc, slug limit 0,1 ";
         // $c = "  where trip='".$trip."' ";
         $res = self::$sql->select_objects(self::$table_name, __CLASS__, $c, false);
-		var_dump($res);
+		//var_dump($res);
 		$o = self::get_by_trip_slug($res->trip, $res->slug);
 		return $o;
     }
@@ -55,13 +56,13 @@ class Banner extends Base\ModelBase
 		$images_dir = self::$locator->banner_images_dir($trip, $slug);
         $obj->get_from_file($fn);
         $obj = Factory::model_from_hed($obj); 
-		var_dump($images_dir);var_dump($obj);
+		//var_dump($images_dir);var_dump($obj);
 
 		$list = scandir($images_dir);
 		$x = array();
 		foreach( $list as $ent){
 			if( ($ent != ".") && ($ent != "..") ){
-				print "\n<p>$ent</p>\n";
+				//print "\n<p>$ent</p>\n";
 				$tmp = new \stdClass();
 				$tmp->url = self::$locator->url_banner_image($trip, $slug, $ent);
 				$tmp->path = self::$locator->banner_image_filepath( $trip, $slug, $ent);
@@ -74,7 +75,7 @@ class Banner extends Base\ModelBase
         return $obj;
     }
 	public function getImages(){
-		
+		return $obj->images_list;
 	}
 
 }
