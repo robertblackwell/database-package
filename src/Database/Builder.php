@@ -254,6 +254,7 @@ class Builder
 				`banner` mediumtext CHARSET UTF8 ,
 				`image` mediumtext CHARSET UTF8 ,
 				`main_content` mediumtext CHARSET UTF8 ,
+				`image_name` mediumtext CHARSET UTF8 ,
 				`image_url` mediumtext CHARSET UTF8 ,
 				PRIMARY KEY (`slug`)
 			) ENGINE=InnoDB DEFAULT CHARSET UTF8;";
