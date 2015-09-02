@@ -454,7 +454,7 @@ class Locator
         return "content.php";
     }
 	function url_editorial_image($trip, $slug, $image_name){
-		$s = $this->editorial_root()."/".$image_name;
+		$s = $this->editorial_root()."/$slug/".$image_name;
 		$s2 = str_replace($this->doc_root, "", $s);
 		return $s2;
 	}
