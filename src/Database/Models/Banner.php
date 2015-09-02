@@ -15,7 +15,11 @@ use Database\Locator;
 */
 class Banner extends Base\ModelBase
 {
+	//
+	// This holds a ist of the images associated with this banner object.
+	//
 	private $images_list;
+	
     static $table_name = "banners";
     static $field_names = array(
         "version"=>"text",
@@ -38,8 +42,9 @@ class Banner extends Base\ModelBase
         parent::__construct($obj);
     }  
     /*!
-    * Finds the latest Banner in reverse chronological order.
-    * @return array of objects of types VOEntry, VOPost, VOArticle
+    * Finds the $trip and $slug for the latest Banner in reverse chronological order.
+	* Then read that banner as a HEDObject and create the corresponding list of images
+    * @return array of objects of types \Database\Model\Banner
     */
     static function find_latest_for_trip($trip){
         $c = "  where trip='".$trip."' order by last_modified_date desc, slug limit 0,1 ";
@@ -56,13 +61,11 @@ class Banner extends Base\ModelBase
 		$images_dir = self::$locator->banner_images_dir($trip, $slug);
         $obj->get_from_file($fn);
         $obj = Factory::model_from_hed($obj); 
-		//var_dump($images_dir);var_dump($obj);
 
 		$list = scandir($images_dir);
 		$x = array();
 		foreach( $list as $ent){
 			if( ($ent != ".") && ($ent != "..") ){
-				//print "\n<p>$ent</p>\n";
 				$tmp = new \stdClass();
 				$tmp->url = self::$locator->url_banner_image($trip, $slug, $ent);
 				$tmp->path = self::$locator->banner_image_filepath( $trip, $slug, $ent);
@@ -74,6 +77,9 @@ class Banner extends Base\ModelBase
 		// $obj->banner = \Banner\Object::create($trip, $image_dir);
         return $obj;
     }
+	//
+	// Return details (name, file path, url) of the images in this banner object.
+	//
 	public function getImages(){
 		return $this->images_list;
 	}
