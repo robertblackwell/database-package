@@ -300,10 +300,10 @@ class Factory {
         $vals['content_path'] = $hed_obj->_file_path; 
         $vals['entity_path'] = dirname($hed_obj->_file_path); 
 		
-        $vals['image_path'] = $vals['entity_path']."/".$vals['image'];
-        $vals['image_url'] =  str_replace(\Registry::$globals->doc_root, "", $vals['image_path']);
-		
-		$vals['banner_folder_path'] = $locator->banner_dir($vals['trip'], $vals['banner']);
+		//         $vals['image_path'] = $vals['entity_path']."/".$vals['image'];
+		//         $vals['image_url'] =  str_replace(\Registry::$globals->doc_root, "", $vals['image_path']);
+		//
+		// $vals['banner_folder_path'] = $locator->banner_dir($vals['trip'], $vals['banner']);
 		
         //print_r($vals);
 		//exit();
