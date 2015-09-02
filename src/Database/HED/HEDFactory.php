@@ -129,7 +129,7 @@ class HEDFactory
             mkdir($item_dir."/Thumbnails", 511, true);
             chmod($item_dir."/Thumbnails", 511);            
         }
-		$obj = new \Database\HEDObject();
+		$obj = new HEDObject();
 		$obj->get_from_file($file_name);
 		return $obj;
     }
