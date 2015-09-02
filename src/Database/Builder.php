@@ -251,7 +251,6 @@ class Builder
 				`published_date` date DEFAULT NULL,
 				`last_modified_date` date DEFAULT NULL,
 				`trip` varchar(20) CHARSET UTF8  DEFAULT NULL,
-				`banner` mediumtext CHARSET UTF8 ,
 				`main_content` mediumtext CHARSET UTF8 ,
 				`image_name` mediumtext CHARSET UTF8 ,
 				PRIMARY KEY (`slug`)

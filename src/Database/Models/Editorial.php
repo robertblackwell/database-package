@@ -26,7 +26,6 @@ class Editorial extends Base\ModelBase
         "last_modified_date"=>"date",
         "trip"=>"text",
         "title"=>"html",
-        'banner'=>'text',
 		'main_content'=>'html',
         'image_name'=>'text',
 	);  
