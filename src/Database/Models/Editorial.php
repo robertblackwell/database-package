@@ -39,7 +39,7 @@ class Editorial extends Base\ModelBase
 		
 	} 
     public static function get_by_trip_slug($trip, $slug){
-        $obj = new HEDObject();
+        $hobj = new HEDObject();
         $fn = self::$locator->editorial_filepath($trip, $slug);
         $hobj->get_from_file($fn);
         $ed = Factory::model_from_hed($hobj); 
