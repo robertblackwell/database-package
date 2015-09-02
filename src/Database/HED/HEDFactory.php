@@ -110,7 +110,7 @@ class HEDFactory
                     ."</div>\n";
         }
         self::print_hed_footer();
-    
+    	print "<!-- done -->";
         $s = ob_get_clean();
 		// print "<pre>$s </pre>";
 		$d = $item_dir;
