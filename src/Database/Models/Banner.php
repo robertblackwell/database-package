@@ -75,7 +75,7 @@ class Banner extends Base\ModelBase
         return $obj;
     }
 	public function getImages(){
-		return $obj->images_list;
+		return $this->images_list;
 	}
 
 }
