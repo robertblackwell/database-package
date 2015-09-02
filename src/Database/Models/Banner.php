@@ -63,8 +63,8 @@ class Banner extends Base\ModelBase
 			if( ($ent != ".") && ($ent != "..") ){
 				print "\n<p>$ent</p>\n";
 				$tmp = new \stdClass();
-				$tmp->url = self::$locator->url_banner_image($trip, $banner, $ent);
-				$tmp->path = self::$locator->banner_image_filepath( $trip, $banner, $ent);
+				$tmp->url = self::$locator->url_banner_image($trip, $slug, $ent);
+				$tmp->path = self::$locator->banner_image_filepath( $trip, $slug, $ent);
 				$x[] = $tmp;
 					
 			}
