@@ -6,7 +6,7 @@ use Database\Object as Db;
 class BigAllTests extends TestSuite {
     function __construct(){
         Trace::disable();
-        $this->TestSuite('All tests');
+//         $this->TestSuite('All tests');
         $this->addFile(dirname(dirname(__FILE__))."/utility/index.php");//need to build the database
         $this->addFile(dirname(dirname(__FILE__))."/connect_db/index.php");
         $this->addFile(dirname(dirname(__FILE__))."/find_article/index.php");
@@ -26,4 +26,8 @@ class BigAllTests extends TestSuite {
         $this->addFile(dirname(dirname(__FILE__))."/utest/index.php");
     }
 }
+
+$tests = new \BigAllTests();
+$tests->run(new \MyDisplay());
+
 ?>

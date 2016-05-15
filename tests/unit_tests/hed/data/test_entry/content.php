@@ -28,8 +28,6 @@
 		<?php Skin::JournalGalleryThumbnails($trip, $entry); ?>                                                                
         <p>and here</p>
 	</div>
-	<div id="camping">ABCDEFG</div>
-	<div id="border">ABCDEFG</div>
 
 </body>
-</html>
+</html><!-- done -->

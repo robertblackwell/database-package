@@ -21,7 +21,7 @@ class test_create extends UnittestCase{
 		$creator = new \Database\Utilities\Factory($this->db);
 		$creator->create_journal_entry('rtw', '111111', array());
 		$creator->create_post('rtw', '111112', array());
-		$creator->create("\Database\VO\Article", 'rtw', '111113', array());
+		$creator->create("\Database\VO\Article", 'rtw', '111113', array()); 
 	}
 }
 ?>

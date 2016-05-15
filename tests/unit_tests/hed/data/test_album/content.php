@@ -17,4 +17,4 @@
 	<div id="album_path">ABCDEFG</div>
 
 </body>
-</html>
+</html><!-- done -->

@@ -3,13 +3,13 @@ namespace Database\Models;
 
 use Database\HED\HEDObject;
 use Database\Locator;
- 
+
 /**
 * @brief This object represents photo albums as displayed on the sites various "photo" pages and as contained
 * within content items.
 *
 * static methods are provided for geting/finding lists of albums and individual albums.
-* 
+*
 * @ingroup Models
 *
 */
@@ -28,18 +28,19 @@ class Album extends Base\ModelBase
         "title"=>"html",
         'file_path'=>'text',
         'album_path'=>'text',
-        );  
+	);
     function __construct($obj){
         $this->vo_fields = self::$field_names;
         $this->table = self::$table_name;
+		$this->_images = null;
         parent::__construct($obj);
-    }  
+    }
     public static function get_by_trip_slug($trip, $slug){
         $obj = new HEDObject();
         $fn = self::$locator->album_filepath($trip, $slug);
         $obj->get_from_file($fn);
-        $item = Factory::model_from_hed($obj);    
-        $item->gallery = \Gallery\Object::create(dirname($fn));    
+        $item = Factory::model_from_hed($obj);
+        $item->gallery = \Gallery\Object::create(dirname($fn));
         return $item;
     }
     /*!
@@ -53,14 +54,14 @@ class Album extends Base\ModelBase
         $trip = $r->trip;
         $obj = new HEDObject();
         $fn = self::$locator->album_filepath($trip, $slug);
-        $obj->get_from_file($fn);
+      $obj->get_from_file($fn);
         $item = Factory::model_from_hed($obj);
         return $item;
     }
     /*!
-    * Find all the articles and return them in an array of VOCategory objects
+    * Find all the albums and return them in an array of Album objects
     * @param count - Limits the number returned
-    * @return array of VOCategory objects
+    * @return array of Album objects
     */
     static function find($count=NULL){
         $count_str = ($count)? "limit 0, $count": "" ;
@@ -74,12 +75,12 @@ class Album extends Base\ModelBase
         return $r;
     }
     /*!
-    * Find all the articles and return them in an array of VOCategory objects
+    * Find all the albums for a trip and return them as an array of Album objects
     * @param count - Limits the number returned
-    * @return array of VOCategory objects
+    * @return array of Album objects
     */
     static function find_for_trip($trip, $count=NULL){
-        $where = ( is_null($trip) )? "": "where trip=\"".$trip."\" "; 
+        $where = ( is_null($trip) )? "": "where trip=\"".$trip."\" ";
         $count_str = ($count)? "limit 0, $count": "" ;
         $c = $where." order by last_modified_date desc, slug asc $count_str ";
         $r = self::$sql->select_objects(self::$table_name, __CLASS__ , $c);
@@ -93,6 +94,5 @@ class Album extends Base\ModelBase
     function sql_delete(){
         self::$sql->query("DELETE from albums where trip='".$this->trip."' and slug='".$this->slug."'");
     }
-
 }
 ?>

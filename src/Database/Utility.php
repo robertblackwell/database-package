@@ -260,7 +260,7 @@ class Utility
 	*/
     function load_db_from($items_dir)
 	{
-        \Trace::on();
+        \Trace::off();
         \Trace::function_entry();
         $item_names = $this->get_item_names($items_dir);
 		//         var_dump($items_dir);

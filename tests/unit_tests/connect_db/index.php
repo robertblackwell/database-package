@@ -10,4 +10,5 @@ class AllSQLTests extends TestSuite {
                        new SimplePatternCollector('/_test.php/'));
     }
 }
+
 ?>

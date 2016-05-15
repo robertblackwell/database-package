@@ -16,7 +16,7 @@ namespace Database;
 *   @note This class is a singleton
 *
 *   The Locator class is now required to support multiple "entities" - 'content_items' and 'albums'
-*   and maybe more in the future.
+*   and maybe more in the future. ( now also banner and editorial objects)
 *
 *   The interface must reflect that.
 *   -   relative_dir(type, trip, slug) -    get the path name relative to doc root of the directory 
@@ -34,7 +34,8 @@ namespace Database;
 *	-	a default photo gallery that is composed of two subdirectories  Images and Thumbnails
 *	-	named photo galleries.
 *		-	such a gallery is a subdirectory (whose name is the gallery name) which contains Image and Thumbnail
-*			sub directories		 
+*			sub directories	
+*	-	named indovidual photos	 
 *
 * @todo - make all the functions instance methods rather than static
 */
