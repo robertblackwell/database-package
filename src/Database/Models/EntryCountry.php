@@ -27,7 +27,7 @@ class EntryCountry extends Base\ModelBase
     static function find($count=NULL){
         //print "<p>".__METHOD__."</p>";
         $count_str = ($count)? "limit 0, $count": "" ;
-        $c = "SELECT distinct country FROM my_items WHERE type='entry'   order by country asc";
+        $c = "SELECT distinct trip, country FROM my_items WHERE type='entry'   order by country asc";
         return self::$sql->query_objects($c, __CLASS__);
     }
 
