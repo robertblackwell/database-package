@@ -1,4 +1,11 @@
 <?php
+use Database\Object as Db;
+use Database\Models\CategorizedItem;
+
+print "config being included \n";
+
+global $config;
+
 $config = array(
 			'sql'=>array(
 				'db_name'=>"database_test",
@@ -13,4 +20,6 @@ $config = array(
 				'url_root'=>"/data",
 				)
 			);
+Db::init($config);
+
 ?>

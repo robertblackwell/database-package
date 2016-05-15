@@ -280,6 +280,24 @@ EOD;
 		$this->sql->query($query_categories);
 		\Trace::function_exit();
 	}
+	/**
+	* Create categories view
+	*/
+	public function create_view_categories_trip()
+	{
+		\Trace::function_entry();
+
+		$query_categories=<<<EOD
+			create view categories as (
+			select distinct categorized_items.category, my_items.trip 
+			from categorized_items 
+			inner join my_items 
+			on categorized_items.item_slug = my_items.slug)
+EOD;
+
+		$this->sql->query($query_categories);
+		\Trace::function_exit();
+	}
 	
 	/**
 	* Create categories table

@@ -7,6 +7,8 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'Trace' => array($vendorDir . '/robertblackwell/trace/src'),
+    'LiteTest' => array($vendorDir . '/robertblackwell/litetest/classes'),
     'Gallery' => array($vendorDir . '/robertblackwell/gallery/src'),
     'Database' => array($baseDir . '/src'),
+    'Colors' => array($vendorDir . '/kevinlebrun/colors.php/src'),
 );

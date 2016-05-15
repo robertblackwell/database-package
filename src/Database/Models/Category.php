@@ -11,6 +11,8 @@ class Category extends Base\ModelBase
     static $table_name = "categories";
     static $field_names = array(
         "category"=>"text",
+		"slug" => "text",
+		"trip" => "text"
         );
     function __construct($obj=null){       
         $this->vo_fields = self::$field_names;
@@ -21,14 +23,14 @@ class Category extends Base\ModelBase
 
     static function find_for_trip($trip, $count=NULL){
         $count_str = ($count)? "limit 0, $count": "" ;
-        $q = "select distinct categorized_items.category, my_items.trip ".
+        $q = "select distinct categorized_items.category, my_items.trip, my_items.slug ".
                 " from categorized_items". 
                 " inner join".
                     " my_items on categorized_items.item_slug = my_items.slug".
                     " where trip='".$trip."' ".
                     " order by category asc $count_str "; 
         $r = self::$sql->query_objects($q, __CLASS__ , true);
-        //var_dump($r);exit();
+        var_dump($r);exit();
         return $r;
     }
     /*!
@@ -40,7 +42,7 @@ class Category extends Base\ModelBase
     */
     static function find($count=NULL){
         $count_str = ($count)? "limit 0, $count": "" ;
-        $q = "select distinct categorized_items.category, my_items.trip ".
+        $q = "select distinct categorized_items.category, my_items.trip, my_items.slug ".
                 " from categorized_items ". 
                 " inner join".
                     " my_items on categorized_items.item_slug = my_items.slug".

@@ -1,13 +1,13 @@
 <?php
-require_once(dirname(dirname(dirname(__FILE__)))."/include/header.php");
+// require_once(dirname(dirname(dirname(__FILE__)))."/include/header.php");
 
 use Database\Object as Db;
 use \Database\Models\Category as Category;
 
-class TestFindCategory extends UnitTestCase{
+class TestFindCategory extends \LiteTest\TestCase{
     function setUp(){
-        global $config;
-		Db::init($config);
+        // global $config;
+		// Db::init($config);
 		$db = Db::get_instance();
 //        var_dump($db);exit();
     }
@@ -18,10 +18,10 @@ class TestFindCategory extends UnitTestCase{
         foreach($result as $c){
             $cats[] = $c->category;
         }
-//        var_dump($cats);
-        $this->assertNotEqual($result, null);
+       var_dump($cats);
+        $this->assertFalse($result === null);
         $this->assertTrue(is_array($result));
-        $this->assertNotEqual(count($result), 0);
+        $this->assertFalse(count($result) === 0);
         $this->assertEqual(get_class($result[0]), "Database\Models\Category");
 	    Trace::function_exit();
     }
@@ -35,9 +35,9 @@ class TestFindCategory extends UnitTestCase{
             $this->assertEqual($c->trip,$trip);
         }
 //        var_dump($cats);
-        $this->assertNotEqual($result, null);
+        $this->assertFalse($result === null);
         $this->assertTrue(is_array($result));
-        $this->assertNotEqual(count($result), 0);
+        $this->assertFalse(count($result) === 0);
         $this->assertEqual(get_class($result[0]), "Database\Models\Category");
 	    Trace::function_exit();
     }

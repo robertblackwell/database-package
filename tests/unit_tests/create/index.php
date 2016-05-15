@@ -1,15 +1,16 @@
 <?php
-require_once(dirname(dirname(__FILE__))."/vendor/Autoloader.php");
-require_once(dirname(dirname(__FILE__))."/config.php");
-
-$loader = new \Autoloader\loader(dirname(dirname(dirname(__FILE__)))."/src");
+// require_once(dirname(dirname(__FILE__))."/vendor/Autoloader.php");
+// require_once(dirname(dirname(__FILE__))."/config.php");
+//
+// $loader = new \Autoloader\loader(dirname(dirname(dirname(__FILE__)))."/src");
 
 use Database\Object as Db;
-class test_create extends UnittestCase{
+class test_create extends \LiteTest\TestCase{
 	function setUp(){
 		print "setup fired \n";
 		global $config;
 		$this->db = new Db($config);
+		
 		$fn1 = $this->db->locator->item_dir("rtw", "111111");
 		$fn2 = $this->db->locator->item_dir("rtw", "111112");
 		$fn3 = $this->db->locator->item_dir("rtw", "111113");

@@ -9,12 +9,14 @@ class CategorizedItem extends Base\ModelBase
 {
     static $table_name = "categorized_items";
     static $field_names = array(
+    	"trip" => "text",
         "category"=>"text",
         "item_slug"=>"text",
         );
     function __construct($obj=null){       
         $this->vo_fields = self::$field_names;
         $this->table = self::$table_name;
+		var_dump($obj);
         parent::__construct($obj);
     }
     /*!

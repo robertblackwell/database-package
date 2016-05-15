@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "d0905494c34de98d3c99126794ca88c6",
-    "content-hash": "357470de7314a59a230dd657d1580eb9",
+    "hash": "a504c794abc04a55af17c5a137455330",
+    "content-hash": "2a5b799571381f78c6eb043e955a3286",
     "packages": [
         {
             "name": "robertblackwell/gallery",
@@ -118,6 +118,57 @@
         }
     ],
     "packages-dev": [
+        {
+            "name": "kevinlebrun/colors.php",
+            "version": "0.4.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/kevinlebrun/colors.php.git",
+                "reference": "d132f36d06e48ea080855af19b4bcb1fb615224a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/kevinlebrun/colors.php/zipball/d132f36d06e48ea080855af19b4bcb1fb615224a",
+                "reference": "d132f36d06e48ea080855af19b4bcb1fb615224a",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "3.7.*",
+                "satooshi/php-coveralls": "dev-master",
+                "squizlabs/php_codesniffer": "1.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Colors": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Kevin Le Brun",
+                    "email": "lebrun.k@gmail.com",
+                    "homepage": "http://kevinlebrun.fr",
+                    "role": "developer"
+                }
+            ],
+            "description": "Colors for PHP CLI scripts",
+            "homepage": "https://github.com/kevinlebrun/colors.php",
+            "keywords": [
+                "cli",
+                "color",
+                "colors",
+                "console",
+                "shell"
+            ],
+            "time": "2014-12-23 01:23:37"
+        },
         {
             "name": "phpunit/php-code-coverage",
             "version": "2.2.4",
@@ -268,20 +319,23 @@
         },
         {
             "name": "phpunit/php-timer",
-            "version": "1.0.7",
+            "version": "1.0.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/php-timer.git",
-                "reference": "3e82f4e9fc92665fafd9157568e4dcb01d014e5b"
+                "reference": "38e9124049cf1a164f1e4537caf19c99bf1eb260"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/php-timer/zipball/3e82f4e9fc92665fafd9157568e4dcb01d014e5b",
-                "reference": "3e82f4e9fc92665fafd9157568e4dcb01d014e5b",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-timer/zipball/38e9124049cf1a164f1e4537caf19c99bf1eb260",
+                "reference": "38e9124049cf1a164f1e4537caf19c99bf1eb260",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.3"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4|~5"
             },
             "type": "library",
             "autoload": {
@@ -305,7 +359,7 @@
             "keywords": [
                 "timer"
             ],
-            "time": "2015-06-21 08:01:12"
+            "time": "2016-05-12 18:03:57"
         },
         {
             "name": "phpunit/php-token-stream",
@@ -488,6 +542,45 @@
             "time": "2014-06-12 07:22:15"
         },
         {
+            "name": "robertblackwell/litetest",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/robertblackwell/litetest.git",
+                "reference": "739e6d59563b571c4744a0c396b2879f99cb3126"
+            },
+            "require": {
+                "kevinlebrun/colors.php": "0.*"
+            },
+            "bin": [
+                "build/litetest.phar",
+                "build/litetest"
+            ],
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "LiteTest": "classes/"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "robertblackwell",
+                    "homepage": "https://github.com/robertblackwell"
+                }
+            ],
+            "description": "A lightweight unit testing package - fork of",
+            "homepage": "https://github.com/robertblackwell/litetest",
+            "keywords": [
+                "lightweight",
+                "php",
+                "unit testing"
+            ],
+            "time": "2015-12-21 16:54:16"
+        },
+        {
             "name": "sebastian/comparator",
             "version": "1.2.0",
             "source": {
@@ -605,16 +698,16 @@
         },
         {
             "name": "sebastian/environment",
-            "version": "1.3.3",
+            "version": "1.3.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/environment.git",
-                "reference": "6e7133793a8e5a5714a551a8324337374be209df"
+                "reference": "2292b116f43c272ff4328083096114f84ea46a56"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/environment/zipball/6e7133793a8e5a5714a551a8324337374be209df",
-                "reference": "6e7133793a8e5a5714a551a8324337374be209df",
+                "url": "https://api.github.com/repos/sebastianbergmann/environment/zipball/2292b116f43c272ff4328083096114f84ea46a56",
+                "reference": "2292b116f43c272ff4328083096114f84ea46a56",
                 "shasum": ""
             },
             "require": {
@@ -651,7 +744,7 @@
                 "environment",
                 "hhvm"
             ],
-            "time": "2015-12-02 08:37:27"
+            "time": "2016-05-04 07:59:13"
         },
         {
             "name": "sebastian/exporter",
@@ -813,16 +906,16 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/simpletest/simpletest.git",
-                "reference": "38e23175f3134b3eb157963da8df221c4fa532ca"
+                "reference": "7929413286a405a59c1187e77ff73f43ede23849"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/simpletest/simpletest/zipball/38e23175f3134b3eb157963da8df221c4fa532ca",
-                "reference": "38e23175f3134b3eb157963da8df221c4fa532ca",
+                "url": "https://api.github.com/repos/simpletest/simpletest/zipball/7929413286a405a59c1187e77ff73f43ede23849",
+                "reference": "7929413286a405a59c1187e77ff73f43ede23849",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.0.5"
+                "php": "^5.4 || ^7.0"
             },
             "replace": {
                 "lastcraft/simpletest": "self.version",
@@ -878,20 +971,20 @@
                 "testing",
                 "unit-test"
             ],
-            "time": "2015-12-08 14:47:13"
+            "time": "2016-01-23 20:03:54"
         },
         {
             "name": "symfony/yaml",
-            "version": "v2.8.0",
+            "version": "v2.8.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/yaml.git",
-                "reference": "f79824187de95064a2f5038904c4d7f0227fedb5"
+                "reference": "e4fbcc65f90909c999ac3b4dfa699ee6563a9940"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/yaml/zipball/f79824187de95064a2f5038904c4d7f0227fedb5",
-                "reference": "f79824187de95064a2f5038904c4d7f0227fedb5",
+                "url": "https://api.github.com/repos/symfony/yaml/zipball/e4fbcc65f90909c999ac3b4dfa699ee6563a9940",
+                "reference": "e4fbcc65f90909c999ac3b4dfa699ee6563a9940",
                 "shasum": ""
             },
             "require": {
@@ -927,7 +1020,7 @@
             ],
             "description": "Symfony Yaml Component",
             "homepage": "https://symfony.com",
-            "time": "2015-11-30 12:35:10"
+            "time": "2016-03-29 19:00:15"
         }
     ],
     "aliases": [],
@@ -936,6 +1029,7 @@
         "robertblackwell/gpscoordinates": 20,
         "robertblackwell/gallery": 20,
         "robertblackwell/trace": 20,
+        "robertblackwell/litetest": 20,
         "simpletest/simpletest": 20
     },
     "prefer-stable": false,

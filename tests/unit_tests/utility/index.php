@@ -1,14 +1,14 @@
 <?php
-require_once(dirname(dirname(dirname(__FILE__)))."/include/header.php");
+// require_once(dirname(dirname(dirname(__FILE__)))."/include/header.php");
 
 use Database\Object as Db;
 use Database\Models\Item;
 
-class Test_database_build extends UnitTestCase{
+class Test_database_build extends \LiteTest\TestCase{
     function setUp(){
         \Trace::disable();
-        global $config;
-		Db::init($config);
+		//         global $config;
+		// Db::init($config);
 		$this->db = Db::get_instance();
 		$this->locator = \Database\Locator::get_instance();
     }
