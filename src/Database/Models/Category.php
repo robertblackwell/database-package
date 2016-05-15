@@ -30,7 +30,6 @@ class Category extends Base\ModelBase
                     " where trip='".$trip."' ".
                     " order by category asc $count_str "; 
         $r = self::$sql->query_objects($q, __CLASS__ , true);
-        var_dump($r);exit();
         return $r;
     }
     /*!
