@@ -66,6 +66,7 @@ class Album extends Base\ModelBase
     static function find($count=NULL){
         $count_str = ($count)? "limit 0, $count": "" ;
         $c = " order by last_modified_date desc, slug asc $count_str ";
+        $c = " order by slug asc, last_modified_date desc $count_str ";
         $r = self::$sql->select_objects(self::$table_name, __CLASS__ , $c);
         foreach($r as $a){
             $trip = $a->trip;

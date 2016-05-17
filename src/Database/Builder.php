@@ -288,7 +288,7 @@ EOD;
 		\Trace::function_entry();
 
 		$query_categories=<<<EOD
-			create view categories as (
+			create view categories_by_trip as (
 			select distinct categorized_items.category, my_items.trip 
 			from categorized_items 
 			inner join my_items 
