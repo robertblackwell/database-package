@@ -1,9 +1,8 @@
 <?php
-require_once(dirname(dirname(dirname(__FILE__)))."/include/header.php");
 
 use Database\Object as Db;
 
-class Test_connect_db extends UnitTestCase{
+class Test_connect_db extends \LiteTest\TestCase{
 	function setUp(){
 	    //print "test connect db\n";
 		global $config;
@@ -14,13 +13,13 @@ class Test_connect_db extends UnitTestCase{
 	function test_connect(){
 	    Trace::function_entry();
 		$db = $this->db;
-		$this->assertNotEqual($db, null);
+		$this->assertFalse($db == null);
 		$this->assertEqual(get_class($db), "Database\Object");
 
-		$this->assertNotEqual(Db::$sql, null);
+		$this->assertFalse(Db::$sql == null);
 		$this->assertEqual(get_class(Db::$sql), "Database\SqlObject");
 
-		$this->assertNotEqual(Db::$locator, null);
+		$this->assertFalse(Db::$locator == null);
 		$this->assertEqual(get_class(Db::$locator), "Database\Locator");
 	    Trace::function_exit();
 	}

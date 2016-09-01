@@ -474,7 +474,7 @@ public function editorial_filepath($trip, $slug)
 
 
     /*!
-    * Remember that VOArticles have their main content stored in an auxiliary file in
+    * Remember that Articles have their main content stored in an auxiliary file in
     * the same directory as the properties/metas data file. This function returns the filename
     * used for that auxiliary file.
     * @return string The filename of the auxiliary file used for storying the main content of VOArtticles.

@@ -74,7 +74,7 @@ class ExtendedDOMNode
 	public function appendChildFromHTML($tag, $html){
 		//print "ExtendedDOMNode::appendChildFromHTML  ($tag  $html)\n";
 		$d = $this->_node->ownerDocument;
-		var_dump($this->_node->ownerDocument);
+		// var_dump($this->_node->ownerDocument);
 		$xd = ExtendedDOMDocument::create($d);
 		$n = $xd->createElementFromHTML($tag, $html);
 		$n = $this->_node->appendChild($n);

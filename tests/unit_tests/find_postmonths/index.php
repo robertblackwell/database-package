@@ -1,10 +1,9 @@
 <?php
-require_once(dirname(dirname(dirname(__FILE__)))."/include/header.php");
 
 use \Database\Object as Db;
 use \Database\Models\PostMonth as PostMonth;
 
-class TestPostMonth extends UnitTestCase{
+class TestPostMonth extends \LiteTest\TestCase{
     function setUp(){
         global $config;
 		Db::init($config);

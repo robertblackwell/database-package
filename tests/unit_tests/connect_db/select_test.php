@@ -3,7 +3,7 @@ require_once(dirname(dirname(dirname(__FILE__)))."/include/header.php");
 
 use Database\Object as Db;
 
-class Test_select_db extends UnitTestCase{
+class Test_select_db extends \LiteTest\TestCase{
 	function setUp(){
 	    //print "test connect db\n";
 		global $config;

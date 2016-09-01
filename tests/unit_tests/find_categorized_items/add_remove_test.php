@@ -1,11 +1,10 @@
 <?php
-require_once(dirname(dirname(dirname(__FILE__)))."/include/header.php");
 
 use Database\Object as Db;
 use Database\Models\CategorizedItem;
 use Database\Models\Category;
 
-class TestAddRemoveCategorizedItem extends UnitTestCase{
+class TestAddRemoveCategorizedItem extends \LiteTest\TestCase{
     function setUp(){
         global $config;
 		Db::init($config);

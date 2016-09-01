@@ -1,9 +1,8 @@
 <?php
-require_once(dirname(dirname(dirname(__FILE__)))."/include/header.php");
 
 use Database\Object as Db;
 
-class Test_meta_db extends UnitTestCase{
+class Test_meta_db extends \LiteTest\TestCase{
 	function setUp(){
 	    //print "test connect db\n";
 		global $config;
@@ -15,7 +14,7 @@ class Test_meta_db extends UnitTestCase{
 	    Trace::function_entry();
 	    $r = $this->sql->getTables();
 	    //var_dump($r);
-	    $t = array('albums', 'my_items', 'categorized_items', 'categories');
+	    $t = array('albums', 'my_items', 'categorized_items', 'categories', 'banners', 'editorials');
 	    $this->assertEqual(count($t), count($r));
 	    foreach($t as $tn){
 	        $this->assertTrue(in_array($tn, $r));
@@ -30,6 +29,7 @@ class Test_meta_db extends UnitTestCase{
 // 	    $this->assertEqual("category", $r[0]['Field']);
 // 	}
 	function test_get_fields_categorized_items(){
+		
 	    Trace::function_entry();
 	    $r = $this->sql->getFields('categorized_items');
 	    //var_dump($r);

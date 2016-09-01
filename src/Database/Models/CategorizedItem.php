@@ -16,7 +16,7 @@ class CategorizedItem extends Base\ModelBase
     function __construct($obj=null){       
         $this->vo_fields = self::$field_names;
         $this->table = self::$table_name;
-		var_dump($obj);
+		// var_dump($obj);
         parent::__construct($obj);
     }
     /*!

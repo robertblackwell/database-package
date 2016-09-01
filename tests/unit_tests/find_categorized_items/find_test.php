@@ -14,7 +14,7 @@ class TestCategorizedItems extends \LiteTest\TestCase{
     function test_1(){    
 	    Trace::function_entry();
         $result = CategorizedItem::find();
-		print_r($result);
+		// print_r($result);
         $this->assertTrue($result !== null);
         $this->assertTrue(is_array($result));
         $this->assertTrue(count($result) !== 0);

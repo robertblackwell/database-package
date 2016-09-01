@@ -1,9 +1,11 @@
 <?php
-require_once(dirname(dirname(dirname(__FILE__)))."/include/header.php");
+
 use Database\Object as Db;
 use Database\Utilities\Factory;
-class TestFindArticle extends UnitTestCase{
+
+class TestCreateNewEntry extends \LiteTest\TestCase{
     function setUp(){
+		\Trace::disable();
         global $config;
 		Db::init($config);
 		$db = Db::get_instance();
@@ -17,9 +19,9 @@ class TestFindArticle extends UnitTestCase{
 //		\Database\Models\Factory::create_entry($trip, $slug, $edate, $de);
 		$p1 = dirname(__FILE__)."/output/content.php";
 		$p2 = dirname(__FILE__)."/correct_content.php";
-		
-		print system("rm -Rv ".dirname(__FILE__)."/output");
-		print "\n";
+		$verbose = "";
+		$oput = system("rm -R{$verbose} ".dirname(__FILE__)."/output");
+		// print $oput . "\n";
 		
         \Database\HED\HEDFactory::create_journal_entry(dirname(__FILE__)."/output/content.php", $trip, $slug, $edate, $de);
 		$this->assertEqual(file_get_contents($p1), file_get_contents($p2));

@@ -28,6 +28,10 @@ class Editorial extends Base\ModelBase
         "title"=>"html",
 		'main_content'=>'html',
         'image_name'=>'text',
+		'image'=>'text'
+		//
+		// @Note: image_url is an attribute computed and added to this object at retreivl time. See code below
+		//
 	);  
     function __construct($obj){
         $this->vo_fields = self::$field_names;

@@ -1,12 +1,12 @@
 <?php
-require_once(dirname(dirname(dirname(__FILE__)))."/include/header.php");
 
 use Database\Locator as Locator;
-class test_locator extends UnittestCase{
+class test_locator extends Litetest\TestCase{
 	function setUp(){
 		global $config;
 		//var_dump($config);
 		Locator::init($config['hed']);
+		Trace::disable();
 	}
 	// We create a locator object
 	function test_1(){

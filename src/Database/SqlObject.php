@@ -243,7 +243,7 @@ class SqlObject
 		$a = array();
 		$result = mysqli_query($this->db_connection, $query); 
 		if( ! $result ) 
-		    throw new Exception("could not do a query $query in ".__FILE__." at line ".__LINE__." ".mysqli_error());
+		    throw new Exception("could not do a query $query in ".__FILE__." at line ".__LINE__." ".mysqli_error($this->db_connection));
 
 		while ($row = mysqli_fetch_assoc($result)){
 			$a[] = new $class($row);

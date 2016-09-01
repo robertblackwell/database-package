@@ -88,6 +88,7 @@ class Factory {
 	*/    
 	static function featured_image($o){
 	    \Trace::off();
+		\Trace::disable();
         \Trace::function_entry();
 	    $text = $o->get_text('featured_image');
 		if( is_null($text) || ($text == '') ){

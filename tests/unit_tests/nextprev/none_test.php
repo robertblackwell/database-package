@@ -1,11 +1,10 @@
 <?php
-require_once(dirname(dirname(dirname(__FILE__)))."/include/header.php");
 
 use Database\Object as Db;
 use \Database\Models\Item;
 
 
-class TestNextPrevNoCreiteria extends UnitTestCase{
+class TestNextPrevNoCreiteria extends Litetest\TestCase{
     function setUp(){
         global $config;
 		Db::init($config);

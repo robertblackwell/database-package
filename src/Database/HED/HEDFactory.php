@@ -95,7 +95,7 @@ class HEDFactory
                 print "\t<div id=\"$f\">".$typ."</div>\n";
             else if($v == "has")
                 ;
-            else if( $f == "main_content" ){
+			else if( $f == "main_content"  ){
                 print "\t<div id=\"$f\">\n\t\t"
                     . ((array_key_exists($f, $field_values))?   $field_values[$f] : 
         '<p>main content goes here</p>
@@ -110,7 +110,7 @@ class HEDFactory
                     ."</div>\n";
         }
         self::print_hed_footer();
-    	print "<!-- done -->";
+    	// print "<!-- done -->";
         $s = ob_get_clean();
 		// print "<pre>$s </pre>";
 		$d = $item_dir;
@@ -198,7 +198,7 @@ class HEDFactory
         $parms['published_date'] = $dte;
         $parms['last_modified_date'] = $dte;
         $parms['title'] = $name;
-		var_dump($parms);
+		// var_dump($parms);
         $obj = self::create($file_path, "album", $trip, $slug, $parms);
     }
 	/**
@@ -208,7 +208,7 @@ class HEDFactory
 	* @param string $slug the unique id for this editorial
 	* @param string $dte  The published date to be recorded
 	* @param string $name The name of title for this editorial
-	* @param array  $parm An array of key value pairs representing additional dat to be stored for the album  
+	* @param array  $parm An array of key value pairs representing additional dat to be stored for the editorial  
 	* @return
 	*
 	*/
@@ -220,8 +220,12 @@ class HEDFactory
         $parms['creation_date'] = $dte;
         $parms['published_date'] = $dte;
         $parms['last_modified_date'] = $dte;
+		$parms['title'] = $name;
+		$parms['main_content'] = '<p>Put some junk here</p>';
+		$parms['image_name'] = $parms['image'];
 //        $parms['title'] = $name;
 		// var_dump($parms);
+		// exit();
         $obj = self::create($file_path, "editorial", $trip, $slug, $parms);
 		return $obj;
     }
@@ -239,7 +243,6 @@ class HEDFactory
 	*/
     public static function create_banner($file_path, $trip, $slug, $dte, $name, $parms = array())
 	{
-		print "<h3>Create banner XXX</h3>";
         $parms['trip'] = $trip;
         $parms['version'] = "2.0";
         $parms['status'] = "draft";

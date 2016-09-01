@@ -1,10 +1,10 @@
 <?php
-require_once(dirname(dirname(dirname(__FILE__)))."/include/header.php");
 
 use Database\Object as Db;
 use Database\Models\Item as Item;
-class test_import_post extends UnittestCase{
+class test_import_post extends Litetest\TestCase{
 	function setUp(){
+		Trace::disable();
         global $config;
 		Db::init($config);
 		$this->db = Db::get_instance();

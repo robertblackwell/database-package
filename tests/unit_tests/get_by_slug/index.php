@@ -1,18 +1,19 @@
 <?php
-require_once(dirname(dirname(dirname(__FILE__)))."/include/header.php");
 
 use Database\Object as Db;
 use Database\Models\Item;
 use Database\Models\Album;
+use Trace as Trace;
 
-class Test_get_by_slug extends UnitTestCase{
+class Test_get_by_slug extends Litetest\TestCase{
     function setUp(){
+		\Trace::disable();
         global $config;
 		Db::init($config);
 		$db = Db::get_instance();
     }
     function test_1(){    
-	    Trace::function_entry();
+	    \Trace::function_entry();
         $r = Item::get_by_trip_slug("rtw", "130417");
         $this->assertNotEqual($r, null);
         $this->assertEqual(get_class($r), "Database\Models\Entry");
@@ -20,7 +21,7 @@ class Test_get_by_slug extends UnitTestCase{
 	    Trace::function_exit();
     }
     function test_2(){    
-	    Trace::function_entry();
+	    \Trace::function_entry();
         $r = Item::get_by_slug('130417');
         $this->assertNotEqual($r, null);
         $this->assertEqual(get_class($r), "Database\Models\Entry");
@@ -51,7 +52,7 @@ class Test_get_by_slug extends UnitTestCase{
 	    Trace::function_exit();
     }
     function test_3(){    
-	    Trace::function_entry();
+	    \Trace::function_entry();
         $r = Item::get_by_trip_slug('rtw', 'electricalpart1');
         $this->assertNotEqual($r, null);
         $this->assertEqual(get_class($r), "Database\Models\Post");
@@ -59,7 +60,7 @@ class Test_get_by_slug extends UnitTestCase{
 	    Trace::function_exit();
     }
     function test_4(){    
-	    Trace::function_entry();
+	    \Trace::function_entry();
         $r = Item::get_by_slug('electricalpart1');
         $this->assertNotEqual($r, null);
         $this->assertEqual(get_class($r), "Database\Models\Post");

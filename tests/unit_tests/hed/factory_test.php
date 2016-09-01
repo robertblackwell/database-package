@@ -1,5 +1,4 @@
 <?php
-require_once(dirname(dirname(dirname(__FILE__)))."/include/header.php");
 
 use Database\Object as Db;
 use Database\Models\Item;
@@ -9,7 +8,7 @@ use Database\HED\HEDObject;
 use Database\HED\HEDFactory;
 use Database\Locator;
 
-class Test_Factory extends UnitTestCase{
+class Test_Factory extends \LiteTest\TestCase{
     function setUp(){
         global $config;
         Db::init($config);

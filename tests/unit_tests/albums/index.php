@@ -1,9 +1,8 @@
 <?php
-require_once(dirname(dirname(dirname(__FILE__)))."/include/header.php");
 
 use Database\Object as Db;
 
-class TestFindArticle extends UnitTestCase{
+class TestFindArticle extends \LiteTest\TestCase{
     function setUp(){
         global $config;
 		Db::init($config);
@@ -32,22 +31,22 @@ class TestFindArticle extends UnitTestCase{
     
             $this->assertNotEqual($a->gallery, null);
             $this->assertEqual(get_class($a->gallery), "Gallery\Object");
-            var_dump($a);
-            var_dump($a->gallery->mascotPath());
+            // var_dump($a);
+            // var_dump($a->gallery->mascotPath());
         }
         //$this->assertEqual($result[3]->slug, "bolivia-1");
 	    Trace::function_exit();
     }
     function test_where_rtw(){
 	    Trace::function_entry();
-        $result = Database\Models\Album::find("rtw");
+        $result = Database\Models\Album::find_for_trip("rtw");
         foreach($result as $a){
             $this->assertNotEqual($a, null);
             $this->assertEqual(get_class($a), "Database\Models\Album");
     
             $this->assertNotEqual($a->gallery, null);
             $this->assertEqual(get_class($a->gallery), "Gallery\Object");
-            var_dump($a->gallery->mascotPath());
+            // var_dump($a->gallery->mascotPath());
             $this->assertEqual($a->trip,'rtw');
         }
         //$this->assertEqual($result[3]->slug, "bolivia-1");
@@ -55,14 +54,14 @@ class TestFindArticle extends UnitTestCase{
     }
     function test_where_theamericas(){
 	    Trace::function_entry();
-        $result = Database\Models\Album::find("theamericas");
+        $result = Database\Models\Album::find_for_trip("theamericas");
         foreach($result as $a){
             $this->assertNotEqual($a, null);
             $this->assertEqual(get_class($a), "Database\Models\Album");
     
             $this->assertNotEqual($a->gallery, null);
             $this->assertEqual(get_class($a->gallery), "Gallery\Object");
-            var_dump($a->gallery->mascotPath());
+            // var_dump($a->gallery->mascotPath());
             $this->assertEqual($a->trip,'theamericas');
         }
         //$this->assertEqual($result[3]->slug, "bolivia-1");

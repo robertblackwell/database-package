@@ -1,12 +1,11 @@
 <?php
-require_once(dirname(dirname(dirname(__FILE__)))."/include/header.php");
 
 use Database\Object as Db;
 use Database\Models\Item;
 use Database\Models\Album;
 use Database\Locator;
 
-class Test_Paths extends UnitTestCase{
+class Test_Paths extends Litetest\TestCase{
     function setUp(){
         global $config;
 		Db::init($config);

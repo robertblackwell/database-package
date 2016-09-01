@@ -1,5 +1,4 @@
 <?php
-// require_once(dirname(dirname(dirname(__FILE__)))."/include/header.php");
 
 use Database\Object as Db;
 use \Database\Models\Category as Category;
@@ -18,7 +17,7 @@ class TestFindCategory extends \LiteTest\TestCase{
         foreach($result as $c){
             $cats[] = $c->category;
         }
-       var_dump($cats);
+       // var_dump($cats);
         $this->assertFalse($result === null);
         $this->assertTrue(is_array($result));
         $this->assertFalse(count($result) === 0);
@@ -44,7 +43,7 @@ class TestFindCategory extends \LiteTest\TestCase{
     function test_2(){    
 	    Trace::function_entry();
         $result = Category::exists('vehicle');
-        var_dump($result);
+        // var_dump($result);
         $this->assertTrue($result);
 	    Trace::function_exit();
     }

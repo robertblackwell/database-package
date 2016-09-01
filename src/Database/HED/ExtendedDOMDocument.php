@@ -19,7 +19,7 @@ class ExtendedDOMDocument
 	public static function create($doc)
 	{
 		print "ExtendedDOMDocument::create \n";
-		var_dump($doc);
+		// var_dump($doc);
 		$obj = new ExtendedDOMDocument();
 		$obj->_document = $doc;
 		return $obj;

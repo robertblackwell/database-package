@@ -1,10 +1,9 @@
 <?php
-require_once(dirname(dirname(dirname(__FILE__)))."/include/header.php");
 
 use Database\Object as Db;
 use \Database\Models\Category as Category;
 
-class TestAddCategory extends UnitTestCase{
+class TestAddCategory extends \LiteTest\TestCase{
     function setUp(){
         global $config;
 		Db::init($config);
@@ -30,7 +29,7 @@ class TestAddCategory extends UnitTestCase{
         $this->assertTrue($this->category_exists("my_category"));
         Category::remove('my_category'); 
         $this->assertFalse($this->category_exists("my_category"));
-	    print __METHOD__."\n";
+	    // print __METHOD__."\n";
 	    Trace::function_exit();
     }
 }

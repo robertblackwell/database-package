@@ -4,7 +4,7 @@
 use Database\Object as Db;
 use Database\Models\Item;
 
-class Test_database_build extends \LiteTest\TestCase{
+class Test_database_create_tables extends \LiteTest\TestCase{
     function setUp(){
         \Trace::disable();
 		//         global $config;
@@ -18,10 +18,10 @@ class Test_database_build extends \LiteTest\TestCase{
         $utility = new \Database\Utility();
         $builder->drop_tables();
         $builder->create_tables();
-        $utility->load_content_items('rtw');
-        $utility->load_albums('rtw');
-        $utility->load_banners('rtw');
-        $utility->load_editorials('rtw');
+        // $utility->load_content_items('rtw');
+        // $utility->load_albums('rtw');
+        // $utility->load_banners('rtw');
+        // $utility->load_editorials('rtw');
         
 //        $utility->rebuild_db_from($this->locator->content_root('rtw'));
 	    Trace::function_exit();

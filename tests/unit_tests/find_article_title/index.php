@@ -1,9 +1,8 @@
 <?php
-require_once(dirname(dirname(dirname(__FILE__)))."/include/header.php");
 
 use Database\Object as Db;
 
-class TestArticleTitles extends UnitTestCase{
+class TestArticleTitles extends \LiteTest\TestCase{
     function setUp(){
         global $config;
 		Db::init($config);

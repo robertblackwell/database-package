@@ -1,10 +1,9 @@
 <?php
-require_once(dirname(dirname(dirname(__FILE__)))."/include/header.php");
 
 use Database\Object as Db;
 use Database\Models\Item;
 
-class TestFindItems extends UnitTestCase{
+class TestFindItems extends \LiteTest\TestCase{
     function setUp(){
         \Trace::disable();
         global $config;

@@ -1,12 +1,15 @@
 <?php
-require_once(dirname(dirname(dirname(__FILE__)))."/include/header.php");
 
 use Database\Object as Db;
 use Database\Models\Item as Item;
 use Database\Models\Album as Album;
 use Database\Utility as Utility;
-class test_import_utils extends UnittestCase{
+use Trace as Trace;
+
+
+class test_import_utils extends Litetest\TestCase{
 	function setUp(){
+		\Trace::disable();
         global $config;
 		Db::init($config);
 		$this->db = Db::get_instance();
