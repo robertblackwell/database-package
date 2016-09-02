@@ -2,7 +2,7 @@
 use Database\Object as Db;
 use Database\Models\CategorizedItem;
 
-print "config being included \n";
+// print "config being included \n";
 
 global $config;
 

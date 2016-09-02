@@ -30,6 +30,7 @@ class TestCategory extends \LiteTest\TestCase{
         foreach($result as $i){
             $this->assertEqual($i->trip, "rtw");
         }
+		$this->assertEqual(count($result), 42);
 	    Trace::function_exit();
     }
 }

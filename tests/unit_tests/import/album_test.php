@@ -9,16 +9,6 @@ class test_import_album extends Litetest\TestCase{
 		Db::init($config);
 		$this->db = Db::get_instance();
         $this->locator = \Database\Locator::get_instance();
-        return;
-		try{
-		    $r = Album::get_by_slug('peru');
-		    if( is_null($r) ){
-                $new_r = Album::get_by_trip_slug('rtw', 'peru');
-                $new_r->sql_insert();            
-			}
-		} catch(\Exception $e)
-		{
-		}
 	}
 	function test_album(){
 	    Trace::function_entry();
