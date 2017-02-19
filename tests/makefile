@@ -18,3 +18,6 @@ test:
 cats:
 	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/find_category/find_test.php
 
+locs:
+	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/find_locations/index.php
+
