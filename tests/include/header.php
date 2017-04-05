@@ -13,4 +13,22 @@ Registry::$globals->doc_root = dirname(dirname(__FILE__));
 Registry::$globals->package_dir = dirname(dirname(dirname(__FILE__))); // The top level dir of the package
 
 require_once(dirname(__FILE__)."/config.php");
+
+class DbPreloader{
+ 
+    function load(){   
+		global $config;
+		
+		print "Loading database from ". $config->data_root  ."\n";
+        $builder = new \Database\Builder();
+        $utility = new \Database\Utility();
+        $builder->drop_tables();
+        $builder->create_tables();
+        $utility->load_content_items('rtw');
+        $utility->load_albums('rtw');
+        $utility->load_banners('rtw');
+        $utility->load_editorials('rtw');
+    }
+}
+
 ?>

@@ -4,7 +4,7 @@ use Database\Object as Db;
 use \Database\Models\Item;
 
 
-class TestNextPrevCategory extends Litetest\TestCase{
+class TestNextPrevCategory extends LiteTest\TestCase{
     function setUp(){
         global $config;
 		Db::init($config);

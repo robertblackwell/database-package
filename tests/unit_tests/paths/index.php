@@ -5,7 +5,7 @@ use Database\Models\Item;
 use Database\Models\Album;
 use Database\Locator;
 
-class Test_Paths extends Litetest\TestCase{
+class Test_Paths extends \LiteTest\TestCase{
     function setUp(){
         global $config;
 		Db::init($config);

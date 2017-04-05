@@ -11,7 +11,18 @@ return [
 		"unit_tests/hed/fi_3_test.php",
 		"unit_tests/hed/fi_4_test.php",
 		"unit_tests/hed/fi_test.php",
-
+		"unit_tests/hed/hed_album_test.php",
+		"unit_tests/hed/hed_location_test.php",
+		"unit_tests/locator/index.php",
+		//
+		"unit_tests/nextprev/category_test.php",
+		"unit_tests/nextprev/country_test.php",
+		"unit_tests/nextprev/months_test.php",
+		"unit_tests/nextprev/none_test.php",
+		//
+		"unit_tests/paths/index.php",
+	],
+	"fred" =>[
 		"unit_tests/utility/create_tables.php",
 		"unit_tests/utility/load_tables.php",
 		"unit_tests/connect_db/connect_test.php",
@@ -30,14 +41,6 @@ return [
 		"unit_tests/import/post_test.php",
 		"unit_tests/import/util_test.php",
 		
-		"unit_tests/locator/index.php",
-		//
-		"unit_tests/nextprev/category_test.php",
-		"unit_tests/nextprev/country_test.php",
-		"unit_tests/nextprev/months_test.php",
-		"unit_tests/nextprev/none_test.php",
-		//
-		"unit_tests/paths/index.php",
 		
 		"unit_tests/create_new_entry/index.php",
 

@@ -33,6 +33,7 @@ class Factory {
 		'album'=>'\Database\Models\Album',
 		'editorial'=>'\Database\Models\Editorial',
 		'banner'=>'\Database\Models\Banner',
+		'location'=>'\Database\Models\EntryLocation',
 	);
 	
 	private static $classes = array(
@@ -42,6 +43,7 @@ class Factory {
 		'\Database\Models\Album'=>'album',
 		'\Database\Models\Banner'=>'banner',
 		'\Database\Models\Editorial'=>'editorial',
+		'\Database\Models\EntryLocation'=>'location',
 	);
 		
 	private static function type_to_class($type){
@@ -211,6 +213,19 @@ class Factory {
         //print "<p>".__METHOD__." entry ".$x->slug. " trip: ".$x->trip." has camping ". (int)$x->has_camping."</p>";
         return $x;      
     }
+	static function location_from_hed($hed_obj)
+	{
+		$fields = EntryLocation::get_fields();
+		$vals = [];
+        foreach($fields as $k => $t ){
+            $method = "get_".$t;
+            $vals[$k] = $hed_obj->$method($k);
+        }
+		// print __FUNCTION__ . "\n";
+		$x = new EntryLocation($vals);
+		// var_dump($x);
+		return $x;
+	}
     static function post_from_hed($hed_obj){
         //print __METHOD__."\n";
         $fields1 = Post::get_fields();
@@ -346,7 +361,11 @@ class Factory {
     }
     static function model_from_hed($hed_obj){
         $typ = $hed_obj->get_text('type');
-        $func = $typ."_from_hed";
+		if( $typ === ""){
+			var_dump($hed_obj);
+			throw new \Exception("bad item type");
+        }
+		$func = $typ."_from_hed";
         
         $obj = self::$func($hed_obj);
         return $obj;
@@ -357,6 +376,11 @@ class Factory {
     public static function create_entry($trip, $slug, $dte, $parms){
         $p = self::$locator->item_filepath($trip, $slug);
         HEDFactory::create_journal_entry($p, $trip, $slug, $dte, $parms);
+    }
+
+    public static function create_location($trip, $slug, $dte, $parms){
+        $p = self::$locator->item_filepath($trip, $slug);
+        HEDFactory::create_location($p, $trip, $slug, $dte, $parms);
     }
 
     static function create_post($trip, $slug, $dte, $parms){

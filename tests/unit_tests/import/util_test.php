@@ -7,7 +7,7 @@ use Database\Utility as Utility;
 use Trace as Trace;
 
 
-class test_import_utils extends Litetest\TestCase{
+class test_import_utils extends LiteTest\TestCase{
 	function setUp(){
 		\Trace::disable();
         global $config;

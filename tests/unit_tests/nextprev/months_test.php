@@ -4,7 +4,7 @@ use Database\Object as Db;
 use \Database\Models\Item;
 
 
-class TestNextPrevMonths extends Litetest\TestCase{
+class TestNextPrevMonths extends LiteTest\TestCase{
     function setUp(){
         global $config;
 		Db::init($config);

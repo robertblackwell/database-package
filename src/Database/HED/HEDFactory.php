@@ -29,6 +29,7 @@ class HEDFactory
 		'album'=>'\Database\Models\Album',
 		'banner'=>'\Database\Models\Banner',
 		'editorial'=>'\Database\Models\Editorial',
+		'location'=>'\Database\Models\EntryLocation',
 	);
 	
 	private static $classes = array(
@@ -38,6 +39,7 @@ class HEDFactory
 		'\Database\Models\Album'=>'album',
 		'\Database\Models\Banner'=>'banner',
 		'\Database\Models\Editorial'=>'editorial',
+		'\Database\Models\EntryLocation'=>'location',
 	);
 		
 	private static function type_to_class($type)
@@ -62,6 +64,31 @@ class HEDFactory
         print("\n</body>\n");
         print("</html>");
 	}
+	private static function deduceItemDir()
+	{
+        $pi = pathinfo($file_path);
+        $item_dir = $pi['dirname'];
+        $content_dir = dirname($item_dir);
+        $file_name = $file_path;
+		
+	}
+	private static function createItemDir($file_path)
+	{
+        $pi = pathinfo($file_path);
+        $item_dir = $pi['dirname'];
+        $content_dir = dirname($item_dir);
+        $file_name = $file_path;
+        if( !mkdir($item_dir, 511, true) )
+			throw new Exception("mkdir failed to make [$d] ");
+		
+	}
+	private static function printFieldValue($field_name, $field_values)
+	{
+        print "\t<div id=\"$field_name\">"
+            . ((array_key_exists($field_name, $field_values))? $field_values[$field_name] : "ABCDEFG") 
+            ."</div>\n";
+		
+	}
 	/**
 	* This actually does the heavy lifting of creating a HED object
 	* @param string $file_path Where to write the newly created content
@@ -80,15 +107,20 @@ class HEDFactory
 			throw new \Exception("create $type failed $file_path already exists");
         $class_name = self::type_to_class($type);
         $fields = $class_name::get_fields();
+		// print "Class name" . " " . $class_name . "\n";
+		// print __FUNCTION__." fields:";
+		// var_dump($fields);
         $typ = $type;
         $pi = pathinfo($file_path);
         $item_dir = $pi['dirname'];
         $content_dir = dirname($item_dir);
         $file_name = $file_path;
+		// var_dump($fields);
         ob_start(); 
         self::print_hed_header();
         foreach($fields as $f=>$v)
 		{
+			// print __FUNCTION__ . "$f = $v \n";
             if( $f == 'slug')
                 print "\t<div id=\"$f\">".$slug."</div>\n";
             else if( $f == 'type')
@@ -115,7 +147,7 @@ class HEDFactory
 		// print "<pre>$s </pre>";
 		$d = $item_dir;
         if( !mkdir($item_dir, 511, true) )
-			throw new Exception("mkdir failed to make $d ");
+			throw new Exception("mkdir failed to make [$d] ");
         if( !chmod($item_dir, 511) )
 			throw new Exception("chmod failed on directory $d");
         file_put_contents($file_name, $s);
@@ -156,6 +188,60 @@ class HEDFactory
         $obj = self::create($file_path, "entry", $trip, $slug, $parms);
         //print __CLASS__.":".__METHOD__."<br>";
     }
+
+	/**
+	* Create a new skeleton location object in HED format and write given file path
+	* @param string $file_path Where to write the newly created content
+	* @param string $trip  The trip for this journal item 
+	* @param string $slug the unique id for this journal item 
+	* @param string $dte  The published date to be recorded in the journal item 
+	* @param string $name The name of title for this journal item 
+	* @param array  $parm An array of key value pairs representing additional dat to be stored for the journal item  
+	* @return HEDObject just made
+	*
+	*/
+    public static function create_location($file_path, $trip, $slug, $dte, $parms = array())
+	{
+		// var_dump($parms);
+		$parms['slug'] = $slug;
+		$parms['type'] = 'location';
+        $parms['trip'] =  $trip;
+        $parms['version'] =  "2.0";
+        $parms['status'] =  "draft";
+        $parms['creation_date'] = $dte;
+        $parms['published_date'] = $dte;
+        $parms['last_modified_date'] = $dte;
+        ob_start(); 
+        self::print_hed_header();
+		self::printFieldValue("slug", $parms);
+		self::printFieldValue("type", $parms);
+		self::printFieldValue("trip", $parms);
+		self::printFieldValue("version", $parms);
+		self::printFieldValue("status", $parms);
+		self::printFieldValue("creation_date", $parms);
+		self::printFieldValue("published_date", $parms);
+		self::printFieldValue("last_modified_date", $parms);
+
+		self::printFieldValue("miles", $parms);
+		self::printFieldValue("odometer", $parms);
+		self::printFieldValue("day_number", $parms);
+		
+		self::printFieldValue("place", $parms);
+		self::printFieldValue("country", $parms);
+		self::printFieldValue("latitude", $parms);
+		self::printFieldValue("longitude", $parms);
+		self::printFieldValue("content_ref", $parms);
+        self::print_hed_footer();
+        $s = ob_get_clean();
+		self::createItemDir($file_path);
+        $file_name = $file_path;
+		file_put_contents($file_name, $s);
+		
+		$obj = new HEDObject();
+		$obj->get_from_file($file_name);
+		return $obj;
+    }
+
 
 	/**
 	* Create a new skeleton post item in HED format and write given file path

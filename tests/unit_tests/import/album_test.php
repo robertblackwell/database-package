@@ -2,7 +2,7 @@
 
 use Database\Object as Db;
 use Database\Models\Album as Album;
-class test_import_album extends Litetest\TestCase{
+class test_import_album extends LiteTest\TestCase{
 	function setUp(){
 		Trace::disable();
         global $config;

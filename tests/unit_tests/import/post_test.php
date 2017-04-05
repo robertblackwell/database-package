@@ -2,7 +2,7 @@
 
 use Database\Object as Db;
 use Database\Models\Item as Item;
-class test_import_post extends Litetest\TestCase{
+class test_import_post extends LiteTest\TestCase{
 	function setUp(){
 		Trace::disable();
         global $config;
