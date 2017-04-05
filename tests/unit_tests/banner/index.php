@@ -16,7 +16,12 @@ class TestBanners extends \LiteTest\TestCase{
 		// print "<p>banner text: ". $result->main_content ."</p>\n";
 		
 		// var_dump($result->banner);
+		// var_dump(get_class($result));
+		// var_dump($result->getImages());
 		
+		// make sure no "dot" - files
+		$this->assertEquals(count($result->getImages()),9);
+
 		Trace::function_exit();
     }
 	function test_create_one(){

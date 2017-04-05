@@ -7,18 +7,34 @@ namespace Database\Models;
 * BUT ONLY those fields held within the SQL table.
 * There is no need to load the item file
 */
-class EntryLocation extends Base\ModelBase
+class EntryLocation extends ItemBase //Base\ModelBase
 {
+    static $table_name = "my_items";
+    static $field_names = array(
+        "version"=>"text",
+		"slug"=>"text",
+		"type"=>"text",
+        "trip"=>"text",
+        "status"=>"text",
+        "creation_date"=>"date",
+        "published_date"=>"date",
+        "last_modified_date"=>"date",
+        "miles"=>"text",
+        "odometer"=>"text",
+        "day_number"=>"text",
+        "latitude"=>"text",
+        "longitude"=>"text",
+        "excerpt"=>"text",
+        "country"=>"text",
+        "place"=>"text",
+		"content_ref"=>"text",
+        "camping"=>"html",
+        "has_camping"=>"has",
+
+	);
     function __construct($obj){
-        $this->vo_fields = array(
-            "trip"=>"text",
-            "latitude"=>"text",
-            "longitude"=>"text",
-            "excerpt"=>"text",
-            "published_date"=>"text",
-            "country"=>"text",
-            "place"=>"text",
-        );
+        $this->vo_fields = self::$field_names;
+        $this->table = self::$table_name;
         parent::__construct($obj);
     }
     /*!
@@ -31,19 +47,58 @@ class EntryLocation extends Base\ModelBase
     static function find_for_trip($trip, $count=NULL){
         //print "<p>".__METHOD__."</p>";
         $count_str = ($count)? "limit 0, $count": "" ;
-        $c = "SELECT slug, trip, title, excerpt, published_date, country, place, latitude, longitude FROM my_items WHERE (type='entry' and trip='".$trip."')   order by country asc";
-        return self::$sql->query_objects($c, __CLASS__);
+        $c = "SELECT type, slug, trip, 
+				excerpt, 
+				published_date, 
+				country, place, latitude, longitude 
+				FROM my_items 
+				WHERE ( (type='entry' OR type='location') and trip='".$trip."')   
+				order by country asc";
+        
+		return self::$sql->query_objects($c, __CLASS__);
     }
     static function find($count=NULL){
         //print "<p>".__METHOD__."</p>";
         $count_str = ($count)? "limit 0, $count": "" ;
-        $c = "SELECT slug, trip, title, excerpt, published_date, country, place, latitude, longitude 
+        $c = "SELECT type, slug, trip, 
+					miles, odometer, day_number, 
+					excerpt, 
+					published_date, 
+					country, place, latitude, longitude 
 			        FROM my_items 
-					WHERE (type='entry')   
+					WHERE (type='entry' OR type='location')   
 					order by country asc";
         
 		return self::$sql->query_objects($c, __CLASS__);
+    }  
+    function sql_insert(){
+        \Trace::function_entry("");
+        // Insert the item first otherwise a foreign key constraint will fail
+        parent::sql_insert();    
+        if( $this->has_camping ){
+            \Trace::debug("adding camping to categorized_items");
+            CategorizedItem::add("camping", $this->slug);
+        }
+        if( $this->has_border ){
+            CategorizedItem::add("border", $this->slug);
+        }
+        \Trace::function_exit();
     }    
+    function sql_delete(){
+        //print "<p>".__METHOD__."</p>";
+        if( $this->has_camping ){
+            //print "<p>deleting camping</p>";
+            CategorizedItem::delete("camping", $this->slug);
+        //print "<p>".__METHOD__."camping </p>";
+        }
+        if( $this->has_border ){
+            CategorizedItem::delete("border", $this->slug);
+        //print "<p>".__METHOD__."border </p>";
+        }
+       parent::sql_delete();    
+     }
+	
+	  
 }
 
 ?>

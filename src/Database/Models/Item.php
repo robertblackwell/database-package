@@ -84,6 +84,7 @@ class Item extends ItemBase
                
         $obj = new HEDObject();
         $fn = self::$locator->item_filepath($trip, $slug);
+		// print __FUNCTION__ . " file name " . $fn. "\n";
         $obj->get_from_file($fn);
         $item = Factory::model_from_hed($obj);
         return $item;
@@ -94,9 +95,15 @@ class Item extends ItemBase
         $c = $where." order by published_date desc, slug desc $count_str ";
         return self::$sql->select_objects(self::$table_name, __CLASS__, $c, true);
     }
-    public static function find($count=NULL){
+	public static function findAllTypes($count=NULL)
+	{
         $count_str = ($count)? "limit 0, $count": "" ;
         $c = " order by published_date desc, slug desc $count_str ";
+        return self::$sql->select_objects(self::$table_name, __CLASS__, $c, true);
+	}
+    public static function find($count=NULL){
+        $count_str = ($count)? "limit 0, $count": "" ;
+        $c = " where type<>'location' order by published_date desc, slug desc $count_str ";
         return self::$sql->select_objects(self::$table_name, __CLASS__, $c, true);
     }
     /*!
@@ -107,7 +114,7 @@ class Item extends ItemBase
     */
     static function find_latest($count=NULL){
         $count_str = ($count)? "limit 0, $count": "" ;
-        $c = " order by last_modified_date desc, slug desc $count_str ";
+        $c = " where type<>'location' order by last_modified_date desc, slug desc $count_str ";
         return self::$sql->select_objects(self::$table_name, __CLASS__, $c, true);
     }
     static function find_latest_for_trip($trip, $count=NULL){

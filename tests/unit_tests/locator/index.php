@@ -1,7 +1,7 @@
 <?php
 
 use Database\Locator as Locator;
-class test_locator extends Litetest\TestCase{
+class test_locator extends LiteTest\TestCase{
 	function setUp(){
 		global $config;
 		//var_dump($config);

@@ -65,7 +65,7 @@ class Banner extends Base\ModelBase
 		$list = scandir($images_dir);
 		$x = array();
 		foreach( $list as $ent){
-			if( ($ent != ".") && ($ent != "..") ){
+			if( ($ent != ".") && ($ent != "..") && (substr($ent,0,1) != ".") ){
 				$tmp = new \stdClass();
 				$tmp->url = self::$locator->url_banner_image($trip, $slug, $ent);
 				$tmp->path = self::$locator->banner_image_filepath( $trip, $slug, $ent);

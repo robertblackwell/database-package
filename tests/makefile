@@ -11,6 +11,12 @@ LITETEST=$(VENDORBIN)/litetest
 
 build:
 	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/utility/index.php
+
+load:
+	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/db/index.php
+	
+banner:
+	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/banner/index.php
 	
 test:
 	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/find_categorized_items/find_test.php
@@ -18,6 +24,19 @@ test:
 cats:
 	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/find_category/find_test.php
 
-locs:
-	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/find_locations/index.php
+hedlocs:
+	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/hed/hed_location_test.php
 
+import:
+	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/import/location.php
+
+xx:
+	$(LITETEST) --bootstrap-file="include/bootstrap.php"
+
+all:
+	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/locator/index.php
+	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/paths/index.php
+	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/nextprev/category_test.php
+	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/nextprev/country_test.php
+	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/nextprev/months_test.php
+	
