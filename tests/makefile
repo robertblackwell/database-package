@@ -34,9 +34,9 @@ xx:
 	$(LITETEST) --bootstrap-file="include/bootstrap.php"
 
 all:
-	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/locator/index.php
 	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/paths/index.php
 	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/nextprev/category_test.php
 	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/nextprev/country_test.php
 	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/nextprev/months_test.php
+	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/locator/index.php
 	

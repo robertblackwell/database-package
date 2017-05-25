@@ -8,16 +8,8 @@ PHPFILES		:=	$(wildcard src/Database/*.php)\
  					$(wildcard src/Database/HED/*.php)\
  					$(wildcard src/Database/Models/*.php)\
  					$(wildcard src/Database/Models/Base/*.php)
-#
+
 # target: all - Default target. Does nothing.
-phpdocs:
-	phpdoc -d src/Database -o "HTML:Smarty:PHP" -t docs/htmldocs;
-
-
-docs: docs/html 
-	
-docs/html: $(PHPFILES) $(wildcard docs/extras/*.dox) docs/Doxyfile docs/DoxygenLayout.xml
-		doxygen docs/Doxyfile
 all:
 	echo "Hello $(LOGNAME), nothing to do by default"
 	echo "Hello this is the TAG value $(TAG)"
@@ -25,6 +17,9 @@ all:
 	echo "Release file is : $(RELEASE_FILE)"
 	# sometimes: echo "Hello ${LOGNAME}, nothing to do by default"
 	echo "Try 'make help'"
+
+test:
+	cd test; make
 
 # target: help - Display callable targets.
 help:
@@ -39,11 +34,29 @@ list:
 # Correct, continuation of the same shell
 	cd src; \
 	ls
+
+# target: clean derived products
 clean:
 	rm -Rv $(RELEASE_DIR)
+
+# target: release - make a release dir
 releases:
 	mkdir $(RELEASE_DIR)
+
 # target: dist - Make a release.
 dist: releases
 	echo $(TAG)
 	git archive $(TAG) --format=zip --worktree-attributes --output=$(ARCHIVE)
+
+# target: clean_docs - removes all doc html files
+clean_docs:
+	rm -Rfv docs/html/*
+
+# target: docs - builds html documentatioin with doxygen
+.PHONY:docs
+docs: doxy 
+	
+# target: doxy - builds html documentatioin with doxygen
+.PHONY:doxy
+doxy: $(PHPFILES) $(wildcard docs/extras/*.dox) docs/Doxyfile docs/DoxygenLayout.xml
+		doxygen docs/Doxyfile

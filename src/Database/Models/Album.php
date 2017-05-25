@@ -29,13 +29,15 @@ class Album extends Base\ModelBase
         'file_path'=>'text',
         'album_path'=>'text',
 	);
-    function __construct($obj){
+    function __construct($obj)
+    {
         $this->vo_fields = self::$field_names;
         $this->table = self::$table_name;
 		$this->_images = null;
         parent::__construct($obj);
     }
-    public static function get_by_trip_slug($trip, $slug){
+    public static function get_by_trip_slug($trip, $slug)
+    {
         $obj = new HEDObject();
         $fn = self::$locator->album_filepath($trip, $slug);
         $obj->get_from_file($fn);
@@ -47,7 +49,8 @@ class Album extends Base\ModelBase
     * Retrieve a content item by unique identifier (slug) and hence return one of
     * Post, Entry, Article
     */
-    public static function get_by_slug($slug){
+    public static function get_by_slug($slug)
+    {
         $q = "WHERE slug='".$slug."'";
         $r = self::$sql->select_objects(self::$table_name, __CLASS__, $q, false);
         if( is_null($r) || !$r   ) return null;

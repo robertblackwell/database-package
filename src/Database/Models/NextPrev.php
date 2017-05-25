@@ -9,46 +9,52 @@ namespace Database\Models;
 */
 /*!
 */
-class QueryMaker{
+class QueryMaker
+{
     function query($join, $where, $after_before, $order_by){
     }
 }
 /*!
-** This class provides an iterator to move throug next/prev
+** This class provides an iterator to move through next/prev
 ** different sets of content items. The intent is that each of Entry, Article, Post will have an iterator
 ** as a delegate. This will be provided by ItemBase the abstract base class
 **
 ** The iterator only returns an instance of Item or null 
 */
-class NextPrev{
+class NextPrev
+{
     var $order_by_asc_with_limit = " order by published_date asc, slug asc limit 0, 1  ";
     var $join_order_by_asc_with_limit = " order by a.published_date asc, a.slug asc limit 0, 1  ";
 
     var $order_by_desc_with_limit = " order by published_date desc, slug desc limit 0, 1  ";
     var $join_order_by_desc_with_limit = " order by a.published_date desc, a.slug desc limit 0, 1  ";
 
-    function join_after(){
+    function join_after()
+    {
         $s = "( "
             . " ( a.published_date > '" . $this->_obj->published_date."')"
             . " or ( a.published_date = '". $this->_obj->published_date. "' and a.slug > '".$this->_obj->slug."' ) "
             . ")";
         return $s;
     }
-    function after(){
+    function after()
+    {
         $s = "( "
             . " ( published_date > '" . $this->_obj->published_date."')"
             . " or ( published_date = '". $this->_obj->published_date. "' and slug > '".$this->_obj->slug."' ) "
             . ")";
         return $s;
     }
-    function join_before(){
+    function join_before()
+    {
         $s = "( "
             . " ( a.published_date < '" . $this->_obj->published_date."')"
             . " or ( a.published_date = '". $this->_obj->published_date. "' and a.slug<'".$this->_obj->slug."' )"
             ." ) ";
         return $s;
     }
-    function before(){
+    function before()
+    {
         $s = "( "
             . " ( published_date < '" . $this->_obj->published_date."')"
             . " or ( published_date = '". $this->_obj->published_date. "'  and  slug < '".$this->_obj->slug."' )"
@@ -59,7 +65,8 @@ class NextPrev{
     /*
     ** Constructs the iterator for one of Entry, Article, Post
     */
-    function __construct($xyObj, $sql){
+    function __construct($xyObj, $sql)
+    {
         $this->_obj = $xyObj;
         $this->sql = $sql;
     }

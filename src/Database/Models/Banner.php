@@ -5,10 +5,9 @@ use Database\HED\HEDObject;
 use Database\Locator;
  
 /**
-* @brief This object represents photo albums as displayed on the sites various "photo" pages and as contained
-* within content items.
+* @brief This object represents banner of rotating photos on the home page.
 *
-* static methods are provided for geting/finding lists of albums and individual albums.
+* static methods are provided for geting/finding a lists of banners and individual banner.
 * 
 * @ingroup Models
 *
@@ -36,7 +35,8 @@ class Banner extends Base\ModelBase
 // 		'main_content'=>'html',
 //         'image_url'=>'text',
 	);  
-    function __construct($obj){
+    function __construct($obj)
+    {
         $this->vo_fields = self::$field_names;
         $this->table = self::$table_name;
         parent::__construct($obj);
@@ -46,7 +46,8 @@ class Banner extends Base\ModelBase
 	* Then read that banner as a HEDObject and create the corresponding list of images
     * @return array of objects of types \Database\Model\Banner
     */
-    static function find_latest_for_trip($trip){
+    static function find_latest_for_trip($trip)
+    {
         $c = "  where trip='".$trip."' order by last_modified_date desc, slug limit 0,1 ";
         // $c = "  where trip='".$trip."' ";
         $res = self::$sql->select_objects(self::$table_name, __CLASS__, $c, false);
@@ -55,7 +56,8 @@ class Banner extends Base\ModelBase
 		return $o;
     }
 	
-    public static function get_by_trip_slug($trip, $slug){
+    public static function get_by_trip_slug($trip, $slug)
+    {
         $obj = new HEDObject();
         $fn = self::$locator->banner_filepath($trip, $slug);
 		$images_dir = self::$locator->banner_images_dir($trip, $slug);
@@ -80,7 +82,8 @@ class Banner extends Base\ModelBase
 	//
 	// Return details (name, file path, url) of the images in this banner object.
 	//
-	public function getImages(){
+	public function getImages()
+    {
 		return $this->images_list;
 	}
 

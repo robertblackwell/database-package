@@ -217,7 +217,7 @@ class Utility
     }
 
 	/**
-	* Load all the content items for $trip
+	* Load all the content items for $trip from the flat file store  into the sql database
 	* @param string $trip
 	*/
     function load_content_items($trip)
@@ -227,7 +227,7 @@ class Utility
     }
 
 	/**
-	* Load all the photo albums for $trip
+	* Load all the photo albums for $trip from the flat file store  into the sql database
 	* @param string $trip
 	*/
     function load_albums($trip)
@@ -236,7 +236,7 @@ class Utility
         $this->load_db_from($dir);
     }
 	/**
-	* Load all the photo banners for $trip
+	* Load all the photo banners for $trip from the flat file store   into the sql database
 	* @param string $trip
 	*/
     function load_banners($trip)
@@ -245,7 +245,7 @@ class Utility
         $this->load_db_from($dir);
     }
 	/**
-	* Load all the editorials for $trip
+	* Load all the editorials for $trip from the flat file store   into the sql database
 	* @param string $trip
 	*/
     function load_editorials($trip)
@@ -255,7 +255,7 @@ class Utility
     }
 
 	/**
-	* Load all the content items from the given directory
+	* Load all the content items from the given directory into the sql database
 	* @param string $items_dir
 	*/
     function load_db_from($items_dir)

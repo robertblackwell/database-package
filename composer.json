@@ -26,9 +26,7 @@
         "robertblackwell/trace":"@dev"
     },
     "require-dev":{
-		"robertblackwell/litetest":"dev-master",
-        "simpletest/simpletest":"dev-master",
-        "phpunit/phpunit":"4.1.*"
+		"robertblackwell/litetest":"dev-master"
     },
     "autoload": {
         "psr-0": {

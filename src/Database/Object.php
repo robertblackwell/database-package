@@ -62,7 +62,7 @@ class Object
 
 		/**
 		* @note at this point we also hook the Locator and SqlObject into the base Model class 
-		* and the model Factory as a static
+		* and the model Factory as a static so that all instances of these classes have access
 		*/
 		Models\Base\ModelBase::$sql = self::$sql;
 		Models\Base\ModelBase::$locator = self::$locator;
@@ -74,7 +74,8 @@ class Object
 	* Allows a configuration array to be set from the global Registry object
 	* @deprecated
 	*/
-	static function setConfig($config_object){
+	static function setConfig($config_object)
+	{
 	    $config = array();
 	    $config['sql'] = array(
 				'db_name'=>Registry::$globals->db['db_name'],

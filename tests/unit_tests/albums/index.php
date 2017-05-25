@@ -2,13 +2,16 @@
 
 use Database\Object as Db;
 
-class TestFindArticle extends \LiteTest\TestCase{
-    function setUp(){
+class TestFindAlbum extends \LiteTest\TestCase{
+    function setUp()
+    {
         global $config;
 		Db::init($config);
 		$db = Db::get_instance();
+        Trace::disable();
     }
-    function test_get_one(){    
+    function test_get_one()
+    {    
 	    Trace::function_entry();
         $result = Database\Models\Album::get_by_trip_slug('rtw','Peru');
         //var_dump($result);exit();
@@ -22,7 +25,8 @@ class TestFindArticle extends \LiteTest\TestCase{
         //$this->assertEqual($result[3]->slug, "bolivia-1");
 	    Trace::function_exit();
     }
-    function test_find(){    
+    function test_find()
+    {    
 	    Trace::function_entry();
         $result = Database\Models\Album::find();
         foreach($result as $a){
@@ -37,10 +41,12 @@ class TestFindArticle extends \LiteTest\TestCase{
         //$this->assertEqual($result[3]->slug, "bolivia-1");
 	    Trace::function_exit();
     }
-    function test_where_rtw(){
+    function test_where_rtw()
+    {
 	    Trace::function_entry();
         $result = Database\Models\Album::find_for_trip("rtw");
-        foreach($result as $a){
+        foreach($result as $a)
+        {
             $this->assertNotEqual($a, null);
             $this->assertEqual(get_class($a), "Database\Models\Album");
     
@@ -52,10 +58,12 @@ class TestFindArticle extends \LiteTest\TestCase{
         //$this->assertEqual($result[3]->slug, "bolivia-1");
 	    Trace::function_exit();
     }
-    function test_where_theamericas(){
+    function test_where_theamericas()
+    {
 	    Trace::function_entry();
         $result = Database\Models\Album::find_for_trip("theamericas");
-        foreach($result as $a){
+        foreach($result as $a)
+        {
             $this->assertNotEqual($a, null);
             $this->assertEqual(get_class($a), "Database\Models\Album");
     

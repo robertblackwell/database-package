@@ -12,11 +12,12 @@
 	<div id="published_date">2017-07-07</div>
 	<div id="last_modified_date">2017-07-07</div>
 	<div id="trip">rtw</div>
-	<div id="title">ABCDEFG</div>
-	<div id="banner">ABCDEFG</div>
-	<div id="image">ABCDEFG</div>
-	<div id="content">ABCDEFG</div>
-	<div id="image_url">ABCDEFG</div>
+	<div id="title">Â_NAME</div>
+	<div id="main_content">
+		<p>Put some junk here</p>
+	</div>
+	<div id="image_name">ANIMAGE</div>
+	<div id="image">ANIMAGE</div>
 
 </body>
 </html>

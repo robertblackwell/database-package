@@ -15,7 +15,8 @@ use \Exception as Exception;
 ** @todo    complete the set_XXX functions so that all types of elements can be updated
 **
 **/
-class HEDObject{
+class HEDObject
+{
     private $vo_fields=null;
 
     public $_file_path;
@@ -23,7 +24,8 @@ class HEDObject{
     public $_doc;
     protected $_xp;
     
-    function __construct(){
+    function __construct()
+    {
     }
     
     /*!
@@ -31,11 +33,13 @@ class HEDObject{
     * @param $file_name The full path name of a file
     * @return void
     */
-    function get_from_file($file_name){
+    function get_from_file($file_name)
+    {
 //		print __CLASS__.":".__METHOD__."($file_name)\n";
         $this->_file_path = realpath($file_name);
         $this->_dir = dirname($this->_file_path);
-        try{
+        try
+        {
             $php = file_get_contents($this->_file_path);
 //    print "XXXXfile path ".$this->_file_path."\n";
             $html = $php;//$this->expand_php($php);
@@ -46,7 +50,9 @@ class HEDObject{
             $this->_doc->formatOutput = true;
             $this->_doc->loadHTML($html);
             $this->_doc->formatOutput = true;
-        } catch( Exception $e){
+        } 
+        catch( Exception $e)
+        {
             print "<p>ContentItem::load_from_file failed file_name: $file_name</p>";
         }
     }
@@ -55,7 +61,8 @@ class HEDObject{
     * @param $string
     * @return void
     */
-    function get_from_string($string){
+    function get_from_string($string)
+    {
         $this->_file_path = null;
         $this->_dir = null;
         $html = $str;
@@ -64,10 +71,13 @@ class HEDObject{
         $this->_doc->resolveExternals = true;
         $this->_doc->preserveWhiteSpace = true;
         $this->_doc->formatOutput = true;
-        try{
+        try
+        {
             $this->_doc->loadHTML($html);
             $this->_doc->formatOutput = true;
-        } catch( Exception $e){
+        } 
+        catch( Exception $e)
+        {
             print "<p>ContentItem::load_from_string failed </p>";
         }
     }
@@ -78,7 +88,8 @@ class HEDObject{
     * @param $string
     * @return void
     */    
-	function put_to_file($fn = null){
+	function put_to_file($fn = null)
+    {
 	    if( !$fn)
 	        $fn = $this->_file_path;
 	    file_put_contents($fn, $this->_doc->saveHTML());
@@ -87,7 +98,8 @@ class HEDObject{
 	* @return the HEDObject as a string containing the full HTML document
 	* for the object
 	*/
-	function put_to_string(){
+	function put_to_string()
+    {
 	    return $this->_doc->saveHTML();	    
 	}
     /*!
@@ -97,13 +109,15 @@ class HEDObject{
     * @param $string
     * @return void
     */    	
-	function put(){
+	function put()
+    {
 	    if( !$this->_file_path )
 	        throw new Exception(__METHOD__." cannot save no file_path ");
 	    $this->put_to_file($this->_file_path);
 	}
 
-	function __isset($field){
+	function __isset($field)
+    {
         if(!is_null($this->vo_fields) && (array_key_exists($field, $this->vo_fields))){
 			return true;
 		}
@@ -112,18 +126,25 @@ class HEDObject{
     /*
     ** Magic get function to simulate properties
     */
-    function __get($field){
+    function __get($field)
+    {
         //print "<h1>".__METHOD__."($field) </h1>";
-        if(!is_null($this->vo_fields) && (array_key_exists($field, $this->vo_fields))){
+        if(!is_null($this->vo_fields) && (array_key_exists($field, $this->vo_fields)))
+        {
             $typ = $this->vo_fields[$field];
-            if( $typ == 'getter' ){
+            if( $typ == 'getter' )
+            {
                 //print "<p>".__METHOD__."typ = $typ its a getter </p>";        
                 $method = $field;
-            }else{
+            }
+            else
+            {
                 //var_dump($cc::$fields);
                 $method="get_".$typ;
             }
-        }else{
+        }
+        else
+        {
             $method = 'get_text';
         }
         //var_dump(self::$_fields);
@@ -147,7 +168,8 @@ class HEDObject{
     ** @param $field - the value of the nodes id attribute
     ** @return String or NULL if these is no such DOMNode
     **/
-    function get_text($field){
+    function get_text($field)
+    {
         $el = $this->_doc->getElementById($field);
         if( $el )
             return trim($el->textContent);
@@ -159,7 +181,8 @@ class HEDObject{
     ** @param $field - the value of the nodes id attribute
     ** @return String or NULL if these is no such DOMNode
     **/
-    function get_html($field){
+    function get_html($field)
+    {
         //print "<p>".__METHOD__."($field)</p>";
         $el = $this->_doc->getElementById($field);
         //var_dump($this->_doc->saveHTML($el));
@@ -176,7 +199,8 @@ class HEDObject{
 	* This type is used for Article where instead of returning the main content
 	* we return the slug of the item and turn it into a full path name
 	*/
-	function get_include($field){
+	function get_include($field)
+    {
 	    return $this->get_text('slug');
 	}
 	/*!
@@ -185,7 +209,8 @@ class HEDObject{
 	* @param $field Id value of the target field
 	* @return $string representation of date
 	*/
-	function get_date($field){
+	function get_date($field)
+    {
 	    return $this->get_text($field);
 	}
 	/*!
@@ -193,7 +218,8 @@ class HEDObject{
 	* @param $field Id value of the target field
 	* @return int
 	*/
-	function get_int($field){
+	function get_int($field)
+    {
 	    return (int)$this->get_text($field);
 	}
 	/*!
@@ -202,7 +228,8 @@ class HEDObject{
 	* @param $field Id value of the target field
 	* @return array
 	*/
-	function get_list($field){
+	function get_list($field)
+    {
 	    return $this->get_text($field);
 	    $s = $this->get_text($field);
 	    if( is_null($s) ) 
@@ -217,7 +244,8 @@ class HEDObject{
 	* @param $field Id value of the target field
 	* @return GPSCoordinate
 	*/
-	function get_longitude($field){
+	function get_longitude($field)
+    {
 	    $s = $this->get_text($field);
 	    if( is_null($s) ) 
 	        return NULL;
@@ -232,7 +260,8 @@ class HEDObject{
 	* @param $field Id value of the target field
 	* @return GPSCoordinate
 	*/
-	function get_latitude($field){
+	function get_latitude($field)
+    {
 	    $s =  $this->get_text($field);
 	    if( is_null($s) ) 
 	        return NULL;
@@ -247,7 +276,8 @@ class HEDObject{
 	* @return bool True if there is a div with the given Id and its textContent
 	*               is not blank 
 	*/
-	function get_has($field){
+	function get_has($field)
+    {
 	    //print "<p>".__METHOD__." $field  slug ".$this->get_text('slug')."</p>";
 	    $has = substr($field, 0,3);
 	    if( $has != "has")
@@ -266,7 +296,8 @@ class HEDObject{
 	* Gets the first paragraph (first para tag child) of the given field.
 	* @param $field  Id value for the target div element from which the para is to be extracted
 	*/ 
-    function get_first_p($field){
+    function get_first_p($field)
+    {
         $doc = $this->_doc;
         $m = $this->_doc->getElementById($field);
         $children = $m->childNodes;
@@ -279,7 +310,8 @@ class HEDObject{
         }
     }
     
-	function set_text($field, $value){
+	function set_text($field, $value)
+    {
 	    //print "<p>".__METHOD__."($field $value)</p>";
 	    //var_dump($this);
         $el = $this->_doc->getElementById($field);

@@ -74,9 +74,9 @@ class Test_hed_location extends \LiteTest\TestCase{
 		// var_dump($o->version);
 		// var_dump($o->status);
 
-		var_dump($o->miles);
-		var_dump($o->odometer);
-		var_dump($o->day_number);
+		// var_dump($o->miles);
+		// var_dump($o->odometer);
+		// var_dump($o->day_number);
 
 		// var_dump($o->place);
 		// var_dump($o->country);

@@ -16,7 +16,8 @@ class test_create extends \LiteTest\TestCase{
 		system("rm -Rv $fn2");
 		system("rm -Rv $fn3");
 	}
-	function test_create_post(){
+	function test_create_post()
+	{
 		Factory::create_post('rtw', '111112', array());
 	}
 }

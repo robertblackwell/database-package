@@ -2,7 +2,7 @@
 
 use Database\Object as Db;
 use \Database\Models\EntryCountry;
-class TestVOClass extends \LiteTest\TestCase{
+class TestEntryCountryClass extends \LiteTest\TestCase{
     function setUp(){
         global $config;
 		Db::init($config);

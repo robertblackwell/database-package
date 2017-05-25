@@ -10,6 +10,7 @@ use \Exception as Exception;
 *
 * @todo put error checking on the insert to ensure proper handling of duplicate primary keys
 * @todo need to update to use mysqli rather than mysql
+ * @todo convert to PDO
 */
 class SqlObject
 {
@@ -60,7 +61,8 @@ class SqlObject
 //			or die("could not select data base db:$db_name user:$user in ".__FILE__." at line ".__LINE__);
 		$this->db_connection = $conn;		
 	}
-	private function select_db(){
+	private function select_db()
+	{
 		mysqli_select_db($this->db_connection, $this->db_name); 	
 	}
 	/**
@@ -90,7 +92,8 @@ class SqlObject
 		if( !$result ) 
 			throw new \Exception(__METHOD__." could not SHOW FIELDS for $table ".mysqli_error($this->db_connection));
 		
-		while ($row = mysqli_fetch_assoc($result)) {
+		while ($row = mysqli_fetch_assoc($result)) 
+		{
 		    $n[] = $row;
 		}
 		
@@ -108,7 +111,8 @@ class SqlObject
 		//print "\n".__CLASS__.":".__METHOD__."( $table )\n";
 	    $flds = $this->getFields($table);
 	    $a = array();
-	    foreach($flds as $f){
+	    foreach($flds as $f)
+	    {
 	        $a[] = $f['Field'];
 	    }
 		//print "\n".__CLASS__.":".__METHOD__."( $table )\n";
@@ -124,7 +128,8 @@ class SqlObject
 		$n = array();
 		$result = mysqli_query($this->db_connection, "SHOW TABLES;");
 		if( ! $result ) throw new \Exception("could not SHOW TABLES ".mysqli_error());
-		while ($row = mysqli_fetch_assoc($result)) {
+		while ($row = mysqli_fetch_assoc($result)) 
+		{
 		    $n[] = $row["Tables_in_".strtolower(self::$_config['db_name'])];
 		}
 		return $n;
@@ -146,12 +151,14 @@ class SqlObject
 	    //print "<p>".__CLASS__."::".__METHOD__."($table, $criteria)</p>";
 		$a = array();
 		$query = "SELECT * FROM $table";
-		if (($criteria != null) && ($criteria != "")){ 
+		if (($criteria != null) && ($criteria != ""))
+		{
 			$query .= " ".$criteria.";";
 		}
 		$result = mysqli_query($this->db_connection, $query); 
 		if( ! $result ) 
 			throw new \Exception("could not do a query $query in ".__FILE__." at line ".__LINE__);
+		
 		return $result;
 	}
 
@@ -181,7 +188,8 @@ class SqlObject
 	    //print "<p>".__CLASS__."::".__METHOD__."($table, $criteria)</p>";
 		$a = array();
 		$query = "SELECT * FROM $table";
-		if (($criteria != null) && ($criteria != "")){ 
+		if (($criteria != null) && ($criteria != ""))
+		{
 			$query .= " ".$criteria.";";
 		}
 		//var_dump($query);
@@ -189,7 +197,8 @@ class SqlObject
 		if( ! $result ) 
 			throw new \Exception("could not do a query $query in ".__FILE__." at line ".__LINE__." ".mysqli_error($this->db_connection) ."  ".$criteria);
 		//var_dump($result);			
-		while ($row = mysqli_fetch_assoc($result)){
+		while ($row = mysqli_fetch_assoc($result))
+		{
 			//$a[] = ORMModel::rowToObject($row, ORMModel::makeModelName($return_class)) ;
 			//$a[] = ORMModel::rowToModelObject($row, new $model_class()) ;
 			//$a[] = static::$factory_class::static::$factory_method($row);
@@ -279,11 +288,15 @@ class SqlObject
 		$row = $object->to_row();
 		foreach ($i_flds as $k){
 		    $v = $row[$k];
-			if ( ($k != "slug")){
-				if ($first){
+			if ( ($k != "slug"))
+			{
+				if ($first)
+				{
 					$s = $s .  $k . "='". mysqli_real_escape_string($v) ."' ";
 					$first= false;
-				}else{
+				}
+				else
+				{
 					$s = $s . ", " .  $k . "='". mysqli_real_escape_string($v) ."' ";
 				}
 			}
@@ -295,12 +308,15 @@ class SqlObject
 		//print "\n<p>".__FUNCTION__. " query:[$query] </p>\n";
 		
 	}
-	function get_primary_key($table){
+	function get_primary_key($table)
+	{
 	    $query = "show fields from $table";
 		$result = mysqli_query($this->db_connection, $query);
 		if( ! $result ) throw new \Exception("could not do a query $query in ".__METHOD__." at line ".__LINE__);
-		while ($row = mysqli_fetch_assoc($result)){
-		    if( $row['Key'] == 'PRI' ){
+		while ($row = mysqli_fetch_assoc($result))
+		{
+		    if( $row['Key'] == 'PRI' )
+		    {
 		        return $row['Field'];
             }
 		}
@@ -355,17 +371,22 @@ class SqlObject
 		foreach ($i_flds as $k){
 		    //$v = $row[$k];
 		    $v = $object->$k;
-		    if( is_object($v) ){
-		        //print "<p>object found not string</p>";
+		    if( is_object($v) )
+		    {
+		        throw new \Exception("<p>object found not string</p>");
 		        //var_dump($v);
 		        exit();
 		    }
-			if ( ($k != "id")){
-				if ($first){
+			if ( ($k != "id"))
+			{
+				if ($first)
+				{
 					$cols = $cols . $k;
 					$vals = $vals . "'" . mysqli_real_escape_string($this->db_connection, $v) . "'"; 
 					$first= false;
-				}else{
+				}
+				else
+				{
 					$cols = $cols . ", " .  $k;
 					$vals = $vals . ", '". mysqli_real_escape_string($this->db_connection, $v) ."' ";
 				}
@@ -380,7 +401,9 @@ class SqlObject
 		//print "<p>Database::insert ". mysqli_insert_id($this->db_connection)."</p>";
 		//$object->id = mysqli_insert_id($this->db_connection);
 	}
-	public function truncate($table){
+
+	public function truncate($table)
+	{
 		$query = "TRUNCATE  TABLE $table ";
 		//print "\n".__FUNCTION__. "query: $query \n";
 		$result = mysqli_query($this->db_connection, $query); 

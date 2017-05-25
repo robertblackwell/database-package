@@ -28,14 +28,14 @@ namespace Database;
 *
 *   At a minimum such a directory holds a file called content.php which contains attribute data for the item
 *	and for entry and post items it also contains the main content. For articles the main content is in
-* 	another file called main_content.
+* 	another file named in the field called main_content.
 *
 *	Content items may also contain
 *	-	a default photo gallery that is composed of two subdirectories  Images and Thumbnails
 *	-	named photo galleries.
 *		-	such a gallery is a subdirectory (whose name is the gallery name) which contains Image and Thumbnail
 *			sub directories	
-*	-	named indovidual photos	 
+*	-	named individual photos	 
 *
 * @todo - make all the functions instance methods rather than static
 */
@@ -44,11 +44,11 @@ class Locator
     
     private static $instance;
         
-	public $data_root;		//the full path to the top directory of the HED database
-	public $url_root;		//the (site relative) URL to the top level directory of the HED database
-	public $full_url_root;	//the full URL (including protocol such as http) to the 
-						// top level directory of the HED database
-    public $doc_root;		//the full file system path of the sites document root
+	public $data_root;		  //the full path to the top directory of the HED database
+	public $url_root;		  //the (site relative) URL to the top level directory of the HED database
+	public $full_url_root;	  //the full URL (including protocol such as http) to the 
+						      // top level directory of the HED database
+    public $doc_root;		  //the full file system path of the sites document root
     /**
 	*  Initialize the Locator class by giving it some filesystem and URL paths
 	*  allocate the singleton instance of this class
@@ -108,14 +108,17 @@ class Locator
         //var_dump($this->journals_root($trip)."/entries"); exit();
         return $this->journals_root($trip)."/entries";
     }
+
 	public function journal_introfile_path($trip="theamericas")
 	{
 		return $this->journals_root($trip)."/intro.html";
 	}
+
 	public function message_file_path()
 	{
 		return $this->data_root."/message.txt";
 	}
+
 	public function trip_root($trip)
 	{
         return $this->data_root."/".$trip;		
@@ -148,7 +151,7 @@ class Locator
     }
 
     /**
-	* Returns the name of the file (basename + extension) of the file holding this items content and meta data.
+	* Returns the name of the file (basename + extension .. not path) of the file holding this items content and meta data.
 	*
     * @return string The name of the file containing the fields/properties/meta data for a
     * 				Model object. This is constant across all content items.

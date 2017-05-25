@@ -9,7 +9,8 @@ use Database\Models\NextPrev;
 */
 class ItemBase extends Base\ModelBase 
 {
-    function __construct($obj){
+    function __construct($obj)
+    {
         parent::__construct($obj);
         $this->next_prev = new NextPrev($this, self::$sql);
     }
@@ -17,7 +18,8 @@ class ItemBase extends Base\ModelBase
     * Deletes the properties of this object from the  table of the
     * sql database.
     */
-    function sql_delete(){
+    function sql_delete()
+    {
         self::$sql->delete($this->table, $this);
         CategorizedItem::delete_slug($this->slug);
     }
@@ -27,7 +29,8 @@ class ItemBase extends Base\ModelBase
     ** @parms  array('category'=> some category)
     ** @return Models\Post object   
     */
-    function next($criteria=null, $class= '\Database\Models\Item'){
+    function next($criteria=null, $class= '\Database\Models\Item')
+    {
         return $this->next_prev->next($criteria, $class);
     }
     /*
@@ -36,7 +39,8 @@ class ItemBase extends Base\ModelBase
     ** @parms  array('category'=> some category)
     ** @return Models\Post object   
     */
-    function prev($criteria=null, $class='\Database\Models\Item'){
+    function prev($criteria=null, $class='\Database\Models\Item')
+    {
         return $this->next_prev->prev($criteria, $class);
     }    
 }
