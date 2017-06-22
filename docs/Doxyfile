@@ -619,11 +619,15 @@ WARN_LOGFILE           =
 # directories like "/usr/src/myproject". Separate the files or directories 
 # with spaces.
 
+#INPUT = /Users/rob/MyPackages/database-package/src/Database \
+#		/Users/rob/MyPackages/database-package/docs/extras/mainpage.dox \ 
+#		/Users/rob/MyPackages/database-package/docs/extras/flatfilestore.dox \ 
+#		/Users/rob/MyPackages/database-package/docs/extras/dbinterface.dox \ 
+#		/Users/rob/MyPackages/database-package/docs/extras/sql.dox \
+#          /Users/rob/MyPackages/database-package/docs/extras/test.md
+
 INPUT = /Users/rob/MyPackages/database-package/src/Database \
-		/Users/rob/MyPackages/database-package/docs/extras/mainpage.dox \ 
-		/Users/rob/MyPackages/database-package/docs/extras/flatfilestore.dox \ 
-		/Users/rob/MyPackages/database-package/docs/extras/dbinterface.dox \ 
-		/Users/rob/MyPackages/database-package/docs/extras/sql.dox 
+          /Users/rob/MyPackages/database-package/docs/extras/readme.md
 
 # This tag can be used to specify the character encoding of the source files 
 # that doxygen parses. Internally doxygen uses the UTF-8 encoding, which is 

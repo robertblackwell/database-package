@@ -29,9 +29,20 @@ The sql database can be recreated at any time from the directory structure.
 There are different types of content items - currently journal entries, posts, articles, photo albums,
 and photo galleries connected to posts,journal entries, articles.
 
-The contents of the directory that represents a content item varies with the type of the content item.
+The contents of the directory that represents a content item varies with the type of the content item. 
+More details on this topic can be found at @ref content "The Flat File Store" 
 
-More details on this topic can be found at @ref content "Flat File Store" 
+An overview of the code structure and interface can be found in @ref sql and @ref dbinterface.
 
-Also see @ref sql and @ref dbinterface
+@section usage Using the database
+
+
+
+
+
+@section thecode The code
+
+@section sql The MYSQL database
+
+
 */

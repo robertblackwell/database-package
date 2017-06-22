@@ -60,7 +60,10 @@ class ModelBase extends RowBase
     */
     static function getBySlug($slug){
     }
-    static function find(){
+    static function findWhere($where)
+    {
+        $c = $where;
+        return self::$sql->select_objects(self::$table_name, __CLASS__, $c, true);
     } 
        
     /* 

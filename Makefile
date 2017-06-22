@@ -8,7 +8,7 @@ PHPFILES		:=	$(wildcard src/Database/*.php)\
  					$(wildcard src/Database/HED/*.php)\
  					$(wildcard src/Database/Models/*.php)\
  					$(wildcard src/Database/Models/Base/*.php)
-
+DOXYGEN=/Applications/Doxygen.app/Contents/Resources/doxygen
 # target: all - Default target. Does nothing.
 all:
 	echo "Hello $(LOGNAME), nothing to do by default"
@@ -59,4 +59,4 @@ docs: doxy
 # target: doxy - builds html documentatioin with doxygen
 .PHONY:doxy
 doxy: $(PHPFILES) $(wildcard docs/extras/*.dox) docs/Doxyfile docs/DoxygenLayout.xml
-		doxygen docs/Doxyfile
+		$(DOXYGEN) docs/Doxyfile

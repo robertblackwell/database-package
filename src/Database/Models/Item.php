@@ -89,12 +89,20 @@ class Item extends ItemBase
         $item = Factory::model_from_hed($obj);
         return $item;
     }
-    public static function find_for_trip($trip='rtw', $count=NULL){
+    public static function find_for_trip($trip='rtw', $count=NULL)
+    {
         $where = " where trip='".$trip."'";
         $count_str = ($count)? "limit 0, $count": "" ;
         $c = $where." order by published_date desc, slug desc $count_str ";
         return self::$sql->select_objects(self::$table_name, __CLASS__, $c, true);
     }
+    public static function find_for_trip_asc($trip='rtw', $count=NULL)
+    {
+        $where = " where trip='".$trip."'";
+        $count_str = ($count)? "limit 0, $count": "" ;
+        $c = $where." order by published_date asc, slug desc $count_str ";
+        return self::$sql->select_objects(self::$table_name, __CLASS__, $c, true);
+    }    
 	public static function findAllTypes($count=NULL)
 	{
         $count_str = ($count)? "limit 0, $count": "" ;

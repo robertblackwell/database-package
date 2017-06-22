@@ -38,7 +38,7 @@ class Object
 	* 	Initializes the Database system - allocates singleton instances, gives config information
 	* 	to the Locator and the SqlObject
 	*
-	*	@param array $configutarion
+	*	@param array $configuration
 	*
 	*/
 	public static function init($configuration)

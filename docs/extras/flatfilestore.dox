@@ -10,7 +10,7 @@ The Flat File Store is described in the following pages
 -   @ref ffs_hed 
 -   @ref ffs_locator
 
-@page ffs_directory Directory Structure
+@section ffs_directory Directory Structure
 
 The Flat File Store conventionally resides under a top level directory called <strong>data</strong>.
 
@@ -45,12 +45,12 @@ And similarly the photo album named Peru will be in the directory named
     data/theamericas/photos/galleries/Peru
 @endcode
 
-@page ffs_content_items The Structure of Content Items
+@section ffs_content_items The Structure of Content Items
 
 So what is inside one of the content item directories. Not surprisingly each is slightly 
 different.
 
-@section post_items Posts, and Journal Entries
+@subsection post_items Posts, and Journal Entries
 
 The directory representing these types of items all contain 
 -   a file called <strong>content.php</strong> that contains both some attribute data associated with the item
@@ -73,7 +73,7 @@ The attribute data provided inside <strong>content.php</strong> will be differen
 
 For example journal entries have GPS data related to a days camping spot.
 
-@section article_items Articles
+@subsection article_items Articles
 
 Are almost identical to posts and journal entries except that for an article the file <strong>content.php</strong>
 contains only the attribute data and the actual html text content of the article is in another file called <strong>main_content.php</strong> and an article does not have a default photo gallery.
@@ -92,7 +92,7 @@ Thus an article named tires with two photo galleries would have the following st
                                     Thumbnails
 @endcode
 
-@section albums Photo Albums
+@subsection albums Photo Albums
 
 All Photo Album has the following structure:
 
@@ -111,7 +111,11 @@ when a list of albums is being displayed for user selection.
 
 Images and Thumbnails are the images of the album.
 
-@page ffs_slugs  Uniquely Identifying Items
+@subsection editorial Editorials
+
+to be developed
+
+@section ffs_slugs  Uniquely Identifying Items
 
 All items have a name or "slug" which is the same as the name of the directory containing the item.
 
@@ -123,7 +127,7 @@ Posts, articles, albums and banners may be named with any suitable name string.
 Names/slugs MUST be unique across trips except that the name spaces for photo albums, banners 
 and (posts, journal entries, articles) are independent.
 
-@page ffs_hed HTML Encode Data (HED)
+@section ffs_hed HTML Encode Data (HED)
 
 A number of times we have stated that the files <strong>content.php</strong> contain some attribute data
 as well as the html text of (some) items.
@@ -143,7 +147,7 @@ Two classes are provided for handling and creating these types of files, they ar
 -   Database::HED::HEDObject, this class allows access to the attributes of a content.php file as a PHP object
 -   Database::HED::HEDFactory, this class knows how to create new empty content.php files of the various types
 
-@page ffs_locator The Locator
+@section ffs_locator The Locator
 
 The details of the structure of Flat File Store are encoded in the The Database::Locator class.
 

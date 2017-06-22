@@ -1,5 +1,11 @@
 /*!
-@page dbinterface Database Interface, or how to 
+@page dbinterface An overview of the database code 
 
+## HED
+
+This folder and namespace contain code for treating Html Encode Files as data objects. There is a class for a data object and a 
+factory object that knows how to create template HtmlEncodedData files.
+
+## Models
 
 */
