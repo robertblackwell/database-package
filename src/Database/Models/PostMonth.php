@@ -16,7 +16,8 @@ class PostMonth extends Base\ModelBase
         $where = " where ( (trip = '".$trip."') and (type='post' or type='entry') )";
         $count_str = ($count)? "limit 0, $count": "" ;
         $c = "SELECT distinct trip, year(published_date) as `year`, month(published_date) as `month` "
-        ." FROM my_items $where order by published_date desc";
+        // ." FROM my_items $where order by published_date desc";
+        ." FROM my_items $where order by year, month";
         return self::$sql->query_objects($c, __CLASS__);
     }
     /*!
@@ -29,7 +30,8 @@ class PostMonth extends Base\ModelBase
         //print "<p>".__METHOD__."</p>";
         $count_str = ($count)? "limit 0, $count": "" ;
         $c = "SELECT distinct trip, year(published_date) as `year`, month(published_date) as `month` "
-        ." FROM my_items WHERE (type='post' or type='entry')   order by published_date desc";
+        // ." FROM my_items WHERE (type='post' or type='entry')   order by published_date desc";
+        ." FROM my_items WHERE (type='post' or type='entry')   order by year, month desc";
         return self::$sql->query_objects($c, __CLASS__);
     }
 }

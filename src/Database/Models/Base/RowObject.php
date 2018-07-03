@@ -56,10 +56,10 @@ class RowObject{
 	    $s = $this->get_text($field);
 	    //print "the string is [$s] length is : ".strlen($s)." \n";
 //	    var_dump($s);
-	    if( is_array($s) ){
-	        print_r($this->row);
-	        exit();
-	    }
+	    // if( is_array($s) ){
+	    //     print_r($this->row);
+	    //     exit();
+	    // }
 	    if( strlen($s) == 0 ) return array();
         $s = str_replace(" ", "", $s);
         $a = explode(",", $s);
