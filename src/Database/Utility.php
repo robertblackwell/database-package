@@ -77,7 +77,7 @@ class Utility
 	    \Trace::function_entry();
         $x = Item::get_by_slug($slug);
         if( is_null( $x ) ){
-            throw new \Exception(__METHOD__."($slug) x is null");
+            throw new \Exception(__METHOD__."($slug) not found x is null");
         }
         //print "<p> Deporting (removing from sql database) item $slug type ";
         if( $slug != $x->slug )
@@ -101,6 +101,12 @@ class Utility
 
         if( $slug != $x->slug )
             throw new \Exception(__METHOD__."($slug) file name and slug do not match file:$fn slug:".$x->slug);
+
+        $y = Album::get_by_slug($slug);
+
+        if($y != null)
+            throw new \Exception(__METHOD__."($slug) found in sql database - already exists: ".$slug);
+
         $x->sql_insert();    
     }
 
@@ -120,6 +126,13 @@ class Utility
 
         if( $slug != $x->slug )
             throw new \Exception(__METHOD__."($slug) file name and slug do not match file:$fn slug:".$x->slug);
+
+
+        $y = Banner::get_by_slug($slug);
+
+        if($y != null)
+            throw new \Exception(__METHOD__."($slug) found in sql database - already exists: ".$slug);
+
         $x->sql_insert();    
     }
     /**
@@ -138,6 +151,11 @@ class Utility
 
         if( $slug != $x->slug )
             throw new \Exception(__METHOD__."($slug) file name and slug do not match file:$fn slug:".$x->slug);
+        
+        $y = Editorial::get_by_slug($slug);
+
+        if($y != null)
+            throw new \Exception(__METHOD__."($slug) found in sql database - already exists: ".$slug);
         $x->sql_insert();    
     }
     
@@ -153,7 +171,7 @@ class Utility
         $x = Album::get_by_slug($slug);
         //var_dump($x);
         if( is_null( $x ) ){
-            throw new \Exception(__METHOD__."($slug) x is null");
+            throw new \Exception(__METHOD__."($slug) not found - cannot deport x is null");
         }
         //print "<p> Deporting (removing from sql database) item $slug type ";
         if( $slug != $x->slug )
@@ -173,7 +191,7 @@ class Utility
         $x = Banner::get_by_slug($slug);
         //var_dump($x);
         if( is_null( $x ) ){
-            throw new \Exception(__METHOD__."($slug) x is null");
+            throw new \Exception(__METHOD__."($slug) not found - cannot deport x is null");
         }
         //print "<p> Deporting (removing from sql database) item $slug type ";
         if( $slug != $x->slug )
@@ -192,7 +210,7 @@ class Utility
         $x = Editorial::get_by_slug($slug);
         //var_dump($x);
         if( is_null( $x ) ){
-            throw new \Exception(__METHOD__."($slug) x is null");
+            throw new \Exception(__METHOD__."($slug) not found - x is null");
         }
         //print "<p> Deporting (removing from sql database) item $slug type ";
         if( $slug != $x->slug )
