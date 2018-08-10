@@ -39,7 +39,7 @@ class HEDObject
         $this->_file_path = realpath($file_name);
         $this->_dir = dirname($this->_file_path);
         if (! file_exists($this->_file_path) ) {
-            throw new \Exception("file : ${$this->_file_path} does not exist");            
+            throw new \Exception("file : " . $this->_file_path ."  does not exist");  
         }
         try
         {
