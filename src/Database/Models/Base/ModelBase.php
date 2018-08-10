@@ -12,7 +12,7 @@ use \Exception as Exception;
 */
 
 /*!
-** @infgroup Models
+** @ingroup Models
 **  This is the base class for all model classes.
 **  It is the first place in the class hierarchy that knows about field names
 **

@@ -4,7 +4,7 @@ use \Exception as Exception;
 /*!
 ** @ingroup Models
 ** This class provides an object that wraps a hashed array
-** and provides types accessor methods for reading and writing the values of the
+** and provides typed accessor methods for reading and writing the values of the
 ** key'd hash.
 ** @todo complete the set_XXX functions so that all types of elements can be updated
 **

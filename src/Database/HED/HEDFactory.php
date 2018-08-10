@@ -90,7 +90,8 @@ class HEDFactory
 		
 	}
 	/**
-	* This actually does the heavy lifting of creating a HED object
+	* This actually does the heavy lifting of creating a HED object and writing it to
+	* a file as Html Encoded Data 
 	* @param string $file_path Where to write the newly created content
 	* @param string $type  The type of object to be created 
 	* @param string $trip  The trip for this journal item 

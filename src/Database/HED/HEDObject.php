@@ -9,7 +9,7 @@ use \Exception as Exception;
 /**
 ** This provides a means by which HTML encoded files can be loaded and accessed.
 ** 
-** As a PHP object the attribute/values pairs accessed as properties of that object
+** As a PHP object the attribute/values pairs are accessed as properties of that object
 ** using the __get magic methods.
 **
 ** @todo    complete the set_XXX functions so that all types of elements can be updated
@@ -38,6 +38,9 @@ class HEDObject
 //		print __CLASS__.":".__METHOD__."($file_name)\n";
         $this->_file_path = realpath($file_name);
         $this->_dir = dirname($this->_file_path);
+        if (! file_exists($this->_file_path) ) {
+            throw new \Exception("file : ${this->_file_path} does not exist");            
+        }
         try
         {
             $php = file_get_contents($this->_file_path);
