@@ -192,7 +192,7 @@ class Utility
     */
     function deport_album($slug)
 	{
-        print "<p>".__METHOD__."($slug)</p>"; 
+        // print "<p>".__METHOD__."($slug)</p>"; 
         $x = Album::get_by_slug($slug);
         var_dump($x);
         if( is_null( $x ) ){
