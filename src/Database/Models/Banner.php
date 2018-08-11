@@ -56,6 +56,27 @@ class Banner extends Base\ModelBase
 		return $o;
     }
 	
+    /*!
+    * Retrieve a banner by unique identifier (slug) and hence return one of
+    * Banner
+    */
+    public static function get_by_slug($slug)
+    {
+        $q = "WHERE slug='".$slug."'";
+        $r = self::$sql->select_objects(self::$table_name, __CLASS__, $q, false);
+        if( is_null($r) || !$r   ) {
+            // print "<p>" .__METHOD__ ." slug: {$slug} got null</p>";
+            return null;
+        }
+        $trip = $r->trip;
+        $obj = new HEDObject();
+        $fn = self::$locator->album_filepath($trip, $slug);
+        $obj->get_from_file($fn);
+        $item = Factory::model_from_hed($obj);
+        return $item;
+    }
+
+
     public static function get_by_trip_slug($trip, $slug)
     {
         $obj = new HEDObject();
