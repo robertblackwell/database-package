@@ -52,6 +52,13 @@ class Utility
     public function import_item($trip, $slug)
 	{
 	    \Trace::function_entry();
+
+        $y = Item::get_by_slug($slug);
+
+        if( ! is_null($y) ) {
+            throw new \Exception("Item Import failed - slug {$slug} already in sql database");
+        }
+
         $x = Item::get_by_trip_slug($trip, $slug);
 
         \Trace::debug("<p> Importing trip : $trip item: $slug type ".get_class($x)."</p>");
@@ -81,7 +88,7 @@ class Utility
         }
         //print "<p> Deporting (removing from sql database) item $slug type ";
         if( $slug != $x->slug )
-            throw new \Exception(__METHOD__."($slug)  slug:".$x->slug);
+            throw new \Exception(__METHOD__."($slug)  mismatch slug:".$x->slug);
         $x->sql_delete();
 	    \Trace::function_exit();
     }
@@ -95,6 +102,12 @@ class Utility
     */
     public function import_album($trip, $slug)
 	{
+        $y = Album::get_by_slug($slug);
+
+        if( ! is_null($y) ) {
+            throw new \Exception("Item Import failed - slug {$slug} already in sql database");
+        }
+
         $x = Album::get_by_trip_slug($trip, $slug);
 
         \Trace::alert("<p> Importing album trip : $trip item: $slug type ".get_class($x)."</p>");
@@ -120,6 +133,12 @@ class Utility
     */
     public function import_banner($trip, $slug)
 	{
+        $y = Banner::get_by_slug($slug);
+
+        if( ! is_null($y) ) {
+            throw new \Exception("Item Import failed - slug {$slug} already in sql database");
+        }
+
         $x = Banner::get_by_trip_slug($trip, $slug);
 
         \Trace::alert("<p> Importing album trip : $trip item: $slug type ".get_class($x)."</p>");
@@ -145,6 +164,12 @@ class Utility
     */
     public function import_editorial($trip, $slug)
 	{
+        $y = Editorial::get_by_slug($slug);
+
+        if( ! is_null($y) ) {
+            throw new \Exception("Item Import failed - slug {$slug} already in sql database");
+        }
+
         $x = Editorial::get_by_trip_slug($trip, $slug);
 
         \Trace::alert("<p> Importing album trip : $trip item: $slug type ".get_class($x)."</p>");
@@ -167,9 +192,9 @@ class Utility
     */
     function deport_album($slug)
 	{
-        //print "<p>".__METHOD__."($slug)</p>"; 
+        print "<p>".__METHOD__."($slug)</p>"; 
         $x = Album::get_by_slug($slug);
-        //var_dump($x);
+        var_dump($x);
         if( is_null( $x ) ){
             throw new \Exception(__METHOD__."($slug) not found - cannot deport x is null");
         }
