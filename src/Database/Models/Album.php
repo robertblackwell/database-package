@@ -53,11 +53,14 @@ class Album extends Base\ModelBase
     {
         $q = "WHERE slug='".$slug."'";
         $r = self::$sql->select_objects(self::$table_name, __CLASS__, $q, false);
-        if( is_null($r) || !$r   ) return null;
+        if( is_null($r) || !$r   ) {
+            print "<p>" .__METHOD__ " got null</p>";
+            return null;
+        }
         $trip = $r->trip;
         $obj = new HEDObject();
         $fn = self::$locator->album_filepath($trip, $slug);
-      $obj->get_from_file($fn);
+        $obj->get_from_file($fn);
         $item = Factory::model_from_hed($obj);
         return $item;
     }
