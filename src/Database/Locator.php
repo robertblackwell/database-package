@@ -73,6 +73,24 @@ class Locator
         return self::$instance;
     }
 
+    public function rmdir_recurse($dir)
+    {
+        if( $dir =="/") throw new \Exception("trying to delete root directory");
+        if( $dir =="") throw new \Exception("trying to delete root directory");
+        
+        $x = strpos($dir, $this->data_root);
+
+        if($x == false) throw new \Exception("trying to delete dir not under data root");
+
+        $files = array_diff(scandir($dir), array('.', '..')); 
+
+        foreach ($files as $file) { 
+            (is_dir("$dir/$file")) ? delTree("$dir/$file") : unlink("$dir/$file"); 
+        }
+
+        return rmdir($dir); 
+    }
+
 	/**
 	* Returns the document root for this site
 	* @return string
@@ -212,6 +230,15 @@ class Locator
         return file_exists($this->item_filepath($trip, $slug));
     }
 
+    public function item_remove($trip, $slug)
+    {
+        if( $this->item_exists($trip, $slug) ) {
+            $d = $this->item_dir($trip, $slug);
+            // now remove $d
+            $this->rmdir_recurse($d);
+        }
+    }
+
 //////////	
 //end of content item path methods
 /////////	
@@ -325,6 +352,17 @@ class Locator
     {
         return file_exists($this->album_filepath($trip, $slug));
     }
+
+    public function album_remove($trip, $slug)
+    {
+        if( $this->album_exists($trip, $slug) ) {
+            $d = $this->album_dir($trip, $slug);
+            // now remove $d
+            $this->rmdir_recurse($d);
+        }
+    }
+
+
 //////////	
 //end of album item path methods
 /////////	
