@@ -201,7 +201,7 @@ class HEDFactory
         //print __CLASS__.":".__METHOD__."<br>";
     }
 
-    public static create_entry($file_path, $trip, $slug, $pub_date, $parms)
+    public static function create_entry($file_path, $trip, $slug, $pub_date, $parms)
     {
     	ob_start();
 
