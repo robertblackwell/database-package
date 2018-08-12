@@ -75,12 +75,12 @@ class Locator
 
     public function rmdir_recurse($dir)
     {
-        if( $dir =="/") throw new \Exception("trying to delete root directory");
-        if( $dir =="") throw new \Exception("trying to delete root directory");
+        if( $dir =="/") throw new \Exception("trying to delete root directory {$dir}");
+        if( $dir =="") throw new \Exception("trying to delete root directory {$dir}");
         
         $x = strpos($dir, $this->data_root);
 
-        if($x == false) throw new \Exception("trying to delete dir not under data root");
+        if($x == false) throw new \Exception("trying to delete dir not under data root {$dir} " . $this->data_root);
 
         $files = array_diff(scandir($dir), array('.', '..')); 
 
