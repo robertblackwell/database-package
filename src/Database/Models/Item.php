@@ -64,7 +64,11 @@ class Item extends ItemBase
         );
         parent::__construct($obj);
     }
-    public static function get_by_trip_slug($trip, $slug){
+    public static function get_by_trip_slug($trip, $slug)
+    {
+        if( ! self::$locator->item_exists($trip, $slug) )
+            return null;
+
         $obj = new HEDObject();
         $fn = self::$locator->item_filepath($trip, $slug);
         $obj->get_from_file($fn);

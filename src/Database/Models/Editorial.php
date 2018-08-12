@@ -41,7 +41,11 @@ class Editorial extends Base\ModelBase
 	public static function get_active($trip){
 		
 	} 
-    public static function get_by_trip_slug($trip, $slug){
+    public static function get_by_trip_slug($trip, $slug)
+    {
+        if( ! self::$locator->editorial_exists($trip, $slug) )
+            return null;
+
         $hobj = new HEDObject();
         $fn = self::$locator->editorial_filepath($trip, $slug);
         $hobj->get_from_file($fn);

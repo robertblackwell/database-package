@@ -199,6 +199,19 @@ class Locator
 	{
         return $this->content_root($trip)."/$slug/".$this->item_filename();
     }
+
+    /*!
+    * Tests if a item exists for a trip/slug
+    * @parms $trip A trip code
+    * @param $slug. The unique slug for a content item
+    * @return True if the item exists.
+    *
+    */
+    public function item_exists($trip, $slug)
+    {
+        return file_exists($this->item_filepath($trip, $slug));
+    }
+
 //////////	
 //end of content item path methods
 /////////	
@@ -299,6 +312,18 @@ class Locator
     public function album_filepath($trip, $slug)
 	{
         return $this->album_root($trip)."/$slug/".$this->album_filename();
+    }
+
+    /*!
+    * Tests if a album exists for a trip/slug
+    * @parms $trip A trip code
+    * @param $slug. The unique slug for a content item
+    * @return True if the album exists.
+    *
+    */
+    public function album_exists($trip, $slug)
+    {
+        return file_exists($this->album_filepath($trip, $slug));
     }
 //////////	
 //end of album item path methods
@@ -404,6 +429,21 @@ class Locator
 	{
  		return $this->banner_root($trip)."/".$slug."/Images/".$image;
     }
+
+    /*!
+    * Tests if a banner exists for a trip/slug
+    * @parms $trip A trip code
+    * @param $slug. The unique slug for a content item
+    * @return True if the banner exists.
+    *
+    */
+    public function banner_exists($trip, $slug)
+    {
+        return file_exists($this->banner_filepath($trip, $slug));
+    }
+
+
+
 //////////	
 //end of banner item path methods
 /////////	
@@ -462,15 +502,30 @@ class Locator
 		$s2 = str_replace($this->doc_root, "", $s);
 		return $s2;
 	}
-/*!
-* @parms $trip A trip code
-* @param $slug. The unique slug for a content item
-* @return string The full path to the content/attribute  file for a given content item.
-*/
-public function editorial_filepath($trip, $slug)
-{
-    return $this->editorial_root($trip)."/$slug/".$this->editorial_filename();
-}
+    /*!
+    * @parms $trip A trip code
+    * @param $slug. The unique slug for a content item
+    * @return string The full path to the content/attribute  file for a given content item.
+    */
+    public function editorial_filepath($trip, $slug)
+    {
+        return $this->editorial_root($trip)."/$slug/".$this->editorial_filename();
+    }
+
+    /*!
+    * Tests if a editorial exists for a trip/slug
+    * @parms $trip A trip code
+    * @param $slug. The unique slug for a content item
+    * @return True if the editorial exists.
+    *
+    */
+    public function editorial_exists($trip, $slug)
+    {
+        return file_exists($this->editorial_filepath($trip, $slug));
+    }
+
+
+
 //////////	
 //end of editorial item path methods
 /////////	

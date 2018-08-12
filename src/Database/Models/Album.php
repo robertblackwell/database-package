@@ -38,6 +38,9 @@ class Album extends Base\ModelBase
     }
     public static function get_by_trip_slug($trip, $slug)
     {
+        if( ! self::$locator->album_exists($trip, $slug) )
+            return null;
+
         $obj = new HEDObject();
         $fn = self::$locator->album_filepath($trip, $slug);
         $obj->get_from_file($fn);

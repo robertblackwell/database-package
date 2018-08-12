@@ -79,6 +79,9 @@ class Banner extends Base\ModelBase
 
     public static function get_by_trip_slug($trip, $slug)
     {
+        if( ! self::$locator->banner_exists($trip, $slug) )
+            return null;
+
         $obj = new HEDObject();
         $fn = self::$locator->banner_filepath($trip, $slug);
 		$images_dir = self::$locator->banner_images_dir($trip, $slug);
