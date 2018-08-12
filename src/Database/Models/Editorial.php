@@ -27,8 +27,8 @@ class Editorial extends Base\ModelBase
         "trip"=>"text",
         "title"=>"html",
 		'main_content'=>'html',
-        'image_name'=>'text',
-		'image'=>'text'
+        'image_name'=>'text', // this is a name like someimage.jpg -- the locator is used to add all the required dirs at the fron
+		'image'=>'text'       // as far as I can tell this is not used
 		//
 		// @Note: image_url is an attribute computed and added to this object at retreivl time. See code below
 		//

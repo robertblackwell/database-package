@@ -398,9 +398,9 @@ class Factory {
         HEDFactory::create_album($p, $trip, $slug, $dte, $name, $parms);
     }
 
-    static function create_editorial($trip, $slug, $dte, $name, $parms){
+    static function create_editorial($trip, $slug, $dte, $name, $image_name, $parms){
         $p = self::$locator->editorial_filepath($trip, $slug);
-		$obj = HEDFactory::create_editorial($p, $trip, $slug, $dte, $name, $parms);
+		$obj = HEDFactory::create_editorial($p, $trip, $slug, $dte, $name, $image_name, $parms);
 		return;
     }
     static function create_banner($trip, $slug, $dte, $name, $parms){

@@ -12,6 +12,10 @@ LITETEST=$(VENDORBIN)/litetest
 build:
 	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/utility/index.php
 
+editorial:
+	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/editorial/index.php
+
+
 load:
 	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/db/index.php
 	

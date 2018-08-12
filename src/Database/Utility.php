@@ -194,7 +194,7 @@ class Utility
 	{
         // print "<p>".__METHOD__."($slug)</p>"; 
         $x = Album::get_by_slug($slug);
-        var_dump($x);
+        // var_dump($x);
         if( is_null( $x ) ){
             throw new \Exception(__METHOD__."($slug) not found - cannot deport x is null");
         }

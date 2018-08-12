@@ -64,6 +64,17 @@ class HEDFactory
         print("\n</body>\n");
         print("</html>");
 	}
+	private static function print_hed_common($type, $trip, $slug, $pub_date, $parms)
+	{
+		self::printFieldValue("version", 		['version' => '2.0']);
+		self::printFieldValue("status", 		['status' => "draft"]);
+		self::printFieldValue("type", 			['type' => $type]);
+		self::printFieldValue("slug", 			['slug' => $slug]);
+		self::printFieldValue("creation_date", 	['creation_date' => $pub_date]);
+		self::printFieldValue("published_date", ['published_date' => $pub_date]);
+		self::printFieldValue("last_modified_date", ['last_modified_date' => $pub_date]);
+		self::printFieldValue("trip", ['trip' => $trip]);
+	}
 	private static function deduceItemDir()
 	{
         $pi = pathinfo($file_path);
@@ -190,6 +201,29 @@ class HEDFactory
         //print __CLASS__.":".__METHOD__."<br>";
     }
 
+    public static create_entry($file_path, $trip, $slug, $pub_date, $parms)
+    {
+    	ob_start();
+
+    	self::print_hed_header();
+    	self::print_hed_common("entry", $trip, $slug, $pub_date, $parms);
+
+    	self::printFieldValue("miles", $parms);
+    	self::printFieldValue("odometer", $parms);
+    	self::printFieldValue("day_number", $parms);
+    	self::printFieldValue("place", $parms);
+    	self::printFieldValue("country", $parms);
+    	self::printFieldValue("latitude", $parms);
+    	self::printFieldValue("longitude", $parms);
+    	self::printFieldValue("featured_image", $parms);
+    	self::printFieldValue("abstract", $parms);
+    	self::printFieldValue("excerpt", $parms);
+    	self::printFieldValue("main_content", $parms);
+
+    	self::print_hed_footer();
+    	$s = ob_get_clean();
+    }
+
 	/**
 	* Create a new skeleton location object in HED format and write given file path
 	* @param string $file_path Where to write the newly created content
@@ -295,11 +329,12 @@ class HEDFactory
 	* @param string $slug the unique id for this editorial
 	* @param string $dte  The published date to be recorded
 	* @param string $name The name of title for this editorial
+	* @param string $image_name
 	* @param array  $parm An array of key value pairs representing additional dat to be stored for the editorial  
 	* @return
 	*
 	*/
-    public static function create_editorial($file_path, $trip, $slug, $dte, $name, $parms = array())
+    public static function create_editorial($file_path, $trip, $slug, $dte, $name, $image_name, $parms = array())
 	{
         $parms['trip'] = $trip;
         $parms['version'] = "2.0";
@@ -309,7 +344,8 @@ class HEDFactory
         $parms['last_modified_date'] = $dte;
 		$parms['title'] = $name;
 		$parms['main_content'] = '<p>Put some junk here</p>';
-		$parms['image_name'] = $parms['image'];
+		$parms['image_name'] = $image_name; //$parms['image'];
+		$parms['image'] = $image_name; //$parms['image'];
 //        $parms['title'] = $name;
 		// var_dump($parms);
 		// exit();

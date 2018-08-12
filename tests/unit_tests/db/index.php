@@ -5,6 +5,7 @@ use Database\Models\Factory as Factory;
 
 class test_load_db extends \LiteTest\TestCase{
 	function test_db_load(){
+		
 		\DbPreloader::load();
 	}
 }

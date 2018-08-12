@@ -16,10 +16,12 @@ require_once(dirname(__FILE__)."/config.php");
 
 class DbPreloader{
  
-    function load(){   
+    static function load(){   
 		global $config;
-		
-		print "Loading database from ". $config->data_root  ."\n";
+		// print_r($config); 
+  //       var_dump($config);
+		print "Loading database from ". $config['hed']['data_root']  ."\n";
+        // exit();
         $builder = new \Database\Builder();
         $utility = new \Database\Utility();
         $builder->drop_tables();

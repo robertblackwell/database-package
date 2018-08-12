@@ -2,7 +2,7 @@
 
 use Database\Object as Db;
 
-class TestEditorial extends Litetest\TestCase{
+class TestEditorial extends \LiteTest\TestCase{
     function setUp(){
 		\Trace::disable();
         global $config;
@@ -27,13 +27,14 @@ class TestEditorial extends Litetest\TestCase{
 		$slug='170707';
 		$edate = '2017-07-07';
 		$de = array("image"=>"image_file_name", "image_url" =>"image_full_url");
+		$de = array("image_url" =>"image_full_url");
 		$p1 = dirname(__FILE__)."/output/content.php";
 		$p2 = dirname(__FILE__)."/correct_content.php";
 		$verbose = "";
 		$oput = system("rm -R{$verbose} ".dirname(__FILE__)."/output");
 		// print $oput . "\n";
 		$fn = dirname(__FILE__)."/output/content.php";
-        \Database\HED\HEDFactory::create_editorial($fn, $trip, $slug, $edate, "Â_NAME",  ["image"=>"ANIMAGE", "X"=>"xxxx"]);
+        \Database\HED\HEDFactory::create_editorial($fn, $trip, $slug, $edate, "Â_NAME",  "ANIMAGE", ["X"=>"xxxx"]);
 		$this->assertEqual(file_get_contents($p1), file_get_contents($p2));
 		Trace::function_exit();
 		
