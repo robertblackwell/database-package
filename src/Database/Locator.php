@@ -80,7 +80,7 @@ class Locator
         
         $x = strpos($dir, $this->data_root);
 
-        if($x == false) throw new \Exception("trying to delete dir not under data root {$dir} " . $this->data_root);
+        if($x === false) throw new \Exception("trying to delete dir not under data root {$dir} " . $this->data_root);
 
         $files = array_diff(scandir($dir), array('.', '..')); 
 
