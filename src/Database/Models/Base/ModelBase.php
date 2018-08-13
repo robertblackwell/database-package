@@ -43,7 +43,7 @@ class ModelBase extends RowBase
         return array_keys($this->vo_fields);
     }
 	function getStdClass(){
-		$obj = new stdClass();
+		$obj = new \stdClass();
 		$fields = $this->get_fields();
 		foreach($fields as $f => $v){
 			//print "<p>getStdClass $f  ".$this->__get($f)."</p>";

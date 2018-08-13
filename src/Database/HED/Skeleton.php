@@ -330,6 +330,7 @@ EOD;
     	self::print_field_value("tags", "TAGS");
     	self::print_field_value("excerpt", "EXCERPT");
     	self::print_field_value("abstract", "ABSTRACT");
+    	self::print_field_value("featured_image", self::default_featured_image());
     	self::print_field_value("main_content", self::default_main_content());
 
     	self::print_hed_footer();
