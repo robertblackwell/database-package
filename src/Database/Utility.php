@@ -109,11 +109,11 @@ class Utility
             throw new \Exception("Item Import failed - slug {$slug} already in sql database");
         }
 
-        $x = Album::get_by_trip_slug($trip, $slug);
+        $model = Album::get_by_trip_slug($trip, $slug);
 
         \Trace::alert("<p> Importing album trip : $trip item: $slug type ".get_class($x)."</p>");
 
-        if( $slug != $x->slug )
+        if( $slug != $model->slug )
             throw new \Exception(__METHOD__."($slug) file name and slug do not match file:$fn slug:".$x->slug);
 
         $y = Album::get_by_slug($slug);
@@ -121,7 +121,8 @@ class Utility
         if($y != null)
             throw new \Exception(__METHOD__."($slug) found in sql database - already exists: ".$slug);
 
-        $x->sql_insert();    
+        $x->sql_insert();  
+        return $model;  
     }
 
     /**
@@ -153,7 +154,8 @@ class Utility
         if($y != null)
             throw new \Exception(__METHOD__."($slug) found in sql database - already exists: ".$slug);
 
-        $x->sql_insert();    
+        $x->sql_insert();
+        return $x;
     }
     /**
     ** Import an editorial from its HED form into the sql database - this is the
@@ -182,7 +184,8 @@ class Utility
 
         if($y != null)
             throw new \Exception(__METHOD__."($slug) found in sql database - already exists: ".$slug);
-        $x->sql_insert();    
+        $x->sql_insert();
+        return $x;
     }
     
 	/**
@@ -203,6 +206,7 @@ class Utility
         if( $slug != $x->slug )
             throw new \Exception(__METHOD__."($slug)  slug:".$x->slug);
         $x->sql_delete();
+        return $x;
     }
 
 	/**
@@ -223,6 +227,7 @@ class Utility
         if( $slug != $x->slug )
             throw new \Exception(__METHOD__."($slug)  slug:".$x->slug);
         $x->sql_delete();
+        return $x;
     }
 	/**
     ** Remove an editorial (defined by $slug) from the sql database. This is the equivalent of "unpublish"
@@ -242,6 +247,7 @@ class Utility
         if( $slug != $x->slug )
             throw new \Exception(__METHOD__."($slug)  slug:".$x->slug);
         $x->sql_delete();
+        return $x;
     }
 
 
