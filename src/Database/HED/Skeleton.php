@@ -10,15 +10,6 @@ namespace Database\HED;
  * change or new Model classes are added to the database
  * 
 */
-use \Database\Models\Entry as VOEntry;
-use \Database\Models\Entry as VOPost;
-use \Database\Models\Entry as VOArticle;
-use \Exception as Exception;
-/**
- * \brief This is the breif description of the class
- *
- * This is class documentation for the HEDFactory
- */
 class Skeleton 
 {
 	var $db;
@@ -124,6 +115,134 @@ EOD;
  		return "[0]";
  	}
 
+
+    public static function create_album($trip, $slug, $published_date, $title)
+    {
+    	assert(func_num_args() == 4);
+    	$path = \Database\Locator::get_instance()->album_filepath($trip, $slug);
+    	return self::make_album($path, $trip, $slug, $published_date, $title);
+    }
+	/**
+	* Create a new skeleton album in HED format and write given file path
+	* @param string $hed_file_path Where to write the newly created content
+	* @param string $trip  The trip for this album
+	* @param string $slug the unique id for this album
+	* @param string $dte  The published date to be recorded in the album
+	* @param string $name The name of title for this album
+	* @param array  $parm An array of key value pairs representing additional dat to be stored for the album  
+	* @return
+	*
+	*/
+    public static function make_album($hed_file_path, $trip, $slug, $published_date, $title)
+	{
+		ob_start();
+
+    	self::print_hed_header();
+    	self::print_hed_common("album", $trip, $slug, $published_date, []);
+
+    	self::print_field_value("title", $title);
+
+
+    	self::print_hed_footer();
+    	$s = ob_get_clean();
+    	return self::write_hed_data($hed_file_path, "album", $s);
+    }
+
+	
+    public static function create_banner($trip, $slug, $published_date, $title)
+    {
+    	assert(func_num_args() == 4);
+    	$path = \Database\Locator::get_instance()->banner_filepath($trip, $slug);
+    	return self::make_banner($path, $trip, $slug, $published_date, $title);
+    }
+	/**
+	* Create a new skeleton banner in HED format and write given file path
+	* @param string $hed_file_path Where to write the newly created content
+	* @param string $trip  The trip for this editorial
+	* @param string $slug the unique id for this editorial
+	* @param string $dte  The published date to be recorded
+	* @param string $name The name of title for this editorial
+	* @param array  $parm An array of key value pairs representing additional dat to be stored for the album  
+	* @return
+	*
+	*/
+    public static function make_banner($hed_file_path, $trip, $slug, $published_date, $image_url)
+	{
+		ob_start();
+
+    	self::print_hed_header();
+    	self::print_hed_common("banner", $trip, $slug, $published_date, []);
+
+    	self::print_field_value("title", "No REQUIRED");
+    	self::print_field_value("main_content", "NOT_REQUIRED");
+    	self::print_field_value("image_url", $image_url);
+
+
+    	self::print_hed_footer();
+    	$s = ob_get_clean();
+    	return self::write_hed_data($hed_file_path, "banner", $s);
+		
+    }
+
+
+    public static function create_editorial($trip, $slug, $published_date, $title, $image)
+    {
+    	assert(func_num_args() == 5);
+    	$path = \Database\Locator::get_instance()->editorial_filepath($trip, $slug);
+    	return self::make_editorial($path, $trip, $slug, $published_date, $title, $image);
+    }
+
+	/**
+	* Create a new skeleton editorial in HED format and write given file path
+	* @param string $hed_file_path Where to write the newly created content
+	* @param string $trip  The trip for this editorial
+	* @param string $slug the unique id for this editorial
+	* @param string $dte  The published date to be recorded
+	* @param string $title The name or title for this editorial
+	* @param string $image_name
+	* @param array  $parm An array of key value pairs representing additional dat to be stored for the editorial  
+	* @return
+	*
+	*/
+    public static function make_editorial($hed_file_path, $trip, $slug, $published_date, $title, $image)
+	{
+		ob_start();
+
+		$main_content = "<p>enter main content here</p>";
+
+    	self::print_hed_header();
+    	self::print_hed_common("editorial", $trip, $slug, $published_date, []);
+
+    	self::print_field_value("title", $title);
+    	self::print_field_value("image", $image);
+    	self::print_field_value("image_name", $image);
+    	self::print_field_value("main_content", $main_content);
+
+
+    	self::print_hed_footer();
+    	$s = ob_get_clean();
+    	return self::write_hed_data($hed_file_path, "album", $s);
+    }
+
+ 	public static function create_entry(
+    	$trip, 
+    	$slug, 
+    	$published_date, 
+    	$title,
+    	$miles, 
+    	$odometer, 
+    	$day_number, 
+    	$place, 
+    	$country, 
+    	$latitude, 
+    	$longitude
+    )
+ 	{
+    	assert(func_num_args() == 11);
+ 		$path = \Database\Locator::get_instance()->item_filepath();
+ 		return self::make_entry($path, $trip, $slug, $published_date, $title, $miles, $odometer, $day_number, $place, $country, $latitude, $longitude);
+ 	}
+
 	/**
 	* Create a new skeleton entry in HED format and write given file path
 	* @param string $hed_file_path Where to write the newly created content
@@ -183,61 +302,12 @@ EOD;
 
     }
 
-	/**
-	* Create a new skeleton location object in HED format and write given file path
-	* @param string $hed_file_path Where to write the newly created content
-	* @param string $trip  The trip for this journal item 
-	* @param string $slug the unique id for this journal item 
-	* @param string $dte  The published date to be recorded in the journal item 
-	* @param string $name The name of title for this journal item 
-	* @param array  $parm An array of key value pairs representing additional dat to be stored for the journal item  
-	* @return HEDObject just made
-	*
-	*/
-    public static function create_location($file_path, $trip, $slug, $dte, $parms = array())
-	{
-		// var_dump($parms);
-		$parms['slug'] = $slug;
-		$parms['type'] = 'location';
-        $parms['trip'] =  $trip;
-        $parms['version'] =  "2.0";
-        $parms['status'] =  "draft";
-        $parms['creation_date'] = $dte;
-        $parms['published_date'] = $dte;
-        $parms['last_modified_date'] = $dte;
-        ob_start(); 
-        self::print_hed_header();
-		self::print_field_value("slug", $parms);
-		self::print_field_value("type", $parms);
-		self::print_field_value("trip", $parms);
-		self::print_field_value("version", $parms);
-		self::print_field_value("status", $parms);
-		self::print_field_value("creation_date", $parms);
-		self::print_field_value("published_date", $parms);
-		self::print_field_value("last_modified_date", $parms);
-
-		self::print_field_value("miles", $parms);
-		self::print_field_value("odometer", $parms);
-		self::print_field_value("day_number", $parms);
-		
-		self::print_field_value("place", $parms);
-		self::print_field_value("country", $parms);
-		self::print_field_value("latitude", $parms);
-		self::print_field_value("longitude", $parms);
-		self::print_field_value("content_ref", $parms);
-
-        self::print_hed_footer();
-        $s = ob_get_clean();
-		self::createItemDir($file_path);
-        $file_name = $file_path;
-		file_put_contents($file_name, $s);
-		
-		$obj = new HEDObject();
-		$obj->get_from_file($file_name);
-		return $obj;
+    public static function create_post($trip, $slug, $published_date, $title)
+    {
+    	assert(func_num_args() == 4);
+    	$path = \Database\Locator::get_instance()->item_filepath($trip, $slug);
+    	return self::make_post($path, $trip, $slug, $published_date, $title);
     }
-
-
 	/**
 	* Create a new skeleton post item in HED format and write given file path
 	* @param string $hed_file_path Where to write the newly created content
@@ -266,91 +336,7 @@ EOD;
     	$s = ob_get_clean();
     	return self::write_hed_data($hed_file_path, "post", $s);
     }
-	/**
-	* Create a new skeleton album in HED format and write given file path
-	* @param string $hed_file_path Where to write the newly created content
-	* @param string $trip  The trip for this album
-	* @param string $slug the unique id for this album
-	* @param string $dte  The published date to be recorded in the album
-	* @param string $name The name of title for this album
-	* @param array  $parm An array of key value pairs representing additional dat to be stored for the album  
-	* @return
-	*
-	*/
-    public static function make_album($hed_file_path, $trip, $slug, $published_date, $title)
-	{
-		ob_start();
 
-    	self::print_hed_header();
-    	self::print_hed_common("album", $trip, $slug, $published_date, []);
-
-    	self::print_field_value("title", $title);
-
-
-    	self::print_hed_footer();
-    	$s = ob_get_clean();
-    	return self::write_hed_data($hed_file_path, "album", $s);
-    }
-	/**
-	* Create a new skeleton editorial in HED format and write given file path
-	* @param string $hed_file_path Where to write the newly created content
-	* @param string $trip  The trip for this editorial
-	* @param string $slug the unique id for this editorial
-	* @param string $dte  The published date to be recorded
-	* @param string $title The name or title for this editorial
-	* @param string $image_name
-	* @param array  $parm An array of key value pairs representing additional dat to be stored for the editorial  
-	* @return
-	*
-	*/
-    public static function make_editorial($hed_file_path, $trip, $slug, $published_date, $title, $image)
-	{
-		ob_start();
-
-		$main_content = "<p>enter main content here</p>";
-
-    	self::print_hed_header();
-    	self::print_hed_common("editorial", $trip, $slug, $published_date, []);
-
-    	self::print_field_value("title", $title);
-    	self::print_field_value("image", $image);
-    	self::print_field_value("image_name", $image);
-    	self::print_field_value("main_content", $main_content);
-
-
-    	self::print_hed_footer();
-    	$s = ob_get_clean();
-    	return self::write_hed_data($hed_file_path, "album", $s);
-    }
-	
-	/**
-	* Create a new skeleton banner in HED format and write given file path
-	* @param string $hed_file_path Where to write the newly created content
-	* @param string $trip  The trip for this editorial
-	* @param string $slug the unique id for this editorial
-	* @param string $dte  The published date to be recorded
-	* @param string $name The name of title for this editorial
-	* @param array  $parm An array of key value pairs representing additional dat to be stored for the album  
-	* @return
-	*
-	*/
-    public static function make_banner($hed_file_path, $trip, $slug, $published_date, $image_url)
-	{
-		ob_start();
-
-    	self::print_hed_header();
-    	self::print_hed_common("banner", $trip, $slug, $published_date, []);
-
-    	self::print_field_value("title", "No REQUIRED");
-    	self::print_field_value("main_content", "NOT_REQUIRED");
-    	self::print_field_value("image_url", $image_url);
-
-
-    	self::print_hed_footer();
-    	$s = ob_get_clean();
-    	return self::write_hed_data($hed_file_path, "banner", $s);
-		
-    }
 
 } 
 

@@ -102,6 +102,7 @@ class Utility
     */
     public function import_album($trip, $slug)
 	{
+
         $y = Album::get_by_slug($slug);
 
         if( ! is_null($y) ) {
