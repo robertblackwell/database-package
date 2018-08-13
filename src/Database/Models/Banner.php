@@ -70,7 +70,7 @@ class Banner extends Base\ModelBase
         }
         $trip = $r->trip;
         $obj = new HEDObject();
-        $fn = self::$locator->album_filepath($trip, $slug);
+        $fn = self::$locator->banner_filepath($trip, $slug);
         $obj->get_from_file($fn);
         $item = Factory::model_from_hed($obj);
         return $item;
