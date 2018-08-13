@@ -85,7 +85,7 @@ class Banner extends Base\ModelBase
         $obj = new HEDObject();
         $fn = self::$locator->banner_filepath($trip, $slug);
 
-        print "<p>".__METHOD__." file name : {$fn}</p>";
+        // print "<p>".__METHOD__." file name : {$fn}</p>";
 
 		$images_dir = self::$locator->banner_images_dir($trip, $slug);
         $obj->get_from_file($fn);
