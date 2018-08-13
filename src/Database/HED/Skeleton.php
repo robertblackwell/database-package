@@ -33,7 +33,7 @@ class Skeleton
 
 	private static function print_hed_common($type, $trip, $slug, $pub_date, $parms)
 	{
-		self::print_field_value("version", 		['version' => '2.0']);
+		self::print_field_value("version", 		['version' => '2.0.skel']);
 		self::print_field_value("status", 		['status' => "draft"]);
 		self::print_field_value("type", 			['type' => $type]);
 		self::print_field_value("slug", 			['slug' => $slug]);
