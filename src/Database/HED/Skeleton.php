@@ -70,14 +70,14 @@ class Skeleton
 
 		$d = $item_dir;
         if( !mkdir($item_dir, 511, true) )
-			throw new Exception("mkdir failed to make [$d] ");
+			throw new \Exception("mkdir failed to make [$d] ");
         if( !chmod($item_dir, 511) )
-			throw new Exception("chmod failed on directory $d");
+			throw new \Exception("chmod failed on directory $d");
 
         file_put_contents($file_name, $hed_string);
         
         if( !chmod($file_name, 511) )
-			throw new Exception("chmod failed on file: $file_name");
+			throw new \Exception("chmod failed on file: $file_name");
         
         if( ($type == "entry") || ($type == "post") || ($type == "banner" )){
             mkdir($item_dir."/Images", 511, true);
