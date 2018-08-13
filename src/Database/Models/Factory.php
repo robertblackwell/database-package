@@ -226,7 +226,8 @@ class Factory {
 		// var_dump($x);
 		return $x;
 	}
-    static function post_from_hed($hed_obj){
+    static function post_from_hed($hed_obj)
+    {
         //print __METHOD__."\n";
         $fields1 = Post::get_fields();
         // compute the fields that require no trickery
@@ -247,11 +248,13 @@ class Factory {
         $vals['entity_path'] = dirname($hed_obj->_file_path); 
         $vals['featured_image'] = self::featured_image($hed_obj);
         $vals['excerpt'] = $hed_obj->get_first_p('main_content');
-        $x = new Post($vals);
+        $model = new Post($vals);
         //print __METHOD__."\n";
-        return $x;      
+        return $model;      
     }
-    static function article_from_hed($hed_obj){
+
+    static function article_from_hed($hed_obj)
+    {
         //print __METHOD__."\n";
         $fields1 = Article::get_fields();
         // compute the fields that require no trickery
@@ -276,7 +279,9 @@ class Factory {
         //print __METHOD__."\n";
         return $x;      
     }
-    static function album_from_hed($hed_obj){
+
+    static function album_from_hed($hed_obj)
+    {
         //print __METHOD__."\n";
         $fields1 = Album::get_fields();
         // compute the fields that require no trickery
@@ -297,7 +302,9 @@ class Factory {
         //print __METHOD__."\n";
         return $x;      
     }
-    static function editorial_from_hed($hed_obj){
+
+    static function editorial_from_hed($hed_obj)
+    {
         //print __METHOD__."\n";
         
 		$locator = \Database\Locator::get_instance();

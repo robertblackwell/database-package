@@ -80,7 +80,7 @@ class Locator
         
         $x = strpos($dir, $this->data_root);
 
-        if($x === false) throw new \Exception("trying to delete dir not under data root {$dir} " . $this->data_root);
+        if( is_bool($x) && ($x === false) ) throw new \Exception("trying to delete dir not under data root {$dir} " . $this->data_root);
 
         $files = array_diff(scandir($dir), array('.', '..')); 
 
@@ -481,6 +481,15 @@ class Locator
     }
 
 
+    public function banner_remove($trip, $slug)
+    {
+        if( $this->banner_exists($trip, $slug) ) {
+            $d = $this->banner_dir($trip, $slug);
+            // now remove $d
+            $this->rmdir_recurse($d);
+        }
+    }
+
 
 //////////	
 //end of banner item path methods
@@ -562,6 +571,15 @@ class Locator
         return file_exists($this->editorial_filepath($trip, $slug));
     }
 
+
+    public function editorial_remove($trip, $slug)
+    {
+        if( $this->editorial_exists($trip, $slug) ) {
+            $d = $this->editorial_dir($trip, $slug);
+            // now remove $d
+            $this->rmdir_recurse($d);
+        }
+    }
 
 
 //////////	

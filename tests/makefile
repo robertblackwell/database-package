@@ -12,15 +12,24 @@ LITETEST=$(VENDORBIN)/litetest
 build:
 	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/utility/index.php
 
+load:
+	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/db/index.php
+
+album:
+	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/albums/index.php
+
+banner:
+	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/banner/index.php
+
 editorial:
 	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/editorial/index.php
 
+post:
+	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/post/index.php
 
-load:
-	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/db/index.php
-	
-banner:
-	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/banner/index.php
+entry:
+	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/entry/index.php
+
 	
 test:
 	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/find_categorized_items/find_test.php

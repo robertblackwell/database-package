@@ -45,6 +45,9 @@ class Album extends Base\ModelBase
         $fn = self::$locator->album_filepath($trip, $slug);
         $obj->get_from_file($fn);
         $item = Factory::model_from_hed($obj);
+
+        /// @todo this should be done in mode_from_hed
+        
         $item->gallery = \Gallery\Object::create(dirname($fn));
         return $item;
     }
@@ -61,6 +64,7 @@ class Album extends Base\ModelBase
             return null;
         }
         $trip = $r->trip;
+        /// @todo - call get_by_trip_slug
         $obj = new HEDObject();
         $fn = self::$locator->album_filepath($trip, $slug);
         $obj->get_from_file($fn);
@@ -79,6 +83,7 @@ class Album extends Base\ModelBase
         $r = self::$sql->select_objects(self::$table_name, __CLASS__ , $c);
         foreach($r as $a){
             $trip = $a->trip;
+            /// @todo this is a missing step something like - make_derived_data - why cannot the Model constructor do this
             $a->gallery = \Gallery\Object::create(Locator::get_instance()->album_dir($trip, $a->slug));
         }
         //var_dump($r);exit();

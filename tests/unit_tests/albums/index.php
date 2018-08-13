@@ -75,5 +75,52 @@ class TestFindAlbum extends \LiteTest\TestCase{
         //$this->assertEqual($result[3]->slug, "bolivia-1");
 	    Trace::function_exit();
     }
+
+    function test_create_one(){
+        Trace::function_entry();
+        $trip = 'rtw';
+        $slug='170707';
+        $edate = '2017-07-07';
+        $de = array();
+        $p1 = dirname(__FILE__)."/output/content_1.php";
+        $p2 = dirname(__FILE__)."/correct_content_1.php";
+        $verbose = "";// set to "v" to get output
+        // print system("rm -Rv ".dirname(__FILE__)."/output");
+        $oput = system("rm -R{$verbose} ".dirname(__FILE__)."/output");
+        // print $oput."\n";
+        \Database\HED\HEDFactory::create_album($p1, $trip, $slug, $edate, "AN_ALBUM_TITLE", $de);
+        $this->assertEqual(file_get_contents($p1), file_get_contents($p2));
+        Trace::function_exit();
+        
+    }
+    function test_create_with_skeleton()
+    {
+        Trace::function_entry();
+        $trip = 'rtw';
+        $slug='170707';
+        $edate = '2017-07-07';
+        $p1 = dirname(__FILE__)."/output/content_2.php";
+        $p2 = dirname(__FILE__)."/correct_content_2.php";
+        $verbose = "";// set to "v" to get output
+        // print system("rm -Rv ".dirname(__FILE__)."/output");
+        $oput = system("rm -R{$verbose} ".dirname(__FILE__)."/output");
+        // print $oput."\n";
+        // \Database\HED\HEDFactory::create_banner(dirname(__FILE__)."/output/content.php", $trip, $slug, $edate, $de);
+        $hed_obj = \Database\HED\Skeleton::make_album($p1, $trip, $slug, $edate, "ALBUM_TITLE");
+        $x = file_get_contents($p1);
+        // print $x;
+        $this->assertEqual(file_get_contents($p1), file_get_contents($p2));
+        
+        $model = \Database\Models\Factory::model_from_hed($hed_obj);
+
+        var_dump($model);
+
+        Trace::function_exit();
+
+    }
+    function test_model_from_hed()
+    {
+
+    }
 }
 ?>
