@@ -25,7 +25,11 @@ class TestNextPrevMonths extends LiteTest\TestCase{
         $result = Item::get_by_slug('130411');
         $next = $result->next(array("months"=>"2013-04"));
         $prev = $result->prev(array("months"=>"2013-04"));
-        $this->assertEqual($prev, null);
+
+        // this is off the end but keeps going
+        // print "<p>prev off end {$prev->slug}<p/>";
+        $this->assertFalse( is_null($prev));
+        $this->assertEqual($prev->slug, "electricalpart8");
         $this->assertEqual($next->slug, "shipping");
 	    Trace::function_exit();
     }
@@ -35,7 +39,12 @@ class TestNextPrevMonths extends LiteTest\TestCase{
         $next = $result->next(array("months"=>"2013-04"));
         $prev = $result->prev(array("months"=>"2013-04"));
         $this->assertEqual($prev->slug, "130417");
-        $this->assertEqual($next, null);
+
+        // this is off the end but keeps going
+        $this->assertFalse( is_null($next));
+        $this->assertEqual($next->slug, "130701");
+
+        // print "<p>next off end {$next->slug}<p/>";
 	    Trace::function_exit();
     }
 }

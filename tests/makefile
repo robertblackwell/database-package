@@ -31,6 +31,14 @@ entry:
 	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/entry/index.php
 
 	
+nextprev:
+	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/nextprev/category_test.php
+	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/nextprev/country_test.php
+	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/nextprev/months_test.php
+	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/nextprev/none_test.php
+
+
+	
 test:
 	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/find_categorized_items/find_test.php
 

@@ -75,7 +75,8 @@ class NextPrev
     * @param $country a string representing a country
     * @return Entry
     */
-    function next_within_country($country, $class='\Database\Models\Item'){
+    function next_within_country($country, $class='\Database\Models\Item')
+    {
         $country_str = ($country!=null)
             ? " where country = '$country' and type='entry' "
             : " where type='entry'  " ;
@@ -94,7 +95,8 @@ class NextPrev
     * @param $country a string representing a country
     * @return Entry
     */
-    function prev_within_country($country, $class='\Database\Models\Item'){
+    function prev_within_country($country, $class='\Database\Models\Item')
+    {
         $country_str = ($country!=null)
             ? " where country = '$country' and type='entry' "
             : " where type='entry'  " ;
@@ -108,7 +110,9 @@ class NextPrev
         //var_dump($r);
         return $r;
     }
-    function next_within_month($month){
+    function next_within_month($month, $class='\Database\Models\Item')
+    {
+        return $this->next_absolute($class);
         if( !is_null( $month ) ){
             $start = $month.'-01';
             $end = $month.'-31';
@@ -127,8 +131,10 @@ class NextPrev
         //var_dump($r);
         return $r;
     }
-    function prev_within_month($month, $class='\Database\Models\Item'){
-        
+    function prev_within_month($month, $class='\Database\Models\Item')
+    {
+        return $this->prev_absolute($class);
+
         if( !is_null( $month ) ){
             $start = $month.'-01';
             $end = $month.'-31';
@@ -151,7 +157,8 @@ class NextPrev
     /*
     ** Category navigation methods
     */
-    function next_within_category($category=null, $class= '\Database\Models\Item'){
+    function next_within_category($category=null, $class= '\Database\Models\Item')
+    {
         $category_str = ($category) ? " where ( b.category = '$category' ) and"
                                     : " where " ;
         $query = 
@@ -163,7 +170,8 @@ class NextPrev
         $r =  $this->sql->query_objects($query,  $class, false);
         return $r;
     }
-    function prev_within_category($category=null, $class= '\Database\Models\Item'){
+    function prev_within_category($category=null, $class= '\Database\Models\Item')
+    {
         $category_str = ($category) ? " where ( b.category = '$category' ) and "
                                     : " where " ;
         $query = 
@@ -175,13 +183,36 @@ class NextPrev
         $r =  $this->sql->query_objects($query, $class, false);
         return $r;
     }
+
+    function next_absolute($class)
+    {
+        // There is not criteria so do a "natural order" next
+        $query = "select * from my_items WHERE "
+                . $this->after()
+                . $this->order_by_asc_with_limit;
+        
+        $r = $this->sql->query_objects($query, $class,  false);
+        //print "<p>next: $query</p>";var_dump($r->slug);
+        return $r;        
+    }
+    function prev_absolute($class)
+    {
+        $query = "select * from my_items WHERE "
+            . $this->before()
+            . $this->order_by_desc_with_limit;
+        $r = $this->sql->query_objects($query, $class,  false);
+        //print "<p>prev: $query</p>";var_dump($r->slug);
+        return $r;
+    }
+
     /*
     ** Gets the next post in order based on the criteria. 
     ** The only valid criteria is a  'category'
     ** @parms  array('category'=> some category)
     ** @return Post object   
     */
-    function next($criteria=null, $class= '\Database\Models\Item'){
+    function next($criteria=null, $class= '\Database\Models\Item')
+    {
         if( ($criteria != null ) ){
             if( !is_array($criteria) ) {
                 $c = (is_object($criteria)? get_class($criteria): gettype($criteria));
@@ -207,14 +238,15 @@ class NextPrev
                     . print_r($criteria, true));
             }
         }
+        return $this->next_absolute($class);
         // There is not criteria so do a "natural order" next
-        $query = "select * from my_items WHERE "
-                . $this->after()
-                . $this->order_by_asc_with_limit;
+        // $query = "select * from my_items WHERE "
+        //         . $this->after()
+        //         . $this->order_by_asc_with_limit;
         
-        $r = $this->sql->query_objects($query, $class,  false);
-        //print "<p>next: $query</p>";var_dump($r->slug);
-        return $r;
+        // $r = $this->sql->query_objects($query, $class,  false);
+        // //print "<p>next: $query</p>";var_dump($r->slug);
+        // return $r;
     }
     /*
     ** Gets the prev post in order based on the criteria. 
@@ -222,7 +254,8 @@ class NextPrev
     ** @parms  array('category'=> some category)
     ** @return Post object   
     */
-    function prev($criteria=null, $class='\Database\Models\Item'){
+    function prev($criteria=null, $class='\Database\Models\Item')
+    {
         if( ($criteria != null ) ){
             if( !is_array($criteria) ) {
                 $c = (is_object($criteria)? get_class($criteria): gettype($criteria));
@@ -248,12 +281,14 @@ class NextPrev
                     . print_r($criteria, true));
             }
         }
-        $query = "select * from my_items WHERE "
-                . $this->before()
-                . $this->order_by_desc_with_limit;
-        $r = $this->sql->query_objects($query, $class,  false);
-        //print "<p>prev: $query</p>";var_dump($r->slug);
-        return $r;
+        return $this->prev_absolute($class);
+
+        // $query = "select * from my_items WHERE "
+        //         . $this->before()
+        //         . $this->order_by_desc_with_limit;
+        // $r = $this->sql->query_objects($query, $class,  false);
+        // //print "<p>prev: $query</p>";var_dump($r->slug);
+        // return $r;
     }    
 }
 ?>
