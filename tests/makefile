@@ -19,20 +19,44 @@ dict:
 load:
 	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/db/index.php
 
+models: article album banner category country entry get_by_slug locations post post_months	
+
+article:
+	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/models/article/index.php
+	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/models/article_title/index.php
+
 album:
-	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/albums/index.php
+	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/models/albums/index.php
 
 banner:
-	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/banner/index.php
+	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/models/banner/index.php
+
+category:
+	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/models/category/add_test.php
+	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/models/category/find_test.php
+	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/modelscategorized_items/find_test.php
+	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/models/categorized_items/add_remove_test.php
+
+country:
+	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/models/entry_country/index.php
 
 editorial:
-	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/editorial/index.php
-
-post:
-	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/post/index.php
+	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/models/editorial/index.php
 
 entry:
-	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/entry/index.php
+	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/models/entry/index.php
+
+get_by_slug:
+	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/models/get_by_slug/index.php
+
+locations:
+	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/models/locations/index.php
+
+post:
+	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/models/post/index.php
+
+post_months:
+	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/models/post_months/index.php
 
 	
 nextprev:

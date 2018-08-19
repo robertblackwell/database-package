@@ -5,7 +5,7 @@ use Database\Models\Item;
 use Database\Models\Album;
 use Trace as Trace;
 
-class Test_get_by_slug extends Litetest\TestCase{
+class Test_get_by_slug extends LiteTest\TestCase{
     function setUp(){
 		\Trace::disable();
         global $config;
@@ -83,14 +83,7 @@ class Test_get_by_slug extends Litetest\TestCase{
         $this->assertEqual($r->slug, 'tires');
 	    Trace::function_exit();
     }
-    function test_7(){    
-	    Trace::function_entry();
-        $r = Album::get_by_slug('peru');
-        $this->assertNotEqual($r, null);
-        $this->assertEqual(get_class($r), "Database\Models\Album");
-        $this->assertEqual($r->slug, 'peru');
-	    Trace::function_exit();
-    }
+
     
 }
 

@@ -131,16 +131,16 @@ class HEDObject
     */
     function __get($field)
     {
-        print "<h1>".__METHOD__."($field) </h1>";
+        // print "<h1>".__METHOD__."($field) </h1>";
         if(!is_null($this->vo_fields) && (array_key_exists($field, $this->vo_fields)))
         {
 
-            print "<p>".__METHOD__."typ = $typ its a getter </p>";
+            // print "<p>".__METHOD__."typ = $typ its a getter </p>";
             throw new \Exception("HEDObject should have no vo_fields"); 
             $typ = $this->vo_fields[$field];
             if( $typ == 'getter' )
             {
-                //print "<p>".__METHOD__."typ = $typ its a getter </p>";        
+                print "<p>".__METHOD__."typ = $typ its a getter field {$field} </p>";        
                 $method = $field;
             }
             else
@@ -151,7 +151,7 @@ class HEDObject
         }
         else
         {
-            print "<p>".__METHOD__."its a default text </p>";
+            print "<p>".__METHOD__."its a default text {$field}</p>";
             $method = 'get_text';
         }
         //var_dump(self::$_fields);

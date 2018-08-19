@@ -3,13 +3,14 @@
 use Database\Object as Db;
 use \Database\Models\EntryLocation;
 
-class TestCategory extends \LiteTest\TestCase{
+class TestLocations extends \LiteTest\TestCase{
     function setUp(){
         global $config;
 		Db::init($config);
 		$db = Db::get_instance();
     }
-    function test_1(){    
+    function test_1()
+    {    
 	    Trace::function_entry();
         $result = EntryLocation::find();
         $this->assertNotEqual($result, null);
@@ -19,7 +20,8 @@ class TestCategory extends \LiteTest\TestCase{
         $this->assertEqual($result[0]->trip, "rtw");
 	    Trace::function_exit();
     }
-    function test_2(){    
+    function test_2()
+    {    
 	    Trace::function_entry();
         $result = EntryLocation::find_for_trip('rtw');
         $this->assertNotEqual($result, null);
@@ -30,7 +32,7 @@ class TestCategory extends \LiteTest\TestCase{
         foreach($result as $i){
             $this->assertEqual($i->trip, "rtw");
         }
-		$this->assertEqual(count($result), 43);
+		$this->assertEqual(count($result), 829);
 	    Trace::function_exit();
     }
 }

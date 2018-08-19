@@ -8,7 +8,6 @@ namespace Database;
 use \Database\SqlObject as SQLObject;
 use \Database\Locator as Locator;
 use \Exception as Exception;
-use \Database\Models\RowObject as RowObject;
 use \Database\HED\HEDObject as HEDObject;
 use \Registry as Registry;
 
@@ -64,8 +63,10 @@ class Object
 		* @note at this point we also hook the Locator and SqlObject into the base Model class 
 		* and the model Factory as a static so that all instances of these classes have access
 		*/
-		Models\Base\ModelBase::$sql = self::$sql;
-		Models\Base\ModelBase::$locator = self::$locator;
+		// Models\Base\ModelBase::$sql = self::$sql;
+		// Models\Base\ModelBase::$locator = self::$locator;
+		Models\Base\Model::$sql = self::$sql;
+		Models\Base\Model::$locator = self::$locator;
 		Models\Factory::$sql = self::$sql;
 		Models\Factory::$locator = self::$locator;
 	}

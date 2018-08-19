@@ -12,7 +12,7 @@ use Database\Locator;
 * @ingroup Models
 *
 */
-class Banner extends Base\ModelBase
+class Banner extends Base\Model
 {
 	//
 	// This holds a ist of the images associated with this banner object.
@@ -71,10 +71,11 @@ class Banner extends Base\ModelBase
             return null;
         }
         $trip = $r->trip;
-        $obj = new HEDObject();
-        $fn = self::$locator->banner_filepath($trip, $slug);
-        $obj->get_from_file($fn);
-        $item = Factory::model_from_hed($obj);
+        $item = self::get_by_trip_slug($trip, $slug);
+        // $obj = new HEDObject();
+        // $fn = self::$locator->banner_filepath($trip, $slug);
+        // $obj->get_from_file($fn);
+        // $item = Factory::model_from_hed($obj);
         return $item;
     }
 

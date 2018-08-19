@@ -4,7 +4,7 @@ namespace Database\Models;
 ** @ingroup Models
 * This class provides access to journal entry by country and hence represents a view
 */
-class EntryCountry extends Base\ModelBase
+class EntryCountry extends Base\Model
 {
     static $table_name = "my_items";
     function __construct($obj){

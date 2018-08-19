@@ -111,7 +111,7 @@ class Utility
 
         $model = Album::get_by_trip_slug($trip, $slug);
 
-        \Trace::alert("<p> Importing album trip : $trip item: $slug type ".get_class($x)."</p>");
+        \Trace::alert("<p> Importing album trip : $trip item: $slug type ".get_class($model)."</p>");
 
         if( $slug != $model->slug )
             throw new \Exception(__METHOD__."($slug) file name and slug do not match file:$fn slug:".$x->slug);
@@ -121,7 +121,7 @@ class Utility
         if($y != null)
             throw new \Exception(__METHOD__."($slug) found in sql database - already exists: ".$slug);
 
-        $x->sql_insert();  
+        $model->sql_insert();  
         return $model;  
     }
 
@@ -141,11 +141,11 @@ class Utility
             throw new \Exception("Item Import failed - slug {$slug} already in sql database");
         }
 
-        $x = Banner::get_by_trip_slug($trip, $slug);
+        $model = Banner::get_by_trip_slug($trip, $slug);
 
-        \Trace::alert("<p> Importing album trip : $trip item: $slug type ".get_class($x)."</p>");
+        \Trace::alert("<p> Importing album trip : $trip item: $slug type ".get_class($model)."</p>");
 
-        if( $slug != $x->slug )
+        if( $slug != $model->slug )
             throw new \Exception(__METHOD__."($slug) file name and slug do not match file:$fn slug:".$x->slug);
 
 
@@ -154,8 +154,8 @@ class Utility
         if($y != null)
             throw new \Exception(__METHOD__."($slug) found in sql database - already exists: ".$slug);
 
-        $x->sql_insert();
-        return $x;
+        $model->sql_insert();
+        return $model;
     }
     /**
     ** Import an editorial from its HED form into the sql database - this is the
@@ -311,6 +311,7 @@ class Utility
     function load_db_from($items_dir)
 	{
         \Trace::off();
+        \Trace::disable();
         \Trace::function_entry();
         $item_names = $this->get_item_names($items_dir);
 		//         var_dump($items_dir);

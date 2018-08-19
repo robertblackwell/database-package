@@ -5,13 +5,14 @@ namespace Database\Models;
 * This class represents a view of the item table that lists content items by month
 * of publication
 */
-class PostMonth extends Base\ModelBase
+class PostMonth extends Base\Model
 {
     static $table_name = "my_items";
     function __construct($row){
         parent::__construct($row);
     }
-    static function find_for_trip($trip, $count=NULL){
+    static function find_for_trip($trip, $count=NULL)
+    {
         //print "<p>".__METHOD__."</p>";
         $where = " where ( (trip = '".$trip."') and (type='post' or type='entry') )";
         $count_str = ($count)? "limit 0, $count": "" ;
@@ -26,7 +27,8 @@ class PostMonth extends Base\ModelBase
     * @param count Limits the number returned
     * @return array of PostMonth objects
     */ 
-    static function find($count=NULL){
+    static function find($count=NULL)
+    {
         //print "<p>".__METHOD__."</p>";
         $count_str = ($count)? "limit 0, $count": "" ;
         $c = "SELECT distinct trip, year(published_date) as `year`, month(published_date) as `month` "

@@ -6,22 +6,24 @@ namespace Database\Models;
 * it does not have a table hiding behind it but rather a view that uses a selection of all the distinct
 * categorized_items(category) values. 
 */
-class Category extends Base\ModelBase
+class Category extends Base\Model
 {
     static $table_name = "categories";
     static $field_names = array(
         "category"=>"text",
-		"slug" => "text",
+		// "slug" => "text",
 		"trip" => "text"
         );
-    function __construct($obj=null){       
+    function __construct($obj=null)
+    {       
         $this->vo_fields = self::$field_names;
         $this->table = self::$table_name;
         parent::__construct($obj);
     }
 
 
-    static function find_for_trip($trip, $count=NULL){
+    static function find_for_trip($trip, $count=NULL)
+    {
         $count_str = ($count)? "limit 0, $count": "" ;
         $q = "select distinct categorized_items.category, my_items.trip".
                 " from categorized_items". 
@@ -39,7 +41,8 @@ class Category extends Base\ModelBase
     * @param count - Limits the number returned
     * @return array of Category objects
     */
-    static function find($count=NULL){
+    static function find($count=NULL)
+    {
         $count_str = ($count)? "limit 0, $count": "" ;
         $q = "select distinct categorized_items.category, my_items.trip".
                 " from categorized_items ". 
@@ -53,7 +56,29 @@ class Category extends Base\ModelBase
     /*!
     ** Tests a string to see if it exists as a category in the categorized_items table
     */
-    static function exists($category){
+    static function get_by_slug($category)
+    {
+        $q = " where category = '".$category."'";
+        $r = self::$sql->select_objects(self::$table_name, __CLASS__ ,$q, false);
+        //var_dump($r);exit();
+        return $r;
+    }
+    /*!
+    ** Tests a string to see if it exists as a category in the categorized_items table
+    */
+    static function get_by_trip_slug($trip, $slug)
+    {
+        $q = " where category = '".$slug."' and trip = '".$trip."'";
+        $r = self::$sql->select_objects(self::$table_name, __CLASS__ ,$q, false);
+        //var_dump($r);exit();
+        return $r;
+    }
+
+    /*!
+    ** Tests a string to see if it exists as a category in the categorized_items table
+    */
+    static function exists($category)
+    {
         $q = " where category = '".$category."'";
         $r = self::$sql->select_objects(self::$table_name, __CLASS__ ,$q, false);
         //var_dump($r);exit();

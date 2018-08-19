@@ -10,6 +10,34 @@ class TestFindCategory extends \LiteTest\TestCase{
 		$db = Db::get_instance();
 //        var_dump($db);exit();
     }
+
+
+    function test_get_one()
+    {    
+        Trace::function_entry();
+        // print "Lets get started\n";
+        $result = Database\Models\Category::get_by_trip_slug('rtw','vehicle');
+        $this->assertNotEqual($result, null);
+        assert(! is_null($result));
+        // print "<p>editorial text: ". $result->main_content ."</p>\n";
+        $this->assertEqual($result->category, "vehicle");
+        // $this->assertEqual($result->type, "editorial");
+        // $this->assertEqual($result->slug, "scotland");
+        // $this->assertEqual($result->status, "draft");
+        $this->assertEqual($result->trip, "rtw");
+        // $this->assertEqual($result->creation_date, "2015-09-17");
+        // $this->assertEqual($result->published_date, "2015-09-17");
+        // $this->assertEqual($result->last_modified_date, "2015-09-17");
+
+        // $this->assertNotEqual($result->content_path, null);
+        // $this->assertNotEqual($result->entity_path, null);
+
+        print_r($result->getStdClass());
+        print_r(array_keys($result->getFields()));
+        print_r(array_keys(get_object_vars($result)));
+        Trace::function_exit();
+    }
+
     function test_1(){    
 	    Trace::function_entry();
         $result = Category::find();

@@ -13,7 +13,7 @@ use Database\Locator;
 * @ingroup Models
 *
 */
-class Editorial extends Base\ModelBase
+class Editorial extends Base\Model
 {
     static $table_name = "editorials";
     static $field_names = array(

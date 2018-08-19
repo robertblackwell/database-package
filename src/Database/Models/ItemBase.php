@@ -7,7 +7,7 @@ use Database\Models\NextPrev;
 * post, entry or article. One of the reasons for this is to have a common next/prev
 * object included as a property
 */
-class ItemBase extends Base\ModelBase 
+class ItemBase extends Base\Model 
 {
     function __construct($obj)
     {

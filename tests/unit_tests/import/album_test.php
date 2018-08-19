@@ -10,7 +10,8 @@ class test_import_album extends LiteTest\TestCase{
 		$this->db = Db::get_instance();
         $this->locator = \Database\Locator::get_instance();
 	}
-	function test_album(){
+	function test_album()
+	{
 	    Trace::function_entry();
 	    $r = Album::get_by_slug('peru');
 	    $this->assertNotEqual($r, null);

@@ -13,7 +13,7 @@ use Database\Locator;
 * @ingroup Models
 *
 */
-class Album extends Base\ModelBase
+class Album extends Base\Model
 {
     static $table_name = "albums";
     static $field_names = array(
@@ -43,8 +43,9 @@ class Album extends Base\ModelBase
     }
     public static function get_by_trip_slug($trip, $slug)
     {
-        if( ! self::$locator->album_exists($trip, $slug) )
+        if( ! self::$locator->album_exists($trip, $slug) ) {
             return null;
+        }
 
         $obj = new HEDObject();
         $fn = self::$locator->album_filepath($trip, $slug);
@@ -69,11 +70,13 @@ class Album extends Base\ModelBase
             return null;
         }
         $trip = $r->trip;
-        /// @todo - call get_by_trip_slug
-        $obj = new HEDObject();
-        $fn = self::$locator->album_filepath($trip, $slug);
-        $obj->get_from_file($fn);
-        $item = Factory::model_from_hed($obj);
+        $item = self::get_by_trip_slug($trip, $slug);
+        // /// @todo - call get_by_trip_slug
+        // $obj = new HEDObject();
+        // $fn = self::$locator->album_filepath($trip, $slug);
+        // $obj->get_from_file($fn);
+        // $item = Factory::model_from_hed($obj);
+        // $item->gallery = \Gallery\Object::create(dirname($fn));
         return $item;
     }
     /*!

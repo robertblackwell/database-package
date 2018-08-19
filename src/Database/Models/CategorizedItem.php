@@ -5,7 +5,7 @@ namespace Database\Models;
 ** @ingroup Models
 * This class represents a view of the items table that allows selection of a set of items by category
 */
-class CategorizedItem extends Base\ModelBase
+class CategorizedItem extends Base\Model
 {
     static $table_name = "categorized_items";
     static $field_names = array(
