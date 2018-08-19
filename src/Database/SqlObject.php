@@ -20,8 +20,9 @@ class SqlObject
     private static $instance;
 
 	private static $_config=NULL;
-	private $db_connection=NULL;
-	
+	public $db_connection=NULL;
+	// this is only for development
+	public $pdo;
 	/**
 	* Configures and opens a connection to the sql database server and selects the correct database
 	* as the current db.
@@ -38,7 +39,7 @@ class SqlObject
 	/**
 	* Returns the singleton instance of this class.
 	*/
-	static function get_instance()
+	public static function get_instance()
 	{
 	    return self::$instance;
 	}
@@ -59,7 +60,17 @@ class SqlObject
 			or die("could not connect to data base db:$db user:$user in ".__FILE__." at line ".__LINE__);
 //		mysqli_select_db($db_name, $conn) 	
 //			or die("could not select data base db:$db_name user:$user in ".__FILE__." at line ".__LINE__);
-		$this->db_connection = $conn;		
+		$this->db_connection = $conn;	
+		
+		$charset = 'utf8';
+		$dsn = "mysql:host=$host;dbname=$db_name;charset=$charset";
+		$opt = [
+		    \PDO::ATTR_ERRMODE            => \PDO::ERRMODE_EXCEPTION,
+		    \PDO::ATTR_DEFAULT_FETCH_MODE => \PDO::FETCH_ASSOC,
+		    \PDO::ATTR_EMULATE_PREPARES   => false,
+		];
+		$this->pdo = new \PDO($dsn, $user, $pwd, $opt);	
+	
 	}
 	private function select_db()
 	{

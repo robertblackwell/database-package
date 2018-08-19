@@ -4,7 +4,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 </head>
 <body>
-	<div id="version">2.0</div>
+	<div id="version">2.0.skel</div>
 	<div id="status">draft</div>
 	<div id="type">album</div>
 	<div id="slug">170707</div>

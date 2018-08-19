@@ -4,7 +4,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 </head>
 <body>
-	<div id="version">2.0</div>
+	<div id="version">2.0.skel</div>
 	<div id="status">draft</div>
 	<div id="type">post</div>
 	<div id="slug">170707</div>
@@ -17,6 +17,7 @@
 	<div id="tags">TAGS</div>
 	<div id="excerpt">EXCERPT</div>
 	<div id="abstract">ABSTRACT</div>
+	<div id="featured_image">[0]</div>
 	<div id="main_content">
 		<p>main content goes here</p>
 		<?php Skin::JournalGalleryThumbnails($trip, $entry);?>  

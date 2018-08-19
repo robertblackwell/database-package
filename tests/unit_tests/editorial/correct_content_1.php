@@ -18,6 +18,8 @@
 	</div>
 	<div id="image_name">ANIMAGE</div>
 	<div id="image">ANIMAGE</div>
+	<div id="content_path">ABCDEFG</div>
+	<div id="entity_path">ABCDEFG</div>
 
 </body>
 </html>

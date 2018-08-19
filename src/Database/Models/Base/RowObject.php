@@ -11,7 +11,7 @@ use \Exception as Exception;
 **/
 class RowObject{
 
-    var $row; // this is the hash that has the key/value pairs
+    protected $row; // this is the hash that has the key/value pairs
 
     function __construct($row=array()){
         $this->row = $row;

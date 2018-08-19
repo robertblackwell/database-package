@@ -13,10 +13,12 @@ class RowBase extends RowObject
     /*!
     * This variable can be used by derived classes to impose type conversion on the getters.
     */
-    var $vo_fields=null;
+    protected $vo_fields=null;
+
     function __construct($obj){
         parent::__construct($obj);
     }
+
     function __isset($field)
     {
     	return array_key_exists($field, $this->vo_fields);

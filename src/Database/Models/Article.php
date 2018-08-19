@@ -25,6 +25,8 @@ class Article extends ItemBase
         "main_content"=>"include",
         "featured_image"=>"text",        
         //"featured_image"=>"getter",        
+        "content_path" => "text",
+        "entity_path" => "text"
         );
     function __construct($obj=null){       
         $this->vo_fields = self::$field_names;

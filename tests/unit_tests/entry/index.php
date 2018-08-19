@@ -9,6 +9,55 @@ class TestEntryCreate extends \LiteTest\TestCase{
         Db::init($config);
         $db = Db::get_instance();
     }
+    function test_get_one(){    
+        Trace::function_entry();
+        // print "Lets get started\n";
+        $result = Database\Models\Item::get_by_trip_slug('rtw','180624');
+        // print "<p>editorial text: ". $result->main_content ."</p>\n";
+        $this->assertEquals(get_class($result), "Database\Models\Entry");
+        $this->assertEqual($result->version, "2.0");
+        $this->assertEqual($result->type, "entry");
+        $this->assertEqual($result->slug, "180624");
+        $this->assertEqual($result->status, "draft");
+        $this->assertEqual($result->trip, "rtw");
+        $this->assertEqual($result->creation_date, "2018-06-24");
+        $this->assertEqual($result->published_date, "2018-06-24");
+        $this->assertEqual($result->last_modified_date, "2018-06-24");
+        $this->assertEqual($result->topic, null);
+        $this->assertEqual($result->title, "Sea to Sky");
+
+        $this->assertEqual($result->miles, "323");
+        $this->assertEqual($result->odometer, "29498");
+        $this->assertEqual($result->latitude, "50.69314");
+        $this->assertEqual($result->longitude, "-121.93520");
+        $this->assertEqual($result->place, "Lillooet");
+        $this->assertEqual($result->country, "BC");
+// [miles] => 323
+//     [odometer] => 29498
+//     [day_number] => 2
+//     [place] => Lillooet
+//     [country] => BC
+//     [latitude] => 50.69314
+//     [longitude] => -121.93520
+
+        $this->assertEqual($result->border, null);
+        $this->assertEqual($result->has_border, false);
+        $this->assertEqual($result->has_camping, true);
+
+        $this->assertNotEqual($result->excerpt, null);
+        
+         // $this->assertNotEqual($result->categories, null);
+        // $this->assertNotEqual($result->content_path, null);
+
+        $this->assertNotEqual($result->entity_path, null);
+        $this->assertNotEqual($result->featured_image, null);
+
+        print_r($result->getStdClass());
+        print_r(array_keys($result->vo_fields));
+        print_r(array_keys(get_object_vars($result)));
+        Trace::function_exit();
+    }    
+
     /*
     function test_create_one() {
 
@@ -63,7 +112,7 @@ class TestEntryCreate extends \LiteTest\TestCase{
 
         $model = \Database\Models\Factory::model_from_hed($hed_obj);
 
-        var_dump($model);
+        print_r($model->getStdClass());
 
 
         Trace::function_exit();

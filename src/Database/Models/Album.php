@@ -28,6 +28,11 @@ class Album extends Base\ModelBase
         "title"=>"html",
         'file_path'=>'text',
         'album_path'=>'text',
+        'mascot_path' => "text",
+        'mascot_url' => "text",
+        "content_path" => "text",
+        "entity_path" => "text"
+        // note - gallery of type \GalleryObject is added during constructor - but its a REAL property
 	);
     function __construct($obj)
     {
@@ -44,7 +49,7 @@ class Album extends Base\ModelBase
         $obj = new HEDObject();
         $fn = self::$locator->album_filepath($trip, $slug);
         $obj->get_from_file($fn);
-        $item = Factory::model_from_hed($obj);
+        $item = Factory::album_from_hed($obj);
 
         /// @todo this should be done in mode_from_hed
         

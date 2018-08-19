@@ -12,6 +12,10 @@ LITETEST=$(VENDORBIN)/litetest
 build:
 	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/utility/index.php
 
+dict:
+	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/dictionary/index.php
+
+
 load:
 	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/db/index.php
 
@@ -37,6 +41,8 @@ nextprev:
 	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/nextprev/months_test.php
 	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/nextprev/none_test.php
 
+pdo:
+	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/db_pdo/index.php
 
 	
 test:

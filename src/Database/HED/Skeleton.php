@@ -33,14 +33,14 @@ class Skeleton
 
 	private static function print_hed_common($type, $trip, $slug, $pub_date, $parms)
 	{
-		self::print_field_value("version", 		['version' => '2.0.skel']);
-		self::print_field_value("status", 		['status' => "draft"]);
-		self::print_field_value("type", 			['type' => $type]);
-		self::print_field_value("slug", 			['slug' => $slug]);
-		self::print_field_value("creation_date", 	['creation_date' => $pub_date]);
-		self::print_field_value("published_date", ['published_date' => $pub_date]);
-		self::print_field_value("last_modified_date", ['last_modified_date' => $pub_date]);
-		self::print_field_value("trip", ['trip' => $trip]);
+		self::print_field_value("version", 		     '2.0.skel');
+		self::print_field_value("status", 		      "draft");
+		self::print_field_value("type", 			  $type);
+		self::print_field_value("slug", 			  $slug);
+		self::print_field_value("creation_date", 	  $pub_date);
+		self::print_field_value("published_date",     $pub_date);
+		self::print_field_value("last_modified_date", $pub_date);
+		self::print_field_value("trip",               $trip);
 	}
 
 	private static function print_field_value($field_name, $field_values)
@@ -173,7 +173,7 @@ EOD;
     	self::print_hed_header();
     	self::print_hed_common("banner", $trip, $slug, $published_date, []);
 
-    	self::print_field_value("title", "No REQUIRED");
+    	self::print_field_value("title", "NOT REQUIRED");
     	self::print_field_value("main_content", "NOT_REQUIRED");
     	self::print_field_value("image_url", $image_url);
 
@@ -235,12 +235,15 @@ EOD;
     	$place, 
     	$country, 
     	$latitude, 
-    	$longitude
+    	$longitude,
+    	$categories = null, //self::empty_categories(),
+    	$featured_image = null, //self::default_featured_image(),
+    	$main_content = null //self::default_main_content()
     )
  	{
     	assert(func_num_args() == 11);
  		$path = \Database\Locator::get_instance()->item_filepath();
- 		return self::make_entry($path, $trip, $slug, $published_date, $title, $miles, $odometer, $day_number, $place, $country, $latitude, $longitude);
+ 		return self::make_entry($path, $trip, $slug, $published_date, $title, $miles, $odometer, $day_number, $place, $country, $latitude, $longitude, $categories, $featured_image, $main_content );
  	}
 
 	/**
@@ -256,6 +259,9 @@ EOD;
 	* @param string $country 
 	* @param string $latitude
 	* @param string $longitude
+	* @param string $category
+	* @param string $featured_image
+	* @param string $main_content
 	* @return a HEDObject
 	*
 	*/
@@ -271,10 +277,17 @@ EOD;
     	$place, 
     	$country, 
     	$latitude, 
-    	$longitude
+    	$longitude, 
+    	$categories = null, // self::empty_categories(),
+    	$featured_image =null, //  self::default_featured_image(),
+    	$main_content = null //self::default_main_content()
     )
     {
     	ob_start();
+
+  		if (is_null($categories)) $categories = self::empty_categories() ;
+  		if (is_null($featured_image)) $featured_image = self::default_featured_image();
+  		if (is_null($main_content)) $main_content = Self::default_main_content();
 
     	self::print_hed_header();
     	self::print_hed_common("entry", $trip, $slug, $published_date, []);
@@ -287,13 +300,13 @@ EOD;
     	self::print_field_value("country", $country);
     	self::print_field_value("latitude", $latitude);
     	self::print_field_value("longitude", $longitude);
-    	self::print_field_value("featured_image", self::default_featured_image());
+    	self::print_field_value("featured_image", $featured_image);
 
-    	self::print_field_value("categories", self::empty_categories());
+    	self::print_field_value("categories", $categories);
     	// self::print_field_value("tags", "NOT_REQUIRED");
     	// self::print_field_value("excerpt", "NOT_REQUIRED");
     	// self::print_field_value("abstract", "NOT_REQUIRED");
-    	self::print_field_value("main_content", self::default_main_content());
+    	self::print_field_value("main_content", $main_content);
 
     	self::print_hed_footer();
     	$s = ob_get_clean();
@@ -302,11 +315,19 @@ EOD;
 
     }
 
-    public static function create_post($trip, $slug, $published_date, $title)
+    public static function create_post(
+    	$trip, 
+    	$slug, 
+    	$published_date, 
+    	$title, 
+    	$categories = null, //self::empty_categories(),
+    	$featured_image = null, //self::default_featured_image(),
+    	$main_content = null //self::default_main_content()
+    )
     {
     	assert(func_num_args() == 4);
     	$path = \Database\Locator::get_instance()->item_filepath($trip, $slug);
-    	return self::make_post($path, $trip, $slug, $published_date, $title);
+    	return self::make_post($path, $trip, $slug, $published_date, $title, $categories, $featured_image, $main_content);
     }
 	/**
 	* Create a new skeleton post item in HED format and write given file path
@@ -315,23 +336,39 @@ EOD;
 	* @param string $slug the unique id for this post item 
 	* @param string $dte  The published date to be recorded in the post item 
 	* @param string $title 
+	* @param string $category
+	* @param string $featured_image
+	* @param string $main_content
 	* @return HEDObject holding this post
 	*
 	*/
-    public static function make_post($hed_file_path, $trip, $slug, $published_date, $title)
+    public static function make_post(
+    	$hed_file_path, 
+    	$trip, $slug, 
+    	$published_date, 
+    	$title, 
+    	$categories = null, //self::empty_categories(),
+    	$featured_image = null, //self::default_featured_image(),
+    	$main_content = null //self::default_main_content()
+    )
 	{
     	ob_start();
+
+  		if (is_null($categories)) $categories = self::empty_categories() ;
+  		if (is_null($featured_image)) $featured_image = self::default_featured_image();
+  		if (is_null($main_content)) $main_content = Self::default_main_content();
+
 
     	self::print_hed_header();
     	self::print_hed_common("post", $trip, $slug, $published_date, []);
 
     	self::print_field_value("title", $title);
-    	self::print_field_value("categories", self::empty_categories());
+    	self::print_field_value("categories", $categories);
     	self::print_field_value("tags", "TAGS");
     	self::print_field_value("excerpt", "EXCERPT");
     	self::print_field_value("abstract", "ABSTRACT");
-    	self::print_field_value("featured_image", self::default_featured_image());
-    	self::print_field_value("main_content", self::default_main_content());
+    	self::print_field_value("featured_image", $featured_image);
+    	self::print_field_value("main_content", $main_content);
 
     	self::print_hed_footer();
     	$s = ob_get_clean();

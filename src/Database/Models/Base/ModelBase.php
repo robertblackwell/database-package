@@ -22,8 +22,8 @@ class ModelBase extends RowBase
     static $sql;    //access to an sql interface - setup during initialization
     static $locator;
     
-    var $fields;    //an array of field names and types
-    var $table;     //name of the corresponding SQL table
+    // protected $vo_fields;    //an array of field names and types
+    protected $table;     //name of the corresponding SQL table
     
     function __construct($obj){
         //print __CLASS__.":".__METHOD__.":";
@@ -45,7 +45,10 @@ class ModelBase extends RowBase
 	function getStdClass(){
 		$obj = new \stdClass();
 		$fields = $this->get_fields();
-		foreach($fields as $f => $v){
+  //       $f = array_keys(get_object_vars($this));
+		// foreach($f as $k) {
+        foreach($fields as $f => $v){
+
 			//print "<p>getStdClass $f  ".$this->__get($f)."</p>";
 			$obj->$f = $this->__get($f);
 		}

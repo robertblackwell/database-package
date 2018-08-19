@@ -228,7 +228,7 @@ class Factory {
 	}
     static function post_from_hed($hed_obj)
     {
-        //print __METHOD__."\n";
+        // print __METHOD__."\n";
         $fields1 = Post::get_fields();
         // compute the fields that require no trickery
         $fields = array_diff_key($fields1, 
@@ -288,7 +288,9 @@ class Factory {
         $fields = array_diff_key($fields1, array("file_path"=>"", "album_path"=>""));
         //print_r($fields);
         $vals = array();
-        foreach($fields as $k => $t ){
+        foreach($fields as $k => $t )
+        {
+            // this bypasses HEDObject majik __get method
             $method = "get_".$t;
             $vals[$k] = $hed_obj->$method($k);
         }

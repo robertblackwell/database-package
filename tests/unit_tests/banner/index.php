@@ -14,13 +14,27 @@ class TestBanners extends \LiteTest\TestCase{
 		// print "Lets get started\n";
         $result = Database\Models\Banner::get_by_trip_slug('rtw','active');
 		// print "<p>banner text: ". $result->main_content ."</p>\n";
+        $this->assertEqual($result->version, "2.0");
+        $this->assertEqual($result->type, "banner");
+        $this->assertEqual($result->slug, "active");
+        $this->assertEqual($result->status, "draft");
+        $this->assertEqual($result->trip, "rtw");
+        $this->assertEqual($result->creation_date, "2014-02-06");
+        $this->assertEqual($result->published_date, "2014-02-06");
+        $this->assertEqual($result->last_modified_date, "2014-02-06");
+
+        $this->assertNotEqual($result->content_path, null);
+        $this->assertNotEqual($result->entity_path, null);
 		
 		// var_dump($result->banner);
 		// var_dump(get_class($result));
 		// var_dump($result->getImages());
+        print_r(array_keys($result->getFields()));
+        print_r(array_keys(get_object_vars($result)));
 		
 		// make sure no "dot" - files
-		$this->assertEquals(count($result->getImages()),9);
+		print_r($result->getStdClass());
+		$this->assertEquals(count($result->getImages()),17);
 
 		Trace::function_exit();
     }
@@ -30,11 +44,11 @@ class TestBanners extends \LiteTest\TestCase{
 		$slug='170707';
 		$edate = '2017-07-07';
 		$de = array();
-		$p1 = dirname(__FILE__)."/output/content_1.php";
+		$p1 = dirname(__FILE__)."/output1/content_1.php";
 		$p2 = dirname(__FILE__)."/correct_content_1.php";
 		$verbose = "";// set to "v" to get output
 		// print system("rm -Rv ".dirname(__FILE__)."/output");
-		$oput = system("rm -R{$verbose} ".dirname(__FILE__)."/output");
+		$oput = system("rm -R{$verbose} ".dirname(__FILE__)."/output1");
 		// print $oput."\n";
         \Database\HED\HEDFactory::create_banner($p1, $trip, $slug, $edate, $de);
 		$this->assertEqual(file_get_contents($p1), file_get_contents($p2));
@@ -47,11 +61,11 @@ class TestBanners extends \LiteTest\TestCase{
 		$trip = 'rtw';
 		$slug='170707';
 		$edate = '2017-07-07';
-		$p1 = dirname(__FILE__)."/output/content_2.php";
+		$p1 = dirname(__FILE__)."/output2/content_2.php";
 		$p2 = dirname(__FILE__)."/correct_content_2.php";
 		$verbose = "";// set to "v" to get output
 		// print system("rm -Rv ".dirname(__FILE__)."/output");
-		$oput = system("rm -R{$verbose} ".dirname(__FILE__)."/output");
+		$oput = system("rm -R{$verbose} ".dirname(__FILE__)."/output2");
 		// print $oput."\n";
         // \Database\HED\HEDFactory::create_banner(dirname(__FILE__)."/output/content.php", $trip, $slug, $edate, $de);
         $hed_obj = \Database\HED\Skeleton::make_banner($p1, $trip, $slug, $edate, "AN_IMAGE_URL");
@@ -61,7 +75,7 @@ class TestBanners extends \LiteTest\TestCase{
 
         $model = \Database\Models\Factory::model_from_hed($hed_obj);
 
-        var_dump($model);
+        // var_dump($model);
 
 		Trace::function_exit();
 

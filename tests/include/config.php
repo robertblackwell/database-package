@@ -8,7 +8,7 @@ global $config;
 
 $config = array(
 			'sql'=>array(
-				'db_name'=>"database_package_test_db",
+				'db_name'=>"testwhiteacorn",
 				'db_user'=>"root",
 				'db_host'=>"localhost",
 				'db_passwd'=>"wara2074",

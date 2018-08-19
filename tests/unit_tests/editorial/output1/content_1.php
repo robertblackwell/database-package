@@ -5,16 +5,21 @@
 </head>
 <body>
 	<div id="version">2.0</div>
-	<div id="status">draft</div>
-	<div id="type">banner</div>
+	<div id="type">editorial</div>
 	<div id="slug">170707</div>
+	<div id="status">draft</div>
 	<div id="creation_date">2017-07-07</div>
 	<div id="published_date">2017-07-07</div>
 	<div id="last_modified_date">2017-07-07</div>
 	<div id="trip">rtw</div>
-	<div id="title">No REQUIRED</div>
-	<div id="main_content">NOT_REQUIRED</div>
-	<div id="image_url">AN_IMAGE_URL</div>
+	<div id="title">Â_NAME</div>
+	<div id="main_content">
+		<p>Put some junk here</p>
+	</div>
+	<div id="image_name">ANIMAGE</div>
+	<div id="image">ANIMAGE</div>
+	<div id="content_path">ABCDEFG</div>
+	<div id="entity_path">ABCDEFG</div>
 
 </body>
 </html>

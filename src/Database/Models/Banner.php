@@ -30,6 +30,8 @@ class Banner extends Base\ModelBase
         "last_modified_date"=>"date",
         "trip"=>"text",
         "title"=>"html",
+        "content_path" => "text",
+        "entity_path" => "text"
 //         'banner'=>'text',
 //         'image'=>'text',
 // 		'main_content'=>'html',

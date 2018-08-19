@@ -13,6 +13,8 @@
 	<div id="last_modified_date">2017-07-07</div>
 	<div id="trip">rtw</div>
 	<div id="title">ABCDEFG</div>
+	<div id="content_path">ABCDEFG</div>
+	<div id="entity_path">ABCDEFG</div>
 
 </body>
 </html>
