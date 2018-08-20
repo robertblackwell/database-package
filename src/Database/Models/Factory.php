@@ -200,7 +200,11 @@ class Factory {
         $vals = array();
         foreach($fields as $k => $t ){
             $method = "get_".$t;
-            $vals[$k] = $hed_obj->$method($k);
+            if(strtolower($k) == "country") {
+                $vals[$k] = Country::get_by_code($hed_obj->$method($k));
+            } else {
+                $vals[$k] = $hed_obj->$method($k);
+            }
         }
         // now add the tricky ones back in as derived values
         $vals['content_path'] = $hed_obj->_file_path; 
@@ -242,7 +246,11 @@ class Factory {
         $vals = array();
         foreach($fields as $k => $t ){
             $method = "get_".$t;
-            $vals[$k] = $hed_obj->$method($k);
+            if(strtolower($k) == "country") {
+                $vals[$k] = Country::get_by_code($hed_obj->$method($k));
+            } else {
+                $vals[$k] = $hed_obj->$method($k);
+            }
         }
         $vals['content_path'] = $hed_obj->_file_path; 
         $vals['entity_path'] = dirname($hed_obj->_file_path); 

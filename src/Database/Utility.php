@@ -294,6 +294,7 @@ class Utility
         $dir = $this->locator->banner_root($trip);
         $this->load_db_from($dir);
     }
+
 	/**
 	* Load all the editorials for $trip from the flat file store   into the sql database
 	* @param string $trip
@@ -303,7 +304,6 @@ class Utility
         $dir = $this->locator->editorial_root($trip);
         $this->load_db_from($dir);
     }
-
 	/**
 	* Load all the content items from the given directory into the sql database
 	* @param string $items_dir

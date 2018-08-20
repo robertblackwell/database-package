@@ -30,7 +30,7 @@ class TestEntryCreate extends \LiteTest\TestCase{
 		$this->assertEqual($result->latitude, "50.69314");
 		$this->assertEqual($result->longitude, "-121.93520");
 		$this->assertEqual($result->place, "Lillooet");
-		$this->assertEqual($result->country, "BC");
+		$this->assertEqual($result->country, "British Columbia");
 // [miles] => 323
 //     [odometer] => 29498
 //     [day_number] => 2
