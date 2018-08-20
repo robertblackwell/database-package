@@ -6,7 +6,7 @@ namespace Database\Models;
 **
 ** @ingroup Models
 */
-class ArticleTitle extends Base\ModelBase
+class ArticleTitle extends Base\Model
 {
     // var year, month - see DAEntryMonth for confirmation of the attribute names
     function __construct($obj)
