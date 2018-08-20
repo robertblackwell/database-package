@@ -140,7 +140,7 @@ class HEDObject
             $typ = $this->vo_fields[$field];
             if( $typ == 'getter' )
             {
-                print "<p>".__METHOD__."typ = $typ its a getter field {$field} </p>";        
+                // print "<p>".__METHOD__."typ = $typ its a getter field {$field} </p>";        
                 $method = $field;
             }
             else
@@ -151,7 +151,7 @@ class HEDObject
         }
         else
         {
-            print "<p>".__METHOD__."its a default text {$field}</p>";
+            // print "<p>".__METHOD__."its a default text {$field}</p>";
             $method = 'get_text';
         }
         //var_dump(self::$_fields);
