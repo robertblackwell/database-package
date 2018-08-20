@@ -44,6 +44,7 @@ class Country
 			"es"=>"El Salvador",
 			"nic"=>"Nicaragua",
 			"pan"=>"Panama",
+			"wy"=>"Wyoming",
 		];
 
     public static function get_by_code($code)
