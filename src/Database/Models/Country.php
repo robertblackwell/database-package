@@ -48,7 +48,8 @@ class Country
 			"ca" => "California",
 			"mn" => "Minnesota",
 			"nb" => "New Brunswick",
-			"nd" => "North Dakota"
+			"nd" => "North Dakota",
+			"sd" => "South Dakota"
 		];
 
     public static function get_by_code($code)
