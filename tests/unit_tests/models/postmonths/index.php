@@ -12,6 +12,7 @@ class TestPostMonth extends \LiteTest\TestCase{
     function test_1(){    
 	    Trace::function_entry();
         $result = PostMonth::find();
+        print_r($result);
         $this->assertNotEqual($result, null);
         $this->assertNotEqual(count($result), 0);
         $this->assertTrue(is_array($result));

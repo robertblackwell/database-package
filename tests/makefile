@@ -55,8 +55,8 @@ locations:
 post:
 	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/models/post/index.php
 
-post_months:
-	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/models/post_months/index.php
+postmonths:
+	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/models/postmonths/index.php
 
 	
 nextprev:
