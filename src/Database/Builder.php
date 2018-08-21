@@ -132,8 +132,8 @@ class Builder
 				`day_number` int(11) DEFAULT NULL,
 				`latitude` double DEFAULT NULL,
 				`longitude` double DEFAULT NULL,
-				`country` varchar(20) CHARSET UTF8  DEFAULT NULL,
-				`place` varchar(40) CHARSET UTF8	DEFAULT NULL,
+				`country` varchar(80) CHARSET UTF8  DEFAULT NULL,
+				`place` varchar(80) CHARSET UTF8	DEFAULT NULL,
 				`featured_image` text CHARSET UTF8 ,
 				PRIMARY KEY (`slug`),
 				KEY `country` (`country`)
