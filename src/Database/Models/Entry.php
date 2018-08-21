@@ -12,6 +12,7 @@ class Entry extends ItemBase
         "version"=>"text",
         "type"=>"text",
         "trip"=>"text",
+        "vehicle"=>"text",
         "slug"=>"text",
         "status"=>"text",
         "creation_date"=>"date",
