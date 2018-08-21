@@ -123,6 +123,7 @@ class Builder
 				`published_date` date DEFAULT NULL,
 				`last_modified_date` date DEFAULT NULL,
 				`trip` varchar(20)   CHARSET UTF8 DEFAULT NULL,
+				`vehicle` varchar(20)   CHARSET UTF8 DEFAULT NULL,
 				`title` mediumtext  CHARSET UTF8,
 				`abstract` mediumtext	 CHARSET UTF8,
 				`excerpt` mediumtext	CHARSET UTF8,
