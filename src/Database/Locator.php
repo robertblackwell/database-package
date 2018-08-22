@@ -151,7 +151,7 @@ class Locator
 	* @param $trip String - A trip code
     * @return string 
     */
-    public function content_root($trip='rtw')
+    public function content_root($trip)
 	{
         return $this->trip_root($trip)."/content";
     }
@@ -163,7 +163,7 @@ class Locator
 	* @param $trip A trip code
 	* @return string The path to the trips content directory relative to the sites document root
 	*/
-    private function content_relative($trip='rtw')
+    private function content_relative($trip)
 	{
         return str_replace($this->doc_root, "", $this->content_root($trip));
     }
@@ -293,11 +293,11 @@ class Locator
 //start of album item path methods
 /////////	
     
-    function album_root($trip='rtw')
+    function album_root($trip)
 	{
         return $this->trip_root($trip)."/photos/galleries";
     }
-    private function album_relative($trip='rtw')
+    private function album_relative($trip)
 	{
         return str_replace($this->doc_root, "", $this->album_root($trip));
     }
@@ -417,7 +417,7 @@ class Locator
 	{
         return $this->trip_root($trip)."/banners";
     }
-    private function banner_relative($trip='rtw')
+    private function banner_relative($trip)
 	{
         return str_replace($this->doc_root, "", $this->banner_root($trip));
     }
@@ -528,7 +528,7 @@ class Locator
 ////////
 // start of editorial path methods
 ////////
-    function editorial_root($trip='rtw')
+    function editorial_root($trip)
 	{
         return $this->trip_root($trip)."/editorial";
     }
@@ -545,7 +545,7 @@ class Locator
         return "content.php";
     }
 	function url_editorial_image($trip, $slug, $image_name){
-		$s = $this->editorial_root()."/$slug/".$image_name;
+		$s = $this->editorial_root($trip)."/$slug/".$image_name;
 		$s2 = str_replace($this->doc_root, "", $s);
 		return $s2;
 	}
