@@ -275,7 +275,7 @@ class Item extends ItemBase
 		$where = " where a.trip='".$trip."' ".$category_str ;
 		$query = 
 		"select a.* from my_items a INNER JOIN categorized_items b on a.slug = b.item_slug "
-			."$category_str "
+			."$where "
 			." order by published_date asc, slug asc $count_str;";
 		//var_dump($query);
 		$r = self::$sql->query_objects($query, __CLASS__);
