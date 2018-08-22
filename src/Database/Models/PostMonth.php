@@ -18,7 +18,7 @@ class PostMonth extends Base\Model
         $count_str = ($count)? "limit 0, $count": "" ;
         $c = "SELECT distinct trip, year(published_date) as `year`, month(published_date) as `month` "
         // ." FROM my_items $where order by published_date desc";
-        ." FROM my_items $where order by year, month";
+        ." FROM my_items $where order by year desc, month desc";
         return self::$sql->query_objects($c, __CLASS__);
     }
     /*!

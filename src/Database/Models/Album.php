@@ -15,6 +15,7 @@ use Database\Locator;
 */
 class Album extends Base\Model
 {
+    //  todo -1 (this is some stuff to see if it works) +0: this is some more stuff 
     static $table_name = "albums";
     static $field_names = array(
         "version"=>"text",
