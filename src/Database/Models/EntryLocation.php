@@ -15,6 +15,7 @@ class EntryLocation extends ItemBase //Base\ModelBase
 		"slug"=>"text",
 		"type"=>"text",
         "trip"=>"text",
+        "vehicle" => "text",
         "status"=>"text",
         "creation_date"=>"date",
         "published_date"=>"date",
