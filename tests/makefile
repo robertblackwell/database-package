@@ -1,7 +1,8 @@
 VENDORBIN="../vendor/bin"
 LITETEST=$(VENDORBIN)/litetest
-
-
+TESTS_DIR = $(shell pwd)
+DATA_DIR =$(TESTS_DIR)/test_data
+TEST_WHITEACORN_DATA=$(HOME)/Sites/test_whiteacorn/data
 
 # test_local_api:
 # 	$(LITETEST)
@@ -19,7 +20,7 @@ dict:
 load:
 	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/db/index.php
 
-models: article album banner category country entry get_by_slug locations post post_months	
+models: article album banner category country entry get_by_slug locations post postmonths	
 
 article:
 	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/models/article/index.php
@@ -83,6 +84,29 @@ import:
 
 xx:
 	$(LITETEST) --bootstrap-file="include/bootstrap.php"
+
+prepare_test_data:
+	@echo $(TEST_WHITEACORN_DATA)
+	@echo $(DATA_DIR)
+	rm -Rf $(DATA_DIR)/data
+	mkdir $(DATA_DIR)/data
+	mkdir $(DATA_DIR)/data/rtw
+	mkdir $(DATA_DIR)/data/rtw/content
+
+	cp -r $(TEST_WHITEACORN_DATA)/rtw $(DATA_DIR)/data
+	
+	# cp -r $(TEST_WHITEACORN_DATA)/rtw/banners $(DATA_DIR)/data/rtw
+	# cp -r $(TEST_WHITEACORN_DATA)/rtw/editorial $(DATA_DIR)/data/rtw
+	# cp -r $(TEST_WHITEACORN_DATA)/rtw/photos $(DATA_DIR)/data/rtw
+	# cp -r $(TEST_WHITEACORN_DATA)/rtw/gps $(DATA_DIR)/data/rtw
+	# cp -r $(TEST_WHITEACORN_DATA)/rtw/content/17* $(DATA_DIR)/data/rtw/content
+
+
+	# rm -Rf $(DATA_DIR)/data/rtw/content/12*
+	# rm -Rf $(DATA_DIR)/data/rtw/content/13*
+	# rm -Rf $(DATA_DIR)/data/rtw/content/14*
+	cp -r $(TEST_WHITEACORN_DATA)/er $(DATA_DIR)/data
+	cp -r $(TEST_WHITEACORN_DATA)/bmw11 $(DATA_DIR)/data
 
 all:
 	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/paths/index.php

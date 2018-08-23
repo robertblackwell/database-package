@@ -11,7 +11,7 @@
 	<div id="creation_date">2017-07-07</div>
 	<div id="published_date">2017-07-07</div>
 	<div id="last_modified_date">2017-07-07</div>
-	<div id="trip">rtw</div>
+	<div id="trip">bmw11</div>
 	<div id="title">ABCDEFG</div>
 	<div id="abstract">ABCDEFG</div>
 	<div id="excerpt">ABCDEFG</div>

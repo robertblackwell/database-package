@@ -178,6 +178,23 @@ class Factory {
 		return $res;
     }
 
+    static function get_and_validate_field($hed_obj, $field_name, $type)
+    {
+        $result = null;
+        $k = $field_name;
+        $t = $type;
+        $method = "get_".$t;
+        if(strtolower($k) == "country") {
+            $result = Country::get_by_code($hed_obj->$method($k));
+        } else if(strtolower($k) == "trip") {
+            $result = Trip::is_valid($hed_obj->$method($k));
+        } else if(strtolower($k) == "vehicle") {
+            $result = Vehicle::is_valid($hed_obj->$method($k));
+        } else {
+            $result = $hed_obj->$method($k);
+        }
+        return $result;
+    }
 
     /*!
     * Factory method that knows how to create the correct Model class from a HED object
@@ -199,12 +216,19 @@ class Factory {
         );
         $vals = array();
         foreach($fields as $k => $t ){
-            $method = "get_".$t;
-            if(strtolower($k) == "country") {
-                $vals[$k] = Country::get_by_code($hed_obj->$method($k));
-            } else {
-                $vals[$k] = $hed_obj->$method($k);
-            }
+
+            $vals[$k] = self::get_and_validate_field($hed_obj, $k, $t);
+
+            // $method = "get_".$t;
+            // if(strtolower($k) == "country") {
+            //     $vals[$k] = Country::get_by_code($hed_obj->$method($k));
+            // } else if(strtolower($k) == "trip") {
+            //     $vals[$k] = Trip::is_valid($hed_obj->$method($k));
+            // } else if(strtolower($k) == "vehicle") {
+            //     $vals[$k] = Vehicle::is_valid($hed_obj->$method($k));
+            // } else {
+            //     $vals[$k] = $hed_obj->$method($k);
+            // }
         }
         // now add the tricky ones back in as derived values
         $vals['content_path'] = $hed_obj->_file_path; 
@@ -248,6 +272,8 @@ class Factory {
             $method = "get_".$t;
             if(strtolower($k) == "country") {
                 $vals[$k] = Country::get_by_code($hed_obj->$method($k));
+            } else if(strtolower($k) == "trip") {
+                $vals[$k] = Trip::is_valid($hed_obj->$method($k));
             } else {
                 $vals[$k] = $hed_obj->$method($k);
             }

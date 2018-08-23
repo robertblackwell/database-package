@@ -12,12 +12,14 @@ class TestLocations extends \LiteTest\TestCase{
     function test_1()
     {    
 	    Trace::function_entry();
-        $result = EntryLocation::find();
+        $result = EntryLocation::find_date_order();
         $this->assertNotEqual($result, null);
         $this->assertNotEqual(count($result), 0);
         $this->assertTrue(is_array($result));
         $this->assertEqual(get_class($result[0]), "Database\Models\EntryLocation");
-        $this->assertEqual($result[0]->trip, "rtw");
+        // print_r($result[0]->getStdClass());
+        // note these are in increasing cronological order and the test db is only part of the full db
+        $this->assertEqual($result[0]->trip, "er");
 	    Trace::function_exit();
     }
     function test_2()
@@ -32,7 +34,7 @@ class TestLocations extends \LiteTest\TestCase{
         foreach($result as $i){
             $this->assertEqual($i->trip, "rtw");
         }
-		$this->assertEqual(count($result), 829);
+		$this->assertEqual(count($result), 711);
 	    Trace::function_exit();
     }
 }

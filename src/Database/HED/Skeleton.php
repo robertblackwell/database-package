@@ -229,6 +229,7 @@ EOD;
     	$slug, 
     	$published_date, 
     	$title,
+        $vehicle,
     	$miles, 
     	$odometer, 
     	$day_number, 
@@ -243,7 +244,7 @@ EOD;
  	{
     	assert(func_num_args() == 11);
  		$path = \Database\Locator::get_instance()->item_filepath();
- 		return self::make_entry($path, $trip, $slug, $published_date, $title, $miles, $odometer, $day_number, $place, $country, $latitude, $longitude, $categories, $featured_image, $main_content );
+ 		return self::make_entry($path, $trip, $slug, $published_date, $title, $vehicle, $miles, $odometer, $day_number, $place, $country, $latitude, $longitude, $categories, $featured_image, $main_content );
  	}
 
 	/**
@@ -252,6 +253,8 @@ EOD;
 	* @param string $trip  The trip for this post item 
 	* @param string $slug the unique id for this post item 
 	* @param string $dte  The published date to be recorded in the post item 
+    * @param string $title
+    * @param string $vehicle
 	* @param string $miles 
 	* @param string $odometer
 	* @param string $day_number
@@ -271,6 +274,7 @@ EOD;
     	$slug, 
     	$published_date, 
     	$title,
+        $vehicle,
     	$miles, 
     	$odometer, 
     	$day_number, 
@@ -293,6 +297,7 @@ EOD;
     	self::print_hed_common("entry", $trip, $slug, $published_date, []);
 
     	self::print_field_value("title", $title);
+        self::print_field_value("vehicle", $vehicle);
     	self::print_field_value("miles", $miles);
     	self::print_field_value("odometer", $odometer);
     	self::print_field_value("day_number", $day_number);

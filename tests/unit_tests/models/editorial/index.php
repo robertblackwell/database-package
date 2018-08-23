@@ -18,9 +18,9 @@ class TestEditorial extends \LiteTest\TestCase{
 		// print "<p>editorial text: ". $result->main_content ."</p>\n";
 		$this->assertEqual($result->version, "2.0");
 		$this->assertEqual($result->type, "editorial");
-		$this->assertEqual($result->slug, "scotland");
+		$this->assertEqual($result->slug, $this->test_slug);
 		$this->assertEqual($result->status, "draft");
-		$this->assertEqual($result->trip, "rtw");
+		$this->assertEqual($result->trip, $this->test_trip);
 		$this->assertEqual($result->creation_date, "2015-09-17");
 		$this->assertEqual($result->published_date, "2015-09-17");
 		$this->assertEqual($result->last_modified_date, "2015-09-17");

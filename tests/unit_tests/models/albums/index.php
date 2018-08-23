@@ -49,7 +49,7 @@ class TestFindAlbum extends \LiteTest\TestCase{
     function test_get_one()
     {    
 	    Trace::function_entry();
-        $result = Database\Models\Album::get_by_trip_slug('rtw','spain');
+        $result = Database\Models\Album::get_by_trip_slug($this->test_trip, $this->test_slug);
         // var_dump($result);exit();
         $this->assert_test_album($result);
 
@@ -62,7 +62,7 @@ class TestFindAlbum extends \LiteTest\TestCase{
     function test_get_by_slug()
     {    
         Trace::function_entry();
-        $result = Database\Models\Album::get_by_slug('spain');
+        $result = Database\Models\Album::get_by_slug($this->test_slug);
         // var_dump($result);exit();
         $this->assert_test_album($result);
 
@@ -150,7 +150,8 @@ class TestFindAlbum extends \LiteTest\TestCase{
     function test_where_theamericas()
     {
 	    Trace::function_entry();
-        $result = Database\Models\Album::find_for_trip("theamericas");
+        $result = Database\Models\Album::find_for_trip($this->test_trip);
+        $this->assertNotEqual(count($result), 0);
         foreach($result as $a)
         {
             $this->assertNotEqual($a, null);
@@ -159,7 +160,7 @@ class TestFindAlbum extends \LiteTest\TestCase{
             $this->assertNotEqual($a->gallery, null);
             $this->assertEqual(get_class($a->gallery), "Gallery\Object");
             // var_dump($a->gallery->mascotPath());
-            $this->assertEqual($a->trip,'theamericas');
+            $this->assertEqual($a->trip, $this->test_trip);
         }
         //$this->assertEqual($result[3]->slug, "bolivia-1");
 	    Trace::function_exit();
@@ -234,18 +235,18 @@ class TestFindAlbum extends \LiteTest\TestCase{
     {
         Trace::function_entry();
         // confirm we have the test album
-        $result = Database\Models\Album::get_by_slug('spain');
+        $result = Database\Models\Album::get_by_slug($this->test_slug);
         $this->assert_test_album($result);
         $util = new \Database\Utility();
 
         $util->deport_album('spain');
         // no prove its gone
-        $result = Database\Models\Album::get_by_slug('spain');
+        $result = Database\Models\Album::get_by_slug($this->test_slug);
         $this->assertEqual($result, null);
         
         $util->import_album($this->test_trip, $this->test_slug);
         // now prove its back with all its data
-        $result = Database\Models\Album::get_by_slug('spain');
+        $result = Database\Models\Album::get_by_slug($this->test_slug);
         $this->assert_test_album($result);
 
         Trace::function_exit();

@@ -26,10 +26,28 @@ class DbPreloader{
         $utility = new \Database\Utility();
         $builder->drop_tables();
         $builder->create_tables();
-        $utility->load_content_items('rtw');
-        $utility->load_albums('rtw');
-        $utility->load_banners('rtw');
-        $utility->load_editorials('rtw');
+        $trip = "rtw";
+        print "loading {$trip} \n";
+        $utility->load_content_items($trip);
+        print "loading {$trip} items complete\n";
+        $utility->load_albums($trip);
+        print "loading {$trip} albums complete\n";
+        $utility->load_banners($trip);
+        print "loading {$trip} banners complete\n";
+        $utility->load_editorials($trip);    
+        print "loading {$trip} complete \n";
+        $trip = "er";
+        print "loading {$trip} \n";
+        $utility->load_content_items($trip);
+        $utility->load_albums($trip);
+        $utility->load_banners($trip);
+        $utility->load_editorials($trip);    
+        $trip = "bmw11";
+        print "loading {$trip} \n";
+        $utility->load_content_items($trip);
+        $utility->load_albums($trip);
+        $utility->load_banners($trip);
+        $utility->load_editorials($trip);    
     }
 }
 

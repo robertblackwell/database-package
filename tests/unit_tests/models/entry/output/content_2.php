@@ -13,6 +13,7 @@
 	<div id="last_modified_date">2017-07-07</div>
 	<div id="trip">rtw</div>
 	<div id="title">This_Is_A_Title</div>
+	<div id="vehicle">earthroamer</div>
 	<div id="miles">miles</div>
 	<div id="odometer">odometer</div>
 	<div id="day_number">day_number</div>

@@ -8,17 +8,24 @@ class TestEntryCreate extends \LiteTest\TestCase{
 		global $config;
 		Db::init($config);
 		$db = Db::get_instance();
-		$this->test_trip = "rtw";
+		$this->test_trip = "bmw11";
 		$this->test_slug = "180624";
 	}
 	function assert_test_entry($result)
 	{
+		if ($result === null) {
+			print "result is null \n";
+			print_r($result);
+			throw new \Exception("result is null");
+			exit();
+			// return;
+		}
 		$this->assertEquals(get_class($result), "Database\Models\Entry");
 		$this->assertEqual($result->version, "2.0");
 		$this->assertEqual($result->type, "entry");
-		$this->assertEqual($result->slug, "180624");
+		$this->assertEqual($result->slug, $this->test_slug);
 		$this->assertEqual($result->status, "draft");
-		$this->assertEqual($result->trip, "rtw");
+		$this->assertEqual($result->trip, $this->test_trip);
 		$this->assertEqual($result->creation_date, "2018-06-24");
 		$this->assertEqual($result->published_date, "2018-06-24");
 		$this->assertEqual($result->last_modified_date, "2018-06-24");
@@ -56,7 +63,7 @@ class TestEntryCreate extends \LiteTest\TestCase{
 	{    
 		Trace::function_entry();
 		// print "Lets get started\n";
-		$result = Database\Models\Item::get_by_trip_slug('rtw','180624');
+		$result = Database\Models\Item::get_by_trip_slug($this->test_trip,$this->test_slug);
 		$this->assert_test_entry($result);
 		// print "<p>editorial text: ". $result->main_content ."</p>\n";
 //         $this->assertEquals(get_class($result), "Database\Models\Entry");
@@ -107,7 +114,7 @@ class TestEntryCreate extends \LiteTest\TestCase{
 	{    
 		Trace::function_entry();
 		// print "Lets get started\n";
-		$result = Database\Models\Item::get_by_slug('180624');
+		$result = Database\Models\Item::get_by_slug($this->test_slug);
 		$this->assert_test_entry($result);
 		// print "<p>editorial text: ". $result->main_content ."</p>\n";
 		// $this->assertEquals(get_class($result), "Database\Models\Entry");
@@ -180,11 +187,11 @@ class TestEntryCreate extends \LiteTest\TestCase{
 		$trip = 'rtw';
 		$slug='170707';
 		$edate = '2017-07-07';
-		$p1 = dirname(__FILE__)."/output/content_2.php";
+		$p1 = dirname(__FILE__)."/output2/content_2.php";
 		$p2 = dirname(__FILE__)."/correct_content_2.php";
 		$verbose = "";// set to "v" to get output
 		// print system("rm -Rv ".dirname(__FILE__)."/output");
-		$oput = system("rm -R{$verbose} ".dirname(__FILE__)."/output");
+		$oput = system("rm -R{$verbose} ".dirname(__FILE__)."/output2");
 		// print $oput."\n";
 		// \Database\HED\HEDFactory::create_banner(dirname(__FILE__)."/output/content.php", $trip, $slug, $edate, $de);
 		$hed_obj = \Database\HED\Skeleton::make_entry(
@@ -193,6 +200,7 @@ class TestEntryCreate extends \LiteTest\TestCase{
 			$slug, 
 			$edate,  
 			"This_Is_A_Title",
+			"earthroamer",
 			"miles",  
 			"odometer",
 			"day_number",
@@ -218,6 +226,8 @@ class TestEntryCreate extends \LiteTest\TestCase{
     {
         Trace::function_entry();
         $r = Database\Models\Item::get_by_slug($this->test_slug);
+        // print_r($r->getStdClass());
+
         $this->assertNotEqual($r, null);
         $this->assert_test_entry($r);
 
@@ -226,6 +236,8 @@ class TestEntryCreate extends \LiteTest\TestCase{
         $this->assertEqual($r, null);
         
         $new_r = Database\Models\Item::get_by_trip_slug($this->test_trip, $this->test_slug);
+        // print_r($new_r->getStdClass());
+
         $new_r->sql_insert();    
         
         $r2 = Database\Models\Item::get_by_slug($this->test_slug);
