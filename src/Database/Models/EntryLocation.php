@@ -48,7 +48,7 @@ class EntryLocation extends ItemBase //Base\ModelBase
     static function find_for_trip($trip, $count=NULL){
         //print "<p>".__METHOD__."</p>";
         $count_str = ($count)? "limit 0, $count": "" ;
-        $c = "SELECT type, slug, trip, 
+        $c = "SELECT type, slug, trip, vehicle,
 				excerpt, 
 				published_date, 
 				country, place, latitude, longitude 
@@ -61,7 +61,7 @@ class EntryLocation extends ItemBase //Base\ModelBase
     static function find_date_order($count=NULL){
         //print "<p>".__METHOD__."</p>";
         $count_str = ($count)? "limit 0, $count": "" ;
-        $c = "SELECT type, slug, trip, 
+        $c = "SELECT type, slug, trip, vehicle,
                     miles, odometer, day_number, 
                     excerpt, 
                     published_date, 
@@ -76,7 +76,7 @@ class EntryLocation extends ItemBase //Base\ModelBase
     static function find($count=NULL){
         //print "<p>".__METHOD__."</p>";
         $count_str = ($count)? "limit 0, $count": "" ;
-        $c = "SELECT type, slug, trip, 
+        $c = "SELECT type, slug, trip, vehicle,
 					miles, odometer, day_number, 
 					excerpt, 
 					published_date, 
