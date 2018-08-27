@@ -3,6 +3,12 @@ namespace Database\Models;
 
 class Vehicle
 {
+	const TIGER = "tiger";
+	const GXV = "gxv";
+	const BMW1200_2011 = "bmw1200_2011";
+	const AUST_TROOPIE = "aust_troopie";
+	const NO_VEHICLE = "no_vehicle";
+	 
 	private static $vehicles = [
 		"tiger",
 		"gxv",
