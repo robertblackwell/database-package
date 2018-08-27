@@ -58,6 +58,19 @@ class EntryLocation extends ItemBase //Base\ModelBase
         
 		return self::$sql->query_objects($c, __CLASS__);
     }
+    static function find_for_trip_order_by_date($trip, $count=NULL){
+        //print "<p>".__METHOD__."</p>";
+        $count_str = ($count)? "limit 0, $count": "" ;
+        $c = "SELECT type, slug, trip, vehicle,
+                excerpt, 
+                published_date, 
+                country, place, latitude, longitude 
+                FROM my_items 
+                WHERE ( (type='entry' OR type='location') and trip='".$trip."')   
+                order by published_date asc";
+        
+        return self::$sql->query_objects($c, __CLASS__);
+    }    
     static function find_date_order($count=NULL){
         //print "<p>".__METHOD__."</p>";
         $count_str = ($count)? "limit 0, $count": "" ;
