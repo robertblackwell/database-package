@@ -1,7 +1,7 @@
 <?php
 /**
 * @brief The Database module implements the blog database for the whiteacorn travel website.
-* 
+*
 */
 namespace Database;
 
@@ -24,9 +24,9 @@ class Object
 	/**
 	* Holds a reference to a Locator object - convenience so that dont have to keep getting it
 	*/
-	public static  $locator;
+	public static $locator;
 
-	var $configuration;
+	public $configuration;
 	
 	/**
 	* A reference to the singleton instance of this class
@@ -34,22 +34,25 @@ class Object
 	private static $instance;
 
 	/**
-	* 	Initializes the Database system - allocates singleton instances, gives config information
-	* 	to the Locator and the SqlObject
-	*
-	*	@param array $configuration
-	*
-	*/
-	public static function init($configuration)
+	 * Initializes the Database system - allocates singleton instances, gives config information
+	 * to the Locator and the SqlObject
+	 *
+	 * @param array $configuration Config details.
+	 * @return void
+	 *
+	 */
+	public static function init(array $configuration)
 	{
 		/**
 		* Allocate and prime the SqlObject
 		*/
-        SQLObject::init($configuration['sql']);
+		SQLObject::init($configuration['sql']);
+
 		/**
 		* Allocate and prime the Locator object
 		*/
 		Locator::init($configuration['hed']);
+
 		/**
 		* Now allocate the singleton of this class and hook in the Locator and SqlObject
 		*/
@@ -60,49 +63,47 @@ class Object
 		self::$instance = $inst;
 
 		/**
-		* @note at this point we also hook the Locator and SqlObject into the base Model class 
+		* @note at this point we also hook the Locator and SqlObject into the base Model class
 		* and the model Factory as a static so that all instances of these classes have access
 		*/
 		// Models\Base\ModelBase::$sql = self::$sql;
 		// Models\Base\ModelBase::$locator = self::$locator;
 		Models\Base\Model::$sql = self::$sql;
 		Models\Base\Model::$locator = self::$locator;
-		Models\Factory::$sql = self::$sql;
-		Models\Factory::$locator = self::$locator;
 	}
 	
 	/**
-	* Allows a configuration array to be set from the global Registry object
-	* @deprecated
-	*/
-	static function setConfig($config_object)
+	 * Allows a configuration array to be set from the global Registry object
+	 * @deprecated
+	 * @param \ConfigObject $config_object The config object all completed ready to go.
+	 * @return void
+	 */
+	public static function setConfig(\ConfigObject $config_object)
 	{
-	    $config = array();
-	    $config['sql'] = array(
+		$config = [];
+		$config['sql'] = [
 				'db_name'=>Registry::$globals->db['db_name'],
 				'db_user'=>Registry::$globals->db['db_user'],
 				'db_host'=>Registry::$globals->db['db_host'],
 				'db_passwd'=>Registry::$globals->db['db_passwd'],
-				);
-	    
-	    $config['hed'] = array(
+				];
+		$config['hed'] = [
 				'data_root'=>Registry::$globals->data_root,
 				'doc_root'=>Registry::$globals->doc_root,
 				'url_data_root'=>'dataroot',
 				'full_url_root'=>Registry::$globals->url_root,
 				'url_root'=>Registry::$globals->url_root,
-				);
+				];
 		self::init($config);
 	}
 	/**
 	* Gets the singleton instance of a Database\Object class
 	*
-	* @return Database\Object
-	* 
-	*/ 
+	* @return \Database\Object
+	*
+	*/
 	public static function get_instance()
 	{
 		return self::$instance;
 	}
 }
-?>

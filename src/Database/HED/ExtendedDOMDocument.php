@@ -10,28 +10,28 @@ use \DOMDocument as DOMDocument;
 class ExtendedDOMDocument
 {
 	private $_document;
-	/*!
+	/**
 	* create
-	* Creates a new ExtendedDOMNode from a standard DOMNode
-	* @param DOMNode $node
+	* Creates a new ExtendedDOMNode from a standard DOMNode by wrapping the original $node.
+	* @param DOMNode $node The DOMNode to be wrapped.
 	* @return ExtendedDOMNode
 	*/
-	public static function create($doc)
+	public static function create(DOMNode $node) : ExtendedDOMDocument
 	{
 		print "ExtendedDOMDocument::create \n";
 		// var_dump($doc);
 		$obj = new ExtendedDOMDocument();
-		$obj->_document = $doc;
+		$obj->_document = $node;
 		return $obj;
 	}
-	/*!
+	/**
 	* Creates a new node with the give tag and creates under it the children necessary to implement the html text
 	* apssed in.
-	* @param String  $tag
-	* @param String  $html
+	* @param string $tag  HTML tag to wrap the text.
+	* @param string $html Html Text.
 	* @return DOMNode
 	*/
-	function createElementFromHTML($tag, $html)
+	public function createElementFromHTML(string $tag, string $html) : DOMNode
 	{
 		//print "ExtendedDOMDocument::createElementFromHTML ($tag, $html) \n";
 		//var_dump($this->_document);
@@ -39,11 +39,10 @@ class ExtendedDOMDocument
 		$d->loadHTML($html);
 		$body = $d->getElementsByTagName("body")->item(0);
 		$el = $this->_document->createElement($tag);
-		foreach ($body->childNodes as $child){
+		foreach ($body->childNodes as $child) {
 			$child = $this->_document->importNode($child, true);
 			$child = $el->appendChild($child);
 		}
 		return $el;
 	}
 }
-?>

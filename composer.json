@@ -1,4 +1,3 @@
-
 {
     "name":"robertblackwell/database-package",
     "description": "A simple tracing library with easy on/off",
@@ -26,7 +25,8 @@
         "robertblackwell/trace":"@dev"
     },
     "require-dev":{
-		"robertblackwell/litetest":"dev-master"
+		"robertblackwell/litetest":"dev-master",
+        "phpunit/phpunit": "^6"
     },
     "autoload": {
         "psr-0": {

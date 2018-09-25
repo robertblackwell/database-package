@@ -7,6 +7,7 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'Trace' => array($vendorDir . '/robertblackwell/trace/src'),
+    'Prophecy\\' => array($vendorDir . '/phpspec/prophecy/src'),
     'LiteTest' => array($vendorDir . '/robertblackwell/litetest/classes'),
     'Gallery' => array($vendorDir . '/robertblackwell/gallery/src'),
     'Database' => array($baseDir . '/src'),

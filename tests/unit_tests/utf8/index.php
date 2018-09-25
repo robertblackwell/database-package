@@ -20,7 +20,7 @@ class TestUTF8 extends \LiteTest\TestCase{
 		
 		$trip = "rtw";
 		$slug = "utf8_post";
-		$fn $locator->
+// 		$fn $locator->
 		// copy utf8 post file to content
 		
 		$utility->import("utf8_post");

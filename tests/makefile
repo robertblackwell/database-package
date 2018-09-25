@@ -1,5 +1,5 @@
 VENDORBIN="../vendor/bin"
-LITETEST=$(VENDORBIN)/litetest
+LITETEST=@$(VENDORBIN)/litetest.phar
 TESTS_DIR = $(shell pwd)
 DATA_DIR =$(TESTS_DIR)/test_data
 TEST_WHITEACORN_DATA=$(HOME)/Sites/test_whiteacorn/data
@@ -9,7 +9,8 @@ TEST_WHITEACORN_DATA=$(HOME)/Sites/test_whiteacorn/data
 #
 # test_local_ping:
 # 	$(LITETEST) Tests/ApiCalls/PingTest.php
-
+pu:
+	phpunit --bootstrap "include/bootstrap.php" punit/albums/AlbumTest.php
 build:
 	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/utility/index.php
 
@@ -24,7 +25,7 @@ models: article album banner category country entry get_by_slug locations post p
 
 article:
 	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/models/article/index.php
-	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/models/article_title/index.php
+	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/models/article_title/title.php
 
 album:
 	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/models/albums/index.php
@@ -35,7 +36,7 @@ banner:
 category:
 	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/models/category/add_test.php
 	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/models/category/find_test.php
-	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/modelscategorized_items/find_test.php
+	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/models/categorized_items/find_test.php
 	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/models/categorized_items/add_remove_test.php
 
 country:

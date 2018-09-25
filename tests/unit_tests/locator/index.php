@@ -9,7 +9,8 @@ class test_locator extends LiteTest\TestCase{
 		Trace::disable();
 	}
 	// We create a locator object
-	function test_1(){
+	function test_1()
+	{
 	    Trace::function_entry();
 		$locator = Locator::get_instance();
 		$this->assertNotEqual($locator, null);

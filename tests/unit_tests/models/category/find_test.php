@@ -32,9 +32,9 @@ class TestFindCategory extends \LiteTest\TestCase{
         // $this->assertNotEqual($result->content_path, null);
         // $this->assertNotEqual($result->entity_path, null);
 
-        print_r($result->getStdClass());
-        print_r(array_keys($result->getFields()));
-        print_r(array_keys(get_object_vars($result)));
+//        print_r($result->getStdClass());
+//        print_r(array_keys($result->getFields()));
+//        print_r(array_keys(get_object_vars($result)));
         Trace::function_exit();
     }
 

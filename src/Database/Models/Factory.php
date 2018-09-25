@@ -1,7 +1,13 @@
 <?php
 namespace Database\Models;
 
+use Database\Models\Album;
+use Database\Models\Banner;
+use Database\Models\Editorial;
 use Database\Models\Entry as Entry;
+use Database\Models\EntryLocation;
+use Database\Models\Post;
+
 use Database\HED\HEDObject;
 use Database\HED\HEDFactory;
 use Database\Locator;
@@ -9,55 +15,22 @@ use Database\Locator;
 /*!
 ** @ingroup Models
 **
-** The purpose of this class is to create model object from HEDObjects 
+** The purpose of this class is to create model object from HEDObjects
 ** and to create new empty HEDObjects in the appropriate file
 **
 **
-** 
+**
 */
-class Factory {
-    static $sql;
-    static $locator;
-    /*!
-    * Constructor - DO NOT SET UP NULL FIELD VALUES WE ARE RELYING ON THE __GET METHOD
-    * WHICH ONLY GETS CALLED IS THE PROPERTY DOES NOT EXIST
-    */
+class Factory
+{
 	
-    public static function werhere(){
-        print "<h2>we r here</h2>";
-    }
-	private static $types = array(
-		'post'=>'\Database\Models\Post',
-		'entry'=>'\Database\Models\Entry',
-		'article'=>'\Database\Models\Article',
-		'album'=>'\Database\Models\Album',
-		'editorial'=>'\Database\Models\Editorial',
-		'banner'=>'\Database\Models\Banner',
-		'location'=>'\Database\Models\EntryLocation',
-	);
-	
-	private static $classes = array(
-		'\Database\Models\Post'=>'post',
-		'\Database\Models\Entry'=>'entry',
-		'\Database\Models\Article'=>'article',
-		'\Database\Models\Album'=>'album',
-		'\Database\Models\Banner'=>'banner',
-		'\Database\Models\Editorial'=>'editorial',
-		'\Database\Models\EntryLocation'=>'location',
-	);
-		
-	private static function type_to_class($type){
-		return self::$types[$type];
-	}
-	private static function class_to_type($class){
-		return self::$classes[$class];
-	}
-	
-    /*!
-    * Returns the site relative URL (suitable for use in a <img src=> construct)
-* @NOTE THIS IS NO LONGER CORRECT - RETURNS AN ABSOLUTE PATH WHICH CAN BE TURNED INTO
-*       A URL
-    * of the entries featured image. NULL is no featured image.
+	/**
+	* Returns the site relative URL (suitable for use in a <img src=> construct)
+	*
+	* @NOTE THIS IS NO LONGER CORRECT - RETURNS AN ABSOLUTE PATH WHICH CAN BE TURNED INTO
+	* A URL
+	*
+	* of the entries featured image. NULL is no featured image.
 	*
 	* There are a number of legal forms of the featured_image text
 	* FORM 1 -- Gallery name , index for
@@ -65,391 +38,382 @@ class Factory {
 	* @code
 	*		[galleryname,index] or [index]
 	* @endcode
-	* 
+	*
 	* In the first form the URL returned is the site relative URL of the index-th thumbnail image in the gallery
 	* named "galleryname" within the items content folder
 	*
 	* In the second form the item folder is used as the gallery name
 	*
 	* FORM 2 -- A partial path
-	* The text should be a path relative to the items content directory so for example 
+	* The text should be a path relative to the items content directory so for example
 	*	@code
-	*		{/}gallery/Thumbnails/pict-3.jpg 
+	*		{/}gallery/Thumbnails/pict-3.jpg
 	*	@endcode
 	*
-	* if the post had a gallery named "gallery", or 
+	* if the post had a gallery named "gallery", or
 	*
 	* @code
-	*	{/}Thumbnails/pict-3.jpg 
+	*	{/}Thumbnails/pict-3.jpg
 	* @endcode
 	*
 	* if the post had a "default" gallery that had no containing folder.
 	* @note in the cases of a partial path there should be a leading /, but this function
 	* will add it is necessary
+	* @param HEDObject $hed_obj The source object for the featured image string. Need additional
+	*                           info from the HEDObject to complete the calculation.
+	* @return string|null Either a patial path to the featured image or null.
 	*
-	*/    
-	static function featured_image($o){
-	    \Trace::off();
+	*/
+	public static function featured_image(HEDObject $hed_obj) // : ? string
+	{
+		\Trace::off();
 		\Trace::disable();
-        \Trace::function_entry();
-	    $text = $o->get_text('featured_image');
-		if( is_null($text) || ($text == '') ){
-		    // This is for old entries where the featured_image field was not included
-		    // or where it was set to "". In either case set it to the first thumbnail
-		    $text = '[0]';
-		} 
-		$text = str_replace(" ","", $text);
+		\Trace::function_entry();
+		$text = $hed_obj->get_text('featured_image');
+		if (is_null($text) || ($text == '')) {
+			// This is for old entries where the featured_image field was not included
+			// or where it was set to "". In either case set it to the first thumbnail
+			$text = '[0]';
+		}
+		$text = str_replace(" ", "", $text);
 		\Trace::debug(" text: $text");
-		$a = pathinfo(dirname($o->_file_path));
+		$a = pathinfo(dirname($hed_obj->_file_path));
 		$gname = $a['basename'];
-		$path = dirname(dirname($o->_file_path));
-		$item_dir = dirname($o->_file_path);
+		$path = dirname(dirname($hed_obj->_file_path));
+		$item_dir = dirname($hed_obj->_file_path);
 		\Trace::debug("item_dir : $item_dir  gname:$gname  path:$path ");
 		/*
-		** if its a [gal,index] form;  strip the [ ] 
+		** if its a [gal,index] form;  strip the [ ]
 		*/
-		if( $text[0] =="[" ) {
-		    /*
-		    ** This is the [ .... ] form of a featured_image specification. So split the 
-		    ** specification string by ','
-		    */
-		    \Trace::debug("It is a [   ....   ] type");
-			$text = substr($text,1, strlen($text)-2);
+		if ($text[0] =="[") {
+			/*
+			** This is the [ .... ] form of a featured_image specification. So split the
+			** specification string by ','
+			*/
+			\Trace::debug("It is a [   ....   ] type");
+			$text = substr($text, 1, strlen($text) - 2);
 			//print "its a [ \n";
 			$split = preg_split("/,/", $text);
 			//print_r( $split );
-			if( count($split) == 2){ 
-			    /*
-			    ** Both a gallery name and an image index is given
-			    */
+			if (count($split) == 2) {
+				/*
+				** Both a gallery name and an image index is given
+				*/
 				$galname = $split[0];
-		        $gal = \Gallery\Object::create(dirname($o->_file_path)."/".$galname);
+				$gal = \Gallery\Object::create(dirname($hed_obj->_file_path)."/".$galname);
 				$index = intval($split[1]);
-    			\Trace::debug("Explicit gal    gal_name :$galname index: $index");
-			}else if(count($split) == 1 ){
-			    /*
-			    ** Only an index is given so use the default gallery
-			    */
-        		$a = pathinfo(dirname($o->_file_path));
-		        $gname = $a['basename'];
-		        $path = dirname(dirname($o->_file_path));
-		        $gal = \Gallery\Object::create($path."/".$gname);
+				\Trace::debug("Explicit gal    gal_name :$galname index: $index");
+			} else if (count($split) == 1) {
+				/*
+				** Only an index is given so use the default gallery
+				*/
+				$a = pathinfo(dirname($hed_obj->_file_path));
+				$gname = $a['basename'];
+				$path = dirname(dirname($hed_obj->_file_path));
+				$gal = \Gallery\Object::create($path."/".$gname);
 				$index = intval($split[0]);
-    			\Trace::debug("Implicit gal      gal_name :default index: $index");
-			}else{
-			    //
-			    // Not sure what this one is
-			    //
-		        $gal = \Gallery\Object::create($path."/".$gname);
+				\Trace::debug("Implicit gal      gal_name :default index: $index");
+			} else {
+				//
+				// Not sure what this one is
+				//
+				$gal = \Gallery\Object::create($path."/".$gname);
 				$index=$split[0];
-    			\Trace::debug("Else    gal_name :default index: $index");
-    			throw new \Exception("Not sure why we got here");
-			}	
-			$image = ( count($gal->images) > $index ) ? $gal->images[$index] : NULL;
-			//$res = ( count($gal->images) > $index ) ? $gal->images[$index]->getSiteRelativeThumbnailURL() : NULL;
-			$res = ( count($gal->images) > $index ) ? $gal->images[$index]->getThumbnailPath() : NULL;
-		/*
-		** Its the default - use the first image in the default gallery 
-		*/	
-		} else if( strlen($text) == 0  ){
-		    throw new \Exception("should not get here, already tested for no specification");
-		} else {
-            /*
-            ** A partial Path/URL has been given, so put the item site relative URL on the front
-            */
-            \Trace::debug("partial path given gal_img : $text");
-			$gal_img = $text;
-			if( substr($text, 0, 1) != '/' ) $gal_img = '/'.$text;
-	        if( trim($gal_img) == "")  return null;
-	        $fn = dirname($o->_file_path).$gal_img;
-	        if( is_file($fn) ){
-	            $res =  $fn;
-	            /*
-	            ** @todo - fix this it is a bit hidden. Taking the doc_root off the front makes it a
-	            ** site relative URL
-	            */
-	            //$res = str_replace(\Registry::$globals->doc_root, "", $fn);
-	        }else {
-	            $res = null;	
+				\Trace::debug("Else    gal_name :default index: $index");
+				throw new \Exception("Not sure why we got here");
 			}
-		}	
-		$res = (is_null($res) )? null :str_replace(Locator::get_instance()->doc_root(),"",$res) ;
-        \Trace::debug("result: $res");
+			$image = ( count($gal->images) > $index ) ? $gal->images[$index] : null;
+			//$res = ( count($gal->images) > $index ) ? $gal->images[$index]->getSiteRelativeThumbnailURL() : NULL;
+			$res = ( count($gal->images) > $index ) ? $gal->images[$index]->getThumbnailPath() : null;
+		/*
+		** Its the default - use the first image in the default gallery
+		*/
+		} else if (strlen($text) == 0) {
+			throw new \Exception("should not get here, already tested for no specification");
+		} else {
+			/*
+			** A partial Path/URL has been given, so put the item site relative URL on the front
+			*/
+			\Trace::debug("partial path given gal_img : $text");
+			$gal_img = $text;
+			if (substr($text, 0, 1) != '/') $gal_img = '/'.$text;
+			if (trim($gal_img) == "")  return null;
+			$fn = dirname($hed_obj->_file_path).$gal_img;
+			if (is_file($fn)) {
+				$res =  $fn;
+				/*
+				** @todo - fix this it is a bit hidden. Taking the doc_root off the front makes it a
+				** site relative URL
+				*/
+				//$res = str_replace(\Registry::$globals->doc_root, "", $fn);
+			} else {
+				$res = null;
+			}
+		}
+		$res = (is_null($res))? null :str_replace(Locator::get_instance()->doc_root(), "", $res);
+		\Trace::debug("result: $res");
 		return $res;
-    }
-
-    static function get_and_validate_field($hed_obj, $field_name, $type)
-    {
-        $result = null;
-        $k = $field_name;
-        $t = $type;
-        $method = "get_".$t;
-        if(strtolower($k) == "country") {
-            $result = Country::get_by_code($hed_obj->$method($k));
-        } else if(strtolower($k) == "trip") {
-            $result = Trip::is_valid($hed_obj->$method($k));
-        } else if(strtolower($k) == "vehicle") {
-            $result = Vehicle::is_valid($hed_obj->$method($k));
-        } else {
-            $result = $hed_obj->$method($k);
-        }
-        return $result;
-    }
-
-    /*!
-    * Factory method that knows how to create the correct Model class from a HED object
-    *
-    * @param $hed_object
-    * @return model object
-    */
-    static function entry_from_hed($hed_obj){
-        //print __METHOD__."\n";
-        $fields1 = Entry::get_fields();
-        // compute the fields that require no trickery - remove the tricky ones
-        $fields = array_diff_key($fields1, 
-                    array(
-                        "file_path"=>"", 
-                        "entry_path"=>"",
-                        "featured_image"=>"",
-                        "excerpt"=>"",
-                    )
-        );
-        $vals = array();
-        foreach($fields as $k => $t ){
-
-            $vals[$k] = self::get_and_validate_field($hed_obj, $k, $t);
-
-            // $method = "get_".$t;
-            // if(strtolower($k) == "country") {
-            //     $vals[$k] = Country::get_by_code($hed_obj->$method($k));
-            // } else if(strtolower($k) == "trip") {
-            //     $vals[$k] = Trip::is_valid($hed_obj->$method($k));
-            // } else if(strtolower($k) == "vehicle") {
-            //     $vals[$k] = Vehicle::is_valid($hed_obj->$method($k));
-            // } else {
-            //     $vals[$k] = $hed_obj->$method($k);
-            // }
-        }
-        // now add the tricky ones back in as derived values
-        $vals['content_path'] = $hed_obj->_file_path; 
-        $vals['entity_path'] = dirname($hed_obj->_file_path); 
-        $vals['featured_image'] = self::featured_image($hed_obj);
-        $vals['excerpt'] = $hed_obj->get_first_p('main_content');
-        ;
-        $x = new Entry($vals);
-        //print __METHOD__."\n";
-        //print "<p>".__METHOD__." entry ".$x->slug. " trip: ".$x->trip." has camping ". (int)$x->has_camping."</p>";
-        return $x;      
-    }
-	static function location_from_hed($hed_obj)
+	}
+	/**
+	* Get a field and value from a HEDObject, apply the necessary type accessor
+	* method and make whatever transformations are required to ensure the value is
+	* correct for the field and type.
+	* @param HEDObject $hed_obj    The source.
+	* @param string    $field_name The name of the source field.
+	* @param string    $type       A code for the 'type' of the field value.
+	* @return mixed Depends on the $type parameter
+	*/
+	public static function get_and_validate_field(HEDObject $hed_obj, string $field_name, string $type)/*:mixed*/
 	{
-		$fields = EntryLocation::get_fields();
-		$vals = [];
-        foreach($fields as $k => $t ){
-            $method = "get_".$t;
-            $vals[$k] = $hed_obj->$method($k);
-        }
-		// print __FUNCTION__ . "\n";
-		$x = new EntryLocation($vals);
-		// var_dump($x);
+		$result = null;
+		$k = $field_name;
+		$t = $type;
+		$method = "get_".$t;
+		if (strtolower($k) == "country") {
+			$result = Country::get_by_code($hed_obj->$method($k));
+		} else if (strtolower($k) == "trip") {
+			$result = Trip::is_valid($hed_obj->$method($k));
+		} else if (strtolower($k) == "vehicle") {
+			$result = Vehicle::is_valid($hed_obj->$method($k));
+		} else {
+			$result = $hed_obj->$method($k);
+		}
+		return $result;
+	}
+	/**
+	* Make a Models/Album from a HEDObject.
+	* @param HEDObject $hed_obj The source HEDObject.
+	* @return Models\Album
+	*
+	*/
+	public static function album_from_hed(HEDObject $hed_obj) : Album
+	{
+		//print __METHOD__."\n";
+		$fields1 = Album::get_fields();
+		// compute the fields that require no trickery
+		$fields = array_diff_key($fields1, array("file_path" => "", "album_path" => ""));
+		//print_r($fields);
+		$vals = array();
+		foreach ($fields as $k => $t) {
+			// this bypasses HEDObject majik __get method
+			$method = "get_".$t;
+			$vals[$k] = $hed_obj->$method($k);
+		}
+		$vals['content_path'] = $hed_obj->_file_path;
+		$vals['entity_path'] = dirname($hed_obj->_file_path);
+		$vals['mascot_path'] = $vals['entity_path']."/mascot.jpg";
+		$vals['mascot_url'] =  str_replace(\Registry::$globals->doc_root, "", $vals['mascot_path']);
+		//print_r($vals);
+		$x = new Album($vals);
+		//var_dump($x);
+		//print __METHOD__."\n";
 		return $x;
 	}
-    static function post_from_hed($hed_obj)
-    {
-        // print __METHOD__."\n";
-        $fields1 = Post::get_fields();
-        // compute the fields that require no trickery
-        $fields = array_diff_key($fields1, 
-                    array(
-                        "file_path"=>"", 
-                        "entry_path"=>"",
-                        "featured_image"=>"",
-                        "excerpt"=>"",
-                    )
-        );
-        $vals = array();
-        foreach($fields as $k => $t ){
-            $method = "get_".$t;
-            if(strtolower($k) == "country") {
-                $vals[$k] = Country::get_by_code($hed_obj->$method($k));
-            } else if(strtolower($k) == "trip") {
-                $vals[$k] = Trip::is_valid($hed_obj->$method($k));
-            } else {
-                $vals[$k] = $hed_obj->$method($k);
-            }
-        }
-        $vals['content_path'] = $hed_obj->_file_path; 
-        $vals['entity_path'] = dirname($hed_obj->_file_path); 
-        $vals['featured_image'] = self::featured_image($hed_obj);
-        $vals['excerpt'] = $hed_obj->get_first_p('main_content');
-        $model = new Post($vals);
-        //print __METHOD__."\n";
-        return $model;      
-    }
+	/**
+	* Make Article model from suitable HEDObject.
+	* @param HEDObject $hed_obj Source.
+	* @return Article
+	*/
+	public static function article_from_hed(HEDObject $hed_obj) : Article
+	{
+		//print __METHOD__."\n";
+		$fields1 = Article::get_fields();
+		// compute the fields that require no trickery
+		$fields = array_diff_key(
+			$fields1,
+			[
+				"file_path" => "",
+				"entry_path" => "",
+				"featured_image" => "",
+				"excerpt" => "",
+			]
+		);
+		$vals = array();
+		foreach ($fields as $k => $t) {
+			$method = "get_".$t;
+			$vals[$k] = $hed_obj->$method($k);
+		}
+		$vals['content_path'] = $hed_obj->_file_path;
+		$vals['entity_path'] = dirname($hed_obj->_file_path);
+		$vals['featured_image'] = self::featured_image($hed_obj);
+		//$vals['excerpt'] = $hed_obj->get_first_p('main_content');
+		$x = new Article($vals);
+		//print __METHOD__."\n";
+		return $x;
+	}
+	/**
+	* Make a Models/Banner object from s suitable HEDObject.
+	* @param HEDObject $hed_obj The source HEDObject.
+	* @return Models/Banner
+	*/
+	public static function banner_from_hed(HEDObject $hed_obj) : Banner
+	{
+		if ($hed_obj->get_text('type') !== "banner") {
+			$t = $hed_obj->get_text("type");
+			throw new \Exception("banner_from_hed type incorrect {$t}");
+		}
+		$locator = \Database\Locator::get_instance();
+		$fields1 = Banner::get_fields();
+		
+		// compute the fields that require no trickery and then load them
+		$fields = array_diff_key($fields1, array("image_path" => "", "image_url", "banner_folder_path" ));
+		$vals = array();
+		foreach ($fields as $k => $t) {
+			$method = "get_".$t;
+			$vals[$k] = $hed_obj->$method($k);
+		}
+		// now do the ones that require some trick
+		$vals['content_path'] = $hed_obj->_file_path;
+		$vals['entity_path'] = dirname($hed_obj->_file_path);
 
-    static function article_from_hed($hed_obj)
-    {
-        //print __METHOD__."\n";
-        $fields1 = Article::get_fields();
-        // compute the fields that require no trickery
-        $fields = array_diff_key($fields1, 
-                    array(
-                        "file_path"=>"", 
-                        "entry_path"=>"",
-                        "featured_image"=>"",
-                        "excerpt"=>"",
-                    )
-        );
-        $vals = array();
-        foreach($fields as $k => $t ){
-            $method = "get_".$t;
-            $vals[$k] = $hed_obj->$method($k);
-        }
-        $vals['content_path'] = $hed_obj->_file_path; 
-        $vals['entity_path'] = dirname($hed_obj->_file_path); 
-        $vals['featured_image'] = self::featured_image($hed_obj);
-        //$vals['excerpt'] = $hed_obj->get_first_p('main_content');
-        $x = new Article($vals);
-        //print __METHOD__."\n";
-        return $x;      
-    }
+		$x = new Banner($vals);
+		return $x;
+	}
 
-    static function album_from_hed($hed_obj)
-    {
-        //print __METHOD__."\n";
-        $fields1 = Album::get_fields();
-        // compute the fields that require no trickery
-        $fields = array_diff_key($fields1, array("file_path"=>"", "album_path"=>""));
-        //print_r($fields);
-        $vals = array();
-        foreach($fields as $k => $t )
-        {
-            // this bypasses HEDObject majik __get method
-            $method = "get_".$t;
-            $vals[$k] = $hed_obj->$method($k);
-        }
-        $vals['content_path'] = $hed_obj->_file_path; 
-        $vals['entity_path'] = dirname($hed_obj->_file_path); 
-        $vals['mascot_path'] = $vals['entity_path']."/mascot.jpg";
-        $vals['mascot_url'] =  str_replace(\Registry::$globals->doc_root, "", $vals['mascot_path']);
-        //print_r($vals);
-        $x = new Album($vals);
-        //var_dump($x);
-        //print __METHOD__."\n";
-        return $x;      
-    }
-
-    static function editorial_from_hed($hed_obj)
-    {
-        //print __METHOD__."\n";
-        
+	/**
+	* Make a Models/Editorial from a HEDObject.
+	* @param HEDObject $hed_obj The source HEDObject.
+	* @return Models\Editorial
+	*
+	*/
+	public static function editorial_from_hed(HEDObject $hed_obj) : Editorial
+	{
+		//print __METHOD__."\n";
+		
 		$locator = \Database\Locator::get_instance();
 		
 		$fields1 = Editorial::get_fields();
 		
-        // compute the fields that require no trickery
-        $fields = array_diff_key($fields1, array("image_path"=>"", "image_url", "banner_folder_path" ));
-        //print_r($fields1);
+		// compute the fields that require no trickery
+		$fields = array_diff_key($fields1, array("image_path" => "", "image_url", "banner_folder_path" ));
+		//print_r($fields1);
 
-        $vals = array();
-        foreach($fields as $k => $t ){
-            $method = "get_".$t;
-            $vals[$k] = $hed_obj->$method($k);
-        }
-        $vals['content_path'] = $hed_obj->_file_path; 
-        $vals['entity_path'] = dirname($hed_obj->_file_path); 
+		$vals = array();
+		foreach ($fields as $k => $t) {
+			$method = "get_".$t;
+			$vals[$k] = $hed_obj->$method($k);
+		}
+		$vals['content_path'] = $hed_obj->_file_path;
+		$vals['entity_path'] = dirname($hed_obj->_file_path);
 		
 		//         $vals['image_path'] = $vals['entity_path']."/".$vals['image'];
 		//         $vals['image_url'] =  str_replace(\Registry::$globals->doc_root, "", $vals['image_path']);
 		//
 		// $vals['banner_folder_path'] = $locator->banner_dir($vals['trip'], $vals['banner']);
 		
-        //print_r($vals);
+		//print_r($vals);
 		//exit();
-        $x = new Editorial($vals);
-        //var_dump($x);
-        //print __METHOD__."\n";
-        return $x;      
-    }
-    static function banner_from_hed($hed_obj){
-        //print __METHOD__."\n";
-        
-		$locator = \Database\Locator::get_instance();
-		
-		$fields1 = Banner::get_fields();
-		
-        // compute the fields that require no trickery
-        $fields = array_diff_key($fields1, array("image_path"=>"", "image_url", "banner_folder_path" ));
-        //print_r($fields1);
+		$x = new Editorial($vals);
+		//var_dump($x);
+		//print __METHOD__."\n";
+		return $x;
+	}
 
-        $vals = array();
-        foreach($fields as $k => $t ){
-            $method = "get_".$t;
-            $vals[$k] = $hed_obj->$method($k);
-        }
-        $vals['content_path'] = $hed_obj->_file_path; 
-        $vals['entity_path'] = dirname($hed_obj->_file_path); 
-		
-//         $vals['image_path'] = $vals['entity_path']."/".$vals['image'];
-//         $vals['image_url'] =  str_replace(\Registry::$globals->doc_root, "", $vals['image_path']);
-// 		
-// 		$vals['banner_folder_path'] = $locator->banner_dir($vals['trip'], $vals['banner']);
-		
-        //print_r($vals);
-		//exit();
-        $x = new Banner($vals);
-        //var_dump($x);
-        //print __METHOD__."\n";
-        return $x;      
-    }
-    static function model_from_hed($hed_obj){
-        $typ = $hed_obj->get_text('type');
-		if( $typ === ""){
+	/**
+	* Make a Models\Entry object from a HEDObject
+	*
+	* @param HEDObject $hed_obj The hed from which the model will be made.
+	* @return \Database\Models\Entry
+	*/
+	public static function entry_from_hed(HEDObject $hed_obj) : Entry
+	{
+		//print __METHOD__."\n";
+		$fields1 = Entry::get_fields();
+
+		// compute the fields that require no trickery and load those from hed.
+		$fields = array_diff_key(
+			$fields1,
+			[
+				"file_path" => "",
+				"entry_path" => "",
+				"featured_image" => "",
+				"excerpt" => "",
+			]
+		);
+		$vals = [];
+		foreach ($fields as $k => $t) {
+			$vals[$k] = self::get_and_validate_field($hed_obj, $k, $t);
+		}
+
+		// now add the tricky ones back in as derived values
+		$vals['content_path'] = $hed_obj->_file_path;
+		$vals['entity_path'] = dirname($hed_obj->_file_path);
+		$vals['featured_image'] = self::featured_image($hed_obj);
+		$vals['excerpt'] = $hed_obj->get_first_p('main_content');
+		$model = new Entry($vals);
+		return $model;
+	}
+	/**
+	* Make a Models/Location from a HEDObject
+	* @param HEDObject $hed_obj The source.
+	* @return Models\EntryLocation
+	*/
+	public static function location_from_hed(HEDObject $hed_obj) : EntryLocation
+	{
+		$fields = EntryLocation::get_fields();
+		$vals = [];
+		foreach ($fields as $k => $t) {
+			$method = "get_".$t;
+			$vals[$k] = $hed_obj->$method($k);
+		}
+		// print __FUNCTION__ . "\n";
+		$x = new EntryLocation($vals);
+		// var_dump($x);
+		return $x;
+	}
+	/**
+	* Make a Models/Post from a suitable HEDObject.
+	* @param HEDObject $hed_obj The source.
+	* @return Post
+	*/
+	public static function post_from_hed(HEDObject $hed_obj) : Post
+	{
+		$fields1 = Post::get_fields();
+		// compute the fields that require no trickery and load them.
+		$fields = array_diff_key(
+			$fields1,
+			[
+				"file_path" => "",
+				"entry_path" => "",
+				"featured_image" => "",
+				"excerpt" => "",
+			]
+		);
+		$vals = array();
+		foreach ($fields as $k => $t) {
+			$method = "get_".$t;
+			if (strtolower($k) == "country") {
+				$vals[$k] = Country::get_by_code($hed_obj->$method($k));
+			} else if (strtolower($k) == "trip") {
+				$vals[$k] = Trip::is_valid($hed_obj->$method($k));
+			} else {
+				$vals[$k] = $hed_obj->$method($k);
+			}
+		}
+		// now do the trickey ones.
+		$vals['content_path'] = $hed_obj->_file_path;
+		$vals['entity_path'] = dirname($hed_obj->_file_path);
+		$vals['featured_image'] = self::featured_image($hed_obj);
+		$vals['excerpt'] = $hed_obj->get_first_p('main_content');
+		$model = new Post($vals);
+		return $model;
+	}
+
+	/**
+	* General from end method that makes model objects from HEDObects.
+	* @param HEDObject $hed_obj The source.
+	* @return Models\Base\Model One of the derived classes.
+	*/
+	public static function model_from_hed(HEDObject $hed_obj)
+	{
+		$typ = $hed_obj->get_text('type');
+		if ($typ === "") {
 			var_dump($hed_obj);
 			throw new \Exception("bad item type");
-        }
+		}
 		$func = $typ."_from_hed";
-        
-        $obj = self::$func($hed_obj);
-        return $obj;
-    }
-    static function model_from_entity(){
-    }
-
-    public static function create_entry($trip, $slug, $dte, $parms){
-        $p = self::$locator->item_filepath($trip, $slug);
-        HEDFactory::create_journal_entry($p, $trip, $slug, $dte, $parms);
-    }
-
-    public static function create_location($trip, $slug, $dte, $parms){
-        $p = self::$locator->item_filepath($trip, $slug);
-        HEDFactory::create_location($p, $trip, $slug, $dte, $parms);
-    }
-
-    static function create_post($trip, $slug, $dte, $parms){
-        $p = self::$locator->item_filepath($trip, $slug);
-        HEDFactory::create_post($p, $trip, $slug, $dte, $parms);
-    }
-
-    static function create_article($trip, $slug, $dte, $parms){
-        $p = self::$locator->item_filepath($trip, $slug);
-        HEDFactory::create_article($p, $trip, $slug, $dte, $parms);
-    }
-
-    static function create_album($trip, $slug, $dte, $name, $parms){
-        $p = self::$locator->album_filepath($trip, $slug);
-        HEDFactory::create_album($p, $trip, $slug, $dte, $name, $parms);
-    }
-
-    static function create_editorial($trip, $slug, $dte, $name, $image_name, $parms){
-        $p = self::$locator->editorial_filepath($trip, $slug);
-		$obj = HEDFactory::create_editorial($p, $trip, $slug, $dte, $name, $image_name, $parms);
-		return;
-    }
-    static function create_banner($trip, $slug, $dte, $name, $parms){
-        $p = self::$locator->banner_filepath($trip, $slug);
-        HEDFactory::create_banner($p, $trip, $slug, $dte, $name, $parms);
-    }
-    
-} 
-?>
+		
+		$obj = self::$func($hed_obj);
+		return $obj;
+	}
+}

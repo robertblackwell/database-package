@@ -9,9 +9,6 @@ namespace Database\HED;
  * change or new Model classes are added to the database
  * 
 */
-use \Database\Models\Entry as VOEntry;
-use \Database\Models\Entry as VOPost;
-use \Database\Models\Entry as VOArticle;
 use \Exception as Exception;
 /**
  * \brief This is the breif description of the class

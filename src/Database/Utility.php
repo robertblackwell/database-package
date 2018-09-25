@@ -1,362 +1,395 @@
 <?php
 namespace Database;
+
+use \Database\Models\Entry as Entry;
 use \Database\Models\Item as Item;
 use \Database\Models\Album as Album;
+use \Database\Models\ItemBase as ItemBase;
 use \Database\Models\Editorial as Editorial;
 use \Database\Models\Banner as Banner;
 use \Exception as Exception;
+
 /**
  * This class provides some utility functions for loading various objects from the flat file store into the sql database
  *
 */
 class Utility
 {
-    public $sql;
-    public $locator;
+	/**
+	 * @var SqlObject $sql
+	 */
+	public $sql;
+	/**
+	 * @var Locator $locator
+	 */
+	public $locator;
 	/**
 	* Constructor
 	*/
-    function __construct(){
-        $this->sql = \Database\SqlObject::get_instance();
-        $this->locator = \Database\Locator::get_instance();
-    }
-    /**
+	public function __construct()
+	{
+		$this->sql = \Database\SqlObject::get_instance();
+		$this->locator = \Database\Locator::get_instance();
+	}
+	/**
 	* Utility that transforms country names
-	* @param Object is updated
+	* @param Entry|Post $e Instance of Entry to have country fixed.
+	* @return void
 	*/
-    public function fix_country($e)
+	public function fix_country(Entry $e)
 	{
-        if( get_class($e) != '\Database\Models\Entry'){
-            return;
-        }
-        $t = array("North West Territory"=>"NWT", "British Columbia"=>"BC","Alberta"=>"Alberta", "Yukon"=>"Yukon");
-            
-        $c = Country::look_up($e->country);
-        if( $c == "USA" ){
-            $country = "USA, ".$e->country;
-            $e->country = $country;
-        } else if ($c == "Canada" ){
-            $country =  "Can, ".$t[$e->country];
-            $e->country = $country;
-        }
-    }
-    
+		if (get_class($e) != '\Database\Models\Entry') {
+			return;
+		}
+		$t = [
+				"North West Territory"=>"NWT",
+				"British Columbia"=>"BC",
+				"Alberta"=>"Alberta",
+				"Yukon"=>"Yukon"
+		];
+			
+		$c = Country::look_up($e->country);
+		if ($c == "USA") {
+			$country = "USA, ".$e->country;
+			$e->country = $country;
+		} else if ($c == "Canada") {
+			$country =  "Can, ".$t[$e->country];
+			$e->country = $country;
+		}
+	}
+	
 	/**
-    * Import an item from its HED form into the sql database - this is the
-    * equivalent of "publish"
-	* @param  string $trip
-	* @param  string $slug
-	* @return nothing
-	* @throws Exception is item slug value does not match item_dirs basename
-    */
-    public function import_item($trip, $slug)
+	* Import an item from its HED form into the sql database - this is the
+	* equivalent of "publish"
+	* @param  string $trip Id for the trip.
+	* @param  string $slug Slug is id for entry.
+	* @return void
+	* @throws \Exception If item slug value does not match item_dirs basename.
+	*/
+	public function import_item(string $trip, string $slug) //: void
 	{
-	    \Trace::function_entry();
+		\Trace::function_entry();
 
-        $y = Item::get_by_slug($slug);
+		$y = Item::get_by_slug($slug);
 
-        if( ! is_null($y) ) {
-            throw new \Exception("Item Import failed - slug {$slug} already in sql database");
-        }
+		if (!is_null($y)) {
+			throw new \Exception("Item Import failed - slug {$slug} already in sql database");
+		}
 
-        $x = Item::get_by_trip_slug($trip, $slug);
+		$x = Item::get_by_trip_slug($trip, $slug);
 
-        \Trace::debug("<p> Importing trip : $trip item: $slug type ".get_class($x)."</p>");
-        \Trace::debug( "<p>import item featured_image : ". $x->get_text('featured_image') ."</p>");
-        \Trace::debug( "<p>import item featured_image : ". $x->featured_image ."</p>");
-        \Trace::debug( "<p>import item featured_image : ". $x->get_text('featured_image') ."</p>");
+		\Trace::debug("<p> Importing trip : $trip item: $slug type ".get_class($x)."</p>");
+		\Trace::debug("<p>import item featured_image : ". $x->get_text('featured_image') ."</p>");
+		\Trace::debug("<p>import item featured_image : ". $x->featured_image ."</p>");
+		\Trace::debug("<p>import item featured_image : ". $x->get_text('featured_image') ."</p>");
 
-        if( $slug != $x->slug )
-            throw new \Exception(__METHOD__."($slug) file name and slug do not match file:$fn slug:".$x->slug);
-        self::fix_country($x);
-        $x->sql_insert();    
-	    \Trace::function_exit();
-    }
-
-    /**
-    * Remove an item (defined by $slug) from the sql database. This is the equivalent of "unpublish"
-	* @param string $slug
-	* @throws Exception is item does not exist for that $slug value
-	* @throws Exception is item slug value does not match item_dirs basename
-    */
-    public function deport_item($slug)
-	{
-	    \Trace::function_entry();
-        $x = Item::get_by_slug($slug);
-        if( is_null( $x ) ){
-            throw new \Exception(__METHOD__."($slug) not found x is null");
-        }
-        //print "<p> Deporting (removing from sql database) item $slug type ";
-        if( $slug != $x->slug )
-            throw new \Exception(__METHOD__."($slug)  mismatch slug:".$x->slug);
-        $x->sql_delete();
-	    \Trace::function_exit();
-    }
-    /**
-    ** Import an album from its HED form into the sql database - this is the
-    ** equivalent of "publish"
-	* @param  string $trip
-	* @param  string $slug
-	* @return nothing
-	* @throws Exception is item slug value does not match item_dirs basename
-    */
-    public function import_album($trip, $slug)
-	{
-
-        $y = Album::get_by_slug($slug);
-
-        if( ! is_null($y) ) {
-            throw new \Exception("Item Import failed - slug {$slug} already in sql database");
-        }
-
-        $model = Album::get_by_trip_slug($trip, $slug);
-
-        \Trace::alert("<p> Importing album trip : $trip item: $slug type ".get_class($model)."</p>");
-
-        if( $slug != $model->slug )
-            throw new \Exception(__METHOD__."($slug) file name and slug do not match file:$fn slug:".$x->slug);
-
-        $y = Album::get_by_slug($slug);
-
-        if($y != null)
-            throw new \Exception(__METHOD__."($slug) found in sql database - already exists: ".$slug);
-
-        $model->sql_insert();  
-        return $model;  
-    }
-
-    /**
-    ** Import an banner from its HED form into the sql database - this is the
-    ** equivalent of "publish"
-	* @param  string $trip
-	* @param  string $slug
-	* @return nothing
-	* @throws Exception is item slug value does not match item_dirs basename
-    */
-    public function import_banner($trip, $slug)
-	{
-        $y = Banner::get_by_slug($slug);
-
-        if( ! is_null($y) ) {
-            throw new \Exception("Item Import failed - slug {$slug} already in sql database");
-        }
-
-        $model = Banner::get_by_trip_slug($trip, $slug);
-
-        \Trace::alert("<p> Importing album trip : $trip item: $slug type ".get_class($model)."</p>");
-
-        if( $slug != $model->slug )
-            throw new \Exception(__METHOD__."($slug) file name and slug do not match file:$fn slug:".$x->slug);
-
-
-        $y = Banner::get_by_slug($slug);
-
-        if($y != null)
-            throw new \Exception(__METHOD__."($slug) found in sql database - already exists: ".$slug);
-
-        $model->sql_insert();
-        return $model;
-    }
-    /**
-    ** Import an editorial from its HED form into the sql database - this is the
-    ** equivalent of "publish"
-	* @param  string $trip
-	* @param  string $slug
-	* @return nothing
-	* @throws Exception is item slug value does not match item_dirs basename
-    */
-    public function import_editorial($trip, $slug)
-	{
-        $y = Editorial::get_by_slug($slug);
-
-        if( ! is_null($y) ) {
-            throw new \Exception("Item Import failed - slug {$slug} already in sql database");
-        }
-
-        $x = Editorial::get_by_trip_slug($trip, $slug);
-
-        \Trace::alert("<p> Importing album trip : $trip item: $slug type ".get_class($x)."</p>");
-
-        if( $slug != $x->slug )
-            throw new \Exception(__METHOD__."($slug) file name and slug do not match file:$fn slug:".$x->slug);
-        
-        $y = Editorial::get_by_slug($slug);
-
-        if($y != null)
-            throw new \Exception(__METHOD__."($slug) found in sql database - already exists: ".$slug);
-        $x->sql_insert();
-        return $x;
-    }
-    
-	/**
-    ** Remove an album (defined by $slug) from the sql database. This is the equivalent of "unpublish"
- 	* @param string $slug
-	* @throws Exception is item does not exist for that $slug value
-	* @throws Exception is item slug value does not match item_dirs basename
-    */
-    function deport_album($slug)
-	{
-        // print "<p>".__METHOD__."($slug)</p>"; 
-        $x = Album::get_by_slug($slug);
-        // var_dump($x);
-        if( is_null( $x ) ){
-            throw new \Exception(__METHOD__."($slug) not found - cannot deport x is null");
-        }
-        //print "<p> Deporting (removing from sql database) item $slug type ";
-        if( $slug != $x->slug )
-            throw new \Exception(__METHOD__."($slug)  slug:".$x->slug);
-        $x->sql_delete();
-        return $x;
-    }
+		if ($slug != $x->slug)
+			throw new \Exception(__METHOD__."($slug) file name and slug do not match file:$fn slug:".$x->slug);
+		if ($x->type == "entry") {
+			self::fix_country($x);
+		}
+		$x->sql_insert();
+		\Trace::function_exit();
+	}
 
 	/**
-    ** Remove a banner (defined by $slug) from the sql database. This is the equivalent of "unpublish"
- 	* @param string $slug
-	* @throws Exception is item does not exist for that $slug value
-	* @throws Exception is item slug value does not match item_dirs basename
-    */
-    function deport_banner($slug)
+	* Remove an item (defined by $slug) from the sql database. This is the equivalent of "unpublish"
+	* @param string $slug Items id string.
+	* @return void
+	* @throws Exception If item does not exist for that $slug value.
+	*/
+	public function deport_item(string $slug) //: void
 	{
-        //print "<p>".__METHOD__."($slug)</p>"; 
-        $x = Banner::get_by_slug($slug);
-        //var_dump($x);
-        if( is_null( $x ) ){
-            throw new \Exception(__METHOD__."($slug) not found - cannot deport x is null");
-        }
-        //print "<p> Deporting (removing from sql database) item $slug type ";
-        if( $slug != $x->slug )
-            throw new \Exception(__METHOD__."($slug)  slug:".$x->slug);
-        $x->sql_delete();
-        return $x;
-    }
+		\Trace::function_entry();
+		$x = Item::get_by_slug($slug);
+		if (is_null($x)) {
+			throw new \Exception(__METHOD__."($slug) not found x is null");
+		}
+		//print "<p> Deporting (removing from sql database) item $slug type ";
+		if ($slug != $x->slug)
+			throw new \Exception(__METHOD__."($slug)  mismatch slug:".$x->slug);
+		$x->sql_delete();
+		\Trace::function_exit();
+	}
 	/**
-    ** Remove an editorial (defined by $slug) from the sql database. This is the equivalent of "unpublish"
- 	* @param string $slug
-	* @throws Exception is item does not exist for that $slug value
-	* @throws Exception is item slug value does not match item_dirs basename
-    */
-    function deport_editorial($slug)
+	** Import an album from its HED form into the sql database - this is the
+	** equivalent of "publish"
+	* @param string $trip Trip id.
+	* @param string $slug Items id string.
+	* @return Album
+	* @throws \Exception If item slug value does not match item_dirs basename.
+	*/
+	public function import_album(string $trip, string $slug) : Album
 	{
-        //print "<p>".__METHOD__."($slug)</p>"; 
-        $x = Editorial::get_by_slug($slug);
-        //var_dump($x);
-        if( is_null( $x ) ){
-            throw new \Exception(__METHOD__."($slug) not found - x is null");
-        }
-        //print "<p> Deporting (removing from sql database) item $slug type ";
-        if( $slug != $x->slug )
-            throw new \Exception(__METHOD__."($slug)  slug:".$x->slug);
-        $x->sql_delete();
-        return $x;
-    }
+
+		$y = Album::get_by_slug($slug);
+
+		if (!is_null($y)) {
+			throw new \Exception("Item Import failed - slug {$slug} already in sql database");
+		}
+
+		$model = Album::get_by_trip_slug($trip, $slug);
+
+		\Trace::alert("<p> Importing album trip : $trip item: $slug type ".get_class($model)."</p>");
+
+		if ($slug != $model->slug)
+			throw new \Exception(__METHOD__."($slug) file name and slug do not match file:$fn slug:".$x->slug);
+
+		$y = Album::get_by_slug($slug);
+
+		if ($y != null)
+			throw new \Exception(__METHOD__."($slug) found in sql database - already exists: ".$slug);
+
+		$model->sql_insert();
+		return $model;
+	}
+
+	/**
+	** Import an banner from its HED form into the sql database - this is the
+	** equivalent of "publish"
+	* @param string $trip Trip id.
+	* @param string $slug Items id string.
+	* @return Banner
+	* @throws Exception If item slug value does not match item_dirs basename.
+	*/
+	public function import_banner(string $trip, string $slug) : Banner
+	{
+		$y = Banner::get_by_slug($slug);
+
+		if (!is_null($y)) {
+			throw new \Exception("Item Import failed - slug {$slug} already in sql database");
+		}
+
+		$model = Banner::get_by_trip_slug($trip, $slug);
+
+		\Trace::alert("<p> Importing album trip : $trip item: $slug type ".get_class($model)."</p>");
+
+		if ($slug != $model->slug)
+			throw new \Exception(__METHOD__."($slug) file name and slug do not match file:$fn slug:".$x->slug);
 
 
-    /**
+		$y = Banner::get_by_slug($slug);
+
+		if ($y != null)
+			throw new \Exception(__METHOD__."($slug) found in sql database - already exists: ".$slug);
+
+		$model->sql_insert();
+		return $model;
+	}
+	/**
+	** Import an editorial from its HED form into the sql database - this is the
+	** equivalent of "publish"
+	* @param string $trip Trip id.
+	* @param string $slug Items id string.
+	* @return Editorial
+	* @throws Exception If item slug value does not match item_dirs basename.
+	*/
+	public function import_editorial(string $trip, string $slug) : Editorial
+	{
+		$y = Editorial::get_by_slug($slug);
+
+		if (!is_null($y)) {
+			throw new \Exception("Item Import failed - slug {$slug} already in sql database");
+		}
+
+		$x = Editorial::get_by_trip_slug($trip, $slug);
+
+		\Trace::alert("<p> Importing album trip : $trip item: $slug type ".get_class($x)."</p>");
+
+		if ($slug != $x->slug)
+			throw new \Exception(__METHOD__."($slug) file name and slug do not match file:$fn slug:".$x->slug);
+		
+		$y = Editorial::get_by_slug($slug);
+
+		if ($y != null)
+			throw new \Exception(__METHOD__."($slug) found in sql database - already exists: ".$slug);
+		$x->sql_insert();
+		return $x;
+	}
+	
+	/**
+	 * Remove an album (defined by $slug) from the sql database. This is the equivalent of "unpublish"
+	 * @param string $slug Items ID.
+	 * @return Album
+	 * @throws Exception If item does not exist for that $slug value.
+	 */
+	public function deport_album(string $slug) : Album
+	{
+		// print "<p>".__METHOD__."($slug)</p>";
+		$x = Album::get_by_slug($slug);
+		// var_dump($x);
+		if (is_null($x)) {
+			throw new \Exception(__METHOD__."($slug) not found - cannot deport x is null");
+		}
+		//print "<p> Deporting (removing from sql database) item $slug type ";
+		if ($slug != $x->slug)
+			throw new \Exception(__METHOD__."($slug)  slug:".$x->slug);
+		$x->sql_delete();
+		return $x;
+	}
+
+	/**
+	** Remove a banner (defined by $slug) from the sql database. This is the equivalent of "unpublish"
+	* @param string $slug Items ID.
+	* @return Banner
+	* @throws Exception If item does not exist for that $slug value.
+	*/
+	public function deport_banner(string $slug) : Banner
+	{
+		//print "<p>".__METHOD__."($slug)</p>";
+		$x = Banner::get_by_slug($slug);
+		//var_dump($x);
+		if (is_null($x)) {
+			throw new \Exception(__METHOD__."($slug) not found - cannot deport x is null");
+		}
+		//print "<p> Deporting (removing from sql database) item $slug type ";
+		if ($slug != $x->slug)
+			throw new \Exception(__METHOD__."($slug)  slug:".$x->slug);
+		$x->sql_delete();
+		return $x;
+	}
+	/**
+	* Remove an editorial (defined by $slug) from the sql database. This is the equivalent of "unpublish"
+	* @param string $slug Item ID.
+	* @return Editorial
+	* @throws Exception If item does not exist for that $slug value.
+	*/
+	public function deport_editorial(string $slug) : Editorial
+	{
+		//print "<p>".__METHOD__."($slug)</p>";
+		$x = Editorial::get_by_slug($slug);
+		//var_dump($x);
+		if (is_null($x)) {
+			throw new \Exception(__METHOD__."($slug) not found - x is null");
+		}
+		//print "<p> Deporting (removing from sql database) item $slug type ";
+		if ($slug != $x->slug)
+			throw new \Exception(__METHOD__."($slug)  slug:".$x->slug);
+		$x->sql_delete();
+		return $x;
+	}
+
+	/**
 	* Get the basename of all the files/dirs in the given directory leaving out DOT files and dirs
+	* @param string $dir A full path to a directory.
+	* @return array
 	*/
-	function get_item_names($dir)
+	public function get_item_names(string $dir) : array
 	{
-        \Trace::function_entry();
-        $a = scandir($dir);
-        $b = array();
-        foreach($a as $d){
-            if( ($d != ".")&&($d != ".." )&& ( $d[0] != "." )&&(is_dir($dir."/".$d)) )
-                $b[] = $d;
-        }
-        return $b;
-    }
+		\Trace::function_entry();
+		$a = scandir($dir);
+		$b = array();
+		foreach ($a as $d) {
+			if (($d != ".") && ($d != ".." ) && ($d[0] != ".") && (is_dir($dir."/".$d)))
+				$b[] = $d;
+		}
+		return $b;
+	}
 
 	/**
 	* Load all the content items for $trip from the flat file store  into the sql database
-	* @param string $trip
+	* @param string $trip Id for trip.
+	* @return void
 	*/
-    function load_content_items($trip)
+	public function load_content_items(string $trip) //: void
 	{
-        $dir = $this->locator->content_root($trip);
-        $this->load_db_from($dir);
-    }
+		$dir = $this->locator->content_root($trip);
+		$this->load_db_from($dir);
+	}
 
 	/**
-	* Load all the photo albums for $trip from the flat file store  into the sql database
-	* @param string $trip
+	* Load all the photo albums for $trip from the flat file store  into the sql database.
+	* @param string $trip Id for trip.
+	* @return void
 	*/
-    function load_albums($trip)
+	public function load_albums(string $trip) //: void
 	{
-        $dir = $this->locator->album_root($trip);
-        $this->load_db_from($dir);
-    }
+		$dir = $this->locator->album_root($trip);
+		$this->load_db_from($dir);
+	}
 	/**
 	* Load all the photo banners for $trip from the flat file store   into the sql database
-	* @param string $trip
+	* @param string $trip Trip ID.
+	* @return void
 	*/
-    function load_banners($trip)
+	public function load_banners(string $trip) //: void
 	{
-        $dir = $this->locator->banner_root($trip);
-        $this->load_db_from($dir);
-    }
+		$dir = $this->locator->banner_root($trip);
+		$this->load_db_from($dir);
+	}
 
 	/**
 	* Load all the editorials for $trip from the flat file store   into the sql database
-	* @param string $trip
+	* @param string $trip Trip ID.
+	* @return void
 	*/
-    function load_editorials($trip)
+	public function load_editorials(string $trip) //: void
 	{
-        $dir = $this->locator->editorial_root($trip);
-        $this->load_db_from($dir);
-    }
+		$dir = $this->locator->editorial_root($trip);
+		$this->load_db_from($dir);
+	}
 	/**
 	* Load all the content items from the given directory into the sql database
-	* @param string $items_dir
+	* @param string $items_dir A full path to a directory of content items.
+	* @return void
+	* @throws \Exception If the call fails.
 	*/
-    function load_db_from($items_dir)
+	public function load_db_from(string $items_dir) //: void
 	{
-        \Trace::off();
-        \Trace::disable();
-        \Trace::function_entry();
-        $item_names = $this->get_item_names($items_dir);
+		\Trace::off();
+		\Trace::disable();
+		\Trace::function_entry();
+		$item_names = $this->get_item_names($items_dir);
 		//         var_dump($items_dir);
 		// print_r($item_names);
 		// return;
-        $items = array();
-        foreach($item_names as $iname){
-            \Trace::debug( "starting $items_dir/$iname");
-            $o = new \Database\HED\HEDObject();
-            $o->get_from_file($items_dir."/".$iname."/content.php");
-            $obj = \Database\Models\Factory::model_from_hed($o);
-            if( $iname != $obj->slug )
-                throw new \Exception(
-                    __METHOD__."($items_dir) file name and slug do not match file:$iname slug:".$obj->slug);
-            $items[] = $obj->slug;
-            $this->fix_country($obj);
-            $obj->sql_insert();
-            \Trace::debug("<p>ending $iname</p>");
-        }
-        \Trace::function_exit();
+		$items = array();
+		foreach ($item_names as $iname) {
+			\Trace::debug("starting $items_dir/$iname");
+			$o = new \Database\HED\HEDObject();
+			$o->get_from_file($items_dir."/".$iname."/content.php");
+			$obj = \Database\Models\Factory::model_from_hed($o);
+			if ($iname != $obj->slug)
+				throw new \Exception(
+					__METHOD__."($items_dir) file name and slug do not match file:$iname slug:".$obj->slug
+				);
+			$items[] = $obj->slug;
+			if ($o->type == 'entry')
+				$this->fix_country($obj);
+
+			$obj->sql_insert();
+			\Trace::debug("<p>ending $iname</p>");
+		}
+		\Trace::function_exit();
 	}
 
 	/**
 	* Rebuild the sql database from the flat file store given in the directory with path $items_dir
-	* @param string $items_dr
+	* @param string $items_dir Full path to a directory of content items.
+	* @return void
+	* @throws \Exception If the call fails.
 	*/
-    function rebuild_db_from($items_dir)
+	public function rebuild_db_from(string $items_dir) //: void
 	{
-        $this->truncate_db();
-        $item_names = $this->get_item_names($items_dir);
-        $items = array();
-        foreach($item_names as $iname){
-            \Trace::alert( "starting $items_dir/$iname");
-            $o = new \Database\HED\HEDObject();
-            $o->get_from_file($items_dir."/".$iname."/content.php");
-            $obj = Database\Models\Factory::model_from_hed($o);
-            if( $iname != $obj->slug )
-                throw new Exception(
-                    __METHOD__."($items_dir) file name and slug do not match file:$iname slug:".$x->slug);
-            $items[] = $obj;
-            $this->fix_country($obj);
-            $obj->sql_insert();
-            \Trace::alert("<p>ending $iname</p>");
-            
-        }
+		$this->truncate_db();
+		$item_names = $this->get_item_names($items_dir);
+		$items = array();
+		foreach ($item_names as $iname) {
+			\Trace::alert("starting $items_dir/$iname");
+			$o = new \Database\HED\HEDObject();
+			$o->get_from_file($items_dir."/".$iname."/content.php");
+			$obj = Database\Models\Factory::model_from_hed($o);
+			if ($iname != $obj->slug)
+				throw new Exception(
+					__METHOD__."($items_dir) file name and slug do not match file:$iname slug:".$x->slug
+				);
+			$items[] = $obj;
+
+			if ($o->type == "entry") {
+				$this->fix_country($obj);
+			}
+			$obj->sql_insert();
+			\Trace::alert("<p>ending $iname</p>");
+		}
 	}
 }
-?>

@@ -1,10 +1,10 @@
 <?php
 namespace Database;
-use \Database\Models\Item as Item;
-use \Database\Models\Album as Album;
+
+use \Database\Models\Entry as Entry;
 
 /**
-* 
+*
 * @brief This class knows how to create all the sql tables and views in the mysql database.
 *
 * One method is provided for each tables/view and one method for all tables.
@@ -14,10 +14,17 @@ use \Database\Models\Album as Album;
 */
 class Builder
 {
+	/**
+	 * @var \Database\SqlObject $sql
+	 */
 	public $sql;
+	/**
+	 * @var \Database\Locator $locator
+	 */
 	public $locator;
 	/**
 	* Constructor
+	 * @return Builder
 	*/
 	public function __construct()
 	{
@@ -26,10 +33,11 @@ class Builder
 	}
 
 	/**
-	* Truncate all tables
-	*/
+	 * Truncate all tables
+	 * @return void
+	 */
 	public function truncate_tables()
-	{	 
+	{
 		\Trace::function_entry();
 		$this->sql->query("TRUNCATE table IF EXISTS categorized_items");
 		$this->sql->query("TRUNCATE view IF EXISTS categories");
@@ -42,46 +50,51 @@ class Builder
 
 	/**
 	* Truncate categorized_items table
+	 * @return void
 	*/
 	public function truncate_categorized_items_table()
-	{	 
+	{
 		\Trace::function_entry();
 		$this->sql->query("TRUNCATE table IF EXISTS categorized_items");
 		\Trace::function_exit();
 	}
 	/**
 	* Truncate categories view
+	 * @return void
 	*/
 	public function truncate_categories_view()
-	{	 
+	{
 		\Trace::function_entry();
 		$this->sql->query("TRUNCATE view IF EXISTS categories");
 		\Trace::function_exit();
 	}
 	/**
 	* Truncate albums table
+	 * @return void
 	*/
 	public function truncate_albums_table()
-	{	 
+	{
 		\Trace::function_entry();
 		$this->sql->query("TRUNCATE table albums");
 		\Trace::function_exit();
 	}
 	/**
-	* Truncate my_items table
-	*/
+	 * Truncate my_items table
+	 * @return void
+	 */
 	public function truncate_my_items_table()
-	{	 
+	{
 		\Trace::function_entry();
 		$this->sql->query("TRUNCATE table IF EXISTS my_items");
 		\Trace::function_exit();
 	}
 
 	/**
-	* Drop all tables
-	*/
+	 * Drop all tables
+	 * @return void
+	 */
 	public function drop_tables()
-	{	 
+	{
 		\Trace::function_entry();
 		$this->sql->query("DROP table IF EXISTS categorized_items");
 		$this->sql->query("DROP table IF EXISTS categories");
@@ -94,8 +107,9 @@ class Builder
 	}
 
 	/**
-	* Create all tables
-	*/
+	 * Create all tables
+	 * @return void
+	 */
 	public function create_tables()
 	{
 		$this->drop_tables();
@@ -108,8 +122,9 @@ class Builder
 	}
 
 	/**
-	* Create my_items table
-	*/
+	 * Create my_items table
+	 * @return void
+	 */
 	public function create_table_my_items()
 	{
 		\Trace::function_entry();
@@ -142,12 +157,13 @@ class Builder
 
 		$result = $this->sql->query($query_my_items);
 			
-		\Trace::debug("query result ".var_export($result,true));
+		\Trace::debug("query result ".var_export($result, true));
 		\Trace::function_exit();
 	}
 
 	/**
 	* Create albums table
+	 * @return void
 	*/
 	public function create_table_albums()
 	{
@@ -169,34 +185,44 @@ class Builder
 				
 		$result = $this->sql->query($query);
 				
-		\Trace::debug("query result ".var_export($result,true));
+		\Trace::debug("query result ".var_export($result, true));
 		\Trace::function_exit();
 	}
-
-	function drop_table_banners(){
+	/**
+	 * Drops a table "banner" from the sql database
+	 * @return void
+	 */
+	public function drop_table_banners() : void
+	{
 		$this->sql->query("DROP table IF EXISTS banners");
 	}
-	function drop_table_editorials(){
+	/**
+	 * Drops a table "editorial" from the sql database
+	 * @return void
+	 */
+	public function drop_table_editorials()
+	{
 		$this->sql->query("DROP table IF EXISTS editorials");
 	}
 
 	/**
-	* Create banners table
-    *static $field_names = array(
-    *    "version"=>"text",
-    *    "type"=>"text",
-    *    "slug"=>"text",
-    *    "status"=>"text",
-    *    "creation_date"=>"date",
-    *    "published_date"=>"date",
-    *    "last_modified_date"=>"date",
-    *    "trip"=>"text",
-    *    "title"=>"html",
-    *    'banner'=>'text',
-    *    'image'=>'text',
-	*	'main_content'=>'html',
-    *    'image_url'=>'text',
-	*);  
+	 * Create banners table
+	 *static $field_names = array(
+	 *    "version"=>"text",
+	 *    "type"=>"text",
+	 *    "slug"=>"text",
+	 *    "status"=>"text",
+	 *    "creation_date"=>"date",
+	 *    "published_date"=>"date",
+	 *    "last_modified_date"=>"date",
+	 *    "trip"=>"text",
+	 *    "title"=>"html",
+	 *    'banner'=>'text',
+	 *    'image'=>'text',
+	 *	'main_content'=>'html',
+	 *    'image_url'=>'text',
+	 *);
+	 * @return void
 	*/
 	public function create_table_banners()
 	{
@@ -216,28 +242,29 @@ class Builder
 				
 		$result = $this->sql->query($query);
 				
-		\Trace::debug("query result ".var_export($result,true));
+		\Trace::debug("query result ".var_export($result, true));
 		\Trace::function_exit();
 	}
 
 
 	/**
 	* Create editorial table
-    *static $field_names = array(
-    *    "version"=>"text",
-    *    "type"=>"text",
-    *    "slug"=>"text",
-    *    "status"=>"text",
-    *    "creation_date"=>"date",
-    *    "published_date"=>"date",
-    *    "last_modified_date"=>"date",
-    *    "trip"=>"text",
-    *    "title"=>"html",
-    *    'banner'=>'text',
-    *    'image'=>'text',
+	*static $field_names = array(
+	*    "version"=>"text",
+	*    "type"=>"text",
+	*    "slug"=>"text",
+	*    "status"=>"text",
+	*    "creation_date"=>"date",
+	*    "published_date"=>"date",
+	*    "last_modified_date"=>"date",
+	*    "trip"=>"text",
+	*    "title"=>"html",
+	*    'banner'=>'text',
+	*    'image'=>'text',
 	*	'main_content'=>'html',
-    *    'image_url'=>'text',
-	*);  
+	*    'image_url'=>'text',
+	 * @return void
+	*);
 	*/
 	public function create_table_editorials()
 	{
@@ -259,12 +286,13 @@ class Builder
 				
 		$result = $this->sql->query($query);
 				
-		\Trace::debug("query result ".var_export($result,true));
+		\Trace::debug("query result ".var_export($result, true));
 		\Trace::function_exit();
 	}
 
 	/**
 	* Create categories view
+	 * @return void
 	*/
 	public function create_view_categories()
 	{
@@ -283,6 +311,7 @@ EOD;
 	}
 	/**
 	* Create categories view
+	 * @return void
 	*/
 	public function create_view_categories_trip()
 	{
@@ -302,6 +331,7 @@ EOD;
 	
 	/**
 	* Create categories table
+	 * @return void
 	* @deprecated
 	*/
 	public function create_table_categories()
@@ -319,6 +349,7 @@ EOD;
 
 	/**
 	* Create categorized_items table
+	 * @return void
 	*/
 	public function create_table_categorized_items()
 	{
@@ -341,31 +372,34 @@ EOD;
 
 	/**
 	* Modify my_items table to add camping field
+	 * @return void
 	*/
 	public function add_camping()
 	{
 		\Trace::function_entry();
 		$query_my_items = "ALTER TABLE `my_items` ADD `camping` MEDIUMTEXT after `featured_image`";
 		\Trace::function_exit();
-	}	 
+	}
 
 	/**
 	* Create all fix country in an item
+	 * @param \Database\Models\Entry $e Entry to be fixed.
+	 * @return void
 	*/
-	public static function fix_country($e)
+	public static function fix_country(Entry $e)
 	{
-		if( get_class($e) != '\Database\Models\Entry')
+		if (get_class($e) != '\Database\Models\Entry') {
 			return;
-		$t = array("North West Territory"=>"NWT", "British Columbia"=>"BC","Alberta"=>"Alberta", "Yukon"=>"Yukon");
+		}
+		$t = ["North West Territory"=>"NWT", "British Columbia"=>"BC","Alberta"=>"Alberta", "Yukon"=>"Yukon"];
 	
 		$c = Country::look_up($e->country);
-		if( $c == "USA" ){
+		if ($c == "USA") {
 			$country = "USA, ".$e->country;
 			$e->country = $country;
-		} elseif( $c == "Canada" ){
+		} elseif ($c == "Canada") {
 			$country =  "Can, ".$t[$e->country];
 			$e->country = $country;
 		}
 	}
 }
-?>

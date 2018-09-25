@@ -12,28 +12,29 @@ class TestNextPrevNoCreiteria extends LiteTest\TestCase{
     }
     function test_next_prev_exist(){    
 	    Trace::function_entry();
-        $result = Item::get_by_slug('120712');
+        $result = Item::get_by_slug('110621');
         $next = $result->next();
         $prev = $result->prev();
-        $this->assertEqual($next->slug, "120714");
-        $this->assertEqual($prev->slug, "120710");
+        $this->assertEqual($next->slug, "tires");
+        $this->assertEqual($prev->slug, "110620");
 	    Trace::function_exit();
     }
     function test_prev_not_exist(){    
 	    Trace::function_entry();
-        $result = Item::get_by_slug('tires');
+        $result = Item::get_by_slug('bolivia-1');
         $next = $result->next();
         $prev = $result->prev();
         $this->assertEqual($prev, null);
-        $this->assertEqual($next->slug, "er-review");
+        $this->assertEqual($next->slug, "mog");
 	    Trace::function_exit();
     }
-    function test_next_not_exist(){  return;  
+    function test_next_not_exist()
+    {
 	    Trace::function_entry();
-        $result = Item::get_by_slug('130731');
+        $result = Item::get_by_slug('180727');
         $next = $result->next();
         $prev = $result->prev();
-        $this->assertEqual($prev->slug, "130728");
+        $this->assertEqual($prev->slug, "180726");
         $this->assertEqual($next, null);
 	    Trace::function_exit();
     }
