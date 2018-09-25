@@ -72,7 +72,8 @@ class Locator
 	*/
 	public static function get_instance()
 	{
-		return self::$instance;
+		$ret = self::$instance;
+		return $ret;
 	}
 	/**
 	* recursive delete diretory
@@ -105,7 +106,8 @@ class Locator
 	*/
 	public function doc_root() : string
 	{
-		return $this->doc_root;
+		$ret = $this->doc_root;
+		return $ret;
 	}
 
 	/**
@@ -116,7 +118,8 @@ class Locator
 	*/
 	public function journals_root(string $trip = 'theamericas') : string
 	{
-		return $this->data_root."/".$trip."/journals";
+		$ret = $this->data_root."/".$trip."/journals";
+		return $ret;
 	}
 
 	/**
@@ -128,7 +131,8 @@ class Locator
 	public function entries_root(string $trip = 'theamericas') : string
 	{
 		//var_dump($this->journals_root($trip)."/entries"); exit();
-		return $this->journals_root($trip)."/entries";
+		$ret = $this->journals_root($trip)."/entries";
+		return $ret;
 	}
 	/**
 	* Get the info.html file full path.
@@ -137,7 +141,8 @@ class Locator
 	*/
 	public function journal_introfile_path(string $trip = "theamericas") : string
 	{
-		return $this->journals_root($trip)."/intro.html";
+		$ret = $this->journals_root($trip)."/intro.html";
+		return $ret;
 	}
 	/**
 	* Get path to message file.
@@ -145,7 +150,8 @@ class Locator
 	*/
 	public function message_file_path() : string
 	{
-		return $this->data_root."/message.txt";
+		$ret = $this->data_root."/message.txt";
+		return $ret;
 	}
 	/**
 	* Get root directory path for a trip directory.
@@ -154,25 +160,28 @@ class Locator
 	*/
 	public function trip_root(string $trip) : string
 	{
-		return $this->data_root."/".$trip;
+		$ret = $this->data_root."/".$trip;
+		return $ret;
 	}
 //////////
 //start of content item path methods
 /////////
 	/**
-	* Returns the realpath to the directory that contains all content items for a trip. Remember that each
-	* content item is a directory that contains the properties of the item in a file and any attached objects as separate
-	* subdirectories or files
+	* Returns the realpath to the directory that contains all content items for a trip.
+	* Remember that each content item is a directory that contains the properties of
+	* the item in a file and any attached objects as separate subdirectories or files.
 	* @param string $trip A trip code.
 	* @return string
 	*/
 	public function content_root(string $trip) : string
 	{
-		return $this->trip_root($trip)."/content";
+		$ret = $this->trip_root($trip)."/content";
+		return $ret;
 	}
 	/**
-	* Returns the site relative path to the directory that contains all content items for a trip. Remember that each
-	* content item is a directory that contains the properties of the item in a file and any attached objects as separate
+	* Returns the site relative path to the directory that contains all content
+	* items for a trip. Remember that each content item is a directory that
+	* contains the properties of the item in a file and any attached objects as separate
 	* subdirectories or files
 	*
 	* @param string $trip A trip code.
@@ -180,18 +189,21 @@ class Locator
 	*/
 	private function content_relative(string $trip) : string
 	{
-		return str_replace($this->doc_root, "", $this->content_root($trip));
+		$ret = str_replace($this->doc_root, "", $this->content_root($trip));
+		return $ret;
 	}
 
 	/**
-	* Returns the name of the file (basename + extension .. not path) of the file holding this items content and meta data.
+	* Returns the name of the file (basename + extension .. not path) of the file
+	* holding this items content and meta data.
 	*
 	* @return string The name of the file containing the fields/properties/meta data for a
 	* 				Model object. This is constant across all content items.
 	*/
 	private function item_filename() : string
 	{
-		return "content.php";
+		$ret = "content.php";
+		return $ret;
 	}
 
 	/**
@@ -203,7 +215,8 @@ class Locator
 	*/
 	public function item_relative_dir(string $trip, string $slug) : string
 	{
-		return $this->content_relative($trip)."/$slug";
+		$ret = $this->content_relative($trip)."/$slug";
+		return $ret;
 	}
 
 	/**
@@ -218,7 +231,8 @@ class Locator
 	public function item_dir(string $trip, string $slug) : string
 	{
 		$fn =  $this->content_root($trip)."/$slug";
-		return $this->content_root($trip)."/$slug";
+		$ret = $this->content_root($trip)."/$slug";
+		return $ret;
 	}
 	/**
 	* Returns the absolute realpath to the file holding the content item for $trip $slug
@@ -229,7 +243,8 @@ class Locator
 	*/
 	public function item_filepath(string $trip, string $slug) : string
 	{
-		return $this->content_root($trip)."/$slug/".$this->item_filename();
+		$ret = $this->content_root($trip)."/$slug/".$this->item_filename();
+		return $ret;
 	}
 
 	/**
@@ -241,7 +256,8 @@ class Locator
 	*/
 	public function item_exists(string $trip, string $slug) : bool
 	{
-		return file_exists($this->item_filepath($trip, $slug));
+		$ret = file_exists($this->item_filepath($trip, $slug));
+		return $ret;
 	}
 
 	/**
@@ -274,7 +290,8 @@ class Locator
 	*/
 	public function url_item_dir(string $trip, string $slug) : string
 	{
-		return $this->url_root."/".$trip."/content/$slug";
+		$ret = $this->url_root."/".$trip."/content/$slug";
+		return $ret;
 	}
 	/**
 	* @param string $trip A trip code.
@@ -304,7 +321,8 @@ class Locator
 	*/
 	public function url_item_attachment(string $trip, string $slug, string $ref) : string
 	{
-		return $this->item_relative_dir($trip, $slug)."/$ref";
+		$ret = $this->item_relative_dir($trip, $slug)."/$ref";
+		return $ret;
 	}
 //////////
 //end of content item url methods
@@ -321,7 +339,8 @@ class Locator
 	*/
 	public function album_root(string $trip) : string
 	{
-		return $this->trip_root($trip)."/photos/galleries";
+		$ret = $this->trip_root($trip)."/photos/galleries";
+		return $ret;
 	}
 	/**
 	* The relative path to the directory that holds all photo albums for a trip.
@@ -331,14 +350,16 @@ class Locator
 	*/
 	private function album_relative(string $trip) : string
 	{
-		return str_replace($this->doc_root, "", $this->album_root($trip));
+		$ret = str_replace($this->doc_root, "", $this->album_root($trip));
+		return $ret;
 	}
    /**
 	* @return string The basename of the file containing the fields/properties/meta data for an album.
 	*/
 	private function album_filename()
 	{
-		return "content.php";
+		$ret = "content.php";
+		return $ret;
 	}
 	/**
 	* @param string $trip A trip code.
@@ -347,7 +368,8 @@ class Locator
 	*/
 	public function album_relative_dir(string $trip, string $slug) : string
 	{
-		return $this->album_relative($trip)."/$slug";
+		$ret = $this->album_relative($trip)."/$slug";
+		return $ret;
 	}
 	/**
 	* @param string $trip A trip code.
@@ -360,7 +382,8 @@ class Locator
 	{
 		$fn =  $this->album_root($trip)."/$slug";
 		//print "<p>".__METHOD__."($trip, $slug) -- $fn</p>";
-		return $this->album_root($trip)."/$slug";
+		$ret = $this->album_root($trip)."/$slug";
+		return $ret;
 	}
 	/**
 	* @param string $trip A trip code.
@@ -369,7 +392,8 @@ class Locator
 	*/
 	public function album_filepath(string $trip, string $slug) : string
 	{
-		return $this->album_root($trip)."/$slug/".$this->album_filename();
+		$ret = $this->album_root($trip)."/$slug/".$this->album_filename();
+		return $ret;
 	}
 
 	/**
@@ -381,7 +405,8 @@ class Locator
 	*/
 	public function album_exists(string $trip, string $slug) : bool
 	{
-		return file_exists($this->album_filepath($trip, $slug));
+		$ret = file_exists($this->album_filepath($trip, $slug));
+		return $ret;
 	}
 
 	/**
@@ -416,7 +441,8 @@ class Locator
 	*/
 	public function url_album_dir(string $trip, string $slug) : string
 	{
-		return $this->url_root."/".$trip."/photos/galleries/$slug";
+		$ret = $this->url_root."/".$trip."/photos/galleries/$slug";
+		return $ret;
 	}
 	/**
 	* @param string $trip A trip code.
@@ -457,7 +483,8 @@ class Locator
 	*/
 	public function banner_root(string $trip = 'rtw') : string
 	{
-		return $this->trip_root($trip)."/banners";
+		$ret = $this->trip_root($trip)."/banners";
+		return $ret;
 	}
 	/**
 	* Returns the relative path to the root directory for Banner for a trip. Relative to doc root.
@@ -466,14 +493,16 @@ class Locator
 	*/
 	private function banner_relative(string $trip) : string
 	{
-		return str_replace($this->doc_root, "", $this->banner_root($trip));
+		$ret = str_replace($this->doc_root, "", $this->banner_root($trip));
+		return $ret;
 	}
    /**
 	* @return string The basename of the file containing banner metadata.
 	*/
 	private function banner_filename() : string
 	{
-		return "content.php";
+		$ret = "content.php";
+		return $ret;
 	}
 	/**
 	* @param string $trip A trip code.
@@ -482,7 +511,8 @@ class Locator
 	*/
 	public function banner_relative_dir(string $trip, string $slug) : string
 	{
-		return $this->banner_relative($trip)."/$slug";
+		$ret = $this->banner_relative($trip)."/$slug";
+		return $ret;
 	}
 	/**
 	* @param string $trip A trip code.
@@ -495,7 +525,8 @@ class Locator
 	{
 		$fn =  $this->banner_root($trip)."/$slug";
 		//print "<p>".__METHOD__."($trip, $slug) -- $fn</p>";
-		return $this->banner_root($trip)."/$slug";
+		$ret = $this->banner_root($trip)."/$slug";
+		return $ret;
 	}
 	/**
 	* @param string $trip A trip code.
@@ -504,7 +535,8 @@ class Locator
 	*/
 	public function banner_filepath(string $trip, string $slug) : string
 	{
-		return $this->banner_root($trip)."/$slug/".$this->banner_filename();
+		$ret = $this->banner_root($trip)."/$slug/".$this->banner_filename();
+		return $ret;
 	}
 	/**
 	* @param string $trip A trip code.
@@ -513,7 +545,8 @@ class Locator
 	*/
 	public function banner_images_dir(string $trip, string $slug) : string
 	{
-		return $this->banner_root($trip)."/$slug/Images";
+		$ret = $this->banner_root($trip)."/$slug/Images";
+		return $ret;
 	}
 	/**
 	* @param string $trip  A trip code.
@@ -523,7 +556,8 @@ class Locator
 	*/
 	public function banner_image_filepath(string $trip, string $slug, string $image) : string
 	{
-		return $this->banner_root($trip)."/".$slug."/Images/".$image;
+		$ret = $this->banner_root($trip)."/".$slug."/Images/".$image;
+		return $ret;
 	}
 
 	/**
@@ -535,7 +569,8 @@ class Locator
 	*/
 	public function banner_exists(string $trip, string $slug) : bool
 	{
-		return file_exists($this->banner_filepath($trip, $slug));
+		$ret = file_exists($this->banner_filepath($trip, $slug));
+		return $ret;
 	}
 	/**
 	* Remove a banner directory.
@@ -568,7 +603,8 @@ class Locator
 	*/
 	public function url_banner_dir(string $trip, string $slug) : string
 	{
-		return $this->url_root."/data/".$trip."/banners/$slug";
+		$ret = $this->url_root."/data/".$trip."/banners/$slug";
+		return $ret;
 	}
 	/**
 	* @param string $trip A trip code.
@@ -597,7 +633,8 @@ class Locator
 	*/
 	public function editorial_root(string $trip) : string
 	{
-		return $this->trip_root($trip)."/editorial";
+		$ret = $this->trip_root($trip)."/editorial";
+		return $ret;
 	}
 	/**
 	* Returns the relative path (relative to doc root) to the editorial directory for a trip.
@@ -606,7 +643,8 @@ class Locator
 	*/
 	private function editorial_relative(string $trip = 'rtw') : string
 	{
-		return str_replace($this->doc_root, "", $this->editorial_root($trip));
+		$ret = str_replace($this->doc_root, "", $this->editorial_root($trip));
+		return $ret;
 	}
    /**
 	* @return string The name of the file containing the fields/properties/meta data for a
@@ -614,7 +652,8 @@ class Locator
 	*/
 	private function editorial_filename() : string
 	{
-		return "content.php";
+		$ret = "content.php";
+		return $ret;
 	}
 	/**
 	* @param string $trip       Trip code.
@@ -635,7 +674,8 @@ class Locator
 	*/
 	public function editorial_filepath(string $trip, string $slug) : string
 	{
-		return $this->editorial_root($trip)."/$slug/".$this->editorial_filename();
+		$ret = $this->editorial_root($trip)."/$slug/".$this->editorial_filename();
+		return $ret;
 	}
 
 	/**
@@ -647,7 +687,8 @@ class Locator
 	*/
 	public function editorial_exists(string $trip, string $slug) : bool
 	{
-		return file_exists($this->editorial_filepath($trip, $slug));
+		$ret = file_exists($this->editorial_filepath($trip, $slug));
+		return $ret;
 	}
 
 	/**
@@ -678,7 +719,8 @@ class Locator
 	*/
 	private function article_main_content_filename() : string
 	{
-		return "main_content.php";
+		$ret = "main_content.php";
+		return $ret;
 	}
 	/**
 	* Gets the fullpath to an Articles auxiliary file.
@@ -688,6 +730,7 @@ class Locator
 	*/
 	public function article_main_content_filepath(string $trip, string $slug) : string
 	{
-		return $this->content_root($trip)."/$slug/".$this->article_main_content_filename();
+		$ret = $this->content_root($trip)."/$slug/".$this->article_main_content_filename();
+		return $ret;
 	}
 }

@@ -52,7 +52,7 @@ class Utility
 		if ($c == "USA") {
 			$country = "USA, ".$e->country;
 			$e->country = $country;
-		} else if ($c == "Canada") {
+		} elseif ($c == "Canada") {
 			$country =  "Can, ".$t[$e->country];
 			$e->country = $country;
 		}

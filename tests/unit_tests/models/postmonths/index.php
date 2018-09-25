@@ -3,7 +3,8 @@
 use \Database\Object as Db;
 use \Database\Models\PostMonth as PostMonth;
 
-class TestPostMonth extends \LiteTest\TestCase{
+class TestPostMonth extends \LiteTest\TestCase
+{
 	public function setUp()
 	{
 		global $config;
@@ -14,7 +15,7 @@ class TestPostMonth extends \LiteTest\TestCase{
 	{
 		Trace::function_entry();
 		$result = PostMonth::find();
-//        print_r($result);
+		//        print_r($result);
 		$this->assertNotEqual($result, null);
 		$this->assertNotEqual(count($result), 0);
 		$this->assertTrue(is_array($result));
@@ -36,4 +37,3 @@ class TestPostMonth extends \LiteTest\TestCase{
 		Trace::function_exit();
 	}
 }
-?>

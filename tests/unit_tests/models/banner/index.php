@@ -28,10 +28,10 @@ class TestBanners extends \LiteTest\TestCase
 		$this->assertNotEqual($result->content_path, null);
 		$this->assertNotEqual($result->entity_path, null);
 
-		$this->assertEquals(count($result->getImages()),17);
-
+		$this->assertEquals(count($result->getImages()), 17);
 	}
-	function test_get_one(){
+	function test_get_one()
+	{
 		Trace::function_entry();
 		// print "Lets get started\n";
 		$result = Database\Models\Banner::get_by_trip_slug($this->test_trip, $this->test_slug);
@@ -52,38 +52,39 @@ class TestBanners extends \LiteTest\TestCase
 		// var_dump($result->banner);
 		// var_dump(get_class($result));
 		// var_dump($result->getImages());
-  //       print_r(array_keys($result->getFields()));
-  //       print_r(array_keys(get_object_vars($result)));
+		//       print_r(array_keys($result->getFields()));
+		//       print_r(array_keys(get_object_vars($result)));
 		// print_r($result->getStdClass());
 
 		// $this->assertEquals(count($result->getImages()),17);
 
 		Trace::function_exit();
 	}
-	function test_get_by_slug(){
+	function test_get_by_slug()
+	{
 		Trace::function_entry();
 		// print "Lets get started\n";
 		$result = Database\Models\Banner::get_by_slug($this->test_slug);
 		// print "<p>banner text: ". $result->main_content ."</p>\n";
 		// $this->assert_test_banner($result);
-  //       $this->assertEqual($result->version, "2.0");
-  //       $this->assertEqual($result->type, "banner");
-  //       $this->assertEqual($result->slug, "active");
-  //       $this->assertEqual($result->status, "draft");
-  //       $this->assertEqual($result->trip, "rtw");
-  //       $this->assertEqual($result->creation_date, "2014-02-06");
-  //       $this->assertEqual($result->published_date, "2014-02-06");
-  //       $this->assertEqual($result->last_modified_date, "2014-02-06");
+		//       $this->assertEqual($result->version, "2.0");
+		//       $this->assertEqual($result->type, "banner");
+		//       $this->assertEqual($result->slug, "active");
+		//       $this->assertEqual($result->status, "draft");
+		//       $this->assertEqual($result->trip, "rtw");
+		//       $this->assertEqual($result->creation_date, "2014-02-06");
+		//       $this->assertEqual($result->published_date, "2014-02-06");
+		//       $this->assertEqual($result->last_modified_date, "2014-02-06");
 
-  //       $this->assertNotEqual($result->content_path, null);
-  //       $this->assertNotEqual($result->entity_path, null);
+		//       $this->assertNotEqual($result->content_path, null);
+		//       $this->assertNotEqual($result->entity_path, null);
 		
 		// var_dump($result->banner);
 		// var_dump(get_class($result));
 		// var_dump($result->getImages());
 
-  //       print_r(array_keys($result->getFields()));
-  //       print_r(array_keys(get_object_vars($result)));
+		//       print_r(array_keys($result->getFields()));
+		//       print_r(array_keys(get_object_vars($result)));
 		// print_r($result->getStdClass());
 
 		// $this->assertEquals(count($result->getImages()),17);
@@ -91,7 +92,8 @@ class TestBanners extends \LiteTest\TestCase
 		Trace::function_exit();
 	}
 
-	function test_create_one(){
+	function test_create_one()
+	{
 		Trace::function_entry();
 		$trip = 'rtw';
 		$slug='170707';
@@ -106,7 +108,6 @@ class TestBanners extends \LiteTest\TestCase
 		\Database\HED\HEDFactory::create_banner($p1, $trip, $slug, $edate, $de);
 		$this->assertEqual(file_get_contents($p1), file_get_contents($p2));
 		Trace::function_exit();
-		
 	}
 	function test_create_with_skeleton()
 	{
@@ -131,7 +132,6 @@ class TestBanners extends \LiteTest\TestCase
 		// var_dump($model);
 
 		Trace::function_exit();
-
 	}
 
 	function test_insert_delete()
@@ -176,4 +176,3 @@ class TestBanners extends \LiteTest\TestCase
 		Trace::function_exit();
 	}
 }
-?>

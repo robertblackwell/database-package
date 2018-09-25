@@ -21,7 +21,7 @@ class TestFindAlbum extends \LiteTest\TestCase
 		$util->load_albums($this->test_trip);
 	}
 	/**
-	 * @param $result
+	 * @param  $result
 	 * @return void
 	 */
 	function assert_test_album($result)
@@ -52,7 +52,6 @@ class TestFindAlbum extends \LiteTest\TestCase
 
 		$this->assertNotEqual($result->gallery, null);
 		$this->assertEqual(get_class($result->gallery), "Gallery\Object");
-
 	}
 	function test_get_one()
 	{
@@ -126,7 +125,7 @@ class TestFindAlbum extends \LiteTest\TestCase
 	{
 		Trace::function_entry();
 		$result = Database\Models\Album::find();
-		foreach($result as $a){
+		foreach ($result as $a) {
 			$this->assertNotEqual($a, null);
 			$this->assertEqual(get_class($a), "Database\Models\Album");
 
@@ -142,15 +141,14 @@ class TestFindAlbum extends \LiteTest\TestCase
 	{
 		Trace::function_entry();
 		$result = Database\Models\Album::find_for_trip($this->test_trip);
-		foreach($result as $a)
-		{
+		foreach ($result as $a) {
 			$this->assertNotEqual($a, null);
 			$this->assertEqual(get_class($a), "Database\Models\Album");
 
 			$this->assertNotEqual($a->gallery, null);
 			$this->assertEqual(get_class($a->gallery), "Gallery\Object");
 			// var_dump($a->gallery->mascotPath());
-			$this->assertEqual($a->trip,'rtw');
+			$this->assertEqual($a->trip, 'rtw');
 		}
 		//$this->assertEqual($result[3]->slug, "bolivia-1");
 		Trace::function_exit();
@@ -160,8 +158,7 @@ class TestFindAlbum extends \LiteTest\TestCase
 		Trace::function_entry();
 		$result = Database\Models\Album::find_for_trip($this->test_trip);
 		$this->assertNotEqual(count($result), 0);
-		foreach($result as $a)
-		{
+		foreach ($result as $a) {
 			$this->assertNotEqual($a, null);
 			$this->assertEqual(get_class($a), "Database\Models\Album");
 
@@ -174,7 +171,8 @@ class TestFindAlbum extends \LiteTest\TestCase
 		Trace::function_exit();
 	}
 
-	function test_create_one(){
+	function test_create_one()
+	{
 		return;
 		Trace::function_entry();
 		$trip = 'rtw';
@@ -190,7 +188,6 @@ class TestFindAlbum extends \LiteTest\TestCase
 		\Database\HED\HEDFactory::create_album($p1, $trip, $slug, $edate, "AN_ALBUM_TITLE", $de);
 		$this->assertEqual(file_get_contents($p1), file_get_contents($p2));
 		Trace::function_exit();
-
 	}
 	function test_create_with_skeleton()
 	{
@@ -215,7 +212,6 @@ class TestFindAlbum extends \LiteTest\TestCase
 		// var_dump($model);
 
 		Trace::function_exit();
-
 	}
 	function test_insert_delete()
 	{
@@ -260,4 +256,3 @@ class TestFindAlbum extends \LiteTest\TestCase
 		Trace::function_exit();
 	}
 }
-?>

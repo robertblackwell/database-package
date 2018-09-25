@@ -2,8 +2,10 @@
 
 use Database\Object as Db;
 
-class TestEditorial extends \LiteTest\TestCase{
-	function setUp(){
+class TestEditorial extends \LiteTest\TestCase
+{
+	function setUp()
+	{
 		\Trace::disable();
 		global $config;
 		Db::init($config);
@@ -27,36 +29,37 @@ class TestEditorial extends \LiteTest\TestCase{
 
 		$this->assertNotEqual($result->content_path, null);
 		$this->assertNotEqual($result->entity_path, null);
-
 	}
-	function test_get_one(){    
+	function test_get_one()
+	{
 		Trace::function_entry();
 		// print "Lets get started\n";
 		$result = Database\Models\Editorial::get_by_trip_slug($this->test_trip, $this->test_slug);
 		$this->assert_test_editorial($result);
 
-  //       $this->assertNotEqual($result, null);
-  //       assert(! is_null($result));
+		//       $this->assertNotEqual($result, null);
+		//       assert(! is_null($result));
 		// // print "<p>editorial text: ". $result->main_content ."</p>\n";
-  //       $this->assertEqual($result->version, "2.0");
-  //       $this->assertEqual($result->type, "editorial");
-  //       $this->assertEqual($result->slug, "scotland");
-  //       $this->assertEqual($result->status, "draft");
-  //       $this->assertEqual($result->trip, "rtw");
-  //       $this->assertEqual($result->creation_date, "2015-09-17");
-  //       $this->assertEqual($result->published_date, "2015-09-17");
-  //       $this->assertEqual($result->last_modified_date, "2015-09-17");
+		//       $this->assertEqual($result->version, "2.0");
+		//       $this->assertEqual($result->type, "editorial");
+		//       $this->assertEqual($result->slug, "scotland");
+		//       $this->assertEqual($result->status, "draft");
+		//       $this->assertEqual($result->trip, "rtw");
+		//       $this->assertEqual($result->creation_date, "2015-09-17");
+		//       $this->assertEqual($result->published_date, "2015-09-17");
+		//       $this->assertEqual($result->last_modified_date, "2015-09-17");
 
-  //       $this->assertNotEqual($result->content_path, null);
-  //       $this->assertNotEqual($result->entity_path, null);
+		//       $this->assertNotEqual($result->content_path, null);
+		//       $this->assertNotEqual($result->entity_path, null);
 
 		// print_r($result->getStdClass());
-  //       print_r(array_keys($result->getFields()));
-  //       print_r(array_keys(get_object_vars($result)));
+		//       print_r(array_keys($result->getFields()));
+		//       print_r(array_keys(get_object_vars($result)));
 
 		Trace::function_exit();
 	}
-	function test_create_one(){
+	function test_create_one()
+	{
 		Trace::function_entry();
 		$trip = 'rtw';
 		$slug='170707';
@@ -69,10 +72,9 @@ class TestEditorial extends \LiteTest\TestCase{
 		$oput = system("rm -R{$verbose} ".dirname(__FILE__)."/output1");
 		// print $oput . "\n";
 		$fn = $p1;
-		\Database\HED\HEDFactory::create_editorial($fn, $trip, $slug, $edate, "Â_NAME",  "ANIMAGE", ["X"=>"xxxx"]);
+		\Database\HED\HEDFactory::create_editorial($fn, $trip, $slug, $edate, "Â_NAME", "ANIMAGE", ["X"=>"xxxx"]);
 		$this->assertEqual(file_get_contents($p1), file_get_contents($p2));
 		Trace::function_exit();
-		
 	}
 	function test_create_with_skeleton()
 	{
@@ -97,28 +99,27 @@ class TestEditorial extends \LiteTest\TestCase{
 		// var_dump($model);
 
 		Trace::function_exit();
+	}
 
-	}	
+	function test_insert_delete()
+	{
+		Trace::function_entry();
+		$r = Database\Models\Editorial::get_by_slug($this->test_slug);
+		$this->assertNotEqual($r, null);
+		$this->assert_test_editorial($r);
 
-    function test_insert_delete()
-    {
-        Trace::function_entry();
-        $r = Database\Models\Editorial::get_by_slug($this->test_slug);
-        $this->assertNotEqual($r, null);
-        $this->assert_test_editorial($r);
-
-        $r->sql_delete();
-        $r = Database\Models\Editorial::get_by_slug($this->test_slug);
-        $this->assertEqual($r, null);
-        
-        $new_r = Database\Models\Editorial::get_by_trip_slug($this->test_trip, $this->test_slug);
-        $new_r->sql_insert();    
-        
-        $r2 = Database\Models\Editorial::get_by_slug($this->test_slug);
-        $this->assertNotEqual($r2, null);
-        $this->assert_test_editorial($r2);
-        Trace::function_exit();
-    }
+		$r->sql_delete();
+		$r = Database\Models\Editorial::get_by_slug($this->test_slug);
+		$this->assertEqual($r, null);
+		
+		$new_r = Database\Models\Editorial::get_by_trip_slug($this->test_trip, $this->test_slug);
+		$new_r->sql_insert();
+		
+		$r2 = Database\Models\Editorial::get_by_slug($this->test_slug);
+		$this->assertNotEqual($r2, null);
+		$this->assert_test_editorial($r2);
+		Trace::function_exit();
+	}
 
 
 	function test_import_export()
@@ -141,6 +142,4 @@ class TestEditorial extends \LiteTest\TestCase{
 
 		Trace::function_exit();
 	}
-
 }
-?>

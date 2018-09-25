@@ -9,6 +9,8 @@ PHPFILES		:=	$(wildcard src/Database/*.php)\
  					$(wildcard src/Database/Models/*.php)\
  					$(wildcard src/Database/Models/Base/*.php)
 DOXYGEN=/Applications/Doxygen.app/Contents/Resources/doxygen
+PHPCS=$(HOME)/.composer/vendor/bin/phpcs
+
 # target: all - Default target. Does nothing.
 all:
 	echo "Hello $(LOGNAME), nothing to do by default"
@@ -17,6 +19,8 @@ all:
 	echo "Release file is : $(RELEASE_FILE)"
 	# sometimes: echo "Hello ${LOGNAME}, nothing to do by default"
 	echo "Try 'make help'"
+
+
 
 test:
 	cd test; make
@@ -30,6 +34,29 @@ list:
 	# Won't work. Each command is in separate shell
 	cd src
 	ls
+
+linthed:
+	$(PHPCS) --standard=MySource src/Database/HED || true
+
+lintmodels:
+	$(PHPCS) --standard=MySource src/Database/Models || true
+
+lintsrc:
+	$(PHPCS) --standard=MySource src/Database/Builder.php || true
+	$(PHPCS) --standard=MySource src/Database/Locator.php || true
+	$(PHPCS) --standard=MySource src/Database/Object.php || true
+	$(PHPCS) --standard=MySource src/Database/SqlObject.php || true
+	$(PHPCS) --standard=MySource src/Database/Utility.php || true
+
+lintsssrc:
+	$(PHPCS) --standard=MySource src/Database/HED
+	$(PHPCS) --standard=MySource src/Database/Models
+	$(PHPCS) --standard=MySource src/Database/
+
+linttests:
+	$(PHPCS) --standard=MySource ./tests/unit_tests/models || true
+	$(PHPCS) --standard=MySource ./tests/unit_tests/nextprev || true
+
 
 # Correct, continuation of the same shell
 	cd src; \
