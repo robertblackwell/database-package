@@ -3,7 +3,10 @@ const LOC_SLUG = "location_2";
 
 use Database\Object as Db;
 use Database\Models\Item as Item;
-class test_import_location extends \LiteTest\TestCase{
+use Unittests\LocalTestcase;
+
+class test_import_location extends LocalTestcase
+{
 	function setUp(){
 		Trace::disable();
         global $config;
@@ -17,8 +20,7 @@ class test_import_location extends \LiteTest\TestCase{
                 $new_r = Item::get_by_trip_slug('rtw', LOC_SLUG);
                 $new_r->sql_insert();
 			}
-		} catch(\Exception $e)
-		{
+		} catch(\Exception $e) {
 			var_dump($e);
 		}
 	}

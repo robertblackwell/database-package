@@ -2,9 +2,10 @@
 
 use Database\Object as Db;
 use \Database\Models\Item;
+use Unittests\LocalTestcase;
 
-
-class TestNextPrevNoCreiteria extends LiteTest\TestCase{
+class NextPrevNoneTest extends LocalTestcase
+{
     function setUp(){
         global $config;
 		Db::init($config);

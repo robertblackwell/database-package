@@ -2,7 +2,10 @@
 
 use Database\Object as Db;
 use Database\Models\Item as Item;
-class test_import_post extends LiteTest\TestCase{
+use Unittests\LocalTestcase;
+
+class test_import_post extends LocalTestcase
+{
 	function setUp(){
 		Trace::disable();
         global $config;
@@ -19,7 +22,8 @@ class test_import_post extends LiteTest\TestCase{
 		{
 		}
 	}
-	function test_post(){
+	function test_post()
+	{
 	    Trace::function_entry();
 	    $r = Item::get_by_slug('electricalpart1');
 	    $this->assertNotEqual($r, null);

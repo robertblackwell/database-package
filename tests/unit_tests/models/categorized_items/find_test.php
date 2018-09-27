@@ -3,8 +3,9 @@
 
 use Database\Object as Db;
 use Database\Models\CategorizedItem;
+use Unittests\LocalTestcase;
 
-class TestCategorizedItems extends \LiteTest\TestCase
+class CategorizedItemsFindTest extends LocalTestcase
 {
 	function setUp()
 	{

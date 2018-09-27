@@ -1,15 +1,10 @@
 <?php
 namespace Database\Models;
-/**
-* This class represents content that is an article.
-* It provides static methods for accessing collections of articles.
-*
-* @ingroup Models
-*/
+
 class Article extends ItemBase
 {
-	static $table_name = "my_items";
-	static $field_names = array(
+	public static $table_name = "my_items";
+	public static $field_names = array(
 		"version"=>"text",
 		"type"=>"text",
 		"slug"=>"text",
@@ -28,37 +23,51 @@ class Article extends ItemBase
 		"content_path" => "text",
 		"entity_path" => "text"
 		);
-	function __construct($obj=null){
+	/**
+	* Constructor.
+	* @param array $obj Associative array.
+	* @return Article.
+	*/
+	public function __construct(array $obj = null)
+	{
 		$this->vo_fields = self::$field_names;
 		$this->table = self::$table_name;
 		parent::__construct($obj);
 	}
-	static function find_for_trip($trip, $count=NULL){
+	/**
+	* Find all/count Article for a trip.
+	* @param string  $trip  Trip code.
+	* @param integer $count Number to eturn.
+	* @return Article|null
+	*
+	*/
+	public static function find_for_trip(string $trip, int $count = null)
+	{
 		$where = " where ( trip='".$trip."' and type = 'article' )";
 		$count_str = ($count)? "limit 0, $count": "" ;
 		$c = " $where order by last_modified_date desc, slug desc $count_str ";
-		$r = self::$sql->select_objects(self::$table_name, __CLASS__ , $c);
+		$r = self::$sql->select_objects(self::$table_name, __CLASS__, $c);
 		//var_dump($r);exit();
 		return $r;
 	}
-	/*!
-	* Find all the articles and return them in an array of VOCategory objects
-	* @param count - Limits the number returned
-	* @return array of VOCategory objects
+	/**
+	* Find all the articles for all trips and return them in an array of Article objects
+	* @param integer $count Limits the number returned.
+	* @return array|null Of Article objects
 	*/
-	static function find($count=NULL){
+	public static function find(int $count = null)
+	{
 		$count_str = ($count)? "limit 0, $count": "" ;
 		$c = " where type='article' order by last_modified_date desc, slug desc $count_str ";
-		$r = self::$sql->select_objects(self::$table_name, __CLASS__ , $c);
+		$r = self::$sql->select_objects(self::$table_name, __CLASS__, $c);
 		//var_dump($r);exit();
 		return $r;
 	}
-	/*!
-	* This returns the html (a single <p></p>) excerpt for this journal entry.
+	/**
+	* @return string The html (a single <p></p>) excerpt for this journal entry.
 	*/
-	function excerpt(){
+	public function excerpt()
+	{
 		return $this->abstract;
 	}
 }
-
-?>

@@ -4,61 +4,68 @@ TESTS_DIR = $(shell pwd)
 DATA_DIR =$(TESTS_DIR)/test_data
 TEST_WHITEACORN_DATA=$(HOME)/Sites/test_whiteacorn/data
 
+
 # test_local_api:
 # 	$(LITETEST)
 #
 # test_local_ping:
 # 	$(LITETEST) Tests/ApiCalls/PingTest.php
-pu:
-	phpunit --bootstrap "include/bootstrap.php" punit/albums/AlbumTest.php
-build:
-	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/utility/index.php
+all: db hed models nextprev #locator import paths utility
 
-dict:
-	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/dictionary/index.php
+db:
+	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/db/connect_test.php
+	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/db/meta_test.php
+	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/db/query_test.php
+	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/db/select_test.php
 
-
-load:
-	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/db/index.php
-
-models: article album banner category country entry get_by_slug locations post postmonths	
+models: article article_title album banner \
+ category categorized_item editorial \
+ entry entry_country find get_by_slug locations post postmonths	
 
 article:
-	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/models/article/index.php
-	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/models/article_title/title.php
+	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/models/article/find_test.php
+	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/models/article/title_test.php
+
+article_title:
+	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/models/article_title/title_test.php
 
 album:
-	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/models/albums/index.php
+	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/models/albums/album_test.php
 
 banner:
-	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/models/banner/index.php
+	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/models/banner/banner_test.php
 
 category:
 	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/models/category/add_test.php
 	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/models/category/find_test.php
+
+categorized_item:	
 	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/models/categorized_items/find_test.php
 	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/models/categorized_items/add_remove_test.php
 
-country:
-	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/models/entry_country/index.php
-
 editorial:
-	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/models/editorial/index.php
+	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/models/editorial/editorial_test.php
+
+entry_country:
+	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/models/entry_country/entry_country_test.php
 
 entry:
-	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/models/entry/index.php
+	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/models/entry/entry_test.php
+
+find:
+	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/models/find_items/find_item_test.php
 
 get_by_slug:
-	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/models/get_by_slug/index.php
+	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/models/get_by_slug/get_by_slug_test.php
 
 locations:
-	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/models/locations/index.php
+	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/models/locations/location_test.php
 
 post:
-	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/models/post/index.php
+	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/models/post/post_test.php
 
 postmonths:
-	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/models/postmonths/index.php
+	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/models/postmonths/post_month_test.php
 
 	
 nextprev:
@@ -77,14 +84,21 @@ test:
 cats:
 	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/find_category/find_test.php
 
-hedlocs:
+hed:
+	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/hed/hed_factory_test.php
+	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/hed/hed_album_test.php
 	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/hed/hed_location_test.php
+	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/hed/hed_test.php
 
 import:
-	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/import/location.php
+	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/import/util_test.php
 
-xx:
-	$(LITETEST) --bootstrap-file="include/bootstrap.php"
+paths:
+	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/paths/path_tests.php
+
+utility:
+	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/utility/create_tables.php
+	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/utility/load_tables.php
 
 prepare_test_data:
 	@echo $(TEST_WHITEACORN_DATA)
@@ -108,11 +122,3 @@ prepare_test_data:
 	# rm -Rf $(DATA_DIR)/data/rtw/content/14*
 	cp -r $(TEST_WHITEACORN_DATA)/er $(DATA_DIR)/data
 	cp -r $(TEST_WHITEACORN_DATA)/bmw11 $(DATA_DIR)/data
-
-all:
-	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/paths/index.php
-	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/nextprev/category_test.php
-	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/nextprev/country_test.php
-	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/nextprev/months_test.php
-	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/locator/index.php
-	

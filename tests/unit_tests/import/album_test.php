@@ -2,7 +2,10 @@
 
 use Database\Object as Db;
 use Database\Models\Album as Album;
-class test_import_album extends LiteTest\TestCase{
+use Unittests\LocalTestcase;
+
+class test_import_album extends LocalTestcase
+{
 	function setUp(){
 		Trace::disable();
         global $config;

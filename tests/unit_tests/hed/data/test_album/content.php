@@ -8,13 +8,17 @@
 	<div id="type">album</div>
 	<div id="slug">slug</div>
 	<div id="status">draft</div>
-	<div id="creation_date">adate</div>
-	<div id="published_date">adate</div>
-	<div id="last_modified_date">adate</div>
+	<div id="creation_date">120304</div>
+	<div id="published_date">120304</div>
+	<div id="last_modified_date">120304</div>
 	<div id="trip">trip</div>
 	<div id="title">aname</div>
 	<div id="file_path">ABCDEFG</div>
 	<div id="album_path">ABCDEFG</div>
+	<div id="mascot_path">ABCDEFG</div>
+	<div id="mascot_url">ABCDEFG</div>
+	<div id="content_path">ABCDEFG</div>
+	<div id="entity_path">ABCDEFG</div>
 
 </body>
 </html>

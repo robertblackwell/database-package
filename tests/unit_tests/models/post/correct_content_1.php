@@ -21,8 +21,10 @@
 	<div id="featured_image">ABCDEFG</div>
 	<div id="main_content">
 		<p>main content goes here</p>
-		<?php Skin::JournalGalleryThumbnails($trip, $entry); ?>                                                                
-        <p>and here</p>
+					<?php 
+						Skin::JournalGalleryThumbnails($trip, $entry);
+					 >                                                                
+					<p>and here</p>
 	</div>
 
 </body>

@@ -9,7 +9,7 @@ use \DOMDocument as DOMDocument;
 */
 class ExtendedDOMDocument
 {
-	private $_document;
+	private $document;
 	/**
 	* create
 	* Creates a new ExtendedDOMNode from a standard DOMNode by wrapping the original $node.
@@ -21,7 +21,7 @@ class ExtendedDOMDocument
 		print "ExtendedDOMDocument::create \n";
 		// var_dump($doc);
 		$obj = new ExtendedDOMDocument();
-		$obj->_document = $node;
+		$obj->document = $node;
 		return $obj;
 	}
 	/**
@@ -34,13 +34,13 @@ class ExtendedDOMDocument
 	public function createElementFromHTML(string $tag, string $html) : DOMNode
 	{
 		//print "ExtendedDOMDocument::createElementFromHTML ($tag, $html) \n";
-		//var_dump($this->_document);
+		//var_dump($this->document);
 		$d = new DOMDocument();
 		$d->loadHTML($html);
 		$body = $d->getElementsByTagName("body")->item(0);
-		$el = $this->_document->createElement($tag);
+		$el = $this->document->createElement($tag);
 		foreach ($body->childNodes as $child) {
-			$child = $this->_document->importNode($child, true);
+			$child = $this->document->importNode($child, true);
 			$child = $el->appendChild($child);
 		}
 		return $el;

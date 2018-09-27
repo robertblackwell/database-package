@@ -2,8 +2,9 @@
 
 use Database\Object as Db;
 use \Database\Models\Category as Category;
+use Unittests\LocalTestcase;
 
-class TestFindCategory extends \LiteTest\TestCase
+class CategoryFindTest extends LocalTestcase
 {
 	function setUp()
 	{
@@ -13,7 +14,7 @@ class TestFindCategory extends \LiteTest\TestCase
 		//        var_dump($db);exit();
 	}
 
-
+/* @todo what is this one testing
 	function test_get_one()
 	{
 		Trace::function_entry();
@@ -39,7 +40,7 @@ class TestFindCategory extends \LiteTest\TestCase
 		//        print_r(array_keys(get_object_vars($result)));
 		Trace::function_exit();
 	}
-
+*/
 	function test_1()
 	{
 		Trace::function_entry();

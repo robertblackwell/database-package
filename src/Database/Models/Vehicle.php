@@ -1,4 +1,4 @@
-<?php 
+<?php
 namespace Database\Models;
 
 class Vehicle
@@ -17,9 +17,14 @@ class Vehicle
 		"aust_troopie",
 		"no_vehicle"
 	];
-	static function is_valid($candidate)
+	/**
+	* Tests a string is a valid vehicle code.
+	* @param string $candidate Possible vehicle code.
+	* @return boolean
+	*/
+	public static function is_valid(string $candidate) : bool
 	{
-		if(\in_array(strtolower($candidate), self::$vehicles)) {
+		if (\in_array(strtolower($candidate), self::$vehicles)) {
 			return strtolower($candidate);
 		} else {
 			throw new \Exception("[{$candidate}] is an invalid vehicle");

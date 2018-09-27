@@ -3,8 +3,9 @@
 use Database\Object as Db;
 use Database\Models\CategorizedItem;
 use Database\Models\Category;
+use Unittests\LocalTestcase;
 
-class TestAddRemoveCategorizedItem extends \LiteTest\TestCase
+class CategorizedItemAddremoveTest extends LocalTestcase
 {
 	function setUp()
 	{

@@ -12,7 +12,7 @@
 	<div id="published_date">2017-07-07</div>
 	<div id="last_modified_date">2017-07-07</div>
 	<div id="trip">rtw</div>
-	<div id="title">ABCDEFG</div>
+	<div id="title">ABannerTitle</div>
 	<div id="content_path">ABCDEFG</div>
 	<div id="entity_path">ABCDEFG</div>
 

@@ -452,7 +452,16 @@ EOD;
 	) : HEDObject {
 		assert(func_num_args() == 4);
 		$path = \Database\Locator::get_instance()->item_filepath($trip, $slug);
-		return self::make_post($path, $trip, $slug, $published_date, $title, $categories, $featured_image, $main_content);
+		return self::make_post(
+			$path,
+			$trip,
+			$slug,
+			$published_date,
+			$title,
+			$categories,
+			$featured_image,
+			$main_content
+		);
 	}
 	/**
 	* Create a new skeleton post item in HED format and write given file path

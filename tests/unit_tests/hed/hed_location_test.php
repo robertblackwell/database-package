@@ -6,17 +6,21 @@ use Database\Models\Album;
 use Database\Models\Entry;
 use Database\HED\HEDObject;
 use Database\HED\HEDFactory;
+use Unittests\LocalTestcase;
 
-class Test_hed_location extends \LiteTest\TestCase{
-    function setUp(){
-        global $config;
-        Db::init($config);
-    }
+class Test_hed_location extends LocalTestcase
+{
+	function setUp()
+	{
+		global $config;
+		Db::init($config);
+	}
 	// Load a location type HED from a file
-    function test_1(){
-	    Trace::function_entry();
-        $o = new HEDObject();
-        $o->get_from_file(dirname(__FILE__)."/data/test_location/content.php");
+	function test_1()
+	{
+		Trace::function_entry();
+		$o = new HEDObject();
+		$o->get_from_file(dirname(__FILE__)."/data/test_location/content.php");
 		$this->assert_true($o->slug === "slug");
 		$this->assert_true($o->type === "location");
 		$this->assert_true($o->place === "A_Place");
@@ -24,7 +28,7 @@ class Test_hed_location extends \LiteTest\TestCase{
 		$this->assert_true($o->content_ref === "ref");
 		$this->assert_true($o->latitude === "12.23456");
 		$this->assert_true($o->longitude === "-125.0900");
-	    Trace::function_exit();
+		Trace::function_exit();
 		// var_dump($o->slug);
 		// var_dump($o->type);
 		// var_dump($o->place);
@@ -32,16 +36,16 @@ class Test_hed_location extends \LiteTest\TestCase{
 		// var_dump($o->latitude);
 		// var_dump($o->longitude);
 		// var_dump($o->content_ref);
-        // var_dump($o);
+		// var_dump($o);
 		
 		return;
 	}
 	// create a location type HED in raw file format, write it and relaod it. Tests the HEDFactory
-    function test_2()
+	function test_2()
 	{
-	    Trace::function_entry();
-        system("rm -R ".dirname(__FILE__)."/data/test_location/out");
-        $p = dirname(__FILE__)."/data/test_location/out/_content.php";
+		Trace::function_entry();
+		system("rm -R ".dirname(__FILE__)."/data/test_location/out");
+		$p = dirname(__FILE__)."/data/test_location/out/_content.php";
 		$parms = [
 			"miles" => "1234",
 			"odometer" => "987654",
@@ -52,10 +56,10 @@ class Test_hed_location extends \LiteTest\TestCase{
 			"country" => "ACountry",
 			"content_ref" => "REF"
 		];
-        HEDFactory::create_location($p, 'trip_2', 'slug_2', 'adate', $parms);
+		HEDFactory::create_location($p, 'trip_2', 'slug_2', 'adate', $parms);
 	
-        $o = new HEDObject();
-        $o->get_from_file(dirname(__FILE__)."/data/test_location/out/_content.php");
+		$o = new HEDObject();
+		$o->get_from_file(dirname(__FILE__)."/data/test_location/out/_content.php");
 		$this->assert_true($o->slug === "slug_2");
 		$this->assert_true($o->type === "location");
 
@@ -83,10 +87,11 @@ class Test_hed_location extends \LiteTest\TestCase{
 		// var_dump($o->latitude);
 		// var_dump($o->longitude);
 		// var_dump($o->content_ref);
-	    Trace::function_exit();
-    }
+		Trace::function_exit();
+	}
 	
-    function test_3(){
+	function test_3()
+	{
 		$parms = [
 			"latitude" => "32.12345",
 			"longitude" => "-45.67890",
@@ -97,13 +102,13 @@ class Test_hed_location extends \LiteTest\TestCase{
 			'odometer' => "2030405",
 			"day_number" => "29",
 		];
-	    Trace::function_entry();
-        $o = new HEDObject();
-        $o->get_from_file(dirname(__FILE__)."/data/test_location/content_2.php");
+		Trace::function_entry();
+		$o = new HEDObject();
+		$o->get_from_file(dirname(__FILE__)."/data/test_location/content_2.php");
 		
 		$le = Database\Models\Factory::model_from_hed($o);
-	    $this->assertNotEqual($le, null);
-	    $this->assertEqual(get_class($le), "Database\Models\EntryLocation");
+		$this->assertNotEqual($le, null);
+		$this->assertEqual(get_class($le), "Database\Models\EntryLocation");
 		
 		$this->assert_true($le->slug === "slug_2");
 		$this->assert_true($le->type === "location");
@@ -118,7 +123,7 @@ class Test_hed_location extends \LiteTest\TestCase{
 		$this->assert_true($le->content_ref === "REF");
 		$this->assert_true($le->latitude === $parms['latitude']);
 		$this->assert_true($le->longitude === $parms['longitude']);
-	    Trace::function_exit();
+		Trace::function_exit();
 		// var_dump($le->slug);
 		// var_dump($le->type);
 		// var_dump($le->miles);
@@ -131,14 +136,14 @@ class Test_hed_location extends \LiteTest\TestCase{
 		// var_dump($le->latitude);
 		// var_dump($le->longitude);
 		// var_dump($le->content_ref);
-        // var_dump($le);
+		// var_dump($le);
 		return;
 	}
 	// test that we can put a location in the database and get it back
 	// To do this we need to have a clean state of the database before each test
 	function test4()
 	{
-	    Trace::function_entry();
+		Trace::function_entry();
 		// $loc_2 = \Database\Models\Item::get_by_slug("slug_2");
 		// var_dump($loc_2);
 		//         $o = new HEDObject();
@@ -157,10 +162,6 @@ class Test_hed_location extends \LiteTest\TestCase{
 		// 	print "Slug: ".($loc->slug);
 		// 	print " Type: ".($loc->type). "\n";
 		// }
-	    Trace::function_exit();
+		Trace::function_exit();
 	}
-	
-	
 }
-
-?>

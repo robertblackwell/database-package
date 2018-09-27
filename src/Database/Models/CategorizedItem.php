@@ -15,20 +15,24 @@ class CategorizedItem extends Base\Model
 		);
 	/**
 	 * CategorizedItem constructor.
-	 * @param null $obj Dont know @todo findout.
+	 * @param array $obj Sql query row result as associative array.
+	 * @return CategorizedItem
 	 */
-	public function __construct($obj = null)
+	public function __construct(array $obj = null)
 	{
 		$this->vo_fields = self::$field_names;
 		$this->table = self::$table_name;
 		// var_dump($obj);
 		parent::__construct($obj);
 	}
-	/*!
-	* Finds all the rows in the categorized_items table and returns them as an array of VOCategorizedItem objects
-	* @param $count - can limit the number returned to the count value
+	/**
+	* Finds all (or count) the rows in the categorized_items table and returns
+	* them as an array of CategorizedItem objects
+	* @param integer $count Limit the number returned to the count value.
+	* @return array
 	*/
-	public static function find($count=NULL){
+	public static function find(int $count = null)
+	{
 		$count_str = ($count)? "limit 0, $count": "" ;
 		$c = "   order by category asc $count_str ";
 		return self::$sql->select_objects("categorized_items", __CLASS__, $c);
@@ -48,20 +52,28 @@ class CategorizedItem extends Base\Model
 		$ret = !is_null($r);
 		return $ret;
 	}
-	/*!
-	* Ensures a category, slug pair are in the categorized_items table. Insert of not there.
-	* @param $category a string value of a category
-	* @param $slug a slug for an existing item in the my_items table
+	/**
+	* Ensures a category, slug pair are in the categorized_items table. Insert if not there.
+	* @param string $category String value of a category.
+	* @param string $slug     A slug for an existing item in the my_items table.
 	* @return void
 	*/
-	public static function add($category, $slug){
+	public static function add(string $category, string $slug)
+	{
 		\Trace::function_entry();
 		$a = array('category'=>$category, 'item_slug'=>$slug);
 		$obj = new CategorizedItem($a);
 
 		self::$sql->insert(self::$table_name, $obj, true);
 	}
-	public static function delete($category, $slug){
+	/**
+	* Delete a category, slug pair from the categorized_items table.
+	* @param string $category String value of a category.
+	* @param string $slug     A slug for an existing item in the my_items table.
+	* @return void
+	*/
+	public static function delete(string $category, string $slug)
+	{
 		//print "<p>".__METHOD__."($category, $slug)</p>";
 		//Category::delete($category);
 		$query = "delete from categorized_items where category='$category' and item_slug='$slug'";
@@ -69,7 +81,13 @@ class CategorizedItem extends Base\Model
 		//var_dump($query);var_dump($result);
 		//print "<p>".__METHOD__."</p>";
 	}
-	public static function delete_slug($slug){
+	/**
+	* Delete all category, slug pairs from the categorized_items table where slug == $slug.
+	* @param string $slug A slug for an existing item in the my_items table.
+	* @return \mysqli_result
+	*/
+	public static function delete_slug(string $slug)
+	{
 		$query = "delete from categorized_items where item_slug='$slug'";
 		$result = self::$sql->query($query);
 		return $result;

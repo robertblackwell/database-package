@@ -15,13 +15,22 @@ use \Exception as Exception;
 **/
 class HEDObject
 {
-	
-	private $vo_fields = null;
+	/**
+	* @var string $file_path The file from which the hed object was originally loaded.
+	*/
+	public $file_path;
+	/**
+	* @var string $_dir The path of a directory containing the file file from
+	*                   which the hed object was originally loaded.
+	*/
+	private $dir;
+	/**
+	* @var DOMDocument $doc THe DOMDocument that holds the loaded HED file.
+	*/
+	private $doc;
 
-	public $_file_path;
-	public $_dir;
-	public $_doc;
-	protected $_xp;
+	// protected $_xp;
+	private $vo_fields = null;
 	
 	/**
 	* Constructor empty
@@ -38,22 +47,22 @@ class HEDObject
 	public function get_from_file(string $file_name)
 	{
 //		print __CLASS__.":".__METHOD__."($file_name)\n";
-		$this->_file_path = realpath($file_name);
-		$this->_dir = dirname($this->_file_path);
-		if (! file_exists($this->_file_path)) {
-			throw new \Exception(__METHOD__." : file : [" . $this->_file_path ."]  does not exist");
+		$this->file_path = realpath($file_name);
+		$this->dir = dirname($this->file_path);
+		if (! file_exists($this->file_path)) {
+			throw new \Exception(__METHOD__." : file : [" . $this->file_path ."]  does not exist");
 		}
 		try {
-			$php = file_get_contents($this->_file_path);
-//    print "XXXXfile path ".$this->_file_path."\n";
+			$php = file_get_contents($this->file_path);
+//    print "XXXXfile path ".$this->file_path."\n";
 			$html = $php;//$this->expand_php($php);
-			$this->_doc = new \DOMDocument();
-			$this->_doc->substituteEntities = false;
-			$this->_doc->resolveExternals = true;
-			$this->_doc->preserveWhiteSpace = true;
-			$this->_doc->formatOutput = true;
-			$this->_doc->loadHTML($html);
-			$this->_doc->formatOutput = true;
+			$this->doc = new \DOMDocument();
+			$this->doc->substituteEntities = false;
+			$this->doc->resolveExternals = true;
+			$this->doc->preserveWhiteSpace = true;
+			$this->doc->formatOutput = true;
+			$this->doc->loadHTML($html);
+			$this->doc->formatOutput = true;
 		} catch (\Exception $e) {
 			print "<p>ContentItem::load_from_file failed file_name: $file_name</p>";
 		}
@@ -65,17 +74,17 @@ class HEDObject
 	*/
 	public function get_from_string(string $string) : void
 	{
-		$this->_file_path = null;
-		$this->_dir = null;
+		$this->file_path = null;
+		$this->dir = null;
 		$html = $string;
-		$this->_doc = new DOMDocument();
-		$this->_doc->substituteEntities = false;
-		$this->_doc->resolveExternals = true;
-		$this->_doc->preserveWhiteSpace = true;
-		$this->_doc->formatOutput = true;
+		$this->doc = new DOMDocument();
+		$this->doc->substituteEntities = false;
+		$this->doc->resolveExternals = true;
+		$this->doc->preserveWhiteSpace = true;
+		$this->doc->formatOutput = true;
 		try {
-			$this->_doc->loadHTML($html);
-			$this->_doc->formatOutput = true;
+			$this->doc->loadHTML($html);
+			$this->doc->formatOutput = true;
 		} catch (\Exception $e) {
 			print "<p>ContentItem::load_from_string failed </p>";
 			throw $e;
@@ -91,8 +100,8 @@ class HEDObject
 	public function put_to_file(string $fn = null) : void
 	{
 		if (is_null($fn))
-			$fn = $this->_file_path;
-		file_put_contents($fn, $this->_doc->saveHTML());
+			$fn = $this->file_path;
+		file_put_contents($fn, $this->doc->saveHTML());
 	}
 	/**
 	* @return string The HEDObject as a string containing the full HTML document
@@ -100,7 +109,7 @@ class HEDObject
 	*/
 	public function put_to_string() : string
 	{
-		return $this->_doc->saveHTML();
+		return $this->doc->saveHTML();
 	}
 	/**
 	* Puts/writes the HED object to a file. No file path is given so MUST use the
@@ -111,9 +120,9 @@ class HEDObject
 	*/
 	public function put() : void
 	{
-		if (!$this->_file_path)
+		if (!$this->file_path)
 			throw new Exception(__METHOD__." cannot save no file_path ");
-		$this->put_to_file($this->_file_path);
+		$this->put_to_file($this->file_path);
 	}
 	/**
 	* Magic methid __isset.
@@ -122,7 +131,9 @@ class HEDObject
 	*/
 	public function __isset(string $field) : bool
 	{
+		// @todo This function is meaningless
 		if (!is_null($this->vo_fields) && (array_key_exists($field, $this->vo_fields))) {
+			throw new \Exception("HEDObject should have no vo_fields");
 			return true;
 		}
 		return false;
@@ -176,7 +187,7 @@ class HEDObject
 	*/
 	public function get_text(string $field) // : ?string
 	{
-		$el = $this->_doc->getElementById($field);
+		$el = $this->doc->getElementById($field);
 		if ($el)
 			return trim($el->textContent);
 		return null;
@@ -190,8 +201,8 @@ class HEDObject
 	public function get_html(string $field) //: ?string
 	{
 		//print "<p>".__METHOD__."($field)</p>";
-		$el = $this->_doc->getElementById($field);
-		//var_dump($this->_doc->saveHTML($el));
+		$el = $this->doc->getElementById($field);
+		//var_dump($this->doc->saveHTML($el));
 		if ($el) {
 			$r = ExtendedDOMNode::create($el)->innerHTML();
 			//var_dump($r);
@@ -308,8 +319,8 @@ class HEDObject
 	*/
 	public function get_first_p(string $field) //: ?string
 	{
-		$doc = $this->_doc;
-		$m = $this->_doc->getElementById($field);
+		$doc = $this->doc;
+		$m = $this->doc->getElementById($field);
 		$children = $m->childNodes;
 		for ($i = 0; $i < $children->length; $i++) {
 			$n = $children->item($i);
@@ -332,21 +343,21 @@ class HEDObject
 	{
 		//print "<p>".__METHOD__."($field $value)</p>";
 		//var_dump($this);
-		$el = $this->_doc->getElementById($field);
+		$el = $this->doc->getElementById($field);
 		if (!$el)
 			throw new Exception(__METHOD__."($field, $value) element not found");
 		//$el->nodeValue = $value;
 		//$parent = $el->parentNode;
-		//var_dump($this->_doc->saveHTML($parent));
+		//var_dump($this->doc->saveHTML($parent));
 		//return;
-		$new_node = $this->_doc->createElement("div", $value);
+		$new_node = $this->doc->createElement("div", $value);
 		$new_node->setAttribute("id", $field);
 		$parent = $el->parentNode;
 		$parent->replaceChild($new_node, $el);
-		//$text_node = $this->_doc->createTextNode($value);
+		//$text_node = $this->doc->createTextNode($value);
 		//$child = $el->firstChild;
 		//$el->replaceChild($text_node, $child);
-		//var_dump($this->_doc->saveHTML($parent));
+		//var_dump($this->doc->saveHTML($parent));
 		//print "<p>".__METHOD__."($field $value)</p>";
 	}
 }

@@ -34,7 +34,8 @@ list:
 	# Won't work. Each command is in separate shell
 	cd src
 	ls
-
+lint: linthed lintmodels lintsrc
+	
 linthed:
 	$(PHPCS) --standard=MySource src/Database/HED || true
 

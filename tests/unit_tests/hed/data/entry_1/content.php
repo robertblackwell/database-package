@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head></head>
 <body>
-    <!-- common properties -->
+	<!-- common properties -->
 	<div id="version">1.0</div>
 	<div id="type">entry</div>
 	<div id="slug">120706</div>
@@ -14,6 +14,7 @@
 	<div id="title">
 		A Vancouver traffic jam
 	</div>
+	<div id="vehicle">gxv</div>
 	<div id="abstract">
 			<p>This afternoon while approaching Vancouver along highway 99  we got into a little traffic
 			 jam - the result, 6 lanes into 1 lane. 

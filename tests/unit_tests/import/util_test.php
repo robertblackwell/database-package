@@ -5,10 +5,12 @@ use Database\Models\Item as Item;
 use Database\Models\Album as Album;
 use Database\Utility as Utility;
 use Trace as Trace;
+use Unittests\LocalTestcase;
 
-
-class test_import_utils extends LiteTest\TestCase{
-	function setUp(){
+class ImportUtilsTest extends LocalTestcase
+{
+	function setUp()
+	{
 		\Trace::disable();
         global $config;
 		Db::init($config);
@@ -36,11 +38,12 @@ class test_import_utils extends LiteTest\TestCase{
                 $new_r = Album::get_by_trip_slug('rtw', 'peru');
                 $new_r->sql_insert();            
 			}
-		} catch(\Exception $e)
-		{
+		} catch(\Exception $e) {
+			throw $e;
 		}
 	}
-	function test_album(){
+	function test_album()
+	{
 	    Trace::function_entry();
 	    $slug = "peru";
 	    $r = Album::get_by_slug($slug);

@@ -1,11 +1,12 @@
 <?php
 
 use Database\Object as Db;
-
+use Unittests\LocalTestcase;
 //
 // This testcase verifies that UTF8 characters are preserved through the import process
 //
-class TestUTF8 extends \LiteTest\TestCase{
+class TestUTF8 extends LocalTestcase
+{
     function setUp(){
 		\Trace::enable();
         global $config;

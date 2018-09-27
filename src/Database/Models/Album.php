@@ -5,7 +5,8 @@ use Database\HED\HEDObject;
 use Database\Locator;
 
 /**
-* @brief This object represents photo albums as displayed on the sites various "photo" pages and as contained
+* @brief This object represents photo albums as displayed on the sites
+* various "photo" pages and as contained
 * within content items.
 *
 * static methods are provided for geting/finding lists of albums and individual albums.
@@ -16,8 +17,8 @@ use Database\Locator;
 class Album extends Base\Model
 {
 	//  todo -1 (this is some stuff to see if it works) +0: this is some more stuff
-	static $table_name = "albums";
-	static $field_names = array(
+	public static $table_name = "albums";
+	public static $field_names = array(
 		"version"=>"text",
 		"type"=>"text",
 		"slug"=>"text",
@@ -35,16 +36,27 @@ class Album extends Base\Model
 		"entity_path" => "text"
 		// note - gallery of type \GalleryObject is added during constructor - but its a REAL property
 	);
-	function __construct($obj)
+	/**
+	* Consttructor.
+	* @param array $obj Sql query result as an associative array.
+	* @return Album
+	*/
+	public function __construct(array $obj)
 	{
 		$this->vo_fields = self::$field_names;
 		$this->table = self::$table_name;
 		$this->_images = null;
 		parent::__construct($obj);
 	}
-	public static function get_by_trip_slug($trip, $slug)
+	/**
+	* @param string $trip Trip code.
+	* @param string $slug Entity id.
+	* @return Album|null
+	*
+	*/
+	public static function get_by_trip_slug(string $trip, string $slug)
 	{
-		if( ! self::$locator->album_exists($trip, $slug) ) {
+		if (! self::$locator->album_exists($trip, $slug)) {
 			return null;
 		}
 
@@ -58,15 +70,17 @@ class Album extends Base\Model
 		$item->gallery = \Gallery\Object::create(dirname($fn));
 		return $item;
 	}
-	/*!
+	/**
 	* Retrieve a content item by unique identifier (slug) and hence return one of
 	* Post, Entry, Article
+	* @param string $slug Entity id.
+	* @return Album|null
 	*/
-	public static function get_by_slug($slug)
+	public static function get_by_slug(string $slug)
 	{
 		$q = "WHERE slug='".$slug."'";
 		$r = self::$sql->select_objects(self::$table_name, __CLASS__, $q, false);
-		if( is_null($r) || !$r   ) {
+		if (is_null($r) || !$r) {
 			// print "<p>" .__METHOD__ ." slug: {$slug} got null</p>";
 			return null;
 		}
@@ -80,43 +94,51 @@ class Album extends Base\Model
 		// $item->gallery = \Gallery\Object::create(dirname($fn));
 		return $item;
 	}
-	/*!
+	/**
 	* Find all the albums and return them in an array of Album objects
-	* @param count - Limits the number returned
-	* @return array of Album objects
+	* @param integer $count Limits the number returned.
+	* @return array Of Album objects.
 	*/
-	static function find($count=NULL){
+	public static function find(int $count = null)
+	{
 		$count_str = ($count)? "limit 0, $count": "" ;
 		$c = " order by last_modified_date desc, slug asc $count_str ";
 		$c = " order by slug asc, last_modified_date desc $count_str ";
-		$r = self::$sql->select_objects(self::$table_name, __CLASS__ , $c);
-		foreach($r as $a){
+		$r = self::$sql->select_objects(self::$table_name, __CLASS__, $c);
+		foreach ($r as $a) {
 			$trip = $a->trip;
-			/// @todo this is a missing step something like - make_derived_data - why cannot the Model constructor do this
+			/// @todo this is a missing step
+			/// something like - make_derived_data - why cannot the Model constructor do this
 			$a->gallery = \Gallery\Object::create(Locator::get_instance()->album_dir($trip, $a->slug));
 		}
 		//var_dump($r);exit();
 		return $r;
 	}
-	/*!
+	/**
 	* Find all the albums for a trip and return them as an array of Album objects
-	* @param count - Limits the number returned
-	* @return array of Album objects
+	* @param string  $trip  Trip code.
+	* @param integer $count Limits the number returned.
+	* @return array Of Album objects
 	*/
-	static function find_for_trip($trip, $count=NULL){
+	public static function find_for_trip(string $trip, int $count = null)
+	{
 		$where = ( is_null($trip) )? "": "where trip=\"".$trip."\" ";
 		$count_str = ($count)? "limit 0, $count": "" ;
 		$c = $where." order by last_modified_date desc, slug asc $count_str ";
-		$r = self::$sql->select_objects(self::$table_name, __CLASS__ , $c);
-		foreach($r as $a){
+		$r = self::$sql->select_objects(self::$table_name, __CLASS__, $c);
+		foreach ($r as $a) {
 			$trip = $a->trip;
 			$a->gallery = \Gallery\Object::create(Locator::get_instance()->album_dir($trip, $a->slug));
 		}
 		//var_dump($r);exit();
 		return $r;
 	}
-	function sql_delete(){
+	/**
+	* Delete this entity from the sql database.
+	* @return void
+	*/
+	public function sql_delete()
+	{
 		self::$sql->query("DELETE from albums where trip='".$this->trip."' and slug='".$this->slug."'");
 	}
 }
-?>

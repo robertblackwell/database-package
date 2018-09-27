@@ -2,8 +2,9 @@
 
 use Database\Object as Db;
 use \Database\Models\Category as Category;
+use Unittests\LocalTestcase;
 
-class TestAddCategory extends \LiteTest\TestCase
+class CategoryAddTest extends LocalTestcase
 {
 	function setUp()
 	{

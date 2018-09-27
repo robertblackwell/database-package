@@ -19,9 +19,9 @@ class SqlObject
 	*/
 	private static $instance;
 	/**
-	 * @var \ConfigObject $_config Database config details
+	 * @var \ConfigObject $config Database config details
 	 */
-	private static $_config = null;
+	private static $config = null;
 	/**
 	 * @var \mysqli $db_connection Database connection
 	 */
@@ -39,7 +39,7 @@ class SqlObject
 	*/
 	public static function init(array $config)
 	{
-		self::$_config = $config;
+		self::$config = $config;
 
 		$inst = new SqlObject();
 		self::$instance = $inst;
@@ -61,13 +61,13 @@ class SqlObject
 	*/
 	private function db_init()
 	{
-		if (!self::$_config) throw new \Exception("database ".__FUNCTION__." config not set");
-		$db_name = self::$_config["db_name"];
+		if (!self::$config) throw new \Exception("database ".__FUNCTION__." config not set");
+		$db_name = self::$config["db_name"];
 		$this->db_name = $db_name;
-		$host = self::$_config["db_host"];
-		$user = self::$_config["db_user"];
-		$pwd = self::$_config["db_passwd"];
-		//var_dump(self::$_config);
+		$host = self::$config["db_host"];
+		$user = self::$config["db_user"];
+		$pwd = self::$config["db_passwd"];
+		//var_dump(self::$config);
 		//print "<h2>".__METHOD__."() db_name[$db_name] host[$host] user[$user] pwd[$pwd]</h2>";
 		$conn = mysqli_connect($host, $user, $pwd, $db_name)
 			or die("could not connect to data base db:$db user:$user in ".__FILE__." at line ".__LINE__);
@@ -102,7 +102,7 @@ class SqlObject
 	{
 		$this->_config = $config;
 		//print "\nsetConfig ". __FUNCTION__ ."\n";
-		//var_dump(self::$_config);
+		//var_dump(self::$config);
 	}
 
 	/**
@@ -157,7 +157,7 @@ class SqlObject
 		if (!$result)
 			throw new \Exception("could not SHOW TABLES ".mysqli_error());
 		while ($row = mysqli_fetch_assoc($result)) {
-			$n[] = $row["Tables_in_".strtolower(self::$_config['db_name'])];
+			$n[] = $row["Tables_in_".strtolower(self::$config['db_name'])];
 		}
 		return $n;
 	}

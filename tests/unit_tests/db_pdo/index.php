@@ -2,9 +2,12 @@
 use Database\Object as Db;
 use Database\Locator as Locator;
 use Database\Models\Factory as Factory;
+use Unittests\LocalTestcase;
 
-class test_load_db extends \LiteTest\TestCase{
-	function test_db_load(){
+class test_load_db extends LocalTestcase
+{
+	function test_db_load()
+	{
 		
 		$sql = \Database\SqlObject::get_instance();
 		// var_dump($sql);

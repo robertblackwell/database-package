@@ -1,5 +1,6 @@
 <?php
 namespace Database\Models;
+
 /*!
 ** @ingroup Models
 * This class represents a view of the item table that lists content items by month
@@ -7,35 +8,48 @@ namespace Database\Models;
 */
 class PostMonth extends Base\Model
 {
-    static $table_name = "my_items";
-    function __construct($row){
-        parent::__construct($row);
-    }
-    static function find_for_trip($trip, $count=NULL)
-    {
-        //print "<p>".__METHOD__."</p>";
-        $where = " where ( (trip = '".$trip."') and (type='post' or type='entry') )";
-        $count_str = ($count)? "limit 0, $count": "" ;
-        $c = "SELECT distinct trip, year(published_date) as `year`, month(published_date) as `month` "
-        // ." FROM my_items $where order by published_date desc";
-        ." FROM my_items $where order by year desc, month desc";
-        return self::$sql->query_objects($c, __CLASS__);
-    }
-    /*!
-    * Find all the months (yyy-mm) referenced by creation_date field of "post" or "entry" items in the my_items table
-    * return them as an array of PostMonth objects
-    * @param count Limits the number returned
-    * @return array of PostMonth objects
-    */ 
-    static function find($count=NULL)
-    {
-        //print "<p>".__METHOD__."</p>";
-        $count_str = ($count)? "limit 0, $count": "" ;
-        $c = "SELECT distinct trip, year(published_date) as `year`, month(published_date) as `month` "
-        // ." FROM my_items WHERE (type='post' or type='entry')   order by published_date desc";
-        ." FROM my_items WHERE (type='post' or type='entry')   order by year desc , month desc";
-        return self::$sql->query_objects($c, __CLASS__);
-    }
+	public static $table_name = "my_items";
+	/**
+	* Constructor.
+	* @param array $row Sql result row as associative array.
+	* @return PostMonth.
+	*/
+	public function __construct(array $row)
+	{
+		parent::__construct($row);
+	}
+	/**
+	* Find all distinct postmonth (yyyy-mm) that appear in the published_date property of
+	* all Item objects for a trip.
+	* @param string  $trip  Trip code.
+	* @param integer $count Limit on number returned.
+	* @return array | null PostMonth
+	*
+	*/
+	public static function find_for_trip(string $trip, int $count = null)
+	{
+		//print "<p>".__METHOD__."</p>";
+		$where = " where ( (trip = '".$trip."') and (type='post' or type='entry') )";
+		$count_str = ($count)? "limit 0, $count": "" ;
+		$c = "SELECT distinct trip, year(published_date) as `year`, month(published_date) as `month` "
+		// ." FROM my_items $where order by published_date desc";
+		." FROM my_items $where order by year desc, month desc";
+		return self::$sql->query_objects($c, __CLASS__);
+	}
+	/**
+	* Find all distinct months (yyyy-mm) that appear in the published_date property of ALL Item objects
+	* in the sql database.
+	* Return array of PostMonth objects
+	* @param integer $count Limits the number returned.
+	* @return array|null Of PostMonth objects
+	*/
+	public static function find(int $count = null)
+	{
+		//print "<p>".__METHOD__."</p>";
+		$count_str = ($count)? "limit 0, $count": "" ;
+		$c = "SELECT distinct trip, year(published_date) as `year`, month(published_date) as `month` "
+		// ." FROM my_items WHERE (type='post' or type='entry')   order by published_date desc";
+		." FROM my_items WHERE (type='post' or type='entry')   order by year desc , month desc";
+		return self::$sql->query_objects($c, __CLASS__);
+	}
 }
-
-?>

@@ -6,7 +6,7 @@
 <body>
 	<div id="version">2.0</div>
 	<div id="type">entry</div>
-	<div id="trip">trip</div>
+	<div id="trip">rtw</div>
 	<div id="slug">slug</div>
 	<div id="status">draft</div>
 	<div id="creation_date">120304</div>
@@ -23,10 +23,11 @@
 	<div id="title">ABCDEFG</div>
 	<div id="abstract">ABCDEFG</div>
 	<div id="excerpt">ABCDEFG</div>
+	<div id="vehicle">gxv</div>
 	<div id="main_content">
 		<p>main content goes here</p>
 		<?php Skin::JournalGalleryThumbnails($trip, $entry); ?>                                                                
-        <p>and here</p>
+		<p>and here</p>
 	</div>
 	<div id="camping">ABCDEFG</div>
 	<div id="border">ABCDEFG</div>

@@ -1,4 +1,4 @@
-<?php 
+<?php
 namespace Database\Models;
 
 class Trip
@@ -18,9 +18,14 @@ class Trip
 		"aust",
 		"asia20"
 	];
-	static function is_valid($trip_candidate)
+	/**
+	* Tests a string is a valid trip code.
+	* @param string $trip_candidate A possible trip code.
+	* @return boolean
+	*/
+	public static function is_valid(string $trip_candidate) : bool
 	{
-		if(\in_array(strtolower($trip_candidate), self::$trips) ) {
+		if (\in_array(strtolower($trip_candidate), self::$trips)) {
 			return strtolower($trip_candidate);
 		} else {
 			throw new \Exception("{$trip_candidate} is an invalid trip");

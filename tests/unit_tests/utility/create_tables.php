@@ -3,8 +3,10 @@
 
 use Database\Object as Db;
 use Database\Models\Item;
+use Unittests\LocalTestcase;
 
-class Test_database_create_tables extends \LiteTest\TestCase{
+class UtilityCreateTablesTest extends LocalTestcase
+{
     function setUp(){
         \Trace::disable();
 		//         global $config;

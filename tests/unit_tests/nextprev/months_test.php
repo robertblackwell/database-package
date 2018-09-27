@@ -2,9 +2,10 @@
 
 use Database\Object as Db;
 use \Database\Models\Item;
+use Unittests\LocalTestcase;
 
-
-class TestNextPrevMonths extends LiteTest\TestCase{
+class NextPrevMonthsTest extends LocalTestcase
+{
 	function setUp(){
 		global $config;
 		Db::init($config);

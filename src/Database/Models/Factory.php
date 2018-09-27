@@ -9,7 +9,6 @@ use Database\Models\EntryLocation;
 use Database\Models\Post;
 
 use Database\HED\HEDObject;
-use Database\HED\HEDFactory;
 use Database\Locator;
 
 /*!
@@ -77,10 +76,10 @@ class Factory
 		}
 		$text = str_replace(" ", "", $text);
 		\Trace::debug(" text: $text");
-		$a = pathinfo(dirname($hed_obj->_file_path));
+		$a = pathinfo(dirname($hed_obj->file_path));
 		$gname = $a['basename'];
-		$path = dirname(dirname($hed_obj->_file_path));
-		$item_dir = dirname($hed_obj->_file_path);
+		$path = dirname(dirname($hed_obj->file_path));
+		$item_dir = dirname($hed_obj->file_path);
 		\Trace::debug("item_dir : $item_dir  gname:$gname  path:$path ");
 		/*
 		** if its a [gal,index] form;  strip the [ ]
@@ -100,16 +99,16 @@ class Factory
 				** Both a gallery name and an image index is given
 				*/
 				$galname = $split[0];
-				$gal = \Gallery\Object::create(dirname($hed_obj->_file_path)."/".$galname);
+				$gal = \Gallery\Object::create(dirname($hed_obj->file_path)."/".$galname);
 				$index = intval($split[1]);
 				\Trace::debug("Explicit gal    gal_name :$galname index: $index");
-			} else if (count($split) == 1) {
+			} elseif (count($split) == 1) {
 				/*
 				** Only an index is given so use the default gallery
 				*/
-				$a = pathinfo(dirname($hed_obj->_file_path));
+				$a = pathinfo(dirname($hed_obj->file_path));
 				$gname = $a['basename'];
-				$path = dirname(dirname($hed_obj->_file_path));
+				$path = dirname(dirname($hed_obj->file_path));
 				$gal = \Gallery\Object::create($path."/".$gname);
 				$index = intval($split[0]);
 				\Trace::debug("Implicit gal      gal_name :default index: $index");
@@ -128,7 +127,7 @@ class Factory
 		/*
 		** Its the default - use the first image in the default gallery
 		*/
-		} else if (strlen($text) == 0) {
+		} elseif (strlen($text) == 0) {
 			throw new \Exception("should not get here, already tested for no specification");
 		} else {
 			/*
@@ -138,7 +137,7 @@ class Factory
 			$gal_img = $text;
 			if (substr($text, 0, 1) != '/') $gal_img = '/'.$text;
 			if (trim($gal_img) == "")  return null;
-			$fn = dirname($hed_obj->_file_path).$gal_img;
+			$fn = dirname($hed_obj->file_path).$gal_img;
 			if (is_file($fn)) {
 				$res =  $fn;
 				/*
@@ -171,10 +170,17 @@ class Factory
 		$method = "get_".$t;
 		if (strtolower($k) == "country") {
 			$result = Country::get_by_code($hed_obj->$method($k));
-		} else if (strtolower($k) == "trip") {
-			$result = Trip::is_valid($hed_obj->$method($k));
-		} else if (strtolower($k) == "vehicle") {
-			$result = Vehicle::is_valid($hed_obj->$method($k));
+		} elseif (strtolower($k) == "trip") {
+			$trip = $hed_obj->$method($k);
+			if (!Trip::is_valid($trip)) {
+				throw new \Exception("invalid trip : {$trip} hed object {$hed_obj->file_path}");
+			}
+			$result = $trip;
+		} elseif (strtolower($k) == "vehicle") {
+			$result = $hed_obj->$method($k);
+			if (!Vehicle::is_valid($result)) {
+				throw new \Exceptiion("invalid vehicle : {$result} hed object {$hed_obj->file_path}");
+			}
 		} else {
 			$result = $hed_obj->$method($k);
 		}
@@ -199,8 +205,9 @@ class Factory
 			$method = "get_".$t;
 			$vals[$k] = $hed_obj->$method($k);
 		}
-		$vals['content_path'] = $hed_obj->_file_path;
-		$vals['entity_path'] = dirname($hed_obj->_file_path);
+		$fp = $hed_obj->file_path;
+		$vals['content_path'] = $fp;
+		$vals['entity_path'] = (is_null($fp)) ? null : $hed_obj->file_path;
 		$vals['mascot_path'] = $vals['entity_path']."/mascot.jpg";
 		$vals['mascot_url'] =  str_replace(\Registry::$globals->doc_root, "", $vals['mascot_path']);
 		//print_r($vals);
@@ -233,8 +240,8 @@ class Factory
 			$method = "get_".$t;
 			$vals[$k] = $hed_obj->$method($k);
 		}
-		$vals['content_path'] = $hed_obj->_file_path;
-		$vals['entity_path'] = dirname($hed_obj->_file_path);
+		$vals['content_path'] = $hed_obj->file_path;
+		$vals['entity_path'] = dirname($hed_obj->file_path);
 		$vals['featured_image'] = self::featured_image($hed_obj);
 		//$vals['excerpt'] = $hed_obj->get_first_p('main_content');
 		$x = new Article($vals);
@@ -263,8 +270,8 @@ class Factory
 			$vals[$k] = $hed_obj->$method($k);
 		}
 		// now do the ones that require some trick
-		$vals['content_path'] = $hed_obj->_file_path;
-		$vals['entity_path'] = dirname($hed_obj->_file_path);
+		$vals['content_path'] = $hed_obj->file_path;
+		$vals['entity_path'] = dirname($hed_obj->file_path);
 
 		$x = new Banner($vals);
 		return $x;
@@ -293,8 +300,8 @@ class Factory
 			$method = "get_".$t;
 			$vals[$k] = $hed_obj->$method($k);
 		}
-		$vals['content_path'] = $hed_obj->_file_path;
-		$vals['entity_path'] = dirname($hed_obj->_file_path);
+		$vals['content_path'] = $hed_obj->file_path;
+		$vals['entity_path'] = dirname($hed_obj->file_path);
 		
 		//         $vals['image_path'] = $vals['entity_path']."/".$vals['image'];
 		//         $vals['image_url'] =  str_replace(\Registry::$globals->doc_root, "", $vals['image_path']);
@@ -336,8 +343,8 @@ class Factory
 		}
 
 		// now add the tricky ones back in as derived values
-		$vals['content_path'] = $hed_obj->_file_path;
-		$vals['entity_path'] = dirname($hed_obj->_file_path);
+		$vals['content_path'] = $hed_obj->file_path;
+		$vals['entity_path'] = dirname($hed_obj->file_path);
 		$vals['featured_image'] = self::featured_image($hed_obj);
 		$vals['excerpt'] = $hed_obj->get_first_p('main_content');
 		$model = new Entry($vals);
@@ -381,18 +388,11 @@ class Factory
 		);
 		$vals = array();
 		foreach ($fields as $k => $t) {
-			$method = "get_".$t;
-			if (strtolower($k) == "country") {
-				$vals[$k] = Country::get_by_code($hed_obj->$method($k));
-			} else if (strtolower($k) == "trip") {
-				$vals[$k] = Trip::is_valid($hed_obj->$method($k));
-			} else {
-				$vals[$k] = $hed_obj->$method($k);
-			}
+			$vals[$k] = self::get_and_validate_field($hed_obj, $k, $t);
 		}
 		// now do the trickey ones.
-		$vals['content_path'] = $hed_obj->_file_path;
-		$vals['entity_path'] = dirname($hed_obj->_file_path);
+		$vals['content_path'] = $hed_obj->file_path;
+		$vals['entity_path'] = dirname($hed_obj->file_path);
 		$vals['featured_image'] = self::featured_image($hed_obj);
 		$vals['excerpt'] = $hed_obj->get_first_p('main_content');
 		$model = new Post($vals);

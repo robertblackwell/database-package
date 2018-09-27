@@ -1,7 +1,7 @@
 <?php
 namespace Database\Models;
 
-/*! 
+/*!
 * @ingroup   Models
 * A class a country or region. Outside US/Canada it represents a country. Inside US/Canada
 * it is a state or province.
@@ -10,8 +10,8 @@ namespace Database\Models;
 */
 class Country
 {
-    public $code;
-    public $name;
+	public $code;
+	public $name;
 	public static $country_code_table = [
 			"co"=>"Colombia",
 			"col"=>"Colombia",
@@ -51,29 +51,31 @@ class Country
 			"nd" => "North Dakota",
 			"sd" => "South Dakota"
 		];
-
-    public static function get_by_code($code)
-    {
-    	// print "<p>country code: $code </p>";
-    	if(isset(self::$country_code_table[strtolower($code)]))
-    	{
-    		return self::$country_code_table[strtolower($code)];
-    	}
-    	else
-    	{
-    		return $code;
-    		throw new \Exception("country code {$code} not known");
-    	}
-    }
-	/*!
+	/**
+	* Get a country full name by code, abbreviation or short name
+	* @param string $code Code, abbrev or shortname for a country.
+	* @return string If not found returns the $code.
+	*/
+	public static function get_by_code(string $code) : string
+	{
+		// print "<p>country code: $code </p>";
+		if (isset(self::$country_code_table[strtolower($code)])) {
+			return self::$country_code_table[strtolower($code)];
+		} else {
+			return $code;
+			throw new \Exception("country code {$code} not known");
+		}
+	}
+	/**
 	* A utility function that overcomes the fact that in some journal entries the country
 	* name field is provided in an abbreviated form. This function expands the abbreviation
 	* if appropriate otherwise returns the original country code as the full name.
-	* @param String $code - the abbreviated country name
-	* @return String the full non abbreviated name
+	* @param  string $code Code, abbrev or shortname.
+	* @return string The full non abbreviated name.
 	*/
-	private static function country_codep($code){
-		$countryCodes = Array(
+	private static function country_codep(string $code) : string
+	{
+		$countryCodes = array(
 			"Co"=>"Colombia",
 			"Col"=>"Colombia",
 			"Colo"=>"Colorado",
@@ -108,11 +110,18 @@ class Country
 		);
 		if (isset($countryCodes[$code]))
 			return $countryCodes[$code];
-		return NULL;
+		return null;
 	}
-    static public function look_up($country)
+	/**
+	* Looks up a country name or place name used in place of country name
+	* and returns a valid country name.
+	* @param string $country The name to lookup.
+	* @return string.
+	* @throws \Exception If $country not found.
+	*/
+	public static function look_up(string $country) : string
 	{
-		$validCountries = Array(
+		$validCountries = array(
 			"British Columbia"=>"Canada",
 			"Yukon"=>"Canada",
 			"Alberta"=>"Canada",
@@ -166,8 +175,4 @@ class Country
 			);
 		return $validCountries[$country];
 	}
-
 }
-
-
- ?>

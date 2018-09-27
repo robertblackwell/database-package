@@ -9,18 +9,17 @@ use \DOMDocument as DOMDocument;
 */
 class ExtendedDOMNode
 {
-	private $_node;
+	private $node;
 	/**
 	* create
 	* Creates a new ExtendedDOMNode from a standard DOMNode
-	* @param DOMNode $node The DOMNode to be wrapped.
-	* @return ExtendedDOMNode
+	* @param \DOMElement $node The DOMNode to be wrapped.
+	* @return \ExtendedDOMNode
 	*/
-	// public static function create(DOMNode $node) : ExtendedDOMNode
 	public static function create(\DOMElement $node) : ExtendedDOMNode
 	{
 		$obj = new ExtendedDOMNode();
-		$obj->_node = $node;
+		$obj->node = $node;
 		return $obj;
 	}
 	/**
@@ -47,7 +46,7 @@ class ExtendedDOMNode
 	public function fullHTML()
 	{
 		$doc = new DOMDocument();
-		$doc->appendChild($doc->importNode($this->_node, true));
+		$doc->appendChild($doc->importNode($this->node, true));
 		return $doc->saveHTML();
 	}
 	/**
@@ -58,7 +57,7 @@ class ExtendedDOMNode
 	public function innerHTML() : string
 	{
 		$doc = new DOMDocument();
-		foreach ($this->_node->childNodes as $child) {
+		foreach ($this->node->childNodes as $child) {
 			$doc->appendChild($doc->importNode($child, true));
 		}
 		return $doc->saveHTML();
@@ -72,11 +71,11 @@ class ExtendedDOMNode
 	public function appendChildFromHTML(string $tag, string $html) : DOMNode
 	{
 		//print "ExtendedDOMNode::appendChildFromHTML  ($tag  $html)\n";
-		$d = $this->_node->ownerDocument;
-		// var_dump($this->_node->ownerDocument);
+		$d = $this->node->ownerDocument;
+		// var_dump($this->node->ownerDocument);
 		$xd = ExtendedDOMDocument::create($d);
 		$n = $xd->createElementFromHTML($tag, $html);
-		$n = $this->_node->appendChild($n);
+		$n = $this->node->appendChild($n);
 		return $n;
 	}
 	/**
@@ -88,13 +87,13 @@ class ExtendedDOMNode
 	public function setInnerHTML(string $html)
 	{
 		if ($debug) print "ExtendedDOMNode::setInnerHTML  this= ". $this->innerHTML() ."  html: $html\n";
-		$newEl = ExtendedDOMDocument::create($this->_node->ownerDocument)->createElementFromHTML("div", $html);
-		$n = $this->_node;
+		$newEl = ExtendedDOMDocument::create($this->node->ownerDocument)->createElementFromHTML("div", $html);
+		$n = $this->node;
 		while ($n->hasChildNodes()) {
 			if (!($tmp = $n->removeChild($n->firstChild))) die("ExtendedDOMNode::setInnerHTML - remove failed");
 		}
 		foreach ($newEl->childNodes as $nChild) {
-			if (!($cn = $this->_node->appendChild($this->_node->ownerDocument->importNode($nChild->cloneNode(true)))))
+			if (!($cn = $this->node->appendChild($this->node->ownerDocument->importNode($nChild->cloneNode(true)))))
 				die("ExtendedDOMNode::setInnerHTML - append failed");
 		}
 	}
@@ -107,8 +106,8 @@ class ExtendedDOMNode
 	public function setOuterHTML(string $html) : void
 	{
 		if ($debug) print "ExtendedDOMNode::setInnerHTML  this= ". $this->innerHTML() ."  html: $html\n";
-		$newEl = ExtendedDOMDocument::create($this->_node->ownerDocument)->createElementFromHTML("div", $html);
-		$n = $this->_node;
+		$newEl = ExtendedDOMDocument::create($this->node->ownerDocument)->createElementFromHTML("div", $html);
+		$n = $this->node;
 		$p = $n->parentNode;
 		$d = $n->ownerDocument;
 		foreach ($newEl->childNodes as $nChild) {
@@ -134,7 +133,7 @@ class ExtendedDOMNode
 		if ($name == "outerHTML") {
 			$this->setOuterHTML($value);
 			return;
-		} else if ($name == "innerHTML") {
+		} elseif ($name == "innerHTML") {
 			$this->setInnerHTML($value);
 			return;
 		}
@@ -151,7 +150,7 @@ class ExtendedDOMNode
 		if ($debug) print "XXXXXXXXXXX__get called  name : $name \n";
 		if ($name == "outerHTML")
 			return $this->outerHTML();
-		else if ($name == "innerHTML")
+		elseif ($name == "innerHTML")
 			return $this->innerHTML();
 		die("ExtendedDOMNode get property $name unsupported");
 	}

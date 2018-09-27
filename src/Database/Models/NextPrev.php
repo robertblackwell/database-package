@@ -27,9 +27,9 @@ use \Database\SqlObject;
 class NextPrev
 {
 	/**
-	* @var Entry|Post|Article $_obj The object for which this class is finding the next or prev.
+	* @var Entry|Post|Article $obj The object for which this class is finding the next or prev.
 	*/
-	private $_obj;
+	private $obj;
 
 	private $order_by_asc_with_limit = " order by published_date asc, slug asc limit 0, 1  ";
 	private $join_order_by_asc_with_limit = " order by a.published_date asc, a.slug asc limit 0, 1  ";
@@ -249,10 +249,10 @@ class NextPrev
 				if (array_key_exists('category', $criteria)) {
 					$category = $criteria['category'];
 					return $this->next_within_category($category, $class);
-				} else if (array_key_exists('country', $criteria)) {
+				} elseif (array_key_exists('country', $criteria)) {
 					$country = $criteria['country'];
 					return $this->next_within_country($country, $class);
-				} else if (array_key_exists('months', $criteria)) {
+				} elseif (array_key_exists('months', $criteria)) {
 					$month = $criteria['months'];
 					return $this->next_within_month($month, $class);
 				} else {
@@ -286,10 +286,10 @@ class NextPrev
 				if (array_key_exists('category', $criteria)) {
 					$category = $criteria['category'];
 					return $this->prev_within_category($category, $class);
-				} else if (array_key_exists('country', $criteria)) {
+				} elseif (array_key_exists('country', $criteria)) {
 					$country = $criteria['country'];
 					return $this->prev_within_country($country, $class);
-				} else if (array_key_exists('months', $criteria)) {
+				} elseif (array_key_exists('months', $criteria)) {
 					$month = $criteria['months'];
 					return $this->prev_within_month($month, $class);
 				} else {
