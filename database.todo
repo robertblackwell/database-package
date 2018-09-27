@@ -1,0 +1,7 @@
+Fix unit tests that do not work:
+Remobe HEDFactory from all code and replace with a renamed Skeleton:
+  delete HEDFactory
+  rename Skeleton to HED\Factory
+Try a pilot of a revised Model approach with explicit properties:
+Try using @property to see if phpstorm uses this in autocomplete:
+Start using this branch in test_whiteacorn:
