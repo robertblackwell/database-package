@@ -26,11 +26,11 @@ class test_locator extends LocalTestcase
 	    Trace::function_entry();
 		$locator = Locator::get_instance();
 		$d = $locator->item_dir('rtw', 'slug');
-		$this->assertEqual($d, Registry::$globals->package_dir."/tests/test_data/data/rtw/content/slug");
+		$this->assertEqual($d, UnitTestRegistry::$package_dir."/tests/test_data/data/rtw/content/slug");
 		$d = $locator->item_relative_dir('rtw', 'slug');
 		$this->assertEqual($d, "/data/rtw/content/slug");
 		$d = $locator->item_filepath('rtw', 'slug');
-		$this->assertEqual($d, Registry::$globals->package_dir."/tests/test_data/data/rtw/content/slug/content.php");
+		$this->assertEqual($d, UnitTestRegistry::$package_dir."/tests/test_data/data/rtw/content/slug/content.php");
 	    Trace::function_exit();
 		
 	}
@@ -52,11 +52,11 @@ class test_locator extends LocalTestcase
 	    Trace::function_entry();
 		$locator = Locator::get_instance();
 		$d = $locator->album_dir('rtw', 'slug');
-		$this->assertEqual($d, Registry::$globals->package_dir."/tests/test_data/data/rtw/photos/galleries/slug");
+		$this->assertEqual($d, UnitTestRegistry::$package_dir."/tests/test_data/data/rtw/photos/galleries/slug");
 		$d = $locator->album_relative_dir('rtw', 'slug');
 		$this->assertEqual($d, "/data/rtw/photos/galleries/slug");
 		$d = $locator->album_filepath('rtw', 'slug');
-		$this->assertEqual($d, Registry::$globals->package_dir."/tests/test_data/data/rtw/photos/galleries/slug/content.php");
+		$this->assertEqual($d, UnitTestRegistry::$package_dir."/tests/test_data/data/rtw/photos/galleries/slug/content.php");
 	    Trace::function_exit();
 		
 	}

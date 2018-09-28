@@ -2,116 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c80bae66-2ae6-4cc0-b963-e040b502919e" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/Database/Models/Base/xModelBase.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/Database/Models/Base/xRowBase.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/Database/Models/Base/xRowObject.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/tags" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/tests/unit_tests/all_test/index.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/tests/unit_tests/banner copy/correct_content_1.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/tests/unit_tests/banner copy/correct_content_2.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/tests/unit_tests/banner copy/index.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/tests/unit_tests/banner copy/output1/content_1.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/tests/unit_tests/banner copy/output2/content_2.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/tests/unit_tests/connect_db/connect_test.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/tests/unit_tests/connect_db/meta_test.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/tests/unit_tests/connect_db/query_test.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/tests/unit_tests/connect_db/select_test.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/tests/unit_tests/create/index.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/tests/unit_tests/create_location/correct_content.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/tests/unit_tests/create_location/index.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/tests/unit_tests/create_location/output/content.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/tests/unit_tests/create_new_entry/correct_content.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/tests/unit_tests/create_new_entry/index.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/tests/unit_tests/create_new_entry/output/content.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/tests/unit_tests/db/index.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/tests/unit_tests/dictionary/index.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/tests/unit_tests/hed/factory_test.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/tests/unit_tests/hed/fi_1_test.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/tests/unit_tests/hed/fi_3_test.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/tests/unit_tests/hed/fi_4_test.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/tests/unit_tests/hed/fi_test.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/tests/unit_tests/locator/index.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/tests/unit_tests/models/albums/index.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/tests/unit_tests/models/article/index.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/tests/unit_tests/models/article/title.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/tests/unit_tests/models/article_title/title.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/tests/unit_tests/models/banner/index.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/tests/unit_tests/models/editorial/index.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/tests/unit_tests/models/entry/index.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/tests/unit_tests/models/entry_country/index.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/tests/unit_tests/models/find_items/index.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/tests/unit_tests/models/get_by_slug/index.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/tests/unit_tests/models/locations/index.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/tests/unit_tests/models/post/index.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/tests/unit_tests/models/postmonths/index.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/tests/unit_tests/paths/index.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/tests/unit_tests/utest/first_test.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/tests/unit_tests/utest/index.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/tests/unit_tests/utest/second_test.php" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Makefile" afterPath="$PROJECT_DIR$/Makefile" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Database/HED/ExtendedDOMDocument.php" afterPath="$PROJECT_DIR$/src/Database/HED/ExtendedDOMDocument.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Database/HED/ExtendedDOMNode.php" afterPath="$PROJECT_DIR$/src/Database/HED/ExtendedDOMNode.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Database/HED/HEDFactory.php" afterPath="$PROJECT_DIR$/src/Database/HED/HEDFactory.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Database/HED/HEDObject.php" afterPath="$PROJECT_DIR$/src/Database/HED/HEDObject.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Database/HED/Skeleton.php" afterPath="$PROJECT_DIR$/src/Database/HED/Skeleton.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Database/Models/Album.php" afterPath="$PROJECT_DIR$/src/Database/Models/Album.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Database/Models/Article.php" afterPath="$PROJECT_DIR$/src/Database/Models/Article.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Database/Models/ArticleTitle.php" afterPath="$PROJECT_DIR$/src/Database/Models/ArticleTitle.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Database/Models/Base/Model.php" afterPath="$PROJECT_DIR$/src/Database/Models/Base/Model.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Database/Models/Base/Row.php" afterPath="$PROJECT_DIR$/src/Database/Models/Base/Row.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Database/Models/CategorizedItem.php" afterPath="$PROJECT_DIR$/src/Database/Models/CategorizedItem.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Database/Models/Category.php" afterPath="$PROJECT_DIR$/src/Database/Models/Category.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Database/Models/Country.php" afterPath="$PROJECT_DIR$/src/Database/Models/Country.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Database/Models/Editorial.php" afterPath="$PROJECT_DIR$/src/Database/Models/Editorial.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Database/Models/Entry.php" afterPath="$PROJECT_DIR$/src/Database/Models/Entry.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Database/Models/EntryCountry.php" afterPath="$PROJECT_DIR$/src/Database/Models/EntryCountry.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Database/Models/EntryLocation.php" afterPath="$PROJECT_DIR$/src/Database/Models/EntryLocation.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Database/Models/Factory.php" afterPath="$PROJECT_DIR$/src/Database/Models/Factory.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Database/Models/Item.php" afterPath="$PROJECT_DIR$/src/Database/Models/Item.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Database/Models/ItemBase.php" afterPath="$PROJECT_DIR$/src/Database/Models/ItemBase.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Database/Models/NextPrev.php" afterPath="$PROJECT_DIR$/src/Database/Models/NextPrev.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Database/Models/Post.php" afterPath="$PROJECT_DIR$/src/Database/Models/Post.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Database/Models/PostMonth.php" afterPath="$PROJECT_DIR$/src/Database/Models/PostMonth.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Database/Models/Trip.php" afterPath="$PROJECT_DIR$/src/Database/Models/Trip.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Database/Models/Vehicle.php" afterPath="$PROJECT_DIR$/src/Database/Models/Vehicle.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Database/SqlObject.php" afterPath="$PROJECT_DIR$/src/Database/SqlObject.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/include/header.php" afterPath="$PROJECT_DIR$/tests/include/header.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/litetest.config.php" afterPath="$PROJECT_DIR$/tests/litetest.config.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/makefile" afterPath="$PROJECT_DIR$/tests/makefile" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/unit_tests/db_pdo/index.php" afterPath="$PROJECT_DIR$/tests/unit_tests/db_pdo/index.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/unit_tests/hed/data/entry_1/content.php" afterPath="$PROJECT_DIR$/tests/unit_tests/hed/data/entry_1/content.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/unit_tests/hed/data/featured_image_entry_1/content.php" afterPath="$PROJECT_DIR$/tests/unit_tests/hed/data/featured_image_entry_1/content.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/unit_tests/hed/data/featured_image_entry_2/content.php" afterPath="$PROJECT_DIR$/tests/unit_tests/hed/data/featured_image_entry_2/content.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/unit_tests/hed/data/featured_image_entry_3/content.php" afterPath="$PROJECT_DIR$/tests/unit_tests/hed/data/featured_image_entry_3/content.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/unit_tests/hed/data/featured_image_entry_4/content.php" afterPath="$PROJECT_DIR$/tests/unit_tests/hed/data/featured_image_entry_4/content.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/unit_tests/hed/data/test_album/content.php" afterPath="$PROJECT_DIR$/tests/unit_tests/hed/data/test_album/content.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/unit_tests/hed/data/test_entry/content.php" afterPath="$PROJECT_DIR$/tests/unit_tests/hed/data/test_entry/content.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/unit_tests/hed/data/test_post/content.php" afterPath="$PROJECT_DIR$/tests/unit_tests/hed/data/test_post/content.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/unit_tests/hed/hed_album_test.php" afterPath="$PROJECT_DIR$/tests/unit_tests/hed/hed_album_test.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/unit_tests/hed/hed_location_test.php" afterPath="$PROJECT_DIR$/tests/unit_tests/hed/hed_location_test.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/unit_tests/hed/hed_test.php" afterPath="$PROJECT_DIR$/tests/unit_tests/hed/hed_test.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/unit_tests/import/album_test.php" afterPath="$PROJECT_DIR$/tests/unit_tests/import/album_test.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/unit_tests/import/article_test.php" afterPath="$PROJECT_DIR$/tests/unit_tests/import/article_test.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/unit_tests/import/entry_test.php" afterPath="$PROJECT_DIR$/tests/unit_tests/import/entry_test.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/unit_tests/import/location.php" afterPath="$PROJECT_DIR$/tests/unit_tests/import/location.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/unit_tests/import/post_test.php" afterPath="$PROJECT_DIR$/tests/unit_tests/import/post_test.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/unit_tests/import/util_test.php" afterPath="$PROJECT_DIR$/tests/unit_tests/import/util_test.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/unit_tests/models/banner/correct_content_1.php" afterPath="$PROJECT_DIR$/tests/unit_tests/models/banner/correct_content_1.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/unit_tests/models/banner/output1/content_1.php" afterPath="$PROJECT_DIR$/tests/unit_tests/models/banner/output1/content_1.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/unit_tests/models/categorized_items/add_remove_test.php" afterPath="$PROJECT_DIR$/tests/unit_tests/models/categorized_items/add_remove_test.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/unit_tests/models/categorized_items/find_test.php" afterPath="$PROJECT_DIR$/tests/unit_tests/models/categorized_items/find_test.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/unit_tests/models/category/add_test.php" afterPath="$PROJECT_DIR$/tests/unit_tests/models/category/add_test.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/unit_tests/models/category/find_test.php" afterPath="$PROJECT_DIR$/tests/unit_tests/models/category/find_test.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/unit_tests/models/post/correct_content_1.php" afterPath="$PROJECT_DIR$/tests/unit_tests/models/post/correct_content_1.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/unit_tests/models/post/output1/content_1.php" afterPath="$PROJECT_DIR$/tests/unit_tests/models/post/output1/content_1.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/unit_tests/nextprev/category_test.php" afterPath="$PROJECT_DIR$/tests/unit_tests/nextprev/category_test.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/unit_tests/nextprev/country_test.php" afterPath="$PROJECT_DIR$/tests/unit_tests/nextprev/country_test.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/unit_tests/nextprev/months_test.php" afterPath="$PROJECT_DIR$/tests/unit_tests/nextprev/months_test.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/unit_tests/nextprev/none_test.php" afterPath="$PROJECT_DIR$/tests/unit_tests/nextprev/none_test.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/unit_tests/utf8/index.php" afterPath="$PROJECT_DIR$/tests/unit_tests/utf8/index.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/unit_tests/utility/create_tables.php" afterPath="$PROJECT_DIR$/tests/unit_tests/utility/create_tables.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/unit_tests/utility/load_tables.php" afterPath="$PROJECT_DIR$/tests/unit_tests/utility/load_tables.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/unit_tests/locator/locator_test.php" afterPath="$PROJECT_DIR$/tests/unit_tests/locator/locator_test.php" />
     </list>
     <ignored path="database-package.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -137,18 +30,36 @@
         <entry file="file://$PROJECT_DIR$/tests/include/header.php">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="-8.375">
-              <caret line="43" column="0" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
+              <caret line="73" column="0" selection-start-line="73" selection-start-column="0" selection-end-line="73" selection-end-column="0" />
+              <folding>
+                <marker date="1538105888385" expanded="true" signature="3130:3133" placeholder="..." />
+                <marker date="1538105888385" expanded="true" signature="3158:3174" placeholder="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Row.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Database/Models/Base/Row.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-12.0">
+              <caret line="82" column="0" selection-start-line="82" selection-start-column="0" selection-end-line="82" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Row.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/Database/Models/Base/Row.php">
+      <file leaf-file-name="locator_test.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/tests/unit_tests/locator/locator_test.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5987526">
-              <caret line="82" column="0" selection-start-line="82" selection-start-column="0" selection-end-line="82" selection-end-column="0" />
-              <folding />
+            <state vertical-scroll-proportion="0.25155926">
+              <caret line="58" column="50" selection-start-line="58" selection-start-column="50" selection-end-line="58" selection-end-column="50" />
+              <folding>
+                <element signature="n#test_1#0;n#test_locator#0;n#!!top" expanded="true" />
+                <element signature="n#test_2#0;n#test_locator#0;n#!!top" expanded="true" />
+                <element signature="n#test_3#0;n#test_locator#0;n#!!top" expanded="true" />
+                <element signature="n#test_5#0;n#test_locator#0;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -186,6 +97,7 @@
         <option value="$PROJECT_DIR$/src/Database/Models/Factory.php" />
         <option value="$PROJECT_DIR$/tests/unit_tests/models/get_by_slug/index.php" />
         <option value="$PROJECT_DIR$/src/Database/Models/Base/Row.php" />
+        <option value="$PROJECT_DIR$/tests/unit_tests/locator/locator_test.php" />
       </list>
     </option>
   </component>
@@ -297,7 +209,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="vendor" />
+              <option name="myItemId" value="tests" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -311,33 +223,11 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="vendor" />
+              <option name="myItemId" value="tests" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="robertblackwell" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="database-package" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="database-package" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="vendor" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="robertblackwell" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="litetest" />
+              <option name="myItemId" value="unit_tests" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -351,55 +241,15 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
+              <option name="myItemId" value="tests" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Database" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="database-package" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="database-package" />
+              <option name="myItemId" value="unit_tests" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Database" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Models" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="database-package" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="database-package" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Database" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="HED" />
+              <option name="myItemId" value="locator" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -482,7 +332,7 @@
       <envs />
       <method />
     </configuration>
-    <configuration default="false" name="phpmodels_post" type="PhpLocalRunConfigurationType" factoryName="PHP Console" path="$PROJECT_DIR$/vendor/bin/litetest" scriptParameters="--bootstrap-file=&quot;include/bootstrap.php&quot; unit_tests/models/post/index.php">
+    <configuration default="false" name="phpmodels_post" type="PhpLocalRunConfigurationType" factoryName="PHP Console" path="$PROJECT_DIR$/vendor/bin/litetest" scriptParameters="--bootstrap-file=&quot;include/bootstrap.php&quot; unit_tests/locator/locator_test.php">
       <CommandLine workingDirectory="$PROJECT_DIR$/tests" />
       <option name="workingDirectory" value="$PROJECT_DIR$/tests" />
       <method />
@@ -520,14 +370,14 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="219" y="22" width="1701" height="1003" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2145871" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2145871" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3990981" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32807216" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -555,10 +405,37 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/tests/unit_tests/locator/locator_test.php</url>
+          <line>65</line>
+          <option name="timeStamp" value="55" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/tests/unit_tests/locator/locator_test.php</url>
+          <line>52</line>
+          <option name="timeStamp" value="56" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/tests/unit_tests/locator/locator_test.php</url>
+          <line>39</line>
+          <option name="timeStamp" value="57" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/tests/unit_tests/locator/locator_test.php</url>
+          <line>26</line>
+          <option name="timeStamp" value="58" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/tests/unit_tests/locator/locator_test.php</url>
+          <line>17</line>
+          <option name="timeStamp" value="59" />
+        </line-breakpoint>
+      </breakpoints>
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="55" />
+      <option name="time" value="60" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -862,9 +739,9 @@
         <state vertical-scroll-proportion="-6.6666665">
           <caret line="175" column="0" selection-start-line="175" selection-start-column="0" selection-end-line="175" selection-end-column="0" />
           <folding>
-            <element signature="e#6532#7376#0#PHP" expanded="true" />
-            <element signature="e#10473#11271#0#PHP" expanded="true" />
-            <element signature="e#12762#13030#0#PHP" expanded="true" />
+            <element signature="e#6532#7448#0#PHP" expanded="true" />
+            <element signature="e#10322#11120#0#PHP" expanded="true" />
+            <element signature="e#12611#12879#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -932,7 +809,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Database/Models/Base/Row.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5987526">
+        <state vertical-scroll-proportion="-12.0">
           <caret line="82" column="0" selection-start-line="82" selection-start-column="0" selection-end-line="82" selection-end-column="0" />
           <folding />
         </state>
@@ -941,8 +818,24 @@
     <entry file="file://$PROJECT_DIR$/tests/include/header.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-8.375">
-          <caret line="43" column="0" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
-          <folding />
+          <caret line="73" column="0" selection-start-line="73" selection-start-column="0" selection-end-line="73" selection-end-column="0" />
+          <folding>
+            <marker date="1538105888385" expanded="true" signature="3130:3133" placeholder="..." />
+            <marker date="1538105888385" expanded="true" signature="3158:3174" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/unit_tests/locator/locator_test.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.25155926">
+          <caret line="58" column="50" selection-start-line="58" selection-start-column="50" selection-end-line="58" selection-end-column="50" />
+          <folding>
+            <element signature="n#test_1#0;n#test_locator#0;n#!!top" expanded="true" />
+            <element signature="n#test_2#0;n#test_locator#0;n#!!top" expanded="true" />
+            <element signature="n#test_3#0;n#test_locator#0;n#!!top" expanded="true" />
+            <element signature="n#test_5#0;n#test_locator#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

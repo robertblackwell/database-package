@@ -10,7 +10,7 @@ TEST_WHITEACORN_DATA=$(HOME)/Sites/test_whiteacorn/data
 #
 # test_local_ping:
 # 	$(LITETEST) Tests/ApiCalls/PingTest.php
-all: db hed models nextprev #locator import paths utility
+all: db hed models nextprev locator  #import paths utility
 
 db:
 	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/db/connect_test.php
@@ -66,6 +66,9 @@ post:
 
 postmonths:
 	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/models/postmonths/post_month_test.php
+
+locator:
+	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/locator/locator_test.php
 
 	
 nextprev:
