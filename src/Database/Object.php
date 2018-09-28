@@ -71,31 +71,6 @@ class Object
 		Models\Base\Model::$sql = self::$sql;
 		Models\Base\Model::$locator = self::$locator;
 	}
-	
-	/**
-	 * Allows a configuration array to be set from the global Registry object
-	 * @deprecated
-	 * @param \ConfigObject $config_object The config object all completed ready to go.
-	 * @return void
-	 */
-	public static function setConfig(\ConfigObject $config_object)
-	{
-		$config = [];
-		$config['sql'] = [
-				'db_name'=>Registry::$globals->db['db_name'],
-				'db_user'=>Registry::$globals->db['db_user'],
-				'db_host'=>Registry::$globals->db['db_host'],
-				'db_passwd'=>Registry::$globals->db['db_passwd'],
-				];
-		$config['hed'] = [
-				'data_root'=>Registry::$globals->data_root,
-				'doc_root'=>Registry::$globals->doc_root,
-				'url_data_root'=>'dataroot',
-				'full_url_root'=>Registry::$globals->url_root,
-				'url_root'=>Registry::$globals->url_root,
-				];
-		self::init($config);
-	}
 	/**
 	* Gets the singleton instance of a Database\Object class
 	*

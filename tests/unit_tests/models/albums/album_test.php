@@ -2,6 +2,7 @@
 
 use Database\Object as Db;
 use Unittests\LocalTestcase;
+use Database\Locator;
 
 class AlbumTest extends LocalTestcase
 {
@@ -44,7 +45,19 @@ class AlbumTest extends LocalTestcase
 		// // $this->assertEqual($result->mascot_path, "120706");
 
 		$this->assertNotEqual($result->mascot_path, null);
+		// print "mascot path {$result->mascot_path}\n";
+		$this->assertEqual(
+			$result->mascot_path,
+			Locator::get_instance()->album_mascot_path($this->test_trip, $this->test_slug)
+		);
+
 		$this->assertNotEqual($result->mascot_url, null);
+		// print "mascot path {$result->mascot_url}\n";
+		$this->assertEqual(
+			$result->mascot_url,
+			Locator::get_instance()->album_mascot_relative_url($this->test_trip, $this->test_slug)
+		);
+		
 		$this->assertNotEqual($result->content_path, null);
 		$this->assertNotEqual($result->entity_path, null);
 		// print "<p>mascot_path {$result->mascot_path}</p>";

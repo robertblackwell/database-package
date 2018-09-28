@@ -200,6 +200,9 @@ class Factory
 		$fields = array_diff_key($fields1, array("file_path" => "", "album_path" => ""));
 		//print_r($fields);
 		$vals = array();
+		$trip = $hed_obj->trip;
+		$slug = $hed_obj->slug;
+
 		foreach ($fields as $k => $t) {
 			// this bypasses HEDObject majik __get method
 			$method = "get_".$t;
@@ -208,8 +211,10 @@ class Factory
 		$fp = $hed_obj->file_path;
 		$vals['content_path'] = $fp;
 		$vals['entity_path'] = (is_null($fp)) ? null : $hed_obj->file_path;
-		$vals['mascot_path'] = $vals['entity_path']."/mascot.jpg";
-		$vals['mascot_url'] =  str_replace(\Registry::$globals->doc_root, "", $vals['mascot_path']);
+
+		$vals['mascot_path'] = Locator::get_instance()->album_mascot_path($trip, $slug);
+		$vals['mascot_url'] = Locator::get_instance()->album_mascot_relative_url($trip, $slug);
+
 		//print_r($vals);
 		$x = new Album($vals);
 		//var_dump($x);
@@ -302,14 +307,7 @@ class Factory
 		}
 		$vals['content_path'] = $hed_obj->file_path;
 		$vals['entity_path'] = dirname($hed_obj->file_path);
-		
-		//         $vals['image_path'] = $vals['entity_path']."/".$vals['image'];
-		//         $vals['image_url'] =  str_replace(\Registry::$globals->doc_root, "", $vals['image_path']);
-		//
 		// $vals['banner_folder_path'] = $locator->banner_dir($vals['trip'], $vals['banner']);
-		
-		//print_r($vals);
-		//exit();
 		$x = new Editorial($vals);
 		//var_dump($x);
 		//print __METHOD__."\n";

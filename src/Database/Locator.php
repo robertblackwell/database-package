@@ -54,7 +54,7 @@ class Locator
 	*  allocate the singleton instance of this class
 	*
 	*  @param array $configuration An array configuration values with
-	*								keys of 'doc_root', 'data_root', 'full_url', 'url_root'.
+	*								keys of 'doc_root', 'data_root', 'full_url_root', 'url_root'.
 	* @return void
 	*/
 	public static function init(array $configuration) //: \void
@@ -395,7 +395,28 @@ class Locator
 		$ret = $this->album_root($trip)."/$slug/".$this->album_filename();
 		return $ret;
 	}
-
+	/**
+	* Get the full path of an album mascot image.
+	* @param string $trip The trip id.
+	* @param string $slug The unique id for the album.
+	* @return string A site relative URL for the mascot image.
+	*/
+	public function album_mascot_path(string $trip, string $slug) : string
+	{
+		$url = $this->album_dir($trip, $slug)."/mascot.jpg";
+		return $url;
+	}
+	/**
+	* Get the url of an album mascot image.
+	* @param string $trip The trip id.
+	* @param string $slug The unique id for the album.
+	* @return string A site relative URL for the mascot image.
+	*/
+	public function album_mascot_relative_url(string $trip, string $slug) : string
+	{
+		$url = $this->album_relative_dir($trip, $slug)."/mascot.jpg";
+		return $url;
+	}
 	/**
 	* Tests if a album exists for a trip/slug
 	* @param string $trip A trip code.

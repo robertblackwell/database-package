@@ -6,18 +6,10 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    'Banner\\Object' => $baseDir . '/tests/Mock/Banner/Object.php',
-    'ConfigObject' => $baseDir . '/tests/mock/Classes/ConfigObject.php',
-    'Entry' => $baseDir . '/tests/mock/Classes/Entry.php',
-    'ExtendedDOMDocument' => $baseDir . '/tests/mock/Classes/ExtendedDOMDocument.php',
-    'ExtendedDOMNode' => $baseDir . '/tests/mock/Classes/ExtendedDOMNode.php',
-    'ExtendedString' => $baseDir . '/tests/mock/Classes/ExtendedString.php',
     'File_Iterator' => $vendorDir . '/phpunit/php-file-iterator/src/Iterator.php',
     'File_Iterator_Facade' => $vendorDir . '/phpunit/php-file-iterator/src/Facade.php',
     'File_Iterator_Factory' => $vendorDir . '/phpunit/php-file-iterator/src/Factory.php',
     'GPSCoordinate' => $vendorDir . '/robertblackwell/gpscoordinates/src/GPSCoordinate.php',
-    'Journal' => $baseDir . '/tests/mock/Classes/Journal.php',
-    'Model' => $baseDir . '/tests/mock/Classes/Model.php',
     'PHPUnit\\Exception' => $vendorDir . '/phpunit/phpunit/src/Exception.php',
     'PHPUnit\\Framework\\Assert' => $vendorDir . '/phpunit/phpunit/src/Framework/Assert.php',
     'PHPUnit\\Framework\\AssertionFailedError' => $vendorDir . '/phpunit/phpunit/src/Framework/AssertionFailedError.php',
@@ -456,7 +448,6 @@ return array(
     'PharIo\\Version\\VersionConstraintParser' => $vendorDir . '/phar-io/version/src/VersionConstraintParser.php',
     'PharIo\\Version\\VersionConstraintValue' => $vendorDir . '/phar-io/version/src/VersionConstraintValue.php',
     'PharIo\\Version\\VersionNumber' => $vendorDir . '/phar-io/version/src/VersionNumber.php',
-    'Registry' => $baseDir . '/tests/mock/Framework/Registry.php',
     'SebastianBergmann\\CodeCoverage\\CodeCoverage' => $vendorDir . '/phpunit/php-code-coverage/src/CodeCoverage.php',
     'SebastianBergmann\\CodeCoverage\\CoveredCodeNotExecutedException' => $vendorDir . '/phpunit/php-code-coverage/src/Exception/CoveredCodeNotExecutedException.php',
     'SebastianBergmann\\CodeCoverage\\Driver\\Driver' => $vendorDir . '/phpunit/php-code-coverage/src/Driver/Driver.php',
@@ -558,5 +549,4 @@ return array(
     'TheSeer\\Tokenizer\\TokenCollectionException' => $vendorDir . '/theseer/tokenizer/src/TokenCollectionException.php',
     'TheSeer\\Tokenizer\\Tokenizer' => $vendorDir . '/theseer/tokenizer/src/Tokenizer.php',
     'TheSeer\\Tokenizer\\XMLSerializer' => $vendorDir . '/theseer/tokenizer/src/XMLSerializer.php',
-    'Trips' => $baseDir . '/tests/mock/Classes/Trips.php',
 );

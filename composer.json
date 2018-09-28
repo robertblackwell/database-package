@@ -32,8 +32,6 @@
         "psr-0": {
             "Database": "src/"
         },
-        "classmap":["tests/mock/Framework", 
-					"tests/Mock/Banner",
-                    "tests/mock/Classes"]
+        "classmap":[]
     }
 }

@@ -8,28 +8,26 @@ error_reporting(E_ERROR | E_WARNING | E_PARSE | E_NOTICE);
 $loader = require(dirname(dirname(dirname(__FILE__)))."/vendor/autoload.php");
 require_once dirname(__FILE__)."/LocalTestcase.php";
 
-// Set up a mock Registry
-Registry::$globals = new stdClass;
-Registry::$globals->doc_root = dirname(dirname(__FILE__));
-Registry::$globals->package_dir = dirname(dirname(dirname(__FILE__))); // The top level dir of the package
 
 global $config;
-
-$config = array(
-	'sql'=>array(
-		'db_name'=>"database_package_test_db",
-		'db_user'=>"root",
-		'db_host'=>"localhost",
-		'db_passwd'=>"wara2074",
-	),
-	'hed'=>array(
-		'data_root'=>Registry::$globals->package_dir."/tests/test_data/data",
-		'doc_root'=>Registry::$globals->package_dir."/tests/test_data",
-		'full_url_root'=>"http:/www.test_whiteacorn/data",
-		'url_root'=>"/data",
-	)
-);
-
+{
+	$doc_root = dirname(dirname(__FILE__));
+	$package_dir = dirname(dirname(dirname(__FILE__))); // The top level dir of the package
+	$config = [
+		'sql'=>[
+			'db_name'=>"database_package_test_db",
+			'db_user'=>"root",
+			'db_host'=>"localhost",
+			'db_passwd'=>"wara2074",
+		],
+		'hed'=>[
+			'data_root'=>$package_dir."/tests/test_data/data",
+			'doc_root'=>$package_dir."/tests/test_data",
+			'full_url_root'=>"http:/www.test_whiteacorn/data",
+			'url_root'=>"/data",
+		]
+	];
+}
 
 class DbPreloader{
  
