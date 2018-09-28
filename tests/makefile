@@ -13,18 +13,20 @@ TEST_WHITEACORN_DATA=$(HOME)/Sites/test_whiteacorn/data
 all: db hed models nextprev locator  #import paths utility
 
 db:
-	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/db/connect_test.php
-	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/db/meta_test.php
-	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/db/query_test.php
-	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/db/select_test.php
+	$(LITETEST) --bootstrap-file="include/bootstrap.php" \
+	unit_tests/db/connect_test.php \
+	unit_tests/db/meta_test.php \
+	unit_tests/db/query_test.php \
+	unit_tests/db/select_test.php
 
 models: article article_title album banner \
  category categorized_item editorial \
  entry entry_country find get_by_slug locations post postmonths	
 
 article:
-	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/models/article/find_test.php
-	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/models/article/title_test.php
+	$(LITETEST) --bootstrap-file="include/bootstrap.php" \
+		unit_tests/models/article/find_test.php \
+		unit_tests/models/article/title_test.php
 
 article_title:
 	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/models/article_title/title_test.php
@@ -36,12 +38,14 @@ banner:
 	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/models/banner/banner_test.php
 
 category:
-	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/models/category/add_test.php
-	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/models/category/find_test.php
+	$(LITETEST) --bootstrap-file="include/bootstrap.php" \
+		unit_tests/models/category/add_test.php \
+		unit_tests/models/category/find_test.php
 
 categorized_item:	
-	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/models/categorized_items/find_test.php
-	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/models/categorized_items/add_remove_test.php
+	$(LITETEST) --bootstrap-file="include/bootstrap.php" \
+		unit_tests/models/categorized_items/find_test.php \
+		unit_tests/models/categorized_items/add_remove_test.php
 
 editorial:
 	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/models/editorial/editorial_test.php
@@ -72,10 +76,11 @@ locator:
 
 	
 nextprev:
-	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/nextprev/category_test.php
-	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/nextprev/country_test.php
-	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/nextprev/months_test.php
-	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/nextprev/none_test.php
+	$(LITETEST) --bootstrap-file="include/bootstrap.php" \
+		unit_tests/nextprev/category_test.php \
+		unit_tests/nextprev/country_test.php \
+		unit_tests/nextprev/months_test.php \
+		unit_tests/nextprev/none_test.php
 
 pdo:
 	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/db_pdo/index.php
@@ -88,10 +93,11 @@ cats:
 	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/find_category/find_test.php
 
 hed:
-	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/hed/hed_factory_test.php
-	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/hed/hed_album_test.php
-	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/hed/hed_location_test.php
-	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/hed/hed_test.php
+	$(LITETEST) --bootstrap-file="include/bootstrap.php" \
+ 		unit_tests/hed/hed_factory_test.php \
+ 		unit_tests/hed/hed_album_test.php \
+ 		unit_tests/hed/hed_location_test.php \
+ 		unit_tests/hed/hed_test.php
 
 import:
 	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/import/util_test.php
@@ -100,8 +106,9 @@ paths:
 	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/paths/path_tests.php
 
 utility:
-	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/utility/create_tables.php
-	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/utility/load_tables.php
+	$(LITETEST) --bootstrap-file="include/bootstrap.php" \
+		unit_tests/utility/create_tables.php \
+		unit_tests/utility/load_tables.php
 
 prepare_test_data:
 	@echo $(TEST_WHITEACORN_DATA)
