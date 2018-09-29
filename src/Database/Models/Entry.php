@@ -2,9 +2,39 @@
 namespace Database\Models;
 
 /**
-** This class represents a journal entry
-**
-** @ingroup Models
+* This class represents a journal entry
+*
+*
+* Magic properties
+*
+* @property string $version
+* @property string $type
+* @property string $trip
+* @property string $vehicle
+* @property string $slug
+* @property string $status
+* @property string $creation_date
+* @property string $published_date,
+* @property string $last_modified_date
+*
+* @property string $miles
+* @property string $odometer
+* @property string $day_number
+* @property string $place
+* @property string $country
+* @property string $latitude
+* @property string $longitude
+*
+* @property string $featured_image
+* @property string $title
+* @property string $abstract
+* @property string $excerpt
+* @property string $main_content
+*
+* @property string $camping
+* @property string $border
+* @property string $has_camping
+* @property string $has_border
 */
 class Entry extends ItemBase
 {

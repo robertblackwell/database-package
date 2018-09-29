@@ -4,10 +4,21 @@ namespace Database\Models;
 /**
 * This class provides a view of the my_items table that returns all the titles of items of type "article".
 *
-* @ingroup Models
+* @property string $trip
+* @property string $slug
+* @property string $title
+* @property string $country
 */
 class ArticleTitle extends Base\Model
 {
+	public static $table_name = "my_items";
+	public static $field_names = [
+		"trip"    =>"text",
+		"slug"    => "text",
+		"title"   => "text",
+		"country" => "text"
+	];
+
 	// var year, month - see DAEntryMonth for confirmation of the attribute names
 	/**
 	* Constructor.
@@ -15,6 +26,8 @@ class ArticleTitle extends Base\Model
 	*/
 	public function __construct(array $obj)
 	{
+		$this->vo_fields = self::$field_names;
+		$this->table = self::$table_name;
 		//print "<p>".__METHOD__."</p>";
 		//var_dump($obj);
 		parent::__construct($obj);

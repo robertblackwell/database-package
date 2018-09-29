@@ -1,9 +1,14 @@
 <?php
 namespace Database\Models;
 
-/*!
+/**
 ** @ingroup Models
 * This class represents a view of the items table that allows selection of a set of items by category
+*
+* @property string $trip
+* @property string $category
+* @property string $item_slug
+*
 */
 class CategorizedItem extends Base\Model
 {

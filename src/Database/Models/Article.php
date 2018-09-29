@@ -1,6 +1,24 @@
 <?php
 namespace Database\Models;
 
+/**
+*
+* Magic properties
+*
+* @property string $version
+* @property string $type
+* @property string $slug
+* @property string $status
+* @property string $creation_date
+* @property string $published_date,
+* @property string $last_modified_date
+* @property string $trip
+* @property string $title
+* @property string $abstract
+* @property string $excerpt
+* @property string $content_path
+* @property string $entity_path
+*/
 class Article extends ItemBase
 {
 	public static $table_name = "my_items";

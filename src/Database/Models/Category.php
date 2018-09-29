@@ -1,11 +1,14 @@
 <?php
 namespace Database\Models;
 
-/*!
+/**
 ** @ingroup Models
 * This class is a standard Model but it is a little different in that
 * it does not have a table hiding behind it but rather a view that uses a selection of all the distinct
 * categorized_items(category) values.
+*
+* @property string category
+* @property string $trip
 */
 class Category extends Base\Model
 {

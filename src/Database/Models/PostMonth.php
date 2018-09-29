@@ -1,14 +1,23 @@
 <?php
 namespace Database\Models;
 
-/*!
+/**
 ** @ingroup Models
 * This class represents a view of the item table that lists content items by month
 * of publication
+*
+* @property string $trip
+* @property string $year
+* @property string $month
 */
 class PostMonth extends Base\Model
 {
 	public static $table_name = "my_items";
+	public static $field_names = [
+		"trip" => "text",
+		"year" => "text",
+		"month" => "text"
+	];
 	/**
 	* Constructor.
 	* @param array $row Sql result row as associative array.
@@ -16,6 +25,8 @@ class PostMonth extends Base\Model
 	*/
 	public function __construct(array $row)
 	{
+		$this->table = self::$table_name;
+		$this->vo_fields = self::$field_names;
 		parent::__construct($row);
 	}
 	/**

@@ -46,7 +46,31 @@ class Model extends Row
 		//print __CLASS__.":".__METHOD__.":";
 		parent::__construct($obj);
 	}
-
+	/**
+	* Beginning of explicit properties.
+	* This function checks an array/row has a key and returns its value with the correct type
+	* @param array  $row  Associative array from sql query.
+	* @param string $key  Property name to be extracted from array.
+	* @param string $type Type id of the property to be extracted.
+	* @return mixed.
+	* @throws \Exception If $key is not in $row or $type is invalid.
+	*
+	*/
+	protected function validateAndGet(array $row, string $key, string $type)
+	{
+		//print "<h1>".__METHOD__."($field) </h1>";
+		if (!in_array($type, self::$validTypes)) {
+			throw new \Exception("{$type} is invalid type");
+		}
+		if (!isset($row[$key])) {
+			throw new \Exception("{$key} is not present in row");
+		}
+		$typ = $this->vo_fields[$field];
+		//var_dump($cc::$fields);
+		$method="get_".$typ;
+		$v = $this->$method($field);
+		return $v;
+	}
 	/*
 	** Below here are a set of common "finder" functions
 	*/

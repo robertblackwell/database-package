@@ -1,13 +1,20 @@
 <?php
 namespace Database\Models;
 
-/*!
+/**
 ** @ingroup Models
 * This class provides access to journal entry by country and hence represents a view
+* @property string $trip
+* @property string $country
 */
 class EntryCountry extends Base\Model
 {
 	public static $table_name = "my_items";
+	public static $field_names = [
+		"trip"=>"text",
+		"country" => "text"
+	];
+
 	/**
 	* Constructor.
 	* @param array $obj Sql query row result as associative array.
@@ -16,7 +23,8 @@ class EntryCountry extends Base\Model
 	*/
 	public function __construct(array $obj)
 	{
-		$this->vo_fields = [];
+		$this->table = self::$table_name;
+		$this->vo_fields = self::$field_names;
 		parent::__construct($obj);
 	}
 	/**

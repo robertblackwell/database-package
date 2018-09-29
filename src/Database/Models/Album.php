@@ -11,12 +11,36 @@ use Database\Locator;
 *
 * static methods are provided for geting/finding lists of albums and individual albums.
 *
-* @ingroup Models
+* Magic properties
+*
+* @property string $version
+* @property string $type
+* @property string $slug
+* @property string $status
+* @property string $creation_date
+* @property string $published_date,
+* @property string $last_modified_date
+* @property string $trip
+* @property string $title
+* @property string $file_path
+* @property string $album_path
+* @property string $mascot_path
+* @property string $mascot_url
+* @property string $content_path
+* @property string $entity_path
 *
 */
 class Album extends Base\Model
 {
 	//  todo -1 (this is some stuff to see if it works) +0: this is some more stuff
+	/**
+	 * @var string $aVar
+	 */
+	public $aVar;
+	/**
+	 * @var string $abVar
+	 */
+	public $abVar;
 	public static $table_name = "albums";
 	public static $field_names = array(
 		"version"=>"text",

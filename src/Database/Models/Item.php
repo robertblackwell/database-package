@@ -5,7 +5,7 @@ use Database\HED\HEDObject;
 use Database\Models\Factory;
 use \Exception as Exception;
 
-/*!
+/**
 ** @ingroup Models
 * This class represents all types of content items (posts, entry, article) when there
 * are a set of them retrieved and
@@ -15,6 +15,27 @@ use \Exception as Exception;
 *
 * It also defines (from SQL tables) the set of fields/properties that are available is a
 * summary of a content item.
+* @property string version
+* @property string type
+* @property string slug
+* @property string status
+* @property string creation_date
+* @property string published_date
+* @property string last_modified_date
+* @property string trip
+* @property string title
+* @property string abstract
+* @property string excerpt
+* @property string featured_image
+* @property string miles
+* @property string odometer
+* @property string day_number
+* @property string place
+* @property string country
+* @property string latitude
+* @property string longitude
+* @property string camping
+
 **/
 class Item extends ItemBase
 {

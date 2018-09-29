@@ -10,7 +10,24 @@ use Database\Locator;
 *
 * static methods are provided for geting/finding lists of albums and individual albums.
 *
-* @ingroup Models
+*
+* Magic properties
+*
+* @property string $version
+* @property string $type
+* @property string $slug
+* @property string $status
+* @property string $creation_date
+* @property string $published_date,
+* @property string $last_modified_date
+* @property string $trip
+* @property string $title
+* @property string $main_content
+* @property string $image_name
+* @property string $image
+* @property string $content_path
+* @property string $entity_path
+
 *
 */
 class Editorial extends Base\Model
@@ -29,7 +46,7 @@ class Editorial extends Base\Model
 		'main_content'=>'html',
 		'image_name'=>'text',	// this is a name like someimage.jpg
 								//-- the locator is used
-								//to add all the required dirs at the fron
+								//to add all the required dirs at the front
 		'image'=>'text',       // as far as I can tell this is not used
 		"content_path" => "text",
 		"entity_path" => "text"

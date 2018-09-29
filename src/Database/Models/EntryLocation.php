@@ -1,22 +1,51 @@
 <?php
 namespace Database\Models;
 
-/*!
+/**
 ** @ingroup Models
 * This is the Model class for fields/properties of a Journal Entry
 * that are GPS locations related.
 * BUT ONLY those fields held within the SQL table.
 * There is no need to load the item file
+* Magic properties
+*
+* @property string $version
+* @property string $type
+* @property string $trip
+* @property string $vehicle
+* @property string $slug
+* @property string $status
+* @property string $creation_date
+* @property string $published_date,
+* @property string $last_modified_date
+*
+* @property string $miles
+* @property string $odometer
+* @property string $day_number
+* @property string $place
+* @property string $country
+* @property string $latitude
+* @property string $longitude
+*
+* @property string $featured_image
+* @property string $title
+* @property string $abstract
+* @property string $excerpt
+* @property string $content_ref
+*
+* @property string $camping
+* @property string $has_camping
+
 */
 class EntryLocation extends ItemBase //Base\ModelBase
 {
 	public static $table_name = "my_items";
 	public static $field_names = array(
 		"version"=>"text",
-		"slug"=>"text",
 		"type"=>"text",
 		"trip"=>"text",
 		"vehicle" => "text",
+		"slug"=>"text",
 		"status"=>"text",
 		"creation_date"=>"date",
 		"published_date"=>"date",
@@ -24,11 +53,11 @@ class EntryLocation extends ItemBase //Base\ModelBase
 		"miles"=>"text",
 		"odometer"=>"text",
 		"day_number"=>"text",
+		"place"=>"text",
+		"country"=>"text",
 		"latitude"=>"text",
 		"longitude"=>"text",
 		"excerpt"=>"text",
-		"country"=>"text",
-		"place"=>"text",
 		"content_ref"=>"text",
 		"camping"=>"html",
 		"has_camping"=>"has",

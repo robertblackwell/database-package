@@ -14,6 +14,15 @@ use \Exception as Exception;
 **/
 class Row
 {
+	const TYPE_TEXT      = "text";
+	const TYPE_HTML      = "html";
+	const TYPE_DATE      = "date";
+	const TYPE_INCLUDE   = "include";
+	const TYPE_INT       = "int";
+	const TYPE_LIST      = "list";
+	const TYPE_LATITUDE  = "latitude";
+	const TYPE_LONGITUDE = "longitude";
+	const TYPE_HAS       = "has";
 	/**
 	* @var array $field_names Array of key value pairs that describe the
 	* public properties of this object. The keys are the property names and the
@@ -24,7 +33,17 @@ class Row
 	*/
 	static protected $field_names;
 
-	
+	static protected $validTypes = [
+		self::TYPE_TEXT,
+		self::TYPE_HTML,
+		self::TYPE_DATE,
+		self::TYPE_INCLUDE,
+		self::TYPE_INT,
+		self::TYPE_LIST,
+		self::TYPE_LATITUDE,
+		self::TYPE_LONGITUDE,
+		self::TYPE_HAS,
+	];
 	/**
 	* @var array $row Array of key value pairs that get treated as public
 	* properties of an instance of this class
@@ -71,6 +90,13 @@ class Row
 	public function __get(string $field)
 	{
 		//print "<h1>".__METHOD__."($field) </h1>";
+		if (!isset($this->vo_fields[$field])) {
+			throw new \Exception("{$field} is an invalid field/property");
+		}
+		$typ = $this->vo_fields[$field];
+		if (!in_array($typ, self::$validTypes)) {
+			throw new \Exception("{$typ} is an invalid type");
+		}
 		if (!is_null($this->vo_fields) && (array_key_exists($field, $this->vo_fields))) {
 			$typ = $this->vo_fields[$field];
 			//var_dump($cc::$fields);

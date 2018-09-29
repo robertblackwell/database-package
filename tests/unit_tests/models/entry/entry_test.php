@@ -32,7 +32,7 @@ class EntryTest extends LocalTestcase
 		$this->assertEqual($result->creation_date, "2018-06-24");
 		$this->assertEqual($result->published_date, "2018-06-24");
 		$this->assertEqual($result->last_modified_date, "2018-06-24");
-		$this->assertEqual($result->topic, null);
+		// $this->assertEqual($result->topic, null);
 		$this->assertEqual($result->title, "Sea to Sky");
 
 		$this->assertEqual($result->miles, "323");
@@ -58,7 +58,7 @@ class EntryTest extends LocalTestcase
 		// $this->assertNotEqual($result->categories, null);
 		// $this->assertNotEqual($result->content_path, null);
 
-		$this->assertNotEqual($result->entity_path, null);
+		// $this->assertNotEqual($result->entity_path, null);
 		$this->assertNotEqual($result->featured_image, null);
 	}
 	function test_get_one()

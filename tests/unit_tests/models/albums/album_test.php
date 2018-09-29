@@ -29,6 +29,7 @@ class AlbumTest extends LocalTestcase
 	 */
 	function assert_test_album($result)
 	{
+
 		$this->assertNotEqual($result, null);
 		$this->assertTrue(!is_array($result));
 		$this->assertEqual(get_class($result), "Database\Models\Album");

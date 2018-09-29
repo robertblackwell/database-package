@@ -1,9 +1,27 @@
 <?php
 namespace Database\Models;
 
-/*!
+/**
 ** @ingroup Models
 * This class represents a post content item
+* @property string version
+* @property string type
+* @property string slug
+* @property string status
+* @property string creation_date
+* @property string published_date
+* @property string last_modified_date
+* @property string trip
+* @property string title
+* @property string abstract
+* @property string excerpt
+* @property string topic
+* @property string tags
+* @property string categories
+* @property string featured_image
+* @property string featured_image
+* @property string main_content
+
 */
 class Post extends ItemBase
 {
