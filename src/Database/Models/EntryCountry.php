@@ -24,7 +24,7 @@ class EntryCountry extends Base\Model
 	public function __construct(array $obj)
 	{
 		$this->table = self::$table_name;
-		$this->vo_fields = self::$field_names;
+		$this->properties = self::$field_names;
 		parent::__construct($obj);
 	}
 	/**

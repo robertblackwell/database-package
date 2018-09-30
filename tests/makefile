@@ -19,7 +19,7 @@ db:
 	unit_tests/db/query_test.php \
 	unit_tests/db/select_test.php
 
-models: article article_title album banner \
+models: album article article_title banner \
  category categorized_item editorial \
  entry entry_country find get_by_slug locations post postmonths	
 

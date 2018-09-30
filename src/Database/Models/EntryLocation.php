@@ -40,7 +40,7 @@ namespace Database\Models;
 class EntryLocation extends ItemBase //Base\ModelBase
 {
 	public static $table_name = "my_items";
-	public static $field_names = array(
+	public static $field_names = [
 		"version"=>"text",
 		"type"=>"text",
 		"trip"=>"text",
@@ -61,8 +61,7 @@ class EntryLocation extends ItemBase //Base\ModelBase
 		"content_ref"=>"text",
 		"camping"=>"html",
 		"has_camping"=>"has",
-
-	);
+	];
 	/**
 	* Constructor.
 	* @param array $obj Sql query row result as associative array.
@@ -71,7 +70,7 @@ class EntryLocation extends ItemBase //Base\ModelBase
 	*/
 	public function __construct(array $obj)
 	{
-		$this->vo_fields = self::$field_names;
+		$this->properties = self::$field_names;
 		$this->table = self::$table_name;
 		parent::__construct($obj);
 	}

@@ -3,21 +3,7 @@ namespace Database\Models;
 
 use \Database\SqlObject;
 
-/*!
-** @ingroup Model
-** This class is an iterator that knows how to step through
-** various sequences of Items with next/prev verbs.
-**
-*/
-/*!
-*/
-// class QueryMaker
-// {
-// 	function query($join, $where, $after_before, $order_by)
-// 	{
-// 	}
-// }
-/*!
+/**
 ** This class provides an iterator to move through next/prev
 ** different sets of content items. The intent is that each of Entry, Article, Post will have an iterator
 ** as a delegate. This will be provided by ItemBase the abstract base class

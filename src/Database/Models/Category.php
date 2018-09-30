@@ -13,18 +13,17 @@ namespace Database\Models;
 class Category extends Base\Model
 {
 	public static $table_name = "categories";
-	public static $field_names = array(
+	public static $field_names = [
 		"category"=>"text",
-		// "slug" => "text",
 		"trip" => "text"
-		);
+		];
 	/**
 	* Constructor
 	* @param array $obj Sql result as associateive array.
 	*/
 	public function __construct(array $obj = null)
 	{
-		$this->vo_fields = self::$field_names;
+		$this->properties = self::$field_names;
 		$this->table = self::$table_name;
 		parent::__construct($obj);
 	}

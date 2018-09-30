@@ -13,11 +13,11 @@ namespace Database\Models;
 class CategorizedItem extends Base\Model
 {
 	public static $table_name = "categorized_items";
-	public static $field_names = array(
+	public static $field_names = [
 		"trip" => "text",
 		"category"=>"text",
 		"item_slug"=>"text",
-		);
+		];
 	/**
 	 * CategorizedItem constructor.
 	 * @param array $obj Sql query row result as associative array.
@@ -25,7 +25,7 @@ class CategorizedItem extends Base\Model
 	 */
 	public function __construct(array $obj = null)
 	{
-		$this->vo_fields = self::$field_names;
+		$this->properties = self::$field_names;
 		$this->table = self::$table_name;
 		// var_dump($obj);
 		parent::__construct($obj);

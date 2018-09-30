@@ -26,7 +26,7 @@ class PostMonth extends Base\Model
 	public function __construct(array $row)
 	{
 		$this->table = self::$table_name;
-		$this->vo_fields = self::$field_names;
+		$this->properties = self::$field_names;
 		parent::__construct($row);
 	}
 	/**

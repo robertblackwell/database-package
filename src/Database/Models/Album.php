@@ -13,36 +13,46 @@ use Database\Locator;
 *
 * Magic properties
 *
-* @property string $version
-* @property string $type
-* @property string $slug
-* @property string $status
-* @property string $creation_date
-* @property string $published_date,
-* @property string $last_modified_date
-* @property string $trip
-* @property string $title
-* @property string $file_path
-* @property string $album_path
-* @property string $mascot_path
-* @property string $mascot_url
-* @property string $content_path
-* @property string $entity_path
 *
 */
-class Album extends Base\Model
+class Album extends Base\CommonSql
 {
+
+	/** @var string $version */
+	public $version;
+	/** @var string $type */
+	public $type;
+	/** @var string $slug */
+	public $slug;
+	/** @var string $status */
+	public $status;
+	/** @var string $creation_date */
+	public $creation_date;
+	/** @var string $published_date */
+	public $published_date;
+	/** @var string $last_modified_date */
+	public $last_modified_date;
+	/** @var string $trip */
+	public $trip;
+	/** @var string $title */
+	public $title;
+
+	/** @var string $file_path */
+	public $file_path;
+	/** @var string $album_path */
+	public $album_path;
+	/** @var string $mascot_path */
+	public $mascot_path;
+	/** @var string $mascot_url */
+	public $mascot_url;
+	/** @var string $content_path */
+	public $content_path;
+	/** @var string $entity_path */
+	public $entity_path;
+
 	//  todo -1 (this is some stuff to see if it works) +0: this is some more stuff
-	/**
-	 * @var string $aVar
-	 */
-	public $aVar;
-	/**
-	 * @var string $abVar
-	 */
-	public $abVar;
 	public static $table_name = "albums";
-	public static $field_names = array(
+	public static $field_names = [
 		"version"=>"text",
 		"type"=>"text",
 		"slug"=>"text",
@@ -52,6 +62,8 @@ class Album extends Base\Model
 		"last_modified_date"=>"date",
 		"trip"=>"text",
 		"title"=>"html",
+		// from this point onwards the values can be deduced via the Locator
+		// so should not be passed in but deduced in the cnstructor
 		'file_path'=>'text',
 		'album_path'=>'text',
 		'mascot_path' => "text",
@@ -59,7 +71,7 @@ class Album extends Base\Model
 		"content_path" => "text",
 		"entity_path" => "text"
 		// note - gallery of type \GalleryObject is added during constructor - but its a REAL property
-	);
+	];
 	/**
 	* Consttructor.
 	* @param array $obj Sql query result as an associative array.
@@ -67,7 +79,32 @@ class Album extends Base\Model
 	*/
 	public function __construct(array $obj)
 	{
-		$this->vo_fields = self::$field_names;
+		$helper = new RowHelper($obj);
+		$this->table = "my_items";
+
+		$this->properties = self::$field_names;
+		$derived_props = [
+			'file_path'=>'text',
+			'album_path'=>'text',
+			'mascot_path' => "text",
+			'mascot_url' => "text",
+			"content_path" => "text",
+			"entity_path" => "text"
+		];
+		print "album fill non derived properties";
+		$props = array_diff_key($this->properties, $derived_props);
+		parent::__construct($obj);
+		
+		foreach ($props as $prop => $type) {
+			$this->$prop = $helper->get_property_value($prop, $type);
+		}
+		$loc = Locator::get_instance();
+		$this->mascot_path = $loc->album_mascot_path($this->trip, $this->slug);
+		$this->mascot_url = $loc->album_mascot_relative_url($this->trip, $this->slug);
+		$this->content_path = $loc->album_filepath($this->trip, $this->slug);
+		print "after fill";
+		return;
+		$this->properties = self::$field_names;
 		$this->table = self::$table_name;
 		$this->_images = null;
 		parent::__construct($obj);

@@ -39,7 +39,7 @@ namespace Database\Models;
 class Entry extends ItemBase
 {
 	public static $table_name = "my_items";
-	public static $field_names = array(
+	public static $field_names = [
 		"version"=>"text",
 		"type"=>"text",
 		"trip"=>"text",
@@ -68,7 +68,7 @@ class Entry extends ItemBase
 		"border"=>"html",
 		"has_camping"=>"has",
 		"has_border"=>"has",
-		);
+		];
 	/**
 	* Consttructor.
 	* @param array $obj Sql query result as an associative array.
@@ -76,7 +76,7 @@ class Entry extends ItemBase
 	*/
 	public function __construct(array $obj)
 	{
-		$this->vo_fields = self::$field_names;
+		$this->properties = self::$field_names;
 		$this->table = self::$table_name;
 		parent::__construct($obj);
 	}

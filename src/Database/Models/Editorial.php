@@ -33,7 +33,7 @@ use Database\Locator;
 class Editorial extends Base\Model
 {
 	public static $table_name = "editorials";
-	public static $field_names = array(
+	public static $field_names = [
 		"version"=>"text",
 		"type"=>"text",
 		"slug"=>"text",
@@ -48,12 +48,14 @@ class Editorial extends Base\Model
 								//-- the locator is used
 								//to add all the required dirs at the front
 		'image'=>'text',       // as far as I can tell this is not used
+		// from this point onwards the values can be deduced via the Locator
+		// so should not be passed in but deduced in the cnstructor
 		"content_path" => "text",
 		"entity_path" => "text"
 		//
 		// @Note: image_url is an attribute computed and added to this object at retreivl time. See code below
 		//
-	);
+	];
 	/**
 	* Consttructor.
 	* @param array $obj Sql query result as an associative array.
@@ -61,7 +63,7 @@ class Editorial extends Base\Model
 	*/
 	public function __construct(array $obj)
 	{
-		$this->vo_fields = self::$field_names;
+		$this->properties = self::$field_names;
 		$this->table = self::$table_name;
 		parent::__construct($obj);
 	}

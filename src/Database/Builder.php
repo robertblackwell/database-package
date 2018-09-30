@@ -207,21 +207,6 @@ class Builder
 
 	/**
 	 * Create banners table
-	 *static $field_names = array(
-	 *    "version"=>"text",
-	 *    "type"=>"text",
-	 *    "slug"=>"text",
-	 *    "status"=>"text",
-	 *    "creation_date"=>"date",
-	 *    "published_date"=>"date",
-	 *    "last_modified_date"=>"date",
-	 *    "trip"=>"text",
-	 *    "title"=>"html",
-	 *    'banner'=>'text',
-	 *    'image'=>'text',
-	 *	'main_content'=>'html',
-	 *    'image_url'=>'text',
-	 *);
 	 * @return void
 	*/
 	public function create_table_banners()
@@ -249,20 +234,6 @@ class Builder
 
 	/**
 	* Create editorial table
-	*static $field_names = array(
-	*    "version"=>"text",
-	*    "type"=>"text",
-	*    "slug"=>"text",
-	*    "status"=>"text",
-	*    "creation_date"=>"date",
-	*    "published_date"=>"date",
-	*    "last_modified_date"=>"date",
-	*    "trip"=>"text",
-	*    "title"=>"html",
-	*    'banner'=>'text',
-	*    'image'=>'text',
-	*	'main_content'=>'html',
-	*    'image_url'=>'text',
 	 * @return void
 	*);
 	*/

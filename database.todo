@@ -3,5 +3,6 @@ Remobe HEDFactory from all code and replace with a renamed Skeleton:
   delete HEDFactory
   rename Skeleton to HED\Factory
 Try a pilot of a revised Model approach with explicit properties:
-Try using @property to see if phpstorm uses this in autocomplete:
-Start using this branch in test_whiteacorn:
+✔ Try using @property to see if phpstorm uses this in autocomplete: @done (18-09-28 22:07)
+✔ Start using this branch in test_whiteacorn: @done (18-09-28 22:07)
+Add create table query build to model class (as a static method) so that all stuff about model properties and their types are in the model classes:

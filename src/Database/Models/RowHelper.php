@@ -1,5 +1,5 @@
 <?php
-namespace Database\Models\Base;
+namespace Database\Models;
 
 use \Exception as Exception;
 
@@ -12,7 +12,7 @@ use \Exception as Exception;
 ** @todo complete the set_XXX functions so that all types of elements can be updated
 **
 **/
-class Row
+class RowHelper
 {
 	const TYPE_TEXT      = "text";
 	const TYPE_HTML      = "html";
@@ -61,9 +61,9 @@ class Row
 	/**
 	* Constructor
 	* @param array $row Sql result row.
-	* @return Row
+	* @return RowHelper
 	*/
-	public function __construct(array $row = [])
+	public function __construct(array $row)
 	{
 		$this->row = $row;
 	}
@@ -73,7 +73,7 @@ class Row
 	* @param string $field Possible name of a public property.
 	* @return boolean True if the $field is a key in $row and hence is the name of a public property.
 	*/
-	public function __isset(string $field) : bool
+	public function x__isset(string $field) : bool
 	{
 		return isset($this->properties[$field]);
 		// return array_key_exists($field, $this->properties);
@@ -87,7 +87,7 @@ class Row
 	* hidden properties can creap into the object
 	*
 	*/
-	public function __get(string $field)
+	public function x__get(string $field)
 	{
 		//print "<h1>".__METHOD__."($field) </h1>";
 		if (!isset($this->properties[$field])) {
@@ -269,6 +269,31 @@ class Row
 	{
 		return array_keys($this->properties);
 	}
+	/**
+	* Beginning of explicit properties.
+	* This function checks an array/row has a key and returns its value with the correct type
+	* @param string $key  Property name to be extracted from array.
+	* @param string $type Type id of the property to be extracted.
+	* @return mixed.
+	* @throws \Exception If $key is not in $row or $type is invalid.
+	*
+	*/
+	public function get_property_value(string $key, string $type)
+	{
+		//print "<h1>".__METHOD__."($field) </h1>";
+		if (!in_array($type, self::$validTypes)) {
+			throw new \Exception("{$type} is invalid type");
+		}
+		if (!isset($this->row[$key])) {
+			throw new \Exception("{$key} is not present in row");
+		}
+//		$typ = $this->properties[$key];
+		//var_dump($cc::$fields);
+		$method="get_".$type;
+		$v = $this->$method($key);
+		return $v;
+	}
+
 	/**
 	* @return stdClass Field names and field values as a stdClass
 	*/

@@ -35,12 +35,12 @@ use \Exception as Exception;
 * @property string latitude
 * @property string longitude
 * @property string camping
-
-**/
+*
+*/
 class Item extends ItemBase
 {
 	public static $table_name = "my_items";
-	public static $field_names = array(
+	public static $field_names = [
 		"version"=>"text",
 		"type"=>"text",
 		"slug"=>"text",
@@ -61,7 +61,7 @@ class Item extends ItemBase
 		"latitude"=>"latitude",
 		"longitude"=>"longitude",
 		"camping"=>"html",
-		);
+		];
 	/**
 	* Constructor.
 	* @param array $obj Sql query result associative array.
@@ -69,28 +69,13 @@ class Item extends ItemBase
 	*/
 	public function __construct(array $obj)
 	{
-		$this->vo_fields = array(
-		"version"=>"text",
-		"type"=>"text",
-		"slug"=>"text",
-		"status"=>"text",
-		"creation_date"=>"date",
-		"published_date"=>"date",
-		"last_modified_date"=>"date",
-		"trip"=>"text",
-		"title"=>"html",
-		"abstract"=>"html",
-		"excerpt"=>"text",
-		"featured_image"=>'text',
-		"miles"=>"text",
-		"odometer"=>"int",
-		"day_number"=>"int",
-		"place"=>"text",
-		"country"=>"text",
-		"latitude"=>"latitude",
-		"longitude"=>"longitude",
-		"camping"=>"html",
-		);
+		$this->table = self::$table_name;
+		$this->properties = self::$field_names;
+		/*
+		foreach ($this->properties as $prop => $type) {
+			$this->$prop = $this->get_property_value($obj, $prop, $type);
+		}
+		*/
 		parent::__construct($obj);
 	}
 	/**

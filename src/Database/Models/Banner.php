@@ -44,6 +44,8 @@ class Banner extends Base\Model
 		"last_modified_date"=>"date",
 		"trip"=>"text",
 		"title"=>"html",
+		// from this point onwards the values can be deduced via the Locator
+		// so should not be passed in but deduced in the cnstructor
 		"content_path" => "text",
 		"entity_path" => "text"
 //         'banner'=>'text',
@@ -58,7 +60,7 @@ class Banner extends Base\Model
 	 */
 	public function __construct(array $obj)
 	{
-		$this->vo_fields = self::$field_names;
+		$this->properties = self::$field_names;
 		$this->table = self::$table_name;
 		parent::__construct($obj);
 	}

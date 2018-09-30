@@ -30,7 +30,7 @@ class HEDObject
 	private $doc;
 
 	// protected $_xp;
-	private $vo_fields = null;
+	private $properties = null;
 	
 	/**
 	* Constructor empty
@@ -132,8 +132,8 @@ class HEDObject
 	public function __isset(string $field) : bool
 	{
 		// @todo This function is meaningless
-		if (!is_null($this->vo_fields) && (array_key_exists($field, $this->vo_fields))) {
-			throw new \Exception("HEDObject should have no vo_fields");
+		if (!is_null($this->properties) && (array_key_exists($field, $this->properties))) {
+			throw new \Exception("HEDObject should have no properties");
 			return true;
 		}
 		return false;
@@ -149,10 +149,10 @@ class HEDObject
 	public function __get(string $field)
 	{
 		// print "<h1>".__METHOD__."($field) </h1>";
-		if (!is_null($this->vo_fields) && (array_key_exists($field, $this->vo_fields))) {
+		if (!is_null($this->properties) && (array_key_exists($field, $this->properties))) {
 			// print "<p>".__METHOD__."typ = $typ its a getter </p>";
-			throw new \Exception("HEDObject should have no vo_fields");
-			$typ = $this->vo_fields[$field];
+			throw new \Exception("HEDObject should have no properties");
+			$typ = $this->properties[$field];
 			if ($typ == 'getter') {
 				// print "<p>".__METHOD__."typ = $typ its a getter field {$field} </p>";
 				$method = $field;

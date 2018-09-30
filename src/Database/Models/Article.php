@@ -22,7 +22,7 @@ namespace Database\Models;
 class Article extends ItemBase
 {
 	public static $table_name = "my_items";
-	public static $field_names = array(
+	public static $field_names = [
 		"version"=>"text",
 		"type"=>"text",
 		"slug"=>"text",
@@ -40,7 +40,7 @@ class Article extends ItemBase
 		//"featured_image"=>"getter",
 		"content_path" => "text",
 		"entity_path" => "text"
-		);
+		];
 	/**
 	* Constructor.
 	* @param array $obj Associative array.
@@ -48,7 +48,7 @@ class Article extends ItemBase
 	*/
 	public function __construct(array $obj = null)
 	{
-		$this->vo_fields = self::$field_names;
+		$this->properties = self::$field_names;
 		$this->table = self::$table_name;
 		parent::__construct($obj);
 	}

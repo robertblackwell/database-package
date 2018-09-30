@@ -3,32 +3,20 @@ namespace Database\Models\Base;
 
 use Database\Models\CategorizedItem;
 use \Exception as Exception;
-
-/*!
-** @defgroup Models
-** Models are classes that represent entities in the database and are defined to suite the application
-** domain.
-**
-** Each model should be derived from the class ModelBase
+/**
+* Provides common sql functions to models.
 */
-
-/*!
-** @ingroup Models
-**  This is the base class for all model classes.
-**  It is the first place in the class hierarchy that knows about field names
-**
-*/
-class Model extends Row
+class CommonSql
 {
 	/**
 	* @var $sql \Database\SqlObject - used for models to make sql calls. Set up during initialization
 	*/
-	public static $sql;
+	protected static $sql;
 	/**
 	* @var $locator \Database\Locator - used to locate data entities in the flat file system. Set up during
 	* initialization
 	*/
-	public static $locator;
+	protected static $locator;
 
 	/**
 	* @var $table string - the name of the sql table/view this model is connected to. Each derived class
@@ -46,31 +34,6 @@ class Model extends Row
 		//print __CLASS__.":".__METHOD__.":";
 		parent::__construct($obj);
 	}
-	/**
-	* Beginning of explicit properties.
-	* This function checks an array/row has a key and returns its value with the correct type
-	* @param array  $row  Associative array from sql query.
-	* @param string $key  Property name to be extracted from array.
-	* @param string $type Type id of the property to be extracted.
-	* @return mixed.
-	* @throws \Exception If $key is not in $row or $type is invalid.
-	*
-	*/
-	protected function get_property_value(array $row, string $key, string $type)
-	{
-		//print "<h1>".__METHOD__."($field) </h1>";
-		if (!in_array($type, self::$validTypes)) {
-			throw new \Exception("{$type} is invalid type");
-		}
-		if (!isset($row[$key])) {
-			throw new \Exception("{$key} is not present in row");
-		}
-//		$typ = $this->properties[$key];
-		//var_dump($cc::$fields);
-		$method="get_".$type;
-		$v = $this->$method($key);
-		return $v;
-	}
 	/*
 	** Below here are a set of common "finder" functions
 	*/
@@ -78,7 +41,7 @@ class Model extends Row
 	// {
 	// }
 	/**
-	* find Modle objects subject to the where clause.
+	* find Model objects subject to the where clause.
 	* @param string $where Where clause for a select statement.
 	* @return array|null Of Model objects.
 	*/
