@@ -2,28 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c80bae66-2ae6-4cc0-b963-e040b502919e" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/composer copy.json" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database.todo" afterPath="$PROJECT_DIR$/database.todo" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Database/Builder.php" afterPath="$PROJECT_DIR$/src/Database/Builder.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Database/HED/HEDObject.php" afterPath="$PROJECT_DIR$/src/Database/HED/HEDObject.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Database/Models/Album.php" afterPath="$PROJECT_DIR$/src/Database/Models/Album.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Database/Models/Article.php" afterPath="$PROJECT_DIR$/src/Database/Models/Article.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Database/Models/ArticleTitle.php" afterPath="$PROJECT_DIR$/src/Database/Models/ArticleTitle.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Database/Models/Banner.php" afterPath="$PROJECT_DIR$/src/Database/Models/Banner.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Database/Models/Base/Model.php" afterPath="$PROJECT_DIR$/src/Database/Models/Base/Model.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Database/Models/Base/Row.php" afterPath="$PROJECT_DIR$/src/Database/Models/Base/Row.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Database/Models/CategorizedItem.php" afterPath="$PROJECT_DIR$/src/Database/Models/CategorizedItem.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Database/Models/Category.php" afterPath="$PROJECT_DIR$/src/Database/Models/Category.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Database/Models/Editorial.php" afterPath="$PROJECT_DIR$/src/Database/Models/Editorial.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Database/Models/Entry.php" afterPath="$PROJECT_DIR$/src/Database/Models/Entry.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Database/Models/EntryCountry.php" afterPath="$PROJECT_DIR$/src/Database/Models/EntryCountry.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Database/Models/EntryLocation.php" afterPath="$PROJECT_DIR$/src/Database/Models/EntryLocation.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Database/Models/Item.php" afterPath="$PROJECT_DIR$/src/Database/Models/Item.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Database/Models/NextPrev.php" afterPath="$PROJECT_DIR$/src/Database/Models/NextPrev.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Database/Models/Post.php" afterPath="$PROJECT_DIR$/src/Database/Models/Post.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Database/Models/PostMonth.php" afterPath="$PROJECT_DIR$/src/Database/Models/PostMonth.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/makefile" afterPath="$PROJECT_DIR$/tests/makefile" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/unit_tests/hed/hed_album_test.php" afterPath="$PROJECT_DIR$/tests/unit_tests/hed/hed_album_test.php" />
     </list>
     <ignored path="database-package.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -109,10 +89,10 @@
         <entry file="file://$PROJECT_DIR$/src/Database/Models/Album.php">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.37172773">
-              <caret line="103" column="0" selection-start-line="103" selection-start-column="0" selection-end-line="103" selection-end-column="0" />
+              <caret line="104" column="0" selection-start-line="104" selection-start-column="0" selection-end-line="104" selection-end-column="0" />
               <folding>
                 <element signature="e#34#61#0#PHP" expanded="true" />
-                <marker date="1538264986496" expanded="true" signature="5907:5981" placeholder="DELETE from " />
+                <marker date="1538265191487" expanded="true" signature="5940:6014" placeholder="DELETE from " />
               </folding>
             </state>
           </provider>
@@ -543,7 +523,7 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23032904" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.39722222" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39722222" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32807216" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -613,7 +593,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/src/Database/Models/Album.php</url>
-          <line>103</line>
+          <line>104</line>
           <option name="timeStamp" value="71" />
         </line-breakpoint>
       </breakpoints>
@@ -654,7 +634,7 @@
           <caret line="24" column="25" selection-start-line="24" selection-start-column="25" selection-end-line="24" selection-end-column="25" />
           <folding>
             <element signature="e#34#61#0#PHP" expanded="true" />
-            <marker date="1538264986496" expanded="true" signature="5907:5981" placeholder="DELETE from " />
+            <marker date="1538265191487" expanded="true" signature="5940:6014" placeholder="DELETE from " />
           </folding>
         </state>
       </provider>
@@ -722,7 +702,7 @@
           <caret line="20" column="24" selection-start-line="20" selection-start-column="24" selection-end-line="20" selection-end-column="24" />
           <folding>
             <element signature="e#34#61#0#PHP" expanded="true" />
-            <marker date="1538264986496" expanded="true" signature="5907:5981" placeholder="DELETE from " />
+            <marker date="1538265191487" expanded="true" signature="5940:6014" placeholder="DELETE from " />
           </folding>
         </state>
       </provider>
@@ -1107,10 +1087,10 @@
     <entry file="file://$PROJECT_DIR$/src/Database/Models/Album.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.37172773">
-          <caret line="103" column="0" selection-start-line="103" selection-start-column="0" selection-end-line="103" selection-end-column="0" />
+          <caret line="104" column="0" selection-start-line="104" selection-start-column="0" selection-end-line="104" selection-end-column="0" />
           <folding>
             <element signature="e#34#61#0#PHP" expanded="true" />
-            <marker date="1538264986496" expanded="true" signature="5907:5981" placeholder="DELETE from " />
+            <marker date="1538265191487" expanded="true" signature="5940:6014" placeholder="DELETE from " />
           </folding>
         </state>
       </provider>

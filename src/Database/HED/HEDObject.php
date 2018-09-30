@@ -13,7 +13,7 @@ use \Exception as Exception;
 ** @todo    complete the set_XXX functions so that all types of elements can be updated
 **
 **/
-class HEDObject
+class HEDObject implements \ArrayAccess
 {
 	/**
 	* @var string $file_path The file from which the hed object was originally loaded.
@@ -38,7 +38,30 @@ class HEDObject
 	public function __construct()
 	{
 	}
-	
+	public function offsetExists($offset)
+	{
+		if (! is_string($offset)) {
+			$t = gettype($offset);
+			throw new \Exception("offset must be string {$t} given");
+		}
+		return $this->__isset($offset);
+	}
+	public function offsetGet($offset)
+	{
+		if (! is_string($offset)) {
+			$t = gettype($offset);
+			throw new \Exception("offset must be string {$t} given");
+		}
+		return __get($offset);
+	}
+	public function offsetSet ($offset , $value)
+	{
+		throw new \Exception("offsetSet not implemented");
+	}
+	public function offsetUnset ($offset)
+	{
+		throw new \Exception("offsetUnset not implemented");
+	}
 	/**
 	* Reads a HED object from the named file.
 	* @param string $file_name The full path name of a file which holds a hED obect.

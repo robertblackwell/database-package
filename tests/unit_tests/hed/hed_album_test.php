@@ -23,4 +23,15 @@ class Test_hed_album extends LocalTestcase
 		HEDFactory::create_album($p, 'trip', 'slug', 'adate', "aname", array('title'=>'A Title'));
 		Trace::function_exit();
 	}
+	function test_array_access()
+	{
+		Trace::function_entry();
+		system("rm -R ".dirname(__FILE__)."/data/test_album");
+		$p = dirname(__FILE__)."/data/test_album/content.php";
+		$obj = HEDFactory::create_album($p, 'trip', 'slug', 'adate', "aname", array('title'=>'A Title'));
+		var_dump($obj['trip']);
+		var_dump($obj['slug']);
+		Trace::function_exit();
+
+	}
 }
