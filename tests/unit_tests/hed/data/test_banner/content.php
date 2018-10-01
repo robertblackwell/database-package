@@ -6,13 +6,12 @@
 <body>
 	<div id="version">2.0.skel</div>
 	<div id="status">draft</div>
-	<div id="type">album</div>
+	<div id="type">banner</div>
 	<div id="slug">aslug</div>
 	<div id="creation_date">adate</div>
 	<div id="published_date">adate</div>
 	<div id="last_modified_date">adate</div>
 	<div id="trip">atrip</div>
-	<div id="title">aTitle</div>
 
 </body>
 </html>

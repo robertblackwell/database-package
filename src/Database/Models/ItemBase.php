@@ -2,6 +2,7 @@
 namespace Database\Models;
 
 use Database\Models\NextPrev;
+use Database\Models\Base\CommonSql;
 
 /*!
 ** @ingroup Models
@@ -9,7 +10,7 @@ use Database\Models\NextPrev;
 * post, entry or article. One of the reasons for this is to have a common next/prev
 * object included as a property
 */
-class ItemBase extends Base\Model
+class ItemBase extends CommonSql
 {
 	/**
 	* Constructor.
@@ -18,7 +19,6 @@ class ItemBase extends Base\Model
 	*/
 	public function __construct(array $obj)
 	{
-		parent::__construct($obj);
 		$this->next_prev = new NextPrev($this, self::$sql);
 	}
 	/**

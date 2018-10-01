@@ -39,12 +39,51 @@ namespace Database\Models;
 */
 class EntryLocation extends ItemBase //Base\ModelBase
 {
+		/**
+	* These are essential non derived properties
+	*/
+	/** @var string $version */
+	public $version;
+	/** @var string $type */
+	public $type;
+	/** @var string $trip */
+	public $trip;
+	/** @var string $vehicle */
+	public $vehicle;
+	/** @var string $slug */
+	public $slug;
+	/** @var string $status */
+	public $status;
+	/** @var string $creation_date */
+	public $creation_date;
+	/** @var string $published_date */
+	public $published_date;
+	/** @var string $last_modified_date */
+	public $last_modified_date;
+	/** @var string $miles */
+	public $miles;
+	/** @var string $odometer */
+	public $odometer;
+	/** @var string $day_number */
+	public $day_number;
+	/** @var string $place */
+	public $place;
+	/** @var string $country */
+	public $country;
+	/** @var string $latitude */
+	public $latitude;
+	/** @var string $longitude */
+	public $longitude;
+	/** @var string $title */
+	public $title;
+
+
 	public static $table_name = "my_items";
 	public static $field_names = [
 		"version"=>"text",
 		"type"=>"text",
 		"trip"=>"text",
-		"vehicle" => "text",
+		"vehicle"=>"text",
 		"slug"=>"text",
 		"status"=>"text",
 		"creation_date"=>"date",
@@ -57,10 +96,7 @@ class EntryLocation extends ItemBase //Base\ModelBase
 		"country"=>"text",
 		"latitude"=>"text",
 		"longitude"=>"text",
-		"excerpt"=>"text",
-		"content_ref"=>"text",
-		"camping"=>"html",
-		"has_camping"=>"has",
+		"title"=>"html",
 	];
 	/**
 	* Constructor.
@@ -70,9 +106,20 @@ class EntryLocation extends ItemBase //Base\ModelBase
 	*/
 	public function __construct(array $obj)
 	{
+		$helper = new RowHelper($obj);
+		$this->table = "my_items";
+
 		$this->properties = self::$field_names;
-		$this->table = self::$table_name;
-		parent::__construct($obj);
+		$derived_props = [
+		];
+		$props = array_diff_key($this->properties, $derived_props);
+		$this->sql_properties = array_keys($props);
+		/**
+		* fill all "required" properties
+		*/
+		foreach ($props as $prop => $type) {
+			$this->$prop = $helper->get_property_value($prop, $type);
+		}
 	}
 	/**
 	* Find the locations data for all/count EntryLocation for a trip.

@@ -1,30 +1,51 @@
 <?php
 namespace Database\Models;
 
-/**
-** @ingroup Models
-* This class represents a post content item
-* @property string version
-* @property string type
-* @property string slug
-* @property string status
-* @property string creation_date
-* @property string published_date
-* @property string last_modified_date
-* @property string trip
-* @property string title
-* @property string abstract
-* @property string excerpt
-* @property string topic
-* @property string tags
-* @property string categories
-* @property string featured_image
-* @property string featured_image
-* @property string main_content
+use Database\Locator;
 
-*/
-class Post extends ItemBase
+use Database\Models\Base\CommonSql;
+
+/***/
+class Post extends CommonSql
 {
+		/**
+	* These are essential non derived properties
+	*/
+	/** @var string $version */
+	public $version;
+	/** @var string $type */
+	public $type;
+	/** @var string $slug */
+	public $slug;
+	/** @var string $status */
+	public $status;
+	/** @var string $creation_date */
+	public $creation_date;
+	/** @var string $published_date */
+	public $published_date;
+	/** @var string $last_modified_date */
+	public $last_modified_date;
+	/** @var string $trip */
+	public $trip;
+	/** @var string $title */
+	public $title;
+	/** @var string $abstract */
+	public $abstract;
+	/** @var string $excerpt */
+	public $excerpt;
+	/** @var string $featured_image */
+	public $featured_image;
+	/** @var string $miles */
+	public $topic;
+	/** @var string $odometer */
+	public $tags;
+	/** @var array $categories Array of category strings */
+	public $categories;
+
+	/** These are derived properties*/
+	/** @var string $main_content */
+	public $main_content;
+
 	public static $table_name = "my_items";
 	public static $field_names = [
 		"version"=>"text",
@@ -38,7 +59,7 @@ class Post extends ItemBase
 		"title"=>"html",
 		"abstract"=>"html",
 		"excerpt"=>"text",
-		//"excerpt"=>"getter",
+
 		"topic"=>"text",
 		"tags"=>"list",
 		"categories"=>"list",
@@ -48,15 +69,63 @@ class Post extends ItemBase
 		];
 	/**
 	* Constructor.
-	* @param array $obj Sql query result row as associative array.
+	* @param array|ArrayAccess $obj Sql query result row as associative array.
 	* @return Item
 	*/
-	public function __construct(array $obj = null)
+	public function __construct(/*array*/ $obj)
 	{
+		$helper = new RowHelper($obj);
+		$this->table = "my_items";
+
 		$this->properties = self::$field_names;
-		$this->table = self::$table_name;
-		//print __CLASS__.":".__METHOD__.":";
-		parent::__construct($obj);
+		$derived_props = [
+			"abstract"=>"html",
+			"excerpt"=>"text",
+			"topic"=>"text",
+			"tags"=>"list",
+			"categories"=>"list",
+			"featured_image"=>"text",
+			"main_content"=>"html",
+		];
+		$props = array_diff_key($this->properties, $derived_props);
+		$this->sql_properties = array_keys($props);
+		// parent::__construct($obj);
+		
+		foreach ($props as $prop => $type) {
+			$this->$prop = $helper->get_property_value($prop, $type);
+		}
+		$loc = Locator::get_instance();
+		/**
+		* optional properties
+		*/
+		$this->camping = $helper->get_optional_property_value(
+			"abstract",
+			$this->properties["abstract"]
+		);
+		$this->excerpt = $helper->get_optional_property_value(
+			"excerpt",
+			$this->properties["excerpt"]
+		);
+		$this->featured_image = $helper->get_optional_property_value(
+			"featured_image",
+			$this->properties["featured_image"]
+		);
+		$this->topic = $helper->get_optional_property_value(
+			"topic",
+			$this->properties["topic"]
+		);
+		$this->tags = $helper->get_optional_property_value(
+			"tags",
+			$this->properties["tags"]
+		);
+		$this->categories = $helper->get_optional_property_value(
+			"categories",
+			$this->properties["categories"]
+		);
+		/**
+		* main_content, only available if $obj is a HEDObject
+		*/
+		$this->main_content = $helper->get_property_main_content();
 	}
 	/**
 	* Inserts this instance into the sql database and add categories and categorized items as required.

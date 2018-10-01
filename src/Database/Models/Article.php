@@ -1,26 +1,49 @@
 <?php
 namespace Database\Models;
 
-/**
-*
-* Magic properties
-*
-* @property string $version
-* @property string $type
-* @property string $slug
-* @property string $status
-* @property string $creation_date
-* @property string $published_date,
-* @property string $last_modified_date
-* @property string $trip
-* @property string $title
-* @property string $abstract
-* @property string $excerpt
-* @property string $content_path
-* @property string $entity_path
-*/
-class Article extends ItemBase
+use Database\Locator;
+use Database\HED\HEDObject;
+use Database\Models\Base\CommonSql;
+
+class Article extends CommonSql
 {
+	/**
+	* These are essential non derived properties
+	*/
+	/** @var string $version */
+	public $version;
+	/** @var string $type */
+	public $type;
+	/** @var string $slug */
+	public $slug;
+	/** @var string $status */
+	public $status;
+	/** @var string $creation_date */
+	public $creation_date;
+	/** @var string $published_date */
+	public $published_date;
+	/** @var string $last_modified_date */
+	public $last_modified_date;
+	/** @var string $trip */
+	public $trip;
+	/** @var string $title */
+	public $title;
+	/** @var string $abstract */
+	public $abstract;
+	/** @var string $excerpt */
+	public $excerpt;
+	/** @var string $featured_image */
+	public $featured_image;
+
+	/** These are derived properties*/
+	/** @var string $main_content */
+	public $main_content;
+	/** @var string $content_path */
+	public $content_path;
+	/** @var string $entity_path */
+	public $entity_path;
+
+
 	public static $table_name = "my_items";
 	public static $field_names = [
 		"version"=>"text",
@@ -35,7 +58,7 @@ class Article extends ItemBase
 		"abstract"=>"html",
 		"excerpt"=>"text",
 		//"excerpt"=>"getter",
-		"main_content"=>"include",
+		"main_content"=>"include", // only comes from a hed_object
 		"featured_image"=>"text",
 		//"featured_image"=>"getter",
 		"content_path" => "text",
@@ -43,14 +66,42 @@ class Article extends ItemBase
 		];
 	/**
 	* Constructor.
-	* @param array $obj Associative array.
+	* @param array|ArrayAccess $obj Associative array.
 	* @return Article.
 	*/
-	public function __construct(array $obj = null)
+	public function __construct(/*array*/ $obj = null)
 	{
+		$helper = new RowHelper($obj);
+		$this->table = "my_items";
+
 		$this->properties = self::$field_names;
-		$this->table = self::$table_name;
-		parent::__construct($obj);
+		$derived_props = [
+			"excerpt"=>"text",
+			"featured_image"=>"text",
+			"main_content"=>"include",
+			"content_path" => "text",
+			"entity_path" => "text"
+		];
+		$props = array_diff_key($this->properties, $derived_props);
+		$this->sql_properties = array_keys($props);
+		
+		foreach ($props as $prop => $type) {
+			$this->$prop = $helper->get_property_value($prop, $type);
+		}
+		$loc = Locator::get_instance();
+		/**
+		* optional properties
+		*/
+		$this->camping = $helper->get_optional_property_value(
+			"excerpt",
+			$this->properties["excerpt"]
+		);
+		$this->camping = $helper->get_optional_property_value(
+			"featured_image",
+			$this->properties["featured_image"]
+		);
+
+		$this->main_content = $helper->get_property_main_content();
 	}
 	/**
 	* Find all/count Article for a trip.

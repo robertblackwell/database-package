@@ -1,17 +1,21 @@
 <?php
 namespace Database\Models;
 
+use Database\Models\Base\CommonSql;
+
 /**
 ** @ingroup Models
 * This class represents a view of the items table that allows selection of a set of items by category
-*
-* @property string $trip
-* @property string $category
-* @property string $item_slug
-*
 */
-class CategorizedItem extends Base\Model
+class CategorizedItem extends CommonSql
 {
+	/** @property string $trip */
+	public $trip;
+	/** @property string $category */
+	public $category;
+	/** @property string $item_slug */
+	public $item_slug;
+
 	public static $table_name = "categorized_items";
 	public static $field_names = [
 		"trip" => "text",
@@ -25,10 +29,18 @@ class CategorizedItem extends Base\Model
 	 */
 	public function __construct(array $obj = null)
 	{
+		$helper = new RowHelper($obj);
+		$this->table = "categorized_items";
+
 		$this->properties = self::$field_names;
-		$this->table = self::$table_name;
-		// var_dump($obj);
-		parent::__construct($obj);
+		$derived_props = [
+		];
+		$props = array_diff_key($this->properties, $derived_props);
+		$this->sql_properties = array_keys($props);
+		
+		foreach ($props as $prop => $type) {
+			$this->$prop = $helper->get_property_value($prop, $type);
+		}
 	}
 	/**
 	* Finds all (or count) the rows in the categorized_items table and returns

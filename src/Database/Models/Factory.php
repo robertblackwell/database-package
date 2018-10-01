@@ -194,32 +194,33 @@ class Factory
 	*/
 	public static function album_from_hed(HEDObject $hed_obj) : Album
 	{
-		//print __METHOD__."\n";
-		$fields1 = Album::get_fields();
-		// compute the fields that require no trickery
-		$fields = array_diff_key($fields1, array("file_path" => "", "album_path" => ""));
-		//print_r($fields);
-		$vals = array();
-		$trip = $hed_obj->trip;
-		$slug = $hed_obj->slug;
+		return new Album($hed_obj);
+		// //print __METHOD__."\n";
+		// $fields1 = Album::get_fields();
+		// // compute the fields that require no trickery
+		// $fields = array_diff_key($fields1, array("file_path" => "", "album_path" => ""));
+		// //print_r($fields);
+		// $vals = array();
+		// $trip = $hed_obj->trip;
+		// $slug = $hed_obj->slug;
 
-		foreach ($fields as $k => $t) {
-			// this bypasses HEDObject majik __get method
-			$method = "get_".$t;
-			$vals[$k] = $hed_obj->$method($k);
-		}
-		$fp = $hed_obj->file_path;
-		$vals['content_path'] = $fp;
-		$vals['entity_path'] = (is_null($fp)) ? null : $hed_obj->file_path;
+		// foreach ($fields as $k => $t) {
+		// 	// this bypasses HEDObject majik __get method
+		// 	$method = "get_".$t;
+		// 	$vals[$k] = $hed_obj->$method($k);
+		// }
+		// $fp = $hed_obj->file_path;
+		// $vals['content_path'] = $fp;
+		// $vals['entity_path'] = (is_null($fp)) ? null : $hed_obj->file_path;
 
-		$vals['mascot_path'] = Locator::get_instance()->album_mascot_path($trip, $slug);
-		$vals['mascot_url'] = Locator::get_instance()->album_mascot_relative_url($trip, $slug);
+		// $vals['mascot_path'] = Locator::get_instance()->album_mascot_path($trip, $slug);
+		// $vals['mascot_url'] = Locator::get_instance()->album_mascot_relative_url($trip, $slug);
 
-		//print_r($vals);
-		$x = new Album($vals);
-		//var_dump($x);
-		//print __METHOD__."\n";
-		return $x;
+		// //print_r($vals);
+		// $x = new Album($vals);
+		// //var_dump($x);
+		// //print __METHOD__."\n";
+		// return $x;
 	}
 	/**
 	* Make Article model from suitable HEDObject.
@@ -228,30 +229,32 @@ class Factory
 	*/
 	public static function article_from_hed(HEDObject $hed_obj) : Article
 	{
-		//print __METHOD__."\n";
-		$fields1 = Article::get_fields();
-		// compute the fields that require no trickery
-		$fields = array_diff_key(
-			$fields1,
-			[
-				"file_path" => "",
-				"entry_path" => "",
-				"featured_image" => "",
-				"excerpt" => "",
-			]
-		);
-		$vals = array();
-		foreach ($fields as $k => $t) {
-			$method = "get_".$t;
-			$vals[$k] = $hed_obj->$method($k);
-		}
-		$vals['content_path'] = $hed_obj->file_path;
-		$vals['entity_path'] = dirname($hed_obj->file_path);
-		$vals['featured_image'] = self::featured_image($hed_obj);
-		//$vals['excerpt'] = $hed_obj->get_first_p('main_content');
-		$x = new Article($vals);
-		//print __METHOD__."\n";
-		return $x;
+		$obj = new Article($hed_obj);
+		return $obj;
+		// //print __METHOD__."\n";
+		// $fields1 = Article::get_fields();
+		// // compute the fields that require no trickery
+		// $fields = array_diff_key(
+		// 	$fields1,
+		// 	[
+		// 		"file_path" => "",
+		// 		"entry_path" => "",
+		// 		"featured_image" => "",
+		// 		"excerpt" => "",
+		// 	]
+		// );
+		// $vals = array();
+		// foreach ($fields as $k => $t) {
+		// 	$method = "get_".$t;
+		// 	$vals[$k] = $hed_obj->$method($k);
+		// }
+		// $vals['content_path'] = $hed_obj->file_path;
+		// $vals['entity_path'] = dirname($hed_obj->file_path);
+		// $vals['featured_image'] = self::featured_image($hed_obj);
+		// //$vals['excerpt'] = $hed_obj->get_first_p('main_content');
+		// $x = new Article($vals);
+		// //print __METHOD__."\n";
+		// return $x;
 	}
 	/**
 	* Make a Models/Banner object from s suitable HEDObject.
@@ -260,26 +263,8 @@ class Factory
 	*/
 	public static function banner_from_hed(HEDObject $hed_obj) : Banner
 	{
-		if ($hed_obj->get_text('type') !== "banner") {
-			$t = $hed_obj->get_text("type");
-			throw new \Exception("banner_from_hed type incorrect {$t}");
-		}
-		$locator = \Database\Locator::get_instance();
-		$fields1 = Banner::get_fields();
-		
-		// compute the fields that require no trickery and then load them
-		$fields = array_diff_key($fields1, array("image_path" => "", "image_url", "banner_folder_path" ));
-		$vals = array();
-		foreach ($fields as $k => $t) {
-			$method = "get_".$t;
-			$vals[$k] = $hed_obj->$method($k);
-		}
-		// now do the ones that require some trick
-		$vals['content_path'] = $hed_obj->file_path;
-		$vals['entity_path'] = dirname($hed_obj->file_path);
-
-		$x = new Banner($vals);
-		return $x;
+		$obj = new Banner($hed_obj);
+		return $obj;
 	}
 
 	/**
@@ -290,28 +275,8 @@ class Factory
 	*/
 	public static function editorial_from_hed(HEDObject $hed_obj) : Editorial
 	{
-		//print __METHOD__."\n";
-		
-		$locator = \Database\Locator::get_instance();
-		
-		$fields1 = Editorial::get_fields();
-		
-		// compute the fields that require no trickery
-		$fields = array_diff_key($fields1, array("image_path" => "", "image_url", "banner_folder_path" ));
-		//print_r($fields1);
-
-		$vals = array();
-		foreach ($fields as $k => $t) {
-			$method = "get_".$t;
-			$vals[$k] = $hed_obj->$method($k);
-		}
-		$vals['content_path'] = $hed_obj->file_path;
-		$vals['entity_path'] = dirname($hed_obj->file_path);
-		// $vals['banner_folder_path'] = $locator->banner_dir($vals['trip'], $vals['banner']);
-		$x = new Editorial($vals);
-		//var_dump($x);
-		//print __METHOD__."\n";
-		return $x;
+		$obj = new Editorial($hed_obj);
+		return $obj;
 	}
 
 	/**
@@ -322,31 +287,33 @@ class Factory
 	*/
 	public static function entry_from_hed(HEDObject $hed_obj) : Entry
 	{
-		//print __METHOD__."\n";
-		$fields1 = Entry::get_fields();
+		$obj = new Entry($hed_obj);
+		return $obj;
+		// //print __METHOD__."\n";
+		// $fields1 = Entry::get_fields();
 
-		// compute the fields that require no trickery and load those from hed.
-		$fields = array_diff_key(
-			$fields1,
-			[
-				"file_path" => "",
-				"entry_path" => "",
-				"featured_image" => "",
-				"excerpt" => "",
-			]
-		);
-		$vals = [];
-		foreach ($fields as $k => $t) {
-			$vals[$k] = self::get_and_validate_field($hed_obj, $k, $t);
-		}
+		// // compute the fields that require no trickery and load those from hed.
+		// $fields = array_diff_key(
+		// 	$fields1,
+		// 	[
+		// 		"file_path" => "",
+		// 		"entry_path" => "",
+		// 		"featured_image" => "",
+		// 		"excerpt" => "",
+		// 	]
+		// );
+		// $vals = [];
+		// foreach ($fields as $k => $t) {
+		// 	$vals[$k] = self::get_and_validate_field($hed_obj, $k, $t);
+		// }
 
-		// now add the tricky ones back in as derived values
-		$vals['content_path'] = $hed_obj->file_path;
-		$vals['entity_path'] = dirname($hed_obj->file_path);
-		$vals['featured_image'] = self::featured_image($hed_obj);
-		$vals['excerpt'] = $hed_obj->get_first_p('main_content');
-		$model = new Entry($vals);
-		return $model;
+		// // now add the tricky ones back in as derived values
+		// $vals['content_path'] = $hed_obj->file_path;
+		// $vals['entity_path'] = dirname($hed_obj->file_path);
+		// $vals['featured_image'] = self::featured_image($hed_obj);
+		// $vals['excerpt'] = $hed_obj->get_first_p('main_content');
+		// $model = new Entry($vals);
+		// return $model;
 	}
 	/**
 	* Make a Models/Location from a HEDObject
@@ -373,6 +340,7 @@ class Factory
 	*/
 	public static function post_from_hed(HEDObject $hed_obj) : Post
 	{
+
 		$fields1 = Post::get_fields();
 		// compute the fields that require no trickery and load them.
 		$fields = array_diff_key(

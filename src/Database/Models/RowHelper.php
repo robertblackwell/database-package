@@ -2,6 +2,7 @@
 namespace Database\Models;
 
 use \Exception as Exception;
+use Database\HED\HEDObject;
 
 /*!
 ** @ingroup Models
@@ -60,10 +61,10 @@ class RowHelper
 	protected $properties=null;
 	/**
 	* Constructor
-	* @param array $row Sql result row.
+	* @param array|ArrayAccess $row Sql result row.
 	* @return RowHelper
 	*/
-	public function __construct(array $row)
+	public function __construct(/*array*/ $row)
 	{
 		$this->row = $row;
 	}
@@ -116,6 +117,8 @@ class RowHelper
 	*/
 	public function get_text(string $field)
 	{
+		$v = $this->row[$field];
+		return $v;
 		if (array_key_exists($field, $this->row))
 			return $this->row[$field];
 		return null;
@@ -293,7 +296,56 @@ class RowHelper
 		$v = $this->$method($key);
 		return $v;
 	}
-
+	/**
+	* Beginning of explicit properties.
+	* This function checks an array/row has a key and returns its value with the correct type,
+	* or returns null if the value is not present
+	* @param string $key  Property name to be extracted from array.
+	* @param string $type Type id of the property to be extracted.
+	* @return mixed.
+	* @throws \Exception If $type is invalid.
+	*
+	*/
+	public function get_optional_property_value(string $key, string $type)
+	{
+		//print "<h1>".__METHOD__."($field) </h1>";
+		if (!in_array($type, self::$validTypes)) {
+			throw new \Exception("{$type} is invalid type");
+		}
+		if (!isset($this->row[$key])) {
+			return null;
+		}
+//		$typ = $this->properties[$key];
+		//var_dump($cc::$fields);
+		$method="get_".$type;
+		$v = $this->$method($key);
+		return $v;
+	}
+	/**
+	* Get the value of main_content. This is an optional property
+	* and for Article, Entry, Post is only available if the $row is
+	* a HEDObject.
+	* All other model types should use get_optional_property_value.
+	* @return string|null
+	*/
+	public function get_property_main_content()
+	{
+		$type = self::TYPE_HTML;
+		$key = "main_content";
+		if (!in_array($type, self::$validTypes)) {
+			throw new \Exception("{$type} is invalid type");
+		}
+		if (!isset($this->row[$key])) {
+			return null;
+		}
+		// $hobj = new HEDObject();
+		// if (!is_array($this->row) && (get_class($this->row) != get_class($hobj))) {
+		// 	return null;
+		// }
+		$method="get_".$type;
+		$v = $this->$method($key);
+		return $v;
+	}
 	/**
 	* @return stdClass Field names and field values as a stdClass
 	*/

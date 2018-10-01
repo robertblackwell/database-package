@@ -3,6 +3,8 @@ namespace Database\Models;
 
 use Database\HED\HEDObject;
 use Database\Locator;
+use Database\iSqlIzable;
+use Database\Models\Base\CommonSql;
 
 /**
 * @brief This object represents photo albums as displayed on the sites
@@ -11,13 +13,10 @@ use Database\Locator;
 *
 * static methods are provided for geting/finding lists of albums and individual albums.
 *
-* Magic properties
-*
-*
 */
-class Album extends Base\CommonSql
+class Album extends Base\CommonSql implements iSqlIzable
 {
-
+	/** These are essential non derived properties */
 	/** @var string $version */
 	public $version;
 	/** @var string $type */
@@ -37,6 +36,7 @@ class Album extends Base\CommonSql
 	/** @var string $title */
 	public $title;
 
+	/** These are derived properties*/
 	/** @var string $file_path */
 	public $file_path;
 	/** @var string $album_path */
@@ -69,18 +69,23 @@ class Album extends Base\CommonSql
 		'mascot_path' => "text",
 		'mascot_url' => "text",
 		"content_path" => "text",
+		
+		///
+		/// @note this one is ignored
+		///
 		"entity_path" => "text"
 		// note - gallery of type \GalleryObject is added during constructor - but its a REAL property
 	];
+	protected $sql_properties;
 	/**
 	* Consttructor.
-	* @param array $obj Sql query result as an associative array.
+	* @param array|ArrayAccess $obj Sql query result as an associative array.
 	* @return Album
 	*/
-	public function __construct(array $obj)
+	public function __construct(/*array|ArrayAccess*/ $obj)
 	{
 		$helper = new RowHelper($obj);
-		$this->table = "my_items";
+		$this->table = "albums";
 
 		$this->properties = self::$field_names;
 		$derived_props = [
@@ -91,9 +96,9 @@ class Album extends Base\CommonSql
 			"content_path" => "text",
 			"entity_path" => "text"
 		];
-		print "album fill non derived properties";
 		$props = array_diff_key($this->properties, $derived_props);
-		parent::__construct($obj);
+		$this->sql_properties = array_keys($props);
+		// parent::__construct($obj);
 		
 		foreach ($props as $prop => $type) {
 			$this->$prop = $helper->get_property_value($prop, $type);
@@ -102,13 +107,14 @@ class Album extends Base\CommonSql
 		$this->mascot_path = $loc->album_mascot_path($this->trip, $this->slug);
 		$this->mascot_url = $loc->album_mascot_relative_url($this->trip, $this->slug);
 		$this->content_path = $loc->album_filepath($this->trip, $this->slug);
-		print "after fill";
+//		print "after fill";
 		return;
 		$this->properties = self::$field_names;
 		$this->table = self::$table_name;
 		$this->_images = null;
 		parent::__construct($obj);
 	}
+
 	/**
 	* @param string $trip Trip code.
 	* @param string $slug Entity id.

@@ -3,8 +3,9 @@ namespace Database\Models\Base;
 
 use Database\Models\CategorizedItem;
 use \Exception as Exception;
+use Database \iSqlIzable;
 
-/*!
+/**
 ** @defgroup Models
 ** Models are classes that represent entities in the database and are defined to suite the application
 ** domain.
@@ -18,7 +19,7 @@ use \Exception as Exception;
 **  It is the first place in the class hierarchy that knows about field names
 **
 */
-class Model extends Row
+class Model extends Row implements iSqlIzable
 {
 	/**
 	* @var $sql \Database\SqlObject - used for models to make sql calls. Set up during initialization
@@ -35,7 +36,7 @@ class Model extends Row
 	* MUST provide a value for this property
 	*/
 	protected $table;     //name of the corresponding SQL table
-	
+	protected $sql_primary_key;
 	/**
 	* Constructor.
 	* @param array $obj Sql result row.
@@ -46,6 +47,29 @@ class Model extends Row
 		//print __CLASS__.":".__METHOD__.":";
 		parent::__construct($obj);
 	}
+	/**
+	* @return string Name of the primary key property.
+	*/
+	public function getSqlPrimaryKey() : string
+	{
+		return $this->sql_primary_key;
+	}
+	/**
+	* @return array Of string names of the properties from this
+	*               odel that appear in the sql tabke.
+	*/
+	public function getSqlProperties() :array
+	{
+		return $this->sql_properties;
+	}
+	/**
+	* @return string Name of the associated sql table or view
+	*/
+	public function getSqlTable() : string
+	{
+		return $this->table;
+	}
+
 	/**
 	* Beginning of explicit properties.
 	* This function checks an array/row has a key and returns its value with the correct type

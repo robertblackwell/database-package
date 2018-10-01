@@ -1,17 +1,23 @@
 <?php
 namespace Database\Models;
 
+use Database\Models\Base\CommonSql;
+
 /**
 ** @ingroup Models
 * This class represents a view of the item table that lists content items by month
 * of publication
-*
-* @property string $trip
-* @property string $year
-* @property string $month
 */
-class PostMonth extends Base\Model
+class PostMonth extends CommonSql
 {
+	
+	/** @var string $trip */
+	public $trip;
+	/** @var string $year */
+	public $year;
+	/** @var string $month */
+	public $month;
+
 	public static $table_name = "my_items";
 	public static $field_names = [
 		"trip" => "text",
@@ -25,9 +31,18 @@ class PostMonth extends Base\Model
 	*/
 	public function __construct(array $row)
 	{
-		$this->table = self::$table_name;
+		$helper = new RowHelper($obj);
+		$this->table = "my_items";
+
 		$this->properties = self::$field_names;
-		parent::__construct($row);
+		$derived_props = [
+		];
+		$props = array_diff_key($this->properties, $derived_props);
+		$this->sql_properties = array_keys($props);
+		
+		foreach ($props as $prop => $type) {
+			$this->$prop = $helper->get_property_value($prop, $type);
+		}
 	}
 	/**
 	* Find all distinct postmonth (yyyy-mm) that appear in the published_date property of

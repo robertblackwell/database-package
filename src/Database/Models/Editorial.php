@@ -3,7 +3,8 @@ namespace Database\Models;
 
 use Database\HED\HEDObject;
 use Database\Locator;
- 
+use Database\Models\Base\CommonSql;
+
 /**
 * @brief This object represents photo albums as displayed on the sites various "photo" pages and as contained
 * within content items.
@@ -11,27 +12,39 @@ use Database\Locator;
 * static methods are provided for geting/finding lists of albums and individual albums.
 *
 *
-* Magic properties
-*
-* @property string $version
-* @property string $type
-* @property string $slug
-* @property string $status
-* @property string $creation_date
-* @property string $published_date,
-* @property string $last_modified_date
-* @property string $trip
-* @property string $title
-* @property string $main_content
-* @property string $image_name
-* @property string $image
-* @property string $content_path
-* @property string $entity_path
-
-*
 */
-class Editorial extends Base\Model
+class Editorial extends CommonSql
 {
+		/** These are essential non derived properties */
+	/** @var string $version */
+	public $version;
+	/** @var string $type */
+	public $type;
+	/** @var string $slug */
+	public $slug;
+	/** @var string $status */
+	public $status;
+	/** @var string $creation_date */
+	public $creation_date;
+	/** @var string $published_date */
+	public $published_date;
+	/** @var string $last_modified_date */
+	public $last_modified_date;
+	/** @var string $trip */
+	public $trip;
+	/** @var string $main_content */
+	public $main_content;
+	/** @var string $image_name */
+	public $image_name;
+
+	/** These are derived properties*/
+	/** @var string $file_path */
+	public $image_path;
+	/** @var string $content_path */
+	public $content_path;
+	/** @var string $entity_path */
+	public $entity_path;
+
 	public static $table_name = "editorials";
 	public static $field_names = [
 		"version"=>"text",
@@ -42,7 +55,6 @@ class Editorial extends Base\Model
 		"published_date"=>"date",
 		"last_modified_date"=>"date",
 		"trip"=>"text",
-		"title"=>"html",
 		'main_content'=>'html',
 		'image_name'=>'text',	// this is a name like someimage.jpg
 								//-- the locator is used
@@ -58,13 +70,36 @@ class Editorial extends Base\Model
 	];
 	/**
 	* Consttructor.
-	* @param array $obj Sql query result as an associative array.
+	* @param array|ArrayAccess $obj Sql query result as an associative array.
 	* @return Editorial
 	*/
-	public function __construct(array $obj)
+	public function __construct(/*array*/ $obj)
 	{
+		$helper = new RowHelper($obj);
+		$this->table = "editorials";
+
+		$this->properties = self::$field_names;
+		$derived_props = [
+			'image'=>'text',
+			"content_path" => "text",
+			"entity_path" => "text"
+		];
+		$props = array_diff_key($this->properties, $derived_props);
+		$this->sql_properties = array_keys($props);
+		// parent::__construct($obj);
+		
+		foreach ($props as $prop => $type) {
+			$this->$prop = $helper->get_property_value($prop, $type);
+		}
+		$loc = Locator::get_instance();
+		$this->content_path = $loc->editorial_filepath($this->trip, $this->slug);
+//		print "after fill";
+		return;
+
 		$this->properties = self::$field_names;
 		$this->table = self::$table_name;
+		$this->sql_properties = array_keys($this->properties);
+		$this->sql_primary_key = "slug";
 		parent::__construct($obj);
 	}
 	/**

@@ -29,9 +29,6 @@ class HEDObject implements \ArrayAccess
 	*/
 	private $doc;
 
-	// protected $_xp;
-	private $properties = null;
-	
 	/**
 	* Constructor empty
 	*/
@@ -52,7 +49,7 @@ class HEDObject implements \ArrayAccess
 			$t = gettype($offset);
 			throw new \Exception("offset must be string {$t} given");
 		}
-		return __get($offset);
+		return $this->__get($offset);
 	}
 	public function offsetSet ($offset , $value)
 	{
@@ -154,7 +151,8 @@ class HEDObject implements \ArrayAccess
 	*/
 	public function __isset(string $field) : bool
 	{
-		// @todo This function is meaningless
+		$v = $this->get_text($field);
+		return (!is_null($v));
 		if (!is_null($this->properties) && (array_key_exists($field, $this->properties))) {
 			throw new \Exception("HEDObject should have no properties");
 			return true;
@@ -172,33 +170,14 @@ class HEDObject implements \ArrayAccess
 	public function __get(string $field)
 	{
 		// print "<h1>".__METHOD__."($field) </h1>";
-		if (!is_null($this->properties) && (array_key_exists($field, $this->properties))) {
+		if (!$this->__isset($field)) {
 			// print "<p>".__METHOD__."typ = $typ its a getter </p>";
-			throw new \Exception("HEDObject should have no properties");
-			$typ = $this->properties[$field];
-			if ($typ == 'getter') {
-				// print "<p>".__METHOD__."typ = $typ its a getter field {$field} </p>";
-				$method = $field;
-			} else {
-				//var_dump($cc::$fields);
-				$method="get_".$typ;
-			}
+			throw new \Exception("HEDObject does not have this key/property");
 		} else {
 			// print "<p>".__METHOD__."its a default text {$field}</p>";
 			$method = 'get_text';
 		}
-		//var_dump(self::$_fields);
-		//var_dump(static::$_fields);
-		//var_dump(static::$fields);
-		//var_dump($cc::$fields);
-		//print "<p>".__METHOD__." method: $method  field: $field</p>";
 		$v = $this->$method($field);
-		//print "<p>".__METHOD__." method: $method  field: $field return $v</p>";
-		
-		//if( is_null($v) )
-		//    throw new Exception("VOItem::_get($field) not found ");
-		//print "<p>VOItem::__get method: $method  field: $field v: $v</p>";
-		//print "<h1>".__METHOD__."($field)</h1>";
 		return $v;
 	}
 

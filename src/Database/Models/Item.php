@@ -4,6 +4,7 @@ namespace Database\Models;
 use Database\HED\HEDObject;
 use Database\Models\Factory;
 use \Exception as Exception;
+use Database\Models\Base\CommonSql;
 
 /**
 ** @ingroup Models
@@ -15,30 +16,62 @@ use \Exception as Exception;
 *
 * It also defines (from SQL tables) the set of fields/properties that are available is a
 * summary of a content item.
-* @property string version
-* @property string type
-* @property string slug
-* @property string status
-* @property string creation_date
-* @property string published_date
-* @property string last_modified_date
-* @property string trip
-* @property string title
-* @property string abstract
-* @property string excerpt
-* @property string featured_image
-* @property string miles
-* @property string odometer
-* @property string day_number
-* @property string place
-* @property string country
-* @property string latitude
-* @property string longitude
-* @property string camping
 *
 */
-class Item extends ItemBase
+class Item extends CommonSql
 {
+	/**
+	* These are essential non derived properties
+	*/
+	/** @var string $version */
+	public $version;
+	/** @var string $type */
+	public $type;
+	/** @var string $slug */
+	public $slug;
+	/** @var string $status */
+	public $status;
+	/** @var string $creation_date */
+	public $creation_date;
+	/** @var string $published_date */
+	public $published_date;
+	/** @var string $last_modified_date */
+	public $last_modified_date;
+	/** @var string $trip */
+	public $trip;
+	/** @var string $title */
+	public $title;
+	/** @var string $abstract */
+	public $abstract;
+	/** @var string $excerpt */
+	public $excerpt;
+	/** @var string $featured_image */
+	public $featured_image;
+	/** @var string $miles */
+	public $miles;
+	/** @var string $odometer */
+	public $odometer;
+	/** @var string $day_number */
+	public $day_number;
+	/** @var string $place */
+	public $place;
+	/** @var string $country */
+	public $country;
+	/** @var string $latitude */
+	public $latitude;
+	/** @var string $longitude */
+	public $longitude;
+	/** @var string|null $camping */
+	public $camping;
+	/** @var string|null $border */
+	public $border;
+
+	/** These are derived properties*/
+	/** @var boolean $has_camping */
+	public $has_camping;
+	/** @var bolean $has_border */
+	public $has_border;
+
 	public static $table_name = "my_items";
 	public static $field_names = [
 		"version"=>"text",
@@ -61,6 +94,7 @@ class Item extends ItemBase
 		"latitude"=>"latitude",
 		"longitude"=>"longitude",
 		"camping"=>"html",
+		"border" => "html"
 		];
 	/**
 	* Constructor.
@@ -69,14 +103,31 @@ class Item extends ItemBase
 	*/
 	public function __construct(array $obj)
 	{
-		$this->table = self::$table_name;
+		$helper = new RowHelper($obj);
+		$this->table = "my_items";
+
 		$this->properties = self::$field_names;
-		/*
-		foreach ($this->properties as $prop => $type) {
-			$this->$prop = $this->get_property_value($obj, $prop, $type);
+		$derived_props = [
+			"camping"=>"html",
+			"border" => "html"
+		];
+		$props = array_diff_key($this->properties, $derived_props);
+		$this->sql_properties = array_keys($props);
+		// parent::__construct($obj);
+		
+		foreach ($props as $prop => $type) {
+			$this->$prop = $helper->get_property_value($prop, $type);
 		}
-		*/
-		parent::__construct($obj);
+		$loc = Locator::get_instance();
+		// now do the optional properties
+		$this->camping = $helper->get_optional_property_value(
+			"camping",
+			$this->properties["camping"]
+		);
+		$this->border = $helper->get_optional_property_value(
+			"border",
+			$this->properties["border"]
+		);
 	}
 	/**
 	* Get an/the Item for a trip-slug pair.

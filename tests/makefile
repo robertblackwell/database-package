@@ -14,6 +14,7 @@ all: db hed models nextprev locator  #import paths utility
 
 db:
 	$(LITETEST) --bootstrap-file="include/bootstrap.php" \
+	unit_tests/db/load.php \
 	unit_tests/db/connect_test.php \
 	unit_tests/db/meta_test.php \
 	unit_tests/db/query_test.php \
@@ -80,7 +81,7 @@ nextprev:
 		unit_tests/nextprev/category_test.php \
 		unit_tests/nextprev/country_test.php \
 		unit_tests/nextprev/months_test.php \
-		unit_tests/nextprev/none_test.php
+		unit_tests/nextprev/none_test.php 
 
 pdo:
 	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/db_pdo/index.php
@@ -94,10 +95,16 @@ cats:
 
 hed:
 	$(LITETEST) --bootstrap-file="include/bootstrap.php" \
- 		unit_tests/hed/hed_factory_test.php \
  		unit_tests/hed/hed_album_test.php \
- 		unit_tests/hed/hed_location_test.php \
- 		unit_tests/hed/hed_test.php
+		unit_tests/hed/hed_article_test.php \
+		unit_tests/hed/hed_banner_test.php \
+		unit_tests/hed/hed_editorial_test.php \
+		unit_tests/hed/hed_post_test.php \
+		unit_tests/hed/hed_entry_test.php
+
+#unit_tests/hed/hed_factory_test.php \
+# unit_tests/hed/hed_location_test.php \
+# unit_tests/hed/hed_test.php
 
 import:
 	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/import/util_test.php

@@ -3,10 +3,14 @@ namespace Database\Models\Base;
 
 use Database\Models\CategorizedItem;
 use \Exception as Exception;
+use Database\SqlObject;
+use Database\Locator;
+use Database\iSqlIzable;
+
 /**
 * Provides common sql functions to models.
 */
-class CommonSql
+class CommonSql implements iSqlIzable
 {
 	/**
 	* @var $sql \Database\SqlObject - used for models to make sql calls. Set up during initialization
@@ -19,21 +23,69 @@ class CommonSql
 	protected static $locator;
 
 	/**
-	* @var $table string - the name of the sql table/view this model is connected to. Each derived class
-	* MUST provide a value for this property
+	* @var string $table The name of the sql table/view this model
+	*                    is connected to. Each derived class MUST provide a value.
 	*/
 	protected $table;     //name of the corresponding SQL table
+
+	/**
+	* @var array $sql_properties An array of names of all the properties of this model
+	*                            that appear in the table associated with this model.
+	*                            Each derived class MUST provide a value.
+	*/
+	protected $sql_properties;
+
+	/**
+	* @var string $sql_primary_key A string name of this models primary key property.
+	*                            Each derived class MUST provide a value.
+	*/
+	protected $sql_primary_key;
 	
 	/**
+	* Initialize the class.
+	* @param SqlObject $sql     The current SqlObject.
+	* @param Locator   $locator The current instance of the Locator.
+	* @return void
+	*/
+	public static function init(SqlObject $sql, Locator $locator)
+	{
+		self::$sql = $sql;
+		self::$locator = $locator;
+	}
+
+	/**
 	* Constructor.
-	* @param array $obj Sql result row.
+	* param array|ArrayAccess $obj Sql result row.
 	* @return Model
 	*/
-	public function __construct(array $obj)
+	public function __construct(/*array $obj*/)
 	{
 		//print __CLASS__.":".__METHOD__.":";
-		parent::__construct($obj);
 	}
+
+	/**
+	* @return string Name of the primary key property.
+	*/
+	public function getSqlPrimaryKey() : string
+	{
+		return $this->sql_primary_key;
+	}
+	/**
+	* @return array Of string names of the properties from this
+	*               odel that appear in the sql tabke.
+	*/
+	public function getSqlProperties() : array
+	{
+		return $this->sql_properties;
+	}
+	/**
+	* @return string Name of the associated sql table or view
+	*/
+	public function getSqlTable() : string
+	{
+		return $this->table;
+	}
+
 	/*
 	** Below here are a set of common "finder" functions
 	*/

@@ -8,6 +8,7 @@ namespace Database;
 use \Database\SqlObject as SQLObject;
 use \Database\Locator as Locator;
 use \Exception as Exception;
+use Database\Models\Base\CommonSql;
 use \Database\HED\HEDObject as HEDObject;
 use \Registry as Registry;
 
@@ -52,7 +53,6 @@ class Object
 		* Allocate and prime the Locator object
 		*/
 		Locator::init($configuration['hed']);
-
 		/**
 		* Now allocate the singleton of this class and hook in the Locator and SqlObject
 		*/
@@ -70,6 +70,7 @@ class Object
 		// Models\Base\ModelBase::$locator = self::$locator;
 		Models\Base\Model::$sql = self::$sql;
 		Models\Base\Model::$locator = self::$locator;
+		Models\Base\CommonSql::init(self::$sql, self::$locator);
 	}
 	/**
 	* Gets the singleton instance of a Database\Object class

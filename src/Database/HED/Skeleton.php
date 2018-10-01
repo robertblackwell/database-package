@@ -108,13 +108,21 @@ class Skeleton
 		if (!chmod($file_name, 511))
 			throw new \Exception("chmod failed on file: $file_name");
 		
-		if (($type == "entry") || ($type == "post") || ($type == "banner" )) {
+		if (($type == "entry") || ($type == "post") || ($type == "banner" ) || ($type == "article")) {
 			mkdir($item_dir."/Images", 511, true);
 			chmod($item_dir."/Images", 511);
 		}
-		if (($type == "entry")  || ($type == "post")) {
+		if (($type == "entry")  || ($type == "post") || ($type == "article")) {
 			mkdir($item_dir."/Thumbnails", 511, true);
 			chmod($item_dir."/Thumbnails", 511);
+		}
+		if ($type == "article") {
+			$main_content_path = $d."/main_content.php";
+			$empty_main_content_string=<<<EOD
+<?php
+	// this is the main content file for an article
+EOD;
+			file_put_contents($main_content_path, $empty_main_content_string);
 		}
 		$obj = new HEDObject();
 		$obj->get_from_file($file_name);
@@ -199,25 +207,80 @@ EOD;
 		return self::write_hed_data($hed_file_path, "album", $s);
 	}
 
+	/**
+	* Create a new skeleton article in HED format and write to the correct file.
+	* @param string $trip           The trip for this album.
+	* @param string $slug           The unique id for this album.
+	* @param string $published_date The published date to be recorded in the album.
+	* @param string $title          The title for this album.
+	* @param string $abstract       The title for this album.
+	* @return HEDObject
+	*
+	*/
+	public static function create_article(
+		string $trip,
+		string $slug,
+		string $published_date,
+		string $title,
+		string $abstract
+	) : HEDObject {
+		assert(func_num_args() == 4);
+		$path = \Database\Locator::get_instance()->article_filepath($trip, $slug);
+		return self::make_article(
+			$path, 
+			$trip, 
+			$slug, 
+			$published_date, 
+			$title,
+			$abstract
+		);
+	}
+	/**
+	* Create a new skeleton article in HED format and write given file path.
+	* @param string $hed_file_path  Where to write the newly created content.
+	* @param string $trip           The trip for this album.
+	* @param string $slug           The unique id for this album.
+	* @param string $published_date The published date to be recorded in the album.
+	* @param string $title          The title for this album.
+	* @param string $abstract       The title for this album.
+	* @return HEDObject
+	*
+	*/
+	public static function make_article(
+		string $hed_file_path,
+		string $trip,
+		string $slug,
+		string $published_date,
+		string $title,
+		string $abstract
+	) : HEDObject {
+		ob_start();
+		self::print_hed_header();
+		self::print_hed_common("article", $trip, $slug, $published_date, []);
+		self::print_field_value("title", $title);
+		self::print_field_value("abstract", $abstract);
+		self::print_hed_footer();
+		$s = ob_get_clean();
+		return self::write_hed_data($hed_file_path, "article", $s);
+	}
+
 	
 	/**
 	* Create a new skeleton banner in HED format and write given file path.
 	* @param string $trip           The trip for this editorial.
 	* @param string $slug           The unique id for this editorial.
 	* @param string $published_date The published date to be recorded.
-	* @param string $title          The title of the banners ?? @todo what ?.
 	* @return HEDObject
 	*
 	*/
 	public static function create_banner(
 		string $trip,
 		string $slug,
-		string $published_date,
-		string $title
+		string $published_date
 	) : HEDObject {
 		assert(func_num_args() == 4);
 		$path = \Database\Locator::get_instance()->banner_filepath($trip, $slug);
-		return self::make_banner($path, $trip, $slug, $published_date, $title);
+		return self::make_banner($path, $trip, $slug, $published_date);
 	}
 	/**
 	* Create a new skeleton banner in HED format and write given file path.
@@ -225,7 +288,6 @@ EOD;
 	* @param string $trip           The trip for this editorial.
 	* @param string $slug           The unique id for this editorial.
 	* @param string $published_date The published date to be recorded.
-	* @param string $image_url      The url of the banners ?? @todo what ?.
 	* @return HEDObject
 	*
 	*/
@@ -233,17 +295,17 @@ EOD;
 		string $hed_file_path,
 		string $trip,
 		string $slug,
-		string $published_date,
-		string $image_url
+		string $published_date
+		// string $image_url
 	) : HEDObject {
 		ob_start();
 
 		self::print_hed_header();
 		self::print_hed_common("banner", $trip, $slug, $published_date, []);
 
-		self::print_field_value("title", "NOT REQUIRED");
-		self::print_field_value("main_content", "NOT_REQUIRED");
-		self::print_field_value("image_url", $image_url);
+		// self::print_field_value("title", "NOT REQUIRED");
+		// self::print_field_value("main_content", "NOT_REQUIRED");
+		// self::print_field_value("image_url", $image_url);
 
 
 		self::print_hed_footer();
@@ -257,7 +319,6 @@ EOD;
 	* @param string $trip           The trip for this editorial.
 	* @param string $slug           The unique id for this editorial.
 	* @param string $published_date The published date to be recorded.
-	* @param string $title          The name or title for this editorial.
 	* @param string $image          The basename of the image file that goes with this editorial.
 	* @return HEDObject
 	*
@@ -266,12 +327,11 @@ EOD;
 		string $trip,
 		string $slug,
 		string $published_date,
-		string $title,
-		string $image
+		string $image_name
 	) : HEDObject {
 		assert(func_num_args() == 5);
 		$path = \Database\Locator::get_instance()->editorial_filepath($trip, $slug);
-		return self::make_editorial($path, $trip, $slug, $published_date, $title, $image);
+		return self::make_editorial($path, $trip, $slug, $published_date, $image_name);
 	}
 
 	/**
@@ -280,7 +340,6 @@ EOD;
 	* @param string $trip           The trip for this editorial.
 	* @param string $slug           The unique id for this editorial.
 	* @param string $published_date The published date to be recorded.
-	* @param string $title          The name or title for this editorial.
 	* @param string $image          The basename of the image file that goes with this editorial.
 	* @return HEDObject
 	*
@@ -290,8 +349,7 @@ EOD;
 		string $trip,
 		string $slug,
 		string $published_date,
-		string $title,
-		string $image
+		string $image_name
 	) : HEDObject {
 		ob_start();
 
@@ -300,9 +358,8 @@ EOD;
 		self::print_hed_header();
 		self::print_hed_common("editorial", $trip, $slug, $published_date, []);
 
-		self::print_field_value("title", $title);
-		self::print_field_value("image", $image);
-		self::print_field_value("image_name", $image);
+		self::print_field_value("image", $image_name);
+		self::print_field_value("image_name", $image_name);
 		self::print_field_value("main_content", $main_content);
 
 
@@ -325,7 +382,6 @@ EOD;
 	* @param string $country        The country.
 	* @param string $latitude       The latitude.
 	* @param string $longitude      The longitude.
-	* @param string $categories     The categories.
 	* @param string $featured_image Featured image text.
 	* @param string $main_content   Main content.
 	* @return a HEDObject
@@ -344,16 +400,29 @@ EOD;
 		string $country,
 		string $latitude,
 		string $longitude,
-		string $categories = null, // self::empty_categories(),
+		// string $categories = null, // self::empty_categories(),
 		string $featured_image = null, //  self::default_featured_image(),
 		string $main_content = null //self::default_main_content()
 	) : HEDObject {
 		assert(func_num_args() == 11);
 		$path = \Database\Locator::get_instance()->item_filepath();
 		// phpcs:disable
-		return self::make_entry($path, $trip, $slug, $published_date, $title, 
-			$vehicle, $miles, $odometer, $day_number, $place, $country, 
-			$latitude, $longitude, $categories, $featured_image, $main_content 
+		return self::make_entry(
+			$path,
+			$trip,
+			$slug,
+			$published_date,
+			$title,
+			$vehicle,
+			$miles,
+			$odometer,
+			$day_number,
+			$place,
+			$country,
+			$latitude,
+			$longitude,
+			$featured_image,
+			$main_content 
 		);
 		// phpcs:enable
 	}
@@ -373,7 +442,6 @@ EOD;
 	* @param string $country        The country.
 	* @param string $latitude       The latitude.
 	* @param string $longitude      The longitude.
-	* @param string $categories     The categories.
 	* @param string $featured_image Featured image text.
 	* @param string $main_content   Main content.
 	* @return a HEDObject
@@ -393,13 +461,11 @@ EOD;
 		string $country,
 		string $latitude,
 		string $longitude,
-		string $categories = null, // self::empty_categories(),
 		string $featured_image = null, //  self::default_featured_image(),
 		string $main_content = null //self::default_main_content()
 	) : HEDObject {
 		ob_start();
 
-		if (is_null($categories)) $categories = self::empty_categories() ;
 		if (is_null($featured_image)) $featured_image = self::default_featured_image();
 		if (is_null($main_content)) $main_content = self::default_main_content();
 
@@ -417,7 +483,6 @@ EOD;
 		self::print_field_value("longitude", $longitude);
 		self::print_field_value("featured_image", $featured_image);
 
-		self::print_field_value("categories", $categories);
 		// self::print_field_value("tags", "NOT_REQUIRED");
 		// self::print_field_value("excerpt", "NOT_REQUIRED");
 		// self::print_field_value("abstract", "NOT_REQUIRED");

@@ -4,7 +4,7 @@ print "LocalTestcase.php included \n";
 /**
 * A wrapper for the test runner so that changing is easier.
 */
-class LocalTestcase extends \LiteTest\TestCase
+class NoSqlTestcase extends \LiteTest\TestCase
 {
 	public function __construct()
 	{

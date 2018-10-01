@@ -1,16 +1,25 @@
 <?php
 namespace Database\Models;
 
+use Database\iSqlIzable;
+use Database\Locator;
+use Database\Models\Base\CommonSql;
+
 /**
 * This class provides a view of the my_items table that returns all the titles of items of type "article".
 *
-* @property string $trip
-* @property string $slug
-* @property string $title
-* @property string $country
 */
-class ArticleTitle extends Base\Model
+class ArticleTitle extends CommonSql
 {
+	/** @var string $trip */
+	public $trip;
+	/** @var string $slug */
+	public $slug;
+	/** @var string $title */
+	public $title;
+	/** @var string $country */
+	public $country;
+
 	public static $table_name = "my_items";
 	public static $field_names = [
 		"trip"    =>"text",
@@ -26,11 +35,18 @@ class ArticleTitle extends Base\Model
 	*/
 	public function __construct(array $obj)
 	{
+		$helper = new RowHelper($obj);
+		$this->table = "my_items";
+
 		$this->properties = self::$field_names;
-		$this->table = self::$table_name;
-		//print "<p>".__METHOD__."</p>";
-		//var_dump($obj);
-		parent::__construct($obj);
+		$derived_props = [
+		];
+		$props = array_diff_key($this->properties, $derived_props);
+		$this->sql_properties = array_keys($props);
+		
+		foreach ($props as $prop => $type) {
+			$this->$prop = $helper->get_property_value($prop, $type);
+		}
 	}
 	/**
 	* Find those ArticleTitle entities for a trip.

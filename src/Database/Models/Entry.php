@@ -1,43 +1,74 @@
 <?php
 namespace Database\Models;
 
+use Database\iSqlIzable;
+use Database\Models\Base\CommonSql;
+use Database\Locator;
+
 /**
 * This class represents a journal entry
-*
-*
-* Magic properties
-*
-* @property string $version
-* @property string $type
-* @property string $trip
-* @property string $vehicle
-* @property string $slug
-* @property string $status
-* @property string $creation_date
-* @property string $published_date,
-* @property string $last_modified_date
-*
-* @property string $miles
-* @property string $odometer
-* @property string $day_number
-* @property string $place
-* @property string $country
-* @property string $latitude
-* @property string $longitude
-*
-* @property string $featured_image
-* @property string $title
-* @property string $abstract
-* @property string $excerpt
-* @property string $main_content
-*
-* @property string $camping
-* @property string $border
-* @property string $has_camping
-* @property string $has_border
 */
-class Entry extends ItemBase
+class Entry extends CommonSql
 {
+	/**
+	* These are essential non derived properties
+	*/
+	/** @var string $version */
+	public $version;
+	/** @var string $type */
+	public $type;
+	/** @var string $trip */
+	public $trip;
+	/** @var string $vehicle */
+	public $vehicle;
+	/** @var string $slug */
+	public $slug;
+	/** @var string $status */
+	public $status;
+	/** @var string $creation_date */
+	public $creation_date;
+	/** @var string $published_date */
+	public $published_date;
+	/** @var string $last_modified_date */
+	public $last_modified_date;
+	/** @var string $miles */
+	public $miles;
+	/** @var string $odometer */
+	public $odometer;
+	/** @var string $day_number */
+	public $day_number;
+	/** @var string $place */
+	public $place;
+	/** @var string $country */
+	public $country;
+	/** @var string $latitude */
+	public $latitude;
+	/** @var string $longitude */
+	public $longitude;
+	/** @var string|null $featureed_image */
+	public $featured_image;
+	/** @var string $title */
+	public $title;
+	/** @var string $abstract */
+	// public $abstract;
+	/** @var string $excerpt */
+	public $excerpt;
+
+	/** @var string|null $main_content */
+	public $main_content;
+
+	/** @var string|null $camping */
+	public $camping;
+	/** @var string|null $border */
+	public $border;
+
+	/** These are derived properties*/
+	/** @var boolean $has_camping */
+	public $has_camping;
+	/** @var bolean $has_border */
+	public $has_border;
+
+
 	public static $table_name = "my_items";
 	public static $field_names = [
 		"version"=>"text",
@@ -60,7 +91,7 @@ class Entry extends ItemBase
 		//"featured_image"=>"getter",
 		"featured_image"=>"text",
 		"title"=>"html",
-		"abstract"=>"html",
+		// "abstract"=>"html",
 		//"excerpt"=>"getter",
 		"excerpt"=>"text",
 		"main_content"=>"html",
@@ -71,14 +102,56 @@ class Entry extends ItemBase
 		];
 	/**
 	* Consttructor.
-	* @param array $obj Sql query result as an associative array.
+	* @param array|ArrayAccess $obj Sql query result as an associative array.
 	* @return Entry
 	*/
-	public function __construct(array $obj)
+	public function __construct(/*array*/ $obj)
 	{
+		$helper = new RowHelper($obj);
+		$this->table = "my_items";
+
 		$this->properties = self::$field_names;
-		$this->table = self::$table_name;
-		parent::__construct($obj);
+		$derived_props = [
+			"camping"=>"html",
+			"border" => "html",
+			"excerpt"=>"text",
+			"main_content" => "html",
+			"featured_image"=>"text",
+			"has_camping"=>"has",
+			"has_border"=>"has",
+		];
+		$props = array_diff_key($this->properties, $derived_props);
+		$this->sql_properties = array_keys($props);
+		/**
+		* fill all "required" properties
+		*/
+		foreach ($props as $prop => $type) {
+			$this->$prop = $helper->get_property_value($prop, $type);
+		}
+		$loc = Locator::get_instance();
+		/**
+		* optional properties
+		*/
+		$this->excerpt = $helper->get_optional_property_value(
+			"excerpt",
+			$this->properties["excerpt"]
+		);
+		$this->featured_image = $helper->get_optional_property_value(
+			"featured_image",
+			$this->properties["featured_image"]
+		);
+		$this->camping = $helper->get_optional_property_value(
+			"camping",
+			$this->properties["camping"]
+		);
+		$this->border = $helper->get_optional_property_value(
+			"border",
+			$this->properties["border"]
+		);
+		/**
+		* main_content, only available if $obj is a HEDObject
+		*/
+		$this->main_content = $helper->get_property_main_content();
 	}
 	/**
 	* Find all/count the albums and return them in an array of Album objects

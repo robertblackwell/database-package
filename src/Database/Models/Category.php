@@ -1,6 +1,8 @@
 <?php
 namespace Database\Models;
 
+use Database\Models\Base\CommonSql;
+
 /**
 ** @ingroup Models
 * This class is a standard Model but it is a little different in that
@@ -10,8 +12,13 @@ namespace Database\Models;
 * @property string category
 * @property string $trip
 */
-class Category extends Base\Model
+class Category extends CommonSql
 {
+	/** @var string $trip */
+	public $trip;
+	/** @var string category */
+	public $category;
+
 	public static $table_name = "categories";
 	public static $field_names = [
 		"category"=>"text",
@@ -23,9 +30,18 @@ class Category extends Base\Model
 	*/
 	public function __construct(array $obj = null)
 	{
+		$helper = new RowHelper($obj);
+		$this->table = "categories";
+
 		$this->properties = self::$field_names;
-		$this->table = self::$table_name;
-		parent::__construct($obj);
+		$derived_props = [
+		];
+		$props = array_diff_key($this->properties, $derived_props);
+		$this->sql_properties = array_keys($props);
+		
+		foreach ($props as $prop => $type) {
+			$this->$prop = $helper->get_property_value($prop, $type);
+		}
 	}
 
 	/**

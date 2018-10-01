@@ -2,32 +2,43 @@
 namespace Database\Models;
 
 use Database\HED\HEDObject;
+use Database\Models\Base\CommonSql;
+use Database\Locator;
 
 /**
 * @brief This object represents banner of rotating photos on the home page.
 *
 * static methods are provided for geting/finding a lists of banners and individual banner.
 *
-* @ingroup Models
-*
-*
-* Magic properties
-*
-* @property string $version
-* @property string $type
-* @property string $slug
-* @property string $status
-* @property string $creation_date
-* @property string $published_date,
-* @property string $last_modified_date
-* @property string $trip
-* @property string $title
-* @property string $content_path
-* @property string $entity_path
-*
 */
-class Banner extends Base\Model
+class Banner extends CommonSql
 {
+	/** These are essential non derived properties */
+	/** @var string $version */
+	public $version;
+	/** @var string $type */
+	public $type;
+	/** @var string $slug */
+	public $slug;
+	/** @var string $status */
+	public $status;
+	/** @var string $creation_date */
+	public $creation_date;
+	/** @var string $published_date */
+	public $published_date;
+	/** @var string $last_modified_date */
+	public $last_modified_date;
+	/** @var string $trip */
+	public $trip;
+
+	/** These are derived properties*/
+	/** @var string $title */
+	// public $title;
+	/** @var string $content_path */
+	public $content_path;
+	/** @var string $entity_path */
+	public $entity_path;
+
 	//
 	// This holds a ist of the images associated with this banner object.
 	//
@@ -43,9 +54,9 @@ class Banner extends Base\Model
 		"published_date"=>"date",
 		"last_modified_date"=>"date",
 		"trip"=>"text",
-		"title"=>"html",
 		// from this point onwards the values can be deduced via the Locator
 		// so should not be passed in but deduced in the cnstructor
+		// "title"=>"html",
 		"content_path" => "text",
 		"entity_path" => "text"
 //         'banner'=>'text',
@@ -55,14 +66,28 @@ class Banner extends Base\Model
 	];
 	/**
 	 * Banner constructor.
-	 * @param array $obj Array of values to initialize object with.
+	 * @param array|ArrayAccess $obj Array of values to initialize object with.
 	 * @return Banner
 	 */
-	public function __construct(array $obj)
+	public function __construct(/*array*/ $obj)
 	{
+		$helper = new RowHelper($obj);
+		$this->table = "banners";
+
 		$this->properties = self::$field_names;
-		$this->table = self::$table_name;
-		parent::__construct($obj);
+		$derived_props = [
+			"content_path" => "text",
+			"entity_path" => "text"
+		];
+		$props = array_diff_key($this->properties, $derived_props);
+		$this->sql_properties = array_keys($props);
+		// parent::__construct($obj);
+		
+		foreach ($props as $prop => $type) {
+			$this->$prop = $helper->get_property_value($prop, $type);
+		}
+		$loc = Locator::get_instance();
+		$this->content_path = $loc->banner_filepath($this->trip, $this->slug);
 	}
 	/**
 	 * Finds the $trip and $slug for the latest Banner in reverse chronological order.

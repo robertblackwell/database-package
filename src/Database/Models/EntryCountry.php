@@ -1,14 +1,19 @@
 <?php
 namespace Database\Models;
 
+use Database\Models\Base\CommonSql;
+
 /**
 ** @ingroup Models
-* This class provides access to journal entry by country and hence represents a view
-* @property string $trip
-* @property string $country
+* This class provides access to journal entry by country and hence represents a view.
 */
-class EntryCountry extends Base\Model
+class EntryCountry extends CommonSql
 {
+	/** @var string $trip */
+	public $trip;
+	/** @var string $country */
+	public $country;
+
 	public static $table_name = "my_items";
 	public static $field_names = [
 		"trip"=>"text",
@@ -23,9 +28,18 @@ class EntryCountry extends Base\Model
 	*/
 	public function __construct(array $obj)
 	{
-		$this->table = self::$table_name;
+		$helper = new RowHelper($obj);
+		$this->table = "my_items";
+
 		$this->properties = self::$field_names;
-		parent::__construct($obj);
+		$derived_props = [
+		];
+		$props = array_diff_key($this->properties, $derived_props);
+		$this->sql_properties = array_keys($props);
+		
+		foreach ($props as $prop => $type) {
+			$this->$prop = $helper->get_property_value($prop, $type);
+		}
 	}
 	/**
 	* Find all/count EntryCountry objects for a trip.

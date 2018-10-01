@@ -2,6 +2,7 @@
 namespace Database;
 
 use \Exception as Exception;
+use Database\iSqlIzable;
 
 /**
 * @brief This class provides a simple abstraction layer over the top of the sql database.
@@ -293,20 +294,20 @@ class SqlObject
 	* update a row in a table that corresponds to the given object
 	* BEWARE assuming the primary key is called id
 	 *
-	 * @param string                      $table  Name of the table to be updated.
-	 * @param \Database\Models\Base\Model $object The new value of the object to be updated.
+	 * @param string     $table  Name of the table to be updated.
+	 * @param iSqlIzable $object The new value of the object to be updated.
 	 * @return void
 	 * @throws Exception When query fails.
 	 *
 	 */
-	public function update(string $table, \Database\Models\Base\Model $object)
+	public function update(string $table, iSqlIzable $object)
 	{
 		//print "<p>".__METHOD__."($table)</p>";
 		//print "<p>".get_called_class()."</p>";
 		//var_dump($this->getFieldNames($table));
 		//var_dump($object->getFieldNames());
 		$tflds = $this->getFieldNames($table);
-		$oflds = $object->getFieldNames();
+		$oflds = $object->getSqlProperties(); //FieldNames();
 		$i_flds = array_intersect($tflds, $oflds);
 		//var_dump($i_flds);
 		$query = "UPDATE $table SET ";
@@ -353,14 +354,14 @@ class SqlObject
 
 	/**
 	 * Deletes the row represented by the object from a table
-	 * @param string                      $table  The name of the table.
-	 * @param \Database\Models\Base\Model $object The object representing the row to be deleted.
+	 * @param string     $table  The name of the table.
+	 * @param iSqlIzable $object The object representing the row to be deleted.
 	 * @return void
 	 * @throws \Exception If the delete query fails.
 	 */
-	public function delete(string $table, \Database\Models\Base\Model $object)
+	public function delete(string $table, iSqlIzable $object)
 	{
-		$p_key = 'slug';
+		$p_key = 'slug'; //$object->getSqlPrimaryKey();
 		$k = $this->get_primary_key($table);
 		//var_dump($k);
 		if ($k != 'slug') {
@@ -378,15 +379,15 @@ class SqlObject
 	 * The values inserted are those in common between fields/properties of the object
 	 * and columns of the table.
 	 *
-	 * @param string                      $table       The name of the table.
-	 * @param \Database\Models\Base\Model $object      A model object to be inserted.
-	 * @param boolean                     $throw_error A flag to indicate whether or not.
+	 * @param string     $table       The name of the table.
+	 * @param iSqlIzable $object      A model object to be inserted.
+	 * @param boolean    $throw_error A flag to indicate whether or not.
 	 *                                                 not to throw an exception on error.
 	 * @return void This should be changed @todo string The id of the inserted row.
 	 * @todo - this should return an id
 	 * @throws \Exception If the insert fails.
 	 */
-	public function insert(string $table, \Database\Models\Base\Model $object, bool $throw_error = true) //: void
+	public function insert(string $table, iSqlIzable $object, bool $throw_error = true) //: void
 	{
 		//print "<p>".__METHOD__."( $table class of object is ".get_class($object)." )\n</p>";
 		//print "<p>".get_called_class()."</p>";
@@ -394,7 +395,7 @@ class SqlObject
 		//var_dump($object->getFieldNames());
 		//exit();
 		$tflds = $this->getFieldNames($table);
-		$oflds = $object->getFieldNames();
+		$oflds = $object->getSqlProperties();
 		$i_flds = array_intersect($tflds, $oflds);
 		//var_dump($i_flds);
 		$query = "INSERT INTO $table ";
