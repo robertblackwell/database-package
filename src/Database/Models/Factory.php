@@ -340,29 +340,30 @@ class Factory
 	*/
 	public static function post_from_hed(HEDObject $hed_obj) : Post
 	{
-
-		$fields1 = Post::get_fields();
-		// compute the fields that require no trickery and load them.
-		$fields = array_diff_key(
-			$fields1,
-			[
-				"file_path" => "",
-				"entry_path" => "",
-				"featured_image" => "",
-				"excerpt" => "",
-			]
-		);
-		$vals = array();
-		foreach ($fields as $k => $t) {
-			$vals[$k] = self::get_and_validate_field($hed_obj, $k, $t);
-		}
-		// now do the trickey ones.
-		$vals['content_path'] = $hed_obj->file_path;
-		$vals['entity_path'] = dirname($hed_obj->file_path);
-		$vals['featured_image'] = self::featured_image($hed_obj);
-		$vals['excerpt'] = $hed_obj->get_first_p('main_content');
-		$model = new Post($vals);
-		return $model;
+		$obj = new Post($hed_obj);
+		return $obj;
+		// $fields1 = Post::get_fields();
+		// // compute the fields that require no trickery and load them.
+		// $fields = array_diff_key(
+		// 	$fields1,
+		// 	[
+		// 		"file_path" => "",
+		// 		"entry_path" => "",
+		// 		"featured_image" => "",
+		// 		"excerpt" => "",
+		// 	]
+		// );
+		// $vals = array();
+		// foreach ($fields as $k => $t) {
+		// 	$vals[$k] = self::get_and_validate_field($hed_obj, $k, $t);
+		// }
+		// // now do the trickey ones.
+		// $vals['content_path'] = $hed_obj->file_path;
+		// $vals['entity_path'] = dirname($hed_obj->file_path);
+		// $vals['featured_image'] = self::featured_image($hed_obj);
+		// $vals['excerpt'] = $hed_obj->get_first_p('main_content');
+		// $model = new Post($vals);
+		// return $model;
 	}
 
 	/**

@@ -78,11 +78,7 @@ class Utility
 
 		$x = Item::get_by_trip_slug($trip, $slug);
 
-		\Trace::debug("<p> Importing trip : $trip item: $slug type ".get_class($x)."</p>");
-		\Trace::debug("<p>import item featured_image : ". $x->get_text('featured_image') ."</p>");
-		\Trace::debug("<p>import item featured_image : ". $x->featured_image ."</p>");
-		\Trace::debug("<p>import item featured_image : ". $x->get_text('featured_image') ."</p>");
-
+		// print_r($x);
 		if ($slug != $x->slug)
 			throw new \Exception(__METHOD__."($slug) file name and slug do not match file:$fn slug:".$x->slug);
 		if ($x->type == "entry") {

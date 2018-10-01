@@ -10,7 +10,7 @@ use Database\Models\Base\CommonSql;
 class CategorizedItem extends CommonSql
 {
 	/** @property string $trip */
-	public $trip;
+	// public $trip;
 	/** @property string $category */
 	public $category;
 	/** @property string $item_slug */
@@ -18,7 +18,7 @@ class CategorizedItem extends CommonSql
 
 	public static $table_name = "categorized_items";
 	public static $field_names = [
-		"trip" => "text",
+		// "trip" => "text",
 		"category"=>"text",
 		"item_slug"=>"text",
 		];

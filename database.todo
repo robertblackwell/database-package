@@ -11,3 +11,5 @@ Entry, Post need to have excerpt determined when reading from HED and also have 
   Alternatively could do it in the Format:: class in php/functions.
 
 Unit tests for hed need to test Entry, Post Article for excerpt values.:
+
+Country must be fixed when loading Entry.:

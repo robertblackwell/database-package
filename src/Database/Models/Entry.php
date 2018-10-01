@@ -144,6 +144,9 @@ class Entry extends CommonSql
 			"featured_image",
 			$this->properties["featured_image"]
 		);
+		if (is_null($this->featured_image)) {
+			$this->featured_image = "[0]";
+		}
 		$this->camping = $helper->get_optional_property_value(
 			"camping",
 			$this->properties["camping"]

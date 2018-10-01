@@ -22,7 +22,6 @@
 	<div id="latitude">latitude</div>
 	<div id="longitude">longitude</div>
 	<div id="featured_image">[0]</div>
-	<div id="categories"><!-- put categories in here as comma separated list--></div>
 	<div id="main_content">
 		<p>main content goes here</p>
 		<?php Skin::JournalGalleryThumbnails($trip, $entry);?>  

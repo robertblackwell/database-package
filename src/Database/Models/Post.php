@@ -110,6 +110,9 @@ class Post extends CommonSql
 			"featured_image",
 			$this->properties["featured_image"]
 		);
+		if (is_null($this->featured_image)) {
+			$this->featured_image = "[0]";
+		}
 		$this->topic = $helper->get_optional_property_value(
 			"topic",
 			$this->properties["topic"]

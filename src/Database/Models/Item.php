@@ -5,6 +5,7 @@ use Database\HED\HEDObject;
 use Database\Models\Factory;
 use \Exception as Exception;
 use Database\Models\Base\CommonSql;
+use Database\Locator;
 
 /**
 ** @ingroup Models
@@ -108,6 +109,9 @@ class Item extends CommonSql
 
 		$this->properties = self::$field_names;
 		$derived_props = [
+			"abstract"=>"html",
+			"excerpt"=>"text",
+			"featured_image"=>'text',
 			"camping"=>"html",
 			"border" => "html"
 		];
@@ -120,6 +124,18 @@ class Item extends CommonSql
 		}
 		$loc = Locator::get_instance();
 		// now do the optional properties
+		$this->featured_image = $helper->get_optional_property_value(
+			"featured_image",
+			$this->properties["featured_image"]
+		);
+		$this->abstract = $helper->get_optional_property_value(
+			"abstract",
+			$this->properties["abstract"]
+		);
+		$this->excerpt = $helper->get_optional_property_value(
+			"excerpt",
+			$this->properties["excerpt"]
+		);
 		$this->camping = $helper->get_optional_property_value(
 			"camping",
 			$this->properties["camping"]
