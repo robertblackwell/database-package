@@ -347,6 +347,43 @@ class RowHelper
 		return $v;
 	}
 	/**
+	* Get the value of excerpt. This is an optional property
+	* and for Article, Entry, Post is only available if the $row is
+	* a HEDObject. It depends on main_content.
+	* All other model types should use get_optional_property_value.
+	* @return string|null
+	* @throws \Exception If $this->row is neither array of HEDObject.
+	*/
+	public function get_property_excerpt()
+	{
+		$type = self::TYPE_HTML;
+		$key = "main_content";
+		if (!in_array($type, self::$validTypes)) {
+			throw new \Exception("{$type} is invalid type");
+		}
+		if (is_array($this->row)) {
+			if (!isset($this->row['excerpt'])) {
+				return null;
+			} else {
+				return $this->row['excerpt'];
+			}
+		} else {
+			$hobj = new HEDObject();
+			if (get_class($hobj) != get_class($this->row)) {
+				throw new \Exception("row is neither array or HEDObject is {get_class($this->row)}");
+			}
+			$v = $this->row->get_first_p("main_content");
+			return $v;
+		}
+		// $hobj = new HEDObject();
+		// if (!is_array($this->row) && (get_class($this->row) != get_class($hobj))) {
+		// 	return null;
+		// }
+		$method="get_".$type;
+		$v = $this->$method($key);
+		return $v;
+	}
+	/**
 	* @return stdClass Field names and field values as a stdClass
 	*/
 	public function getStdClass() : stdClass

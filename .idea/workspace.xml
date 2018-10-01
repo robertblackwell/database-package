@@ -2,42 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c80bae66-2ae6-4cc0-b963-e040b502919e" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/tests/unit_tests/models/banner/output1/content_1.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/tests/unit_tests/models/editorial/output1/content_1.php" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Database/HED/HEDObject.php" afterPath="$PROJECT_DIR$/src/Database/HED/HEDObject.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Database/HED/Skeleton.php" afterPath="$PROJECT_DIR$/src/Database/HED/Skeleton.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Database/Models/Album.php" afterPath="$PROJECT_DIR$/src/Database/Models/Album.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Database/Models/Article.php" afterPath="$PROJECT_DIR$/src/Database/Models/Article.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Database/Models/ArticleTitle.php" afterPath="$PROJECT_DIR$/src/Database/Models/ArticleTitle.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Database/Models/Banner.php" afterPath="$PROJECT_DIR$/src/Database/Models/Banner.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Database/Models/Base/CommonSql.php" afterPath="$PROJECT_DIR$/src/Database/Models/Base/CommonSql.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Database/Models/Base/Model.php" afterPath="$PROJECT_DIR$/src/Database/Models/Base/Model.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Database/Models/CategorizedItem.php" afterPath="$PROJECT_DIR$/src/Database/Models/CategorizedItem.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Database/Models/Category.php" afterPath="$PROJECT_DIR$/src/Database/Models/Category.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Database/Models/Editorial.php" afterPath="$PROJECT_DIR$/src/Database/Models/Editorial.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Database/Models/Entry.php" afterPath="$PROJECT_DIR$/src/Database/Models/Entry.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Database/Models/EntryCountry.php" afterPath="$PROJECT_DIR$/src/Database/Models/EntryCountry.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Database/Models/EntryLocation.php" afterPath="$PROJECT_DIR$/src/Database/Models/EntryLocation.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Database/Models/Factory.php" afterPath="$PROJECT_DIR$/src/Database/Models/Factory.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Database/Models/Item.php" afterPath="$PROJECT_DIR$/src/Database/Models/Item.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Database/Models/ItemBase.php" afterPath="$PROJECT_DIR$/src/Database/Models/ItemBase.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Database/Models/Post.php" afterPath="$PROJECT_DIR$/src/Database/Models/Post.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Database/Models/PostMonth.php" afterPath="$PROJECT_DIR$/src/Database/Models/PostMonth.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Database/Models/RowHelper.php" afterPath="$PROJECT_DIR$/src/Database/Models/RowHelper.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Database/Object.php" afterPath="$PROJECT_DIR$/src/Database/Object.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Database/SqlObject.php" afterPath="$PROJECT_DIR$/src/Database/SqlObject.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/include/LocalTestcase.php" afterPath="$PROJECT_DIR$/tests/include/LocalTestcase.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/include/header.php" afterPath="$PROJECT_DIR$/tests/include/header.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/makefile" afterPath="$PROJECT_DIR$/tests/makefile" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/unit_tests/db/load.php" afterPath="$PROJECT_DIR$/tests/unit_tests/db/load.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/unit_tests/hed/data/test_album/content.php" afterPath="$PROJECT_DIR$/tests/unit_tests/hed/data/test_album/content.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/unit_tests/hed/data/test_entry/content.php" afterPath="$PROJECT_DIR$/tests/unit_tests/hed/data/test_entry/content.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/unit_tests/hed/data/test_post/content.php" afterPath="$PROJECT_DIR$/tests/unit_tests/hed/data/test_post/content.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/unit_tests/hed/hed_album_test.php" afterPath="$PROJECT_DIR$/tests/unit_tests/hed/hed_album_test.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/unit_tests/models/albums/album_test.php" afterPath="$PROJECT_DIR$/tests/unit_tests/models/albums/album_test.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/unit_tests/models/banner/banner_test.php" afterPath="$PROJECT_DIR$/tests/unit_tests/models/banner/banner_test.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/unit_tests/models/editorial/editorial_test.php" afterPath="$PROJECT_DIR$/tests/unit_tests/models/editorial/editorial_test.php" />
     </list>
     <ignored path="database-package.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -99,11 +64,31 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Post.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Database/Models/Post.php">
+      <file leaf-file-name="Object.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/vendor/robertblackwell/gallery/src/Gallery/Object.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-9.0">
-              <caret line="112" column="0" selection-start-line="112" selection-start-column="0" selection-end-line="112" selection-end-column="0" />
+            <state vertical-scroll-proportion="-3.8039215">
+              <caret line="44" column="0" selection-start-line="44" selection-start-column="0" selection-end-line="44" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="FeaturedImage.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Database/Models/FeaturedImage.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.43046358">
+              <caret line="132" column="0" selection-start-line="132" selection-start-column="0" selection-end-line="132" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Trace.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/vendor/robertblackwell/trace/src/Trace.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-3.745098">
+              <caret line="190" column="0" selection-start-line="190" selection-start-column="0" selection-end-line="190" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -119,22 +104,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RowHelper.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Database/Models/RowHelper.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-6.25">
-              <caret line="321" column="0" selection-start-line="321" selection-start-column="0" selection-end-line="321" selection-end-column="0" />
-              <folding>
-                <element signature="e#7812#8251#0#PHP" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Skeleton.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Skeleton.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Database/HED/Skeleton.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5576923">
+            <state vertical-scroll-proportion="-10.875">
               <caret line="263" column="0" selection-start-line="263" selection-start-column="0" selection-end-line="263" selection-end-column="0" />
               <folding>
                 <element signature="e#3114#4417#0#PHP" expanded="true" />
@@ -142,45 +115,25 @@
                 <element signature="e#4846#4984#0#PHP" expanded="true" />
                 <element signature="e#5098#5167#0#PHP" expanded="true" />
                 <element signature="e#5541#5851#0#PHP" expanded="true" />
-                <element signature="e#10464#10796#0#PHP" expanded="true" />
-                <element signature="e#11274#11881#0#PHP" expanded="true" />
-                <element signature="e#14698#16247#0#PHP" expanded="true" />
-                <element signature="e#16868#17434#0#PHP" expanded="true" />
-                <element signature="e#18129#19280#0#PHP" expanded="true" />
+                <element signature="e#10466#10798#0#PHP" expanded="true" />
+                <element signature="e#11276#11883#0#PHP" expanded="true" />
+                <element signature="e#14700#16249#0#PHP" expanded="true" />
+                <element signature="e#16870#17436#0#PHP" expanded="true" />
+                <element signature="e#18131#19282#0#PHP" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="content.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tests/test_data/data/rtw/content/120705/content.php">
+      <file leaf-file-name="fi_test_path.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tests/unit_tests/featured_image/fi_test_path.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="album_test.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tests/unit_tests/models/albums/album_test.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-6.5">
-              <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+            <state vertical-scroll-proportion="-7.2916665">
+              <caret line="76" column="0" selection-start-line="76" selection-start-column="0" selection-end-line="76" selection-end-column="0" />
               <folding>
-                <element signature="e#7#33#0#PHP" expanded="true" />
-                <element signature="n#assert_test_album#0;n#AlbumTest#0;n#!!top" expanded="true" />
-                <element signature="n#test_get_one#0;n#AlbumTest#0;n#!!top" expanded="true" />
-                <element signature="n#test_get_by_slug#0;n#AlbumTest#0;n#!!top" expanded="true" />
-                <element signature="n#test_by_slug_not_found#0;n#AlbumTest#0;n#!!top" expanded="true" />
-                <element signature="n#test_find#0;n#AlbumTest#0;n#!!top" expanded="true" />
-                <element signature="n#test_where_rtw#0;n#AlbumTest#0;n#!!top" expanded="true" />
-                <element signature="n#test_where_theamericas#0;n#AlbumTest#0;n#!!top" expanded="true" />
-                <element signature="n#test_create_one#0;n#AlbumTest#0;n#!!top" expanded="true" />
-                <element signature="n#test_create_with_skeleton#0;n#AlbumTest#0;n#!!top" expanded="true" />
-                <element signature="n#test_insert_delete#0;n#AlbumTest#0;n#!!top" expanded="true" />
-                <element signature="n#test_fields#0;n#AlbumTest#0;n#!!top" expanded="true" />
-                <element signature="n#test_import_export#0;n#AlbumTest#0;n#!!top" expanded="true" />
+                <element signature="n#testFromPathDefaultGallery#0;n#FeaturedImagePathTest#0;n#!!top" expanded="true" />
+                <element signature="n#testFromPathSpecificGallery#0;n#FeaturedImagePathTest#0;n#!!top" expanded="true" />
+                <element signature="n#testFromPathBlank#0;n#FeaturedImagePathTest#0;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -229,6 +182,8 @@
         <option value="$PROJECT_DIR$/src/Database/Models/Post.php" />
         <option value="$PROJECT_DIR$/tests/unit_tests/hed/hed_entry_test.php" />
         <option value="$PROJECT_DIR$/src/Database/Models/Entry.php" />
+        <option value="$PROJECT_DIR$/src/Database/HED/Skeleton.php" />
+        <option value="$PROJECT_DIR$/src/Database/Models/FeaturedImage.php" />
       </list>
     </option>
   </component>
@@ -379,7 +334,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="hed" />
+              <option name="myItemId" value="featured_image" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -401,11 +356,75 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="hed" />
+              <option name="myItemId" value="featured_image" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="data" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="database-package" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="database-package" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tests" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="unit_tests" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="featured_image" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="data" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="featured_image_entry_2" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="database-package" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="database-package" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tests" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="unit_tests" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="featured_image" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="data" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="featured_image_entry_2" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="picts" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -572,7 +591,7 @@
       <envs />
       <method />
     </configuration>
-    <configuration default="false" name="php models/hed/album" type="PhpLocalRunConfigurationType" factoryName="PHP Console" path="$PROJECT_DIR$/vendor/bin/litetest" scriptParameters="--bootstrap-file=&quot;include/bootstrap.php&quot; unit_tests/hed/hed_article_test.php">
+    <configuration default="false" name="php models/hed/album" type="PhpLocalRunConfigurationType" factoryName="PHP Console" path="$PROJECT_DIR$/vendor/bin/litetest" scriptParameters="--bootstrap-file=&quot;include/bootstrap.php&quot; unit_tests/featured_image/fi_test_path.php">
       <CommandLine workingDirectory="$PROJECT_DIR$/tests" />
       <option name="workingDirectory" value="$PROJECT_DIR$/tests" />
       <method />
@@ -618,7 +637,7 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23319027" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2777778" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.5083333" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32807216" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -761,11 +780,36 @@
           <line>22</line>
           <option name="timeStamp" value="93" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/tests/unit_tests/featured_image/fi_test_path.php</url>
+          <line>71</line>
+          <option name="timeStamp" value="94" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/tests/unit_tests/featured_image/fi_test_path.php</url>
+          <line>56</line>
+          <option name="timeStamp" value="95" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/tests/unit_tests/featured_image/fi_test_path.php</url>
+          <line>41</line>
+          <option name="timeStamp" value="96" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/tests/unit_tests/featured_image/fi_test_path.php</url>
+          <line>26</line>
+          <option name="timeStamp" value="97" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/src/Database/Models/FeaturedImage.php</url>
+          <line>112</line>
+          <option name="timeStamp" value="98" />
+        </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="94" />
+      <option name="time" value="99" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="PhpLocalRunConfigurationType">
@@ -774,35 +818,6 @@
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/Database/Models/Banner.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tests/include/header.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Database/Builder.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Database/Object.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="104" column="0" selection-start-line="104" selection-start-column="0" selection-end-line="104" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/tests/include/header.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -990,7 +1005,7 @@
         <state vertical-scroll-proportion="-13.125">
           <caret line="53" column="0" selection-start-line="53" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
           <folding>
-            <element signature="n#setUp#0;n#TestAlbumCreate#0;n#!!top" expanded="true" />
+            <element signature="n#setUp#0;n#HEDAlbumTest#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1198,18 +1213,37 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tests/include/header.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.0">
-          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/tests/unit_tests/hed/hed_article_test.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-8.083333">
           <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Database/HED/Skeleton.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-10.875">
+          <caret line="263" column="0" selection-start-line="263" selection-start-column="0" selection-end-line="263" selection-end-column="0" />
+          <folding>
+            <element signature="e#3114#4417#0#PHP" expanded="true" />
+            <element signature="e#4524#4730#0#PHP" expanded="true" />
+            <element signature="e#4846#4984#0#PHP" expanded="true" />
+            <element signature="e#5098#5167#0#PHP" expanded="true" />
+            <element signature="e#5541#5851#0#PHP" expanded="true" />
+            <element signature="e#10466#10798#0#PHP" expanded="true" />
+            <element signature="e#11276#11883#0#PHP" expanded="true" />
+            <element signature="e#14700#16249#0#PHP" expanded="true" />
+            <element signature="e#16870#17436#0#PHP" expanded="true" />
+            <element signature="e#18131#19282#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/robertblackwell/gallery/src/Gallery/Object.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-3.8039215">
+          <caret line="44" column="0" selection-start-line="44" selection-start-column="0" selection-end-line="44" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1222,22 +1256,39 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Database/HED/Skeleton.php">
+    <entry file="file://$PROJECT_DIR$/tests/include/header.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5576923">
-          <caret line="263" column="0" selection-start-line="263" selection-start-column="0" selection-end-line="263" selection-end-column="0" />
+        <state vertical-scroll-proportion="-5.0">
+          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/unit_tests/featured_image/fi_test_path.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-7.2916665">
+          <caret line="76" column="0" selection-start-line="76" selection-start-column="0" selection-end-line="76" selection-end-column="0" />
           <folding>
-            <element signature="e#3114#4417#0#PHP" expanded="true" />
-            <element signature="e#4524#4730#0#PHP" expanded="true" />
-            <element signature="e#4846#4984#0#PHP" expanded="true" />
-            <element signature="e#5098#5167#0#PHP" expanded="true" />
-            <element signature="e#5541#5851#0#PHP" expanded="true" />
-            <element signature="e#10464#10796#0#PHP" expanded="true" />
-            <element signature="e#11274#11881#0#PHP" expanded="true" />
-            <element signature="e#14698#16247#0#PHP" expanded="true" />
-            <element signature="e#16868#17434#0#PHP" expanded="true" />
-            <element signature="e#18129#19280#0#PHP" expanded="true" />
+            <element signature="n#testFromPathDefaultGallery#0;n#FeaturedImagePathTest#0;n#!!top" expanded="true" />
+            <element signature="n#testFromPathSpecificGallery#0;n#FeaturedImagePathTest#0;n#!!top" expanded="true" />
+            <element signature="n#testFromPathBlank#0;n#FeaturedImagePathTest#0;n#!!top" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/robertblackwell/trace/src/Trace.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-3.745098">
+          <caret line="190" column="0" selection-start-line="190" selection-start-column="0" selection-end-line="190" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Database/Models/FeaturedImage.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.43046358">
+          <caret line="132" column="0" selection-start-line="132" selection-start-column="0" selection-end-line="132" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>

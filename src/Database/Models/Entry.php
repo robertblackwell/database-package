@@ -130,6 +130,10 @@ class Entry extends CommonSql
 		}
 		$loc = Locator::get_instance();
 		/**
+		* main_content, only available if $obj is a HEDObject
+		*/
+		$this->main_content = $helper->get_property_main_content();
+		/**
 		* optional properties
 		*/
 		$this->excerpt = $helper->get_optional_property_value(
@@ -148,10 +152,6 @@ class Entry extends CommonSql
 			"border",
 			$this->properties["border"]
 		);
-		/**
-		* main_content, only available if $obj is a HEDObject
-		*/
-		$this->main_content = $helper->get_property_main_content();
 	}
 	/**
 	* Find all/count the albums and return them in an array of Album objects

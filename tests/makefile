@@ -72,10 +72,13 @@ post:
 postmonths:
 	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/models/postmonths/post_month_test.php
 
+fi:
+	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/featured_image/fi_test_hed.php	
+	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/featured_image/fi_test_path.php	
+
 locator:
 	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/locator/locator_test.php
 
-	
 nextprev:
 	$(LITETEST) --bootstrap-file="include/bootstrap.php" \
 		unit_tests/nextprev/category_test.php \

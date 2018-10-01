@@ -6,3 +6,8 @@ Try a pilot of a revised Model approach with explicit properties:
 ✔ Try using @property to see if phpstorm uses this in autocomplete: @done (18-09-28 22:07)
 ✔ Start using this branch in test_whiteacorn: @done (18-09-28 22:07)
 Add create table query build to model class (as a static method) so that all stuff about model properties and their types are in the model classes:
+
+Entry, Post need to have excerpt determined when reading from HED and also have this value saved in the my_items table.:
+  Alternatively could do it in the Format:: class in php/functions.
+
+Unit tests for hed need to test Entry, Post Article for excerpt values.:

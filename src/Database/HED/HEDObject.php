@@ -151,13 +151,12 @@ class HEDObject implements \ArrayAccess
 	*/
 	public function __isset(string $field) : bool
 	{
-		$v = $this->get_text($field);
-		return (!is_null($v));
-		if (!is_null($this->properties) && (array_key_exists($field, $this->properties))) {
-			throw new \Exception("HEDObject should have no properties");
-			return true;
+		if ($field == "excerpt") {
+			$v = $this->get_excerpt();
+		} else { 
+			$v = $this->get_text($field);
 		}
-		return false;
+		return (!is_null($v));
 	}
 	/**
 	* Magic get function to simulate properties. Determines type of psuedo property
@@ -177,10 +176,22 @@ class HEDObject implements \ArrayAccess
 			// print "<p>".__METHOD__."its a default text {$field}</p>";
 			$method = 'get_text';
 		}
-		$v = $this->$method($field);
+		if ($field == "excerpt") {
+			$v = $this->get_excerpt();
+		} else {
+			$v = $this->$method($field);
+		}
 		return $v;
 	}
-
+	public function get_excerpt()
+	{
+		$mc = $this->get_html("main_content");
+		if (is_null($mc)) {
+			return null;
+		}
+		$v = $this->get_first_p("main_content");
+		return $v;		
+	}
 	/**
 	* Gets a psuedo property as text content of a DOMNode with the id=$field. The assumption is that this
 	* DOMNode only contains plain text.
@@ -323,12 +334,14 @@ class HEDObject implements \ArrayAccess
 	{
 		$doc = $this->doc;
 		$m = $this->doc->getElementById($field);
-		$children = $m->childNodes;
-		for ($i = 0; $i < $children->length; $i++) {
-			$n = $children->item($i);
-			$html = $doc->saveHTML($n);
-			if ($n->nodeName == "p") {
-				return $html;
+		if (!is_null($m)) {
+			$children = $m->childNodes;
+			for ($i = 0; $i < $children->length; $i++) {
+				$n = $children->item($i);
+				$html = $doc->saveHTML($n);
+				if ($n->nodeName == "p") {
+					return $html;
+				}
 			}
 		}
 		return null;

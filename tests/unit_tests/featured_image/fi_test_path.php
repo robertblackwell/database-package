@@ -1,0 +1,82 @@
+<?php
+
+use Database\Object as Db;
+use Database\Models\Item;
+use Database\Models\Album;
+use Database\Models\Entry;
+use Database\HED\HEDObject;
+use Database\HED\HEDFactory;
+use Database\HED\Skeleton;
+use Unittests\LocalTestcase;
+use Database\Models\FeaturedImage;
+
+class FeaturedImagePathTest extends LocalTestcase
+{
+	function setUp()
+	{
+		\Trace::disable();
+		global $config;
+		Db::init($config);
+	}
+	/**
+	* featured_image = "[2]"
+	*/
+	function testFromPathDefaultGallery()
+	{
+		\Trace::function_entry();
+		$p = dirname(__FILE__)."/data/featured_image_entry_1/content.php";
+		$itemDir = dirname(__FILE__)."/data/featured_image_entry_1/";
+		$correct = dirname(__FILE__)."/data/featured_image_entry_1/Thumbnails/pict-3.jpg";
+		$nobj = new HEDObject();
+		$nobj->get_from_file($p);
+		$fi1 = FeaturedImage::fromPathAndText($itemDir, "[2]");
+		$this->assertEqual($fi1, $correct);
+		\Trace::function_exit();
+	}
+	/**
+	* featured_image = "[picts, 2]"
+	*/
+	function testFromPathSpecificGallery()
+	{
+		\Trace::function_entry();
+		$p = dirname(__FILE__)."/data/featured_image_entry_2/content.php";
+		$itemDir = dirname(__FILE__)."/data/featured_image_entry_2/";
+		$correct = dirname(__FILE__)."/data/featured_image_entry_2/picts/Thumbnails/pict-3.jpg";
+		$nobj = new HEDObject();
+		$nobj->get_from_file($p);
+		$fi1 = FeaturedImage::fromPathAndText($itemDir, "[picts, 2]");
+		$this->assertEqual($fi1, $correct);
+		\Trace::function_exit();
+	}
+	/**
+	* featured_image = ""
+	*/
+	function testFromPathBlank()
+	{
+		\Trace::function_entry();
+		$p = dirname(__FILE__)."/data/featured_image_entry_3/content.php";
+		$itemDir = dirname(__FILE__)."/data/featured_image_entry_3/";
+		$correct = dirname(__FILE__)."/data/featured_image_entry_3/Thumbnails/pict-1.jpg";
+		$nobj = new HEDObject();
+		$nobj->get_from_file($p);
+		$fi1 = FeaturedImage::fromPathAndText($itemDir, "");
+		$this->assertEqual($fi1, $correct);
+		\Trace::function_exit();
+	}
+	/**
+	* featured_image = "picts/Thumbnails/pict-5.jpg"
+	*/
+	function testFromPathPartialUrl()
+	{
+		\Trace::function_entry();
+		$p = dirname(__FILE__)."/data/featured_image_entry_4/content.php";
+		$itemDir = dirname(__FILE__)."/data/featured_image_entry_4/";
+		$correct = dirname(__FILE__)."/data/featured_image_entry_4/picts/Thumbnails/pict-5.jpg";
+		$nobj = new HEDObject();
+		$nobj->get_from_file($p);
+		$fi1 = FeaturedImage::fromPathAndText($itemDir, "picts/Thumbnails/pict-5.jpg");
+		$this->assertEqual($fi1, $correct);
+		\Trace::function_exit();
+	}
+
+}
