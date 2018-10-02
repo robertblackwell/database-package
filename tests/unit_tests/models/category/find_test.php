@@ -8,8 +8,9 @@ class CategoryFindTest extends LocalTestcase
 {
 	function setUp()
 	{
-		// global $config;
-		// Db::init($config);
+		\Trace::disable();
+		global $config;
+		Db::init($config);
 		$db = Db::get_instance();
 		//        var_dump($db);exit();
 	}

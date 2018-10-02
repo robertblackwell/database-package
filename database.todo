@@ -1,5 +1,5 @@
 Fix unit tests that do not work:
-Remobe HEDFactory from all code and replace with a renamed Skeleton:
+Remove HEDFactory from all code and replace with a renamed Skeleton:
   delete HEDFactory
   rename Skeleton to HED\Factory
 Try a pilot of a revised Model approach with explicit properties:
@@ -12,4 +12,14 @@ Entry, Post need to have excerpt determined when reading from HED and also have 
 
 Unit tests for hed need to test Entry, Post Article for excerpt values.:
 
-Country must be fixed when loading Entry.:
+✔ Country must be fixed when loading Entry.: @done (18-10-01 22:10)
+Camping not being correctly extracted from entry and added to my_items table.:
+  No camping results in a property value of "" whereas for border it is null ? why is this. Want both to be null.
+
+Test all the get_by_ and find_ functions to see that the correct data and correct types/class instances are returned.:
+
+Think about having a version of sql select that takes a closure so that the correct instance can be created for each row:
+
+Code cleanup.:
+
+Test featured image in hed and models test suites:

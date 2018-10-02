@@ -22,6 +22,20 @@ class HEDEntryTest extends NoSqlTestcase
 		system("rm -R ".dirname(__FILE__)."/data/test_entry");
 		$p = dirname(__FILE__)."/data/test_entry/content.php";
 		// make a HED file and object
+		$para1=<<<EOD
+<p>This is the first para. I have made it a couple of sentences
+so that it is meaningful.</p>
+EOD;
+		$para2 =<<<EOD
+<p>This is the second para. It is also big enough to be meaningful.
+Blah blahblah blah blah blah blah blah blah blah blahblah
+blah blah blah blah blah blah blah blah blah blahblah
+blah blah blah blah blah blah blah.
+</p>
+EOD;
+		$main_content = trim($para1). trim($para2);
+		$expected = trim($main_content);
+		$para1_expect = trim($para1);
 		$obj = Skeleton::make_entry(
 			$p,
 			'atrip',
@@ -33,11 +47,11 @@ class HEDEntryTest extends NoSqlTestcase
 			'1212odometer',
 			'12_day',
 			'aplace',
-			'somecountry',
+			'BC',
 			'12.3245',
 			'-121.3456',
 			'a_featured_image_string',
-			'this is main content'
+			$main_content
 		);
 		$this->assertEqual($obj['version'], "2.0.skel");
 		$this->assertEqual($obj['status'], "draft");
@@ -52,13 +66,14 @@ class HEDEntryTest extends NoSqlTestcase
 		$this->assertEqual($obj['odometer'], "1212odometer");
 		$this->assertEqual($obj['day_number'], "12_day");
 		$this->assertEqual($obj['place'], "aplace");
-		$this->assertEqual($obj['country'], "somecountry");
+		$this->assertEqual($obj['country'], "BC");
 		$this->assertEqual($obj['latitude'], "12.3245");
 		$this->assertEqual($obj['longitude'], "-121.3456");
 
 
 		$this->assertEqual($obj['featured_image'], "a_featured_image_string");
-		$this->assertEqual($obj['main_content'], "this is main content");
+		$mc = $obj["main_content"];
+		$this->assertEqual($obj['main_content'], $expected);
 
 		// now read it back and check we got the right thing
 
@@ -71,8 +86,18 @@ class HEDEntryTest extends NoSqlTestcase
 		$this->assertEqual($nobj['slug'], "aslug");
 		$this->assertEqual($nobj['published_date'], "adate");
 		$this->assertEqual($nobj['title'], "aTitle");
+
+		$this->assertEqual($nobj['vehicle'], "someVehicle");
+		$this->assertEqual($nobj['miles'], "1234miles");
+		$this->assertEqual($nobj['odometer'], "1212odometer");
+		$this->assertEqual($nobj['day_number'], "12_day");
+		$this->assertEqual($nobj['place'], "aplace");
+		$this->assertEqual($nobj['country'], "BC");
+		$this->assertEqual($nobj['latitude'], "12.3245");
+		$this->assertEqual($nobj['longitude'], "-121.3456");
+
 		$this->assertEqual($nobj['featured_image'], "a_featured_image_string");
-		$this->assertEqual($nobj['main_content'], "this is main content");
+		$this->assertEqual($nobj['main_content'], $expected);
 
 		// now lets make an Album from this hed
 		$a = new Entry($nobj);
@@ -83,10 +108,41 @@ class HEDEntryTest extends NoSqlTestcase
 		$this->assertEqual($a->slug, "aslug");
 		$this->assertEqual($a->published_date, "adate");
 		$this->assertEqual($a->title, "aTitle");
+
+		$this->assertEqual($a->vehicle, "someVehicle");
+		$this->assertEqual($a->miles, "1234miles");
+		$this->assertEqual($a->odometer, "1212odometer");
+		$this->assertEqual($a->day_number, "12_day");
+		$this->assertEqual($a->place, "aplace");
+		$country = \Database\Models\Country::get_by_code("BC"); // demonstrates fix country
+		$this->assertEqual($a->country, $country);
+		$this->assertEqual($a->latitude, "12.3245");
+		$this->assertEqual($a->longitude, "-121.3456");
+
+
 		$this->assertEqual($a->featured_image, "a_featured_image_string");
-		$this->assertEqual($a->main_content, "this is main content");
+		$this->assertEqual($a->main_content, $expected);
+		$this->assertEqual(trim($a->excerpt), $para1_expect);
 
 		Trace::function_exit();
+	}
+	public function testBorderCamping()
+	{
+		Trace::function_entry();
+		system("rm -R ".dirname(__FILE__)."/data/test_entry");
+		$p = dirname(__FILE__)."/data/entry_1/content.php";
+		$nobj = new HEDObject();
+		$nobj->get_from_file($p);
+		/*
+		<div id="camping">
+		<p>Hi this is some camping information.</p>
+		</div>
+		<div id="border">
+		<p>Hi this is some border information.</p>		
+		</div>
+		*/
+		$this->assertEqual($nobj['camping'], "<p>Hi this is some camping information.</p>");
+		$this->assertEqual($nobj['border'], "<p>Hi this is some border information.</p>");
 	}
 
 }

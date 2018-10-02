@@ -3,6 +3,7 @@ namespace Database\Models;
 
 use Database\iSqlIzable;
 use Database\Models\Base\CommonSql;
+use database\Models\Country;
 use Database\Locator;
 
 /**
@@ -93,7 +94,7 @@ class Entry extends CommonSql
 		"title"=>"html",
 		// "abstract"=>"html",
 		//"excerpt"=>"getter",
-		"excerpt"=>"text",
+		"excerpt"=>"html",
 		"main_content"=>"html",
 		"camping"=>"html",
 		"border"=>"html",
@@ -120,26 +121,31 @@ class Entry extends CommonSql
 			"has_camping"=>"has",
 			"has_border"=>"has",
 		];
+		$non_sql = [
+		];
 		$props = array_diff_key($this->properties, $derived_props);
-		$this->sql_properties = array_keys($props);
+
+		$this->sql_properties = array_keys($this->properties);
 		/**
-		* fill all "required" properties
+		* fill all "required" and straightforward properties
 		*/
 		foreach ($props as $prop => $type) {
 			$this->$prop = $helper->get_property_value($prop, $type);
 		}
 		$loc = Locator::get_instance();
+		$this->country = $helper->fix_country($this->country);
 		/**
 		* main_content, only available if $obj is a HEDObject
 		*/
 		$this->main_content = $helper->get_property_main_content();
+		$this->excerpt = $helper->get_property_excerpt();
 		/**
 		* optional properties
 		*/
-		$this->excerpt = $helper->get_optional_property_value(
-			"excerpt",
-			$this->properties["excerpt"]
-		);
+		// $this->excerpt = $helper->get_optional_property_value(
+		// 	"excerpt",
+		// 	$this->properties["excerpt"]
+		// );
 		$this->featured_image = $helper->get_optional_property_value(
 			"featured_image",
 			$this->properties["featured_image"]
@@ -151,10 +157,13 @@ class Entry extends CommonSql
 			"camping",
 			$this->properties["camping"]
 		);
+		$this->has_camping = (! is_null($this->camping)) && (strlen(trim($this->camping)) != 0);
+
 		$this->border = $helper->get_optional_property_value(
 			"border",
 			$this->properties["border"]
 		);
+		$this->has_border = (! is_null($this->border))  && (strlen(trim($this->camping)) != 0);
 	}
 	/**
 	* Find all/count the albums and return them in an array of Album objects

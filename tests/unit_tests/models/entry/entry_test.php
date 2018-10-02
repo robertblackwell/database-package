@@ -41,7 +41,7 @@ class EntryTest extends LocalTestcase
 		$this->assertEqual($result->latitude, "50.69314");
 		$this->assertEqual($result->longitude, "-121.93520");
 		$this->assertEqual($result->place, "Lillooet");
-		$this->assertEqual($result->country, "British Columbia");
+		$this->assertEqual($result->country, "Canada");
 		// [miles] => 323
 		//     [odometer] => 29498
 		//     [day_number] => 2
@@ -104,7 +104,7 @@ class EntryTest extends LocalTestcase
 			"odometer",
 			"day_number",
 			"place",
-			"country",
+			"Canada",
 			"latitude",
 			"longitude"
 		);

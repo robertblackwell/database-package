@@ -12,10 +12,9 @@
 	<div id="published_date">2017-07-07</div>
 	<div id="last_modified_date">2017-07-07</div>
 	<div id="trip">rtw</div>
-	<div id="title">A_TITLE</div>
-	<div id="image">AN_IMAGE_URL</div>
-	<div id="image_name">AN_IMAGE_URL</div>
-	<div id="main_content"><p>enter main content here</p></div>
+	<div id="image">ImageName</div>
+	<div id="image_name">ImageName</div>
+	<div id="main_content">main_content</div>
 
 </body>
 </html>

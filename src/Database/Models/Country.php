@@ -12,7 +12,8 @@ class Country
 {
 	public $code;
 	public $name;
-	public static $country_code_table = [
+	public static $abbreviation = [
+			"usa" => "USA",
 			"co"=>"Colombia",
 			"col"=>"Colombia",
 			"colo"=>"Colorado",
@@ -51,6 +52,67 @@ class Country
 			"nd" => "North Dakota",
 			"sd" => "South Dakota"
 		];
+	public static $stateToCountry = array(
+			"British Columbia"=>"Canada",
+			"Yukon"=>"Canada",
+			"Alberta"=>"Canada",
+			"North West Territory"=>"Canada",
+			"New Brunswick" => "Canada",
+
+			"Alabama"=>"USA",
+			"Alaska"=>"USA",
+			"Arizona"=>"USA",
+			"Montana"=>"USA",
+			"South Carolina"=>"USA",
+			"North Carolina"=>"USA",
+			"Idaho"=>"USA",
+			"Texas"=>"USA",
+			"Washington"=>"USA",
+			"Oregon"=>"USA",
+			"Utah"=>"USA",
+			"Illinois"=>"USA",
+			"Louisianna"=>"USA",
+			"Mississippi"=>"USA",
+			"Florida"=>"USA",
+			"Georgia"=>"USA",
+			"South Carolina"=>"USA",
+			"Arkansas"=>"USA",
+			"Kentucky"=>"USA",
+			"Kansas"=>"USA",
+			"Colorado"=>"USA",
+			"Nevada"=>"USA",
+			"New Mexico"=>"USA",
+			"Washington"=>"USA",
+			"California"=>"USA",
+			"Kentucky"=>"USA",
+			"Wyoming" => "USA",
+			"Minnesota" => "USA",
+			"North Dakota" => "USA",
+			"South Dakota" => "USA",
+			"USA"=>"USA",
+
+			"Mexico"=>"Mexico",
+			"Guatemala"=>"Central America",
+			"El Salvador"=>"Central America",
+			"Nicaragua"=>"Central America",
+			"Honduras"=>"Central America",
+			"Costa Rica"=>"Central America",
+			"Costa" => "Central America",
+			"Panama"=>"Central America",
+			"Columbia"=>"Colombia",
+			"Colombia"=>"Colombia",
+			"Ecuador"=>"Ecuador",
+			"Peru"=>"Peru",
+			"Chile"=>"Chile",
+			"Argentina"=>"Argentina",
+			"Uruguay"=>"Uruguay",
+			"Paraguay"=>"Paraguay",
+			"Brazil"=>"Brazil",
+			"Brasil"=>"Brasil",
+			"Bolivia"=>"Bolivia",
+			"Russia" => "Russia",
+
+			);
 	/**
 	* Get a country full name by code, abbreviation or short name
 	* @param string $code Code, abbrev or shortname for a country.
@@ -59,10 +121,32 @@ class Country
 	public static function get_by_code(string $code) : string
 	{
 		// print "<p>country code: $code </p>";
-		if (isset(self::$country_code_table[strtolower($code)])) {
-			return self::$country_code_table[strtolower($code)];
+		$country = null;
+		if (strlen($code) <= 3) {
+			// maybe a short code
+			if (isset(self::$abbreviation[strtolower($code)])) {
+				$state = self::$abbreviation[strtolower($code)];
+				if (isset(self::$stateToCountry[$state])) {
+					$country = self::$stateToCountry[$state];
+				} else {
+					$country = null;
+				}
+			} else {
+				$country = null;
+			}
 		} else {
-			return $code;
+			// country or state as full name
+			if (isset(self::$stateToCountry[$code])) {
+				$country = self::$stateToCountry[$code];
+			} else {
+				$country = $code;
+			}
+		}
+
+		if (! is_null($country)) {
+			return $country;
+		} else {
+			// return $code;
 			throw new \Exception("country code {$code} not known");
 		}
 	}
@@ -90,6 +174,7 @@ class Country
 			"Oregon"=>"Oregon",
 			"MT"=>"Montana",
 			"WA"=>"Washington",
+			"Washington" => "Washington",
 			"KY"=>"Kentucky",
 			"KS"=>"Kansas",
 			"YT"=>"Yukon",

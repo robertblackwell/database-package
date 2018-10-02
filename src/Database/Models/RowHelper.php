@@ -273,6 +273,23 @@ class RowHelper
 		return array_keys($this->properties);
 	}
 	/**
+	* Fix country text. Lots of HED files have abbreviations for country.
+	* This function replaces those abbreviations with a full name.
+	* @param string|null $abbrev
+	* @return string|null Legitimate country value.
+	*/
+	public function fix_country($abbrev)
+	{
+		if (is_null($abbrev)) {
+			throw new \Exception("fix_countr abbrev : must not be null");			
+		}
+		$res = Country::get_by_code($abbrev);
+		if (is_null($res)) {
+			throw new \Exception("fix_countr abbrev : {$abbrev} not valid abbreviation");
+		}
+		return $res;
+	} 
+	/**
 	* Beginning of explicit properties.
 	* This function checks an array/row has a key and returns its value with the correct type
 	* @param string $key  Property name to be extracted from array.
@@ -343,7 +360,7 @@ class RowHelper
 		// 	return null;
 		// }
 		$method="get_".$type;
-		$v = $this->$method($key);
+		$v = $this->get_html($key);
 		return $v;
 	}
 	/**

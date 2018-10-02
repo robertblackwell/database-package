@@ -83,6 +83,7 @@ class Item extends CommonSql
 		"published_date"=>"date",
 		"last_modified_date"=>"date",
 		"trip"=>"text",
+
 		"title"=>"html",
 		"abstract"=>"html",
 		"excerpt"=>"text",
@@ -108,42 +109,55 @@ class Item extends CommonSql
 		$this->table = "my_items";
 
 		$this->properties = self::$field_names;
-		$derived_props = [
+		$optional_props = [
+			"title"=>"html",
 			"abstract"=>"html",
 			"excerpt"=>"text",
 			"featured_image"=>'text',
+			"miles"=>"text",
+			"odometer"=>"int",
+			"day_number"=>"int",
+			"place"=>"text",
+			"country"=>"text",
+			"latitude"=>"latitude",
+			"longitude"=>"longitude",
 			"camping"=>"html",
 			"border" => "html"
 		];
-		$props = array_diff_key($this->properties, $derived_props);
+		$props = array_diff_key($this->properties, $optional_props);
 		$this->sql_properties = array_keys($props);
 		// parent::__construct($obj);
 		
 		foreach ($props as $prop => $type) {
 			$this->$prop = $helper->get_property_value($prop, $type);
 		}
+		foreach($optional_props as $prop => $type) {
+			$this->$prop = $helper->get_optional_property_value($prop, $type);			
+		}
 		$loc = Locator::get_instance();
+		if (!is_null($this->country))
+			$this->country = $helper->fix_country($this->country);
 		// now do the optional properties
-		$this->featured_image = $helper->get_optional_property_value(
-			"featured_image",
-			$this->properties["featured_image"]
-		);
-		$this->abstract = $helper->get_optional_property_value(
-			"abstract",
-			$this->properties["abstract"]
-		);
-		$this->excerpt = $helper->get_optional_property_value(
-			"excerpt",
-			$this->properties["excerpt"]
-		);
-		$this->camping = $helper->get_optional_property_value(
-			"camping",
-			$this->properties["camping"]
-		);
-		$this->border = $helper->get_optional_property_value(
-			"border",
-			$this->properties["border"]
-		);
+		// $this->featured_image = $helper->get_optional_property_value(
+		// 	"featured_image",
+		// 	$this->properties["featured_image"]
+		// );
+		// $this->abstract = $helper->get_optional_property_value(
+		// 	"abstract",
+		// 	$this->properties["abstract"]
+		// );
+		// $this->excerpt = $helper->get_optional_property_value(
+		// 	"excerpt",
+		// 	$this->properties["excerpt"]
+		// );
+		// $this->camping = $helper->get_optional_property_value(
+		// 	"camping",
+		// 	$this->properties["camping"]
+		// );
+		// $this->border = $helper->get_optional_property_value(
+		// 	"border",
+		// 	$this->properties["border"]
+		// );
 	}
 	/**
 	* Get an/the Item for a trip-slug pair.

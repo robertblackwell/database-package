@@ -46,8 +46,12 @@
 			 <p>We spent the night <em>gorilla camping</em> in the streets of West vancouver after an enjoyable evening
 			 with friends we met on a previous journey through the Central Asian states </p>
 	</div>
-	<div id="camping"></div>
-	<div id="border"></div>
+	<div id="camping">
+		<p>Hi this is some camping information.</p>
+	</div>
+	<div id="border">
+		<p>Hi this is some border information.</p>		
+	</div>
 
 </body>
 </html>

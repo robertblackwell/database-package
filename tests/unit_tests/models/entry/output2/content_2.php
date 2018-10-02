@@ -18,7 +18,7 @@
 	<div id="odometer">odometer</div>
 	<div id="day_number">day_number</div>
 	<div id="place">place</div>
-	<div id="country">country</div>
+	<div id="country">Canada</div>
 	<div id="latitude">latitude</div>
 	<div id="longitude">longitude</div>
 	<div id="featured_image">[0]</div>
@@ -26,6 +26,8 @@
 		<p>main content goes here</p>
 		<?php Skin::JournalGalleryThumbnails($trip, $entry);?>  
 		<p>and here</p></div>
+	<div id="camping"></div>
+	<div id="border"></div>
 
 </body>
 </html>

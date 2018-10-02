@@ -11,6 +11,7 @@ class FindItemsFindItemTest extends LocalTestcase
 		\Trace::disable();
 		global $config;
 		Db::init($config);
+		DbPreloader::load();
 		$db = Db::get_instance();
 	}
 	function testCampingForTripCountry()

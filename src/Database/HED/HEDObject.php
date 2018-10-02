@@ -35,6 +35,11 @@ class HEDObject implements \ArrayAccess
 	public function __construct()
 	{
 	}
+	/**
+	* ArrayAccess method.
+	* @param mixed $offset The index or key. We require it to be a string.
+	* @return mixed
+	*/
 	public function offsetExists($offset)
 	{
 		if (! is_string($offset)) {
@@ -43,6 +48,11 @@ class HEDObject implements \ArrayAccess
 		}
 		return $this->__isset($offset);
 	}
+	/**
+	* ArrayAccess method.
+	* @param mixed $offset The index or key. We require it to be a string.
+	* @return mixed
+	*/
 	public function offsetGet($offset)
 	{
 		if (! is_string($offset)) {
@@ -51,11 +61,26 @@ class HEDObject implements \ArrayAccess
 		}
 		return $this->__get($offset);
 	}
-	public function offsetSet ($offset , $value)
+	/**
+	* ArrayAccess method.
+	* @param mixed $offset The index or key. We require it to be a string.
+	* @param mixed $value  The value to be set.
+	* @return mixed
+	* @throws \Exception This is not implemented.
+	*/
+	public function offsetSet($offset, $value)
 	{
+		$this->set_text($offset, $value);
+		return;
 		throw new \Exception("offsetSet not implemented");
 	}
-	public function offsetUnset ($offset)
+	/**
+	* ArrayAccess method.
+	* @param mixed $offset The index or key. We require it to be a string.
+	* @return mixed
+	* @throws \Exception This is not implemented.
+	*/
+	public function offsetUnset($offset)
 	{
 		throw new \Exception("offsetUnset not implemented");
 	}
@@ -138,7 +163,7 @@ class HEDObject implements \ArrayAccess
 	* @return void
 	* @throws \Exception If the object was not originally read fomr file.
 	*/
-	public function put() : void
+	public function put()
 	{
 		if (!$this->file_path)
 			throw new Exception(__METHOD__." cannot save no file_path ");
@@ -153,7 +178,7 @@ class HEDObject implements \ArrayAccess
 	{
 		if ($field == "excerpt") {
 			$v = $this->get_excerpt();
-		} else { 
+		} else {
 			$v = $this->get_text($field);
 		}
 		return (!is_null($v));
@@ -178,11 +203,22 @@ class HEDObject implements \ArrayAccess
 		}
 		if ($field == "excerpt") {
 			$v = $this->get_excerpt();
+		} else if ($field == "main_content") {
+			$v = $this->get_html("main_content");
+		} else if ($field == "camping") {
+			$v = $this->get_html("camping");
+		} else if ($field == "border") {
+			$v = $this->get_html("border");
 		} else {
-			$v = $this->$method($field);
+			$v = $this->get_text($field);
 		}
 		return $v;
 	}
+	/**
+	* Get the excerpt or first <p> of the main_content.
+	*
+	* @return string|null
+	*/
 	public function get_excerpt()
 	{
 		$mc = $this->get_html("main_content");
@@ -190,7 +226,19 @@ class HEDObject implements \ArrayAccess
 			return null;
 		}
 		$v = $this->get_first_p("main_content");
-		return $v;		
+		return $v;
+	}
+	/**
+	* get the main_content as html.
+	* @return string
+	*/
+	public function get_main_content() : string
+	{
+		$mc = $this->get_html("main_content");
+		if (is_null($mc)) {
+			return null;
+		}
+		return $mc;
 	}
 	/**
 	* Gets a psuedo property as text content of a DOMNode with the id=$field. The assumption is that this
@@ -209,7 +257,7 @@ class HEDObject implements \ArrayAccess
 	* Get the inner HTML of all the children of a DOMNode with the id=$field.
 	*
 	* @param string $field The value of the nodes id attribute.
-	* @return string|null If these is no such DOMNode.
+	* @return string|null If these is no such DOMNode or it is empty.
 	*/
 	public function get_html(string $field) //: ?string
 	{
@@ -218,9 +266,9 @@ class HEDObject implements \ArrayAccess
 		//var_dump($this->doc->saveHTML($el));
 		if ($el) {
 			$r = ExtendedDOMNode::create($el)->innerHTML();
-			//var_dump($r);
-			//print "<p>".__METHOD__."($field)   [$r]</p>";
-			return trim($r);
+			$r = trim($r);
+			$ret = (strlen($r) == 0) ? null : $r;
+			return $ret;
 		}
 		//print "<p>".__METHOD__."($field)</p>";
 		return null;
@@ -340,7 +388,7 @@ class HEDObject implements \ArrayAccess
 				$n = $children->item($i);
 				$html = $doc->saveHTML($n);
 				if ($n->nodeName == "p") {
-					return $html;
+					return trim($html);
 				}
 			}
 		}
@@ -354,7 +402,7 @@ class HEDObject implements \ArrayAccess
 	* @return void
 	* @throws \Exception If the property does not exist.
 	*/
-	public function set_text(string $field, string $value) : void
+	public function set_text(string $field, string $value)
 	{
 		//print "<p>".__METHOD__."($field $value)</p>";
 		//var_dump($this);
@@ -375,4 +423,5 @@ class HEDObject implements \ArrayAccess
 		//var_dump($this->doc->saveHTML($parent));
 		//print "<p>".__METHOD__."($field $value)</p>";
 	}
+
 }

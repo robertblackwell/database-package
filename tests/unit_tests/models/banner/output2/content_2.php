@@ -12,9 +12,6 @@
 	<div id="published_date">2017-07-07</div>
 	<div id="last_modified_date">2017-07-07</div>
 	<div id="trip">rtw</div>
-	<div id="title">NOT REQUIRED</div>
-	<div id="main_content">NOT_REQUIRED</div>
-	<div id="image_url">AN_IMAGE_URL</div>
 
 </body>
 </html>

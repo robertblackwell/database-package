@@ -26,12 +26,12 @@ class PostMonth extends CommonSql
 	];
 	/**
 	* Constructor.
-	* @param array $row Sql result row as associative array.
+	* @param ArrayAccess|array $row Sql result row as associative array or HEDObject.
 	* @return PostMonth.
 	*/
-	public function __construct(array $row)
+	public function __construct(/*array*/ $row)
 	{
-		$helper = new RowHelper($obj);
+		$helper = new RowHelper($row);
 		$this->table = "my_items";
 
 		$this->properties = self::$field_names;

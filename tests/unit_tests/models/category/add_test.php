@@ -8,6 +8,7 @@ class CategoryAddTest extends LocalTestcase
 {
 	function setUp()
 	{
+		\Trace::disable();
 		global $config;
 		Db::init($config);
 		$db = Db::get_instance();

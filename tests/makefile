@@ -22,7 +22,7 @@ db:
 
 models: album article article_title banner \
  category categorized_item editorial \
- entry entry_country find get_by_slug locations post postmonths	
+ entry entry_country item locations post postmonth	
 
 article:
 	$(LITETEST) --bootstrap-file="include/bootstrap.php" \
@@ -57,11 +57,9 @@ entry_country:
 entry:
 	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/models/entry/entry_test.php
 
-find:
-	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/models/find_items/find_item_test.php
-
-get_by_slug:
-	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/models/get_by_slug/get_by_slug_test.php
+item:
+	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/models/item/find_item_test.php
+	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/models/item/get_by_slug_test.php
 
 locations:
 	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/models/locations/location_test.php
@@ -69,7 +67,7 @@ locations:
 post:
 	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/models/post/post_test.php
 
-postmonths:
+postmonth:
 	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/models/postmonths/post_month_test.php
 
 fi:

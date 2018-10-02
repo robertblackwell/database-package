@@ -13,6 +13,7 @@ class GetBySlugTest extends LocalTestcase
 		\Trace::disable();
 		global $config;
 		Db::init($config);
+		DbPreloader::load();
 		$db = Db::get_instance();
 	}
 	function test_1()
@@ -48,7 +49,6 @@ class GetBySlugTest extends LocalTestcase
 		$this->assertTrue(is_string($r->longitude));
 		$this->assertTrue(is_string($r->featured_image));
 		$this->assertTrue(is_string($r->excerpt));
-		$this->assertTrue(is_string($r->abstract));
 		$this->assertTrue(is_string($r->title));
 		$this->assertTrue(is_string($r->main_content));
 		$this->assertTrue(is_bool($r->has_camping));

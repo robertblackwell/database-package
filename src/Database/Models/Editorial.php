@@ -80,6 +80,7 @@ class Editorial extends CommonSql
 
 		$this->properties = self::$field_names;
 		$derived_props = [
+			'main_content'=>'html',
 			'image'=>'text',
 			"content_path" => "text",
 			"entity_path" => "text"
@@ -92,6 +93,7 @@ class Editorial extends CommonSql
 			$this->$prop = $helper->get_property_value($prop, $type);
 		}
 		$loc = Locator::get_instance();
+		$this->main_content = $helper->get_property_main_content();
 		$this->content_path = $loc->editorial_filepath($this->trip, $this->slug);
 //		print "after fill";
 		return;

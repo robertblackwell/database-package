@@ -327,7 +327,8 @@ EOD;
 		string $trip,
 		string $slug,
 		string $published_date,
-		string $image_name
+		string $image_name,
+		string $main_content = null
 	) : HEDObject {
 		assert(func_num_args() == 5);
 		$path = \Database\Locator::get_instance()->editorial_filepath($trip, $slug);
@@ -349,11 +350,13 @@ EOD;
 		string $trip,
 		string $slug,
 		string $published_date,
-		string $image_name
+		string $image_name,
+		string $main_content = null
 	) : HEDObject {
 		ob_start();
 
-		$main_content = "<p>enter main content here</p>";
+		if (is_null($main_content))
+			$main_content  = "<p>enter main content here</p>";
 
 		self::print_hed_header();
 		self::print_hed_common("editorial", $trip, $slug, $published_date, []);
@@ -487,6 +490,8 @@ EOD;
 		// self::print_field_value("excerpt", "NOT_REQUIRED");
 		// self::print_field_value("abstract", "NOT_REQUIRED");
 		self::print_field_value("main_content", $main_content);
+		self::print_field_value("camping", "");
+		self::print_field_value("border", "");
 
 		self::print_hed_footer();
 		$s = ob_get_clean();

@@ -9,8 +9,9 @@ class CategorizedItemsFindTest extends LocalTestcase
 {
 	function setUp()
 	{
+		\Trace::disable();
 		global $config;
-		// Db::init($config);
+		Db::init($config);
 		$db = Db::get_instance();
 		//        var_dump($db);exit();
 	}

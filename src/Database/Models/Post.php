@@ -88,7 +88,7 @@ class Post extends CommonSql
 			"main_content"=>"html",
 		];
 		$props = array_diff_key($this->properties, $derived_props);
-		$this->sql_properties = array_keys($props);
+		$this->sql_properties = array_keys($this->properties);
 		// parent::__construct($obj);
 		
 		foreach ($props as $prop => $type) {
