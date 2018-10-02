@@ -1,6 +1,7 @@
 <?php
 
 use Database\Object as Db;
+use Database\Locator;
 use Database\Models\Item;
 use Database\Models\Banner;
 use Database\Models\Entry;
@@ -16,6 +17,10 @@ class HEDBannerTest extends NoSqlTestcase
 		global $config;
 		Db::init($config);
 	}
+	/**
+	* This test stores HEDObjects into and reads them from a file. The locations of that
+	* file is NOT dediced from Locator. Beware.
+	*/
 	function testBanner()
 	{
 		\Trace::function_entry();
@@ -56,6 +61,22 @@ class HEDBannerTest extends NoSqlTestcase
 		$this->assertEqual($a->published_date, "adate");
 
 		\Trace::function_exit();
+	}
+	/**
+	* Need a real banner with images for this test
+	*/
+	public function testGetImages()
+	{
+		$trip = "rtw";
+		$slug = "england";
+		$hobj = new HEDObject();
+		$locator = Locator::get_instance();
+		$fn = $locator->banner_filepath($trip, $slug);
+		$hobj->get_from_file($fn);
+		$b = new Banner($hobj);
+		// var_dump($b->getImages());s
+		$this->assertTrue(is_array($b->getImages()));
+		$this->assertEqual(count($b->getImages()), 8);
 	}
 
 }

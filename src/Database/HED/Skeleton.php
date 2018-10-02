@@ -107,6 +107,13 @@ class Skeleton
 		
 		if (!chmod($file_name, 511))
 			throw new \Exception("chmod failed on file: $file_name");
+
+		$need_image_dir = (
+			($type == "entry") 
+			|| ($type == "post") 
+			|| ($type == "banner" ) 
+			|| ($type == "article")
+		);		
 		
 		if (($type == "entry") || ($type == "post") || ($type == "banner" ) || ($type == "article")) {
 			mkdir($item_dir."/Images", 511, true);

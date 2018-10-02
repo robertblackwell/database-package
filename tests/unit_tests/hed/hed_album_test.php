@@ -7,6 +7,7 @@ use Database\Models\Entry;
 use Database\HED\HEDObject;
 use Database\HED\HEDFactory;
 use Database\HED\Skeleton;
+use Database\Locator;
 use Unittests\LocalTestcase;
 
 class HEDAlbumTest extends LocalTestcase
@@ -61,6 +62,17 @@ class HEDAlbumTest extends LocalTestcase
 		$this->assertEqual($a->title, "aTitle");
 
 		\Trace::function_exit();
+	}
+	public function testGetgallery()
+	{
+		$trip = "rtw";
+		$slug = "scotland";
+		$locator = Locator::get_instance();
+		$fn = $locator->album_filepath($trip, $slug);
+		$hobj = new HEDObject();
+		$hobj->get_from_file($fn);
+		$album = new Album($hobj);
+		// print_r($album);
 	}
 
 }

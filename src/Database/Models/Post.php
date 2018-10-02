@@ -98,7 +98,7 @@ class Post extends CommonSql
 		/**
 		* optional properties
 		*/
-		$this->camping = $helper->get_optional_property_value(
+		$this->abstract = $helper->get_optional_property_value(
 			"abstract",
 			$this->properties["abstract"]
 		);

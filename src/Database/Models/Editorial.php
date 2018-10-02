@@ -61,7 +61,7 @@ class Editorial extends CommonSql
 								//to add all the required dirs at the front
 		'image'=>'text',       // as far as I can tell this is not used
 		// from this point onwards the values can be deduced via the Locator
-		// so should not be passed in but deduced in the cnstructor
+		// so should not be passed in but deduced in the constructor
 		"content_path" => "text",
 		"entity_path" => "text"
 		//
@@ -94,15 +94,9 @@ class Editorial extends CommonSql
 		}
 		$loc = Locator::get_instance();
 		$this->main_content = $helper->get_property_main_content();
-		$this->content_path = $loc->editorial_filepath($this->trip, $this->slug);
-//		print "after fill";
-		return;
-
-		$this->properties = self::$field_names;
-		$this->table = self::$table_name;
-		$this->sql_properties = array_keys($this->properties);
-		$this->sql_primary_key = "slug";
-		parent::__construct($obj);
+		$this->image_url = $loc->url_editorial_image($this->trip, $this->slug, $this->image_name);
+				
+		// $this->content_path = $loc->editorial_filepath($this->trip, $this->slug);
 	}
 	/**
 	* @param string $trip Trip code.

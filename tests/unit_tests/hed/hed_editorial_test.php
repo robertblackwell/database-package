@@ -1,6 +1,7 @@
 <?php
 
 use Database\Object as Db;
+use Database\Locator;
 use Database\Models\Item;
 use Database\Models\Editorial;
 use Database\Models\Entry;
@@ -80,6 +81,21 @@ EOD;
 		$this->assertEqual($a->main_content, $expected);
 
 		\Trace::function_exit();
+	}
+	public function testImageUrl()
+	{
+		$trip = "rtw";
+		$slug = "scotland";
+		$hobj = new HEDObject();
+		$locator = Locator::get_instance();
+		$fn = $locator->editorial_filepath($trip, $slug);
+		$hobj->get_from_file($fn);
+		$editorial = new Editorial($hobj);
+
+		// var_dump($editorial->image_name);
+		// var_dump($editorial->image_url);
+		$this->assertEqual($editorial->image_name, "scotland.jpg");
+		$this->assertEqual($editorial->image_url, "/data/rtw/editorial/scotland/scotland.jpg");
 	}
 
 }

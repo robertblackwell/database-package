@@ -38,17 +38,22 @@ class Album extends Base\CommonSql implements iSqlIzable
 
 	/** These are derived properties*/
 	/** @var string $file_path */
-	public $file_path;
+	// public $file_path;
 	/** @var string $album_path */
-	public $album_path;
+	// public $album_path;
+
 	/** @var string $mascot_path */
 	public $mascot_path;
 	/** @var string $mascot_url */
 	public $mascot_url;
+
 	/** @var string $content_path */
-	public $content_path;
+	// public $content_path;
 	/** @var string $entity_path */
-	public $entity_path;
+	// public $entity_path;
+
+	/** @var \Gallery\Object $gallery */
+	public $gallery;
 
 	//  todo -1 (this is some stuff to see if it works) +0: this is some more stuff
 	public static $table_name = "albums";
@@ -64,16 +69,16 @@ class Album extends Base\CommonSql implements iSqlIzable
 		"title"=>"html",
 		// from this point onwards the values can be deduced via the Locator
 		// so should not be passed in but deduced in the cnstructor
-		'file_path'=>'text',
-		'album_path'=>'text',
+		// 'file_path'=>'text',
+		// 'album_path'=>'text',
 		'mascot_path' => "text",
 		'mascot_url' => "text",
-		"content_path" => "text",
+		// "content_path" => "text",
 		
 		///
 		/// @note this one is ignored
 		///
-		"entity_path" => "text"
+		// "entity_path" => "text"
 		// note - gallery of type \GalleryObject is added during constructor - but its a REAL property
 	];
 	protected $sql_properties;
@@ -89,12 +94,12 @@ class Album extends Base\CommonSql implements iSqlIzable
 
 		$this->properties = self::$field_names;
 		$derived_props = [
-			'file_path'=>'text',
-			'album_path'=>'text',
+			// 'file_path'=>'text',
+			// 'album_path'=>'text',
 			'mascot_path' => "text",
 			'mascot_url' => "text",
-			"content_path" => "text",
-			"entity_path" => "text"
+			// "content_path" => "text",
+			// "entity_path" => "text"
 		];
 		$props = array_diff_key($this->properties, $derived_props);
 		$this->sql_properties = array_keys($props);
@@ -107,12 +112,23 @@ class Album extends Base\CommonSql implements iSqlIzable
 		$this->mascot_path = $loc->album_mascot_path($this->trip, $this->slug);
 		$this->mascot_url = $loc->album_mascot_relative_url($this->trip, $this->slug);
 		$this->content_path = $loc->album_filepath($this->trip, $this->slug);
+		$this->gallery = $this->valueForGalleryProperty();
 //		print "after fill";
 		return;
 		$this->properties = self::$field_names;
 		$this->table = self::$table_name;
 		$this->_images = null;
 		parent::__construct($obj);
+	}
+	/**
+	* Give a value to the property $gallery
+	* @return \Gallery\Object
+	*/
+	private function valueForGalleryProperty()
+	{
+		$fn = self::$locator->album_filepath($this->trip, $this->slug);
+		$gallery = \Gallery\Object::create(dirname($fn));
+		return $gallery;
 	}
 
 	/**

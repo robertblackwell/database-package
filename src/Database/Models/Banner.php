@@ -64,6 +64,8 @@ class Banner extends CommonSql
 // 		'main_content'=>'html',
 //         'image_url'=>'text',
 	];
+	/** array $image_list An array of Image objects */
+	private $image_list;
 	/**
 	 * Banner constructor.
 	 * @param array|ArrayAccess $obj Array of values to initialize object with.
@@ -88,6 +90,7 @@ class Banner extends CommonSql
 		}
 		$loc = Locator::get_instance();
 		$this->content_path = $loc->banner_filepath($this->trip, $this->slug);
+		$this->makeImageList();
 	}
 	/**
 	 * Finds the $trip and $slug for the latest Banner in reverse chronological order.
@@ -147,7 +150,7 @@ class Banner extends CommonSql
 		$images_dir = self::$locator->banner_images_dir($trip, $slug);
 		$obj->get_from_file($fn);
 		$obj = Factory::model_from_hed($obj);
-
+		return;
 		$list = scandir($images_dir);
 		$x = [];
 		foreach ($list as $ent) {
@@ -161,6 +164,33 @@ class Banner extends CommonSql
 		$obj->images_list = $x;
 		// $obj->banner = \Banner\Object::create($trip, $image_dir);
 		return $obj;
+	}
+	/**
+	* Make the image list for the Banner object. Requires that Locator is correctly
+	* configured.
+	* @return nothing
+	*/
+	private function makeImageList()
+	{
+		$images_dir = self::$locator->banner_images_dir($this->trip, $this->slug);
+		$trip = $this->trip;
+		$slug = $this->slug;
+		/// This is a hack so that unit testing does not have to setup Locator
+		/// for every test.
+		if (! is_dir($images_dir)) {
+			return [];
+		}
+		$list = scandir($images_dir);
+		$x = [];
+		foreach ($list as $ent) {
+			if (($ent != ".") && ($ent != "..") && (substr($ent, 0, 1) != ".")) {
+				$tmp = new \stdClass();
+				$tmp->url = self::$locator->url_banner_image($trip, $slug, $ent);
+				$tmp->path = self::$locator->banner_image_filepath($trip, $slug, $ent);
+				$x[] = $tmp;
+			}
+		}
+		$this->images_list = $x;
 	}
 	/**
 	 * Return details (name, file path, url) of the images in this banner object.
