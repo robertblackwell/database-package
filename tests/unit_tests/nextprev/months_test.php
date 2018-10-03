@@ -1,17 +1,23 @@
 <?php
+namespace Unittests\NextPrev;
 
 use Database\Object as Db;
 use \Database\Models\Item;
 use Unittests\LocalTestcase;
+use \Trace;
 
-class NextPrevMonthsTest extends LocalTestcase
+// phpcs:disable 
+
+class MonthsTest extends LocalTestcase
 {
-	function setUp(){
+	function setUp()
+	{
 		global $config;
 		Db::init($config);
 		$db = Db::get_instance();
 	}
-	function test_next_prev_exist(){
+	function testBothExist()
+	{
 		Trace::function_entry();
 		$result = Item::get_by_slug('130417');
 
@@ -21,7 +27,8 @@ class NextPrevMonthsTest extends LocalTestcase
 		$this->assertEqual($prev->slug, "130416");
 		Trace::function_exit();
 	}
-	function test_prev_not_exist(){
+	function testNoPrev()
+	{
 		Trace::function_entry();
 		$result = Item::get_by_slug('vladivostok');
 		$next = $result->next(array("months"=>"2013-10"));
@@ -34,7 +41,8 @@ class NextPrevMonthsTest extends LocalTestcase
 		$this->assertEqual($next->slug, "130407");
 		Trace::function_exit();
 	}
-	function test_next_not_exist(){
+	function testNoNext()
+	{
 		Trace::function_entry();
 		$result = Item::get_by_slug('130427B');
 		$next = $result->next(array("months"=>"2013-04"));

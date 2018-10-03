@@ -1,10 +1,17 @@
 <?php
+namespace Unittests\Model;
 
+use \Database as Database;
 use Database\Object as Db;
 use Database\Models\Item;
 use Unittests\LocalTestcase;
+use \Trace as Trace;
+use \DbPreloader as DbPreloader;
 
-class FindItemsFindItemTest extends LocalTestcase
+// phpcs:disable
+
+
+class ItemFindTest extends LocalTestcase
 {
 	function setUp()
 	{

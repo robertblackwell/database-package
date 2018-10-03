@@ -149,21 +149,8 @@ class Banner extends CommonSql
 
 		$images_dir = self::$locator->banner_images_dir($trip, $slug);
 		$obj->get_from_file($fn);
-		$obj = Factory::model_from_hed($obj);
-		return;
-		$list = scandir($images_dir);
-		$x = [];
-		foreach ($list as $ent) {
-			if (($ent != ".") && ($ent != "..") && (substr($ent, 0, 1) != ".")) {
-				$tmp = new \stdClass();
-				$tmp->url = self::$locator->url_banner_image($trip, $slug, $ent);
-				$tmp->path = self::$locator->banner_image_filepath($trip, $slug, $ent);
-				$x[] = $tmp;
-			}
-		}
-		$obj->images_list = $x;
-		// $obj->banner = \Banner\Object::create($trip, $image_dir);
-		return $obj;
+		$model = Factory::model_from_hed($obj);
+		return $model;
 	}
 	/**
 	* Make the image list for the Banner object. Requires that Locator is correctly

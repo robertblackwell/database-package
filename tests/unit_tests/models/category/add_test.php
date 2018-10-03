@@ -1,10 +1,16 @@
 <?php
+namespace Unittests\Model;
 
+use \Database as Database;
 use Database\Object as Db;
-use \Database\Models\Category as Category;
 use Unittests\LocalTestcase;
+use \Trace as Trace;
+use \DbPreloader as DbPreloader;
 
-class CategoryAddTest extends LocalTestcase
+// phpcs:disable
+
+
+class CategoryTest extends LocalTestcase
 {
 	function setUp()
 	{
@@ -14,7 +20,7 @@ class CategoryAddTest extends LocalTestcase
 		$db = Db::get_instance();
 		//        var_dump($db);exit();
 	}
-	function category_exists($category)
+	function categoryFind($category)
 	{
 		Trace::function_entry();
 		$result = Category::find();
@@ -28,7 +34,7 @@ class CategoryAddTest extends LocalTestcase
 		return $found;
 		Trace::function_exit();
 	}
-	function test_1()
+	function testAddRemove()
 	{
 		return;
 		Trace::function_entry();

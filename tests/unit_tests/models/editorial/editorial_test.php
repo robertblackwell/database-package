@@ -1,7 +1,13 @@
 <?php
+namespace Unittests\Model;
 
+use \Database as Database;
 use Database\Object as Db;
 use Unittests\LocalTestcase;
+use \Trace as Trace;
+use \DbPreloader as DbPreloader;
+
+// phpcs:disable
 
 class EditorialTest extends LocalTestcase
 {
@@ -29,7 +35,7 @@ class EditorialTest extends LocalTestcase
 		$this->assertEqual($result->last_modified_date, "2015-09-17");
 
 	}
-	function test_get_one()
+	function testGetByTripSlug()
 	{
 		Trace::function_entry();
 		// print "Lets get started\n";
@@ -37,7 +43,7 @@ class EditorialTest extends LocalTestcase
 		$this->assert_test_editorial($result);
 		Trace::function_exit();
 	}
-	function test_create_with_skeleton()
+	function testCreateWithSkeleton()
 	{
 		Trace::function_entry();
 		$trip = 'rtw';
@@ -69,7 +75,7 @@ class EditorialTest extends LocalTestcase
 		Trace::function_exit();
 	}
 
-	function test_insert_delete()
+	function testInsertDelete()
 	{
 		Trace::function_entry();
 		$r = Database\Models\Editorial::get_by_slug($this->test_slug);
@@ -90,7 +96,7 @@ class EditorialTest extends LocalTestcase
 	}
 
 
-	function test_import_export()
+	function testImportExport()
 	{
 		Trace::function_entry();
 		// confirm we have the test album

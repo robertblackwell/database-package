@@ -1,11 +1,17 @@
 <?php
+namespace Unittests\CategorizedItem;
 
+use \Database as Database;
 use Database\Object as Db;
 use Database\Models\CategorizedItem;
 use Database\Models\Category;
 use Unittests\LocalTestcase;
+use \DbPreloader as DbPreloader;
+use \Trace as Trace;
 
-class CategorizedItemAddremoveTest extends LocalTestcase
+// phpcs:disable
+
+class AddRemoveTest extends LocalTestcase
 {
 	function setUp()
 	{

@@ -1,28 +1,27 @@
 <?php
+namespace Unittests\Import;
 
 use Database\Object as Db;
 use Database\Models\Item as Item;
 use Unittests\LocalTestcase;
+use \Trace;
+use \DbPreloader;
 
-class test_import_entry extends LocalTestcase
+// phpcs:disable
+
+class EntryTest extends LocalTestcase
 {
-	function setUp(){
+	function setUp()
+	{
 		Trace::disable();
         global $config;
 		Db::init($config);
+		DbPreloader::load();
 		$this->db = Db::get_instance();
         $this->locator = \Database\Locator::get_instance();
-		try{
-		    $r = Item::get_by_slug('120708');
-		    if( is_null($r) ){
-                $new_r = Item::get_by_trip_slug('rtw', '120708');
-                $new_r->sql_insert();            
-			}
-		} catch(\Exception $e)
-		{
-		}
 	}
-	function test_deport_entry(){ 
+	function testGetDelete()
+	{ 
 	    Trace::function_entry();
 	    $r = Item::get_by_slug('120708');
 	    $this->assertNotEqual($r, null);
@@ -30,7 +29,8 @@ class test_import_entry extends LocalTestcase
         $r = Item::get_by_slug('120708');
 	    $this->assertEqual($r, null);
 	}
-	function test_entry(){
+	function testGetDeleteInsert()
+	{
 	    Trace::function_entry();
 	    $r = Item::get_by_slug('120708');
 	    $this->assertNotEqual($r, null);

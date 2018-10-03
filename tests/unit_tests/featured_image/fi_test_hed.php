@@ -1,4 +1,5 @@
 <?php
+namespace Unittests\FeaturedImage;
 
 use Database\Object as Db;
 use Database\Models\Item;
@@ -10,7 +11,12 @@ use Database\HED\Skeleton;
 use Unittests\LocalTestcase;
 use Database\Models\FeaturedImage;
 
-class FeaturedImageHedTest extends LocalTestcase
+// phpcs:disable
+
+/**
+* Tests FeaturedImage::fromHed() on 4 cases.
+*/
+class FromHedTest extends LocalTestcase
 {
 	function setUp()
 	{
@@ -21,7 +27,7 @@ class FeaturedImageHedTest extends LocalTestcase
 	/**
 	* featured_image = "[2]"
 	*/
-	function testFromHEDDefaultGallery()
+	function testDefaultGallery()
 	{
 		\Trace::function_entry();
 		$p = dirname(__FILE__)."/data/featured_image_entry_1/content.php";
@@ -35,7 +41,7 @@ class FeaturedImageHedTest extends LocalTestcase
 	/**
 	* featured_image = "[pict, 2]"
 	*/
-	function testFromHEDSpecificGallery()
+	function testSpecificGallery()
 	{
 		\Trace::function_entry();
 		$p = dirname(__FILE__)."/data/featured_image_entry_2/content.php";
@@ -49,7 +55,7 @@ class FeaturedImageHedTest extends LocalTestcase
 	/**
 	* featured_image = ""
 	*/
-	function testFromHEDBlank()
+	function testBlank()
 	{
 		\Trace::function_entry();
 		$p = dirname(__FILE__)."/data/featured_image_entry_3/content.php";
@@ -63,7 +69,7 @@ class FeaturedImageHedTest extends LocalTestcase
 	/**
 	* featured_image = "picts/Thumbnails/pict-5.jpg"
 	*/
-	function testFromHEDPartialUrl()
+	function testPartialUrl()
 	{
 		\Trace::function_entry();
 		$p = dirname(__FILE__)."/data/featured_image_entry_4/content.php";
@@ -74,5 +80,4 @@ class FeaturedImageHedTest extends LocalTestcase
 		$this->assertEqual($fi1, $correct);
 		\Trace::function_exit();
 	}
-
 }

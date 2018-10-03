@@ -1,4 +1,5 @@
 <?php
+namespace Unittests\Props;
 
 use Database\Object as Db;
 use Database\Locator;
@@ -10,7 +11,9 @@ use Database\HED\HEDFactory;
 use Database\HED\Skeleton;
 use Unittests\NoSqlTestcase;
 
-class HEDPostTest extends NoSqlTestcase
+// phpcs:disable
+
+class PostTest extends NoSqlTestcase
 {
 	function setUp()
 	{
@@ -22,16 +25,18 @@ class HEDPostTest extends NoSqlTestcase
 	public function tearDown()
 	{
 		$locator = Locator::get_instance();
-		system("rm -R ".$locator->item_dir($this->trip, $this->slug));
+		$tmp = $locator->item_dir($this->trip, $this->slug);
+		if (file_exists($tmp)) system("rm -R ".$locator->item_dir($this->trip, $this->slug));
 	}
 
 	function testPost()
 	{
-		Trace::function_entry();
+		\Trace::function_entry();
 		$locator = Locator::get_instance();
 		$p = $locator->item_filepath($this->trip, $this->slug);
 		
-		system("rm -R ".$locator->item_dir($this->trip, $this->slug));
+		$tmp = $locator->item_dir($this->trip, $this->slug);
+		if (file_exists($tmp)) system("rm -R ".$locator->item_dir($this->trip, $this->slug));
 
 		$para1=<<<EOD
 		<p>This is the first para. I have made it a couple of sentences
@@ -97,7 +102,7 @@ EOD;
 		$this->assertEqual($a->featured_image, "a_featured_image_string");
 		$this->assertEqual($a->main_content, $expected);
 
-		Trace::function_exit();
+		\Trace::function_exit();
 	}
 
 }

@@ -1,4 +1,5 @@
 <?php
+namespace Unittests\Props;
 
 use Database\Object as Db;
 use Database\Locator;
@@ -10,8 +11,11 @@ use Database\HED\HEDFactory;
 use Database\HED\Skeleton;
 use Unittests\NoSqlTestcase;
 
-class HEDEntryTest extends NoSqlTestcase
+// phpcs:disable
+
+class EntryTest extends NoSqlTestcase
 {
+	/** per test setup */
 	function setUp()
 	{
 		global $config;
@@ -22,18 +26,22 @@ class HEDEntryTest extends NoSqlTestcase
 	public function tearDown()
 	{
 		$locator = Locator::get_instance();
-		system("rm -R ".$locator->item_dir($this->trip, $this->slug));
+		$tmp = $locator->item_dir($this->trip, $this->slug);
+		if (file_exists($tmp)) system("rm -R ".$locator->item_dir($this->trip, $this->slug));
 	}
 
 	function testEntry()
 	{
-		Trace::function_entry();
+		\Trace::function_entry();
 		$locator = Locator::get_instance();
 		$this->trip = "rtw";
 		$this->slug = "hed_test_entry";
 		$p = $locator->item_filepath($this->trip, $this->slug);
 
-		system("rm -R ".$locator->item_dir($this->trip, $this->slug));
+		$tmp = $locator->item_dir($this->trip, $this->slug);
+		if (file_exists($tmp)) {
+			$output = system("rm -R {$tmp}");
+		}
 		// make a HED file and object
 		$para1=<<<EOD
 <p>This is the first para. I have made it a couple of sentences
@@ -137,12 +145,13 @@ EOD;
 		$this->assertEqual($a->main_content, $expected);
 		$this->assertEqual(trim($a->excerpt), $para1_expect);
 
-		Trace::function_exit();
+		\Trace::function_exit();
 	}
 	public function testBorderCamping()
 	{
-		Trace::function_entry();
-		system("rm -R ".dirname(__FILE__)."/data/test_entry");
+		\Trace::function_entry();
+		$tmp = dirname(__FILE__)."/data/test_entry";
+		if (file_exists($tmp)) system("rm -R ".$tmp);
 		$p = dirname(__FILE__)."/data/entry_1/content.php";
 		$nobj = new HEDObject();
 		$nobj->get_from_file($p);

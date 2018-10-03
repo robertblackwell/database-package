@@ -693,6 +693,16 @@ class Locator
 	* @param string $slug The unique slug for a content item.
 	* @return string The full path to the content/attribute  file for a given content item.
 	*/
+	public function editorial_dir(string $trip, string $slug)
+	{
+		$ret = $this->editorial_root($trip)."/$slug/";
+		return $ret;		
+	}
+	/**
+	* @param string $trip A trip code.
+	* @param string $slug The unique slug for a content item.
+	* @return string The full path to the content/attribute  file for a given content item.
+	*/
 	public function editorial_filepath(string $trip, string $slug) : string
 	{
 		$ret = $this->editorial_root($trip)."/$slug/".$this->editorial_filename();

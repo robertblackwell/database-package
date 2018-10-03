@@ -55,12 +55,10 @@ class CommonSql implements iSqlIzable
 
 	/**
 	* Constructor.
-	* param array|ArrayAccess $obj Sql result row.
 	* @return Model
 	*/
-	public function __construct(/*array $obj*/)
+	public function __construct()
 	{
-		//print __CLASS__.":".__METHOD__.":";
 	}
 
 	/**

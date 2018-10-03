@@ -1,4 +1,5 @@
 <?php
+namespace Unittests\FeaturedImage;
 
 use Database\Object as Db;
 use Database\Models\Item;
@@ -10,7 +11,13 @@ use Database\HED\Skeleton;
 use Unittests\LocalTestcase;
 use Database\Models\FeaturedImage;
 
-class FeaturedImagePathTest extends LocalTestcase
+// phpcs:disable
+
+/**
+* test FeaturedImage::fromPathAndText() on 4 cases.
+*
+*/
+class FromPathAndTextTest extends LocalTestcase
 {
 	function setUp()
 	{
@@ -21,7 +28,7 @@ class FeaturedImagePathTest extends LocalTestcase
 	/**
 	* featured_image = "[2]"
 	*/
-	function testFromPathDefaultGallery()
+	function testDefaultGallery()
 	{
 		\Trace::function_entry();
 		$p = dirname(__FILE__)."/data/featured_image_entry_1/content.php";
@@ -36,7 +43,7 @@ class FeaturedImagePathTest extends LocalTestcase
 	/**
 	* featured_image = "[picts, 2]"
 	*/
-	function testFromPathSpecificGallery()
+	function testSpecificGallery()
 	{
 		\Trace::function_entry();
 		$p = dirname(__FILE__)."/data/featured_image_entry_2/content.php";
@@ -51,7 +58,7 @@ class FeaturedImagePathTest extends LocalTestcase
 	/**
 	* featured_image = ""
 	*/
-	function testFromPathBlank()
+	function testBlank()
 	{
 		\Trace::function_entry();
 		$p = dirname(__FILE__)."/data/featured_image_entry_3/content.php";
@@ -66,7 +73,7 @@ class FeaturedImagePathTest extends LocalTestcase
 	/**
 	* featured_image = "picts/Thumbnails/pict-5.jpg"
 	*/
-	function testFromPathPartialUrl()
+	function testPartialUrl()
 	{
 		\Trace::function_entry();
 		$p = dirname(__FILE__)."/data/featured_image_entry_4/content.php";

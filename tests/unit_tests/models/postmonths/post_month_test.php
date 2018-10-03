@@ -1,10 +1,16 @@
 <?php
+namespace Unittests\Model;
 
-use \Database\Object as Db;
-use \Database\Models\PostMonth as PostMonth;
+use \Database as Database;
+use Database\Object as Db;
+use Database\Models\PostMonth;
 use Unittests\LocalTestcase;
+use \Trace as Trace;
+use \DbPreloader as DbPreloader;
 
-class PostMonthsPostMonthTest extends LocalTestcase
+// phpcs:disable
+
+class PostMonthTest extends LocalTestcase
 {
 	public function setUp()
 	{
@@ -12,7 +18,7 @@ class PostMonthsPostMonthTest extends LocalTestcase
 		Db::init($config);
 		$db = Db::get_instance();
 	}
-	public function test_1()
+	public function testFind()
 	{
 		Trace::function_entry();
 		$result = PostMonth::find();
@@ -23,7 +29,7 @@ class PostMonthsPostMonthTest extends LocalTestcase
 		$this->assertEqual(get_class($result[0]), "Database\Models\PostMonth");
 		Trace::function_exit();
 	}
-	public function test_2()
+	public function testFindForTrip()
 	{
 		Trace::function_entry();
 		$trip='rtw';

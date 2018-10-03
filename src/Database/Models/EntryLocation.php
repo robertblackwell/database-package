@@ -114,12 +114,28 @@ class EntryLocation extends ItemBase //Base\ModelBase
 		];
 		$props = array_diff_key($this->properties, $derived_props);
 		$this->sql_properties = array_keys($props);
+		// $this->select_property_list = implode(",", array_keys($this->properties));
+		// var_dump($this->select_property_list);
+		// exit();
 		/**
 		* fill all "required" properties
 		*/
 		foreach ($props as $prop => $type) {
 			$this->$prop = $helper->get_property_value($prop, $type);
 		}
+	}
+	/**
+	* returns a comma sep list of fields to be returned by any select.
+	* @return string
+	*
+	*/
+	private static function selectList() : string
+	{
+		/**
+		* A string containing a comma separated list of sql fields to be retreived with a select
+		*/
+		$select_property_list = implode(",", array_keys(self::$field_names));
+		return $select_property_list;
 	}
 	/**
 	* Find the locations data for all/count EntryLocation for a trip.
@@ -132,10 +148,8 @@ class EntryLocation extends ItemBase //Base\ModelBase
 	{
 		//print "<p>".__METHOD__."</p>";
 		$count_str = ($count)? "limit 0, $count": "" ;
-		$c = "SELECT type, slug, trip, vehicle,
-				excerpt, 
-				published_date, 
-				country, place, latitude, longitude 
+		$slist = self::selectList();
+		$c = "SELECT {$slist} 
 				FROM my_items 
 				WHERE ( (type='entry' OR type='location') and trip='".$trip."')   
 				order by country asc";
@@ -153,15 +167,14 @@ class EntryLocation extends ItemBase //Base\ModelBase
 	{
 		//print "<p>".__METHOD__."</p>";
 		$count_str = ($count)? "limit 0, $count": "" ;
-		$c = "SELECT type, slug, trip, vehicle,
-                excerpt, 
-                published_date, 
-                country, place, latitude, longitude 
-                FROM my_items 
-                WHERE ( (type='entry' OR type='location') and trip='".$trip."')   
-                order by published_date asc";
+		$slist = self::selectList();
+		$c = "SELECT {$slist} 
+				FROM my_items 
+				WHERE ( (type='entry' OR type='location') and trip='".$trip."')   
+				order by published_date asc";
 		
-		return self::$sql->query_objects($c, __CLASS__);
+		$result = self::$sql->query_objects($c, __CLASS__);
+		return $result;
 	}
 	/**
 	* Find the locations data of all/count EntryLocation for ALL trips.
@@ -173,16 +186,14 @@ class EntryLocation extends ItemBase //Base\ModelBase
 	{
 		//print "<p>".__METHOD__."</p>";
 		$count_str = ($count)? "limit 0, $count": "" ;
-		$c = "SELECT type, slug, trip, vehicle,
-                    miles, odometer, day_number, 
-                    excerpt, 
-                    published_date, 
-                    country, place, latitude, longitude 
-                    FROM my_items 
-                    WHERE (type='entry' OR type='location')   
-                    order by published_date asc";
+		$slist = self::selectList();
+		$c = "SELECT {$slist} 
+					FROM my_items 
+					WHERE (type='entry' OR type='location')   
+					order by published_date asc";
 		
-		return self::$sql->query_objects($c, __CLASS__);
+		$result = self::$sql->query_objects($c, __CLASS__);
+		return $result;
 	}
 
 	/**
@@ -195,12 +206,9 @@ class EntryLocation extends ItemBase //Base\ModelBase
 	{
 		//print "<p>".__METHOD__."</p>";
 		$count_str = ($count)? "limit 0, $count": "" ;
-		$c = "SELECT type, slug, trip, vehicle,
-					miles, odometer, day_number, 
-					excerpt, 
-					published_date, 
-					country, place, latitude, longitude 
-			        FROM my_items 
+		$slist = self::selectList();
+		$c = "SELECT {$slist} 
+					FROM my_items 
 					WHERE (type='entry' OR type='location')   
 					order by country asc";
 		

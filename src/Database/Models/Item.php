@@ -19,7 +19,7 @@ use Database\Locator;
 * summary of a content item.
 *
 */
-class Item extends CommonSql
+class Item extends ItemBase
 {
 	/**
 	* These are essential non derived properties
@@ -131,8 +131,8 @@ class Item extends CommonSql
 		foreach ($props as $prop => $type) {
 			$this->$prop = $helper->get_property_value($prop, $type);
 		}
-		foreach($optional_props as $prop => $type) {
-			$this->$prop = $helper->get_optional_property_value($prop, $type);			
+		foreach ($optional_props as $prop => $type) {
+			$this->$prop = $helper->get_optional_property_value($prop, $type);
 		}
 		$loc = Locator::get_instance();
 		if (!is_null($this->country))
@@ -158,6 +158,7 @@ class Item extends CommonSql
 		// 	"border",
 		// 	$this->properties["border"]
 		// );
+		parent::__construct();
 	}
 	/**
 	* Get an/the Item for a trip-slug pair.

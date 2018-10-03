@@ -1,6 +1,7 @@
 <?php
 
 use Database\Object as Db;
+use Database\Locator;
 use Database\Models\Item;
 use Database\Models\Article;
 use Database\Models\Entry;
@@ -15,17 +16,29 @@ class HEDArticleTest extends LocalTestcase
 	{
 		global $config;
 		Db::init($config);
+		$this->trip = "rtw";
+		$this->slug = "hed_test_article";
 	}
+	public function tearDown()
+	{
+		$locator = Locator::get_instance();
+		system("rm -R ".$locator->item_dir($this->trip, $this->slug));
+	}
+
 	function testsArticle()
 	{
 		\Trace::function_entry();
-		system("rm -R ".dirname(__FILE__)."/data/test_article");
-		$p = dirname(__FILE__)."/data/test_article/content.php";
+		$locator = Locator::get_instance();
+		$p = $locator->item_filepath($this->trip, $this->slug);
+		system("rm -R ".$locator->item_dir($this->trip, $this->slug));
+
+		// system("rm -R ".dirname(__FILE__)."/data/test_article");
+		// $p = dirname(__FILE__)."/data/test_article/content.php";
 		// make a HED file and object
-		$obj = Skeleton::make_article(
-			$p,
-			'atrip',
-			'aslug',
+		$obj = Skeleton::create_article(
+			// $p,
+			$this->trip,
+			$this->slug,
 			'adate',
 			"aTitle",
 			"this is an abstract"
@@ -33,8 +46,8 @@ class HEDArticleTest extends LocalTestcase
 		$this->assertEqual($obj['version'], "2.0.skel");
 		$this->assertEqual($obj['status'], "draft");
 		$this->assertEqual($obj['type'], "article");
-		$this->assertEqual($obj['trip'], "atrip");
-		$this->assertEqual($obj['slug'], "aslug");
+		$this->assertEqual($obj['trip'], $this->trip);
+		$this->assertEqual($obj['slug'], $this->slug);
 		$this->assertEqual($obj['published_date'], "adate");
 		$this->assertEqual($obj['title'], "aTitle");
 		$this->assertEqual($obj['abstract'], "this is an abstract");
@@ -46,8 +59,8 @@ class HEDArticleTest extends LocalTestcase
 		$this->assertEqual($nobj['version'], "2.0.skel");
 		$this->assertEqual($nobj['status'], "draft");
 		$this->assertEqual($nobj['type'], "article");
-		$this->assertEqual($nobj['trip'], "atrip");
-		$this->assertEqual($nobj['slug'], "aslug");
+		$this->assertEqual($nobj['trip'], $this->trip);
+		$this->assertEqual($nobj['slug'], $this->slug);
 		$this->assertEqual($nobj['published_date'], "adate");
 		$this->assertEqual($nobj['title'], "aTitle");
 		$this->assertEqual($nobj['abstract'], "this is an abstract");
@@ -57,8 +70,8 @@ class HEDArticleTest extends LocalTestcase
 		$this->assertEqual($a->version, "2.0.skel");
 		$this->assertEqual($a->status, "draft");
 		$this->assertEqual($a->type, "article");
-		$this->assertEqual($a->trip, "atrip");
-		$this->assertEqual($a->slug, "aslug");
+		$this->assertEqual($a->trip, $this->trip);
+		$this->assertEqual($a->slug, $this->slug);
 		$this->assertEqual($a->published_date, "adate");
 		$this->assertEqual($a->title, "aTitle");
 		$this->assertEqual($a->abstract, "this is an abstract");

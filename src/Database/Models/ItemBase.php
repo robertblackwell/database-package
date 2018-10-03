@@ -12,12 +12,13 @@ use Database\Models\Base\CommonSql;
 */
 class ItemBase extends CommonSql
 {
+	protected $next_prev;
 	/**
 	* Constructor.
-	* @param array $obj Sql query result as associatibe array.
+	* param array $obj Sql query result as associatibe array.
 	* @return Item
 	*/
-	public function __construct(array $obj)
+	public function __construct()
 	{
 		$this->next_prev = new NextPrev($this, self::$sql);
 	}

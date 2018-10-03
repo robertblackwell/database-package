@@ -1,7 +1,14 @@
 <?php
+namespace Unittests\Model;
 
+use \Database as Database;
 use Database\Object as Db;
 use Unittests\LocalTestcase;
+use \Trace as Trace;
+use \DbPreloader as DbPreloader;
+
+// phpcs:disable
+
 
 class EntryTest extends LocalTestcase
 {
@@ -42,13 +49,7 @@ class EntryTest extends LocalTestcase
 		$this->assertEqual($result->longitude, "-121.93520");
 		$this->assertEqual($result->place, "Lillooet");
 		$this->assertEqual($result->country, "Canada");
-		// [miles] => 323
-		//     [odometer] => 29498
-		//     [day_number] => 2
-		//     [place] => Lillooet
-		//     [country] => BC
-		//     [latitude] => 50.69314
-		//     [longitude] => -121.93520
+
 
 		$this->assertEqual($result->border, null);
 		// $this->assertEqual($result->has_border, false);
@@ -62,7 +63,7 @@ class EntryTest extends LocalTestcase
 		// $this->assertNotEqual($result->entity_path, null);
 		$this->assertNotEqual($result->featured_image, null);
 	}
-	function test_get_one()
+	function testGetByTripSlug()
 	{
 		Trace::function_entry();
 		// print "Lets get started\n";
@@ -71,7 +72,7 @@ class EntryTest extends LocalTestcase
 		Trace::function_exit();
 	}
 
-	function test_get_by_slug()
+	function testGetBySlug()
 	{
 		Trace::function_entry();
 		// print "Lets get started\n";
@@ -80,7 +81,7 @@ class EntryTest extends LocalTestcase
 		Trace::function_exit();
 	}
 	
-	function test_create_with_skeleton()
+	function testCreateWithSkeleton()
 	{
 		Trace::function_entry();
 		$trip = 'rtw';
@@ -120,7 +121,7 @@ class EntryTest extends LocalTestcase
 		Trace::function_exit();
 	}
 
-	function test_insert_delete()
+	function testInsertDelete()
 	{
 		Trace::function_entry();
 		$r = Database\Models\Item::get_by_slug($this->test_slug);
@@ -145,7 +146,7 @@ class EntryTest extends LocalTestcase
 	}
 
 
-	function test_import_export()
+	function testImportExport()
 	{
 		Trace::function_entry();
 		// confirm we have the test album

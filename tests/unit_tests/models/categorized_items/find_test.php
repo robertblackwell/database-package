@@ -1,11 +1,17 @@
 <?php
-// require_once(dirname(dirname(dirname(__FILE__)))."/include/header.php");
+namespace Unittests\Model;
 
+use \Database as Database;
 use Database\Object as Db;
 use Database\Models\CategorizedItem;
 use Unittests\LocalTestcase;
+use \Trace as Trace;
+use \DbPreloader as DbPreloader;
 
-class CategorizedItemsFindTest extends LocalTestcase
+// phpcs:disable
+
+
+class CategorizedItemsTest extends LocalTestcase
 {
 	function setUp()
 	{
@@ -15,7 +21,7 @@ class CategorizedItemsFindTest extends LocalTestcase
 		$db = Db::get_instance();
 		//        var_dump($db);exit();
 	}
-	function test_1()
+	function testFind()
 	{
 		Trace::function_entry();
 		$result = CategorizedItem::find();
@@ -26,7 +32,7 @@ class CategorizedItemsFindTest extends LocalTestcase
 		$this->assertEqual(get_class($result[0]), "Database\Models\CategorizedItem");
 		Trace::function_exit();
 	}
-	function test_2()
+	function testRelationshipExists()
 	{
 		Trace::function_entry();
 		$result = CategorizedItem::exists('vehicle', "electricalpart1");

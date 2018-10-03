@@ -1,9 +1,15 @@
 <?php
+namespace Unittests\Model;
 
+use \Database as Database;
 use Database\Object as Db;
 use Unittests\LocalTestcase;
+use \Trace as Trace;
+use \DbPreloader as DbPreloader;
 
-class ArticleFindTest extends LocalTestcase
+// phpcs:disable
+
+class ArticleTest extends LocalTestcase
 {
 	function setUp()
 	{
@@ -11,7 +17,7 @@ class ArticleFindTest extends LocalTestcase
 		Db::init($config);
 		$db = Db::get_instance();
 	}
-	function test_1()
+	function testFind()
 	{
 		Trace::function_entry();
 		$result = Database\Models\Article::find();
@@ -23,7 +29,7 @@ class ArticleFindTest extends LocalTestcase
 		//$this->assertEqual($result[3]->slug, "bolivia-1");
 		Trace::function_exit();
 	}
-	function test_2()
+	function testFindForTrip()
 	{
 		Trace::function_entry();
 		$trip='rtw';

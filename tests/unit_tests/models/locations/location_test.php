@@ -1,10 +1,16 @@
 <?php
+namespace Unittests\Locations;
 
+use \Database as Database;
 use Database\Object as Db;
 use \Database\Models\EntryLocation;
 use Unittests\LocalTestcase;
+use Trace;
+use \DbPreloader as DbPreloader;
 
-class LocationsLocationTest extends LocalTestcase
+// phpcs:disable
+
+class FindTest extends LocalTestcase
 {
 	function setUp()
 	{
@@ -12,7 +18,7 @@ class LocationsLocationTest extends LocalTestcase
 		Db::init($config);
 		$db = Db::get_instance();
 	}
-	function test_1()
+	function testDateOrder()
 	{
 		Trace::function_entry();
 		$result = EntryLocation::find_date_order();
@@ -25,7 +31,7 @@ class LocationsLocationTest extends LocalTestcase
 		$this->assertEqual($result[0]->trip, "er");
 		Trace::function_exit();
 	}
-	function test_2()
+	function testForTrip()
 	{
 		Trace::function_entry();
 		$result = EntryLocation::find_for_trip('rtw');
@@ -37,7 +43,7 @@ class LocationsLocationTest extends LocalTestcase
 		foreach ($result as $i) {
 			$this->assertEqual($i->trip, "rtw");
 		}
-		$this->assertEqual(count($result), 711);
+		$this->assertEqual(count($result), 214);
 		Trace::function_exit();
 	}
 }

@@ -1,4 +1,5 @@
 <?php
+namespace Unitests\FeaturedImage;
 
 use Database\Object as Db;
 use Database\Models\Item;
@@ -10,7 +11,13 @@ use Database\HED\Skeleton;
 use Unittests\LocalTestcase;
 use Database\Models\FeaturedImage;
 
-class FeaturedImagePathTest extends LocalTestcase
+// phpcs:disable
+
+/**
+* Tests that \Database\Models\FeaturedImage::getPath() correctly decodes featured image text 
+* into path/url. 
+*/
+class FeaturedImageTest extends LocalTestcase
 {
 	function setUp()
 	{

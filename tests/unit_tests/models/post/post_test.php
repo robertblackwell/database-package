@@ -1,7 +1,14 @@
 <?php
+namespace Unittests\Model;
 
+use \Database as Database;
 use Database\Object as Db;
 use Unittests\LocalTestcase;
+use \Trace as Trace;
+use \DbPreloader as DbPreloader;
+
+// phpcs:disable
+
 
 class PostPostTest extends LocalTestcase
 {
@@ -34,48 +41,23 @@ class PostPostTest extends LocalTestcase
 		// $this->assertNotEqual($result->entity_path, null);
 		$this->assertNotEqual($result->featured_image, null);
 	}
-	function test_get_one()
+	function testGetByTripSlug()
 	{
 		Trace::function_entry();
-		// print "Lets get started\n";
 		$result = Database\Models\Item::get_by_trip_slug($this->test_trip, $this->test_slug);
-		// print "<p>editorial text: ". $result->main_content ."</p>\n";
 		$this->assert_test_post($result);
-		// $this->assertEquals(get_class($result), "Database\Models\Post");
-		// $this->assertEqual($result->version, "2.0");
-		// $this->assertEqual($result->type, "post");
-		// $this->assertEqual($result->slug, "tuk18A");
-		// $this->assertEqual($result->status, "draft");
-		// $this->assertEqual($result->trip, "rtw");
-		// $this->assertEqual($result->creation_date, "2018-06-19");
-		// $this->assertEqual($result->published_date, "2018-06-19");
-		// $this->assertEqual($result->last_modified_date, "2018-06-19");
-		// $this->assertEqual($result->topic, "Tuktoyaktuk");
-		// $this->assertEqual($result->title, "Count down to a new style adventure");
-
-		// $this->assertNotEqual($result->excerpt, null);
-		// $this->assertNotEqual($result->categories, null);
-		// $this->assertNotEqual($result->content_path, null);
-		// $this->assertNotEqual($result->entity_path, null);
-		// $this->assertNotEqual($result->featured_image, null);
-
-		// print_r($result->getStdClass());
-		// print_r(array_keys($result->getFields()));
-		// print_r(array_keys(get_object_vars($result)));
 		Trace::function_exit();
 	}
 
-	function test_get_by_slug()
+	function testGetBySlug()
 	{
 		Trace::function_entry();
-		// print "Lets get started\n";
 		$result = Database\Models\Item::get_by_slug($this->test_slug);
-		// print "<p>editorial text: ". $result->main_content ."</p>\n";
 		$this->assert_test_post($result);
 		Trace::function_exit();
 	}
 
-	function test_create_with_skeleton()
+	function testCreateWithSkeleton()
 	{
 		Trace::function_entry();
 		$trip = 'rtw';
@@ -106,7 +88,7 @@ class PostPostTest extends LocalTestcase
 		Trace::function_exit();
 	}
 
-	function test_insert_delete()
+	function testInsertDelete()
 	{
 		Trace::function_entry();
 		$r = Database\Models\Item::get_by_slug($this->test_slug);
@@ -127,7 +109,7 @@ class PostPostTest extends LocalTestcase
 	}
 
 
-	function test_import_export()
+	function testImportExport()
 	{
 		Trace::function_entry();
 		// confirm we have the test album

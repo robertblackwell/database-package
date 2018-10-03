@@ -1,10 +1,17 @@
 <?php
+namespace Unittests\Model;
 
+use \Database as Database;
 use Database\Object as Db;
-use \Database\Models\Category as Category;
+use Database\Models\Category;
 use Unittests\LocalTestcase;
+use \Trace as Trace;
+use \DbPreloader as DbPreloader;
 
-class CategoryFindTest extends LocalTestcase
+// phpcs:disable
+
+
+class CategoryRepeatTest extends LocalTestcase
 {
 	function setUp()
 	{
@@ -14,35 +21,7 @@ class CategoryFindTest extends LocalTestcase
 		$db = Db::get_instance();
 		//        var_dump($db);exit();
 	}
-
-/* @todo what is this one testing
-	function test_get_one()
-	{
-		Trace::function_entry();
-		// print "Lets get started\n";
-		$result = Database\Models\Category::get_by_trip_slug('rtw', 'vehicle');
-		$this->assertNotEqual($result, null);
-		assert(! is_null($result));
-		// print "<p>editorial text: ". $result->main_content ."</p>\n";
-		$this->assertEqual($result->category, "vehicle");
-		// $this->assertEqual($result->type, "editorial");
-		// $this->assertEqual($result->slug, "scotland");
-		// $this->assertEqual($result->status, "draft");
-		$this->assertEqual($result->trip, "rtw");
-		// $this->assertEqual($result->creation_date, "2015-09-17");
-		// $this->assertEqual($result->published_date, "2015-09-17");
-		// $this->assertEqual($result->last_modified_date, "2015-09-17");
-
-		// $this->assertNotEqual($result->content_path, null);
-		// $this->assertNotEqual($result->entity_path, null);
-
-		//        print_r($result->getStdClass());
-		//        print_r(array_keys($result->getFields()));
-		//        print_r(array_keys(get_object_vars($result)));
-		Trace::function_exit();
-	}
-*/
-	function test_1()
+	function testFind()
 	{
 		Trace::function_entry();
 		$result = Category::find();
@@ -57,7 +36,7 @@ class CategoryFindTest extends LocalTestcase
 		$this->assertEqual(get_class($result[0]), "Database\Models\Category");
 		Trace::function_exit();
 	}
-	function test_1_1()
+	function testFindForTrip()
 	{
 		Trace::function_entry();
 		$trip='rtw';
@@ -74,7 +53,7 @@ class CategoryFindTest extends LocalTestcase
 		$this->assertEqual(get_class($result[0]), "Database\Models\Category");
 		Trace::function_exit();
 	}
-	function test_2()
+	function testExists()
 	{
 		Trace::function_entry();
 		$result = Category::exists('vehicle');

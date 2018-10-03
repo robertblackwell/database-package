@@ -5,12 +5,8 @@ DATA_DIR =$(TESTS_DIR)/test_data
 TEST_WHITEACORN_DATA=$(HOME)/Sites/test_whiteacorn/data
 
 
-# test_local_api:
-# 	$(LITETEST)
-#
-# test_local_ping:
-# 	$(LITETEST) Tests/ApiCalls/PingTest.php
-all: db hed models nextprev locator  #import paths utility
+
+all: locator props fi db models nextprev  import
 
 db:
 	$(LITETEST) --bootstrap-file="include/bootstrap.php" \
@@ -71,8 +67,9 @@ postmonth:
 	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/models/postmonths/post_month_test.php
 
 fi:
-	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/featured_image/fi_test_hed.php	
-	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/featured_image/fi_test_path.php	
+	$(LITETEST) --bootstrap-file="include/bootstrap.php" \
+	unit_tests/featured_image/fi_test_hed.php \
+	unit_tests/featured_image/fi_test_path.php
 
 locator:
 	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/locator/locator_test.php
@@ -94,6 +91,15 @@ test:
 cats:
 	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/find_category/find_test.php
 
+props: 
+	$(LITETEST) --bootstrap-file="include/bootstrap.php" \
+ 		unit_tests/props/album_test.php \
+		unit_tests/props/article_test.php \
+		unit_tests/props/banner_test.php \
+		unit_tests/props/editorial_test.php \
+		unit_tests/props/post_test.php \
+		unit_tests/props/entry_test.php
+
 hed:
 	$(LITETEST) --bootstrap-file="include/bootstrap.php" \
  		unit_tests/hed/hed_album_test.php \
@@ -108,7 +114,11 @@ hed:
 # unit_tests/hed/hed_test.php
 
 import:
-	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/import/util_test.php
+	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/import/album_test.php \
+	unit_tests/import/article_test.php \
+	unit_tests/import/entry_test.php \
+	unit_tests/import/post_test.php \
+	unit_tests/import/util_test.php
 
 paths:
 	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/paths/path_tests.php

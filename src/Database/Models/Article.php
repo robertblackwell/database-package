@@ -5,7 +5,7 @@ use Database\Locator;
 use Database\HED\HEDObject;
 use Database\Models\Base\CommonSql;
 
-class Article extends CommonSql
+class Article extends ItemBase
 {
 	/**
 	* These are essential non derived properties
@@ -102,6 +102,7 @@ class Article extends CommonSql
 		);
 
 		$this->main_content = $helper->get_property_main_content();
+		parent::__construct();
 	}
 	/**
 	* Find all/count Article for a trip.

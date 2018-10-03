@@ -1,13 +1,18 @@
 <?php
+namespace Unittests\Db;
+
 use Database\Object as Db;
 use Database\Locator as Locator;
 use Database\Models\Factory as Factory;
 use UnitTests\Localtestcase;
 
-class DbLoadTest extends LocalTestcase
+// phpcs:disable
+
+class LoadTest extends LocalTestcase
 {
-	function test_load_albums()
+	function testDropCreateLoadForRtw()
 	{
+		\Trace::disable();
 		global $config;
 		Db::init($config);
 		$builder = new \Database\Builder();
@@ -20,7 +25,7 @@ class DbLoadTest extends LocalTestcase
 		$utility->load_banners($trip);
 		$utility->load_editorials($trip);
 	}
-	function test_db_load()
+	function testDbPreloader()
 	{
 		global $config;
 		Db::init($config);

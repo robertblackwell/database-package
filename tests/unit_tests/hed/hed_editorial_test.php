@@ -18,12 +18,22 @@ class HEDEditorialTest extends NoSqlTestcase
 		\Trace::disable();
 		global $config;
 		Db::init($config);
+		$this->trip = "rtw";
+		$this->slug = "hed_test_editorial";
 	}
+	public function tearDown()
+	{
+		$locator = Locator::get_instance();
+		system("rm -R ".$locator->editorial_dir($this->trip, $this->slug));
+	}
+
 	function testEditorial()
 	{
 		\Trace::function_entry();
-		system("rm -R ".dirname(__FILE__)."/data/test_editorial");
-		$p = dirname(__FILE__)."/data/test_editorial/content.php";
+		$locator = Locator::get_instance();
+		$p = $locator->editorial_filepath($this->trip, $this->slug);
+		system("rm -R ".$locator->editorial_dir($this->trip, $this->slug));
+
 		$para1=<<<EOD
 		<p>This is the first para. I have made it a couple of sentences
 		so that it is meaningful.</p>
@@ -39,10 +49,10 @@ EOD;
 		$expected = trim($main_content);
 
 		// make a HED file and object
-		$obj = Skeleton::make_editorial(
-			$p,
-			'atrip',
-			'aslug',
+		$obj = Skeleton::create_editorial(
+			// $p,
+			$this->trip,
+			$this->slug,
 			'adate',
 			"anImage",
 			$main_content
@@ -50,8 +60,8 @@ EOD;
 		$this->assertEqual($obj['version'],"2.0.skel");
 		$this->assertEqual($obj['status'], "draft");
 		$this->assertEqual($obj['type'], "editorial");
-		$this->assertEqual($obj['trip'], "atrip");
-		$this->assertEqual($obj['slug'], "aslug");
+		$this->assertEqual($obj['trip'], $this->trip);
+		$this->assertEqual($obj['slug'], $this->slug);
 		$this->assertEqual($obj['published_date'], "adate");
 		$this->assertEqual($obj['image_name'], "anImage");
 		$this->assertEqual($obj['main_content'], $expected);
@@ -63,8 +73,8 @@ EOD;
 		$this->assertEqual($nobj['version'],"2.0.skel");
 		$this->assertEqual($nobj['status'], "draft");
 		$this->assertEqual($nobj['type'], "editorial");
-		$this->assertEqual($nobj['trip'], "atrip");
-		$this->assertEqual($nobj['slug'], "aslug");
+		$this->assertEqual($nobj['trip'], $this->trip);
+		$this->assertEqual($nobj['slug'], $this->slug);
 		$this->assertEqual($nobj['published_date'], "adate");
 		$this->assertEqual($nobj['image_name'], "anImage");
 		$this->assertEqual($nobj['main_content'], $expected);
@@ -74,8 +84,8 @@ EOD;
 		$this->assertEqual($a->version,"2.0.skel");
 		$this->assertEqual($a->status, "draft");
 		$this->assertEqual($a->type, "editorial");
-		$this->assertEqual($a->trip, "atrip");
-		$this->assertEqual($a->slug, "aslug");
+		$this->assertEqual($a->trip, $this->trip);
+		$this->assertEqual($a->slug, $this->slug);
 		$this->assertEqual($a->published_date, "adate");
 		$this->assertEqual($a->image_name, "anImage");
 		$this->assertEqual($a->main_content, $expected);
@@ -84,11 +94,11 @@ EOD;
 	}
 	public function testImageUrl()
 	{
-		$trip = "rtw";
-		$slug = "scotland";
+		$this->trip = "rtw";
+		$this->slug = "scotland";
 		$hobj = new HEDObject();
 		$locator = Locator::get_instance();
-		$fn = $locator->editorial_filepath($trip, $slug);
+		$fn = $locator->editorial_filepath($this->trip, $this->slug);
 		$hobj->get_from_file($fn);
 		$editorial = new Editorial($hobj);
 

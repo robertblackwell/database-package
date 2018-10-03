@@ -9,7 +9,7 @@ use Database\Locator;
 /**
 * This class represents a journal entry
 */
-class Entry extends CommonSql
+class Entry extends ItemBase
 {
 	/**
 	* These are essential non derived properties
@@ -164,6 +164,7 @@ class Entry extends CommonSql
 			$this->properties["border"]
 		);
 		$this->has_border = (! is_null($this->border))  && (strlen(trim($this->camping)) != 0);
+		parent::__construct();
 	}
 	/**
 	* Find all/count the albums and return them in an array of Album objects

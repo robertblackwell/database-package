@@ -1,4 +1,5 @@
 <?php
+namespace Unittests\Props;
 
 use Database\Object as Db;
 use Database\Locator;
@@ -10,7 +11,9 @@ use Database\HED\HEDFactory;
 use Database\HED\Skeleton;
 use Unittests\NoSqlTestcase;
 
-class HEDBannerTest extends NoSqlTestcase
+// phpcs:disable
+
+class BannerTest extends NoSqlTestcase
 {
 	function setUp()
 	{
@@ -22,7 +25,8 @@ class HEDBannerTest extends NoSqlTestcase
 	public function tearDown()
 	{
 		$locator = Locator::get_instance();
-		system("rm -R ".$locator->banner_dir($this->trip, $this->slug));
+		$tmp = $locator->banner_dir($this->trip, $this->slug);
+		if (file_exists($tmp)) system("rm -R ".$locator->banner_dir($this->trip, $this->slug));
 	}
 
 	/**
@@ -36,7 +40,8 @@ class HEDBannerTest extends NoSqlTestcase
 		$this->trip = "rtw";
 		$this->slug = "hed_test_banner";
 		$p = $locator->banner_filepath($this->trip, $this->slug);
-		system("rm -R ".$locator->banner_dir($this->trip, $this->slug));
+		$tmp = $locator->banner_dir($this->trip, $this->slug);
+		if (file_exists($tmp)) system("rm -R ".$locator->banner_dir($this->trip, $this->slug));
 
 		// system("rm -R ".dirname(__FILE__)."/data/test_banner");
 		// $p = dirname(__FILE__)."/data/test_banner/content.php";
@@ -81,11 +86,11 @@ class HEDBannerTest extends NoSqlTestcase
 	*/
 	public function testGetImages()
 	{
-		$this->trip = "rtw";
-		$this->slug = "england";
+		$trip = "rtw";
+		$slug = "england";
 		$hobj = new HEDObject();
 		$locator = Locator::get_instance();
-		$fn = $locator->banner_filepath($this->trip, $this->slug);
+		$fn = $locator->banner_filepath($trip, $slug);
 		$hobj->get_from_file($fn);
 		$b = new Banner($hobj);
 		// var_dump($b->getImages());s

@@ -1,4 +1,5 @@
 <?php
+namespace Unittests\Props;
 
 use Database\Object as Db;
 use Database\Models\Item;
@@ -10,7 +11,9 @@ use Database\HED\Skeleton;
 use Database\Locator;
 use Unittests\LocalTestcase;
 
-class HEDAlbumTest extends LocalTestcase
+// phpcs:disable
+
+class AlbumTest extends LocalTestcase
 {
 	function setUp()
 	{
@@ -19,18 +22,26 @@ class HEDAlbumTest extends LocalTestcase
 		Db::init($config);
 		$this->trip = "rtw";
 		$this->slug = "hed_test_album";
+		$locator = Locator::get_instance();
+		$tmp = $locator->album_dir($this->trip, $this->slug);
+		if (file_exists($tmp)) {
+			$output = system("rm -R {$tmp}");
+		}
 	}
 	public function tearDown()
 	{
 		$locator = Locator::get_instance();
-		system("rm -R ".$locator->album_dir($this->trip, $this->slug));
+		$tmp = $locator->album_dir($this->trip, $this->slug);
+		if (file_exists($tmp)) {
+			system("rm -R ".$locator->album_dir($this->trip, $this->slug));
+		}
 	}
 	function testAlbum()
 	{
 		\Trace::function_entry();
 		$locator = Locator::get_instance();
+
 		$p = $locator->album_filepath($this->trip, $this->slug);
-		system("rm -R ".$locator->album_dir($this->trip, $this->slug));
 
 		// make a HED file and object
 		$obj = Skeleton::create_album(
@@ -73,10 +84,11 @@ class HEDAlbumTest extends LocalTestcase
 	}
 	public function testGetgallery()
 	{
-		$this->trip = "rtw";
-		$this->slug = "scotland";
+		$trip = "rtw";
+		$slug = "england";
 		$locator = Locator::get_instance();
-		$fn = $locator->album_filepath($this->trip, $this->slug);
+		$fn = $locator->album_filepath($trip, $slug);
+		// var_dump($fn);
 		$hobj = new HEDObject();
 		$hobj->get_from_file($fn);
 		$album = new Album($hobj);

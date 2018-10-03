@@ -1,21 +1,26 @@
 <?php
+namespace Unittests\Db;
 
 use Database\Object as Db;
+use Database\SqlObject;
 use \Unittests\LocalTestcase;
 
-class ConnectDbTest extends LocalTestcase
+// phpcs:disable
+
+class ConnectTest extends LocalTestcase
 {
 	function setUp()
 	{
+		\Trace::disable();
 	    //print "test connect db\n";
 		global $config;
 		Db::init($config);
 		$this->db = Db::get_instance();
-		$this->sql = Database\SqlObject::get_instance();
+		$this->sql = SqlObject::get_instance();
 	}	
-	function test_connect()
+	function testConnectAndInit()
 	{
-	    Trace::function_entry();
+	    \Trace::function_entry();
 		$db = $this->db;
 		$this->assertFalse($db == null);
 		$this->assertEqual(get_class($db), "Database\Object");
@@ -25,7 +30,7 @@ class ConnectDbTest extends LocalTestcase
 
 		$this->assertFalse(Db::$locator == null);
 		$this->assertEqual(get_class(Db::$locator), "Database\Locator");
-	    Trace::function_exit();
+	    \Trace::function_exit();
 	}
 }
 ?>

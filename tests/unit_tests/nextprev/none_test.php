@@ -1,17 +1,23 @@
 <?php
+namespace Unittests\NextPrev;
 
 use Database\Object as Db;
 use \Database\Models\Item;
 use Unittests\LocalTestcase;
+use \Trace;
 
-class NextPrevNoneTest extends LocalTestcase
+// phpcs:disable
+
+class NoCriteriaTest extends LocalTestcase
 {
-    function setUp(){
+    function setUp()
+    {
         global $config;
 		Db::init($config);
 		$db = Db::get_instance();
     }
-    function test_next_prev_exist(){    
+    function testBoth()
+    {    
 	    Trace::function_entry();
         $result = Item::get_by_slug('110621');
         $next = $result->next();
@@ -20,7 +26,8 @@ class NextPrevNoneTest extends LocalTestcase
         $this->assertEqual($prev->slug, "110620");
 	    Trace::function_exit();
     }
-    function test_prev_not_exist(){    
+    function testNoPrev()
+    {    
 	    Trace::function_entry();
         $result = Item::get_by_slug('bolivia-1');
         $next = $result->next();
@@ -29,7 +36,7 @@ class NextPrevNoneTest extends LocalTestcase
         $this->assertEqual($next->slug, "mog");
 	    Trace::function_exit();
     }
-    function test_next_not_exist()
+    function testNoNext()
     {
 	    Trace::function_entry();
         $result = Item::get_by_slug('180727');
@@ -40,6 +47,3 @@ class NextPrevNoneTest extends LocalTestcase
 	    Trace::function_exit();
     }
 }
-
-
-?>

@@ -6,7 +6,7 @@ use Database\Locator;
 use Database\Models\Base\CommonSql;
 
 /***/
-class Post extends CommonSql
+class Post extends ItemBase
 {
 		/**
 	* These are essential non derived properties
@@ -129,6 +129,7 @@ class Post extends CommonSql
 		* main_content, only available if $obj is a HEDObject
 		*/
 		$this->main_content = $helper->get_property_main_content();
+		parent::__construct();
 	}
 	/**
 	* Inserts this instance into the sql database and add categories and categorized items as required.

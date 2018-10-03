@@ -1,12 +1,17 @@
 <?php
+namespace Unittests\Model;
 
+use \Database as Database;
 use Database\Object as Db;
 use Database\Models\Item;
-use Database\Models\Album;
-use Trace as Trace;
 use Unittests\LocalTestcase;
+use \Trace as Trace;
+use \DbPreloader as DbPreloader;
 
-class GetBySlugTest extends LocalTestcase
+// phpcs:disable
+
+
+class ItemTest extends LocalTestcase
 {
 	function setUp()
 	{
@@ -16,7 +21,7 @@ class GetBySlugTest extends LocalTestcase
 		DbPreloader::load();
 		$db = Db::get_instance();
 	}
-	function test_1()
+	function testEntryGetByTripSlug()
 	{
 		\Trace::function_entry();
 		$r = Item::get_by_trip_slug("rtw", "130417");
@@ -25,7 +30,7 @@ class GetBySlugTest extends LocalTestcase
 		$this->assertEqual($r->slug, "130417");
 		Trace::function_exit();
 	}
-	function test_2()
+	function testEntryGetBySlug()
 	{
 		\Trace::function_entry();
 		$r = Item::get_by_slug('130417');
@@ -56,7 +61,7 @@ class GetBySlugTest extends LocalTestcase
 		//        print get_class($r->latitude)."\n";
 		Trace::function_exit();
 	}
-	function test_3()
+	function testPostGetByTripSlug()
 	{
 		\Trace::function_entry();
 		$r = Item::get_by_trip_slug('rtw', 'electricalpart1');
@@ -65,7 +70,7 @@ class GetBySlugTest extends LocalTestcase
 		$this->assertEqual($r->slug, 'electricalpart1');
 		Trace::function_exit();
 	}
-	function test_4()
+	function testPostGetBySlug()
 	{
 		\Trace::function_entry();
 		$r = Item::get_by_slug('electricalpart1');
@@ -74,7 +79,7 @@ class GetBySlugTest extends LocalTestcase
 		$this->assertEqual($r->slug, 'electricalpart1');
 		Trace::function_exit();
 	}
-	function test_5()
+	function testArticeGetByTripSlug()
 	{
 		Trace::function_entry();
 		$r = Item::get_by_trip_slug('rtw', 'tires');
@@ -83,7 +88,7 @@ class GetBySlugTest extends LocalTestcase
 		$this->assertEqual($r->slug, 'tires');
 		Trace::function_exit();
 	}
-	function test_6()
+	function testArticleGetBySlug()
 	{
 		Trace::function_entry();
 		$r = Item::get_by_slug('tires');//var_dump($r);exit();

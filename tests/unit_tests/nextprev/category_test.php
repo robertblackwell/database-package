@@ -1,19 +1,24 @@
 <?php
+namespace Unittests\NextPrev;
 
 use Database\Object as Db;
 use \Database\Models\Item;
 use Unittests\LocalTestcase;
+use Trace;
 
+// phpcs:disable 
 
-class NextPrevCategoryTest extends LocalTestcase
+class CategoryTest extends LocalTestcase
 {
-	function setUp(){
+	function setUp()
+	{
 		global $config;
 		Db::init($config);
 		$db = Db::get_instance();
 		Trace::disable();
 	}
-	function test_next_prev_exist(){
+	function testBothExist()
+	{
 		Trace::disable();
 		Trace::function_entry();
 		$result = Item::get_by_slug('vehicle2');
@@ -23,7 +28,7 @@ class NextPrevCategoryTest extends LocalTestcase
 		$this->assertEqual($prev->slug, "vehicle1");
 		Trace::function_exit();
 	}
-	function test_prev_not_exist(){
+	function testNoPrev(){
 		Trace::disable();
 		Trace::function_entry();
 		$result = Item::get_by_slug('vehicle1');
@@ -33,7 +38,7 @@ class NextPrevCategoryTest extends LocalTestcase
 		$this->assertEqual($next->slug, "vehicle2");
 		Trace::function_exit();
 	}
-	function test_next_not_exist(){
+	function testNoNext(){
 		Trace::disable();
 		Trace::function_entry();
 		$result = Item::get_by_slug('plumbing2');

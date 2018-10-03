@@ -1,21 +1,26 @@
 <?php
+namespace Unittests\Db;
 
 use Database\Object as Db;
+use Database\SqlObject;
 use Unittests\LocalTestcase;
 
-class DbMetaDataTest extends LocalTestcase
+// phpcs:disable
+
+class MetaDataTest extends LocalTestcase
 {
 	function setUp()
 	{
 	    //print "test connect db\n";
+		\Trace::disable();
 		global $config;
 		Db::init($config);
 		$this->db = Db::get_instance();
-		$this->sql = Database\SqlObject::get_instance();
+		$this->sql = SqlObject::get_instance();
 	}	
-	function test_get_tables()
+	function testGetTables()
 	{
-	    Trace::function_entry();
+	    \Trace::function_entry();
 	    $r = $this->sql->getTables();
 	    //var_dump($r);
 	    $t = array('albums', 'my_items', 'categorized_items', 'categories', 'banners', 'editorials');
@@ -24,7 +29,7 @@ class DbMetaDataTest extends LocalTestcase
 	    {
 	        $this->assertTrue(in_array($tn, $r));
 	    }
-	    Trace::function_exit();
+	    \Trace::function_exit();
 	}
 // 	function test_get_fields_categories(){
 // 	    print __METHOD__."\n";
@@ -33,9 +38,9 @@ class DbMetaDataTest extends LocalTestcase
 // 	    $this->assertEqual(1, count($r));
 // 	    $this->assertEqual("category", $r[0]['Field']);
 // 	}
-	function test_get_fields_categorized_items()
+	function testGetFieldsCategorizedItems()
 	{	
-	    Trace::function_entry();
+	    \Trace::function_entry();
 	    $r = $this->sql->getFields('categorized_items');
 	    //var_dump($r);
 	    $this->assertEqual(2, count($r));
@@ -47,11 +52,11 @@ class DbMetaDataTest extends LocalTestcase
 	    //var_dump($s);
 	    $this->assertTrue(in_array("category",$s));
 	    $this->assertTrue(in_array("item_slug",$s));
-	    Trace::function_exit();
+	    \Trace::function_exit();
 	}
-	function test_get_fields_my_items()
+	function testGetFieldsMyItems()
 	{
-	    Trace::function_entry();
+	    \Trace::function_entry();
         $flds = array("slug",
                 "version",
                 "type",
@@ -60,6 +65,7 @@ class DbMetaDataTest extends LocalTestcase
                 "published_date",
                 "last_modified_date",
                 "trip",
+                "vehicle",
                 "title",
                 "abstract",
                 "excerpt",
@@ -79,18 +85,17 @@ class DbMetaDataTest extends LocalTestcase
 	    $this->assertEqual(count($flds), count($r));
 	    $this->assertEqual(count($flds), count($n));
 	    $s = array();
-	    foreach($r as $f)
-	    {
+	    foreach ($r as $f) {
 	        $this->assertTrue(in_array($f['Field'], $flds));
 	    }
-	    foreach($n as $f){
+	    foreach($n as $f) {
 	        $this->assertTrue(in_array($f, $flds));
 	    }
-	    Trace::function_exit();
+	    \Trace::function_exit();
 	}
-	function test_get_fields_albums()
+	function testGetFieldsAlbums()
 	{
-	    Trace::function_entry();
+	    \Trace::function_entry();
         $flds = array("slug",
                 "version",
                 "type",
@@ -109,46 +114,43 @@ class DbMetaDataTest extends LocalTestcase
 	    $this->assertEqual(count($flds), count($r));
 	    $this->assertEqual(count($flds), count($n));
 	    $s = array();
-	    foreach($r as $f)
-	    {
+	    foreach ($r as $f) {
 	        $s[] = $f['Field'];
 	    }
 	    //var_dump($s);return;
-	    foreach($r as $f)
-	    {
+	    foreach ($r as $f) {
 	        $this->assertTrue(in_array($f['Field'], $flds));
 	    }
-	    foreach($n as $f)
-	    {
+	    foreach ($n as $f) {
 	        $this->assertTrue(in_array($f, $flds));
 	    }
-	    Trace::function_exit();
+	    \Trace::function_exit();
 	}
-	function test_get_primary_key_albums()
+	function testGetPrimaryKeyAlbums()
 	{
-	    Trace::function_entry();
+	    \Trace::function_entry();
 	    $p = $this->sql->get_primary_key('albums');
 	    $this->assertEqual('slug', $p);
-	    Trace::function_exit();
+	    \Trace::function_exit();
 	}
-	function test_get_primary_key_my_items()
+	function testGetPrimaryKeyMyItems()
 	{
-	    Trace::function_entry();
+	    \Trace::function_entry();
 	    $p = $this->sql->get_primary_key('my_items');
 	    $this->assertEqual('slug', $p);
-	    Trace::function_exit();
+	    \Trace::function_exit();
 	}
 // 	function test_get_primary_key_categories(){
 // 	    $p = $this->sql->get_primary_key('categories');
 // 	    var_dump($p);
 // 	    $this->assertEqual('category', $p);
 // 	}
-	function test_get_primary_key_categorized_items()
+	function testGetPrimaryKeyCategorizedItems()
 	{
-	    Trace::function_entry();
+	    \Trace::function_entry();
 	    $p = $this->sql->get_primary_key('categorized_items');
 	    $this->assertEqual('category', $p);
-	    Trace::function_exit();
+	    \Trace::function_exit();
 	}
 }
 ?>

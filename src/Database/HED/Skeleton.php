@@ -109,11 +109,11 @@ class Skeleton
 			throw new \Exception("chmod failed on file: $file_name");
 
 		$need_image_dir = (
-			($type == "entry") 
-			|| ($type == "post") 
-			|| ($type == "banner" ) 
+			($type == "entry")
+			|| ($type == "post")
+			|| ($type == "banner" )
 			|| ($type == "article")
-		);		
+		);
 		
 		if (($type == "entry") || ($type == "post") || ($type == "banner" ) || ($type == "article")) {
 			mkdir($item_dir."/Images", 511, true);
@@ -231,13 +231,13 @@ EOD;
 		string $title,
 		string $abstract
 	) : HEDObject {
-		assert(func_num_args() == 4);
-		$path = \Database\Locator::get_instance()->article_filepath($trip, $slug);
+		assert(func_num_args() == 5);
+		$path = \Database\Locator::get_instance()->item_filepath($trip, $slug);
 		return self::make_article(
-			$path, 
-			$trip, 
-			$slug, 
-			$published_date, 
+			$path,
+			$trip,
+			$slug,
+			$published_date,
 			$title,
 			$abstract
 		);
@@ -285,7 +285,7 @@ EOD;
 		string $slug,
 		string $published_date
 	) : HEDObject {
-		assert(func_num_args() == 4);
+		assert(func_num_args() == 3);
 		$path = \Database\Locator::get_instance()->banner_filepath($trip, $slug);
 		return self::make_banner($path, $trip, $slug, $published_date);
 	}
@@ -326,7 +326,8 @@ EOD;
 	* @param string $trip           The trip for this editorial.
 	* @param string $slug           The unique id for this editorial.
 	* @param string $published_date The published date to be recorded.
-	* @param string $image          The basename of the image file that goes with this editorial.
+	* @param string $image_name     The basename of the image file that goes with this editorial.
+	* @param string $main_content   The main html content.
 	* @return HEDObject
 	*
 	*/
@@ -339,7 +340,7 @@ EOD;
 	) : HEDObject {
 		assert(func_num_args() == 5);
 		$path = \Database\Locator::get_instance()->editorial_filepath($trip, $slug);
-		return self::make_editorial($path, $trip, $slug, $published_date, $image_name);
+		return self::make_editorial($path, $trip, $slug, $published_date, $image_name, $main_content);
 	}
 
 	/**
@@ -348,7 +349,8 @@ EOD;
 	* @param string $trip           The trip for this editorial.
 	* @param string $slug           The unique id for this editorial.
 	* @param string $published_date The published date to be recorded.
-	* @param string $image          The basename of the image file that goes with this editorial.
+	* @param string $image_name     The basename of the image file that goes with this editorial.
+	* @param string $main_content   The main html content.
 	* @return HEDObject
 	*
 	*/
@@ -363,7 +365,7 @@ EOD;
 		ob_start();
 
 		if (is_null($main_content))
-			$main_content  = "<p>enter main content here</p>";
+			$main_content  = "<p>default enter main content here</p>";
 
 		self::print_hed_header();
 		self::print_hed_common("editorial", $trip, $slug, $published_date, []);
@@ -414,8 +416,8 @@ EOD;
 		string $featured_image = null, //  self::default_featured_image(),
 		string $main_content = null //self::default_main_content()
 	) : HEDObject {
-		assert(func_num_args() == 11);
-		$path = \Database\Locator::get_instance()->item_filepath();
+		assert(func_num_args() == 14);
+		$path = \Database\Locator::get_instance()->item_filepath($trip, $slug);
 		// phpcs:disable
 		return self::make_entry(
 			$path,

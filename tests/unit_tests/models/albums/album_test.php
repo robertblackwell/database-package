@@ -1,8 +1,15 @@
 <?php
+namespace Unittests\Model;
 
+use \Database as Database;
 use Database\Object as Db;
 use Unittests\LocalTestcase;
 use Database\Locator;
+use Database\Models\Album;
+use \Trace as Trace;
+use \DbPreloader as DbPreloader;
+
+// phpcs:disable
 
 class AlbumTest extends LocalTestcase
 {
@@ -74,7 +81,7 @@ class AlbumTest extends LocalTestcase
 		$this->assertNotEqual($result->gallery, null);
 		$this->assertEqual(get_class($result->gallery), "Gallery\Object");
 	}
-	function test_get_one()
+	function testGetByTripSlug()
 	{
 		Trace::function_entry();
 		$result = Database\Models\Album::get_by_trip_slug($this->test_trip, $this->test_slug);
@@ -87,7 +94,7 @@ class AlbumTest extends LocalTestcase
 
 		Trace::function_exit();
 	}
-	function test_get_by_slug()
+	function testGetBySlug()
 	{
 		Trace::function_entry();
 		$result = Database\Models\Album::get_by_slug($this->test_slug);
@@ -101,7 +108,7 @@ class AlbumTest extends LocalTestcase
 		Trace::function_exit();
 	}
 
-	function test_by_slug_not_found()
+	function testGetBySlugNotFound()
 	{
 		return;
 		// Trace::function_entry();
@@ -142,7 +149,7 @@ class AlbumTest extends LocalTestcase
 	}
 
 
-	function test_find()
+	function testFind()
 	{
 		Trace::function_entry();
 		$result = Database\Models\Album::find();
@@ -158,7 +165,7 @@ class AlbumTest extends LocalTestcase
 		//$this->assertEqual($result[3]->slug, "bolivia-1");
 		Trace::function_exit();
 	}
-	function test_where_rtw()
+	function testFindForTrip()
 	{
 		Trace::function_entry();
 		$result = Database\Models\Album::find_for_trip($this->test_trip);
@@ -174,7 +181,7 @@ class AlbumTest extends LocalTestcase
 		//$this->assertEqual($result[3]->slug, "bolivia-1");
 		Trace::function_exit();
 	}
-	function test_where_theamericas()
+	function testFindForTripRepeat()
 	{
 		Trace::function_entry();
 		$result = Database\Models\Album::find_for_trip($this->test_trip);
@@ -192,25 +199,7 @@ class AlbumTest extends LocalTestcase
 		Trace::function_exit();
 	}
 
-	function test_create_one()
-	{
-		return;
-		Trace::function_entry();
-		$trip = 'rtw';
-		$slug='170707';
-		$edate = '2017-07-07';
-		$de = array();
-		$p1 = dirname(__FILE__)."/output1/content_1.php";
-		$p2 = dirname(__FILE__)."/correct_content_1.php";
-		$verbose = "";// set to "v" to get output
-		// print system("rm -Rv ".dirname(__FILE__)."/output");
-		$oput = system("rm -R{$verbose} ".dirname(__FILE__)."/output1");
-		// print $oput."\n";
-		\Database\HED\HEDFactory::create_album($p1, $trip, $slug, $edate, "AN_ALBUM_TITLE", $de);
-		$this->assertEqual(file_get_contents($p1), file_get_contents($p2));
-		Trace::function_exit();
-	}
-	function test_create_with_skeleton()
+	function testCreateWithSkeleton()
 	{
 		Trace::function_entry();
 		$trip = 'rtw';
@@ -234,7 +223,7 @@ class AlbumTest extends LocalTestcase
 
 		Trace::function_exit();
 	}
-	function test_insert_delete()
+	function testInsertDelete()
 	{
 		Trace::function_entry();
 		$r = Database\Models\Album::get_by_slug($this->test_slug);
@@ -256,7 +245,7 @@ class AlbumTest extends LocalTestcase
 	function test_fields()
 	{
 	}
-	function test_import_export()
+	function testImportExport()
 	{
 		Trace::function_entry();
 		// confirm we have the test album

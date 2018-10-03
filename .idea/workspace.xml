@@ -3,6 +3,38 @@
   <component name="ChangeListManager">
     <list default="true" id="c80bae66-2ae6-4cc0-b963-e040b502919e" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Database/HED/Skeleton.php" afterPath="$PROJECT_DIR$/src/Database/HED/Skeleton.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Database/Locator.php" afterPath="$PROJECT_DIR$/src/Database/Locator.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Database/Models/Article.php" afterPath="$PROJECT_DIR$/src/Database/Models/Article.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Database/Models/Banner.php" afterPath="$PROJECT_DIR$/src/Database/Models/Banner.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Database/Models/Base/CommonSql.php" afterPath="$PROJECT_DIR$/src/Database/Models/Base/CommonSql.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Database/Models/Entry.php" afterPath="$PROJECT_DIR$/src/Database/Models/Entry.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Database/Models/EntryLocation.php" afterPath="$PROJECT_DIR$/src/Database/Models/EntryLocation.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Database/Models/Item.php" afterPath="$PROJECT_DIR$/src/Database/Models/Item.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Database/Models/ItemBase.php" afterPath="$PROJECT_DIR$/src/Database/Models/ItemBase.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Database/Models/Post.php" afterPath="$PROJECT_DIR$/src/Database/Models/Post.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/include/header.php" afterPath="$PROJECT_DIR$/tests/include/header.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/makefile" afterPath="$PROJECT_DIR$/tests/makefile" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/unit_tests/db/connect_test.php" afterPath="$PROJECT_DIR$/tests/unit_tests/db/connect_test.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/unit_tests/db/load.php" afterPath="$PROJECT_DIR$/tests/unit_tests/db/load.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/unit_tests/db/meta_test.php" afterPath="$PROJECT_DIR$/tests/unit_tests/db/meta_test.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/unit_tests/db/query_test.php" afterPath="$PROJECT_DIR$/tests/unit_tests/db/query_test.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/unit_tests/db/select_test.php" afterPath="$PROJECT_DIR$/tests/unit_tests/db/select_test.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/unit_tests/featured_image/fi_test.php" afterPath="$PROJECT_DIR$/tests/unit_tests/featured_image/fi_test.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/unit_tests/featured_image/fi_test_hed.php" afterPath="$PROJECT_DIR$/tests/unit_tests/featured_image/fi_test_hed.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/unit_tests/featured_image/fi_test_path.php" afterPath="$PROJECT_DIR$/tests/unit_tests/featured_image/fi_test_path.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/unit_tests/hed/hed_album_test.php" afterPath="$PROJECT_DIR$/tests/unit_tests/hed/hed_album_test.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/unit_tests/hed/hed_article_test.php" afterPath="$PROJECT_DIR$/tests/unit_tests/hed/hed_article_test.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/unit_tests/hed/hed_banner_test.php" afterPath="$PROJECT_DIR$/tests/unit_tests/hed/hed_banner_test.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/unit_tests/hed/hed_editorial_test.php" afterPath="$PROJECT_DIR$/tests/unit_tests/hed/hed_editorial_test.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/unit_tests/hed/hed_entry_test.php" afterPath="$PROJECT_DIR$/tests/unit_tests/hed/hed_entry_test.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/unit_tests/hed/hed_post_test.php" afterPath="$PROJECT_DIR$/tests/unit_tests/hed/hed_post_test.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/unit_tests/locator/locator_test.php" afterPath="$PROJECT_DIR$/tests/unit_tests/locator/locator_test.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/unit_tests/models/locations/location_test.php" afterPath="$PROJECT_DIR$/tests/unit_tests/models/locations/location_test.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/unit_tests/nextprev/category_test.php" afterPath="$PROJECT_DIR$/tests/unit_tests/nextprev/category_test.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/unit_tests/nextprev/country_test.php" afterPath="$PROJECT_DIR$/tests/unit_tests/nextprev/country_test.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/unit_tests/nextprev/months_test.php" afterPath="$PROJECT_DIR$/tests/unit_tests/nextprev/months_test.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/unit_tests/nextprev/none_test.php" afterPath="$PROJECT_DIR$/tests/unit_tests/nextprev/none_test.php" />
     </list>
     <ignored path="database-package.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -27,31 +59,9 @@
       <file leaf-file-name="header.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tests/include/header.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
+            <state vertical-scroll-proportion="-4.375">
               <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DbPreLoader.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tests/include/DbPreLoader.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Entry.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/Database/Models/Entry.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6150376">
-              <caret line="166" column="0" selection-start-line="166" selection-start-column="0" selection-end-line="166" selection-end-column="0" />
-              <folding>
-                <element signature="e#4749#5153#0#PHP" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -59,107 +69,119 @@
       <file leaf-file-name="RowHelper.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Database/Models/RowHelper.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="338" column="0" selection-start-line="338" selection-start-column="0" selection-end-line="338" selection-end-column="0" />
+            <state vertical-scroll-proportion="-4.2916665">
+              <caret line="313" column="0" selection-start-line="313" selection-start-column="0" selection-end-line="313" selection-end-column="0" />
               <folding>
                 <element signature="e#3504#3678#0#PHP" expanded="true" />
                 <element signature="e#3857#3940#0#PHP" expanded="true" />
+                <element signature="e#9160#9567#0#PHP" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="HEDObject.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Database/HED/HEDObject.php">
+      <file leaf-file-name="ClassLoader.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/vendor/composer/ClassLoader.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="211" column="0" selection-start-line="211" selection-start-column="0" selection-end-line="211" selection-end-column="0" />
-              <folding>
-                <element signature="e#851#886#0#PHP" expanded="true" />
-                <element signature="e#1009#1207#0#PHP" expanded="true" />
-                <element signature="e#1330#1523#0#PHP" expanded="true" />
-                <element signature="e#1738#1885#0#PHP" expanded="true" />
-                <element signature="e#2055#2152#0#PHP" expanded="true" />
-                <element signature="e#2304#3155#0#PHP" expanded="true" />
-                <element signature="e#3286#3782#0#PHP" expanded="true" />
-                <element signature="e#4064#4220#0#PHP" expanded="true" />
-                <element signature="e#4327#4406#0#PHP" expanded="true" />
-                <element signature="e#4685#4842#0#PHP" expanded="true" />
-                <element signature="e#4997#5180#0#PHP" expanded="true" />
-                <element signature="e#6287#6461#0#PHP" expanded="true" />
-                <element signature="e#6523#6669#0#PHP" expanded="true" />
-                <element signature="e#6933#7095#0#PHP" expanded="true" />
-                <element signature="e#7312#7698#0#PHP" expanded="true" />
-                <element signature="e#7967#8062#0#PHP" expanded="true" />
-                <element signature="e#8301#8392#0#PHP" expanded="true" />
-                <element signature="e#8540#8629#0#PHP" expanded="true" />
-                <element signature="e#8832#9072#0#PHP" expanded="true" />
-                <element signature="e#9285#9536#0#PHP" expanded="true" />
-                <element signature="e#9749#9998#0#PHP" expanded="true" />
-                <element signature="e#10246#10806#0#PHP" expanded="true" />
-                <element signature="e#11082#11518#0#PHP" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CommonSql.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Database/Models/Base/CommonSql.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="114" column="0" selection-start-line="114" selection-start-column="0" selection-end-line="114" selection-end-column="0" />
+            <state vertical-scroll-proportion="-3.0588236">
+              <caret line="323" column="0" selection-start-line="323" selection-start-column="0" selection-end-line="323" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Utility.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Database/Utility.php">
+      <file leaf-file-name="Album.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Database/Models/Album.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="346" column="0" selection-start-line="346" selection-start-column="0" selection-end-line="346" selection-end-column="0" />
+            <state vertical-scroll-proportion="-5.25">
+              <caret line="164" column="0" selection-start-line="164" selection-start-column="0" selection-end-line="164" selection-end-column="0" />
               <folding>
-                <element signature="e#8349#8487#0#PHP" expanded="true" />
+                <element signature="e#2318#3407#0#PHP" expanded="true" />
+                <marker date="1538524332415" expanded="true" signature="6606:6680" placeholder="DELETE from " />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Factory.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Database/Models/Factory.php">
+      <file leaf-file-name="EntryLocation.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Database/Models/EntryLocation.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="289" column="0" selection-start-line="289" selection-start-column="0" selection-end-line="289" selection-end-column="0" />
+            <state vertical-scroll-proportion="-4.2916665">
+              <caret line="110" column="0" selection-start-line="110" selection-start-column="0" selection-end-line="110" selection-end-column="0" />
               <folding>
-                <element signature="e#11741#12009#0#PHP" expanded="true" />
+                <marker date="1538542212444" expanded="true" signature="5860:5955" placeholder="SELECT type,... my_items" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="find_item_test.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tests/unit_tests/models/item/find_item_test.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SqlObject.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="SqlObject.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Database/SqlObject.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="400" column="0" selection-start-line="400" selection-start-column="0" selection-end-line="400" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.62459546">
+              <caret line="219" column="0" selection-start-line="219" selection-start-column="0" selection-end-line="219" selection-end-column="0" />
               <folding>
-                <element signature="e#6421#7597#0#PHP" expanded="true" />
+                <element signature="e#8610#9131#0#PHP" expanded="true" />
+                <element signature="e#12648#14273#0#PHP" expanded="true" />
                 <marker date="1538280032000" expanded="true" signature="5165:5179" placeholder="SELECT * FRO... ${$table}" />
                 <marker date="1538280032000" expanded="true" signature="6632:6646" placeholder="SELECT * FRO... ${$table}" />
                 <marker date="1538280032000" expanded="true" signature="9866:9883" placeholder="UPDATE ${$ta... " />
                 <marker date="1538280032000" expanded="true" signature="11739:11796" placeholder="DELETE FROM " />
                 <marker date="1538280032000" expanded="true" signature="13133:13145" placeholder="INSERT INTO ${$table}... " />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="NextPrev.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Database/Models/NextPrev.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-4.2916665">
+              <caret line="185" column="0" selection-start-line="185" selection-start-column="0" selection-end-line="185" selection-end-column="0" />
+              <folding>
+                <element signature="e#5215#5685#0#PHP" expanded="true" />
+                <marker date="1538273582050" expanded="true" signature="3313:3362" placeholder="select * fro... my_items" />
+                <marker date="1538273582050" expanded="true" signature="4011:4060" placeholder="select * fro... my_items" />
+                <marker date="1538273582050" expanded="true" signature="5433:5538" placeholder="select a.* f... my_items" />
+                <marker date="1538273582050" expanded="true" signature="6152:6256" placeholder="select a.* f... my_items" />
+                <marker date="1538273582050" expanded="true" signature="6708:6737" placeholder="select * fro... my_items" />
+                <marker date="1538273582050" expanded="true" signature="7173:7202" placeholder="select * fro... my_items" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="category_test.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tests/unit_tests/nextprev/category_test.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-5.5416665">
+              <caret line="46" column="0" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
+              <folding>
+                <element signature="e#37#63#0#PHP" expanded="true" />
+                <element signature="e#195#304#0#PHP" expanded="true" />
+                <element signature="e#306#656#0#PHP" expanded="true" />
+                <element signature="e#658#991#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="album_test.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tests/unit_tests/import/album_test.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-6.25">
+              <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ItemBase.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Database/Models/ItemBase.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-4.625">
+              <caret line="42" column="0" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -186,7 +208,6 @@
         <option value="$PROJECT_DIR$/tests/include/bootstrap.php" />
         <option value="$PROJECT_DIR$/tests/unit_tests/models/category/find_test.php" />
         <option value="$PROJECT_DIR$/tests/unit_tests/models/banner/index.php" />
-        <option value="$PROJECT_DIR$/tests/unit_tests/nextprev/category_test.php" />
         <option value="$PROJECT_DIR$/tests/unit_tests/nextprev/country_test.php" />
         <option value="$PROJECT_DIR$/tests/unit_tests/nextprev/months_test.php" />
         <option value="$PROJECT_DIR$/tests/unit_tests/nextprev/none_test.php" />
@@ -201,19 +222,22 @@
         <option value="$PROJECT_DIR$/src/Database/Models/Album.php" />
         <option value="$PROJECT_DIR$/tests/unit_tests/db/load.php" />
         <option value="$PROJECT_DIR$/tests/unit_tests/models/albums/album_test.php" />
-        <option value="$PROJECT_DIR$/src/Database/Models/Banner.php" />
         <option value="$PROJECT_DIR$/tests/unit_tests/hed/hed_post_test.php" />
         <option value="$PROJECT_DIR$/src/Database/Models/Post.php" />
         <option value="$PROJECT_DIR$/src/Database/HED/Skeleton.php" />
         <option value="$PROJECT_DIR$/src/Database/Models/FeaturedImage.php" />
         <option value="$PROJECT_DIR$/tests/unit_tests/models/entry/entry_test.php" />
-        <option value="$PROJECT_DIR$/tests/unit_tests/hed/hed_entry_test.php" />
         <option value="$PROJECT_DIR$/tests/unit_tests/hed/hed_editorial_test.php" />
         <option value="$PROJECT_DIR$/tests/unit_tests/models/editorial/editorial_test.php" />
         <option value="$PROJECT_DIR$/src/Database/Models/Item.php" />
         <option value="$PROJECT_DIR$/tests/unit_tests/models/item/find_item_test.php" />
         <option value="$PROJECT_DIR$/src/Database/Models/Entry.php" />
         <option value="$PROJECT_DIR$/src/Database/HED/HEDObject.php" />
+        <option value="$PROJECT_DIR$/tests/unit_tests/hed/hed_entry_test.php" />
+        <option value="$PROJECT_DIR$/tests/unit_tests/props/album_test.php" />
+        <option value="$PROJECT_DIR$/src/Database/Models/Banner.php" />
+        <option value="$PROJECT_DIR$/src/Database/Models/EntryLocation.php" />
+        <option value="$PROJECT_DIR$/tests/unit_tests/nextprev/category_test.php" />
       </list>
     </option>
   </component>
@@ -362,7 +386,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="models" />
+              <option name="myItemId" value="nextprev" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -384,63 +408,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="models" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="post" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="database-package" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="database-package" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tests" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="unit_tests" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="models" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="item" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="database-package" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="database-package" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tests" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="unit_tests" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="models" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="editorial" />
+              <option name="myItemId" value="import" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -653,7 +621,7 @@
       <envs />
       <method />
     </configuration>
-    <configuration default="false" name="php models/hed/album" type="PhpLocalRunConfigurationType" factoryName="PHP Console" path="$PROJECT_DIR$/vendor/bin/litetest" scriptParameters="--bootstrap-file=&quot;include/bootstrap.php&quot; unit_tests/models/item/find_item_test.php">
+    <configuration default="false" name="php models/hed/album" type="PhpLocalRunConfigurationType" factoryName="PHP Console" path="$PROJECT_DIR$/vendor/bin/litetest" scriptParameters="--bootstrap-file=&quot;include/bootstrap.php&quot; unit_tests/import/album_test.php">
       <CommandLine workingDirectory="$PROJECT_DIR$/tests" />
       <option name="workingDirectory" value="$PROJECT_DIR$/tests" />
       <method />
@@ -698,19 +666,19 @@
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24606581" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24964234" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.49651325" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32807216" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32919955" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.49651325" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32807216" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -729,27 +697,27 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/tests/unit_tests/locator/locator_test.php</url>
-          <line>65</line>
+          <line>73</line>
           <option name="timeStamp" value="55" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/tests/unit_tests/locator/locator_test.php</url>
-          <line>52</line>
+          <line>59</line>
           <option name="timeStamp" value="56" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/tests/unit_tests/locator/locator_test.php</url>
-          <line>39</line>
+          <line>45</line>
           <option name="timeStamp" value="57" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/tests/unit_tests/locator/locator_test.php</url>
-          <line>26</line>
+          <line>31</line>
           <option name="timeStamp" value="58" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/tests/unit_tests/locator/locator_test.php</url>
-          <line>17</line>
+          <line>21</line>
           <option name="timeStamp" value="59" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
@@ -759,12 +727,12 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/tests/unit_tests/hed/hed_album_test.php</url>
-          <line>29</line>
+          <line>38</line>
           <option name="timeStamp" value="72" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/tests/unit_tests/hed/hed_album_test.php</url>
-          <line>59</line>
+          <line>79</line>
           <option name="timeStamp" value="73" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
@@ -779,12 +747,12 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/tests/unit_tests/db/load.php</url>
-          <line>26</line>
+          <line>31</line>
           <option name="timeStamp" value="81" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/tests/unit_tests/db/load.php</url>
-          <line>12</line>
+          <line>17</line>
           <option name="timeStamp" value="82" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
@@ -809,42 +777,42 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/tests/unit_tests/hed/hed_post_test.php</url>
-          <line>38</line>
+          <line>50</line>
           <option name="timeStamp" value="88" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/tests/unit_tests/hed/hed_post_test.php</url>
-          <line>76</line>
+          <line>88</line>
           <option name="timeStamp" value="89" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/tests/unit_tests/hed/hed_post_test.php</url>
-          <line>75</line>
+          <line>87</line>
           <option name="timeStamp" value="90" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/tests/unit_tests/hed/hed_article_test.php</url>
-          <line>22</line>
+          <line>35</line>
           <option name="timeStamp" value="93" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/tests/unit_tests/featured_image/fi_test_path.php</url>
-          <line>71</line>
+          <line>78</line>
           <option name="timeStamp" value="94" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/tests/unit_tests/featured_image/fi_test_path.php</url>
-          <line>56</line>
+          <line>63</line>
           <option name="timeStamp" value="95" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/tests/unit_tests/featured_image/fi_test_path.php</url>
-          <line>41</line>
+          <line>48</line>
           <option name="timeStamp" value="96" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/tests/unit_tests/featured_image/fi_test_path.php</url>
-          <line>26</line>
+          <line>33</line>
           <option name="timeStamp" value="97" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
@@ -859,22 +827,22 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/tests/unit_tests/hed/hed_entry_test.php</url>
-          <line>79</line>
+          <line>92</line>
           <option name="timeStamp" value="100" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/tests/unit_tests/hed/hed_entry_test.php</url>
-          <line>74</line>
+          <line>87</line>
           <option name="timeStamp" value="103" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/tests/unit_tests/hed/hed_entry_test.php</url>
-          <line>124</line>
+          <line>137</line>
           <option name="timeStamp" value="104" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/tests/unit_tests/hed/hed_editorial_test.php</url>
-          <line>53</line>
+          <line>64</line>
           <option name="timeStamp" value="107" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
@@ -904,14 +872,64 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/src/Database/Models/Entry.php</url>
-          <line>155</line>
+          <line>156</line>
           <option name="timeStamp" value="115" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/tests/unit_tests/hed/hed_entry_test.php</url>
+          <line>51</line>
+          <option name="timeStamp" value="116" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/tests/unit_tests/props/album_test.php</url>
+          <line>92</line>
+          <option name="timeStamp" value="117" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/tests/unit_tests/models/banner/banner_test.php</url>
+          <line>37</line>
+          <option name="timeStamp" value="118" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/tests/unit_tests/models/locations/location_test.php</url>
+          <line>20</line>
+          <option name="timeStamp" value="119" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/tests/unit_tests/models/locations/location_test.php</url>
+          <line>33</line>
+          <option name="timeStamp" value="120" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/src/Database/SqlObject.php</url>
+          <line>286</line>
+          <option name="timeStamp" value="121" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/tests/unit_tests/nextprev/category_test.php</url>
+          <line>41</line>
+          <option name="timeStamp" value="122" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/tests/unit_tests/nextprev/category_test.php</url>
+          <line>31</line>
+          <option name="timeStamp" value="123" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/tests/unit_tests/nextprev/category_test.php</url>
+          <line>21</line>
+          <option name="timeStamp" value="124" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/tests/unit_tests/import/album_test.php</url>
+          <line>18</line>
+          <option name="timeStamp" value="125" />
         </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="116" />
+      <option name="time" value="126" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="PhpLocalRunConfigurationType">
@@ -920,62 +938,6 @@
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/Database/Models/ArticleTitle.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Database/Object.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="54" column="0" selection-start-line="54" selection-start-column="0" selection-end-line="54" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tests/unit_tests/nextprev/none_test.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.53846157">
-          <caret line="30" column="34" selection-start-line="30" selection-start-column="34" selection-end-line="30" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tests/unit_tests/nextprev/months_test.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.53222454">
-          <caret line="36" column="0" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tests/unit_tests/nextprev/country_test.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.34511435">
-          <caret line="35" column="40" selection-start-line="35" selection-start-column="40" selection-end-line="35" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tests/unit_tests/nextprev/category_test.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.56340957">
-          <caret line="38" column="60" selection-start-line="38" selection-start-column="60" selection-end-line="38" selection-end-column="60" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tests/unit_tests/models/category/add_test.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.031185031">
-          <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/bin/litetest">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.875">
-          <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/tests/unit_tests/models/category/find_test.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.4054054">
@@ -1016,10 +978,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="57" column="50" selection-start-line="57" selection-start-column="50" selection-end-line="57" selection-end-column="50" />
           <folding>
-            <element signature="n#test_1#0;n#test_locator#0;n#!!top" expanded="false" />
-            <element signature="n#test_2#0;n#test_locator#0;n#!!top" expanded="false" />
-            <element signature="n#test_3#0;n#test_locator#0;n#!!top" expanded="false" />
-            <element signature="n#test_5#0;n#test_locator#0;n#!!top" expanded="false" />
+            <element signature="e#310#544#0#PHP" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1042,9 +1001,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-13.125">
           <caret line="53" column="0" selection-start-line="53" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
-          <folding>
-            <element signature="n#setUp#0;n#HEDAlbumTest#0;n#!!top" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1055,13 +1012,6 @@
           <folding>
             <element signature="e#2161#2609#0#PHP" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Database/Models/Album.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-11.875">
-          <caret line="107" column="8" selection-start-line="107" selection-start-column="8" selection-end-line="107" selection-end-column="8" />
         </state>
       </provider>
     </entry>
@@ -1077,24 +1027,9 @@
         <state vertical-scroll-proportion="-9.041667">
           <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
           <folding>
-            <element signature="e#6#32#0#PHP" expanded="false" />
-            <element signature="n#test_db_load#0;n#DbLoadTest#0;n#!!top" expanded="false" />
+            <element signature="e#31#57#0#PHP" expanded="false" />
+            <element signature="e#611#706#0#PHP" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tests/unit_tests/models/banner/banner_test.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-28.75">
-          <caret line="67" column="0" selection-start-line="67" selection-start-column="0" selection-end-line="67" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Database/Models/Banner.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.5">
-          <caret line="66" column="0" selection-start-line="66" selection-start-column="0" selection-end-line="66" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -1183,19 +1118,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Database/HED/Skeleton.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="498" column="0" selection-start-line="498" selection-start-column="0" selection-end-line="498" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/tests/unit_tests/featured_image/fi_test_path.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="76" column="0" selection-start-line="76" selection-start-column="0" selection-end-line="76" selection-end-column="0" />
           <folding>
-            <element signature="n#testFromPathDefaultGallery#0;n#FeaturedImagePathTest#0;n#!!top" expanded="false" />
+            <element signature="e#547#1006#0#PHP" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1204,14 +1132,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-5.392157">
           <caret line="136" column="0" selection-start-line="136" selection-start-column="0" selection-end-line="136" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tests/unit_tests/hed/hed_entry_test.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.125">
-          <caret line="92" column="0" selection-start-line="92" selection-start-column="0" selection-end-line="92" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1235,15 +1155,8 @@
         <state vertical-scroll-proportion="-8.708333">
           <caret line="31" column="0" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
           <folding>
-            <element signature="n#test_get_by_slug#0;n#PostPostTest#0;n#!!top" expanded="true" />
+            <element signature="n#test_get_by_slug#0;n#PostPostTest#0;n#!!top" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/composer/ClassLoader.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.9215686">
-          <caret line="323" column="0" selection-start-line="323" selection-start-column="0" selection-end-line="323" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -1254,72 +1167,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tests/include/header.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/tests/include/DbPreLoader.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Database/Models/Entry.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6150376">
-          <caret line="166" column="0" selection-start-line="166" selection-start-column="0" selection-end-line="166" selection-end-column="0" />
-          <folding>
-            <element signature="e#4749#5153#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Database/Models/RowHelper.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="338" column="0" selection-start-line="338" selection-start-column="0" selection-end-line="338" selection-end-column="0" />
-          <folding>
-            <element signature="e#3504#3678#0#PHP" expanded="true" />
-            <element signature="e#3857#3940#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Database/HED/HEDObject.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="211" column="0" selection-start-line="211" selection-start-column="0" selection-end-line="211" selection-end-column="0" />
-          <folding>
-            <element signature="e#851#886#0#PHP" expanded="true" />
-            <element signature="e#1009#1207#0#PHP" expanded="true" />
-            <element signature="e#1330#1523#0#PHP" expanded="true" />
-            <element signature="e#1738#1885#0#PHP" expanded="true" />
-            <element signature="e#2055#2152#0#PHP" expanded="true" />
-            <element signature="e#2304#3155#0#PHP" expanded="true" />
-            <element signature="e#3286#3782#0#PHP" expanded="true" />
-            <element signature="e#4064#4220#0#PHP" expanded="true" />
-            <element signature="e#4327#4406#0#PHP" expanded="true" />
-            <element signature="e#4685#4842#0#PHP" expanded="true" />
-            <element signature="e#4997#5180#0#PHP" expanded="true" />
-            <element signature="e#6287#6461#0#PHP" expanded="true" />
-            <element signature="e#6523#6669#0#PHP" expanded="true" />
-            <element signature="e#6933#7095#0#PHP" expanded="true" />
-            <element signature="e#7312#7698#0#PHP" expanded="true" />
-            <element signature="e#7967#8062#0#PHP" expanded="true" />
-            <element signature="e#8301#8392#0#PHP" expanded="true" />
-            <element signature="e#8540#8629#0#PHP" expanded="true" />
-            <element signature="e#8832#9072#0#PHP" expanded="true" />
-            <element signature="e#9285#9536#0#PHP" expanded="true" />
-            <element signature="e#9749#9998#0#PHP" expanded="true" />
-            <element signature="e#10246#10806#0#PHP" expanded="true" />
-            <element signature="e#11082#11518#0#PHP" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1336,7 +1188,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="346" column="0" selection-start-line="346" selection-start-column="0" selection-end-line="346" selection-end-column="0" />
           <folding>
-            <element signature="e#8349#8487#0#PHP" expanded="true" />
+            <element signature="e#8349#8487#0#PHP" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1346,7 +1198,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="289" column="0" selection-start-line="289" selection-start-column="0" selection-end-line="289" selection-end-column="0" />
           <folding>
-            <element signature="e#11741#12009#0#PHP" expanded="true" />
+            <element signature="e#11741#12009#0#PHP" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1359,12 +1211,214 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/Database/HED/Skeleton.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-5.5416665">
+          <caret line="135" column="0" selection-start-line="135" selection-start-column="0" selection-end-line="135" selection-end-column="0" />
+          <folding>
+            <element signature="e#13179#14038#0#PHP" expanded="true" />
+            <element signature="e#15062#16694#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Database/Models/Entry.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-4.2916665">
+          <caret line="155" column="0" selection-start-line="155" selection-start-column="0" selection-end-line="155" selection-end-column="0" />
+          <folding>
+            <element signature="e#4773#5177#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/unit_tests/hed/hed_entry_test.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-4.75">
+          <caret line="137" column="0" selection-start-line="137" selection-start-column="0" selection-end-line="137" selection-end-column="0" />
+          <folding>
+            <element signature="n#tearDown#0;n#HEDEntryTest#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/unit_tests/props/album_test.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-7.375">
+          <caret line="92" column="0" selection-start-line="92" selection-start-column="0" selection-end-line="92" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Database/HED/HEDObject.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-5.875">
+          <caret line="96" column="0" selection-start-line="96" selection-start-column="0" selection-end-line="96" selection-end-column="0" />
+          <folding>
+            <element signature="e#851#886#0#PHP" expanded="true" />
+            <element signature="e#1009#1207#0#PHP" expanded="true" />
+            <element signature="e#1330#1523#0#PHP" expanded="true" />
+            <element signature="e#1738#1885#0#PHP" expanded="true" />
+            <element signature="e#2055#2152#0#PHP" expanded="true" />
+            <element signature="e#3286#3782#0#PHP" expanded="true" />
+            <element signature="e#4064#4220#0#PHP" expanded="true" />
+            <element signature="e#4327#4406#0#PHP" expanded="true" />
+            <element signature="e#4685#4842#0#PHP" expanded="true" />
+            <element signature="e#4997#5180#0#PHP" expanded="true" />
+            <element signature="e#5496#6197#0#PHP" expanded="true" />
+            <element signature="e#6287#6461#0#PHP" expanded="true" />
+            <element signature="e#6523#6669#0#PHP" expanded="true" />
+            <element signature="e#6933#7095#0#PHP" expanded="true" />
+            <element signature="e#7312#7698#0#PHP" expanded="true" />
+            <element signature="e#7967#8062#0#PHP" expanded="true" />
+            <element signature="e#8301#8392#0#PHP" expanded="true" />
+            <element signature="e#8540#8629#0#PHP" expanded="true" />
+            <element signature="e#8832#9072#0#PHP" expanded="true" />
+            <element signature="e#9285#9536#0#PHP" expanded="true" />
+            <element signature="e#9749#9998#0#PHP" expanded="true" />
+            <element signature="e#10246#10806#0#PHP" expanded="true" />
+            <element signature="e#11082#11518#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/unit_tests/models/banner/banner_test.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-7.5">
+          <caret line="37" column="0" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
+          <folding>
+            <element signature="n#test_get_by_slug#0;n#TestBanners#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Database/Locator.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-5.25">
+          <caret line="593" column="0" selection-start-line="593" selection-start-column="0" selection-end-line="593" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Database/Models/Banner.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-11.5">
+          <caret line="151" column="0" selection-start-line="151" selection-start-column="0" selection-end-line="151" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/unit_tests/models/locations/location_test.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-5.5">
+          <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+          <folding>
+            <element signature="e#801#1290#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Database/Models/RowHelper.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-4.2916665">
+          <caret line="313" column="0" selection-start-line="313" selection-start-column="0" selection-end-line="313" selection-end-column="0" />
+          <folding>
+            <element signature="e#3504#3678#0#PHP" expanded="true" />
+            <element signature="e#3857#3940#0#PHP" expanded="true" />
+            <element signature="e#9160#9567#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Database/Models/EntryLocation.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-4.2916665">
+          <caret line="110" column="0" selection-start-line="110" selection-start-column="0" selection-end-line="110" selection-end-column="0" />
+          <folding>
+            <marker date="1538542212444" expanded="true" signature="5860:5955" placeholder="SELECT type,... my_items" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Database/Models/ItemBase.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-4.625">
+          <caret line="42" column="0" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Database/Models/NextPrev.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-4.2916665">
+          <caret line="185" column="0" selection-start-line="185" selection-start-column="0" selection-end-line="185" selection-end-column="0" />
+          <folding>
+            <element signature="e#5215#5685#0#PHP" expanded="true" />
+            <marker date="1538273582050" expanded="true" signature="3313:3362" placeholder="select * fro... my_items" />
+            <marker date="1538273582050" expanded="true" signature="4011:4060" placeholder="select * fro... my_items" />
+            <marker date="1538273582050" expanded="true" signature="5433:5538" placeholder="select a.* f... my_items" />
+            <marker date="1538273582050" expanded="true" signature="6152:6256" placeholder="select a.* f... my_items" />
+            <marker date="1538273582050" expanded="true" signature="6708:6737" placeholder="select * fro... my_items" />
+            <marker date="1538273582050" expanded="true" signature="7173:7202" placeholder="select * fro... my_items" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/unit_tests/nextprev/category_test.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-5.5416665">
+          <caret line="46" column="0" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
+          <folding>
+            <element signature="e#37#63#0#PHP" expanded="true" />
+            <element signature="e#195#304#0#PHP" expanded="true" />
+            <element signature="e#306#656#0#PHP" expanded="true" />
+            <element signature="e#658#991#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/include/header.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-4.375">
+          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/unit_tests/import/album_test.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-6.25">
+          <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/composer/ClassLoader.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-3.0588236">
+          <caret line="323" column="0" selection-start-line="323" selection-start-column="0" selection-end-line="323" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Database/Models/Album.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-5.25">
+          <caret line="164" column="0" selection-start-line="164" selection-start-column="0" selection-end-line="164" selection-end-column="0" />
+          <folding>
+            <element signature="e#2318#3407#0#PHP" expanded="true" />
+            <marker date="1538524332415" expanded="true" signature="6606:6680" placeholder="DELETE from " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Database/SqlObject.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="400" column="0" selection-start-line="400" selection-start-column="0" selection-end-line="400" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.62459546">
+          <caret line="219" column="0" selection-start-line="219" selection-start-column="0" selection-end-line="219" selection-end-column="0" />
           <folding>
-            <element signature="e#6421#7597#0#PHP" expanded="true" />
+            <element signature="e#8610#9131#0#PHP" expanded="true" />
+            <element signature="e#12648#14273#0#PHP" expanded="true" />
             <marker date="1538280032000" expanded="true" signature="5165:5179" placeholder="SELECT * FRO... ${$table}" />
             <marker date="1538280032000" expanded="true" signature="6632:6646" placeholder="SELECT * FRO... ${$table}" />
             <marker date="1538280032000" expanded="true" signature="9866:9883" placeholder="UPDATE ${$ta... " />

@@ -8,12 +8,50 @@ return [
 		//
 	// ],
 	// "fred" =>[
-		// "unit_tests/hed/hed_test.php",
-		// "unit_tests/hed/hed_album_test.php",
-		// "unit_tests/hed/hed_factory_test.php",
-		// "unit_tests/hed/hed_album_test.php",
+		"unit_tests/locator/locator_test.php",
 
-		// "unit_tests/db/connect_test.php",
+		"unit_tests/featured_image/fi_test_hed.php",
+		"unit_tests/featured_image/fi_test_path.php",
+
+		"unit_tests/db/connect_test.php",
+		"unit_tests/db/load.php",
+		"unit_tests/db/meta_test.php",
+		"unit_tests/db/query_test.php",
+		"unit_tests/db/select_test.php",
+
+		"unit_tests/props/album_test.php",
+		"unit_tests/props/article_test.php",
+		"unit_tests/props/banner_test.php",
+		"unit_tests/props/post_test.php",
+
+		"unit_tests/models/albums/album_test.php",
+
+		"unit_tests/models/article/find_test.php",
+		"unit_tests/models/article/title_test.php",
+		
+		"unit_tests/models/article_title/title_test.php",
+
+		"unit_tests/models/banner/banner_test.php",
+
+		"unit_tests/models/categorized_items/add_remove_test.php",
+		"unit_tests/models/categorized_items/find_test.php",
+		
+		"unit_tests/models/category/add_test.php",
+		"unit_tests/models/category/find_test.php",
+		
+		"unit_tests/models/entry/entry_test.php",
+
+		"unit_tests/models/entry_country/entry_country_test.php",
+
+		"unit_tests/models/item/find_item_test.php",
+		"unit_tests/models/item/get_by_slug_test.php",
+
+		"unit_tests/models/locations/location_test.php",
+
+		"unit_tests/models/post/post_test.php",
+
+		"unit_tests/models/postmonths/post_month_test.php",
+
 		// "unit_tests/db/meta_test.php",
 		// "unit_tests/db/query_test.php",
 		// "unit_tests/db/select_test.php",

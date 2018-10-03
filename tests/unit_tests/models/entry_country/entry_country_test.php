@@ -1,8 +1,15 @@
 <?php
+namespace Unittests\Model;
 
+use \Database as Database;
 use Database\Object as Db;
-use \Database\Models\EntryCountry;
+use Database\Models\EntryCountry;
 use Unittests\LocalTestcase;
+use \Trace as Trace;
+use \DbPreloader as DbPreloader;
+
+// phpcs:disable
+
 
 class EntryCountryTest extends LocalTestcase
 {
@@ -14,7 +21,7 @@ class EntryCountryTest extends LocalTestcase
 		$db = Db::get_instance();
 		//        var_dump($db);exit();
 	}
-	function test_1()
+	function testFind()
 	{
 		Trace::function_entry();
 		$result = EntryCountry::find();
@@ -24,7 +31,7 @@ class EntryCountryTest extends LocalTestcase
 		$this->assertEqual(get_class($result[0]), "Database\Models\EntryCountry");
 		Trace::function_exit();
 	}
-	function test_2()
+	function testFindForTrip()
 	{
 		Trace::function_entry();
 		$trip='rtw';
