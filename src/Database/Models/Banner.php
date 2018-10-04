@@ -14,7 +14,6 @@ use Database\Locator;
 class Banner extends CommonSql
 {
 	/** These are essential non derived properties */
-	/** @var string $version */
 	public $version;
 	/** @var string $type */
 	public $type;
