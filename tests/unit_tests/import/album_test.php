@@ -21,15 +21,18 @@ class AlbumTest extends LocalTestcase
 	}
 	function testGetDeleteInsert()
 	{
+		$slug = "spain";
 		Trace::function_entry();
-		$r = Album::get_by_slug('scotland');
+		$r = Album::get_by_slug($slug);
+		assert(!is_null($r));
 		$this->assertNotEqual($r, null);
+		$trip = $r->trip;
 		$r->sql_delete();
-		$r = Album::get_by_slug('scotland');
+		$r = Album::get_by_slug($slug);
 		$this->assertEqual($r, null);
-		$new_r = Album::get_by_trip_slug('rtw', 'scotland');
+		$new_r = Album::get_by_trip_slug($trip, $slug);
 		$new_r->sql_insert();    
-		$r = Album::get_by_slug('scotland');
+		$r = Album::get_by_slug($slug);
 		$this->assertNotEqual($r, null);
 		Trace::function_exit();
 	}

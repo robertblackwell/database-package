@@ -18,21 +18,22 @@ class AddRemoveTest extends LocalTestcase
 		\Trace::disable();
 		global $config;
 		Db::init($config);
+		DbPreloader::load();
 		$db = Db::get_instance();
 //        var_dump($db);exit();
 	}
-	function test_1()
-	{
-		Trace::function_entry();
+	// function test_1()
+	// {
+	// 	Trace::function_entry();
 	
-		$this->assertFalse(CategorizedItem::exists("my_category_test", "thefirstrtw"));
-		CategorizedItem::add('my_category_test', "thefirstrtw");
-		$this->assertTrue(CategorizedItem::exists("my_category_test", "thefirstrtw"));
-		CategorizedItem::delete('my_category_test', "thefirstrtw");
-		$this->assertFalse(CategorizedItem::exists("my_category_test", "thefirstrtw"));
-		//Category::remove("my_category_test");
-		Trace::function_exit();
-	}
+	// 	$this->assertFalse(CategorizedItem::exists("my_category_test", "thefirstrtw"));
+	// 	CategorizedItem::add('my_category_test', "thefirstrtw");
+	// 	$this->assertTrue(CategorizedItem::exists("my_category_test", "thefirstrtw"));
+	// 	CategorizedItem::delete('my_category_test', "thefirstrtw");
+	// 	$this->assertFalse(CategorizedItem::exists("my_category_test", "thefirstrtw"));
+	// 	//Category::remove("my_category_test");
+	// 	Trace::function_exit();
+	// }
 	function test_2()
 	{
 		Trace::function_entry();
