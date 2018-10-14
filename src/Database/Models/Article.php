@@ -38,9 +38,17 @@ class Article extends ItemBase
 	/** These are derived properties*/
 	/** @var string $main_content */
 	public $main_content;
-	/** @var string $content_path */
+	
+	/**
+	*  @var string $content_path The path to the articles main_content file
+	*/
 	public $content_path;
-	/** @var string $entity_path */
+	/**
+	* @var string $entity_path The path to the directory that contains the main_content file.
+	*							This is the path that must be added to the template engine
+	*							seacrh list so that the main_content file can be treated
+	*							as a template.
+	*/
 	public $entity_path;
 
 
@@ -102,6 +110,8 @@ class Article extends ItemBase
 		);
 
 		$this->main_content = $helper->get_property_main_content();
+		$this->content_path = $loc->article_main_content_filepath();
+		$this->entity_path = $loc->item_dir($this->trip, $this->slug);
 		parent::__construct();
 	}
 	/**
