@@ -110,7 +110,7 @@ class Article extends ItemBase
 		);
 
 		$this->main_content = $helper->get_property_main_content();
-		$this->content_path = $loc->article_main_content_filepath();
+		$this->content_path = $loc->article_main_content_filepath($this->trip, $this->slug);
 		$this->entity_path = $loc->item_dir($this->trip, $this->slug);
 		parent::__construct();
 	}
