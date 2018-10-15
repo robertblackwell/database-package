@@ -24,7 +24,7 @@ class TripMonth extends CommonSql
 	/**
 	* Constructor.
 	* @param ArrayAccess|array $row Sql result row as associative array or HEDObject.
-	* @return PostMonth.
+	* @return TripMonth.
 	*/
 	public function __construct(/*array*/ $row)
 	{
@@ -46,7 +46,7 @@ class TripMonth extends CommonSql
 	* all Item objects for a trip.
 	* @param string  $trip  Trip code.
 	* @param integer $count Limit on number returned.
-	* @return array | null PostMonth
+	* @return array | null TripMonth
 	*
 	*/
 	public static function find_for_trip(string $trip, int $count = null)
@@ -62,9 +62,9 @@ class TripMonth extends CommonSql
 	/**
 	* Find all distinct months (yyyy-mm) that appear in the published_date property of ALL Item objects
 	* in the sql database.
-	* Return array of PostMonth objects
+	* Return array of TripMonth objects
 	* @param integer $count Limits the number returned.
-	* @return array|null Of PostMonth objects
+	* @return array|null Of TripMonth objects
 	*/
 	public static function find(int $count = null)
 	{

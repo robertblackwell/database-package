@@ -45,7 +45,7 @@ class ActiveMonth extends CommonSql
 	* all Item objects for a trip.
 	* @param string  $trip  Trip code.
 	* @param integer $count Limit on number returned.
-	* @return array | null PostMonth
+	* @return array | null ActiveMonth
 	*
 	*/
 	public static function find_for_trip(string $trip, int $count = null)
@@ -61,9 +61,9 @@ class ActiveMonth extends CommonSql
 	/**
 	* Find all distinct months (yyyy-mm) that appear in the published_date property of ALL Item objects
 	* in the sql database.
-	* Return array of PostMonth objects
+	* Return array of ActiveMonth objects
 	* @param integer $count Limits the number returned.
-	* @return array|null Of PostMonth objects
+	* @return array|null Of ActiveMonth objects
 	*/
 	public static function find(int $count = null)
 	{
