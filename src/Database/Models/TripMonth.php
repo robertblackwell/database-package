@@ -4,13 +4,10 @@ namespace Database\Models;
 use Database\Models\Base\CommonSql;
 
 /**
-** @ingroup Models
-* This class represents a view of the item table that lists content items by month
-* of publication
+* This class a realtionship between the yyyy+mm of a published_date and a trips.
 */
-class PostMonth extends CommonSql
+class TripMonth extends CommonSql
 {
-	
 	/** @var string $trip */
 	public $trip;
 	/** @var string $year */

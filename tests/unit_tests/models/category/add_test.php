@@ -6,6 +6,7 @@ use Database\Object as Db;
 use Unittests\LocalTestcase;
 use \Trace as Trace;
 use \DbPreloader as DbPreloader;
+use Database\Models\TripCategory;
 
 // phpcs:disable
 
@@ -23,7 +24,7 @@ class CategoryTest extends LocalTestcase
 	function categoryFind($category)
 	{
 		Trace::function_entry();
-		$result = Category::find();
+		$result = TripCategory::find();
 		//var_dump($result);
 		$found=false;
 		foreach ($result as $c) {
@@ -40,9 +41,9 @@ class CategoryTest extends LocalTestcase
 		Trace::function_entry();
 	
 		$this->assertFalse($this->category_exists("my_category"));
-		Category::add('my_category');
+		TripCategory::add('my_category');
 		$this->assertTrue($this->category_exists("my_category"));
-		Category::remove('my_category');
+		TripCategory::remove('my_category');
 		$this->assertFalse($this->category_exists("my_category"));
 		// print __METHOD__."\n";
 		Trace::function_exit();

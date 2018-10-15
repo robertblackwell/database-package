@@ -4,7 +4,7 @@ namespace Unittests\CategorizedItem;
 use \Database as Database;
 use Database\Object as Db;
 use Database\Models\CategorizedItem;
-use Database\Models\Category;
+use Database\Models\TripCategory;
 use Unittests\LocalTestcase;
 use \DbPreloader as DbPreloader;
 use \Trace as Trace;
@@ -42,7 +42,7 @@ class AddRemoveTest extends LocalTestcase
 		$this->assertFalse(CategorizedItem::exists("my_category_test", "120705"));
 		CategorizedItem::add('my_category_test', "130417");
 		CategorizedItem::add('my_category_test', "120705");
-		$this->assertTrue(category::exists('my_category_test'));
+		$this->assertTrue(TripCategory::exists('my_category_test'));
 		$this->assertTrue(CategorizedItem::exists("my_category_test", "130417"));
 		$this->assertTrue(CategorizedItem::exists("my_category_test", "120705"));
 		
@@ -50,13 +50,13 @@ class AddRemoveTest extends LocalTestcase
 		
 		$this->assertFalse(CategorizedItem::exists("my_category_test", "130417"));//one relatonship removed
 		$this->assertTrue(CategorizedItem::exists("my_category_test", "120705"));//other one still there
-		$this->assertTrue(category::exists('my_category_test'));
+		$this->assertTrue(TripCategory::exists('my_category_test'));
 
 		CategorizedItem::delete_slug("120705");
 	
 		$this->assertFalse(CategorizedItem::exists("my_category_test", "130417"));//both relationships now removed
 		$this->assertFalse(CategorizedItem::exists("my_category_test", "120705"));
-		$this->assertFalse(category::exists('my_category_test'));
+		$this->assertFalse(TripCategory::exists('my_category_test'));
 		/*
 		** The next test is not implemented because I know that unused categories are not cleaned out of the
 		** category table

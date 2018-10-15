@@ -4,13 +4,10 @@ namespace Database\Models;
 use Database\Models\Base\CommonSql;
 
 /**
-** @ingroup Models
-* This class provides access to journal entry by country and hence represents a view.
+* This class represents a country for which there is a trip entry.
 */
 class VisitedCountry extends CommonSql
 {
-	/** @var string $trip */
-	public $trip;
 	/** @var string $country */
 	public $country;
 

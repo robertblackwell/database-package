@@ -3,7 +3,7 @@ namespace Unittests\Model;
 
 use \Database as Database;
 use Database\Object as Db;
-use Database\Models\Category;
+use Database\Models\TripCategory;
 use Unittests\LocalTestcase;
 use \Trace as Trace;
 use \DbPreloader as DbPreloader;
@@ -24,7 +24,7 @@ class CategoryRepeatTest extends LocalTestcase
 	function testFind()
 	{
 		Trace::function_entry();
-		$result = Category::find();
+		$result = TripCategory::find();
 		$cats = array();
 		foreach ($result as $c) {
 			$cats[] = $c->category;
@@ -33,14 +33,14 @@ class CategoryRepeatTest extends LocalTestcase
 		$this->assertFalse($result === null);
 		$this->assertTrue(is_array($result));
 		$this->assertFalse(count($result) === 0);
-		$this->assertEqual(get_class($result[0]), "Database\Models\Category");
+		$this->assertEqual(get_class($result[0]), "Database\Models\TripCategory");
 		Trace::function_exit();
 	}
 	function testFindForTrip()
 	{
 		Trace::function_entry();
 		$trip='rtw';
-		$result = Category::find_for_trip($trip);
+		$result = TripCategory::find_for_trip($trip);
 		$cats = array();
 		foreach ($result as $c) {
 			$cats[] = $c->category;
@@ -50,13 +50,13 @@ class CategoryRepeatTest extends LocalTestcase
 		$this->assertFalse($result === null);
 		$this->assertTrue(is_array($result));
 		$this->assertFalse(count($result) === 0);
-		$this->assertEqual(get_class($result[0]), "Database\Models\Category");
+		$this->assertEqual(get_class($result[0]), "Database\Models\TripCategory");
 		Trace::function_exit();
 	}
 	function testExists()
 	{
 		Trace::function_entry();
-		$result = Category::exists('vehicle');
+		$result = TripCategory::exists('vehicle');
 		// var_dump($result);
 		$this->assertTrue($result);
 		Trace::function_exit();

@@ -4,15 +4,12 @@ namespace Database\Models;
 use Database\Models\Base\CommonSql;
 
 /**
-** @ingroup Models
-* This class represents a view of the item table that lists content items by month
-* of publication
+* This class represents a month (year+month) when some item (Entry, Post, Article)
+* is present in the database with that year+month as the published_date.
 */
 class ActiveMonth extends CommonSql
 {
 	
-	/** @var string $trip */
-	public $trip;
 	/** @var string $year */
 	public $year;
 	/** @var string $month */
@@ -26,7 +23,7 @@ class ActiveMonth extends CommonSql
 	/**
 	* Constructor.
 	* @param ArrayAccess|array $row Sql result row as associative array or HEDObject.
-	* @return PostMonth.
+	* @return ActiveMonth.
 	*/
 	public function __construct(/*array*/ $row)
 	{

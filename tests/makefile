@@ -18,7 +18,7 @@ db:
 
 models: album article article_title banner \
  category categorized_item editorial \
- entry entry_country item locations post postmonth	
+ entry entry_country item locations post tripmonth	
 
 article:
 	$(LITETEST) --bootstrap-file="include/bootstrap.php" \
@@ -63,8 +63,8 @@ locations:
 post:
 	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/models/post/post_test.php
 
-postmonth:
-	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/models/postmonths/post_month_test.php
+tripmonth:
+	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/models/tripmonths/trip_month_test.php
 
 fi:
 	$(LITETEST) --bootstrap-file="include/bootstrap.php" \

@@ -4,15 +4,14 @@ namespace Database\Models;
 use Database\Models\Base\CommonSql;
 
 /**
-** @ingroup Models
 * This class is a standard Model but it is a little different in that
 * it does not have a table hiding behind it but rather a view that uses a selection of all the distinct
 * categorized_items(category) values.
-*
+* The class represents a relationship between categories and trips.
 * @property string category
 * @property string $trip
 */
-class Category extends CommonSql
+class TripCategory extends CommonSql
 {
 	/** @var string $trip */
 	public $trip;

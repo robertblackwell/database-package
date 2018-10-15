@@ -4,21 +4,16 @@ namespace Database\Models;
 use Database\Models\Base\CommonSql;
 
 /**
-** @ingroup Models
-* This class is a standard Model but it is a little different in that
-* it does not have a table hiding behind it but rather a view that uses a selection of all the distinct
-* categorized_items(category) values.
-*
+* This class represents a category.
 * @property string category
 * @property string $trip
 */
 class CategoryView extends CommonSql
 {
-	/** @var string $trip */
-	public $trip;
 	/** @var string category */
 	public $category;
 
+	/** The naming of the categories table is unfortunate, it should be trip_categories.*/
 	public static $table_name = "categories";
 	public static $field_names = [
 		"category"=>"text",
