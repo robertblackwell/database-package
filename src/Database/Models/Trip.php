@@ -9,6 +9,7 @@ class Trip
 	const BMW11 = "bmw11";
 	const AUST19 = "aust";
 	const ASIA20 = "asia20";
+	const SITE = "site";
 
 	private static $trips = [
 		"theamericas",
@@ -16,7 +17,8 @@ class Trip
 		"er",
 		"bmw11",
 		"aust",
-		"asia20"
+		"asia20",
+		"site"
 	];
 	/**
 	* Tests a string is a valid trip code.
@@ -30,5 +32,10 @@ class Trip
 		} else {
 			throw new \Exception("{$trip_candidate} is an invalid trip");
 		}
+	}
+	/** @return array */
+	public static function trips_array()
+	{
+		return self::$trips;
 	}
 }
