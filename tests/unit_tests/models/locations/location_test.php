@@ -2,7 +2,7 @@
 namespace Unittests\Locations;
 
 use \Database as Database;
-use Database\Object as Db;
+use Database\DbObject as Db;
 use \Database\Models\EntryLocation;
 use Unittests\LocalTestcase;
 use Trace;

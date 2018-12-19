@@ -1,7 +1,7 @@
 <?php
 namespace Unittests\Db;
 
-use Database\Object as Db;
+use Database\DbObject as Db;
 use Database\SqlObject;
 use \Unittests\LocalTestcase;
 
@@ -23,7 +23,7 @@ class ConnectTest extends LocalTestcase
 	    \Trace::function_entry();
 		$db = $this->db;
 		$this->assertFalse($db == null);
-		$this->assertEqual(get_class($db), "Database\Object");
+		$this->assertEqual(get_class($db), "Database\DbObject");
 
 		$this->assertFalse(Db::$sql == null);
 		$this->assertEqual(get_class(Db::$sql), "Database\SqlObject");

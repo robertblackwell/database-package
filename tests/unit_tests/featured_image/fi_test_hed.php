@@ -1,7 +1,7 @@
 <?php
 namespace Unittests\FeaturedImage;
 
-use Database\Object as Db;
+use Database\DbObject as Db;
 use Database\Models\Item;
 use Database\Models\Album;
 use Database\Models\Entry;

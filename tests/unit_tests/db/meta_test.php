@@ -1,7 +1,7 @@
 <?php
 namespace Unittests\Db;
 
-use Database\Object as Db;
+use Database\DbObject as Db;
 use Database\SqlObject;
 use Unittests\LocalTestcase;
 

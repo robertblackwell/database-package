@@ -897,15 +897,15 @@
         "source": {
             "type": "git",
             "url": "/Users/rob/git-repos/gallery",
-            "reference": "401e67a4e57eff9a9a727841ca0689555f683cf2"
+            "reference": "3f17f856c0d1465c08090693792a9ad07e04af39"
         },
         "require": {
-            "robertblackwell/trace": "@dev"
+            "robertblackwell/trace": "dev-master"
         },
         "require-dev": {
             "simpletest/simpletest": "dev-master"
         },
-        "time": "2013-11-26T18:38:36+00:00",
+        "time": "2018-12-19T02:48:55+00:00",
         "type": "library",
         "installation-source": "source",
         "autoload": {
@@ -1016,12 +1016,12 @@
         "source": {
             "type": "git",
             "url": "/Users/rob/git-repos/trace",
-            "reference": "96b3727175ee55411e76ad0e1956ab80692880b8"
+            "reference": "787bfd77b3b8d4ef61bef8e3448e3903a149fbd6"
         },
         "require-dev": {
-            "simpletest/simpletest": "dev-master"
+            "phpunit/phpunit": "4.1.*"
         },
-        "time": "2014-06-03T17:28:11+00:00",
+        "time": "2018-08-10T22:31:38+00:00",
         "type": "library",
         "installation-source": "source",
         "autoload": {

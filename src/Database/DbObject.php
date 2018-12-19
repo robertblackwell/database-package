@@ -15,7 +15,7 @@ use \Registry as Registry;
 /**
 * @brief The class Database provides a means of initializing and configuring the blog database machinery
 */
-class Object
+class DbObject
 {
 	/**
 	* Holds a reference to an Sql object - convenience so that dont have to keep getting it
@@ -56,7 +56,7 @@ class Object
 		/**
 		* Now allocate the singleton of this class and hook in the Locator and SqlObject
 		*/
-		$inst = new Object();
+		$inst = new self();
 		$inst->configuration = $configuration;
 		self::$sql = SQLObject::get_instance();
 		self::$locator = Locator::get_instance();
@@ -73,9 +73,9 @@ class Object
 		Models\Base\CommonSql::init(self::$sql, self::$locator);
 	}
 	/**
-	* Gets the singleton instance of a Database\Object class
+	* Gets the singleton instance of a Database\DbObject class
 	*
-	* @return \Database\Object
+	* @return \Database\DbObject
 	*
 	*/
 	public static function get_instance()

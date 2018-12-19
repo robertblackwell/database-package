@@ -1,7 +1,7 @@
 <?php
 namespace Unittests\Utility;
 
-use Database\Object as Db;
+use Database\DbObject as Db;
 use Database\Models\Item as Item;
 use Database\Models\Album as Album;
 use Database\Utility as Utility;

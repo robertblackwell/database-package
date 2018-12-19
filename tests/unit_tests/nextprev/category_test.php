@@ -1,7 +1,7 @@
 <?php
 namespace Unittests\NextPrev;
 
-use Database\Object as Db;
+use Database\DbObject as Db;
 use \Database\Models\Item;
 use Unittests\LocalTestcase;
 use Trace;

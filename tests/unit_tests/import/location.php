@@ -1,7 +1,7 @@
 <?php
 const LOC_SLUG = "location_2";
 
-use Database\Object as Db;
+use Database\DbObject as Db;
 use Database\Models\Item as Item;
 use Unittests\LocalTestcase;
 

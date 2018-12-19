@@ -99,7 +99,7 @@ class Factory
 				** Both a gallery name and an image index is given
 				*/
 				$galname = $split[0];
-				$gal = \Gallery\Object::create(dirname($hed_obj->file_path)."/".$galname);
+				$gal = \Gallery\GalObject::create(dirname($hed_obj->file_path)."/".$galname);
 				$index = intval($split[1]);
 				\Trace::debug("Explicit gal    gal_name :$galname index: $index");
 			} elseif (count($split) == 1) {
@@ -109,14 +109,14 @@ class Factory
 				$a = pathinfo(dirname($hed_obj->file_path));
 				$gname = $a['basename'];
 				$path = dirname(dirname($hed_obj->file_path));
-				$gal = \Gallery\Object::create($path."/".$gname);
+				$gal = \Gallery\GalObject::create($path."/".$gname);
 				$index = intval($split[0]);
 				\Trace::debug("Implicit gal      gal_name :default index: $index");
 			} else {
 				//
 				// Not sure what this one is
 				//
-				$gal = \Gallery\Object::create($path."/".$gname);
+				$gal = \Gallery\GalObject::create($path."/".$gname);
 				$index=$split[0];
 				\Trace::debug("Else    gal_name :default index: $index");
 				throw new \Exception("Not sure why we got here");

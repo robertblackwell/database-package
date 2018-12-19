@@ -52,7 +52,7 @@ class Album extends Base\CommonSql implements iSqlIzable
 	/** @var string $entity_path */
 	// public $entity_path;
 
-	/** @var \Gallery\Object $gallery */
+	/** @var \Gallery\GalObject $gallery */
 	public $gallery;
 
 	//  todo -1 (this is some stuff to see if it works) +0: this is some more stuff
@@ -122,12 +122,12 @@ class Album extends Base\CommonSql implements iSqlIzable
 	}
 	/**
 	* Give a value to the property $gallery
-	* @return \Gallery\Object
+	* @return \Gallery\GalObject
 	*/
 	private function valueForGalleryProperty()
 	{
 		$fn = self::$locator->album_filepath($this->trip, $this->slug);
-		$gallery = \Gallery\Object::create(dirname($fn));
+		$gallery = \Gallery\GalObject::create(dirname($fn));
 		return $gallery;
 	}
 
@@ -150,7 +150,7 @@ class Album extends Base\CommonSql implements iSqlIzable
 
 		/// @todo this should be done in mode_from_hed
 
-		$item->gallery = \Gallery\Object::create(dirname($fn));
+		$item->gallery = \Gallery\GalObject::create(dirname($fn));
 		return $item;
 	}
 	/**
@@ -174,7 +174,7 @@ class Album extends Base\CommonSql implements iSqlIzable
 		// $fn = self::$locator->album_filepath($trip, $slug);
 		// $obj->get_from_file($fn);
 		// $item = Factory::model_from_hed($obj);
-		// $item->gallery = \Gallery\Object::create(dirname($fn));
+		// $item->gallery = \Gallery\GalObject::create(dirname($fn));
 		return $item;
 	}
 	/**
@@ -192,7 +192,7 @@ class Album extends Base\CommonSql implements iSqlIzable
 			$trip = $a->trip;
 			/// @todo this is a missing step
 			/// something like - make_derived_data - why cannot the Model constructor do this
-			$a->gallery = \Gallery\Object::create(Locator::get_instance()->album_dir($trip, $a->slug));
+			$a->gallery = \Gallery\GalObject::create(Locator::get_instance()->album_dir($trip, $a->slug));
 		}
 		//var_dump($r);exit();
 		return $r;
@@ -211,7 +211,7 @@ class Album extends Base\CommonSql implements iSqlIzable
 		$r = self::$sql->select_objects(self::$table_name, __CLASS__, $c);
 		foreach ($r as $a) {
 			$trip = $a->trip;
-			$a->gallery = \Gallery\Object::create(Locator::get_instance()->album_dir($trip, $a->slug));
+			$a->gallery = \Gallery\GalObject::create(Locator::get_instance()->album_dir($trip, $a->slug));
 		}
 		//var_dump($r);exit();
 		return $r;

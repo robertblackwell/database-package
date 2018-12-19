@@ -1,5 +1,5 @@
 <?php
-use Database\Object as Db;
+use Database\DbObject as Db;
 use Database\Locator as Locator;
 use Database\Models\Factory as Factory;
 use Unittests\LocalTestcase;

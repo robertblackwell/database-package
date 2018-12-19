@@ -2,7 +2,7 @@
 namespace Unittests\Model;
 
 use \Database as Database;
-use Database\Object as Db;
+use Database\DbObject as Db;
 use Database\Models\Item;
 use Unittests\LocalTestcase;
 use \Trace as Trace;

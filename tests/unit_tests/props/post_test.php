@@ -1,7 +1,7 @@
 <?php
 namespace Unittests\Props;
 
-use Database\Object as Db;
+use Database\DbObject as Db;
 use Database\Locator;
 use Database\Models\Item;
 use Database\Models\Post;

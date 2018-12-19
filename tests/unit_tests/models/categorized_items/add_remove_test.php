@@ -2,7 +2,7 @@
 namespace Unittests\CategorizedItem;
 
 use \Database as Database;
-use Database\Object as Db;
+use Database\DbObject as Db;
 use Database\Models\CategorizedItem;
 use Database\Models\TripCategory;
 use Unittests\LocalTestcase;

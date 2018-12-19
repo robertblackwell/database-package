@@ -2,7 +2,7 @@
 namespace Unittests\Model;
 
 use \Database as Database;
-use Database\Object as Db;
+use Database\DbObject as Db;
 use Unittests\LocalTestcase;
 use Database\Locator;
 use Database\Models\Album;
@@ -79,7 +79,7 @@ class AlbumTest extends LocalTestcase
 		// print "<p>entity_path {$result->entity_path}</p>";
 
 		$this->assertNotEqual($result->gallery, null);
-		$this->assertEqual(get_class($result->gallery), "Gallery\Object");
+		$this->assertEqual(get_class($result->gallery), "Gallery\GalObject");
 	}
 	function testGetByTripSlug()
 	{
@@ -139,7 +139,7 @@ class AlbumTest extends LocalTestcase
 		// // print "<p>entity_path {$result->entity_path}</p>";
 
 		// $this->assertNotEqual($result->gallery, null);
-		// $this->assertEqual(get_class($result->gallery), "Gallery\Object");
+		// $this->assertEqual(get_class($result->gallery), "Gallery\GalObject");
 		// print_r($result->getStdClass());
 
 		// print_r(array_keys($result->getFields()));
@@ -158,7 +158,7 @@ class AlbumTest extends LocalTestcase
 			$this->assertEqual(get_class($a), "Database\Models\Album");
 
 			$this->assertNotEqual($a->gallery, null);
-			$this->assertEqual(get_class($a->gallery), "Gallery\Object");
+			$this->assertEqual(get_class($a->gallery), "Gallery\GalObject");
 			// var_dump($a);
 			// var_dump($a->gallery->mascotPath());
 		}
@@ -174,7 +174,7 @@ class AlbumTest extends LocalTestcase
 			$this->assertEqual(get_class($a), "Database\Models\Album");
 
 			$this->assertNotEqual($a->gallery, null);
-			$this->assertEqual(get_class($a->gallery), "Gallery\Object");
+			$this->assertEqual(get_class($a->gallery), "Gallery\GalObject");
 			// var_dump($a->gallery->mascotPath());
 			$this->assertEqual($a->trip, 'rtw');
 		}
@@ -191,7 +191,7 @@ class AlbumTest extends LocalTestcase
 			$this->assertEqual(get_class($a), "Database\Models\Album");
 
 			$this->assertNotEqual($a->gallery, null);
-			$this->assertEqual(get_class($a->gallery), "Gallery\Object");
+			$this->assertEqual(get_class($a->gallery), "Gallery\GalObject");
 			// var_dump($a->gallery->mascotPath());
 			$this->assertEqual($a->trip, $this->test_trip);
 		}

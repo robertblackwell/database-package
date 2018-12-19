@@ -1,7 +1,7 @@
 <?php
 namespace Unittests\Db;
 
-use Database\Object as Db;
+use Database\DbObject as Db;
 use Database\Locator as Locator;
 use Database\Models\Factory as Factory;
 use UnitTests\Localtestcase;

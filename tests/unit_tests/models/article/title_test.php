@@ -2,7 +2,7 @@
 namespace Unittests\Model;
 
 use \Database as Database;
-use Database\Object as Db;
+use Database\DbObject as Db;
 use Unittests\LocalTestcase;
 use \Trace as Trace;
 use \DbPreloader as DbPreloader;

@@ -3,7 +3,7 @@ namespace Unittests\Db;
 
 // require_once(dirname(dirname(dirname(__FILE__)))."/include/header.php");
 
-use Database\Object as Db;
+use Database\DbObject as Db;
 use database\SqlObject;
 use Unittests\LocalTestcase;
 use Trace;

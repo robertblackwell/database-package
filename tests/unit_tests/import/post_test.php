@@ -1,7 +1,7 @@
 <?php
 namespace Unittests\Import;
 
-use Database\Object as Db;
+use Database\DbObject as Db;
 use Database\Models\Item as Item;
 use Unittests\LocalTestcase;
 use \Trace;

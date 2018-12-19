@@ -1,5 +1,5 @@
 <?php
-use Database\Object as Db;
+use Database\DbObject as Db;
 
 class UnitTestRegistry
 {
