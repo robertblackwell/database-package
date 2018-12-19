@@ -70,8 +70,9 @@ class SqlObject
 		$pwd = self::$config["db_passwd"];
 		//var_dump(self::$config);
 		//print "<h2>".__METHOD__."() db_name[$db_name] host[$host] user[$user] pwd[$pwd]</h2>";
-		$conn = mysqli_connect($host, $user, $pwd, $db_name)
-			or die("could not connect to data base db:$db user:$user in ".__FILE__." at line ".__LINE__);
+		$conn = mysqli_connect($host, $user, $pwd, $db_name);
+		if (! isset($conn))
+			throw new \Exception("could not connect to data base db:$db_name user:$user in ".__FILE__." at line ".__LINE__);
 //		mysqli_select_db($db_name, $conn)
 //			or die("could not select data base db:$db_name user:$user in ".__FILE__." at line ".__LINE__);
 		$this->db_connection = $conn;
