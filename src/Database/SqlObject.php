@@ -76,7 +76,8 @@ class SqlObject
 				throw new \Exception(
 					"could not connect to data base db:$db_name user:$user in ".__FILE__." at line ".__LINE__);
 			}
-		} catch ($e) {
+		} catch (\Exception $e) {
+			throw $e;
 			throw new \Exception(
 				"could not connect to data base db:$db_name user:$user in ".__FILE__." at line ".__LINE__	);
 		}
