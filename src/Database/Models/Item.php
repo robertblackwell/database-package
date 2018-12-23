@@ -7,6 +7,26 @@ use \Exception as Exception;
 use Database\Models\Base\CommonSql;
 use Database\Locator;
 
+function mk_start_of_month(string $year_month)
+{
+	return $year_month . "-01";
+}
+function mk_start_of_next_month(string $year_month)
+{
+	$a = explode($year_month);
+	$y = intval($a[0]);
+	$m = intval($a[1]);
+	if ($m == 11) {
+		$next_month = 0;
+		$y++;
+	} else {
+		$next_month++;
+	}
+	$res = sprintf("%4d-%2d-%2s", $y, $next_month, 1);
+	return $res;
+
+}
+
 /**
 ** @ingroup Models
 * This class represents all types of content items (posts, entry, article) when there
@@ -283,13 +303,18 @@ class Item extends ItemBase
 	{
 		//$klass = get_called_class();
 		//$ty_str = ($klass == __CLASS__)? " ":  type="\"". strtolower(substr($klass,2)) ."\"";
+		/**
+		* 
+		*/
 		$start = $year_month."-01";
 		$end =  $year_month."-31";
+		$start = mk_start_of_next_month($year_month);
+		$start_of_next_month = mk_start_of_next_month($year_month);
 		//var_dump($start);var_dump($end);
 		$count_str = ($count)? "limit 0, $count": "" ;
 		$c = " WHERE (type='entry' or type = 'post') and ".
 			" (published_date >= \"$start\" ) and ".
-			" (published_date <=\"$end\") ".
+			" (published_date <\"$start_of_next_month\") ".
 			" order by published_date asc, slug asc $count_str ";
 		//var_dump($c);
 		$res = self::$sql->select_objects(self::$table_name, __CLASS__, $c);
@@ -308,12 +333,14 @@ class Item extends ItemBase
 		//$ty_str = ($klass == __CLASS__)? " ":  type="\"". strtolower(substr($klass,2)) ."\"";
 		$start = $year_month."-01";
 		$end =  $year_month."-31";
+		$start = mk_start_of_next_month($year_month);
+		$start_of_next_month = mk_start_of_next_month($year_month);
 		//var_dump($start);var_dump($end);
 		$count_str = ($count)? "limit 0, $count": "" ;
 		$c = " WHERE trip = '".$trip."' and ".
 			" (type='entry' or type = 'post') and ".
 			" (published_date >= \"$start\" ) and ".
-			" (published_date <=\"$end\") ".
+			" (published_date <\"$start_of_next_month\") ".
 			" order by published_date asc, slug asc $count_str ";
 		//var_dump($c);
 		$res = self::$sql->select_objects(self::$table_name, __CLASS__, $c);
