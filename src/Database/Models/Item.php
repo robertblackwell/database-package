@@ -23,7 +23,7 @@ function mk_start_of_next_month(string $year_month)
 	} else {
 		$next_month = $m + 1;
 	}
-	$res = sprintf("%4d-%2d-%2s", $y, $next_month, 1);
+	$res = sprintf("%4d-%02d-%02s", $y, $next_month, 1);
 	return $res;
 
 }
