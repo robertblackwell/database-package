@@ -284,7 +284,7 @@ class Item extends ItemBase
 		//$klass = get_called_class();
 		//$ty_str = ($klass == __CLASS__)? " ":  type="\"". strtolower(substr($klass,2)) ."\"";
 		$start = $year_month."-01";
-		$end =  $year_month."-99";
+		$end =  $year_month."-31";
 		//var_dump($start);var_dump($end);
 		$count_str = ($count)? "limit 0, $count": "" ;
 		$c = " WHERE (type='entry' or type = 'post') and ".
