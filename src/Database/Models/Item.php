@@ -300,22 +300,13 @@ class Item extends ItemBase
 	*/
 	public static function find_for_month(string $year_month, int $count = null)
 	{
-		//$klass = get_called_class();
-		//$ty_str = ($klass == __CLASS__)? " ":  type="\"". strtolower(substr($klass,2)) ."\"";
-		/**
-		* 
-		*/
-		$start = $year_month."-01";
-		$end =  $year_month."-31";
-		$start = mk_start_of_next_month($year_month);
+		$start = mk_start_of_month($year_month);
 		$start_of_next_month = mk_start_of_next_month($year_month);
-		//var_dump($start);var_dump($end);
 		$count_str = ($count)? "limit 0, $count": "" ;
 		$c = " WHERE (type='entry' or type = 'post') and ".
 			" (published_date >= \"$start\" ) and ".
 			" (published_date <\"$start_of_next_month\") ".
 			" order by published_date asc, slug asc $count_str ";
-		//var_dump($c);
 		$res = self::$sql->select_objects(self::$table_name, __CLASS__, $c);
 		return $res;
 	}
@@ -328,11 +319,7 @@ class Item extends ItemBase
 	*/
 	public static function find_for_trip_month(string $trip, string $year_month, int $count = null)
 	{
-		//$klass = get_called_class();
-		//$ty_str = ($klass == __CLASS__)? " ":  type="\"". strtolower(substr($klass,2)) ."\"";
-		$start = $year_month."-01";
-		$end =  $year_month."-31";
-		$start = mk_start_of_next_month($year_month);
+		$start = mk_start_of_month($year_month);
 		$start_of_next_month = mk_start_of_next_month($year_month);
 		//var_dump($start);var_dump($end);
 		$count_str = ($count)? "limit 0, $count": "" ;
