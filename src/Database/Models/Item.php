@@ -13,7 +13,6 @@ function mk_start_of_month(string $year_month)
 }
 function mk_start_of_next_month(string $year_month)
 {
-	$a = explode($year_month);
 	$y = intval($a[0]);
 	$m = intval($a[1]);
 	if ($m == 11) {
