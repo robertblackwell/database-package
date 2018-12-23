@@ -13,6 +13,7 @@ function mk_start_of_month(string $year_month)
 }
 function mk_start_of_next_month(string $year_month)
 {
+	$next_month = "";
 	$a = explode("-", $year_month);
 	$y = intval($a[0]);
 	$m = intval($a[1]);
@@ -20,7 +21,7 @@ function mk_start_of_next_month(string $year_month)
 		$next_month = 0;
 		$y++;
 	} else {
-		$next_month++;
+		$next_month = $m + 1;
 	}
 	$res = sprintf("%4d-%2d-%2s", $y, $next_month, 1);
 	return $res;
