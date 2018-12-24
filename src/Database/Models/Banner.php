@@ -113,7 +113,7 @@ class Banner extends CommonSql
 	 */
 	public static function find_latest()
 	{
-		$c = " 'order by last_modified_date desc, slug limit 0,1 ";
+		$c = " order by last_modified_date desc, slug limit 0,1 ";
 		// $c = "  where trip='".$trip."' ";
 		$res = self::$sql->select_objects(self::$table_name, __CLASS__, $c, false);
 		//var_dump($res);
