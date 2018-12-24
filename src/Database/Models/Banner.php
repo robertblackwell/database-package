@@ -111,7 +111,7 @@ class Banner extends CommonSql
 	 * Then read that banner as a HEDObject and create the corresponding list of images
 	 * @return \Database\Models\Banner
 	 */
-	public static function find_latest_for_trip()
+	public static function find_latest()
 	{
 		$c = " 'order by last_modified_date desc, slug limit 0,1 ";
 		// $c = "  where trip='".$trip."' ";
