@@ -92,7 +92,7 @@ class Banner extends CommonSql
 		$this->makeImageList();
 	}
 	/**
-	 * Finds the $trip and $slug for the latest Banner in reverse chronological order.
+	 * Finds the latest banner for $trip.
 	 * Then read that banner as a HEDObject and create the corresponding list of images
 	 * @param string $trip The trip for which this is being invoked.
 	 * @return \Database\Models\Banner
@@ -100,6 +100,20 @@ class Banner extends CommonSql
 	public static function find_latest_for_trip(string $trip)
 	{
 		$c = "  where trip='".$trip."' order by last_modified_date desc, slug limit 0,1 ";
+		// $c = "  where trip='".$trip."' ";
+		$res = self::$sql->select_objects(self::$table_name, __CLASS__, $c, false);
+		//var_dump($res);
+		$o = self::get_by_trip_slug($res->trip, $res->slug);
+		return $o;
+	}
+	/**
+	 * Finds the latest banner regardless of $trip.
+	 * Then read that banner as a HEDObject and create the corresponding list of images
+	 * @return \Database\Models\Banner
+	 */
+	public static function find_latest_for_trip()
+	{
+		$c = " 'order by last_modified_date desc, slug limit 0,1 ";
 		// $c = "  where trip='".$trip."' ";
 		$res = self::$sql->select_objects(self::$table_name, __CLASS__, $c, false);
 		//var_dump($res);
