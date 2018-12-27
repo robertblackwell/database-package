@@ -1,9 +1,5 @@
-tests export-ignore  
-docs export-ignore
-scripts export-ignore
-experiments export-ignore
-release export-ignore
-.DS_Store export-ignore
-log export-ignore
-composer.lock export-ignore
-.gitignore export-ignore
+tests 		export-ignore  
+docs 		export-ignore
+scripts 	export-ignore
+experiments	export-ignore
+release 	export-ignore
