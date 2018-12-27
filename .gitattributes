@@ -1,5 +1,5 @@
-tests 		export-ignore  
-docs 		export-ignore
-scripts 	export-ignore
-experiments	export-ignore
-release 	export-ignore
+/tests 			export-ignore  
+/docs 			export-ignore
+/scripts 		export-ignore
+/experiments	export-ignore
+/release 		export-ignore
