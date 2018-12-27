@@ -11,6 +11,12 @@
             "homepage": "https://github.com/robertblackwell"
         }
     ],
+    "config":{
+        "vendor-dir":"vendor",
+        "preferred-install": {
+            "*": "dist"
+        }
+    },
     
     "repositories": [
         {"type": "vcs","url": "/Users/rob/git-repos/gps"},
