@@ -13,9 +13,7 @@
     ],
     "config":{
         "vendor-dir":"vendor",
-        "preferred-install": {
-            "*": "dist"
-        }
+        "preferred-install": "dist"
     },
     
     "repositories": [
