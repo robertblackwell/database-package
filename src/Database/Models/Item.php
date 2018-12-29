@@ -290,7 +290,7 @@ class Item extends ItemBase
 	public static function find_latest_after($after = "2000-01-01", int $count = null)
 	{
 		$count_str = ($count)? "limit 0, $count": "" ;
-		$c = " where type<>'location' and published_date > {$after} order by last_modified_date desc, slug desc $count_str ";
+		$c = " where type<>'location' and published_date > '{$after}' order by last_modified_date desc, slug desc $count_str ";
 		return self::$sql->select_objects(self::$table_name, __CLASS__, $c, true);
 	}	
 	/**
