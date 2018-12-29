@@ -343,9 +343,15 @@ class Utility
 		$items = array();
 		foreach ($item_names as $iname) {
 			\Trace::debug("starting $items_dir/$iname");
+
+			print __METHOD__,"<p> {$items_dir} {$iname}";
+			
 			$o = new \Database\HED\HEDObject();
 			$o->get_from_file($items_dir."/".$iname."/content.php");
 			$obj = \Database\Models\Factory::model_from_hed($o);
+			
+			print "{$obj->trip} {$obj->slug} </p>";
+
 			if ($iname != $obj->slug)
 				throw new \Exception(
 					__METHOD__."($items_dir) file name and slug do not match file:$iname slug:".$obj->slug
