@@ -95,7 +95,7 @@ class HEDObject implements \ArrayAccess
 		$this->file_path = realpath($file_name);
 		$this->dir = dirname($this->file_path);
 		if (! file_exists($this->file_path)) {
-			throw new \Exception(__METHOD__." : file : [" . $this->file_path ."]  does not exist");
+			throw new \Exception(__METHOD__." : file : [" . $this->file_path ."] file_name:[$file_name] does not exist");
 		}
 		try {
 			$php = file_get_contents($this->file_path);

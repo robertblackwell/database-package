@@ -305,7 +305,7 @@ class RowHelper
 			throw new \Exception("{$type} is invalid type");
 		}
 		if (!isset($this->row[$key])) {
-			throw new \Exception("{$key} is not present in row");
+			throw new \Exception("{$key} is not present in row: trip: {$this->row['trip']} slug: {$this->row['slug']}");
 		}
 //		$typ = $this->properties[$key];
 		//var_dump($cc::$fields);
