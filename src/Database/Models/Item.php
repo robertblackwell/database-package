@@ -282,6 +282,18 @@ class Item extends ItemBase
 		return self::$sql->select_objects(self::$table_name, __CLASS__, $c, true);
 	}
 	/**
+	* Finds the latest Items after some date in reverse chronological order.
+	* @param string $after  Date as a string in YYYY-MM-DD format
+	* @param integer $count Optional - can limit the number returned.
+	* @return array Of Item objects.
+	*/
+	public static function find_latest_after($after = "2000-01-01", int $count = null)
+	{
+		$count_str = ($count)? "limit 0, $count": "" ;
+		$c = " where type<>'location' and published_date > {$after} order by last_modified_date desc, slug desc $count_str ";
+		return self::$sql->select_objects(self::$table_name, __CLASS__, $c, true);
+	}	
+	/**
 	* Finds the latest Item for a trip in reverse chronological order.
 	* @param string  $trip  Trip code.
 	* @param integer $count Optional - can limit the number returned.
