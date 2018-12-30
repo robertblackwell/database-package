@@ -7,7 +7,7 @@ class Trip
 	const THEAMERICAS = "theamericas";
 	const ER = "er";
 	const BMW11 = "bmw11";
-	const AUST19 = "aust";
+	const AUST = "aust";
 	const ASIA20 = "asia20";
 	const SITE = "site";
 
