@@ -416,7 +416,7 @@ EOD;
 		string $featured_image = null, //  self::default_featured_image(),
 		string $main_content = null //self::default_main_content()
 	) : HEDObject {
-		assert(func_num_args() == 14);
+		assert(func_num_args() == 12);
 		$path = \Database\Locator::get_instance()->item_filepath($trip, $slug);
 		// phpcs:disable
 		return self::make_entry(
