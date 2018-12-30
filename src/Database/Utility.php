@@ -68,7 +68,7 @@ class Utility
 	*/
 	public function import_item(string $trip, string $slug) //: void
 	{
-		\Ttrace::enable();
+		\Trace::enable();
 		\Trace::function_entry();
 
 		$y = Item::get_by_slug($slug);
