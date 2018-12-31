@@ -142,10 +142,10 @@ class Entry extends ItemBase
 		/**
 		* optional properties
 		*/
-		// $this->excerpt = $helper->get_optional_property_value(
-		// 	"excerpt",
-		// 	$this->properties["excerpt"]
-		// );
+		$this->excerpt = $helper->get_optional_property_value(
+			"excerpt",
+			$this->properties["excerpt"]
+		);
 		$this->featured_image = $helper->get_optional_property_value(
 			"featured_image",
 			$this->properties["featured_image"]

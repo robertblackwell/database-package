@@ -97,6 +97,7 @@ class EntryLocation extends ItemBase //Base\ModelBase
 		"latitude"=>"text",
 		"longitude"=>"text",
 		"title"=>"html",
+		"excerpt" => "text"
 	];
 	/**
 	* Constructor.
@@ -123,6 +124,10 @@ class EntryLocation extends ItemBase //Base\ModelBase
 		foreach ($props as $prop => $type) {
 			$this->$prop = $helper->get_property_value($prop, $type);
 		}
+		$this->excerpt = $helper->get_optional_property_value(
+			"excerpt",
+			$this->properties["excerpt"]
+		);
 	}
 	/**
 	* returns a comma sep list of fields to be returned by any select.
