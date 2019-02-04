@@ -78,6 +78,9 @@ class Utility
 		}
 
 		$x = Item::get_by_trip_slug($trip, $slug);
+		if ($x === null) {
+			throw new \Exception("object not found for trip: $trip slug: $slug");
+		}
 
 		// print_r($x);
 		if ($slug != $x->slug)
@@ -127,10 +130,13 @@ class Utility
 
 		$model = Album::get_by_trip_slug($trip, $slug);
 
+		if ($model === null) {
+			throw new \Exception("object not found for trip: $trip slug: $slug");
+		}
 		\Trace::alert("<p> Importing album trip : $trip item: $slug type ".get_class($model)."</p>");
 
 		if ($slug != $model->slug)
-			throw new \Exception(__METHOD__."($slug) file name and slug do not match file:$fn slug:".$x->slug);
+			throw new \Exception(__METHOD__."slug : ($slug) does not match model->slug {$model->slug}");
 
 		$y = Album::get_by_slug($slug);
 
@@ -158,6 +164,10 @@ class Utility
 		}
 
 		$model = Banner::get_by_trip_slug($trip, $slug);
+
+		if ($model === null) {
+			throw new \Exception("object not found for trip: $trip slug: $slug");
+		}
 
 		\Trace::alert("<p> Importing album trip : $trip item: $slug type ".get_class($model)."</p>");
 
@@ -190,6 +200,10 @@ class Utility
 		}
 
 		$x = Editorial::get_by_trip_slug($trip, $slug);
+
+		if ($x === null) {
+			throw new \Exception("object not found for trip: $trip slug: $slug");
+		}
 
 		\Trace::alert("<p> Importing album trip : $trip item: $slug type ".get_class($x)."</p>");
 
