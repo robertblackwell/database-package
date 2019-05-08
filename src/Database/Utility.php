@@ -251,7 +251,7 @@ class Utility
 		$x = Banner::get_by_slug($slug);
 		//var_dump($x);
 		if (is_null($x)) {
-			throw new \Exception(__METHOD__."($slug) not found - cannot deport x is null");
+			throw new \Exception(__METHOD__."($slug) not found - cannot deport");
 		}
 		//print "<p> Deporting (removing from sql database) item $slug type ";
 		if ($slug != $x->slug)
