@@ -442,7 +442,7 @@ EOD;
 	) : HEDObject {
 		$na = func_num_args();
 		// print "\nXXXX num args = {$na}\n"; exit();
-		assert(func_num_args() == 14);
+		assert(func_num_args() == 14 || func_num_args() == 12);
 		$path = \Database\Locator::get_instance()->item_filepath($trip, $slug);
 		// phpcs:disable
 		return self::make_entry(
