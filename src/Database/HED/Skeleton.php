@@ -338,7 +338,7 @@ EOD;
 		string $image_name,
 		string $main_content = null
 	) : HEDObject {
-		assert(func_num_args() == 5);
+		assert(func_num_args() == 5 || func_num_args() == 4);
 		$path = \Database\Locator::get_instance()->editorial_filepath($trip, $slug);
 		return self::make_editorial($path, $trip, $slug, $published_date, $image_name, $main_content);
 	}
