@@ -23,11 +23,17 @@
 	<div id="longitude">longitude</div>
 	<div id="featured_image">[0]</div>
 	<div id="main_content">
-		<p>main content goes here</p>
+		<!-- a new format 22/5/2019 -->
+		<p>main entry content goes here</p>
 		<?php Skin::JournalGalleryThumbnails($trip, $entry);?>  
-		<p>and here</p></div>
-	<div id="camping"></div>
-	<div id="border"></div>
+		<?php //Skin::Skin::JournalGalleryByName($trip, $entry, "190421");?>  
+		<p>and here</p>
+		<div id="camping">
+			<p>camping comment goes here</p>
+		</div>
+		<div id="border">
+		</div>
+	</div>
 
 </body>
 </html>

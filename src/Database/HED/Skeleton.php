@@ -151,6 +151,30 @@ EOD;
 		return $mc;
 	}
 	/**
+	* return the default value for the "main_content" property of a HED object.
+	* @return string.
+	*/
+	public static function default_entry_main_content() : string
+	{
+
+		$mc =<<<'EOD'
+
+		<!-- a new format 22/5/2019 -->
+		<p>main entry content goes here</p>
+		<?php Skin::JournalGalleryThumbnails($trip, $entry);?>  
+		<?php //Skin::Skin::JournalGalleryByName($trip, $entry, "190421");?>  
+		<p>and here</p>
+		<div id="camping">
+			<p>camping comment goes here</p>
+		</div>
+		<div id="border">
+		</div>
+	
+EOD;
+		return $mc;
+	}
+
+	/**
 	* Returns a string which is the html text that represents an empty set of categories.
 	* @return string
 	*/
@@ -416,7 +440,9 @@ EOD;
 		string $featured_image = null, //  self::default_featured_image(),
 		string $main_content = null //self::default_main_content()
 	) : HEDObject {
-		assert(func_num_args() == 12);
+		$na = func_num_args();
+		// print "\nXXXX num args = {$na}\n"; exit();
+		assert(func_num_args() == 14);
 		$path = \Database\Locator::get_instance()->item_filepath($trip, $slug);
 		// phpcs:disable
 		return self::make_entry(
@@ -479,7 +505,7 @@ EOD;
 		ob_start();
 
 		if (is_null($featured_image)) $featured_image = self::default_featured_image();
-		if (is_null($main_content)) $main_content = self::default_main_content();
+		if (is_null($main_content)) $main_content = self::default_entry_main_content();
 
 		self::print_hed_header();
 		self::print_hed_common("entry", $trip, $slug, $published_date, []);
@@ -499,8 +525,8 @@ EOD;
 		// self::print_field_value("excerpt", "NOT_REQUIRED");
 		// self::print_field_value("abstract", "NOT_REQUIRED");
 		self::print_field_value("main_content", $main_content);
-		self::print_field_value("camping", "");
-		self::print_field_value("border", "");
+		// self::print_field_value("camping", "");
+		// self::print_field_value("border", "");
 
 		self::print_hed_footer();
 		$s = ob_get_clean();
