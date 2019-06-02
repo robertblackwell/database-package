@@ -67,9 +67,34 @@ class FeaturedImage
 		$res = self::fromPathAndText($itemDir, $text);
 		return $res;
 	}
-	public static function fromTripSlugModel($obj)
+	/**
+	* Get featuredImage path for item from trip and slug
+	* @param string $trip    Trip code.
+	* @param string $slug    Item slug.
+	* @param string $fi_text The text spec for a featured image.
+	* @return string
+	*/
+	public static function pathFromTripSlugText(string $trip, string $slug, string $fi_text)
 	{
-
+		$locator = \Database\Locator::get_instance();
+		$d = $locator->item_dir($trip, $slug);
+		$path = \Database\Models\FeaturedImage::fromPathAndText($d, $fi_text);
+		return $path;
+	}
+	/**
+	* Get featuredImage path for an object
+	* @param mixed $entry Entry|Post|Article|Item model for which we are getting fi path.
+	* @return string
+	*/
+	public static function pathFromModel($entry)
+	{
+		var_dump($entry);
+		$locator = \Database\Locator::get_instance();
+		$d = $locator->item_dir($entry->trip, $entry->slug);
+		$fi_text = $entry->featured_image;
+		print "\npathFromModel d:[{$d}] fi_text[{$fi_text}]\n";
+		$path = \Database\Models\FeaturedImage::fromPathAndText($d, $fi_text);
+		return $path;
 	}
 	/**
 	* Get the full path to a featured_image given the directory for an Article, Entry or Post
@@ -157,9 +182,14 @@ class FeaturedImage
 			}
 		}
 		$res = (is_null($res))? null :str_replace(Locator::get_instance()->doc_root(), "", $res);
+		$res = (is_null($res))? "FI_TEXT[{$fi_text}]" :str_replace(Locator::get_instance()->doc_root(), "", $res);
 		\Trace::debug("result: $res");
 		return $res;
 	}
+	/**
+	* @param HEDObject $hed_obj A HED Object.
+	* @return mixed
+	*/
 	public static function getPath(HEDObject $hed_obj) // : ? string
 	{
 		\Trace::off();
@@ -251,5 +281,4 @@ class FeaturedImage
 		\Trace::debug("result: $res");
 		return $res;
 	}
-
 }

@@ -128,7 +128,6 @@ class Item extends ItemBase
 	{
 		$helper = new RowHelper($obj);
 		$this->table = "my_items";
-
 		$this->properties = self::$field_names;
 		$optional_props = [
 			"title"=>"html",
@@ -154,6 +153,9 @@ class Item extends ItemBase
 		}
 		foreach ($optional_props as $prop => $type) {
 			$this->$prop = $helper->get_optional_property_value($prop, $type);
+		}
+		if (is_null($this->featured_image)) {
+			$this->featured_image = "[0]";
 		}
 		$loc = Locator::get_instance();
 		if (!is_null($this->country))

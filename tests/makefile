@@ -120,6 +120,9 @@ import:
 	unit_tests/import/post_test.php \
 	unit_tests/import/util_test.php
 
+u:
+	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/import/util_test.php 
+
 paths:
 	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/paths/path_tests.php
 

@@ -37,10 +37,30 @@ class ItemFindTest extends LocalTestcase
 		}
 		Trace::function_exit();
 	}
+	function testFindAll()
+	{
+		Trace::function_entry();
+		$result = Item::find();
+		foreach($result as $r) {
+			$klass = get_class($r);
+			print "\n{$klass} {$r->type}  {$r->slug} fi: [{$r->featured_image}]\n";
+			$this->assertEqual($klass, "Database\Models\Item");
+		}
+		$this->assertNotEqual($result, null);
+		$this->assertTrue(is_array($result));
+		$this->assertEqual(get_class($result[0]), "Database\Models\Item");
+		Trace::function_exit();
+		//var_dump($result);
+	}
 	function testFindThree()
 	{
 		Trace::function_entry();
 		$result = Item::find(3);
+		foreach($result as $r) {
+			$klass = get_class($r);
+			print "\n{$klass} {$r->type}  {$r->slug}\n";
+			$this->assertEqual($klass, "Database\Models\Item");
+			}
 		$this->assertNotEqual($result, null);
 		$this->assertTrue(is_array($result));
 		$this->assertEqual(count($result), 3);

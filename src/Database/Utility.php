@@ -63,7 +63,7 @@ class Utility
 	* equivalent of "publish"
 	* @param  string $trip Id for the trip.
 	* @param  string $slug Slug is id for entry.
-	* @return void
+	* @return mixed Actually a Model
 	* @throws \Exception If item slug value does not match item_dirs basename.
 	*/
 	public function import_item(string $trip, string $slug) //: void
@@ -89,7 +89,15 @@ class Utility
 			self::fix_country($x);
 		}
 		$x->sql_insert();
+		if (!is_null($x->featured_image)) {
+			$x->featured_image_path =
+				\Database\Models\FeaturedImage::pathFromTripSlugText($x->trip, $x->slug, $x->featured_image);
+		} else {
+			$x->featured_image_path = null;
+		}
+
 		\Trace::function_exit();
+		return $x;
 	}
 
 	/**

@@ -73,8 +73,8 @@ class DeportImportTest extends LocalTestcase
         $r = Item::get_by_slug($slug);
 	    $this->assertEqual($r, null);
 
-        $this->utility->import_item($trip, $slug);
-        
+        $x = $this->utility->import_item($trip, $slug);
+        var_dump($x);
 	    $r = Item::get_by_slug($slug);
 	    $this->assertNotEqual($r, null);
 	    Trace::function_exit();

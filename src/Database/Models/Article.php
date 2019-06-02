@@ -104,7 +104,7 @@ class Article extends ItemBase
 			"excerpt",
 			$this->properties["excerpt"]
 		);
-		$this->camping = $helper->get_optional_property_value(
+		$this->featured_image = $helper->get_optional_property_value(
 			"featured_image",
 			$this->properties["featured_image"]
 		);
