@@ -101,11 +101,11 @@ class EntryLocation extends ItemBase //Base\ModelBase
 	];
 	/**
 	* Constructor.
-	* @param array $obj Sql query row result as associative array.
+	* @param mixed $obj Sql query row result as associative array or HEDObject.
 	* @return EntryLocation
 	*
 	*/
-	public function __construct(array $obj)
+	public function __construct($obj)
 	{
 		$helper = new RowHelper($obj);
 		$this->table = "my_items";
@@ -151,13 +151,13 @@ class EntryLocation extends ItemBase //Base\ModelBase
 	*/
 	public static function find_for_trip(string $trip, int $count = null)
 	{
-		//print "<p>".__METHOD__."</p>";
 		$count_str = ($count)? "limit 0, $count": "" ;
 		$slist = self::selectList();
+		$slist = "*";
 		$c = "SELECT {$slist} 
 				FROM my_items 
 				WHERE ( (type='entry' OR type='location') and trip='".$trip."')   
-				order by country asc";
+				order by country asc {$count_str}";
 		
 		return self::$sql->query_objects($c, __CLASS__);
 	}
@@ -173,10 +173,11 @@ class EntryLocation extends ItemBase //Base\ModelBase
 		//print "<p>".__METHOD__."</p>";
 		$count_str = ($count)? "limit 0, $count": "" ;
 		$slist = self::selectList();
+		$slist = "*";
 		$c = "SELECT {$slist} 
 				FROM my_items 
 				WHERE ( (type='entry' OR type='location') and trip='".$trip."')   
-				order by published_date asc";
+				order by published_date asc {$count_str}";
 		
 		$result = self::$sql->query_objects($c, __CLASS__);
 		return $result;
@@ -192,10 +193,11 @@ class EntryLocation extends ItemBase //Base\ModelBase
 		//print "<p>".__METHOD__."</p>";
 		$count_str = ($count)? "limit 0, $count": "" ;
 		$slist = self::selectList();
+		$slist = "*";
 		$c = "SELECT {$slist} 
 					FROM my_items 
 					WHERE (type='entry' OR type='location')   
-					order by published_date asc";
+					order by published_date asc {$count_str}";
 		
 		$result = self::$sql->query_objects($c, __CLASS__);
 		return $result;
@@ -212,10 +214,11 @@ class EntryLocation extends ItemBase //Base\ModelBase
 		//print "<p>".__METHOD__."</p>";
 		$count_str = ($count)? "limit 0, $count": "" ;
 		$slist = self::selectList();
+		$slist = "*";
 		$c = "SELECT {$slist} 
 					FROM my_items 
 					WHERE (type='entry' OR type='location')   
-					order by country asc";
+					order by country asc {$count_str}";
 		
 		return self::$sql->query_objects($c, __CLASS__);
 	}

@@ -112,7 +112,7 @@ class Article extends ItemBase
 		$this->main_content = $helper->get_property_main_content();
 		$this->content_path = $loc->article_main_content_filepath($this->trip, $this->slug);
 		$this->entity_path = $loc->item_dir($this->trip, $this->slug);
-		parent::__construct();
+		parent::__construct($obj);
 	}
 	/**
 	* Find all/count Article for a trip.
@@ -126,7 +126,7 @@ class Article extends ItemBase
 		$where = " where ( trip='".$trip."' and type = 'article' )";
 		$count_str = ($count)? "limit 0, $count": "" ;
 		$c = " $where order by last_modified_date desc, slug desc $count_str ";
-		$r = self::$sql->select_objects(self::$table_name, __CLASS__, $c);
+		$r = self::$sql->select_array_of_objects(self::$table_name, __CLASS__, $c);
 		//var_dump($r);exit();
 		return $r;
 	}
@@ -139,7 +139,7 @@ class Article extends ItemBase
 	{
 		$count_str = ($count)? "limit 0, $count": "" ;
 		$c = " where type='article' order by last_modified_date desc, slug desc $count_str ";
-		$r = self::$sql->select_objects(self::$table_name, __CLASS__, $c);
+		$r = self::$sql->select_array_of_objects(self::$table_name, __CLASS__, $c);
 		//var_dump($r);exit();
 		return $r;
 	}

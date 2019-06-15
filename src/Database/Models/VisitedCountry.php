@@ -18,11 +18,11 @@ class VisitedCountry extends CommonSql
 
 	/**
 	* Constructor.
-	* @param array $obj Sql query row result as associative array.
+	* @param mixed $obj Sql query row result as associative array or HEDObject.
 	* @return EntryCountry
 	*
 	*/
-	public function __construct(array $obj)
+	public function __construct($obj)
 	{
 		$helper = new RowHelper($obj);
 		$this->table = "my_items";

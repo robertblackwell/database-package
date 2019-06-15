@@ -164,7 +164,7 @@ class Entry extends ItemBase
 			$this->properties["border"]
 		);
 		$this->has_border = (! is_null($this->border))  && (strlen(trim($this->camping)) != 0);
-		parent::__construct();
+		parent::__construct($obj);
 	}
 	/**
 	* Find all/count the albums and return them in an array of Album objects
@@ -175,7 +175,7 @@ class Entry extends ItemBase
 	{
 		$count_str = ($count)? "limit 0, $count": "" ;
 		$c = " where type='entry' order by last_modified_date desc $count_str ";
-		return self::$sql->select_objects(self::$table_name, __CLASS__, $c, true);
+		return self::$sql->select_array_of_objects(self::$table_name, __CLASS__, $c);
 		// return \Database::getInstance()->select_objects(self::$table_name, __CLASS__, $c, true);
 	}
 	/**

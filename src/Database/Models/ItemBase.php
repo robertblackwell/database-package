@@ -15,10 +15,10 @@ class ItemBase extends CommonSql
 	protected $next_prev;
 	/**
 	* Constructor.
-	* param array $obj Sql query result as associatibe array.
+	* @param mixed $obj Sql query result as associatibe array, HEDOBject.
 	* @return Item
 	*/
-	public function __construct()
+	public function __construct($obj)
 	{
 		$this->next_prev = new NextPrev($this, self::$sql);
 	}

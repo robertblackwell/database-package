@@ -30,9 +30,9 @@ class ArticleTitle extends CommonSql
 	// var year, month - see DAEntryMonth for confirmation of the attribute names
 	/**
 	* Constructor.
-	* @param array $obj Sql query result as an associative array.
+	* @param mixed $obj Sql query result as an associative array or HEDObject.
 	*/
-	public function __construct(array $obj)
+	public function __construct($obj)
 	{
 		$helper = new RowHelper($obj);
 		$this->table = "my_items";
@@ -56,11 +56,19 @@ class ArticleTitle extends CommonSql
 	public static function find_for_trip(string $trip, int $count = null)
 	{
 		//print "<p>".__METHOD__."</p>";
-		$count_str = ($count)? "limit 0, $count": "" ;
-		$c = "SELECT slug, trip, title FROM my_items WHERE (trip = '"
-			 .$trip
-			 ."' and type='article') order by title asc";
-		return self::$sql->query_objects($c, __CLASS__);
+		$count_str = (!is_null($count))? "limit 0, $count": "" ;
+		// $c = "SELECT slug, trip, title FROM my_items WHERE (trip = '"
+		// 	 .$trip
+		// 	 ."' and type='article') order by title asc";
+		// $c = "SELECT * FROM my_items WHERE (trip = '"
+		// 	 .$trip
+		// 	 ."' and type='article') order by title asc";
+		$criteria = "where (trip='{$trip}' and type='article') order by title asc {$count_str}";
+		$result = self::$sql->select_array_of_objects('my_items',__CLASS__,$criteria);
+		return $result;
+		// var_dump($result);
+		// exit();
+		// return self::$sql->query_objects($c, __CLASS__);
 	}
 	/**
 	* Find all ArticleTitle.
@@ -72,6 +80,11 @@ class ArticleTitle extends CommonSql
 		//print "<p>".__METHOD__."</p>";
 		$count_str = ($count)? "limit 0, $count": "" ;
 		$c = "SELECT trip, slug, title FROM my_items WHERE ( type='article')   order by title asc";
-		return self::$sql->query_objects($c, __CLASS__);
+		$criteria = "where (type = 'article') order by title asc {$count_str}";
+		$result = self::$sql->select_array_of_objects('my_items', __CLASS__, $criteria);
+		// var_dump($result);
+		// exit();
+		return $result; 
+		// return self::$sql->query_objects($c, __CLASS__);
 	}
 }

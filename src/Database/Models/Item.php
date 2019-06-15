@@ -7,10 +7,18 @@ use \Exception as Exception;
 use Database\Models\Base\CommonSql;
 use Database\Locator;
 
+/**
+* @param string $year_month A year month pair in a string.
+* @return string
+*/
 function mk_start_of_month(string $year_month)
 {
 	return $year_month . "-01";
 }
+/**
+* @param string $year_month A year month pair in a string.
+* @return string
+*/
 function mk_start_of_next_month(string $year_month)
 {
 	$next_month = "";
@@ -25,7 +33,6 @@ function mk_start_of_next_month(string $year_month)
 	}
 	$res = sprintf("%4d-%02d-%02s", $y, $next_month, 1);
 	return $res;
-
 }
 
 /**
@@ -121,10 +128,10 @@ class Item extends ItemBase
 		];
 	/**
 	* Constructor.
-	* @param array $obj Sql query result associative array.
+	* @param mixed $obj Sql query result associative array or HEDObject.
 	* @return Item
 	*/
-	public function __construct(array $obj)
+	public function __construct($obj)
 	{
 		$helper = new RowHelper($obj);
 		$this->table = "my_items";
@@ -181,7 +188,7 @@ class Item extends ItemBase
 		// 	"border",
 		// 	$this->properties["border"]
 		// );
-		parent::__construct();
+		parent::__construct($obj);
 	}
 	/**
 	* Get an/the Item for a trip-slug pair.
@@ -209,7 +216,7 @@ class Item extends ItemBase
 	public static function get_by_slug(string $slug)
 	{
 		$q = "WHERE slug='".$slug."'";
-		$r = self::$sql->select_objects(self::$table_name, __CLASS__, $q, false);
+		$r = self::$sql->select_single_object(self::$table_name, __CLASS__, $q);
 		if (is_null($r) || !$r) return null;
 		$trip = $r->trip;
 		$item = self::get_by_trip_slug($trip, $slug);
@@ -232,7 +239,7 @@ class Item extends ItemBase
 		$where = " where trip='".$trip."'";
 		$count_str = ($count)? "limit 0, $count": "" ;
 		$c = $where." order by published_date desc, slug desc $count_str ";
-		return self::$sql->select_objects(self::$table_name, __CLASS__, $c, true);
+		return self::$sql->select_array_of_objects(self::$table_name, __CLASS__, $c);
 	}
 	/**
 	* Find all/count Item for a trip ordered by published_date ascending.
@@ -270,7 +277,7 @@ class Item extends ItemBase
 	{
 		$count_str = ($count)? "limit 0, $count": "" ;
 		$c = " where type<>'location' order by published_date desc, slug desc $count_str ";
-		return self::$sql->select_objects(self::$table_name, __CLASS__, $c, true);
+		return self::$sql->select_array_of_objects(self::$table_name, __CLASS__, $c);
 	}
 	/**
 	* Finds the latest Item in reverse chronological order.
@@ -281,20 +288,20 @@ class Item extends ItemBase
 	{
 		$count_str = ($count)? "limit 0, $count": "" ;
 		$c = " where type<>'location' order by last_modified_date desc, slug desc $count_str ";
-		return self::$sql->select_objects(self::$table_name, __CLASS__, $c, true);
+		return self::$sql->select_array_of_objects(self::$table_name, __CLASS__, $c);
 	}
 	/**
 	* Finds the latest Items after some date in reverse chronological order.
-	* @param string $after  Date as a string in YYYY-MM-DD format
+	* @param string  $after Date as a string in YYYY-MM-DD format.
 	* @param integer $count Optional - can limit the number returned.
 	* @return array Of Item objects.
 	*/
-	public static function find_latest_after($after = "2000-01-01", int $count = null)
+	public static function find_latest_after(string $after = "2000-01-01", int $count = null)
 	{
 		$count_str = ($count)? "limit 0, $count": "" ;
 		$c = " where type<>'location' and published_date > '{$after}' order by last_modified_date desc, slug desc $count_str ";
-		return self::$sql->select_objects(self::$table_name, __CLASS__, $c, true);
-	}	
+		return self::$sql->select_array_of_objects(self::$table_name, __CLASS__, $c);
+	}
 	/**
 	* Finds the latest Item for a trip in reverse chronological order.
 	* @param string  $trip  Trip code.
@@ -306,7 +313,7 @@ class Item extends ItemBase
 		$where = " where trip='".$trip."' ";
 		$count_str = ($count)? "limit 0, $count": "" ;
 		$c = $where . " order by last_modified_date desc, slug desc $count_str ";
-		return self::$sql->select_objects(self::$table_name, __CLASS__, $c, true);
+		return self::$sql->select_array_of_objects(self::$table_name, __CLASS__, $c);
 	}
 	/**
 	* Finds all the entry (Entry) items for a given calendar month.
@@ -323,7 +330,7 @@ class Item extends ItemBase
 			" (published_date >= \"$start\" ) and ".
 			" (published_date <\"$start_of_next_month\") ".
 			" order by published_date asc, slug asc $count_str ";
-		$res = self::$sql->select_objects(self::$table_name, __CLASS__, $c);
+		$res = self::$sql->select_array_of_objects(self::$table_name, __CLASS__, $c);
 		return $res;
 	}
 	/**
@@ -345,7 +352,7 @@ class Item extends ItemBase
 			" (published_date <\"$start_of_next_month\") ".
 			" order by published_date asc, slug asc $count_str ";
 		//var_dump($c);
-		$res = self::$sql->select_objects(self::$table_name, __CLASS__, $c);
+		$res = self::$sql->select_array_of_objects(self::$table_name, __CLASS__, $c);
 		return $res;
 	}
 	/**
@@ -359,7 +366,7 @@ class Item extends ItemBase
 		$count_str = ($count)? "limit 0, $count": "" ;
 		$c = " WHERE  (type='entry' or type = 'post')  and country = \"$country\" "
 		. " order by published_date asc,  slug asc $count_str ";
-		return self::$sql->select_objects(self::$table_name, __CLASS__, $c);
+		return self::$sql->select_array_of_objects(self::$table_name, __CLASS__, $c);
 	}
 	/**
 	* Finds all the Item for a given trip and country.
@@ -373,7 +380,7 @@ class Item extends ItemBase
 		$count_str = ($count)? "limit 0, $count": "" ;
 		$c = " WHERE (trip='".$trip."' and (type='entry' or type = 'post')  and country = \"$country\") "
 		. " order by published_date asc,  slug asc $count_str ";
-		return self::$sql->select_objects(self::$table_name, __CLASS__, $c);
+		return self::$sql->select_array_of_objects(self::$table_name, __CLASS__, $c);
 	}
 	/**
 	* Finds all Item with camping comments for a given country.

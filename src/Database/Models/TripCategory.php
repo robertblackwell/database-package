@@ -25,9 +25,9 @@ class TripCategory extends CommonSql
 		];
 	/**
 	* Constructor
-	* @param array $obj Sql result as associateive array.
+	* @param mixed $obj Sql result as associateive array or HEDObject.
 	*/
-	public function __construct(array $obj = null)
+	public function __construct($obj)
 	{
 		$helper = new RowHelper($obj);
 		$this->table = "categories";

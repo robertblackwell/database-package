@@ -319,6 +319,7 @@ class Factory
 	* Make a Models/Location from a HEDObject
 	* @param HEDObject $hed_obj The source.
 	* @return Models\EntryLocation
+	* @todo - why iterate over the fields
 	*/
 	public static function location_from_hed(HEDObject $hed_obj) : EntryLocation
 	{
@@ -329,6 +330,7 @@ class Factory
 			$vals[$k] = $hed_obj->$method($k);
 		}
 		// print __FUNCTION__ . "\n";
+		/** @var EntryLoccation $x  */
 		$x = new EntryLocation($vals);
 		// var_dump($x);
 		return $x;

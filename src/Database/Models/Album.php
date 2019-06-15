@@ -84,7 +84,7 @@ class Album extends Base\CommonSql implements iSqlIzable
 	protected $sql_properties;
 	/**
 	* Consttructor.
-	* @param array|ArrayAccess $obj Sql query result as an associative array.
+	* @param array|ArrayAccess $obj Sql query result as an associative array, or HEDObject.
 	* @return Album
 	*/
 	public function __construct(/*array|ArrayAccess*/ $obj)
@@ -137,7 +137,7 @@ class Album extends Base\CommonSql implements iSqlIzable
 	* @return Album|null
 	*
 	*/
-	public static function get_by_trip_slug(string $trip, string $slug)
+	public static function get_by_trip_slug(string $trip, string $slug) : ?Album
 	{
 		if (! self::$locator->album_exists($trip, $slug)) {
 			return null;
@@ -159,10 +159,10 @@ class Album extends Base\CommonSql implements iSqlIzable
 	* @param string $slug Entity id.
 	* @return Album|null
 	*/
-	public static function get_by_slug(string $slug)
+	public static function get_by_slug(string $slug) : ?Album
 	{
 		$q = "WHERE slug='".$slug."'";
-		$r = self::$sql->select_objects(self::$table_name, __CLASS__, $q, false);
+		$r = self::$sql->select_single_object(self::$table_name, __CLASS__, $q, false);
 		if (is_null($r) || !$r) {
 			// print "<p>" .__METHOD__ ." slug: {$slug} got null</p>";
 			return null;
@@ -187,7 +187,8 @@ class Album extends Base\CommonSql implements iSqlIzable
 		$count_str = ($count)? "limit 0, $count": "" ;
 		$c = " order by last_modified_date desc, slug asc $count_str ";
 		$c = " order by slug asc, last_modified_date desc $count_str ";
-		$r = self::$sql->select_objects(self::$table_name, __CLASS__, $c);
+		$r = self::$sql->select_array_of_objects(self::$table_name, __CLASS__, $c);
+
 		foreach ($r as $a) {
 			$trip = $a->trip;
 			/// @todo this is a missing step
@@ -209,7 +210,7 @@ class Album extends Base\CommonSql implements iSqlIzable
 		$count_str = ($count)? "limit 0, $count": "" ;
 		$c = $where." order by last_modified_date desc, slug asc $count_str ";
 		$c = $where . " order by slug asc, last_modified_date desc $count_str ";
-		$r = self::$sql->select_objects(self::$table_name, __CLASS__, $c);
+		$r = self::$sql->select_array_of_objects(self::$table_name, __CLASS__, $c);
 		foreach ($r as $a) {
 			$trip = $a->trip;
 			$a->gallery = \Gallery\GalObject::create(Locator::get_instance()->album_dir($trip, $a->slug));
@@ -221,7 +222,7 @@ class Album extends Base\CommonSql implements iSqlIzable
 	* Delete this entity from the sql database.
 	* @return void
 	*/
-	public function sql_delete()
+	public function sql_delete() : void
 	{
 		self::$sql->query("DELETE from albums where trip='".$this->trip."' and slug='".$this->slug."'");
 	}

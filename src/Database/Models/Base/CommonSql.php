@@ -57,7 +57,7 @@ class CommonSql implements iSqlIzable
 	* Constructor.
 	* @return Model
 	*/
-	public function __construct()
+	public function __construct($obj)
 	{
 	}
 

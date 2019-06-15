@@ -23,10 +23,10 @@ class TripMonth extends CommonSql
 	];
 	/**
 	* Constructor.
-	* @param ArrayAccess|array $row Sql result row as associative array or HEDObject.
+	* @param mixed $row Sql result row as associative array or HEDObject.
 	* @return TripMonth.
 	*/
-	public function __construct(/*array*/ $row)
+	public function __construct($row)
 	{
 		$helper = new RowHelper($row);
 		$this->table = "my_items";

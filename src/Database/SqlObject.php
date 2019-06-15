@@ -74,12 +74,14 @@ class SqlObject
 			$conn = mysqli_connect($host, $user, $pwd, $db_name);
 			if (! isset($conn)) {
 				throw new \Exception(
-					"could not connect to data base db:$db_name user:$user in ".__FILE__." at line ".__LINE__);
+					"could not connect to data base db:$db_name user:$user in ".__FILE__." at line ".__LINE__
+				);
 			}
 		} catch (\Exception $e) {
 			throw $e;
 			throw new \Exception(
-				"could not connect to data base db:$db_name user:$user in ".__FILE__." at line ".__LINE__	);
+				"could not connect to data base db:$db_name user:$user in ".__FILE__." at line ".__LINE__
+			);
 		}
 		$this->db_connection = $conn;
 
@@ -170,7 +172,8 @@ class SqlObject
 		return $n;
 	}
 	/**
-	* Performs a select against the given view or table and returns the result as an sql_result object.
+	* Performs a select against the given view or table and returns the
+	* result as an sql_result object.
 	*
 	* The where clause is constructed from the $criteria parameter according to the following rules:
 	* if criteria is a string then it IS the where clause in mysqli format
@@ -197,7 +200,92 @@ class SqlObject
 
 	/**
 	* Performs a select against the given view or table and returns an array
-	* of value objects.
+	* of model objects ONLY.
+	*
+	* The where clause is constructed from the $criteria parameter according to the following rules:
+	* if criteria is a string then it IS the where clause in mysqli format
+	*
+	* @Note the class of the objects returned is specified as the second parameter
+	*
+	* @param string $table    Name of table.
+	* @param string $class    The name of the class for the value objects to create.
+	*                          The constructor of class must accept an associative array
+	*						   of field names and values.
+	* @param string $criteria The search criteria.
+	* @return array Of model object.
+	*
+	* @throws Exception When query fails.
+	*
+	*/
+	public function select_array_of_objects(
+		string $table,
+		string $class,
+		string $criteria = ""
+	) : array {
+		$a = array();
+		$query = "SELECT * FROM $table";
+		if (($criteria != null) && ($criteria != "")) {
+			$query .= " ".$criteria.";";
+		}
+		$result = mysqli_query($this->db_connection, $query);
+		if (!$result)
+			throw new \Exception(
+				"could not do a query $query in " . __FILE__ . " at line " . __LINE__ . " "
+				. mysqli_error($this->db_connection) . "  " . $criteria
+			);
+		while ($row = mysqli_fetch_assoc($result)) {
+			$a[] = new $class($row);
+		}
+		return $a;
+	}
+
+	/**
+	* Performs a select against the given view or table and returns a SINGLE
+	* of model objects ONLY.
+	*
+	* The where clause is constructed from the $criteria parameter according to the following rules:
+	* if criteria is a string then it IS the where clause in mysqli format
+	*
+	* @Note the class of the objects returned is specified as the second parameter
+	*
+	* @param string $table    Name of table.
+	* @param string $class    The name of the class for the value objects to create.
+	*                          The constructor of class must accept an associative array
+	*						   of field names and values.
+	* @param string $criteria The search criteria.
+	* @return mixed Model instamce or null.
+	*
+	* @throws Exception When query fails.
+	*
+	*/
+	public function select_single_object(
+		string $table,
+		string $class,
+		string $criteria = ""
+	) {
+		$ifaces = class_implements($class);
+		$a = array();
+		$query = "SELECT * FROM $table";
+		if (($criteria != null) && ($criteria != "")) {
+			$query .= " ".$criteria.";";
+		}
+		$result = mysqli_query($this->db_connection, $query);
+		if (!$result)
+			throw new \Exception(
+				"could not do a query $query in " . __FILE__ . " at line " . __LINE__ . " "
+				. mysqli_error($this->db_connection) . "  " . $criteria
+			);
+		while ($row = mysqli_fetch_assoc($result)) {
+			$a[] = new $class($row);
+		}
+		if (count($a) == 1) return $a[0];
+		if (count($a) == 0) return null;
+		throw new \Exception("got multiple models returned");
+	}
+
+	/**
+	* Performs a select against the given view or table and returns an array
+	* of model objects, or a single model or null.
 	*
 	* The where clause is constructed from the $criteria parameter according to the following rules:
 	* if criteria is a string then it IS the where clause in mysqli format
@@ -206,7 +294,8 @@ class SqlObject
 	*
 	* @param string  $table        Name of table.
 	* @param string  $class        The name of the class for the value objects to create.
-	*                             The constructor of class must accept an associative array of field names and values.
+	*                             The constructor of class must accept an associative array
+	*							  of field names and values.
 	* @param string  $criteria     The search criteria.
 	* @param boolean $array_always When true returns an array even for 1 or zero results.
 	* @return mixed Either an array() of objects or a single model object.
@@ -214,29 +303,36 @@ class SqlObject
 	* @throws Exception When query fails.
 	*
 	* @todo - seems to be a problem - what if no rows are found, wont that throw an exception
+	* @todo - this is a problem as its too difficult to understand the return type
+	* @todo - would like to deprecate this function
 	*/
-	public function select_objects(string $table, string $class, string $criteria = "", bool $array_always = true)
-	{
+	public function select_objects(
+		string $table,
+		string $class,
+		string $criteria = "",
+		bool $array_always = true
+	) {
 		//print "<p>".__CLASS__."::".__METHOD__."($table, $criteria)</p>";
-		$a = array();
-		$query = "SELECT * FROM $table";
-		if (($criteria != null) && ($criteria != "")) {
-			$query .= " ".$criteria.";";
-		}
-		//var_dump($query);
-		$result = mysqli_query($this->db_connection, $query);
-		if (!$result)
-			throw new \Exception(
-				"could not do a query $query in " . __FILE__ . " at line " . __LINE__ . " "
-				. mysqli_error($this->db_connection) . "  " . $criteria
-			);
-		//var_dump($result);
-		while ($row = mysqli_fetch_assoc($result)) {
-			//$a[] = ORMModel::rowToObject($row, ORMModel::makeModelName($return_class)) ;
-			//$a[] = ORMModel::rowToModelObject($row, new $model_class()) ;
-			//$a[] = static::$factory_class::static::$factory_method($row);
-			$a[] = new $class($row);
-		}
+		$a = $this->select_array_of_objects($table, $class, $criteria);
+		// $a = array();
+		// $query = "SELECT * FROM $table";
+		// if (($criteria != null) && ($criteria != "")) {
+		// 	$query .= " ".$criteria.";";
+		// }
+		// //var_dump($query);
+		// $result = mysqli_query($this->db_connection, $query);
+		// if (!$result)
+		// 	throw new \Exception(
+		// 		"could not do a query $query in " . __FILE__ . " at line " . __LINE__ . " "
+		// 		. mysqli_error($this->db_connection) . "  " . $criteria
+		// 	);
+		// //var_dump($result);
+		// while ($row = mysqli_fetch_assoc($result)) {
+		// 	//$a[] = ORMModel::rowToObject($row, ORMModel::makeModelName($return_class)) ;
+		// 	//$a[] = ORMModel::rowToModelObject($row, new $model_class()) ;
+		// 	//$a[] = static::$factory_class::static::$factory_method($row);
+		// 	$a[] = new $class($row);
+		// }
 		//if (count($a)==0)
 		//	return null;
 		//var_dump($row);
@@ -447,7 +543,7 @@ class SqlObject
 	 * @return void
 	 * @throws Exception If sql exec fails.
 	 */
-	public function truncate(string $table)
+	public function truncate(string $table) : void
 	{
 		$query = "TRUNCATE  TABLE $table ";
 		//print "\n".__FUNCTION__. "query: $query \n";

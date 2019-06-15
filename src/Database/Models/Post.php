@@ -129,7 +129,7 @@ class Post extends ItemBase
 		* main_content, only available if $obj is a HEDObject
 		*/
 		$this->main_content = $helper->get_property_main_content();
-		parent::__construct();
+		parent::__construct($obj);
 	}
 	/**
 	* Inserts this instance into the sql database and add categories and categorized items as required.

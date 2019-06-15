@@ -74,7 +74,7 @@ class DeportImportTest extends LocalTestcase
 	    $this->assertEqual($r, null);
 
         $x = $this->utility->import_item($trip, $slug);
-        var_dump($x);
+        // var_dump($x);
 	    $r = Item::get_by_slug($slug);
 	    $this->assertNotEqual($r, null);
 	    Trace::function_exit();
@@ -97,4 +97,3 @@ class DeportImportTest extends LocalTestcase
 	    Trace::function_exit();
 	}
 }
-?>

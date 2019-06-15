@@ -124,7 +124,7 @@ class Editorial extends CommonSql
 	public static function get_by_slug(string $slug)
 	{
 		$q = "WHERE slug='".$slug."'";
-		$r = self::$sql->select_objects(self::$table_name, __CLASS__, $q, false);
+		$r = self::$sql->select_single_object(self::$table_name, __CLASS__, $q);
 		if (is_null($r) || !$r) return null;
 		$trip = $r->trip;
 			   

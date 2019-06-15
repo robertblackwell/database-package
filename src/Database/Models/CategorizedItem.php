@@ -24,10 +24,10 @@ class CategorizedItem extends CommonSql
 		];
 	/**
 	 * CategorizedItem constructor.
-	 * @param array $obj Sql query row result as associative array.
+	 * @param mixed $obj Sql query row result as associative array or HEDObject.
 	 * @return CategorizedItem
 	 */
-	public function __construct(array $obj = null)
+	public function __construct($obj)
 	{
 		$helper = new RowHelper($obj);
 		$this->table = "categorized_items";
@@ -52,7 +52,7 @@ class CategorizedItem extends CommonSql
 	{
 		$count_str = ($count)? "limit 0, $count": "" ;
 		$c = "   order by category asc $count_str ";
-		return self::$sql->select_objects("categorized_items", __CLASS__, $c);
+		return self::$sql->select_array_of_objects("categorized_items", __CLASS__, $c);
 	}
 	/**
 	 * Detremines whether a $slug is in a category.

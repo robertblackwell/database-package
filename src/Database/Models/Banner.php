@@ -101,7 +101,7 @@ class Banner extends CommonSql
 	{
 		$c = "  where trip='".$trip."' order by last_modified_date desc, slug limit 0,1 ";
 		// $c = "  where trip='".$trip."' ";
-		$res = self::$sql->select_objects(self::$table_name, __CLASS__, $c, false);
+		$res = self::$sql->select_array_of_objects(self::$table_name, __CLASS__, $c, false);
 		//var_dump($res);
 		$o = self::get_by_trip_slug($res->trip, $res->slug);
 		return $o;
@@ -130,7 +130,7 @@ class Banner extends CommonSql
 	public static function get_by_slug(string $slug)
 	{
 		$q = "WHERE slug='".$slug."'";
-		$r = self::$sql->select_objects(self::$table_name, __CLASS__, $q, false);
+		$r = self::$sql->select_single_object(self::$table_name, __CLASS__, $q, false);
 		if (is_null($r) || !$r) {
 			// print "<p>" .__METHOD__ ." slug: {$slug} got null</p>";
 			return null;

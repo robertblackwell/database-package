@@ -8,7 +8,7 @@ include "./util_test.php";
 print "running import tests";
 
 	$runner = new TestRunnerCLI();
-	var_dump($runner);
+	// var_dump($runner);
 	$runner->add_test_case(new test_import_album());
 	$runner->add_test_case(new test_import_article());
 	$runner->print_results();

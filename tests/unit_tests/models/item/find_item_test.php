@@ -32,7 +32,7 @@ class ItemFindTest extends LocalTestcase
 		$this->assertEqual(get_class($result[0]), "Database\Models\Item");
 		foreach ($result as $i) {
 			$f = Item::get_by_trip_slug($i->trip, $i->slug);
-			\Trace::debug("slug: ".$i->slug." has camping: ".(int)$f->has_camping);
+			// \Trace::debug("slug: ".$i->slug." has camping: ".(int)$f->has_camping);
 			$this->assertTrue($f->has_camping);
 		}
 		Trace::function_exit();
@@ -43,7 +43,7 @@ class ItemFindTest extends LocalTestcase
 		$result = Item::find();
 		foreach($result as $r) {
 			$klass = get_class($r);
-			print "\n{$klass} {$r->type}  {$r->slug} fi: [{$r->featured_image}]\n";
+			// print "\n{$klass} {$r->type}  {$r->slug} fi: [{$r->featured_image}]\n";
 			$this->assertEqual($klass, "Database\Models\Item");
 		}
 		$this->assertNotEqual($result, null);
@@ -58,7 +58,7 @@ class ItemFindTest extends LocalTestcase
 		$result = Item::find(3);
 		foreach($result as $r) {
 			$klass = get_class($r);
-			print "\n{$klass} {$r->type}  {$r->slug}\n";
+			// print "\n{$klass} {$r->type}  {$r->slug}\n";
 			$this->assertEqual($klass, "Database\Models\Item");
 			}
 		$this->assertNotEqual($result, null);

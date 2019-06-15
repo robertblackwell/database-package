@@ -39,10 +39,10 @@ class Model extends Row implements iSqlIzable
 	protected $sql_primary_key;
 	/**
 	* Constructor.
-	* @param array $obj Sql result row.
+	* @param mixed $obj Sql result row or HEDobject, ArrayAccess.
 	* @return Model
 	*/
-	public function __construct(array $obj)
+	public function __construct($obj)
 	{
 		//print __CLASS__.":".__METHOD__.":";
 		parent::__construct($obj);
