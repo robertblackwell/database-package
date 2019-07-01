@@ -128,7 +128,7 @@ class SqlObject
 		$this->select_db();
 		$result = mysqli_query($this->db_connection, "SHOW FIELDS IN ".$table.";") ;
 		//var_dump($result);exit();
-		if (!$result)
+		if ($result === false)
 			throw new \Exception(__METHOD__." could not SHOW FIELDS for $table ".mysqli_error($this->db_connection));
 
 		while ($row = mysqli_fetch_assoc($result)) {
@@ -164,7 +164,7 @@ class SqlObject
 	{
 		$n = [];
 		$result = mysqli_query($this->db_connection, "SHOW TABLES;");
-		if (!$result)
+		if ($result === false)
 			throw new \Exception("could not SHOW TABLES ".mysqli_error());
 		while ($row = mysqli_fetch_assoc($result)) {
 			$n[] = $row["Tables_in_".strtolower(self::$config['db_name'])];
@@ -192,7 +192,7 @@ class SqlObject
 			$query .= " ".$criteria.";";
 		}
 		$result = mysqli_query($this->db_connection, $query);
-		if (!$result)
+		if ($result === false)
 			throw new \Exception("could not do a query $query in ".__FILE__." at line ".__LINE__);
 
 		return $result;
@@ -228,7 +228,7 @@ class SqlObject
 			$query .= " ".$criteria.";";
 		}
 		$result = mysqli_query($this->db_connection, $query);
-		if (!$result)
+		if ($result === false)
 			throw new \Exception(
 				"could not do a query $query in " . __FILE__ . " at line " . __LINE__ . " "
 				. mysqli_error($this->db_connection) . "  " . $criteria
@@ -270,7 +270,7 @@ class SqlObject
 			$query .= " ".$criteria.";";
 		}
 		$result = mysqli_query($this->db_connection, $query);
-		if (!$result)
+		if ($result === false)
 			throw new \Exception(
 				"could not do a query $query in " . __FILE__ . " at line " . __LINE__ . " "
 				. mysqli_error($this->db_connection) . "  " . $criteria
@@ -312,34 +312,9 @@ class SqlObject
 		string $criteria = "",
 		bool $array_always = true
 	) {
-		//print "<p>".__CLASS__."::".__METHOD__."($table, $criteria)</p>";
 		$a = $this->select_array_of_objects($table, $class, $criteria);
-		// $a = array();
-		// $query = "SELECT * FROM $table";
-		// if (($criteria != null) && ($criteria != "")) {
-		// 	$query .= " ".$criteria.";";
-		// }
-		// //var_dump($query);
-		// $result = mysqli_query($this->db_connection, $query);
-		// if (!$result)
-		// 	throw new \Exception(
-		// 		"could not do a query $query in " . __FILE__ . " at line " . __LINE__ . " "
-		// 		. mysqli_error($this->db_connection) . "  " . $criteria
-		// 	);
-		// //var_dump($result);
-		// while ($row = mysqli_fetch_assoc($result)) {
-		// 	//$a[] = ORMModel::rowToObject($row, ORMModel::makeModelName($return_class)) ;
-		// 	//$a[] = ORMModel::rowToModelObject($row, new $model_class()) ;
-		// 	//$a[] = static::$factory_class::static::$factory_method($row);
-		// 	$a[] = new $class($row);
-		// }
-		//if (count($a)==0)
-		//	return null;
-		//var_dump($row);
-		//var_dump($a);
 		if ((count($a) == 1)&&(!$array_always)) return $a[0];
 		if ((count($a) == 0)&&(!$array_always)) return null;
-		//print "<p>".__CLASS__."::".__METHOD__."($table, $criteria)</p>";
 		return $a;
 	}
 
@@ -358,7 +333,7 @@ class SqlObject
 	{
 		$a = array();
 		$result = mysqli_query($this->db_connection, $query) ;
-		if (!$result)
+		if ($result === false)
 			throw new \Exception("could not do a query $query in ".__FILE__." at line ".__LINE__);
 		return $result;
 	}
@@ -378,7 +353,7 @@ class SqlObject
 	{
 		$a = [];
 		$result = mysqli_query($this->db_connection, $query);
-		if (!$result)
+		if ($result === false)
 			throw new Exception(
 				"could not do a query $query in ".__FILE__
 				." at line ".__LINE__." ".mysqli_error($this->db_connection)
@@ -389,6 +364,60 @@ class SqlObject
 		}
 		if ((count($a) == 1)&&(!$array_always)) return $a[0];
 		if ((count($a) == 0)&&(!$array_always)) return null;
+		return $a;
+	}
+	/**
+	* performs a query that returns a single model object or null
+	* @param string  $query        A complete sql query string.
+	* @param string  $class        The name of the class to construct from each query result.
+	* @param boolean $array_always When true always return an array of objects even for 1 or zero results.
+	* @return mixed Either a single model object or null.
+	*
+	* @throws Exception When query fails.
+	*
+	* @todo - seems to be a problem - what if no rows are found, wont that throw an exception
+	*/
+	public function query_single_object(string $query, string $class)
+	{
+		$a = [];
+		$result = mysqli_query($this->db_connection, $query);
+		if ($result === false)
+			throw new Exception(
+				"could not do a query $query in ".__FILE__
+				." at line ".__LINE__." ".mysqli_error($this->db_connection)
+			);
+
+		while ($row = mysqli_fetch_assoc($result)) {
+			$a[] = new $class($row);
+		}
+		if ((count($a) == 1)) return $a[0];
+		if ((count($a) == 0)) return null;
+		throw new \Exception('should not have found more than a single row');
+	}
+
+	/**
+	* performs a query that can return an array of zero or more objects
+	* @param string  $query        A complete sql query string.
+	* @param string  $class        The name of the class to construct from each query result.
+	* @return array An array() of zero or more model objects.
+	*
+	* @throws Exception When query fails.
+	*
+	* @todo - seems to be a problem - what if no rows are found, wont that throw an exception
+	*/
+	public function query_array_of_objects(string $query, string $class) : array
+	{
+		$a = [];
+		$result = mysqli_query($this->db_connection, $query);
+		if (!$result)
+			throw new Exception(
+				"could not do a query $query in ".__FILE__
+				." at line ".__LINE__." ".mysqli_error($this->db_connection)
+			);
+
+		while ($row = mysqli_fetch_assoc($result)) {
+			$a[] = new $class($row);
+		}
 		return $a;
 	}
 

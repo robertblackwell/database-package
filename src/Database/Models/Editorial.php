@@ -3,7 +3,7 @@ namespace Database\Models;
 
 use Database\HED\HEDObject;
 use Database\Locator;
-use Database\Models\Base\CommonSql;
+use Database\Models\Model;
 
 /**
 * @brief This object represents photo albums as displayed on the sites various "photo" pages and as contained
@@ -13,7 +13,7 @@ use Database\Models\Base\CommonSql;
 *
 *
 */
-class Editorial extends CommonSql
+class Editorial extends Model
 {
 		/** These are essential non derived properties */
 	/** @var string $version */
@@ -144,7 +144,7 @@ class Editorial extends CommonSql
 	{
 		$c = "  where trip='".$trip."' order by last_modified_date desc, slug limit 0,1 ";
 		// $c = "  where trip='".$trip."' ";
-		$res = self::$sql->select_objects(self::$table_name, __CLASS__, $c, false);
+		$res = self::$sql->select_single_object(self::$table_name, __CLASS__, $c);
 		//var_dump($res);
 		$o = self::get_by_trip_slug($res->trip, $res->slug);
 		return $o;

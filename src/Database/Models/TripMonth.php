@@ -1,12 +1,12 @@
 <?php
 namespace Database\Models;
 
-use Database\Models\Base\CommonSql;
+use Database\Models\Model;
 
 /**
 * This class a realtionship between the yyyy+mm of a published_date and a trips.
 */
-class TripMonth extends CommonSql
+class TripMonth extends Model
 {
 	/** @var string $trip */
 	public $trip;

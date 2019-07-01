@@ -3,7 +3,7 @@ namespace Database\Models;
 
 use Database\Locator;
 
-use Database\Models\Base\CommonSql;
+use Database\Models\Model;
 
 /***/
 class Post extends ItemBase

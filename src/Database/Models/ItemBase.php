@@ -2,7 +2,7 @@
 namespace Database\Models;
 
 use Database\Models\NextPrev;
-use Database\Models\Base\CommonSql;
+use Database\Models\Model;
 
 /*!
 ** @ingroup Models
@@ -10,7 +10,7 @@ use Database\Models\Base\CommonSql;
 * post, entry or article. One of the reasons for this is to have a common next/prev
 * object included as a property
 */
-class ItemBase extends CommonSql
+class ItemBase extends Model
 {
 	protected $next_prev;
 	/**

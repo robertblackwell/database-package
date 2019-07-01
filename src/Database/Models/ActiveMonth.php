@@ -1,13 +1,13 @@
 <?php
 namespace Database\Models;
 
-use Database\Models\Base\CommonSql;
+use Database\Models\Model;
 
 /**
 * This class represents a month (year+month) when some item (Entry, Post, Article)
 * is present in the database with that year+month as the published_date.
 */
-class ActiveMonth extends CommonSql
+class ActiveMonth extends Model
 {
 	
 	/** @var string $year */
@@ -56,7 +56,7 @@ class ActiveMonth extends CommonSql
 		$c = "SELECT distinct year(published_date) as `year`, month(published_date) as `month` "
 		// ." FROM my_items $where order by published_date desc";
 		." FROM my_items $where order by year desc, month desc";
-		return self::$sql->query_objects($c, __CLASS__);
+		return self::$sql->query_array_of_objects($c, __CLASS__);
 	}
 	/**
 	* Find all distinct months (yyyy-mm) that appear in the published_date property of ALL Item objects
@@ -72,6 +72,6 @@ class ActiveMonth extends CommonSql
 		$c = "SELECT distinct year(published_date) as `year`, month(published_date) as `month` "
 		// ." FROM my_items WHERE (type='post' or type='entry')   order by published_date desc";
 		." FROM my_items WHERE (type='post' or type='entry')   order by year desc , month desc";
-		return self::$sql->query_objects($c, __CLASS__);
+		return self::$sql->query_array_of_objects($c, __CLASS__);
 	}
 }

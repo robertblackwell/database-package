@@ -8,7 +8,7 @@ namespace Database;
 use \Database\SqlObject as SQLObject;
 use \Database\Locator as Locator;
 use \Exception as Exception;
-use Database\Models\Base\CommonSql;
+use Database\Models\Model;
 use \Database\HED\HEDObject as HEDObject;
 use \Registry as Registry;
 
@@ -24,6 +24,7 @@ class DbObject
 
 	/**
 	* Holds a reference to a Locator object - convenience so that dont have to keep getting it
+	* @var Database\Locator $locator 
 	*/
 	public static $locator;
 
@@ -68,9 +69,9 @@ class DbObject
 		*/
 		// Models\Base\ModelBase::$sql = self::$sql;
 		// Models\Base\ModelBase::$locator = self::$locator;
-		Models\Base\Model::$sql = self::$sql;
-		Models\Base\Model::$locator = self::$locator;
-		Models\Base\CommonSql::init(self::$sql, self::$locator);
+		// Models\Base\Model::$sql = self::$sql;
+		// Models\Base\Model::$locator = self::$locator;
+		Models\Model::init(self::$sql, self::$locator);
 	}
 	/**
 	* Gets the singleton instance of a Database\DbObject class

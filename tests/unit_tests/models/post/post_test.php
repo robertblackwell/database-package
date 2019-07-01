@@ -18,7 +18,7 @@ class PostPostTest extends LocalTestcase
 		global $config;
 		Db::init($config);
 		$db = Db::get_instance();
-		$this->test_trip = "rtw";
+		$this->test_trip = "bmw11";
 		$this->test_slug = "tuk18A";
 	}
 	function assert_test_post($result)
@@ -28,7 +28,7 @@ class PostPostTest extends LocalTestcase
 		$this->assertEqual($result->type, "post");
 		$this->assertEqual($result->slug, "tuk18A");
 		$this->assertEqual($result->status, "draft");
-		$this->assertEqual($result->trip, "rtw");
+		$this->assertEqual($result->trip, "bmw11");
 		$this->assertEqual($result->creation_date, "2018-06-19");
 		$this->assertEqual($result->published_date, "2018-06-19");
 		$this->assertEqual($result->last_modified_date, "2018-06-19");
@@ -45,6 +45,7 @@ class PostPostTest extends LocalTestcase
 	{
 		Trace::function_entry();
 		$result = Database\Models\Item::get_by_trip_slug($this->test_trip, $this->test_slug);
+
 		$this->assert_test_post($result);
 		Trace::function_exit();
 	}

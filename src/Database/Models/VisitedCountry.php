@@ -1,12 +1,12 @@
 <?php
 namespace Database\Models;
 
-use Database\Models\Base\CommonSql;
+use Database\Models\Model;
 
 /**
 * This class represents a country for which there is a trip entry.
 */
-class VisitedCountry extends CommonSql
+class VisitedCountry extends Model
 {
 	/** @var string $country */
 	public $country;

@@ -1,14 +1,14 @@
 <?php
 namespace Database\Models;
 
-use Database\Models\Base\CommonSql;
+use Database\Models\Model;
 
 /**
 * This class represents a category.
 * @property string category
 * @property string $trip
 */
-class CategoryView extends CommonSql
+class CategoryView extends Model
 {
 	/** @var string category */
 	public $category;
@@ -71,7 +71,7 @@ class CategoryView extends CommonSql
 				" inner join".
 					" my_items on categorized_items.item_slug = my_items.slug".
 					" order by category asc $count_str ";
-		$r = self::$sql->query_objects($q, __CLASS__, true);
+		$r = self::$sql->query_array_of_objects($q, __CLASS__);
 		//var_dump($r);exit();
 		return $r;
 	}

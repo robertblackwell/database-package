@@ -3,13 +3,13 @@ namespace Database\Models;
 
 use Database\iSqlIzable;
 use Database\Locator;
-use Database\Models\Base\CommonSql;
+use Database\Models\Model;
 
 /**
 * This class provides a view of the my_items table that returns all the titles of items of type "article".
 *
 */
-class ArticleTitle extends CommonSql
+class ArticleTitle extends Model
 {
 	/** @var string $trip */
 	public $trip;

@@ -2,7 +2,7 @@
 namespace Database\Models;
 
 use Database\iSqlIzable;
-use Database\Models\Base\CommonSql;
+use Database\Models\Model;
 use database\Models\Country;
 use Database\Locator;
 

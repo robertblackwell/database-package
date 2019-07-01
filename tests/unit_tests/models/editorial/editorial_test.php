@@ -23,7 +23,7 @@ class EditorialTest extends LocalTestcase
 	function assert_test_editorial($result)
 	{
 		$this->assertNotEqual($result, null);
-		assert(! is_null($result));
+		assert(! is_null($result), "test editorial not found - bad test date");
 		// print "<p>editorial text: ". $result->main_content ."</p>\n";
 		$this->assertEqual($result->version, "2.0");
 		$this->assertEqual($result->type, "editorial");

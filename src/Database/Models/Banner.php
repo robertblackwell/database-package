@@ -2,7 +2,7 @@
 namespace Database\Models;
 
 use Database\HED\HEDObject;
-use Database\Models\Base\CommonSql;
+use Database\Models\Model;
 use Database\Locator;
 
 /**
@@ -11,7 +11,7 @@ use Database\Locator;
 * static methods are provided for geting/finding a lists of banners and individual banner.
 *
 */
-class Banner extends CommonSql
+class Banner extends Model
 {
 	/** These are essential non derived properties */
 	public $version;
@@ -95,9 +95,9 @@ class Banner extends CommonSql
 	 * Finds the latest banner for $trip.
 	 * Then read that banner as a HEDObject and create the corresponding list of images
 	 * @param string $trip The trip for which this is being invoked.
-	 * @return \Database\Models\Banner
+	 * @return Banner
 	 */
-	public static function find_latest_for_trip(string $trip)
+	public static function find_latest_for_trip(string $trip) : ?Banner
 	{
 		$c = "  where trip='".$trip."' order by last_modified_date desc, slug limit 0,1 ";
 		// $c = "  where trip='".$trip."' ";
@@ -108,10 +108,10 @@ class Banner extends CommonSql
 	}
 	/**
 	 * Finds the latest banner regardless of $trip.
-	 * Then read that banner as a HEDObject and create the corresponding list of images
-	 * @return \Database\Models\Banner
+	 * Then read that banner as a Banner and create the corresponding list of images
+	 * @return Banner
 	 */
-	public static function find_latest()
+	public static function find_latest() : ?Banner
 	{
 		$c = " order by last_modified_date desc, slug limit 0,1 ";
 		// $c = "  where trip='".$trip."' ";
@@ -125,32 +125,27 @@ class Banner extends CommonSql
 	 * Retrieve a banner by unique identifier (slug) and hence return one of
 	 * Banner.
 	 * @param string $slug Identifies the banner to get.
-	 * @return \Database\Models\Banner
+	 * @return ?Banner
 	 */
-	public static function get_by_slug(string $slug)
+	public static function get_by_slug(string $slug) : ?Banner
 	{
 		$q = "WHERE slug='".$slug."'";
 		$r = self::$sql->select_single_object(self::$table_name, __CLASS__, $q, false);
 		if (is_null($r) || !$r) {
-			// print "<p>" .__METHOD__ ." slug: {$slug} got null</p>";
 			return null;
 		}
 		$trip = $r->trip;
 		$item = self::get_by_trip_slug($trip, $slug);
-		// $obj = new HEDObject();
-		// $fn = self::$locator->banner_filepath($trip, $slug);
-		// $obj->get_from_file($fn);
-		// $item = Factory::model_from_hed($obj);
 		return $item;
 	}
 
 	/**
 	 * @param string $trip Id for the trip.
 	 * @param string $slug Id for slug for particular entity.
-	 * @return HEDObject|null
+	 * @return Banner|null
 	 * @throws \Exception When something goes wrong.
 	 */
-	public static function get_by_trip_slug(string $trip, string $slug)
+	public static function get_by_trip_slug(string $trip, string $slug) : ? Banner
 	{
 		if (!self::$locator->banner_exists($trip, $slug))
 			return null;
@@ -196,7 +191,7 @@ class Banner extends CommonSql
 	 * Return details (name, file path, url) of the images in this banner object.
 	 * @return array Of image objects.
 	 */
-	public function getImages()
+	public function getImages() : array
 	{
 		return $this->images_list;
 	}

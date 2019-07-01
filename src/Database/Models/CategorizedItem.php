@@ -1,13 +1,13 @@
 <?php
 namespace Database\Models;
 
-use Database\Models\Base\CommonSql;
+use Database\Models\Model;
 
 /**
 ** @ingroup Models
 * This class represents a view of the items table that allows selection of a set of items by category
 */
-class CategorizedItem extends CommonSql
+class CategorizedItem extends Model
 {
 	/** @property string $trip */
 	// public $trip;
@@ -48,7 +48,7 @@ class CategorizedItem extends CommonSql
 	* @param integer $count Limit the number returned to the count value.
 	* @return array
 	*/
-	public static function find(int $count = null)
+	public static function find(int $count = null) : array
 	{
 		$count_str = ($count)? "limit 0, $count": "" ;
 		$c = "   order by category asc $count_str ";
@@ -64,9 +64,8 @@ class CategorizedItem extends CommonSql
 	public static function exists(string $category, string $slug) : bool
 	{
 		$q = "select * from categorized_items where category='".$category."' and item_slug='".$slug."'";
-		$r = self::$sql->query_objects($q, __CLASS__, false);
-		//var_dump($r);exit();
-		$ret = !is_null($r);
+		$r = self::$sql->query_array_of_objects($q, __CLASS__);
+		$ret = (count($r) > 0);
 		return $ret;
 	}
 	/**

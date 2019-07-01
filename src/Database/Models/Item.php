@@ -4,7 +4,7 @@ namespace Database\Models;
 use Database\HED\HEDObject;
 use Database\Models\Factory;
 use \Exception as Exception;
-use Database\Models\Base\CommonSql;
+use Database\Models\Model;
 use Database\Locator;
 
 /**

@@ -18,12 +18,13 @@ class BannersTest extends LocalTestcase
 		global $config;
 		Db::init($config);
 		$db = Db::get_instance();
+		// $this->load_database();
 		$this->test_trip = "rtw";
 		$this->test_slug = "active";
 	}
 	function assert_test_banner($result)
 	{
-		assert($result !== null);
+		assert($result !== null, "Banner test - rtw/active not found");
 		$this->assertEqual($result->version, "2.0");
 		$this->assertEqual($result->type, "banner");
 		$this->assertEqual($result->slug, "active");

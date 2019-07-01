@@ -13,4 +13,8 @@ class LocalTestcase extends \LiteTest\TestCase
 	{
 		
 	}
+	public function xload_database()
+	{
+		\DbPreloader::load();
+	}
 }

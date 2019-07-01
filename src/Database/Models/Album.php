@@ -4,7 +4,7 @@ namespace Database\Models;
 use Database\HED\HEDObject;
 use Database\Locator;
 use Database\iSqlIzable;
-use Database\Models\Base\CommonSql;
+use Database\Models\Model;
 
 /**
 * @brief This object represents photo albums as displayed on the sites
@@ -14,7 +14,7 @@ use Database\Models\Base\CommonSql;
 * static methods are provided for geting/finding lists of albums and individual albums.
 *
 */
-class Album extends Base\CommonSql implements iSqlIzable
+class Album extends Model 
 {
 	/** These are essential non derived properties */
 	/** @var string $version */
@@ -164,17 +164,10 @@ class Album extends Base\CommonSql implements iSqlIzable
 		$q = "WHERE slug='".$slug."'";
 		$r = self::$sql->select_single_object(self::$table_name, __CLASS__, $q, false);
 		if (is_null($r) || !$r) {
-			// print "<p>" .__METHOD__ ." slug: {$slug} got null</p>";
 			return null;
 		}
 		$trip = $r->trip;
 		$item = self::get_by_trip_slug($trip, $slug);
-		// /// @todo - call get_by_trip_slug
-		// $obj = new HEDObject();
-		// $fn = self::$locator->album_filepath($trip, $slug);
-		// $obj->get_from_file($fn);
-		// $item = Factory::model_from_hed($obj);
-		// $item->gallery = \Gallery\GalObject::create(dirname($fn));
 		return $item;
 	}
 	/**
@@ -182,7 +175,7 @@ class Album extends Base\CommonSql implements iSqlIzable
 	* @param integer $count Limits the number returned.
 	* @return array Of Album objects.
 	*/
-	public static function find(int $count = null)
+	public static function find(int $count = null) : array
 	{
 		$count_str = ($count)? "limit 0, $count": "" ;
 		$c = " order by last_modified_date desc, slug asc $count_str ";
@@ -204,7 +197,7 @@ class Album extends Base\CommonSql implements iSqlIzable
 	* @param integer $count Limits the number returned.
 	* @return array Of Album objects
 	*/
-	public static function find_for_trip(string $trip, int $count = null)
+	public static function find_for_trip(string $trip, int $count = null) : array
 	{
 		$where = ( is_null($trip) )? "": "where trip=\"".$trip."\" ";
 		$count_str = ($count)? "limit 0, $count": "" ;

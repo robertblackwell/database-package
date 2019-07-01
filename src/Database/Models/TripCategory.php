@@ -1,7 +1,7 @@
 <?php
 namespace Database\Models;
 
-use Database\Models\Base\CommonSql;
+use Database\Models\Model;
 
 /**
 * This class is a standard Model but it is a little different in that
@@ -11,7 +11,7 @@ use Database\Models\Base\CommonSql;
 * @property string category
 * @property string $trip
 */
-class TripCategory extends CommonSql
+class TripCategory extends Model
 {
 	/** @var string $trip */
 	public $trip;
