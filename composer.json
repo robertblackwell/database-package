@@ -15,7 +15,6 @@
         "vendor-dir":"vendor",
         "preferred-install": "dist"
     },
-    "bin" : ["bin/litetest.php"],
 
     "repositories": [
         {"type": "vcs","url": "/Users/robertblackwell/git-repos/gps"},
