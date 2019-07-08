@@ -120,4 +120,11 @@ class BannersTest extends LocalTestcase
 
 		Trace::function_exit();
 	}
+	function testGetLatestBanner()
+	{
+		$result = Database\Models\Banner::find_latest_for_trip($this->test_trip);
+		// var_dump($result);
+		$s = get_class($result);
+		$this->assert_equals(get_class($result), "Database\Models\Banner");
+	}
 }

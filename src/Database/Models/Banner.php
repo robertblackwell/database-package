@@ -101,7 +101,8 @@ class Banner extends Model
 	{
 		$c = "  where trip='".$trip."' order by last_modified_date desc, slug limit 0,1 ";
 		// $c = "  where trip='".$trip."' ";
-		$res = self::$sql->select_array_of_objects(self::$table_name, __CLASS__, $c, false);
+		// $res = self::$sql->select_array_of_objects(self::$table_name, __CLASS__, $c, false);
+		$res = self::$sql->select_single_object(self::$table_name, __CLASS__, $c);
 		//var_dump($res);
 		$o = self::get_by_trip_slug($res->trip, $res->slug);
 		return $o;
