@@ -234,7 +234,7 @@ class Item extends ItemBase
 	* @return array|null Of Item
 	*
 	*/
-	public static function find_for_trip(string $trip = 'rtw', int $count = null)
+	public static function find_for_trip(string $trip, int $count = null)
 	{
 		$where = " where trip='".$trip."'";
 		$count_str = ($count)? "limit 0, $count": "" ;
@@ -248,7 +248,7 @@ class Item extends ItemBase
 	* @return array|null Of Item
 	*
 	*/
-	public static function find_for_trip_asc(string $trip = 'rtw', int $count = null)
+	public static function find_for_trip_asc(string $trip, int $count = null)
 	{
 		$where = " where trip='".$trip."'";
 		$count_str = ($count)? "limit 0, $count": "" ;

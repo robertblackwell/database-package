@@ -8,17 +8,21 @@ class Trip
 	const ER = "er";
 	const BMW11 = "bmw11";
 	const AUST = "aust";
-	const ASIA20 = "asia20";
+	const ASIA2020 = "asia2020";
+	const ASIA2021 = "asia2021";
+	const SURINAME = "suriname";
 	const SITE = "site";
 
 	private static $trips = [
-		"theamericas",
-		"rtw",
-		"er",
-		"bmw11",
-		"aust",
-		"asia20",
-		"site"
+		self::ASIA2020,
+		self::ASIA2021,
+		self::AUST,
+		self::BMW11,
+		self::ER,
+		self::RTW,
+		self::SITE,
+		self::SURINAME,
+		self::THEAMERICAS
 	];
 	/**
 	* Tests a string is a valid trip code.

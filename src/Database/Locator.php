@@ -226,7 +226,7 @@ class Locator
 	* @param string $slug The unique slug for a content item.
 	* @return string The full path to the directory for the item.
 	*
-	* This one will work for theamericas trip as well as rtw
+	* This one will work for theamericas trip as well as rtw and others
 	*/
 	public function item_dir(string $trip, string $slug) : string
 	{
@@ -376,7 +376,7 @@ class Locator
 	* @param string $slug The unique slug for a content item.
 	* @return string The full path to the directory for the item.
 	*
-	* This one will work for theamericas trip as well as rtw
+	* This one will work for theamericas trip as well as rtw and others
 	*/
 	public function album_dir(string $trip, string $slug) : string
 	{
@@ -499,10 +499,10 @@ class Locator
 /////////
 	/**
 	* Returns the full path to the root directory for Banner for a trip
-	* @param string $trip Trip code. defaults to 'rtw'.
+	* @param string $trip Trip code.
 	* @return string
 	*/
-	public function banner_root(string $trip = 'rtw') : string
+	public function banner_root(string $trip) : string
 	{
 		$ret = $this->trip_root($trip)."/banners";
 		return $ret;
@@ -540,7 +540,7 @@ class Locator
 	* @param string $slug The unique slug for a content item.
 	* @return string The full path to the directory for a specific banner.
 	*
-	* This one will work for theamericas trip as well as rtw
+	* This one will work for theamericas trip as well as rtw and others
 	*/
 	public function banner_dir(string $trip, string $slug) : string
 	{
@@ -659,10 +659,10 @@ class Locator
 	}
 	/**
 	* Returns the relative path (relative to doc root) to the editorial directory for a trip.
-	* @param string $trip Trip code. Default 'rtw'.
+	* @param string $trip Trip code.
 	* @return string.
 	*/
-	private function editorial_relative(string $trip = 'rtw') : string
+	private function editorial_relative(string $trip) : string
 	{
 		$ret = str_replace($this->doc_root, "", $this->editorial_root($trip));
 		return $ret;
