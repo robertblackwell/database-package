@@ -7,6 +7,7 @@ class Trip
 	const THEAMERICAS = "theamericas";
 	const ER = "er";
 	const BMW11 = "bmw11";
+	const ANTARCTICA = "antarctica";
 	const AUST = "aust";
 	const ASIA2020 = "asia2020";
 	const ASIA2021 = "asia2021";
@@ -14,6 +15,7 @@ class Trip
 	const SITE = "site";
 
 	private static $trips = [
+		self::ANTARCTICA,
 		self::ASIA2020,
 		self::ASIA2021,
 		self::AUST,
