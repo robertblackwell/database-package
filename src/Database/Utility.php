@@ -103,10 +103,10 @@ class Utility
 	/**
 	* Remove an item (defined by $slug) from the sql database. This is the equivalent of "unpublish"
 	* @param string $slug Items id string.
-	* @return void
+	* @return mixed
 	* @throws Exception If item does not exist for that $slug value.
 	*/
-	public function deport_item(string $slug) //: void
+	public function deport_item(string $slug)
 	{
 		\Trace::function_entry();
 		$x = Item::get_by_slug($slug);
@@ -118,6 +118,7 @@ class Utility
 			throw new \Exception(__METHOD__."($slug)  mismatch slug:".$x->slug);
 		$x->sql_delete();
 		\Trace::function_exit();
+		return $x;
 	}
 	/**
 	** Import an album from its HED form into the sql database - this is the
