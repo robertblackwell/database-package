@@ -162,7 +162,7 @@ EOD;
 		<!-- a new format 22/5/2019 -->
 		<p>main entry content goes here</p>
 		<?php Skin::JournalGalleryThumbnails($trip, $entry);?>  
-		<?php //Skin::Skin::JournalGalleryByName($trip, $entry, "190421");?>  
+		<?php //Skin::JournalGalleryByName($trip, $entry, "190421");?>  
 		<p>and here</p>
 		<div id="camping">
 			<p>camping comment goes here</p>

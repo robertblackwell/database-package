@@ -172,9 +172,9 @@ class Factory
 			$result = Country::get_by_code($hed_obj->$method($k));
 		} elseif (strtolower($k) == "trip") {
 			$trip = $hed_obj->$method($k);
-			if (!Trip::is_valid($trip)) {
-				throw new \Exception("invalid trip : {$trip} hed object {$hed_obj->file_path}");
-			}
+			// if (!Trip::is_valid($trip)) {
+			// 	throw new \Exception("invalid trip : {$trip} hed object {$hed_obj->file_path}");
+			// }
 			$result = $trip;
 		} elseif (strtolower($k) == "vehicle") {
 			$result = $hed_obj->$method($k);
