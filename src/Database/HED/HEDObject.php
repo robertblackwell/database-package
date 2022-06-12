@@ -40,6 +40,7 @@ class HEDObject implements \ArrayAccess
 	* @param mixed $offset The index or key. We require it to be a string.
 	* @return mixed
 	*/
+	#[\ReturnTypeWillChange]
 	public function offsetExists($offset)
 	{
 		if (! is_string($offset)) {
@@ -53,7 +54,7 @@ class HEDObject implements \ArrayAccess
 	* @param mixed $offset The index or key. We require it to be a string.
 	* @return mixed
 	*/
-	public function offsetGet($offset)
+	public function offsetGet(mixed $offset): mixed
 	{
 		if (! is_string($offset)) {
 			$t = gettype($offset);
@@ -68,7 +69,8 @@ class HEDObject implements \ArrayAccess
 	* @return mixed
 	* @throws \Exception This is not implemented.
 	*/
-	public function offsetSet($offset, $value)
+	#[\ReturnTypeWillChange]
+	public function offsetSet(mixed $offset, mixed $value): void
 	{
 		$this->set_text($offset, $value);
 		return;
@@ -80,7 +82,7 @@ class HEDObject implements \ArrayAccess
 	* @return mixed
 	* @throws \Exception This is not implemented.
 	*/
-	public function offsetUnset($offset)
+	public function offsetUnset(mixed $offset): void
 	{
 		throw new \Exception("offsetUnset not implemented");
 	}
@@ -165,7 +167,7 @@ class HEDObject implements \ArrayAccess
 	*/
 	public function put()
 	{
-		if (!$this->file_path)
+		if (! $this->file_path)
 			throw new Exception(__METHOD__." cannot save no file_path ");
 		$this->put_to_file($this->file_path);
 	}
@@ -181,7 +183,7 @@ class HEDObject implements \ArrayAccess
 		} else {
 			$v = $this->get_text($field);
 		}
-		return (!is_null($v));
+		return (! is_null($v));
 	}
 	/**
 	* Magic get function to simulate properties. Determines type of psuedo property
@@ -194,7 +196,7 @@ class HEDObject implements \ArrayAccess
 	public function __get(string $field)
 	{
 		// print "<h1>".__METHOD__."($field) </h1>";
-		if (!$this->__isset($field)) {
+		if (! $this->__isset($field)) {
 			// print "<p>".__METHOD__."typ = $typ its a getter </p>";
 			throw new \Exception("HEDObject does not have this key/property");
 		} else {
@@ -203,11 +205,11 @@ class HEDObject implements \ArrayAccess
 		}
 		if ($field == "excerpt") {
 			$v = $this->get_excerpt();
-		} else if ($field == "main_content") {
+		} elseif ($field == "main_content") {
 			$v = $this->get_html("main_content");
-		} else if ($field == "camping") {
+		} elseif ($field == "camping") {
 			$v = $this->get_html("camping");
-		} else if ($field == "border") {
+		} elseif ($field == "border") {
 			$v = $this->get_html("border");
 		} else {
 			$v = $this->get_text($field);
@@ -313,7 +315,7 @@ class HEDObject implements \ArrayAccess
 		return $this->get_text($field);
 		$s = $this->get_text($field);
 		if (is_null($s))
-			return array();
+			return [];
 		$s = str_replace(" ", "", $s);
 		$a = explode(",", $s);
 		return $a;
@@ -370,7 +372,7 @@ class HEDObject implements \ArrayAccess
 		}
 		$ret = (strlen(trim($txt)) != 0)? 'true': 'false';
 		//print "<p>".__METHOD__." $field - return $ret</p>";
-		return  (strlen(trim($txt)) != 0);
+		return (strlen(trim($txt)) != 0);
 	}
 	/**
 	* Gets the first paragraph (first para tag child) of the given field.
@@ -382,7 +384,7 @@ class HEDObject implements \ArrayAccess
 	{
 		$doc = $this->doc;
 		$m = $this->doc->getElementById($field);
-		if (!is_null($m)) {
+		if (! is_null($m)) {
 			$children = $m->childNodes;
 			for ($i = 0; $i < $children->length; $i++) {
 				$n = $children->item($i);
@@ -407,7 +409,7 @@ class HEDObject implements \ArrayAccess
 		//print "<p>".__METHOD__."($field $value)</p>";
 		//var_dump($this);
 		$el = $this->doc->getElementById($field);
-		if (!$el)
+		if (! $el)
 			throw new Exception(__METHOD__."($field, $value) element not found");
 		//$el->nodeValue = $value;
 		//$parent = $el->parentNode;
@@ -423,5 +425,4 @@ class HEDObject implements \ArrayAccess
 		//var_dump($this->doc->saveHTML($parent));
 		//print "<p>".__METHOD__."($field $value)</p>";
 	}
-
 }

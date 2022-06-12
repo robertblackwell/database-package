@@ -62,7 +62,7 @@ class SqlObject
 	*/
 	private function db_init()
 	{
-		if (!self::$config) throw new \Exception("database ".__FUNCTION__." config not set");
+		if (! self::$config) throw new \Exception("database ".__FUNCTION__." config not set");
 		$db_name = self::$config["db_name"];
 		$this->db_name = $db_name;
 		$host = self::$config["db_host"];
@@ -186,7 +186,7 @@ class SqlObject
 	public function select(string $table, string $criteria = "")
 	{
 		//print "<p>".__CLASS__."::".__METHOD__."($table, $criteria)</p>";
-		$a = array();
+		$a = [];
 		$query = "SELECT * FROM $table";
 		if (($criteria != null) && ($criteria != "")) {
 			$query .= " ".$criteria.";";
@@ -221,8 +221,9 @@ class SqlObject
 		string $table,
 		string $class,
 		string $criteria = ""
-	) : array {
-		$a = array();
+	) : array
+	{
+		$a = [];
 		$query = "SELECT * FROM $table";
 		if (($criteria != null) && ($criteria != "")) {
 			$query .= " ".$criteria.";";
@@ -262,9 +263,10 @@ class SqlObject
 		string $table,
 		string $class,
 		string $criteria = ""
-	) {
+	)
+	{
 		$ifaces = class_implements($class);
-		$a = array();
+		$a = [];
 		$query = "SELECT * FROM $table";
 		if (($criteria != null) && ($criteria != "")) {
 			$query .= " ".$criteria.";";
@@ -311,10 +313,11 @@ class SqlObject
 		string $class,
 		string $criteria = "",
 		bool $array_always = true
-	) {
+	)
+	{
 		$a = $this->select_array_of_objects($table, $class, $criteria);
-		if ((count($a) == 1)&&(!$array_always)) return $a[0];
-		if ((count($a) == 0)&&(!$array_always)) return null;
+		if ((count($a) == 1)&&(! $array_always)) return $a[0];
+		if ((count($a) == 0)&&(! $array_always)) return null;
 		return $a;
 	}
 
@@ -331,7 +334,7 @@ class SqlObject
 	*/
 	public function query(string $query)
 	{
-		$a = array();
+		$a = [];
 		$result = mysqli_query($this->db_connection, $query) ;
 		if ($result === false)
 			throw new \Exception("could not do a query $query in ".__FILE__." at line ".__LINE__);
@@ -362,8 +365,8 @@ class SqlObject
 		while ($row = mysqli_fetch_assoc($result)) {
 			$a[] = new $class($row);
 		}
-		if ((count($a) == 1)&&(!$array_always)) return $a[0];
-		if ((count($a) == 0)&&(!$array_always)) return null;
+		if ((count($a) == 1)&&(! $array_always)) return $a[0];
+		if ((count($a) == 0)&&(! $array_always)) return null;
 		return $a;
 	}
 	/**
@@ -409,7 +412,7 @@ class SqlObject
 	{
 		$a = [];
 		$result = mysqli_query($this->db_connection, $query);
-		if (!$result)
+		if (! $result)
 			throw new Exception(
 				"could not do a query $query in ".__FILE__
 				." at line ".__LINE__." ".mysqli_error($this->db_connection)
@@ -461,7 +464,7 @@ class SqlObject
 		}
 		$query = $query . $s . " WHERE slug='". $object->slug ." ' ;";
 		$result = mysqli_query($this->db_connection, $query);
-		if (!$result)
+		if (! $result)
 			throw new \Exception("could not do a query $query in ".__FILE__." at line ".__LINE__);
 		//print "\n<p>".__FUNCTION__. " query:[$query] </p>\n";
 	}
@@ -474,7 +477,7 @@ class SqlObject
 	{
 		$query = "show fields from $table";
 		$result = mysqli_query($this->db_connection, $query);
-		if (!$result)
+		if (! $result)
 			throw new \Exception("could not do a query $query in " . __METHOD__ . " at line " . __LINE__);
 		while ($row = mysqli_fetch_assoc($result)) {
 			if ($row['Key'] == 'PRI') {
@@ -502,7 +505,7 @@ class SqlObject
 		$query = "DELETE FROM $table WHERE $p_key='" . $object->$p_key . "'";
 		//print "\n".__FUNCTION__. "query: $query \n";
 		$result = mysqli_query($this->db_connection, $query);
-		if (!$result)
+		if (! $result)
 			throw new \Exception("could not do a query $query in ".__FILE__." at line ".__LINE__);
 	}
 
@@ -544,6 +547,9 @@ class SqlObject
 				//var_dump($v);
 				exit();
 			}
+			if (is_null($v)) {
+				continue;
+			}
 			if (($k != "id")) {
 				if ($first) {
 					$cols = $cols . $k;
@@ -559,7 +565,7 @@ class SqlObject
 		//print "\n".__FUNCTION__. "query: $query \n";
 		$result = mysqli_query($this->db_connection, $query);
 		//var_dump($result);
-		if ($throw_error &&  !$result)
+		if ($throw_error &&  ! $result)
 			throw new \Exception(
 				"could not do a query $query in ".__FILE__
 				." at line ".__LINE__. " ". mysqli_error($this->db_connection)
@@ -577,7 +583,7 @@ class SqlObject
 		$query = "TRUNCATE  TABLE $table ";
 		//print "\n".__FUNCTION__. "query: $query \n";
 		$result = mysqli_query($this->db_connection, $query);
-		if (!$result)
+		if (! $result)
 			throw new \Exception("could not do a query $query in ".__FILE__." at line ".__LINE__);
 	}
 }
