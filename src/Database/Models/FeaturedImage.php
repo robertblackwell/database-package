@@ -101,10 +101,10 @@ class FeaturedImage
 	* plus the featured image text.
 	* @param string $itemDir The full path of a directory representing an Article, Entry or Post.
 	* @param string $fi_text A string with a featured image encoding.
-	* @return string A full path to the thumbnail of a featured image.
+	* @return string|null  A string full path to the thumbnail of a featured image, or null if no featured image.
 	* @throws \Exception If the $fi_text cannot be decoded.
 	*/
-	public static function fromPathAndText(string $itemDir, string $fi_text) : string
+	public static function fromPathAndText(string $itemDir, string $fi_text) : string | null
 	{
 		$text = $fi_text;
 		if (is_null($text) || ($text == '')) {
@@ -151,10 +151,12 @@ class FeaturedImage
 			} else {
 				throw new \Exception("Not sure why we got here. Invalid featured_image {$text}");
 			}
-			$image = ( count($gal->images) > $index ) ? $gal->images[$index] : null;
+			$image = (count($gal->images) > $index) ? $gal->images[$index] : null;
 			//$res = ( count($gal->images) > $index ) ? $gal->images[$index]->getSiteRelativeThumbnailURL() : NULL;
-			$res = ( count($gal->images) > $index ) ? $gal->images[$index]->getThumbnailPath() : null;
-			$res = str_replace("//", "/", $res);
+			$res = (count($gal->images) > $index) ? $gal->images[$index]->getThumbnailPath() : null;
+			if (! is_null($res)) {
+				$res = str_replace("//", "/", $res);
+			}
 		/*
 		** Its the default - use the first image in the default gallery
 		*/
@@ -182,7 +184,7 @@ class FeaturedImage
 			}
 		}
 		$res = (is_null($res))? null :str_replace(Locator::get_instance()->doc_root(), "", $res);
-		$res = (is_null($res))? "FI_TEXT[{$fi_text}]" :str_replace(Locator::get_instance()->doc_root(), "", $res);
+		// $res = (is_null($res))? "FI_TEXT[{$fi_text}]" :str_replace(Locator::get_instance()->doc_root(), "", $res);
 		\Trace::debug("result: $res");
 		return $res;
 	}
@@ -249,9 +251,9 @@ class FeaturedImage
 				\Trace::debug("Else    gal_name :default index: $index");
 				throw new \Exception("Not sure why we got here");
 			}
-			$image = ( count($gal->images) > $index ) ? $gal->images[$index] : null;
+			$image = (count($gal->images) > $index) ? $gal->images[$index] : null;
 			//$res = ( count($gal->images) > $index ) ? $gal->images[$index]->getSiteRelativeThumbnailURL() : NULL;
-			$res = ( count($gal->images) > $index ) ? $gal->images[$index]->getThumbnailPath() : null;
+			$res = (count($gal->images) > $index) ? $gal->images[$index]->getThumbnailPath() : null;
 		/*
 		** Its the default - use the first image in the default gallery
 		*/
