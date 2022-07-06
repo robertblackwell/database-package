@@ -157,13 +157,14 @@ class Entry extends ItemBase
 			"camping",
 			$this->properties["camping"]
 		);
-		$this->has_camping = (! is_null($this->camping)) && (strlen(trim($this->camping)) != 0);
+		$k = ($this->camping !== null) ? strlen(trim($this->camping)) : 0;
+		$this->has_camping = (! is_null($this->camping)) && ($k != 0);
 
 		$this->border = $helper->get_optional_property_value(
 			"border",
 			$this->properties["border"]
 		);
-		$this->has_border = (! is_null($this->border))  && (strlen(trim($this->camping)) != 0);
+		$this->has_border = (! is_null($this->border))  && ($k != 0);
 		parent::__construct($obj);
 	}
 	/**

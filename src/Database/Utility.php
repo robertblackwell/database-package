@@ -368,23 +368,27 @@ class Utility
 			\Trace::debug("starting $items_dir/$iname");
 
 			// print __METHOD__."<p> {$items_dir} {$iname}";
-			
-			$o = new \Database\HED\HEDObject();
-			$o->get_from_file($items_dir."/".$iname."/content.php");
-			$obj = \Database\Models\Factory::model_from_hed($o);
-			
-			// print "{$obj->trip} {$obj->slug} </p>";
+			$pa = "$items_dir/$iname/content.php"; 
+			if(is_file($items_dir."/".$iname."/content.php")) {
+				$o = new \Database\HED\HEDObject();
+				$o->get_from_file($items_dir."/".$iname."/content.php");
+				$obj = \Database\Models\Factory::model_from_hed($o);
+				
+				// print "{$obj->trip} {$obj->slug} </p>";
 
-			if ($iname != $obj->slug)
-				throw new \Exception(
-					__METHOD__."($items_dir) file name and slug do not match file:$iname slug:".$obj->slug
-				);
-			$items[] = $obj->slug;
-			if ($o->type == 'entry')
-				$this->fix_country($obj);
+				if ($iname != $obj->slug)
+					throw new \Exception(
+						__METHOD__."($items_dir) file name and slug do not match file:$iname slug:".$obj->slug
+					);
+				$items[] = $obj->slug;
+				if ($o->type == 'entry')
+					$this->fix_country($obj);
 
-			$obj->sql_insert();
-			\Trace::debug("<p>ending $iname</p>");
+				$obj->sql_insert();
+				\Trace::debug("<p>ending $iname</p>");
+			} else {
+				print("<p>$pa is not a valid file</p>");
+			}
 		}
 		\Trace::function_exit();
 	}
@@ -402,20 +406,25 @@ class Utility
 		$items = array();
 		foreach ($item_names as $iname) {
 			\Trace::alert("starting $items_dir/$iname");
-			$o = new \Database\HED\HEDObject();
-			$o->get_from_file($items_dir."/".$iname."/content.php");
-			$obj = Database\Models\Factory::model_from_hed($o);
-			if ($iname != $obj->slug)
-				throw new Exception(
-					__METHOD__."($items_dir) file name and slug do not match file:$iname slug:".$x->slug
-				);
-			$items[] = $obj;
+			$pa = "$items_dir/$iname/content.php"; 
+			if(is_file($items_dir."/".$iname."/content.php")) {
+				$o = new \Database\HED\HEDObject();
+				$o->get_from_file($items_dir."/".$iname."/content.php");
+				$obj = Database\Models\Factory::model_from_hed($o);
+				if ($iname != $obj->slug)
+					throw new Exception(
+						__METHOD__."($items_dir) file name and slug do not match file:$iname slug:".$x->slug
+					);
+				$items[] = $obj;
 
-			if ($o->type == "entry") {
-				$this->fix_country($obj);
+				if ($o->type == "entry") {
+					$this->fix_country($obj);
+				}
+				$obj->sql_insert();
+				\Trace::alert("<p>ending $iname</p>");
+			} else {
+				print("<p>rebuild_db_from $items_dir $pa is not a valid content file<p>");
 			}
-			$obj->sql_insert();
-			\Trace::alert("<p>ending $iname</p>");
 		}
 	}
 }
