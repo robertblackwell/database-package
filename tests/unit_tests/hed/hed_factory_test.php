@@ -1,5 +1,7 @@
 <?php
 
+use HedTest\Tools;
+
 use Database\DbObject as Db;
 use Database\Models\Item;
 use Database\Models\Album;
@@ -10,14 +12,14 @@ use Unittests\LocalTestcase;
 
 class Test_Factory extends LocalTestcase
 {
-	function setUp()
+	public function setUp()
 	{
 		global $config;
 		Db::init($config);
 //        $this->db = new Db($config);
 		//var_dump(Locator::get_instance()->doc_root());//exit();
 	}
-	function test_default_gal()
+	public function test_default_gal()
 	{
 		Trace::function_entry();
 		$o = new HEDObject();
@@ -28,7 +30,7 @@ class Test_Factory extends LocalTestcase
 		$this->assertEqual(get_class($e), "Database\Models\Entry");
 		Trace::function_exit();
 	}
-	function test_explicit_gal()
+	public function test_explicit_gal()
 	{
 		Trace::function_entry();
 		$o = new HEDObject();
@@ -39,7 +41,7 @@ class Test_Factory extends LocalTestcase
 		$this->assertEqual(get_class($e), "Database\Models\Entry");
 		Trace::function_exit();
 	}
-	function test_default_everything()
+	public function test_default_everything()
 	{
 		Trace::function_entry();
 		$o = new HEDObject();
@@ -50,7 +52,7 @@ class Test_Factory extends LocalTestcase
 		$this->assertEqual(get_class($e), "Database\Models\Entry");
 		Trace::function_exit();
 	}
-	function test_partial_path()
+	public function test_partial_path()
 	{
 		Trace::function_entry();
 		$o = new HEDObject();

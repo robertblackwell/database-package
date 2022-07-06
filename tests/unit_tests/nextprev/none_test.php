@@ -39,11 +39,12 @@ class NoCriteriaTest extends LocalTestcase
     function testNoNext()
     {
 	    Trace::function_entry();
-        $result = Item::get_by_slug('180727');
+        $result = Item::get_by_slug('181002');
         $next = $result->next();
         $prev = $result->prev();
-        $this->assertEqual($prev->slug, "180726");
-        $this->assertEqual($next, null);
+        $this->assertEqual($prev->slug, "181001");
+        // var_dump($next->slug);
+        $this->assertTrue(is_null($next));
 	    Trace::function_exit();
     }
 }

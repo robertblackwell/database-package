@@ -1,5 +1,6 @@
 <?php
 
+use HedTest\Tools;
 use Database\DbObject as Db;
 use Database\Models\Item;
 use Database\Models\Album;
@@ -10,13 +11,13 @@ use Unittests\LocalTestcase;
 
 class Test_hed_location extends LocalTestcase
 {
-	function setUp()
+	public function setUp()
 	{
 		global $config;
 		Db::init($config);
 	}
 	// Load a location type HED from a file
-	function test_1()
+	public function test_1()
 	{
 		Trace::function_entry();
 		$o = new HEDObject();
@@ -41,10 +42,10 @@ class Test_hed_location extends LocalTestcase
 		return;
 	}
 	// create a location type HED in raw file format, write it and relaod it. Tests the HEDFactory
-	function test_2()
+	public function test_2()
 	{
 		Trace::function_entry();
-		system("rm -R ".dirname(__FILE__)."/data/test_location/out");
+		\HedTest\Tools\ensureDoesNotExistsDir(dirname(__FILE__)."/data/test_location/out");
 		$p = dirname(__FILE__)."/data/test_location/out/_content.php";
 		$parms = [
 			"miles" => "1234",
@@ -90,7 +91,7 @@ class Test_hed_location extends LocalTestcase
 		Trace::function_exit();
 	}
 	
-	function test_3()
+	public function test_3()
 	{
 		$parms = [
 			"latitude" => "32.12345",
@@ -141,7 +142,7 @@ class Test_hed_location extends LocalTestcase
 	}
 	// test that we can put a location in the database and get it back
 	// To do this we need to have a clean state of the database before each test
-	function test4()
+	public function test4()
 	{
 		Trace::function_entry();
 		// $loc_2 = \Database\Models\Item::get_by_slug("slug_2");

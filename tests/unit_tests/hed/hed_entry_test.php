@@ -1,5 +1,7 @@
 <?php
 
+use HedTest\Tools;
+
 use Database\DbObject as Db;
 use Database\Locator;
 use Database\Models\Item;
@@ -12,7 +14,7 @@ use Unittests\NoSqlTestcase;
 
 class HEDEntryTest extends NoSqlTestcase
 {
-	function setUp()
+	public function setUp()
 	{
 		global $config;
 		Db::init($config);
@@ -25,7 +27,7 @@ class HEDEntryTest extends NoSqlTestcase
 		system("rm -R ".$locator->item_dir($this->trip, $this->slug));
 	}
 
-	function testEntry()
+	public function testEntry()
 	{
 		Trace::function_entry();
 		$locator = Locator::get_instance();
@@ -33,7 +35,7 @@ class HEDEntryTest extends NoSqlTestcase
 		$this->slug = "hed_test_entry";
 		$p = $locator->item_filepath($this->trip, $this->slug);
 
-		system("rm -R ".$locator->item_dir($this->trip, $this->slug));
+		\HedTest\Tools\ensureDoesNotExistsDir($locator->item_dir($this->trip, $this->slug));
 		// make a HED file and object
 		$para1=<<<EOD
 <p>This is the first para. I have made it a couple of sentences
@@ -151,11 +153,10 @@ EOD;
 		<p>Hi this is some camping information.</p>
 		</div>
 		<div id="border">
-		<p>Hi this is some border information.</p>		
+		<p>Hi this is some border information.</p>
 		</div>
 		*/
 		$this->assertEqual($nobj['camping'], "<p>Hi this is some camping information.</p>");
 		$this->assertEqual($nobj['border'], "<p>Hi this is some border information.</p>");
 	}
-
 }

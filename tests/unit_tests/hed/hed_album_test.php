@@ -1,5 +1,5 @@
 <?php
-
+use HedTest\Tools;
 use Database\DbObject as Db;
 use Database\Models\Item;
 use Database\Models\Album;
@@ -23,14 +23,14 @@ class HEDAlbumTest extends LocalTestcase
 	public function tearDown()
 	{
 		$locator = Locator::get_instance();
-		system("rm -R ".$locator->album_dir($this->trip, $this->slug));
+		\HedTest\Tools\ensureDoesNotExistsDir($locator->album_dir($this->trip, $this->slug));
 	}
 	function testAlbum()
 	{
 		\Trace::function_entry();
 		$locator = Locator::get_instance();
 		$p = $locator->album_filepath($this->trip, $this->slug);
-		system("rm -R ".$locator->album_dir($this->trip, $this->slug));
+		\HedTest\Tools\ensureDoesNotExistsDir($locator->album_dir($this->trip, $this->slug));
 
 		// make a HED file and object
 		$obj = Skeleton::create_album(
@@ -39,7 +39,7 @@ class HEDAlbumTest extends LocalTestcase
 			'adate',
 			"aTitle"
 		);
-		$this->assertEqual($obj['version'],"2.0.skel");
+		$this->assertEqual($obj['version'], "2.0.skel");
 		$this->assertEqual($obj['status'], "draft");
 		$this->assertEqual($obj['type'], "album");
 		$this->assertEqual($obj['trip'], $this->trip);
@@ -51,7 +51,7 @@ class HEDAlbumTest extends LocalTestcase
 
 		$nobj = new HEDObject();
 		$nobj->get_from_file($p);
-		$this->assertEqual($nobj['version'],"2.0.skel");
+		$this->assertEqual($nobj['version'], "2.0.skel");
 		$this->assertEqual($nobj['status'], "draft");
 		$this->assertEqual($nobj['type'], "album");
 		$this->assertEqual($nobj['trip'], $this->trip);
@@ -61,7 +61,7 @@ class HEDAlbumTest extends LocalTestcase
 
 		// now lets make an Album from this hed
 		$a = new Album($nobj);
-		$this->assertEqual($a->version,"2.0.skel");
+		$this->assertEqual($a->version, "2.0.skel");
 		$this->assertEqual($a->status, "draft");
 		$this->assertEqual($a->type, "album");
 		$this->assertEqual($a->trip, $this->trip);
@@ -82,5 +82,4 @@ class HEDAlbumTest extends LocalTestcase
 		$album = new Album($hobj);
 		// print_r($album);
 	}
-
 }

@@ -13,6 +13,7 @@ class LoadTest extends LocalTestcase
 	function testDropCreateLoadForRtw()
 	{
 		\Trace::disable();
+		print("Start load test\n");
 		global $config;
 		Db::init($config);
 		$builder = new \Database\Builder();
@@ -24,12 +25,15 @@ class LoadTest extends LocalTestcase
 		$utility->load_albums($trip);
 		$utility->load_banners($trip);
 		$utility->load_editorials($trip);
+		print("End load test\n");
 	}
 	function testDbPreloader()
 	{
+		print("test DbPreload\n");
 		global $config;
 		Db::init($config);
 		\DbPreloader::load();
+		print("End Preload test\n");
 	}
 }
 ?>

@@ -1,134 +1,211 @@
 VENDORBIN="../vendor/bin"
+bootstrap="include/bootstrap.php"
 LITETEST=@$(VENDORBIN)/litetest.phar
-LITETEST=@$(VENDORBIN)/litetest
+LITETEST=@$(VENDORBIN)/litetest --bootstrap-file="$(bootstrap)" run 
 # LITETEST=@litetest
 TESTS_DIR = $(shell pwd)
 DATA_DIR =$(TESTS_DIR)/test_data
 TEST_DATA_SRC=$(TESTS_DIR)/test_data_src/data
 TEST_DATA_SRC=$(HOME)/Sites/whiteacorn/data
 
+db_tests=unit_tests/db/preload.php \
+  unit_tests/db/load.php \
+  unit_tests/db/connect_test.php \
+  unit_tests/db/meta_test.php \
+  unit_tests/db/query_test.php \
+  unit_tests/db/select_test.php
+
+db_pdo_tests=unit_tests/db_pdo/index.php
+
+fi_tests= \
+  unit_tests/featured_image/fi_test.php \
+  unit_tests/featured_image/fi_test_hed.php \
+  unit_tests/featured_image/fi_test_path.php
+
+hed_tests=unit_tests/hed/hed_album_test.php \
+  unit_tests/hed/hed_article_test.php \
+  unit_tests/hed/hed_banner_test.php \
+  unit_tests/hed/hed_editorial_test.php \
+  unit_tests/hed/hed_entry_test.php \
+  unit_tests/hed/hed_factory_test.php \
+  unit_tests/hed/hed_post_test.php 
+#   unit_tests/hed/hed_location_test.php \
+
+import_tests=unit_tests/import/album_test.php \
+  unit_tests/import/article_test.php \
+  unit_tests/import/entry_test.php \
+  unit_tests/import/locations.php \
+  unit_tests/import/post_test.php \
+  unit_tests/import/util_test.php
+
+locator_tests=unit_tests/locator/locator_test.php 
+
+model_tests= \
+  unit_tests/models/albums/album_test.php \
+  unit_tests/models/article/find_test.php \
+  unit_tests/models/article/title_test.php  \
+  unit_tests/models/article_title/title_test.php \
+  unit_tests/models/banner/banner_test.php \
+  unit_tests/models/categorized_items/add_remove_test.php \
+  unit_tests/models/categorized_items/find_test.php \
+  unit_tests/models/category/add_test.php \
+  unit_tests/models/category/find_test.php \
+  unit_tests/models/entry/entry_test.php \
+  unit_tests/models/entry_country/entry_country_test.php \
+  unit_tests/models/item/find_item_test.php  unit_tests/models/item/get_by_slug_test.php \
+  unit_tests/models/locations/location_test.php \
+  unit_tests/models/post/post_test.php \
+  unit_tests/models/tripmonths/trip_month_test.php
+#   unit_tests/models/editorial/editorial_test.php \
+
+nextprev_tests=unit_tests/nextprev/category_test.php \
+  unit_tests/nextprev/country_test.php \
+  unit_tests/nextprev/months_test.php \
+  unit_tests/nextprev/none_test.php \
+  unit_tests/nextprev/trip_test.php
 
 
-all: prepare_test_data preload locator props fi db models nextprev  import
-	$(LITETEST) --version
-db:
-	$(LITETEST) --bootstrap-file="include/bootstrap.php" \
-	unit_tests/db/load.php \
-	unit_tests/db/connect_test.php \
-	unit_tests/db/meta_test.php \
-	unit_tests/db/query_test.php \
-	unit_tests/db/select_test.php
+props_tests=unit_tests/props/album_test.php \
+  unit_tests/props/article_test.php \
+  unit_tests/props/banner_test.php \
+  unit_tests/props/editorial_test.php \
+  unit_tests/props/post_test.php \
+  unit_tests/props/entry_test.php
 
-preload:
-	$(LITETEST) --bootstrap-file="include/bootstrap.php" \
-	unit_tests/db/preload.php 
+# comment out the tests you dont want to run
+ACTIVE_TESTS=\
+  $(db_tests) \
+  $(db_pdo_tests) \
+  $(locator_tests) \
+  $(props_tests) \
+  $(model_tests) \
+  $(nextprev_tests) 
+#   $(hed_tests) \
+
+mine: prepare_test_data
+	$(LITETEST) $(hed_tests)
+
+all: prepare_test_data
+	$(LITETEST) $(ACTIVE_TESTS)
+
+# db:
+# 	$(LITETEST) --bootstrap-file="include/bootstrap.php" \
+# 	unit_tests/db/load.php \
+# 	unit_tests/db/connect_test.php \
+# 	unit_tests/db/meta_test.php \
+# 	unit_tests/db/query_test.php \
+# 	unit_tests/db/select_test.php
+
+# preload:
+# 	$(LITETEST) --bootstrap-file="include/bootstrap.php" \
+# 	unit_tests/db/preload.php 
+
+# models: album article article_title article banner category categorized_item entry entry_country item locations post tripmonth editorial 
+# 	@echo "Models done"
+
+# article:
+# 	$(LITETEST) --bootstrap-file="include/bootstrap.php" \
+# 		unit_tests/models/article/find_test.php \
+# 		unit_tests/models/article/title_test.php
+
+# article_title:
+# 	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/models/article_title/title_test.php
+
+# album:
+# 	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/models/albums/album_test.php
+
+# banner:
+# 	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/models/banner/banner_test.php
+
+# category:
+# 	$(LITETEST) --bootstrap-file="include/bootstrap.php" \
+# 		unit_tests/models/category/add_test.php \
+# 		unit_tests/models/category/find_test.php
+
+# categorized_item:	
+# 	$(LITETEST) --bootstrap-file="include/bootstrap.php" \
+# 		unit_tests/models/categorized_items/find_test.php \
+# 		unit_tests/models/categorized_items/add_remove_test.php
+
+# editorial:
+# 	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/models/editorial/editorial_test.php
+
+# entry_country:
+# 	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/models/entry_country/entry_country_test.php
+
+# entry:
+# 	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/models/entry/entry_test.php
+
+# item:
+# 	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/models/item/find_item_test.php
+# 	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/models/item/get_by_slug_test.php
+
+# locations:
+# 	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/models/locations/location_test.php
+
+# post:
+# 	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/models/post/post_test.php
+
+# tripmonth:
+# 	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/models/tripmonths/trip_month_test.php
+
+# fi:
+# 	$(LITETEST) --bootstrap-file="include/bootstrap.php" \
+# 	unit_tests/featured_image/fi_test_hed.php \
+# 	unit_tests/featured_image/fi_test_path.php
+
+# locator:
+# 	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/locator/locator_test.php
+
+# nextprev:
+# 	$(LITETEST) --bootstrap-file="include/bootstrap.php" \
+# 		unit_tests/nextprev/category_test.php \
+# 		unit_tests/nextprev/country_test.php \
+# 		unit_tests/nextprev/months_test.php \
+# 		unit_tests/nextprev/none_test.php \
+# 		unit_tests/nextprev/trip_test.php
+
+# pdo:
+# 	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/db_pdo/index.php
+
 	
-models: album article article_title banner \
-	category categorized_item \
-	entry entry_country item locations post tripmonth	editorial
+# test:
+# 	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/find_categorized_items/find_test.php
 
-article:
-	$(LITETEST) --bootstrap-file="include/bootstrap.php" \
-		unit_tests/models/article/find_test.php \
-		unit_tests/models/article/title_test.php
+# cats:
+# 	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/find_category/find_test.php
 
-article_title:
-	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/models/article_title/title_test.php
+# props: 
+# 	$(LITETEST) --bootstrap-file="include/bootstrap.php" \
+#  		unit_tests/props/album_test.php \
+# 		unit_tests/props/article_test.php \
+# 		unit_tests/props/banner_test.php \
+# 		unit_tests/props/editorial_test.php \
+# 		unit_tests/props/post_test.php \
+# 		unit_tests/props/entry_test.php
 
-album:
-	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/models/albums/album_test.php
+# hed:
+# 	$(LITETEST) --bootstrap-file="include/bootstrap.php" \
+#  		unit_tests/hed/hed_album_test.php \
+# 		unit_tests/hed/hed_article_test.php \
+# 		unit_tests/hed/hed_banner_test.php \
+# 		unit_tests/hed/hed_editorial_test.php \
+# 		unit_tests/hed/hed_post_test.php \
+# 		unit_tests/hed/hed_entry_test.php
 
-banner:
-	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/models/banner/banner_test.php
+# #unit_tests/hed/hed_factory_test.php \
+# # unit_tests/hed/hed_location_test.php \
+# # unit_tests/hed/hed_test.php
 
-category:
-	$(LITETEST) --bootstrap-file="include/bootstrap.php" \
-		unit_tests/models/category/add_test.php \
-		unit_tests/models/category/find_test.php
+# import:
+# 	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/import/album_test.php \
+# 	unit_tests/import/article_test.php \
+# 	unit_tests/import/entry_test.php \
+# 	unit_tests/import/post_test.php \
+# 	unit_tests/import/util_test.php
 
-categorized_item:	
-	$(LITETEST) --bootstrap-file="include/bootstrap.php" \
-		unit_tests/models/categorized_items/find_test.php \
-		unit_tests/models/categorized_items/add_remove_test.php
-
-editorial:
-	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/models/editorial/editorial_test.php
-
-entry_country:
-	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/models/entry_country/entry_country_test.php
-
-entry:
-	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/models/entry/entry_test.php
-
-item:
-	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/models/item/find_item_test.php
-	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/models/item/get_by_slug_test.php
-
-locations:
-	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/models/locations/location_test.php
-
-post:
-	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/models/post/post_test.php
-
-tripmonth:
-	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/models/tripmonths/trip_month_test.php
-
-fi:
-	$(LITETEST) --bootstrap-file="include/bootstrap.php" \
-	unit_tests/featured_image/fi_test_hed.php \
-	unit_tests/featured_image/fi_test_path.php
-
-locator:
-	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/locator/locator_test.php
-
-nextprev:
-	$(LITETEST) --bootstrap-file="include/bootstrap.php" \
-		unit_tests/nextprev/category_test.php \
-		unit_tests/nextprev/country_test.php \
-		unit_tests/nextprev/months_test.php \
-		unit_tests/nextprev/none_test.php 
-
-pdo:
-	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/db_pdo/index.php
-
-	
-test:
-	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/find_categorized_items/find_test.php
-
-cats:
-	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/find_category/find_test.php
-
-props: 
-	$(LITETEST) --bootstrap-file="include/bootstrap.php" \
- 		unit_tests/props/album_test.php \
-		unit_tests/props/article_test.php \
-		unit_tests/props/banner_test.php \
-		unit_tests/props/editorial_test.php \
-		unit_tests/props/post_test.php \
-		unit_tests/props/entry_test.php
-
-hed:
-	$(LITETEST) --bootstrap-file="include/bootstrap.php" \
- 		unit_tests/hed/hed_album_test.php \
-		unit_tests/hed/hed_article_test.php \
-		unit_tests/hed/hed_banner_test.php \
-		unit_tests/hed/hed_editorial_test.php \
-		unit_tests/hed/hed_post_test.php \
-		unit_tests/hed/hed_entry_test.php
-
-#unit_tests/hed/hed_factory_test.php \
-# unit_tests/hed/hed_location_test.php \
-# unit_tests/hed/hed_test.php
-
-import:
-	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/import/album_test.php \
-	unit_tests/import/article_test.php \
-	unit_tests/import/entry_test.php \
-	unit_tests/import/post_test.php \
-	unit_tests/import/util_test.php
-
-u:
-	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/import/util_test.php 
+# u:
+# 	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/import/util_test.php 
 
 paths:
 	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/paths/path_tests.php
@@ -184,6 +261,14 @@ data_cp_rtw:
 	$(CP) $(TEST_DATA_SRC)/rtw/content/130428 $(DATA_DIR)/data/rtw/content/
 	$(CP) $(TEST_DATA_SRC)/rtw/content/130713 $(DATA_DIR)/data/rtw/content/
 	$(CP) $(TEST_DATA_SRC)/rtw/content/130716 $(DATA_DIR)/data/rtw/content/
+
+	$(CP) $(TEST_DATA_SRC)/rtw/content/180928 $(DATA_DIR)/data/rtw/content/
+	$(CP) $(TEST_DATA_SRC)/rtw/content/180929 $(DATA_DIR)/data/rtw/content/
+	$(CP) $(TEST_DATA_SRC)/rtw/content/180930 $(DATA_DIR)/data/rtw/content/
+	$(CP) $(TEST_DATA_SRC)/rtw/content/181001 $(DATA_DIR)/data/rtw/content/
+	$(CP) $(TEST_DATA_SRC)/rtw/content/181002 $(DATA_DIR)/data/rtw/content/
+
+
 	$(CP) $(TEST_DATA_SRC)/rtw/content/vladivostok $(DATA_DIR)/data/rtw/content/
 	$(CP) $(TEST_DATA_SRC)/rtw/content/whatsbeenhappening $(DATA_DIR)/data/rtw/content/
 	$(CP) $(TEST_DATA_SRC)/rtw/content/tires $(DATA_DIR)/data/rtw/content/
@@ -214,6 +299,10 @@ data_cp_rtw:
 data_cp_er:
 	$(CP) $(TEST_DATA_SRC)/er/content/110620 $(DATA_DIR)/data/er/content/
 	$(CP) $(TEST_DATA_SRC)/er/content/110621 $(DATA_DIR)/data/er/content/
+
+	$(CP) $(TEST_DATA_SRC)/er/content/160706 $(DATA_DIR)/data/er/content/
+	$(CP) $(TEST_DATA_SRC)/er/content/160707 $(DATA_DIR)/data/er/content/
+
 
 data_cp_bmw11:
 	$(CP) $(TEST_DATA_SRC)/bmw11/content/180624 $(DATA_DIR)/data/bmw11/content/

@@ -9,7 +9,7 @@ use \DbPreloader as DbPreloader;
 
 // phpcs:disable
 
-class ArticleTest extends LocalTestcase
+class ArticleFindTest extends LocalTestcase
 {
 	function setUp()
 	{

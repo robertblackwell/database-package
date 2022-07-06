@@ -86,6 +86,50 @@ class NextPrev
 		$this->sql = $sql;
 	}
 	/**
+	* Finds the next entry within entries for a trip.
+	* @param string $trip A string representing a trip.
+	* @param string $class   Name of the class to instantiate.
+	* @return Entry | Post | null
+	*/
+	public function next_within_trip(string $trip, string $class = '\Database\Model\Item')
+	{
+		$trip_str = ($trip != null)
+			? " where trip = '$trip' and type='entry' "
+			: " where type='entry' " ;
+		$query =
+			"select * from my_items "
+				." $trip_str and "
+				. $this->after()
+				. $this->order_by_asc_with_limit;
+		//var_dump($query);
+		$r =  $this->sql->query_objects($query, $class, false);
+		//var_dump($r);
+		return $r;
+	}
+	/**
+	* Finds the prev entry within entries for a trip.
+	* @param string $trip A string representing a trip.
+	* @param string $class   Name of the class to instantiate.
+	* @return Entry | Post | null
+	*/
+	public function prev_within_trip(string $trip, string $class = '\Database\Model\Item')
+	{
+		$trip_str = ($trip != null)
+			? " where trip = '$trip' and type='entry' "
+			: " where type='entry' " ;
+		$query =
+			"select * from my_items "
+				." $trip_str and "
+				. $this->before()
+				. $this->order_by_desc_with_limit;
+		//var_dump($query);
+		$r =  $this->sql->query_objects($query, $class, false);
+		//var_dump($r);
+		return $r;
+	}
+
+
+	/**
 	* Finds the next entry within all the entries for a country.
 	* @param string $country A string representing a country.
 	* @param string $class   Name of the class to instantiate.
@@ -227,7 +271,7 @@ class NextPrev
 	public function next($criteria = null, string $class = '\Database\Models\Item')
 	{
 		if (($criteria != null)) {
-			if (!is_array($criteria)) {
+			if (! is_array($criteria)) {
 				$c = (is_object($criteria)? get_class($criteria): gettype($criteria));
 				throw new \Exception(__CLASS__.'::'.__FUNCTION__." criteria is not array is: ".$c);
 			}
@@ -241,14 +285,17 @@ class NextPrev
 				} elseif (array_key_exists('months', $criteria)) {
 					$month = $criteria['months'];
 					return $this->next_within_month($month, $class);
+				} elseif (array_key_exists('trip', $criteria)) {
+					$trip = $criteria['trip'];
+					return $this->next_within_trip($trip, $class);
 				} else {
 					throw new \Exception(__CLASS__.'::'.__FUNCTION__." criteria is not category is: "
 					. print_r($criteria, true));
 				}
 			} else {
 				throw new \Exception(__CLASS__.'::'.__FUNCTION__." too many/few : "
-					. count($criteria) ."] array elements : "
-					. print_r($criteria, true));
+				. count($criteria) ."] array elements : "
+				. print_r($criteria, true));
 			}
 		}
 		return $this->next_absolute($class);
@@ -264,7 +311,7 @@ class NextPrev
 	public function prev($criteria = null, string $class = '\Database\Models\Item')
 	{
 		if (($criteria != null)) {
-			if (!is_array($criteria)) {
+			if (! is_array($criteria)) {
 				$c = (is_object($criteria)? get_class($criteria): gettype($criteria));
 				throw new \Exception(__CLASS__.'::'.__FUNCTION__." criteria is not array is: ".$c);
 			}
@@ -278,6 +325,9 @@ class NextPrev
 				} elseif (array_key_exists('months', $criteria)) {
 					$month = $criteria['months'];
 					return $this->prev_within_month($month, $class);
+				} elseif (array_key_exists('trip', $criteria)) {
+					$trip = $criteria['trip'];
+					return $this->prev_within_trip($trip, $class);
 				} else {
 					throw new \Exception(
 						__CLASS__.'::'.__FUNCTION__." criteria is not category is: "
@@ -286,8 +336,8 @@ class NextPrev
 				}
 			} else {
 				throw new \Exception(__CLASS__.'::'.__FUNCTION__." too many/few["
-					. count($criteria) ."]array elements : "
-					. print_r($criteria, true));
+				. count($criteria) ."]array elements : "
+				. print_r($criteria, true));
 			}
 		}
 		return $this->prev_absolute($class);

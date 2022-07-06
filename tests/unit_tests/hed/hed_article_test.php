@@ -1,4 +1,5 @@
 <?php
+use HedTest\Tools;
 
 use Database\DbObject as Db;
 use Database\Locator;
@@ -12,7 +13,7 @@ use Unittests\LocalTestcase;
 
 class HEDArticleTest extends LocalTestcase
 {
-	function setUp()
+	public function setUp()
 	{
 		global $config;
 		Db::init($config);
@@ -22,15 +23,15 @@ class HEDArticleTest extends LocalTestcase
 	public function tearDown()
 	{
 		$locator = Locator::get_instance();
-		system("rm -R ".$locator->item_dir($this->trip, $this->slug));
+		\HedTest\Tools\ensureDoesNotExistsDir($locator->item_dir($this->trip, $this->slug));
 	}
 
-	function testsArticle()
+	public function testsArticle()
 	{
 		\Trace::function_entry();
 		$locator = Locator::get_instance();
 		$p = $locator->item_filepath($this->trip, $this->slug);
-		system("rm -R ".$locator->item_dir($this->trip, $this->slug));
+		\HedTest\Tools\ensureDoesNotExistsDir($locator->item_dir($this->trip, $this->slug));
 
 		// system("rm -R ".dirname(__FILE__)."/data/test_article");
 		// $p = dirname(__FILE__)."/data/test_article/content.php";
@@ -78,5 +79,4 @@ class HEDArticleTest extends LocalTestcase
 
 		\Trace::function_exit();
 	}
-
 }

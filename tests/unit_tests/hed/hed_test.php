@@ -1,4 +1,6 @@
 <?php
+include dirname(__file__)."/tools.php";
+use HedTest\Tools;
 
 use Database\DbObject as Db;
 use Database\Models\Item;
@@ -114,26 +116,26 @@ class Test_hed extends LocalTestcase
 	function test_3()
 	{
 		Trace::function_entry();
-		system("rm -R ".dirname(__FILE__)."/data/test_entry");
+		\HedTest\Tools\ensureDoesNotExistsDir("rm -R ".dirname(__FILE__)."/data/test_entry");
 		$p = dirname(__FILE__)."/data/test_entry/content.php";
-		HEDFactory::create_journal_entry($p, 'trip', 'slug', '120304', array('one'=>'111'));
+		HEDFactory::create_journal_entry($p, 'trip', 'slug', '120304', ['one'=>'111']);
 		
 		Trace::function_exit();
 	}
 	function test_4()
 	{
 		Trace::function_entry();
-		system("rm -R ".dirname(__FILE__)."/data/test_post");
+		\HedTest\Tools\ensureDoesNotExistsDir("rm -R ".dirname(__FILE__)."/data/test_post");
 		$p = dirname(__FILE__)."/data/test_post/content.php";
-		HEDFactory::create_post($p, 'trip', 'slug', 'apost', array('one'=>'111'));
+		HEDFactory::create_post($p, 'trip', 'slug', 'apost', ['one'=>'111']);
 		Trace::function_exit();
 	}
 	function test_5()
 	{
 		Trace::function_entry();
-		system("rm -R ".dirname(__FILE__)."/data/test_album");
+		\HedTest\Tools\ensureDoesNotExistsDir("rm -R ".dirname(__FILE__)."/data/test_album");
 		$p = dirname(__FILE__)."/data/test_album/content.php";
-		HEDFactory::create_album($p, 'trip', 'slug', '120304', "aname", array('title'=>'A Title'));
+		HEDFactory::create_album($p, 'trip', 'slug', '120304', "aname", ['title'=>'A Title']);
 		Trace::function_exit();
 	}
 	function test_6()

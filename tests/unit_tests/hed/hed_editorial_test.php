@@ -1,5 +1,7 @@
 <?php
 
+use HedTest\Tools;
+
 use Database\DbObject as Db;
 use Database\Locator;
 use Database\Models\Item;
@@ -13,7 +15,7 @@ use Unittests\NoSqlTestcase;
 
 class HEDEditorialTest extends NoSqlTestcase
 {
-	function setUp()
+	public function setUp()
 	{
 		\Trace::disable();
 		global $config;
@@ -24,15 +26,15 @@ class HEDEditorialTest extends NoSqlTestcase
 	public function tearDown()
 	{
 		$locator = Locator::get_instance();
-		system("rm -R ".$locator->editorial_dir($this->trip, $this->slug));
+		\HedTest\Tools\ensureDoesNotExistsDir($locator->editorial_dir($this->trip, $this->slug));
 	}
 
-	function testEditorial()
+	public function testEditorial()
 	{
 		\Trace::function_entry();
 		$locator = Locator::get_instance();
 		$p = $locator->editorial_filepath($this->trip, $this->slug);
-		system("rm -R ".$locator->editorial_dir($this->trip, $this->slug));
+		\HedTest\Tools\ensureDoesNotExistsDir($locator->editorial_dir($this->trip, $this->slug));
 
 		$para1=<<<EOD
 		<p>This is the first para. I have made it a couple of sentences
@@ -57,7 +59,7 @@ EOD;
 			"anImage",
 			$main_content
 		);
-		$this->assertEqual($obj['version'],"2.0.skel");
+		$this->assertEqual($obj['version'], "2.0.skel");
 		$this->assertEqual($obj['status'], "draft");
 		$this->assertEqual($obj['type'], "editorial");
 		$this->assertEqual($obj['trip'], $this->trip);
@@ -70,7 +72,7 @@ EOD;
 
 		$nobj = new HEDObject();
 		$nobj->get_from_file($p);
-		$this->assertEqual($nobj['version'],"2.0.skel");
+		$this->assertEqual($nobj['version'], "2.0.skel");
 		$this->assertEqual($nobj['status'], "draft");
 		$this->assertEqual($nobj['type'], "editorial");
 		$this->assertEqual($nobj['trip'], $this->trip);
@@ -81,7 +83,7 @@ EOD;
 
 		// now lets make an Album from this hed
 		$a = new Editorial($nobj);
-		$this->assertEqual($a->version,"2.0.skel");
+		$this->assertEqual($a->version, "2.0.skel");
 		$this->assertEqual($a->status, "draft");
 		$this->assertEqual($a->type, "editorial");
 		$this->assertEqual($a->trip, $this->trip);
@@ -107,5 +109,4 @@ EOD;
 		$this->assertEqual($editorial->image_name, "scotland.jpg");
 		$this->assertEqual($editorial->image_url, "/data/rtw/editorial/scotland/scotland.jpg");
 	}
-
 }

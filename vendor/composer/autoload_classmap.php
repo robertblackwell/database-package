@@ -6,5 +6,23 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'Attribute' => $vendorDir . '/symfony/polyfill-php80/Resources/stubs/Attribute.php',
+    'Composer\\InstalledVersions' => $vendorDir . '/composer/InstalledVersions.php',
     'GPSCoordinate' => $vendorDir . '/robertblackwell/gpscoordinates/src/GPSCoordinate.php',
+    'JsonException' => $vendorDir . '/symfony/polyfill-php73/Resources/stubs/JsonException.php',
+    'LiteTest\\Actions\\Run' => $vendorDir . '/robertblackwell/litetest/src/LiteTest/Actions/Run.php',
+    'LiteTest\\AssertionResult' => $vendorDir . '/robertblackwell/litetest/src/LiteTest/AssertionResult.php',
+    'LiteTest\\CliRunner' => $vendorDir . '/robertblackwell/litetest/src/LiteTest/CliRunner.php',
+    'LiteTest\\Commands\\InitCommand' => $vendorDir . '/robertblackwell/litetest/src/LiteTest/Commands/InitCommand.php',
+    'LiteTest\\Commands\\RunCommand' => $vendorDir . '/robertblackwell/litetest/src/LiteTest/Commands/RunCommand.php',
+    'LiteTest\\TestCase' => $vendorDir . '/robertblackwell/litetest/src/LiteTest/TestCase.php',
+    'LiteTest\\TestResult' => $vendorDir . '/robertblackwell/litetest/src/LiteTest/TestResult.php',
+    'LiteTest\\TestRunner' => $vendorDir . '/robertblackwell/litetest/src/LiteTest/TestRunner.php',
+    'LiteTest\\TestRunnerCLI' => $vendorDir . '/robertblackwell/litetest/src/LiteTest/TestRunnerCLI.php',
+    'LiteTest\\TestRunnerHTML' => $vendorDir . '/robertblackwell/litetest/src/LiteTest/TestRunnerHTML.php',
+    'LiteTest\\Version' => $vendorDir . '/robertblackwell/litetest/src/LiteTest/Version.php',
+    'PhpToken' => $vendorDir . '/symfony/polyfill-php80/Resources/stubs/PhpToken.php',
+    'Stringable' => $vendorDir . '/symfony/polyfill-php80/Resources/stubs/Stringable.php',
+    'UnhandledMatchError' => $vendorDir . '/symfony/polyfill-php80/Resources/stubs/UnhandledMatchError.php',
+    'ValueError' => $vendorDir . '/symfony/polyfill-php80/Resources/stubs/ValueError.php',
 );

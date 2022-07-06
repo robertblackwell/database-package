@@ -43,7 +43,7 @@ class FindTest extends LocalTestcase
 		foreach ($result as $i) {
 			$this->assertEqual($i->trip, "rtw");
 		}
-		$this->assertEqual(count($result), 14);
+		$this->assertEqual(count($result), 19);
 		Trace::function_exit();
 	}
 }

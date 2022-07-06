@@ -1,5 +1,7 @@
 <?php
 
+use HedTest\Tools;
+
 use Database\DbObject as Db;
 use Database\Locator;
 use Database\Models\Item;
@@ -12,7 +14,7 @@ use Unittests\NoSqlTestcase;
 
 class HEDPostTest extends NoSqlTestcase
 {
-	function setUp()
+	public function setUp()
 	{
 		global $config;
 		Db::init($config);
@@ -22,16 +24,16 @@ class HEDPostTest extends NoSqlTestcase
 	public function tearDown()
 	{
 		$locator = Locator::get_instance();
-		system("rm -R ".$locator->item_dir($this->trip, $this->slug));
+		\HedTest\Tools\ensureDoesNotExistsDir($locator->item_dir($this->trip, $this->slug));
 	}
 
-	function testPost()
+	public function testPost()
 	{
 		Trace::function_entry();
 		$locator = Locator::get_instance();
 		$p = $locator->item_filepath($this->trip, $this->slug);
 		
-		system("rm -R ".$locator->item_dir($this->trip, $this->slug));
+		\HedTest\Tools\ensureDoesNotExistsDir($locator->item_dir($this->trip, $this->slug));
 
 		$para1=<<<EOD
 		<p>This is the first para. I have made it a couple of sentences
@@ -99,5 +101,4 @@ EOD;
 
 		Trace::function_exit();
 	}
-
 }

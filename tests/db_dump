@@ -1,0 +1,314 @@
+-- MariaDB dump 10.19  Distrib 10.8.3-MariaDB, for osx10.17 (x86_64)
+--
+-- Host: localhost    Database: database_package_test_db
+-- ------------------------------------------------------
+-- Server version	10.8.3-MariaDB
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Current Database: `database_package_test_db`
+--
+
+CREATE DATABASE /*!32312 IF NOT EXISTS*/ `database_package_test_db` /*!40100 DEFAULT CHARACTER SET utf8mb4 */;
+
+USE `database_package_test_db`;
+
+--
+-- Table structure for table `albums`
+--
+
+DROP TABLE IF EXISTS `albums`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `albums` (
+  `slug` varchar(20) NOT NULL DEFAULT '',
+  `version` varchar(20) DEFAULT NULL,
+  `type` varchar(20) DEFAULT NULL,
+  `status` varchar(20) DEFAULT NULL,
+  `creation_date` date DEFAULT NULL,
+  `published_date` date DEFAULT NULL,
+  `last_modified_date` date DEFAULT NULL,
+  `trip` varchar(20) DEFAULT NULL,
+  `title` mediumtext DEFAULT NULL,
+  `abstract` mediumtext DEFAULT NULL,
+  PRIMARY KEY (`slug`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `albums`
+--
+
+LOCK TABLES `albums` WRITE;
+/*!40000 ALTER TABLE `albums` DISABLE KEYS */;
+INSERT INTO `albums` VALUES
+('england','2.0','album','draft','2016-05-17','2016-05-17','2016-05-17','rtw','England',NULL),
+('scotland','2.0','album','draft','2016-05-17','2016-05-17','2016-05-17','rtw','Scotland',NULL),
+('spain','2.0','album','draft','2017-07-20','2017-07-20','2017-07-20','rtw','Spain',NULL);
+/*!40000 ALTER TABLE `albums` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `banners`
+--
+
+DROP TABLE IF EXISTS `banners`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `banners` (
+  `version` varchar(20) DEFAULT NULL,
+  `type` varchar(20) DEFAULT NULL,
+  `slug` varchar(20) NOT NULL DEFAULT '',
+  `status` varchar(20) DEFAULT NULL,
+  `creation_date` date DEFAULT NULL,
+  `published_date` date DEFAULT NULL,
+  `last_modified_date` date DEFAULT NULL,
+  `trip` varchar(20) DEFAULT NULL,
+  PRIMARY KEY (`slug`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `banners`
+--
+
+LOCK TABLES `banners` WRITE;
+/*!40000 ALTER TABLE `banners` DISABLE KEYS */;
+INSERT INTO `banners` VALUES
+('2.0','banner','active','draft','2014-02-06','2014-02-06','2014-02-06','rtw'),
+('2.0','banner','england','draft','2015-09-07','2015-09-07','2015-09-07','rtw');
+/*!40000 ALTER TABLE `banners` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Temporary table structure for view `categories`
+--
+
+DROP TABLE IF EXISTS `categories`;
+/*!50001 DROP VIEW IF EXISTS `categories`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE TABLE `categories` (
+  `category` tinyint NOT NULL,
+  `trip` tinyint NOT NULL
+) ENGINE=MyISAM */;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Table structure for table `categorized_items`
+--
+
+DROP TABLE IF EXISTS `categorized_items`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `categorized_items` (
+  `category` varchar(20) NOT NULL DEFAULT '',
+  `item_slug` varchar(20) NOT NULL DEFAULT '',
+  PRIMARY KEY (`category`,`item_slug`),
+  KEY `categorized_items_ibfk_1` (`item_slug`),
+  CONSTRAINT `categorized_items_ibfk_1` FOREIGN KEY (`item_slug`) REFERENCES `my_items` (`slug`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `categorized_items`
+--
+
+LOCK TABLES `categorized_items` WRITE;
+/*!40000 ALTER TABLE `categorized_items` DISABLE KEYS */;
+INSERT INTO `categorized_items` VALUES
+('amendment','130427B'),
+('camping','130412'),
+('camping','130413'),
+('camping','130414'),
+('camping','130417'),
+('camping','130418'),
+('camping','130427'),
+('camping','130713'),
+('camping','130716'),
+('camping','160706'),
+('camping','160707'),
+('camping','180624'),
+('camping','180726'),
+('camping','180928'),
+('camping','180929'),
+('camping','180930'),
+('camping','181001'),
+('camping','181002'),
+('choice','vehicle2'),
+('electrical','electricalpart1'),
+('electrical','electricalpart9'),
+('introduction','vehicle1'),
+('Moto','tuk18A'),
+('plumbing','plumbing2'),
+('U500','vehicle3'),
+('vehicle','electricalpart1'),
+('vehicle','electricalpart9'),
+('vehicle','plumbing2'),
+('vehicle','vehicle1'),
+('vehicle','vehicle2'),
+('vehicle','vehicle3');
+/*!40000 ALTER TABLE `categorized_items` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `editorials`
+--
+
+DROP TABLE IF EXISTS `editorials`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `editorials` (
+  `version` varchar(20) DEFAULT NULL,
+  `type` varchar(20) DEFAULT NULL,
+  `slug` varchar(20) NOT NULL DEFAULT '',
+  `status` varchar(20) DEFAULT NULL,
+  `creation_date` date DEFAULT NULL,
+  `published_date` date DEFAULT NULL,
+  `last_modified_date` date DEFAULT NULL,
+  `trip` varchar(20) DEFAULT NULL,
+  `main_content` mediumtext DEFAULT NULL,
+  `image_name` mediumtext DEFAULT NULL,
+  PRIMARY KEY (`slug`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `editorials`
+--
+
+LOCK TABLES `editorials` WRITE;
+/*!40000 ALTER TABLE `editorials` DISABLE KEYS */;
+INSERT INTO `editorials` VALUES
+('2.0','editorial','scotland','draft','2015-09-17','2015-09-17','2015-09-17','rtw',NULL,'scotland.jpg');
+/*!40000 ALTER TABLE `editorials` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `my_items`
+--
+
+DROP TABLE IF EXISTS `my_items`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `my_items` (
+  `slug` varchar(20) NOT NULL DEFAULT '',
+  `version` varchar(20) DEFAULT NULL,
+  `type` varchar(20) DEFAULT NULL,
+  `status` varchar(20) DEFAULT NULL,
+  `creation_date` date DEFAULT NULL,
+  `published_date` date DEFAULT NULL,
+  `last_modified_date` date DEFAULT NULL,
+  `trip` varchar(20) DEFAULT NULL,
+  `vehicle` varchar(20) DEFAULT NULL,
+  `title` mediumtext DEFAULT NULL,
+  `abstract` mediumtext DEFAULT NULL,
+  `excerpt` mediumtext DEFAULT NULL,
+  `camping` mediumtext DEFAULT NULL,
+  `miles` varchar(11) DEFAULT NULL,
+  `odometer` varchar(11) DEFAULT NULL,
+  `day_number` int(11) DEFAULT NULL,
+  `latitude` double DEFAULT NULL,
+  `longitude` double DEFAULT NULL,
+  `country` varchar(80) DEFAULT NULL,
+  `place` varchar(80) DEFAULT NULL,
+  `featured_image` text DEFAULT NULL,
+  PRIMARY KEY (`slug`),
+  KEY `country` (`country`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `my_items`
+--
+
+LOCK TABLES `my_items` WRITE;
+/*!40000 ALTER TABLE `my_items` DISABLE KEYS */;
+INSERT INTO `my_items` VALUES
+('110620','1.0','entry','draft','2011-06-20','2011-06-20','2011-06-20','er','earthroamer','The hanging flume and unexpected grandeur',NULL,'<p>What finds and unexpected beauty and granduer we had today.</p>',NULL,'2605','123456',19,39.37537,-106.81277,'USA','Ruedi Resevoir White River NF','[0]'),
+('110621','1.0','entry','draft','2011-06-21','2011-06-21','2011-06-21','er','earthroamer','Towards the Denver area. Tomorrow we put the ER in for some repairs',NULL,'<p>It was cloudy this morning as we left our camp beside the dam. However within an hour\n			the sun had burned off the cloud and we had a fine day for our trip down the western slopes of the Rockies\n			into the Denver area. Tomorrow we drop the ER at the Earthroamer factory for some repairs at their favourite\n			Ford dealer.</p>',NULL,'2831','123456',20,40.16802,-104.98322,'USA','Saint Vrain SP','[0]'),
+('120705','1.0','entry','draft','2012-07-05','2012-07-05','2012-07-05','rtw','gxv','On the road again!',NULL,'<p>After weeks of work preparing ourselves, the vehicle and our house for a 6 month trip we are finally underway.</p>',NULL,'20','44657',1,47.20646,-122.314367,'USA','Federal Way','[0]'),
+('120708','1.0','entry','draft','2012-07-08','2012-07-08','2012-07-08','rtw','gxv','GPS (SatNav) Troubles!!',NULL,'<p>Today was one of those perfect lessons in the importance of keeping your electronic devices (and their software) up to date.</p>',NULL,'355','44,992',4,49.35523,-121.57697,'Canada','Hope','[0]'),
+('130407','2.0','entry','draft','2013-04-07','2013-04-07','2013-04-07','rtw','gxv','Warm people, cold weather',NULL,'<p>Friday morning we phoned a few people and made arrangements for the afternoon, explored the area around\n	our hotel, ventured into a super market and picked up a supply of groceries.</p>',NULL,'0','67,052',4,43.113845,131.875518,'Russia','Vladivostok','4'),
+('130408','2.0','entry','draft','2013-04-08','2013-04-08','2013-04-08','rtw','gxv','Paper work and sightseeing',NULL,'<p>We were up and at breakfast earlier this morning, not only attracted by the bright sunshine but also in anticipation\n	of starting the process of getting the truck. At 9:00 we met with Svetlana and an insurance agent. Over the weekend\n	Svetlana had prepared all the documents we would need for releasing the truck and the insurance agent was going to provide\n	the last piece of the puzzle - 3 months insurance for 3000 rubbles (a bit under $100).</p>',NULL,'0','65,191',5,43.113845,131.875518,'Russia','Vladivostok','[0]'),
+('130412','2.0','entry','draft','2013-04-12','2013-04-12','2013-04-12','rtw','gxv','A little problem, first night unaided',NULL,'<p>Last night among the trucks was surprisingly quiet, we heard a few come and go in the night\n        but we did not (like often in the US) have refrigeration trucks to assault our ears. </p>','<p>Throughout the afternoon we saw only a few places we deemed suitable as over night stops\n		and with the day coming to an end and towns becoming fewer we determined that we would find\n		somewhere to stop in <em>Lushegorsk</em> (I apologize for my perhaps poor anglisization\n		of this towns name - I have not yet worked out how to put Cyrillic script into my pages).\n		Inside the town we passed a couple of unlikely fuel stations before stopping in front of\n		a large lot occupied by a number of 6x6 buses (that\'s right, buses - its a statement about\n		the quality of the minor roads in the area). Again with Russian note in hand (this time,\n		\"can we park here for the night\") I approached a couple of locals and was told \"No\"\n		(and a lot of other stuff I could not hope to understand) and was pointed back down the \n		road in the direction of a large blue building that I think was some form of low budget hotel.\n		After a discussion with the gate keeper and an exchange of 100 rubbles we had a place for the night\n		among the trucks again. But hey -- better than by ourselves on the side of the road.</p>','160','67,343',9,46.44766,134.2908,'Russia','Lushegorsk','[0]'),
+('130413','2.0','entry','draft','2013-04-13','2013-04-13','2013-04-13','rtw','gxv','A partial fix, and a night in a rest stop',NULL,'<p>This morning we felt a little conspicuous with our bright (though now dust covered) yellow truck\n	    parked among the more dower working trucks so we decided to get out onto the road a little earlier.\n	    Besides with the water system not working I cannot use the coffee maker (what a hardship).	\n		A little way down the road we came upon one of the now familiar roadside parking spots. These\n		are peculiar facilities. They are muddy patches of ground, sometimes with\n		remnants of pavement, and covered in abandoned litter of kinds one does not\n		even want to imagine. But that is not the peculiar bit. They each (of them we have seen anyway)\n		have a large ramp made from slabs of concrete. It is like a low table with an on and off\n		ramp. Even the roadside sign that designates the parking place has a picture of a car on the ramp.\n		When we work out what the ramp is for we will let you all know.</p>','<p>We decided on an early stop today at yet another one of those signposted parking places.\n		    Throughout the afternoon various trucks have stopped and then proceeded. But the place seems busy \n		    enough to be safe.</p>','74','67,417',10,47.33548,134.51392,'Russia','M60 km 151','[0]'),
+('130414','2.0','entry','draft','2013-04-14','2013-04-14','2013-04-14','rtw','gxv','A dumb mistake',NULL,'<p>Today we discovered that we had made a really dumb mistake when we left our hotel in Vladivostok, but I will\n		tell you about that below. We also found and fixed another apparent problem with the camper. Best of all\n		with the aid of our digital map from the <a href=\"http://openstreetmap.com\">Open Street Map project</a>\n		we navigated our way through the city of Khabarovsk to a hotel.</p>','<p>While the navigation might have been without a problem the checkin at the hotel was not. To cut a long\n		story short it turns out that we had neglected to finalize the registration of our visas when we left the hotel \n		in Vladivostok and as a result the Guru could not allow us to register as guests. Fortunately they directed us\n		to a near by hotel (the Abrikol) that does not require visa registration. While we have no idea\n		why some hotels require registration and some do not we were pleased to have a place to shower and connect.\n		It is worth noting that we would not have managed our way through this complex situation without the help\n		of Sergey a contact name we had been given by Sallie in La Junta, CO. as no one at either hotel spoke any English.\n		There is more to come on this topic as while we might have a hotel for a night or two we are\n		now technically illegal and may have problems exiting Russia. </p>','102','67,519',11,48.51427,135.06618,'Russia','Khabarovsk','[0]'),
+('130416','2.0','entry','draft','2013-04-16','2013-04-16','2013-04-16','rtw','gxv','A few excursions',NULL,'<p>Sergie joined us just before lunch and we piled into the truck for a short drive north to a facility\n		that Nina and I would call a zoo (its name is Blagodarim - Благодарим). We spent a hour or more\n		photographing the range of creatures on display. The highlights were Siberian Tigers,\n		Russian bears (including a couple of cubs), a very rare Leopard from the region (only 30 left),\n		Lynx, wolves and a polar bear from Canada. Sergie told us that the place ran on a very tight budget\n		but even so the animals and their pens are in good condition. The paths for the human visitors were\n		in a slightly poorer state of repair partly because there has been little repair from the\n		damage of winter.</p>',NULL,'0','67,519',12,48.51427,135.06618,'Russia','Khabarovsk','[0]'),
+('130417','2.0','entry','draft','2013-04-17','2013-04-17','2013-04-17','rtw','gxv','Guardian angels',NULL,'<p>This morning our guardian angels Elena (in Vladivostok) and Irina (in Khabarovsk) succeeded in getting \n		that document from the hotel into our hot little hands. The back story to the document\'s delivery is interesting.\n		Last night around 9:00pm a train called the <em>Ocean</em> departed from Vladivostok headed for Khabarovsk. \n		Aboard the train was Irina\'s doctor (friend or family doctor we never did work out). Elena gave him the \n		document and he carried it for the overnight train journey. Irina met the train, took delivery of the document \n		and then dropped by our hotel to give it to us.  </p>','<p>Our hotel is called the <em>Abrikol</em> and is actually a lot more than a hotel, with a restaurant, bar, ten pin bowling alley,\n	sauna, and an outside play/entertainment area built in a rustic time style. There is an ample parking lot out front\n	(which is where we are parked), good hot water for showering and very fast wifi internet. \n	We did not attempt to negotiate a price for just parking and using facilities but paid full price for a room,\n	2500 rubbles per night. The ladies at the front desk have been very helpful calling taxis and generally helping us\n	weird foreigners.</p>','0','67,519',12,48.51427,135.06618,'Russia','Khabarovsk','[0]'),
+('130418','2.0','entry','draft','2013-04-18','2013-04-18','2013-04-18','rtw','gxv','Moving on',NULL,'<p>It seemed to take forever to get on the move today. What with making the last use of our hotel room,\n		catching up on emails, talking (Skype) to family it was midday before we started moving; and then only to \n		a local super market to top up our larder.</p>','<br><p>We continued west after Birobidzhan along the bypass until it rejoined the highway and then (a little east of the junction)\n		found a <em>&#1082;&#1072;&#1092;&#1077;</em> (and truck stop) across the road from a gas station to spend the night.</p>\n		<br>','150','67,669',15,48.89202,132.8474,'Russia','Birobidzhan','[0]'),
+('130427','2.0','entry','draft','2013-04-27','2013-04-27','2013-04-27','rtw','gxv','A quick update',NULL,'<p>There has been no internet along the M56 to Yakutsk so I am some days behind in\n    my regular journal posts. So I decided to do a quick update to let friends and family know where we \n    are and what is happening and I will come back and fill in with a more complete\n    record over the next few days. We are in Yakutsk, we are safe and sound but we have \n    a significant mechanical issue with the vehicle and for the moment we are unable to travel. \n    Over the next few days we will assess the options available to us for fixing the vehicle\n    and do some sightseeing things as well.  </p>','<p>This morning we continued north to the village of Haptagay where we met Alexander and parked the truck\n    at the house of his mother-in-law. Here we were treated to a wonderful Yakutia breakfast and an\n    opportunity to see inside one of the more traditional Yakutia houses made of squared logs. While\n    having a rustic feel the house was cosy and comfortable with all the mod-cons.</p>','51','69,140',24,62.0343,129.7421,'Russia','Yakutsk','[0]'),
+('130427B','2.0','post','draft','2013-04-27','2013-04-27','2013-04-27','rtw',NULL,'April 27th Part 2 - The Permafrost Institute','','<p>After an interesting and amazing journey across the Lena River by hovercraft we were met by a friend of Alexander\'s\n    in a UAZ pickup (this is a small modern pickup truck built by the UAZ company) and taken to look at an apartment that\n    Alexander had organized for us to rent (what we would have done with out Alexander I have no idea). After\n    some paper work and payment we were left for a couple of hours to rest and cleanup, then it was off to do some sightseeing.</p>',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'\"/picts/Thumbnails/pict-1.jpg\"'),
+('130428','2.0','entry','draft','2013-04-28','2013-04-28','2013-04-28','rtw','gxv','Repair plans and sightseeing',NULL,'<p>To say that we had a restless night would be an understatement. Here we are 1200 kms up a rough road\n    with a broken truck, cannot speak the language and cannot even get the truck into the city where we may\n    just have been able to find decent repair facilities. But our mood has been somewhat lightened\n    by the folks at GXV who have given us an undertaking to essentially \"do what ever it takes\" to get\n    us moving again, also by Alexander who has\n    both helped us get organized and has taken it upon himself to guide us to the local sights of interest.</p>',NULL,'0','69,140',25,62.0343,129.7421,'Russia','Yakutsk','[0]'),
+('130713','2.0','entry','draft','2013-07-13','2013-07-13','2013-07-13','rtw','gxv','Weddings, and a Rock Concert',NULL,'<p>Today we were intent on finding some internet as we needed to catch up on emails related to visas for those Central Asian Countries. So\n    our goal was the city of Barnaul where we hoped we might find an internet cafe or get good reception for our cellular modems. \n    So throughout the morning we motored along with moderate traffic on good roads through lush farmland \n    </p>','<br>\n    <p>After our chores were done we found a better place to park (across the road in a large paved parking lot, \n    right behind the Lenin statue). The police lady who seemed to be in charge of the lot told us (via iPhone translation) \n    that it would be ok for us to park in the lot all night. So we settled in and then went for a walk to check \n    the place out, and for Nina to take photos of the many wedding parties that seemed to be over-running the town.</p>\n	<br>','7291','74,343',101,53.34683,83.77539,'Russia','Barbaul','[0]'),
+('130716','2.0','entry','draft','2013-07-16','2013-07-16','2013-07-16','rtw','gxv','Last days in Russia',NULL,'<p>We have spent the past 3 days (14th,15th, 16th) on the A340 from Barnaul to Rubtsovsk and the border into Kazakhstan.\n    We have been forced to travel slowly because our Kazak Visa does not start until July 17th. Had we given a little more thought\n    to our situation last week, and had a little more knowledge about the country side south of Barnaul we could easily have spent \n    some extra time in the Altai Mountains, that would have been more interesting and more comfortable than the hot, flat farm\n    land we have been in the past 3 days. </p>','<br><p>Camping the last 3 days has simply been, find a nice patch of grass/forest beside the road and pull in.</p><br>','7493','74,545',104,51.39051,81.13898,'Russia','A349','[0]'),
+('160706','2.0','entry','draft','2016-07-06','2016-07-06','2016-07-06','er','earthroamer','Start of a \"mini adventure\"',NULL,'<p>Nina and I are about start what I think of as a <em>mini adventure</em>. Between now and November we plan on doing some\n	    traveling in our Earthroamer. As is often the case for us the route is not well specified but will probably include a lot\n	    of time in the Western US and Western Canada. The goal of this exercise is entertainment and relaxation while my\n	    leg recovers enough to allow us to get back into the Unimog with its manual transmission and heavy clutch. \n    </p>','<h3>Camping</h3>\n	    <p>After a late start today and fighting our way through Seattle to Hwy 20 (also called the North Cascade Highway) we happened\n		    upon a delightful state park called <em>Rasar</em> set amidst a mix of old growth forest and farmland. The place was \n		    cute and peaceful, with some simply magnificent trees and a nice network of short hiking trails. \n		    It was a nice re-introduction for us to the forests of the Pacific NW.\n	    </p>\n	    <p>It was not cheap though at <em class=\"price\">$30 per night for a non-serviced site</em>\n    </p>','138','36494',1,48.516783,-121.903917,'USA','Rasar State Park, Hwy 20','[0]'),
+('160707','2.0','entry','draft','2016-07-07','2016-07-07','2016-07-07','er','earthroamer','Re-introduction to the Cascades',NULL,'<p>It is quit a few years since we last traveled highway 20 so today was by way of a re-introduction for us to the\n	    forests and spectacular mountains of the North Cascades, not to mention a dramatic change in climate\n	    from our recent months in Phoenix. </p>','<h3>Camping</h3>\n\n	    <p>On the Western Side of the Cascades we found a nice little forest campground call Kilpchuck, <em class=\"price\">$6</em>\n		    per night for seniors. No facilities other than a loverly creek, a few mosquitoes and a nice network of walking trails.</p>','237','36593',2,48.596263,-120.512668,'USA','Kilpchuck Forest Camp Hwy 20','[0]'),
+('180624','2.0','entry','draft','2018-06-24','2018-06-24','2018-06-24','bmw11','bmw1200_2011','Sea to Sky',NULL,'<p>We were pleasantly surprised this morning to find that the campground had a cafe that opened at 8:00 so morning coffee was\n	    pretty easy to organize. So once fortified we packed and headed to the ferry terminal to await the loading of the vessel\n	    to Horse Shoe Bay. By the time loading started there were a large pack of bikes of all kinds most laden down with gear\n	    for an extended journey.\n    </p>','<p>We got into Lillooet about 6:00 found a room in the <em>Hotel De Oro</em>, almost nothing else open in the town\n		    so dinner was beer and potato chips.\n	    </p>','323','29498',2,50.69314,-121.9352,'Canada','Lillooet','[0]'),
+('180726','2.0','entry','draft','2018-07-26','2018-07-26','2018-07-26','bmw11','bmw1200_2011','Back in the USA',NULL,'<p>The first town on my route out of Castlegar this morning was Trail, BC. It was clearly an old mining town\n	    built in and on the sides of a steep valley with small or narrow houses. Fortunately for the\n	    town some mining and or metallurgical facilities still operates; though also clearly tourism\n	    is now a substantial income source for the area. I was intrigued by the sign at the exit to the town\n	    I did not know Italian was one of the Canadian languages.\n    </p>','<p>I was pleased to arrive at Winthrop and find a shaded tent site at the KOA Campground just east of the town.\n		 Though I must admit to a bit of short term sticker shock at the price, over $40 to pitch a 2 man tent. More than twice\n		 what I have paid elsewhere.\n	    </p>\n	    <p>Still it was nice to stop and remove the hot riding cloths.</p>','6825','36,000',34,48.46702,-120.17564,'USA','Winthrop','[0]'),
+('180727','2.0','entry','draft','2018-07-27','2018-07-27','2018-07-27','bmw11','bmw1200_2011','Home James and don\'t ...',NULL,'<p>Well not quite. I did spare the horses as I am a law abiding motorcycle rider. I was pleased but surprised\n	    to see a hot air balloon in the air this morning as I was getting ready to depart. In an effort to avoid I5\n	    and Seattle traffic my route for the day was to follow WA 20 all the way to its end point at the Port Townsend ferry terminal \n	    at Fort Casey on Whidbey Island. This strategy worked pretty well as the route through the Cascade Mountains\n	    was picturesque, with a good entertaining road, little traffic and pleasant temperature. It was not until Sedro-Woolley\n	    that I finally got caught up in the traffic appropriate for a hot summers day in the Pacific Northwest.\n    </p>',NULL,'7084','36259',35,47.31998,-122.59127,'USA','Gig Harbor','[0]'),
+('180928','2.0','entry','draft','2018-09-28','2018-09-28','2018-09-28','rtw','gxv','Mount Rainier',NULL,'<p>Todays goal was to try for some good photos of Mount Rainier, we were optomistic as \n    the weather was great so we decided that Sunrie Visitor Center would be the best \n	spot as we would not be in position until afternoon. That proved to be a less than \n	ideal choice as by the time we got there the sun was over the top of the mountain \n	making for poor light. Still the drive along Hwy 410 and along the Sunrise entrance road \n	was enjoyable.</p>','<p>We camped at a horse camp called <em>Crow Lake Way Trailhead</em> along Highway 12. A \n    	lot of fallen trees, clean pit toilets but not much else.</p>','143','127,919',1,46.9574,-121.3088,'USA','Crow Lake Way Trailhead Hwy 12','[0]'),
+('180929','2.0','entry','draft','2018-09-29','2018-09-29','2018-09-29','rtw','gxv','An easy day on Hwy 12',NULL,'<p>The outside temperature this morning was 37°F emphasisiing the fact\n    that we spent the night in the mountains and at altitude. Stopped in Yakima for \n    a while to get some supplies and communicate with family and a bit of exercise \n    on the Yakima <em>Green Way</em>, a very extensive walking and bicycle trail system. </p>','<p>We spent the night at <em>Beach RV Park</em> in Benton City close to the shores \n    	of the Yakima River. The park was quite full, I think we got the last vacancy, \n	and it looked like most of the residents were full-timers. Nice showers.\n    </p>','267','128,043',2,46.25433,-119.47661,'USA','Benton City','[0]'),
+('180930','2.0','entry','draft','2018-09-30','2018-09-30','2018-09-30','rtw','gxv','Farm country',NULL,'<p>Today we got a good dose of <em>Washington farm country</em>. Lots of fields of straw colored \n    growth, some just stuble having been recently harvested, some tall and swaying and about to be \n	harvested (we assume). Quaint little towns some of which seem to be caught in a bit of a time warp,\n	except for all the modern pickup trucks. Really a pleasant day and a salutory reminder of the scope \n	of farming.</p>','<p>The rest stop at Alpowa Summit proved to be too good an opportunity so we stayed the night.\n    	One of the things we like about RVing - you always have your home with you and it is always \n		set up ready to live in.\n    </p>','402','128,178',3,46.43578,-117.42397,'USA','Alpowa Summit Rest Area','[0]'),
+('181001','2.0','entry','draft','2018-10-01','2018-10-01','2018-10-01','rtw','gxv','The Clearwater',NULL,'<p>We stopped for a long while in Lewiston this morning. The town has a nice skate park and walking trail beside the river. We took advantage of this facility, and the fine sunny weather, to undertake our daily exercises. I am on a regime of strengthening and stretching from my physical therapist and Nina is aiming to achieve her Apple Watch goal of 10,000 steps every day. \n	</p>','<p>Our camping place for the night was a <em>River Access</em> parking lot beside the Clearwater\n		at a spot labeled \"Five Mile Creek\". Idaho seems to have made considerable effort to provide\n		for its fishing enthusiasts as these \"river access\" areas were very common and generally well maintained.</p>','482','128,258',4,46.35472,-116.16329,'USA','Five Mile Creek Hwy 12','[0]'),
+('181002','2.0','entry','draft','2018-10-02','2018-10-02','2018-10-02','rtw','gxv','Exploring around Orofino',NULL,'<p>We spent the day exploring the area south of Orofino along Idaho Highways 13 and 14 before\n	starting the trek along Highway 12 towards Lolo Pass. The day was wet with light rain\n	and this discouraged photos and encouraged an early stop.\n	</p>','<p>Another \"river access\" tonight. This one called <em>Knife Edge</em> on Idaho Highway 12 beside the \n		ever present Clearwater River. This one was set up as a small camping ground.</p>','596','128,372',5,46.22707,-115.47405,'USA','Knife Edge River Access Hwy 12','[0]'),
+('bolivia-1','2.0','article','draft','2010-09-12','2010-09-12','2010-09-12','rtw',NULL,'A drive in the wilds of Bolivia','In May, 2010 we drove our vehicle from San Pedro de Atacama, Chile to Uyuni, Bolovia through some simply breathtaking country.\n        We hope this guide/report will help others find and enjoy this spectacular drive.',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
+('electricalpart1','2.0','post','draft','2012-11-01','2012-11-01','2012-11-01','rtw',NULL,'Electrical, Part 1','GXV Electrical system','<p>This is the first of a series of posts related to the electric system in our GXV expedition vehicle.\n	My aim in this series of articles/posts is to outline the original mission of the electrical system, analyze how well\n	the originally supplied equipment meet that mission, describe what modifications and upgrades I have made and what\n	lessons I have learned, and what problems (if any) are still outstanding.</p>',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'/pics/Thumbnails/pict-1.jpg'),
+('electricalpart9','2.0','post','draft','2014-07-09','2014-07-09','2014-07-09','rtw',NULL,'Electrical, Part 9','GXV Electrical system - a progress report','<p>This is a maybe overdue update or exposition of our long term experience with the electrical system of our GXV truck. </p>',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'/pics/Thumbnails/pict-1.jpg'),
+('mog','2.0','article','draft','2010-09-12','2010-09-12','2010-09-12','rtw',NULL,'Pictures of our new Unimog','This article consists mainly of photographs. The majority of the images are of our yellow Unimog U500. However\n    there are also images of other Unimogs. In part this is to give the reader an impression of what ours will \n    look like when it is complete. Once we have some construction photos of our vehicle they will be posted\n    here also.',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
+('plumbing2','2.0','post','draft','2014-07-11','2014-07-11','2014-07-11','rtw',NULL,'Plumbing, Part 2','The Plumbing system','<p>It seems like the first article about the plumbing in our GXV camper was <a href=\"/posts/rtw/aneurysm\">Aneurysm</a> published back in early 2013. That is why this one is called <em>Plumbing, Part 2</em>. I was prompted to write this post by a recent water leak we had in the camper.\nThat got me thinking about the other couple of problems we have had with the fresh water system over the past 1-1.5 years and the lessons \nI have learned from those incidents.</p>',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'/pics/Thumbnails/pict-1.jpg'),
+('tires','2.0','article','draft','2011-07-11','2011-07-11','2011-07-11','rtw',NULL,'Earthroamer Tires','Some research on alternative tires for our Earthroamer',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
+('tuk18A','2.0','post','draft','2018-06-19','2018-06-19','2018-06-19','bmw11',NULL,'Count down to a new style adventure','','<p>Regular readers of this blog may recall that back in 2016 I acquired a BMW1200 GS motorcycle and not long after that\n    acquisition I suffered a broken leg courtesy of that same motorcycle and my inexperience ( <a href=\"/posts/rtw/where_are_we\">this link</a>).</p>',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'[0]'),
+('vehicle1','2.0','post','draft','2011-09-19','2011-09-19','2011-09-19','rtw',NULL,'Introduction',NULL,'<p>Our choice of a new adventure vehicle came on the heals of a \n		good experience with our Provan Tiger during our 19 month, 60,000 mile \n		<a href=\"/theamericas\">Americas Trip</a> and in the face of a recent purchase (as it was then),\n		and  a happy experience with a used 2008 Earthroamer.</p>',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'/camper-choices/Thumbnails/pict-2.jpg'),
+('vehicle2','2.0','post','draft','2011-09-21','2011-09-21','2011-09-21','rtw',NULL,'The Choice',NULL,'<p>The topic that got me started down the path of \"another vehicle\" was\n		the question of maintenance and repairs.\n		Our Tiger-Chevy Duramax was incredibly reliable in South America, <em>BUT</em>\n		it was clear from conversations with Chevy dealers in various countries\n		that repairs on the engine/transmission would have been very difficult. Those vehicles,\n		the Duramax engine and Allison transmission are not used in any commonly available\n		vehicles in those parts of the world.</p>',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'/u500-safari-1.jpg'),
+('vehicle3','2.0','post','draft','2011-04-19','2011-09-22','2011-04-19','rtw',NULL,'The U500','Our new vehicle. We are close to having our new expedition vehicle. It should be complete \n	by the end of April 2012. If you are interested in the why and the how of our decision and choices\n	and a look at the build up of the truck, click here.','<p>For those like me that do not (or at least did not) know much about the Unimog U500\n		I am including some spec sheets and a general discussion of the vehicle. It is worth\n		noting that I could not find a spec sheet for a 2003 vehicle so have resorted to\n		a document published in 2009. This later model vehicle has a Euro 5 engine \n		(and as such required BlueTech fluid  and ULSD fuel) rather than Euro 3 engine in\n		our vehicle which has no issue with <em>high sulfur fuel</em>.</p>',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'/camper-choices/Thumbnails/pict-2.jpg'),
+('vladivostok','2.0','post','draft','2013-04-04','2013-04-04','2013-04-04','rtw',NULL,'Arrival Vladivostok - our adventure begins','','<p>Our Vladivostok - Istanbul adventure is underway. We arrived in VVO (the airline industry\'s abbreviation\n			for Vladivostok) 3:00pm Thursday (April 4th) after our flight from Phoenix via an overnight \n			stop in Beijing.</p>',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,''),
+('whatsbeenhappening','2.0','post','draft','2013-03-27','2013-03-27','2013-03-27','rtw',NULL,'Whats been happening','','<p>So whats going on with us?. A gap of over a month in new posts and then some posts on obscure\n		technical stuff about Garmin GPS maps and fuel tanks.</p>',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'');
+/*!40000 ALTER TABLE `my_items` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Current Database: `database_package_test_db`
+--
+
+USE `database_package_test_db`;
+
+--
+-- Final view structure for view `categories`
+--
+
+/*!50001 DROP TABLE IF EXISTS `categories`*/;
+/*!50001 DROP VIEW IF EXISTS `categories`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb4 */;
+/*!50001 SET character_set_results     = utf8mb4 */;
+/*!50001 SET collation_connection      = utf8mb4_general_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `categories` AS (select distinct `categorized_items`.`category` AS `category`,`my_items`.`trip` AS `trip` from (`categorized_items` join `my_items` on(`categorized_items`.`item_slug` = `my_items`.`slug`))) */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2022-06-13 20:12:55

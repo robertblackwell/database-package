@@ -1,4 +1,5 @@
 <?php
+use HedTest\Tools;
 
 use Database\DbObject as Db;
 use Database\Locator;
@@ -12,7 +13,7 @@ use Unittests\NoSqlTestcase;
 
 class HEDBannerTest extends NoSqlTestcase
 {
-	function setUp()
+	public function setUp()
 	{
 		global $config;
 		Db::init($config);
@@ -22,21 +23,21 @@ class HEDBannerTest extends NoSqlTestcase
 	public function tearDown()
 	{
 		$locator = Locator::get_instance();
-		system("rm -R ".$locator->banner_dir($this->trip, $this->slug));
+		\HedTest\Tools\ensureDoesNotExistsDir($locator->banner_dir($this->trip, $this->slug));
 	}
 
 	/**
 	* This test stores HEDObjects into and reads them from a file. The locations of that
 	* file is NOT dediced from Locator. Beware.
 	*/
-	function testBanner()
+	public function testBanner()
 	{
 		\Trace::function_entry();
 		$locator = Locator::get_instance();
 		$this->trip = "rtw";
 		$this->slug = "hed_test_banner";
 		$p = $locator->banner_filepath($this->trip, $this->slug);
-		system("rm -R ".$locator->banner_dir($this->trip, $this->slug));
+		\HedTest\Tools\ensureDoesNotExistsDir($locator->banner_dir($this->trip, $this->slug));
 
 		// system("rm -R ".dirname(__FILE__)."/data/test_banner");
 		// $p = dirname(__FILE__)."/data/test_banner/content.php";
@@ -47,7 +48,7 @@ class HEDBannerTest extends NoSqlTestcase
 			$this->slug,
 			'adate'
 		);
-		$this->assertEqual($obj['version'],"2.0.skel");
+		$this->assertEqual($obj['version'], "2.0.skel");
 		$this->assertEqual($obj['status'], "draft");
 		$this->assertEqual($obj['type'], "banner");
 		$this->assertEqual($obj['trip'], $this->trip);
@@ -58,7 +59,7 @@ class HEDBannerTest extends NoSqlTestcase
 
 		$nobj = new HEDObject();
 		$nobj->get_from_file($p);
-		$this->assertEqual($nobj['version'],"2.0.skel");
+		$this->assertEqual($nobj['version'], "2.0.skel");
 		$this->assertEqual($nobj['status'], "draft");
 		$this->assertEqual($nobj['type'], "banner");
 		$this->assertEqual($nobj['trip'], $this->trip);
@@ -67,7 +68,7 @@ class HEDBannerTest extends NoSqlTestcase
 
 		// now lets make an Album from this hed
 		$a = new Banner($nobj);
-		$this->assertEqual($a->version,"2.0.skel");
+		$this->assertEqual($a->version, "2.0.skel");
 		$this->assertEqual($a->status, "draft");
 		$this->assertEqual($a->type, "banner");
 		$this->assertEqual($a->trip, $this->trip);
@@ -92,5 +93,4 @@ class HEDBannerTest extends NoSqlTestcase
 		$this->assertTrue(is_array($b->getImages()));
 		$this->assertEqual(count($b->getImages()), 8);
 	}
-
 }

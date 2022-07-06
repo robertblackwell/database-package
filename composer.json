@@ -29,7 +29,7 @@
         "robertblackwell/trace":"@dev"
     },
     "require-dev":{
-		"robertblackwell/litetest":"^2.0.0"
+		"robertblackwell/litetest":"^4.1.0"
     },
     "autoload": {
         "psr-0": {

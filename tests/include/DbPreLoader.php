@@ -8,7 +8,8 @@ class DbPreloader
 	{
 		$verbose = false;
 		global $config;
-		//print "Loading database from ". $config['hed']['data_root']  ."\n";
+		$start_time = microtime(true);
+		print "Start Loading database from ". $config['hed']['data_root']  ."\n";
 		// exit();
 		$builder = new \Database\Builder();
 		$utility = new \Database\Utility();
@@ -36,5 +37,8 @@ class DbPreloader
 		$utility->load_albums($trip);
 		$utility->load_banners($trip);
 		$utility->load_editorials($trip);
+		$stop_time = microtime(true);
+		$duration = ($stop_time - $start_time);
+		print "End Loading database from duration {$duration}"."\n";
 	}
 }
