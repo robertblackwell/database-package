@@ -1,0 +1,10 @@
+make --dry-run --always-make --keep-going --print-directory
+make: Entering directory '/home/robert/MyPhpPackages/database-package'
+echo "Hello a name, nothing to do by default"
+echo "Hello this is the TAG value `git describe --abbrev=0 --tags`"
+echo "Archive to be built is : releases/database-package_`git describe --abbrev=0 --tags`.zip"
+echo "Release file is : database-package_`git describe --abbrev=0 --tags`"
+# sometimes: echo "Hello a name, nothing to do by default"
+echo "Try 'make help'"
+make: Leaving directory '/home/robert/MyPhpPackages/database-package'
+ 

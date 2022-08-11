@@ -1,0 +1,747 @@
+make all --print-data-base --no-builtin-variables --no-builtin-rules --question
+# GNU Make 4.2.1
+# Built for x86_64-pc-linux-gnu
+# Copyright (C) 1988-2016 Free Software Foundation, Inc.
+# License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+# This is free software: you are free to change and redistribute it.
+# There is NO WARRANTY, to the extent permitted by law.
+
+# Make data base, printed on Thu Aug 11 20:24:36 2022
+
+# Variables
+
+# 'override' directive
+GNUMAKEFLAGS := 
+# automatic
+<D = $(patsubst %/,%,$(dir $<))
+# automatic
+?F = $(notdir $?)
+# environment
+DESKTOP_SESSION = ubuntu
+# environment
+OPAM_SWITCH_PREFIX = /home/robert/.opam/4.14.0
+# default
+.SHELLFLAGS := -c
+# environment
+OCAML_TOPLEVEL_PATH = /home/robert/.opam/4.14.0/lib/toplevel
+# makefile (from 'Makefile', line 5)
+RELEASE_DIR := releases
+# environment
+XDG_SESSION_CLASS = user
+# environment
+SNAP_COMMON = /var/snap/code/common
+# environment
+XDG_SESSION_TYPE = x11
+# automatic
+?D = $(patsubst %/,%,$(dir $?))
+# makefile (from 'Makefile', line 7)
+PHPFILES := src/Database/iSqlIzable.php src/Database/DbObject.php src/Database/Utility.php src/Database/Builder.php src/Database/Locator.php src/Database/SqlObject.php src/Database/HED/ExtendedDOMNode.php src/Database/HED/HEDFactory.php src/Database/HED/Skeleton.php src/Database/HED/HEDObject.php src/Database/HED/ExtendedDOMDocument.php src/Database/Models/NextPrev.php src/Database/Models/CategorizedItem.php src/Database/Models/Model.php src/Database/Models/Editorial.php src/Database/Models/Article.php src/Database/Models/Banner.php src/Database/Models/ArticleTitle.php src/Database/Models/Album.php src/Database/Models/RowHelper.php src/Database/Models/Trip.php src/Database/Models/FeaturedImage.php src/Database/Models/ItemBase.php src/Database/Models/CategoryView.php src/Database/Models/Entry.php src/Database/Models/Post.php src/Database/Models/VisitedCountry.php src/Database/Models/TripMonth.php src/Database/Models/ActiveMonth.php src/Database/Models/Item.php src/Database/Models/EntryCountry.php src/Database/Models/TripCategory.php src/Database/Models/Vehicle.php src/Database/Models/Factory.php src/Database/Models/EntryLocation.php src/Database/Models/Country.php 
+# automatic
+@D = $(patsubst %/,%,$(dir $@))
+# environment
+XAUTHORITY = /run/user/1000/gdm/Xauthority
+# environment
+GDMSESSION = ubuntu
+# environment
+XMODIFIERS = @im=ibus
+# makefile
+CURDIR := /home/robert/MyPhpPackages/database-package
+# makefile
+SHELL = /bin/sh
+# environment
+SNAP_DATA = /var/snap/code/103
+# environment
+VTE_VERSION = 6003
+# environment
+VSCODE_NLS_CONFIG = {"locale":"en-gb","availableLanguages":{},"_languagePackSupport":true}
+# environment
+JOURNAL_STREAM = 8:64816
+# environment
+XDG_CONFIG_DIRS = /etc/xdg/xdg-ubuntu:/etc/xdg
+# environment
+SNAP_INSTANCE_NAME = code
+# environment
+SNAP_ARCH = amd64
+# makefile (from 'Makefile', line 1)
+MAKEFILE_LIST :=  Makefile
+# automatic
+@F = $(notdir $@)
+# environment
+IM_CONFIG_PHASE = 1
+# environment
+USERNAME = robert
+# environment
+XDG_DATA_DIRS = /usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop
+# makefile (from 'Makefile', line 11)
+DOXYGEN = /Applications/Doxygen.app/Contents/Resources/doxygen
+# environment
+DBUS_SESSION_BUS_ADDRESS = unix:path=/run/user/1000/bus
+# environment
+MANAGERPID = 1829
+# environment
+LESSOPEN = | /usr/bin/lesspipe %s
+# makefile (from 'Makefile', line 1)
+PACKAGE := database-package
+# environment
+VSCODE_CWD = /home/robert/MyPhpPackages/database-package
+# environment
+GSETTINGS_SCHEMA_DIR = /snap/code/103/usr/share/glib-2.0/schemas
+# default
+MAKE_HOST := x86_64-pc-linux-gnu
+# environment
+PATH = /home/robert/.opam/4.14.0/bin:/home/robert/.local/share/swift-5.6.1-RELEASE-ubuntu20.04/usr/bin:/home/robert/bin:/home/robert/zig:/home/robert/.local/bin:/home/robert/.cargo/bin:/home/robert/.local/bin:/home/robert/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/robert/.dotnet/tools:/home/robert/.local/share/coursier/bin:/usr/local/go/bin:/home/robert/.local/share/coursier/bin
+# environment
+GPG_AGENT_INFO = /run/user/1000/gnupg/S.gpg-agent:0:1
+# environment
+SESSION_MANAGER = local/robert-MS-7C35:@/tmp/.ICE-unix/2309,unix/robert-MS-7C35:/tmp/.ICE-unix/2309
+# environment
+XDG_RUNTIME_DIR = /run/user/1000
+# environment
+GDK_PIXBUF_MODULE_FILE = /home/robert/snap/code/common/.cache/gdk-pixbuf-loaders.cache
+# environment
+SNAP = /snap/code/103
+# makefile (from 'Makefile', line 12)
+PHPCS = $(HOME)/.composer/vendor/bin/phpcs
+# environment
+SNAP_VERSION = da76f933
+# environment
+XDG_MENU_PREFIX = gnome-
+# environment
+BASHRC_X = :bashrc_x
+# environment
+DISABLE_WAYLAND = 1
+# environment
+ELECTRON_RUN_AS_NODE = 1
+# environment
+INVOCATION_ID = 14f963e068a04434b655762d596fcda7
+# environment
+GDK_PIXBUF_MODULEDIR = /snap/code/103/usr/lib/x86_64-linux-gnu/gdk-pixbuf-2.0/2.10.0/loaders
+# default
+.FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
+# makefile (from 'Makefile', line 2)
+TAG := `git describe --abbrev=0 --tags`
+# environment
+LS_COLORS = rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:
+# environment
+XDG_SESSION_DESKTOP = ubuntu
+# environment
+SSH_AUTH_SOCK = /run/user/1000/keyring/ssh
+# automatic
+%F = $(notdir $%)
+# environment
+DISPLAY = :0
+# environment
+SNAP_INSTANCE_KEY = 
+# environment
+PWD = /home/robert/MyPhpPackages/database-package
+# default
+.LOADED := 
+# environment
+SSH_AGENT_PID = 2205
+# environment
+ORIGINAL_XDG_CURRENT_DESKTOP = ubuntu:GNOME
+# environment
+GTK_MODULES = gail:atk-bridge
+# environment
+MANPATH = :/home/robert/.opam/4.14.0/man
+# environment
+VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
+# environment
+HOME = /home/robert
+# environment
+LESSCLOSE = /usr/bin/lesspipe %s %s
+# environment
+VSCODE_CLI = 1
+# environment
+VSCODE_CODE_CACHE_PATH = /home/robert/.config/Code/CachedData/da76f93349a72022ca4670c1b84860304616aaa2
+# makefile (from 'Makefile', line 4)
+LOGNAME := a name
+# environment
+APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = true
+# environment
+SNAP_LIBRARY_PATH = /var/lib/snapd/lib/gl:/var/lib/snapd/lib/gl32:/var/lib/snapd/void
+# environment
+SNAP_CONTEXT = jR30gR75E_WC9-c3Y6daL9bhdrzCzfjJc8ED5sELEaFG8_yQE5nS
+# environment
+ELECTRON_NO_ATTACH_CONSOLE = 1
+# environment
+SNAP_USER_COMMON = /home/robert/snap/code/common
+# environment
+VSCODE_HANDLES_UNCAUGHT_ERRORS = true
+# environment
+GNOME_DESKTOP_SESSION_ID = this-is-deprecated
+# automatic
+^D = $(patsubst %/,%,$(dir $^))
+# environment
+MAKELEVEL := 0
+# environment
+SNAP_REAL_HOME = /home/robert
+# makefile (from 'Makefile', line 3)
+RELEASE_FILE := database-package_`git describe --abbrev=0 --tags`
+# environment
+COLORTERM = truecolor
+# default
+MAKE = $(MAKE_COMMAND)
+# default
+MAKECMDGOALS := all
+# environment
+QT_IM_MODULE = ibus
+# environment
+SNAP_USER_DATA = /home/robert/snap/code/103
+# environment
+SHLVL = 1
+# environment
+GNOME_SHELL_SESSION_MODE = ubuntu
+# default
+MAKE_VERSION := 4.2.1
+# environment
+USER = robert
+# environment
+SNAP_REVISION = 103
+# environment
+CAML_LD_LIBRARY_PATH = /home/robert/.opam/4.14.0/lib/stublibs:/home/robert/.opam/4.14.0/lib/ocaml/stublibs:/home/robert/.opam/4.14.0/lib/ocaml
+# makefile
+.DEFAULT_GOAL := all
+# environment
+XDG_CURRENT_DESKTOP = Unity
+# automatic
+%D = $(patsubst %/,%,$(dir $%))
+# default
+MAKE_COMMAND := make
+# environment
+OLDPWD = /home/robert/MyPhpPackages
+# default
+.VARIABLES := 
+# automatic
+*F = $(notdir $*)
+# environment
+LANGUAGE = en_AU:en
+# environment
+VSCODE_IPC_HOOK = /run/user/1000/vscode-0f755e2e-1.70.0-main.sock
+# makefile
+MAKEFLAGS = pqrR
+# environment
+MFLAGS = -pqrR
+# automatic
+*D = $(patsubst %/,%,$(dir $*))
+# automatic
++D = $(patsubst %/,%,$(dir $+))
+# environment
+GDK_BACKEND = x11
+# automatic
++F = $(notdir $+)
+# environment
+QT_ACCESSIBILITY = 1
+# default
+MAKEFILES := 
+# environment
+SNAP_COOKIE = jR30gR75E_WC9-c3Y6daL9bhdrzCzfjJc8ED5sELEaFG8_yQE5nS
+# automatic
+<F = $(notdir $<)
+# environment
+SNAP_NAME = code
+# environment
+LC_ALL = C
+# environment
+GJS_DEBUG_TOPICS = JS ERROR;JS LOG
+# environment
+GNOME_TERMINAL_SCREEN = /org/gnome/Terminal/screen/106c540b_7d78_49bb_bea6_ae649fe93532
+# automatic
+^F = $(notdir $^)
+# environment
+GNOME_TERMINAL_SERVICE = :1.112
+# default
+SUFFIXES := 
+# environment
+SNAP_REEXEC = 
+# environment
+CHROME_DESKTOP = code-url-handler.desktop
+# environment
+WINDOWPATH = 2
+# default
+.INCLUDE_DIRS = /usr/include /usr/local/include /usr/include
+# environment
+GJS_DEBUG_OUTPUT = stderr
+# default
+.RECIPEPREFIX := 
+# environment
+PROFILEX = :profilex
+# makefile (from 'Makefile', line 6)
+ARCHIVE := releases/database-package_`git describe --abbrev=0 --tags`.zip
+# environment
+LANG = C
+# environment
+TERM = xterm-256color
+# environment
+VSCODE_PID = 1582288
+# variable set hash-table stats:
+ 
+# Load=132/1024=13%, Rehash=0, Collisions=15/171=9%
+
+# Pattern-specific Variable Values
+
+# No pattern-specific variable values.
+
+# Directories
+
+# src/Database/HED (device 66306, inode 44566135): 7 files, no impossibilities.
+# docs/extras (device 66306, inode 31328344): 6 files, no impossibilities.
+# . (device 66306, inode 31328015): 20 files, no impossibilities.
+# src/Database/Models/Base: could not be stat'd.
+# src/Database/Models (device 66306, inode 44566137): 27 files, no impossibilities.
+# src/Database (device 66306, inode 44566133): 10 files, no impossibilities.
+
+# 70 files, no impossibilities in 6 directories.
+
+# Implicit Rules
+
+# No implicit rules.
+
+# Files
+
+# Not a target:
+src/Database/Models/ItemBase.php:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+docs/DoxygenLayout.xml:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+src/Database/Models/EntryLocation.php:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+src/Database/Models/EntryCountry.php:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+lintsrc:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 46):
+	$(PHPCS) --standard=MySource src/Database/Builder.php || true
+	$(PHPCS) --standard=MySource src/Database/Locator.php || true
+	$(PHPCS) --standard=MySource src/Database/Object.php || true
+	$(PHPCS) --standard=MySource src/Database/SqlObject.php || true
+	$(PHPCS) --standard=MySource src/Database/Utility.php || true
+
+# Not a target:
+src/Database/Builder.php:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+src/Database/DbObject.php:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+src/Database/Models/Item.php:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+all:
+#  Command line target.
+#  Implicit rule search has not been done.
+#  Implicit/static pattern stem: ''
+#  File does not exist.
+#  File has been updated.
+#  Needs to be updated (-q is set).
+# automatic
+# @ := all
+# automatic
+# % := 
+# automatic
+# * := 
+# automatic
+# + := 
+# automatic
+# | := 
+# automatic
+# < := 
+# automatic
+# ^ := 
+# automatic
+# ? := 
+# variable set hash-table stats:
+# Load=8/32=25%, Rehash=0, Collisions=2/16=12%
+#  recipe to execute (from 'Makefile', line 16):
+	echo "Hello $(LOGNAME), nothing to do by default"
+	echo "Hello this is the TAG value $(TAG)"
+	echo "Archive to be built is : $(ARCHIVE)"
+	echo "Release file is : $(RELEASE_FILE)"
+	# sometimes: echo "Hello ${LOGNAME}, nothing to do by default"
+	echo "Try 'make help'"
+
+# Not a target:
+docs/extras/flatfilestore.dox:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+.PHONY: docs doxy
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+src/Database/Locator.php:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+src/Database/Models/Article.php:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+docs/Doxyfile:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+src/Database/Models/TripCategory.php:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+src/Database/HED/HEDObject.php:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+.SUFFIXES:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+src/Database/HED/ExtendedDOMNode.php:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+Makefile:
+#  Implicit rule search has been done.
+#  Last modified 2022-07-06 14:28:40.858510883
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+docs/extras/dbinterface.dox:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+test:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 26):
+	cd test; make
+
+# Not a target:
+src/Database/Models/VisitedCountry.php:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+releases:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 72):
+	mkdir $(RELEASE_DIR)
+
+# Not a target:
+src/Database/Models/Album.php:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+src/Database/HED/HEDFactory.php:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+src/Database/Models/FeaturedImage.php:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+help:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 30):
+	egrep "^# target:" [Mm]akefile
+
+# Not a target:
+src/Database/Models/Entry.php:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+lintmodels:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 43):
+	$(PHPCS) --standard=MySource src/Database/Models || true
+
+# Not a target:
+src/Database/Models/Post.php:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+src/Database/Utility.php:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+.DEFAULT:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+src/Database/iSqlIzable.php:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+src/Database/SqlObject.php:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+docs/extras/mainpage.dox:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+src/Database/Models/Factory.php:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+linthed:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 40):
+	$(PHPCS) --standard=MySource src/Database/HED || true
+
+# Not a target:
+src/Database/Models/Editorial.php:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+ 
+#  File has not been updated.
+
+dist: releases
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 76):
+	echo $(TAG)
+	git archive $(TAG) --format=zip --worktree-attributes --output=$(ARCHIVE)
+
+clean:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 68):
+	rm -Rv $(RELEASE_DIR)
+
+# Not a target:
+src/Database/Models/CategorizedItem.php:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+src/Database/Models/Model.php:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+src/Database/Models/NextPrev.php:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+src/Database/HED/ExtendedDOMDocument.php:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+src/Database/Models/TripMonth.php:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+list:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 34):
+	# Won't work. Each command is in separate shell
+	cd src
+	ls
+
+# Not a target:
+src/Database/Models/ArticleTitle.php:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+docs: doxy
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 86):
+	
+
+linttests:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 58):
+	$(PHPCS) --standard=MySource ./tests/unit_tests/models || true
+	$(PHPCS) --standard=MySource ./tests/unit_tests/nextprev || true
+	cd src; \
+	ls
+
+clean_docs:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 81):
+	rm -Rfv docs/html/*
+
+lint: linthed lintmodels lintsrc
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 38):
+	
+
+# Not a target:
+src/Database/Models/Country.php:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+docs/extras/sql.dox:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+lintsssrc:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 53):
+	$(PHPCS) --standard=MySource src/Database/HED
+	$(PHPCS) --standard=MySource src/Database/Models
+	$(PHPCS) --standard=MySource src/Database/
+
+doxy: src/Database/iSqlIzable.php src/Database/DbObject.php src/Database/Utility.php src/Database/Builder.php src/Database/Locator.php src/Database/SqlObject.php src/Database/HED/ExtendedDOMNode.php src/Database/HED/HEDFactory.php src/Database/HED/Skeleton.php src/Database/HED/HEDObject.php src/Database/HED/ExtendedDOMDocument.php src/Database/Models/NextPrev.php src/Database/Models/CategorizedItem.php src/Database/Models/Model.php src/Database/Models/Editorial.php src/Database/Models/Article.php src/Database/Models/Banner.php src/Database/Models/ArticleTitle.php src/Database/Models/Album.php src/Database/Models/RowHelper.php src/Database/Models/Trip.php src/Database/Models/FeaturedImage.php src/Database/Models/ItemBase.php src/Database/Models/CategoryView.php src/Database/Models/Entry.php src/Database/Models/Post.php src/Database/Models/VisitedCountry.php src/Database/Models/TripMonth.php src/Database/Models/ActiveMonth.php src/Database/Models/Item.php src/Database/Models/EntryCountry.php src/Database/Models/TripCategory.php src/Database/Models/Vehicle.php src/Database/Models/Factory.php src/Database/Models/EntryLocation.php src/Database/Models/Country.php docs/extras/mainpage.dox docs/extras/sql.dox docs/extras/flatfilestore.dox docs/extras/dbinterface.dox docs/Doxyfile docs/DoxygenLayout.xml
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 90):
+		$(DOXYGEN) docs/Doxyfile
+
+# Not a target:
+src/Database/HED/Skeleton.php:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+src/Database/Models/RowHelper.php:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+src/Database/Models/Vehicle.php:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+src/Database/Models/ActiveMonth.php:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+src/Database/Models/Banner.php:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+src/Database/Models/Trip.php:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+src/Database/Models/CategoryView.php:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# files hash-table stats:
+# Load=62/1024=6%, Rehash=0, Collisions=1/129=1%
+# VPATH Search Paths
+
+# No 'vpath' search paths.
+
+# No general ('VPATH' variable) search path.
+
+# strcache buffers: 1 (0) / strings = 129 / storage = 2307 B / avg = 17 B
+# current buf: size = 8162 B / used = 2307 B / count = 129 / avg = 17 B
+
+# strcache performance: lookups = 170 / hit rate = 24%
+# hash-table stats:
+# Load=129/8192=2%, Rehash=0, Collisions=6/170=4%
+# Finished Make data base on Thu Aug 11 20:24:36 2022
+
+ 
