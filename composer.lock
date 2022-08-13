@@ -4,118 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "2c0129ea0a116516bfb8fb9bb43c52f9",
-    "packages": [
-        {
-            "name": "robertblackwell/gallery",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "/Users/robertblackwell/git-repos/gallery",
-                "reference": "ab308552789e5bbd21463a8f1197872336ecf919"
-            },
-            "require": {
-                "robertblackwell/trace": "dev-master"
-            },
-            "require-dev": {
-                "simpletest/simpletest": "dev-master"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-0": {
-                    "Gallery": "src/"
-                }
-            },
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Robert Blackwell",
-                    "homepage": "https://github.com/robertblackwell"
-                }
-            ],
-            "description": "A simple photo gallery library ",
-            "homepage": "https://github.com/robertblackwell/gallery",
-            "keywords": [
-                "gallery",
-                "photo",
-                "php"
-            ],
-            "time": "2019-05-22T08:43:29+00:00"
-        },
-        {
-            "name": "robertblackwell/gpscoordinates",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "/Users/robertblackwell/git-repos/gps",
-                "reference": "348cfd1c4c42f2001d167f1b4ad6409a92ddddf0"
-            },
-            "require": {
-                "robertblackwell/trace": "@dev"
-            },
-            "require-dev": {
-                "simpletest/simpletest": "dev-master"
-            },
-            "type": "library",
-            "autoload": {
-                "classmap": [
-                    "src/"
-                ]
-            },
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Robert Blackwell",
-                    "homepage": "https://github.com/robertblackwell"
-                }
-            ],
-            "description": "An object for managing GPS coordinates in many formats",
-            "homepage": "https://github.com/robertblackwell/gps",
-            "keywords": [
-                "gps"
-            ],
-            "time": "2013-11-14T18:31:41+00:00"
-        },
-        {
-            "name": "robertblackwell/trace",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "/Users/robertblackwell/git-repos/trace",
-                "reference": "e8ee41c2193b013a444104d0680875465725c45f"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "4.1.*"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-0": {
-                    "Trace": "src/"
-                }
-            },
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Robert Blackwell",
-                    "homepage": "https://github.com/robertblackwell"
-                }
-            ],
-            "description": "A simple tracing library with easy on/off",
-            "homepage": "https://github.com/robertblackwell/trace",
-            "keywords": [
-                "debug",
-                "php",
-                "trace"
-            ],
-            "time": "2018-12-31T13:39:44+00:00"
-        }
-    ],
+    "content-hash": "2f180b11264ea908ca258302a33eebe2",
+    "packages": [],
     "packages-dev": [
         {
             "name": "kevinlebrun/colors.php",
@@ -225,7 +115,7 @@
             "version": "v4.1.0",
             "source": {
                 "type": "git",
-                "url": "/Users/robertblackwell/git-repos/litetest",
+                "url": "/home/robert/git-repos/litetest",
                 "reference": "c0db2e60f762e1302152495c1db06c0a04d50913"
             },
             "require": {
@@ -266,12 +156,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/console.git",
-                "reference": "b4a1d2d45124b7ca87ec1e3bae40455c6be0cad8"
+                "reference": "c35fafd7f12ebd6f9e29c95a370df7f1fb171a40"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/console/zipball/b4a1d2d45124b7ca87ec1e3bae40455c6be0cad8",
-                "reference": "b4a1d2d45124b7ca87ec1e3bae40455c6be0cad8",
+                "url": "https://api.github.com/repos/symfony/console/zipball/c35fafd7f12ebd6f9e29c95a370df7f1fb171a40",
+                "reference": "c35fafd7f12ebd6f9e29c95a370df7f1fb171a40",
                 "shasum": ""
             },
             "require": {
@@ -348,7 +238,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-06-06T12:08:56+00:00"
+            "time": "2022-07-20T09:59:04+00:00"
         },
         {
             "name": "symfony/deprecation-contracts",
@@ -672,12 +562,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/service-contracts.git",
-                "reference": "24d9dc654b83e91aa59f9d167b131bc3b5bea24c"
+                "reference": "4b426aac47d6427cc1a1d0f7e2ac724627f5966c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/service-contracts/zipball/24d9dc654b83e91aa59f9d167b131bc3b5bea24c",
-                "reference": "24d9dc654b83e91aa59f9d167b131bc3b5bea24c",
+                "url": "https://api.github.com/repos/symfony/service-contracts/zipball/4b426aac47d6427cc1a1d0f7e2ac724627f5966c",
+                "reference": "4b426aac47d6427cc1a1d0f7e2ac724627f5966c",
                 "shasum": ""
             },
             "require": {
@@ -747,19 +637,15 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-03-13T20:07:29+00:00"
+            "time": "2022-05-30T19:17:29+00:00"
         }
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": {
-        "robertblackwell/gpscoordinates": 20,
-        "robertblackwell/gallery": 20,
-        "robertblackwell/trace": 20
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": [],
     "platform-dev": [],
-    "plugin-api-version": "2.1.0"
+    "plugin-api-version": "2.3.0"
 }
