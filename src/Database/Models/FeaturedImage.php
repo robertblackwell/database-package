@@ -124,7 +124,6 @@ class FeaturedImage
 			** This is the [ .... ] form of a featured_image specification. So split the
 			** specification string by ','
 			*/
-			\Trace::debug("It is a [   ....   ] type");
 			$text = substr($text, 1, strlen($text) - 2);
 			//print "its a [ \n";
 			$split = preg_split("/,/", $text);
@@ -137,7 +136,6 @@ class FeaturedImage
 				$galDir = $item_dir ."/". $galname;
 				$gal = \Gallery\GalObject::create($galDir);
 				$index = intval($split[1]);
-				\Trace::debug("Explicit gal    gal_name :$galname index: $index");
 			} elseif (count($split) == 1) {
 				/*
 				** Only an index is given so use the default gallery
@@ -147,7 +145,6 @@ class FeaturedImage
 				$path = dirname($item_dir);
 				$gal = \Gallery\GalObject::create($path."/".$gname);
 				$index = intval($split[0]);
-				\Trace::debug("Implicit gal      gal_name :default index: $index");
 			} else {
 				throw new \Exception("Not sure why we got here. Invalid featured_image {$text}");
 			}
@@ -166,7 +163,6 @@ class FeaturedImage
 			/*
 			** A partial Path/URL has been given, so put the item site relative URL on the front
 			*/
-			\Trace::debug("partial path given gal_img : $text");
 			$gal_img = $text;
 			if (substr($text, 0, 1) != '/') $gal_img = '/'.$text;
 			if (trim($gal_img) == "")  return null;
@@ -185,7 +181,6 @@ class FeaturedImage
 		}
 		$res = (is_null($res))? null :str_replace(Locator::get_instance()->doc_root(), "", $res);
 		// $res = (is_null($res))? "FI_TEXT[{$fi_text}]" :str_replace(Locator::get_instance()->doc_root(), "", $res);
-		\Trace::debug("result: $res");
 		return $res;
 	}
 	/**
@@ -194,9 +189,6 @@ class FeaturedImage
 	*/
 	public static function getPath(HEDObject $hed_obj) // : ? string
 	{
-		\Trace::off();
-		\Trace::disable();
-		\Trace::function_entry();
 
 		$text = $hed_obj->get_text('featured_image');
 		if (is_null($text) || ($text == '')) {
@@ -205,12 +197,10 @@ class FeaturedImage
 			$text = '[0]';
 		}
 		$text = str_replace(" ", "", $text);
-		\Trace::debug(" text: $text");
 		$a = pathinfo(dirname($hed_obj->file_path));
 		$gname = $a['basename'];
 		$path = dirname(dirname($hed_obj->file_path));
 		$item_dir = dirname($hed_obj->file_path);
-		\Trace::debug("item_dir : $item_dir  gname:$gname  path:$path ");
 		/*
 		** if its a [gal,index], or [index] form;  strip the [ ]
 		*/
@@ -219,7 +209,6 @@ class FeaturedImage
 			** This is the [ .... ] form of a featured_image specification. So split the
 			** specification string by ','
 			*/
-			\Trace::debug("It is a [   ....   ] type");
 			$text = substr($text, 1, strlen($text) - 2);
 			//print "its a [ \n";
 			$split = preg_split("/,/", $text);
@@ -231,7 +220,6 @@ class FeaturedImage
 				$galname = $split[0];
 				$gal = \Gallery\GalObject::create(dirname($hed_obj->file_path)."/".$galname);
 				$index = intval($split[1]);
-				\Trace::debug("Explicit gal    gal_name :$galname index: $index");
 			} elseif (count($split) == 1) {
 				/*
 				** Only an index is given so use the default gallery
@@ -241,14 +229,12 @@ class FeaturedImage
 				$path = dirname(dirname($hed_obj->file_path));
 				$gal = \Gallery\GalObject::create($path."/".$gname);
 				$index = intval($split[0]);
-				\Trace::debug("Implicit gal      gal_name :default index: $index");
 			} else {
 				//
 				// Not sure what this one is
 				//
 				$gal = \Gallery\GalObject::create($path."/".$gname);
 				$index=$split[0];
-				\Trace::debug("Else    gal_name :default index: $index");
 				throw new \Exception("Not sure why we got here");
 			}
 			$image = (count($gal->images) > $index) ? $gal->images[$index] : null;
@@ -263,7 +249,6 @@ class FeaturedImage
 			/*
 			** A partial Path/URL has been given, so put the item site relative URL on the front
 			*/
-			\Trace::debug("partial path given gal_img : $text");
 			$gal_img = $text;
 			if (substr($text, 0, 1) != '/') $gal_img = '/'.$text;
 			if (trim($gal_img) == "")  return null;
@@ -280,7 +265,6 @@ class FeaturedImage
 			}
 		}
 		$res = (is_null($res))? null :str_replace(Locator::get_instance()->doc_root(), "", $res);
-		\Trace::debug("result: $res");
 		return $res;
 	}
 }

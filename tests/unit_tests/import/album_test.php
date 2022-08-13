@@ -12,7 +12,6 @@ use \DbPreloader;
 class AlbumTest extends LocalTestcase
 {
 	function setUp(){
-		Trace::disable();
 		global $config;
 		Db::init($config);
 		DbPreloader::load();
@@ -22,7 +21,6 @@ class AlbumTest extends LocalTestcase
 	function testGetDeleteInsert()
 	{
 		$slug = "spain";
-		Trace::function_entry();
 		$r = Album::get_by_slug($slug);
 		assert(!is_null($r));
 		$this->assertNotEqual($r, null);
@@ -34,7 +32,6 @@ class AlbumTest extends LocalTestcase
 		$new_r->sql_insert();    
 		$r = Album::get_by_slug($slug);
 		$this->assertNotEqual($r, null);
-		Trace::function_exit();
 	}
 }
 ?>

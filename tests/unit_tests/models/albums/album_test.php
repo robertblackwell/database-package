@@ -18,7 +18,6 @@ class AlbumTest extends LocalTestcase
 	 */
 	public function setUp()
 	{
-		Trace::disable();
 		global $config;
 		Db::init($config);
 		DbPreloader::load();
@@ -83,7 +82,6 @@ class AlbumTest extends LocalTestcase
 	}
 	function testGetByTripSlug()
 	{
-		Trace::function_entry();
 		$result = Database\Models\Album::get_by_trip_slug($this->test_trip, $this->test_slug);
 		// var_dump($result);exit();
 		$this->assert_test_album($result);
@@ -92,11 +90,9 @@ class AlbumTest extends LocalTestcase
 		// print_r(array_keys($result->getFields()));
 		// print_r(array_keys(get_object_vars($result)));
 
-		Trace::function_exit();
 	}
 	function testGetBySlug()
 	{
-		Trace::function_entry();
 		$result = Database\Models\Album::get_by_slug($this->test_slug);
 		// var_dump($result);exit();
 		$this->assert_test_album($result);
@@ -105,13 +101,11 @@ class AlbumTest extends LocalTestcase
 		// print_r(array_keys($result->getFields()));
 		// print_r(array_keys(get_object_vars($result)));
 
-		Trace::function_exit();
 	}
 
 	function testGetBySlugNotFound()
 	{
 		return;
-		// Trace::function_entry();
 		// $result = Database\Models\Album::get_by_slug('spain');
 		// // var_dump($result);exit();
 		// $this->assertNotEqual($result, null);
@@ -145,13 +139,11 @@ class AlbumTest extends LocalTestcase
 		// print_r(array_keys($result->getFields()));
 		// print_r(array_keys(get_object_vars($result)));
 		// //$this->assertEqual($result[3]->slug, "bolivia-1");
-		// Trace::function_exit();
 	}
 
 
 	function testFind()
 	{
-		Trace::function_entry();
 		$result = Database\Models\Album::find();
 		foreach ($result as $a) {
 			$this->assertNotEqual($a, null);
@@ -163,11 +155,9 @@ class AlbumTest extends LocalTestcase
 			// var_dump($a->gallery->mascotPath());
 		}
 		//$this->assertEqual($result[3]->slug, "bolivia-1");
-		Trace::function_exit();
 	}
 	function testFindForTrip()
 	{
-		Trace::function_entry();
 		$result = Database\Models\Album::find_for_trip($this->test_trip);
 		foreach ($result as $a) {
 			$this->assertNotEqual($a, null);
@@ -179,11 +169,9 @@ class AlbumTest extends LocalTestcase
 			$this->assertEqual($a->trip, 'rtw');
 		}
 		//$this->assertEqual($result[3]->slug, "bolivia-1");
-		Trace::function_exit();
 	}
 	function testFindForTripRepeat()
 	{
-		Trace::function_entry();
 		$result = Database\Models\Album::find_for_trip($this->test_trip);
 		$this->assertNotEqual(count($result), 0);
 		foreach ($result as $a) {
@@ -196,12 +184,10 @@ class AlbumTest extends LocalTestcase
 			$this->assertEqual($a->trip, $this->test_trip);
 		}
 		//$this->assertEqual($result[3]->slug, "bolivia-1");
-		Trace::function_exit();
 	}
 
 	function testCreateWithSkeleton()
 	{
-		Trace::function_entry();
 		$trip = 'rtw';
 		$slug='170707';
 		$edate = '2017-07-07';
@@ -221,11 +207,9 @@ class AlbumTest extends LocalTestcase
 
 		// var_dump($model);
 
-		Trace::function_exit();
 	}
 	function testInsertDelete()
 	{
-		Trace::function_entry();
 		$r = Database\Models\Album::get_by_slug($this->test_slug);
 		$this->assertNotEqual($r, null);
 		$this->assert_test_album($r);
@@ -240,14 +224,12 @@ class AlbumTest extends LocalTestcase
 		$r2 = Database\Models\Album::get_by_slug($this->test_slug);
 		$this->assertNotEqual($r2, null);
 		$this->assert_test_album($r2);
-		Trace::function_exit();
 	}
 	function test_fields()
 	{
 	}
 	function testImportExport()
 	{
-		Trace::function_entry();
 		// confirm we have the test album
 		$result = Database\Models\Album::get_by_slug($this->test_slug);
 		$this->assert_test_album($result);
@@ -263,6 +245,5 @@ class AlbumTest extends LocalTestcase
 		$result = Database\Models\Album::get_by_slug($this->test_slug);
 		$this->assert_test_album($result);
 
-		Trace::function_exit();
 	}
 }

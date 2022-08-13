@@ -230,17 +230,14 @@ class EntryLocation extends ItemBase //Base\ModelBase
 	*/
 	public function sql_insert()
 	{
-		\Trace::function_entry("");
 		// Insert the item first otherwise a foreign key constraint will fail
 		parent::sql_insert();
 		if ($this->has_camping) {
-			\Trace::debug("adding camping to categorized_items");
 			CategorizedItem::add("camping", $this->slug);
 		}
 		if ($this->has_border) {
 			CategorizedItem::add("border", $this->slug);
 		}
-		\Trace::function_exit();
 	}
 	/**
 	* Delete this instance into the sql database.

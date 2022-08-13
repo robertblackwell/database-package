@@ -32,7 +32,6 @@ class HEDBannerTest extends NoSqlTestcase
 	*/
 	public function testBanner()
 	{
-		\Trace::function_entry();
 		$locator = Locator::get_instance();
 		$this->trip = "rtw";
 		$this->slug = "hed_test_banner";
@@ -75,7 +74,6 @@ class HEDBannerTest extends NoSqlTestcase
 		$this->assertEqual($a->slug, $this->slug);
 		$this->assertEqual($a->published_date, "adate");
 
-		\Trace::function_exit();
 	}
 	/**
 	* Need a real banner with images for this test

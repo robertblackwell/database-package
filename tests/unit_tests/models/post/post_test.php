@@ -14,7 +14,6 @@ class PostPostTest extends LocalTestcase
 {
 	function setUp()
 	{
-		\Trace::disable();
 		global $config;
 		Db::init($config);
 		$db = Db::get_instance();
@@ -43,24 +42,19 @@ class PostPostTest extends LocalTestcase
 	}
 	function testGetByTripSlug()
 	{
-		Trace::function_entry();
 		$result = Database\Models\Item::get_by_trip_slug($this->test_trip, $this->test_slug);
 
 		$this->assert_test_post($result);
-		Trace::function_exit();
 	}
 
 	function testGetBySlug()
 	{
-		Trace::function_entry();
 		$result = Database\Models\Item::get_by_slug($this->test_slug);
 		$this->assert_test_post($result);
-		Trace::function_exit();
 	}
 
 	function testCreateWithSkeleton()
 	{
-		Trace::function_entry();
 		$trip = 'rtw';
 		$slug='170707';
 		$edate = '2017-07-07';
@@ -86,12 +80,10 @@ class PostPostTest extends LocalTestcase
 
 		// print_r($model->getStdClass());
 
-		Trace::function_exit();
 	}
 
 	function testInsertDelete()
 	{
-		Trace::function_entry();
 		$r = Database\Models\Item::get_by_slug($this->test_slug);
 		$this->assertNotEqual($r, null);
 		$this->assert_test_post($r);
@@ -106,13 +98,11 @@ class PostPostTest extends LocalTestcase
 		$r2 = Database\Models\Item::get_by_slug($this->test_slug);
 		$this->assertNotEqual($r2, null);
 		$this->assert_test_post($r2);
-		Trace::function_exit();
 	}
 
 
 	function testImportExport()
 	{
-		Trace::function_entry();
 		// confirm we have the test album
 		$result = Database\Models\Item::get_by_slug($this->test_slug);
 		$this->assert_test_post($result);
@@ -128,6 +118,5 @@ class PostPostTest extends LocalTestcase
 		$result = Database\Models\Item::get_by_slug($this->test_slug);
 		$this->assert_test_post($result);
 
-		Trace::function_exit();
 	}
 }

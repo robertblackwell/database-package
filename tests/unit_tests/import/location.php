@@ -9,7 +9,6 @@ class test_import_location extends LocalTestcase
 {
 	function setUp()
 	{
-		Trace::disable();
 		global $config;
 		Db::init($config);
 		$this->db = Db::get_instance();
@@ -28,7 +27,6 @@ class test_import_location extends LocalTestcase
 	// test deport the item
 	function test_deport_import_location()
 	{
-		Trace::function_entry();
 		$r = Item::get_by_slug(LOC_SLUG);
 		// the pre condition ensures this will not be null
 		$this->assertNotEqual($r, null);

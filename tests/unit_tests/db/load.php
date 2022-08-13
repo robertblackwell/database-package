@@ -12,7 +12,6 @@ class LoadTest extends LocalTestcase
 {
 	function testDropCreateLoadForRtw()
 	{
-		\Trace::disable();
 		print("Start load test\n");
 		global $config;
 		Db::init($config);

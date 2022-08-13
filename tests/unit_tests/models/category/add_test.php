@@ -15,7 +15,6 @@ class CategoryTest extends LocalTestcase
 {
 	function setUp()
 	{
-		\Trace::disable();
 		global $config;
 		Db::init($config);
 		$db = Db::get_instance();
@@ -23,7 +22,6 @@ class CategoryTest extends LocalTestcase
 	}
 	function categoryFind($category)
 	{
-		Trace::function_entry();
 		$result = TripCategory::find();
 		//var_dump($result);
 		$found=false;
@@ -33,12 +31,10 @@ class CategoryTest extends LocalTestcase
 			}
 		}
 		return $found;
-		Trace::function_exit();
 	}
 	function testAddRemove()
 	{
 		return;
-		Trace::function_entry();
 	
 		$this->assertFalse($this->category_exists("my_category"));
 		TripCategory::add('my_category');
@@ -46,6 +42,5 @@ class CategoryTest extends LocalTestcase
 		TripCategory::remove('my_category');
 		$this->assertFalse($this->category_exists("my_category"));
 		// print __METHOD__."\n";
-		Trace::function_exit();
 	}
 }

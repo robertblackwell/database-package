@@ -28,7 +28,6 @@ class HEDArticleTest extends LocalTestcase
 
 	public function testsArticle()
 	{
-		\Trace::function_entry();
 		$locator = Locator::get_instance();
 		$p = $locator->item_filepath($this->trip, $this->slug);
 		\HedTest\Tools\ensureDoesNotExistsDir($locator->item_dir($this->trip, $this->slug));
@@ -77,6 +76,5 @@ class HEDArticleTest extends LocalTestcase
 		$this->assertEqual($a->title, "aTitle");
 		$this->assertEqual($a->abstract, "this is an abstract");
 
-		\Trace::function_exit();
 	}
 }

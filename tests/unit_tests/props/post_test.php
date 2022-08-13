@@ -31,7 +31,6 @@ class PostTest extends NoSqlTestcase
 
 	function testPost()
 	{
-		\Trace::function_entry();
 		$locator = Locator::get_instance();
 		$p = $locator->item_filepath($this->trip, $this->slug);
 		
@@ -102,7 +101,6 @@ EOD;
 		$this->assertEqual($a->featured_image, "a_featured_image_string");
 		$this->assertEqual($a->main_content, $expected);
 
-		\Trace::function_exit();
 	}
 
 }

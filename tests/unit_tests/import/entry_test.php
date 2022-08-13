@@ -13,7 +13,6 @@ class EntryTest extends LocalTestcase
 {
 	function setUp()
 	{
-		Trace::disable();
         global $config;
 		Db::init($config);
 		DbPreloader::load();
@@ -22,7 +21,6 @@ class EntryTest extends LocalTestcase
 	}
 	function testGetDelete()
 	{ 
-	    Trace::function_entry();
 	    $r = Item::get_by_slug('120708');
 	    $this->assertNotEqual($r, null);
         $r->sql_delete();    
@@ -31,7 +29,6 @@ class EntryTest extends LocalTestcase
 	}
 	function testGetDeleteInsert()
 	{
-	    Trace::function_entry();
 	    $r = Item::get_by_slug('120708');
 	    $this->assertNotEqual($r, null);
         $r->sql_delete();

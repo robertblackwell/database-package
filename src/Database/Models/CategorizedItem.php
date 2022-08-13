@@ -76,7 +76,6 @@ class CategorizedItem extends Model
 	*/
 	public static function add(string $category, string $slug)
 	{
-		\Trace::function_entry();
 		$a = array('category'=>$category, 'item_slug'=>$slug);
 		$obj = new CategorizedItem($a);
 

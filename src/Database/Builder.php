@@ -38,14 +38,12 @@ class Builder
 	 */
 	public function truncate_tables()
 	{
-		\Trace::function_entry();
 		$this->sql->query("TRUNCATE table IF EXISTS categorized_items");
 		$this->sql->query("TRUNCATE view IF EXISTS categories");
 		$this->sql->query("TRUNCATE table IF EXISTS albums");
 		$this->sql->query("TRUNCATE table IF EXISTS banners");
 		$this->sql->query("TRUNCATE table IF EXISTS editorials");
 		$this->sql->query("TRUNCATE table IF EXISTS my_items");
-		\Trace::function_exit();
 	}
 
 	/**
@@ -54,9 +52,7 @@ class Builder
 	*/
 	public function truncate_categorized_items_table()
 	{
-		\Trace::function_entry();
 		$this->sql->query("TRUNCATE table IF EXISTS categorized_items");
-		\Trace::function_exit();
 	}
 	/**
 	* Truncate categories view
@@ -64,9 +60,7 @@ class Builder
 	*/
 	public function truncate_categories_view()
 	{
-		\Trace::function_entry();
 		$this->sql->query("TRUNCATE view IF EXISTS categories");
-		\Trace::function_exit();
 	}
 	/**
 	* Truncate albums table
@@ -74,9 +68,7 @@ class Builder
 	*/
 	public function truncate_albums_table()
 	{
-		\Trace::function_entry();
 		$this->sql->query("TRUNCATE table albums");
-		\Trace::function_exit();
 	}
 	/**
 	 * Truncate my_items table
@@ -84,9 +76,7 @@ class Builder
 	 */
 	public function truncate_my_items_table()
 	{
-		\Trace::function_entry();
 		$this->sql->query("TRUNCATE table IF EXISTS my_items");
-		\Trace::function_exit();
 	}
 
 	/**
@@ -95,7 +85,6 @@ class Builder
 	 */
 	public function drop_tables()
 	{
-		\Trace::function_entry();
 		$this->sql->query("DROP table IF EXISTS categorized_items");
 		$this->sql->query("DROP table IF EXISTS categories");
 		$this->sql->query("DROP view IF EXISTS categories");
@@ -103,7 +92,6 @@ class Builder
 		$this->sql->query("DROP table IF EXISTS banners");
 		$this->sql->query("DROP table IF EXISTS editorials");
 		$this->sql->query("DROP table IF EXISTS my_items");
-		\Trace::function_exit();
 	}
 
 	/**
@@ -127,7 +115,6 @@ class Builder
 	 */
 	public function create_table_my_items()
 	{
-		\Trace::function_entry();
 		$query_my_items = " 
 			CREATE TABLE `my_items` (
 				`slug` varchar(20)   CHARSET UTF8 NOT NULL DEFAULT '',
@@ -157,8 +144,6 @@ class Builder
 
 		$result = $this->sql->query($query_my_items);
 			
-		\Trace::debug("query result ".var_export($result, true));
-		\Trace::function_exit();
 	}
 
 	/**
@@ -167,7 +152,6 @@ class Builder
 	*/
 	public function create_table_albums()
 	{
-		\Trace::function_entry();
 		$query = " 
 			CREATE TABLE `albums` (
 				`slug` varchar(20) CHARSET UTF8  NOT NULL DEFAULT '',
@@ -185,8 +169,6 @@ class Builder
 				
 		$result = $this->sql->query($query);
 				
-		\Trace::debug("query result ".var_export($result, true));
-		\Trace::function_exit();
 	}
 	/**
 	 * Drops a table "banner" from the sql database
@@ -211,7 +193,6 @@ class Builder
 	*/
 	public function create_table_banners()
 	{
-		\Trace::function_entry();
 		$query = " 
 			CREATE TABLE `banners` (
 				`version` varchar(20) CHARSET UTF8  DEFAULT NULL,
@@ -227,8 +208,6 @@ class Builder
 				
 		$result = $this->sql->query($query);
 				
-		\Trace::debug("query result ".var_export($result, true));
-		\Trace::function_exit();
 	}
 
 
@@ -239,7 +218,6 @@ class Builder
 	*/
 	public function create_table_editorials()
 	{
-		\Trace::function_entry();
 		$query = " 
 			CREATE TABLE `editorials` (
 				`version` varchar(20) CHARSET UTF8  DEFAULT NULL,
@@ -257,8 +235,6 @@ class Builder
 				
 		$result = $this->sql->query($query);
 				
-		\Trace::debug("query result ".var_export($result, true));
-		\Trace::function_exit();
 	}
 
 	/**
@@ -267,7 +243,6 @@ class Builder
 	*/
 	public function create_view_categories()
 	{
-		\Trace::function_entry();
 
 		$query_categories=<<<EOD
 			create view categories as (
@@ -278,7 +253,6 @@ class Builder
 EOD;
 
 		$this->sql->query($query_categories);
-		\Trace::function_exit();
 	}
 	/**
 	* Create categories view
@@ -286,7 +260,6 @@ EOD;
 	*/
 	public function create_view_categories_trip()
 	{
-		\Trace::function_entry();
 
 		$query_categories=<<<EOD
 			create view categories_by_trip as (
@@ -297,7 +270,6 @@ EOD;
 EOD;
 
 		$this->sql->query($query_categories);
-		\Trace::function_exit();
 	}
 	
 	/**
@@ -307,7 +279,6 @@ EOD;
 	*/
 	public function create_table_categories()
 	{
-		\Trace::function_entry();
 		$query_categories=<<<EOD
 		CREATE TABLE `categories` (
 			`category` varchar(20) CHARSET UTF8 NOT NULL DEFAULT '',
@@ -315,7 +286,6 @@ EOD;
 		) ENGINE=InnoDB DEFAULT CHARSET UTF8;
 EOD;
 		$this->sql->query($query_categories);
-		\Trace::function_exit();
 	}
 
 	/**
@@ -324,7 +294,6 @@ EOD;
 	*/
 	public function create_table_categorized_items()
 	{
-		\Trace::function_entry();
 		$query_categorized_items=<<<EOD
 			CREATE TABLE `categorized_items` (
 			`category` varchar(20) CHARSET UTF8 NOT NULL DEFAULT '',
@@ -338,7 +307,6 @@ EOD;
 			) ENGINE=InnoDB DEFAULT CHARSET UTF8;
 EOD;
 		$this->sql->query($query_categorized_items);
-		\Trace::function_exit();
 	}
 
 	/**
@@ -347,9 +315,7 @@ EOD;
 	*/
 	public function add_camping()
 	{
-		\Trace::function_entry();
 		$query_my_items = "ALTER TABLE `my_items` ADD `camping` MEDIUMTEXT after `featured_image`";
-		\Trace::function_exit();
 	}
 
 	/**

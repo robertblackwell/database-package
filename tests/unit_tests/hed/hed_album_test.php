@@ -14,7 +14,6 @@ class HEDAlbumTest extends LocalTestcase
 {
 	function setUp()
 	{
-		\Trace::disable();
 		global $config;
 		Db::init($config);
 		$this->trip = "rtw";
@@ -27,7 +26,6 @@ class HEDAlbumTest extends LocalTestcase
 	}
 	function testAlbum()
 	{
-		\Trace::function_entry();
 		$locator = Locator::get_instance();
 		$p = $locator->album_filepath($this->trip, $this->slug);
 		\HedTest\Tools\ensureDoesNotExistsDir($locator->album_dir($this->trip, $this->slug));
@@ -69,7 +67,6 @@ class HEDAlbumTest extends LocalTestcase
 		$this->assertEqual($a->published_date, "adate");
 		$this->assertEqual($a->title, "aTitle");
 
-		\Trace::function_exit();
 	}
 	public function testGetgallery()
 	{

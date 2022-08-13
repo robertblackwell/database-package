@@ -32,7 +32,6 @@ class EntryTest extends NoSqlTestcase
 
 	function testEntry()
 	{
-		\Trace::function_entry();
 		$locator = Locator::get_instance();
 		$this->trip = "rtw";
 		$this->slug = "hed_test_entry";
@@ -145,11 +144,9 @@ EOD;
 		$this->assertEqual($a->main_content, $expected);
 		$this->assertEqual(trim($a->excerpt), $para1_expect);
 
-		\Trace::function_exit();
 	}
 	public function testBorderCamping()
 	{
-		\Trace::function_entry();
 		$tmp = dirname(__FILE__)."/data/test_entry";
 		if (file_exists($tmp)) system("rm -R ".$tmp);
 		$p = dirname(__FILE__)."/data/entry_1/content.php";

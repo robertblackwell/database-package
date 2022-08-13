@@ -15,7 +15,6 @@ class ItemTest extends LocalTestcase
 {
 	function setUp()
 	{
-		\Trace::disable();
 		global $config;
 		Db::init($config);
 		DbPreloader::load();
@@ -23,16 +22,13 @@ class ItemTest extends LocalTestcase
 	}
 	function testEntryGetByTripSlug()
 	{
-		\Trace::function_entry();
 		$r = Item::get_by_trip_slug("rtw", "130417");
 		$this->assertNotEqual($r, null);
 		$this->assertEqual(get_class($r), "Database\Models\Entry");
 		$this->assertEqual($r->slug, "130417");
-		Trace::function_exit();
 	}
 	function testEntryGetBySlug()
 	{
-		\Trace::function_entry();
 		$r = Item::get_by_slug('130417');
 		$this->assertNotEqual($r, null);
 		$this->assertEqual(get_class($r), "Database\Models\Entry");
@@ -59,42 +55,33 @@ class ItemTest extends LocalTestcase
 		$this->assertTrue(is_bool($r->has_camping));
 		$this->assertTrue(is_bool($r->has_border));
 		//        print get_class($r->latitude)."\n";
-		Trace::function_exit();
 	}
 	function testPostGetByTripSlug()
 	{
-		\Trace::function_entry();
 		$r = Item::get_by_trip_slug('rtw', 'electricalpart1');
 		$this->assertNotEqual($r, null);
 		$this->assertEqual(get_class($r), "Database\Models\Post");
 		$this->assertEqual($r->slug, 'electricalpart1');
-		Trace::function_exit();
 	}
 	function testPostGetBySlug()
 	{
-		\Trace::function_entry();
 		$r = Item::get_by_slug('electricalpart1');
 		$this->assertNotEqual($r, null);
 		$this->assertEqual(get_class($r), "Database\Models\Post");
 		$this->assertEqual($r->slug, 'electricalpart1');
-		Trace::function_exit();
 	}
 	function testArticeGetByTripSlug()
 	{
-		Trace::function_entry();
 		$r = Item::get_by_trip_slug('rtw', 'tires');
 		$this->assertNotEqual($r, null);
 		$this->assertEqual(get_class($r), "Database\Models\Article");
 		$this->assertEqual($r->slug, 'tires');
-		Trace::function_exit();
 	}
 	function testArticleGetBySlug()
 	{
-		Trace::function_entry();
 		$r = Item::get_by_slug('tires');//var_dump($r);exit();
 		$this->assertNotEqual($r, null);
 		$this->assertEqual(get_class($r), "Database\Models\Article");
 		$this->assertEqual($r->slug, 'tires');
-		Trace::function_exit();
 	}
 }

@@ -12,7 +12,6 @@ use \DbPreloader;
 class ArticleTest extends LocalTestcase
 {
 	function setUp(){
-		Trace::disable();
         global $config;
 		Db::init($config);
 		DbPreloader::load();
@@ -21,7 +20,6 @@ class ArticleTest extends LocalTestcase
 	}
 	function testGetDeleteInsert()
 	{
-	    Trace::function_entry();
 	    $r = Item::get_by_slug('tires');
 	    $this->assertNotEqual($r, null);
         $r->sql_delete();

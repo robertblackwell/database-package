@@ -68,8 +68,6 @@ class Utility
 	*/
 	public function import_item(string $trip, string $slug) //: void
 	{
-		// \Trace::enable();
-		\Trace::function_entry();
 
 		$y = Item::get_by_slug($slug);
 
@@ -96,7 +94,6 @@ class Utility
 			$x->featured_image_path = null;
 		}
 
-		\Trace::function_exit();
 		return $x;
 	}
 
@@ -108,7 +105,6 @@ class Utility
 	*/
 	public function deport_item(string $slug)
 	{
-		\Trace::function_entry();
 		$x = Item::get_by_slug($slug);
 		if (is_null($x)) {
 			throw new \Exception(__METHOD__."($slug) not found x is null");
@@ -117,7 +113,6 @@ class Utility
 		if ($slug != $x->slug)
 			throw new \Exception(__METHOD__."($slug)  mismatch slug:".$x->slug);
 		$x->sql_delete();
-		\Trace::function_exit();
 		return $x;
 	}
 	/**
@@ -142,7 +137,6 @@ class Utility
 		if ($model === null) {
 			throw new \Exception("object not found for trip: $trip slug: $slug");
 		}
-		\Trace::alert("<p> Importing album trip : $trip item: $slug type ".get_class($model)."</p>");
 
 		if ($slug != $model->slug)
 			throw new \Exception(__METHOD__."slug : ($slug) does not match model->slug {$model->slug}");
@@ -178,7 +172,6 @@ class Utility
 			throw new \Exception("object not found for trip: $trip slug: $slug");
 		}
 
-		\Trace::alert("<p> Importing album trip : $trip item: $slug type ".get_class($model)."</p>");
 
 		if ($slug != $model->slug)
 			throw new \Exception(__METHOD__."($slug) file name and slug do not match file:$fn slug:".$x->slug);
@@ -214,7 +207,6 @@ class Utility
 			throw new \Exception("object not found for trip: $trip slug: $slug");
 		}
 
-		\Trace::alert("<p> Importing album trip : $trip item: $slug type ".get_class($x)."</p>");
 
 		if ($slug != $x->slug)
 			throw new \Exception(__METHOD__."($slug) file name and slug do not match file:$fn slug:".$x->slug);
@@ -296,7 +288,6 @@ class Utility
 	*/
 	public function get_item_names(string $dir) : array
 	{
-		\Trace::function_entry();
 		$a = scandir($dir);
 		$b = array();
 		foreach ($a as $d) {
@@ -356,16 +347,12 @@ class Utility
 	*/
 	public function load_db_from(string $items_dir) //: void
 	{
-		\Trace::off();
-		\Trace::disable();
-		\Trace::function_entry();
 		$item_names = $this->get_item_names($items_dir);
 		//         var_dump($items_dir);
 		// print_r($item_names);
 		// return;
 		$items = array();
 		foreach ($item_names as $iname) {
-			\Trace::debug("starting $items_dir/$iname");
 
 			// print __METHOD__."<p> {$items_dir} {$iname}";
 			$pa = "$items_dir/$iname/content.php"; 
@@ -385,12 +372,10 @@ class Utility
 					$this->fix_country($obj);
 
 				$obj->sql_insert();
-				\Trace::debug("<p>ending $iname</p>");
 			} else {
 				print("<p>$pa is not a valid file</p>");
 			}
 		}
-		\Trace::function_exit();
 	}
 
 	/**
@@ -405,7 +390,6 @@ class Utility
 		$item_names = $this->get_item_names($items_dir);
 		$items = array();
 		foreach ($item_names as $iname) {
-			\Trace::alert("starting $items_dir/$iname");
 			$pa = "$items_dir/$iname/content.php"; 
 			if(is_file($items_dir."/".$iname."/content.php")) {
 				$o = new \Database\HED\HEDObject();
@@ -421,7 +405,6 @@ class Utility
 					$this->fix_country($obj);
 				}
 				$obj->sql_insert();
-				\Trace::alert("<p>ending $iname</p>");
 			} else {
 				print("<p>rebuild_db_from $items_dir $pa is not a valid content file<p>");
 			}

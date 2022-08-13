@@ -19,7 +19,6 @@ class Test_hed_location extends LocalTestcase
 	// Load a location type HED from a file
 	public function test_1()
 	{
-		Trace::function_entry();
 		$o = new HEDObject();
 		$o->get_from_file(dirname(__FILE__)."/data/test_location/content.php");
 		$this->assert_true($o->slug === "slug");
@@ -29,7 +28,6 @@ class Test_hed_location extends LocalTestcase
 		$this->assert_true($o->content_ref === "ref");
 		$this->assert_true($o->latitude === "12.23456");
 		$this->assert_true($o->longitude === "-125.0900");
-		Trace::function_exit();
 		// var_dump($o->slug);
 		// var_dump($o->type);
 		// var_dump($o->place);
@@ -44,7 +42,6 @@ class Test_hed_location extends LocalTestcase
 	// create a location type HED in raw file format, write it and relaod it. Tests the HEDFactory
 	public function test_2()
 	{
-		Trace::function_entry();
 		\HedTest\Tools\ensureDoesNotExistsDir(dirname(__FILE__)."/data/test_location/out");
 		$p = dirname(__FILE__)."/data/test_location/out/_content.php";
 		$parms = [
@@ -88,7 +85,6 @@ class Test_hed_location extends LocalTestcase
 		// var_dump($o->latitude);
 		// var_dump($o->longitude);
 		// var_dump($o->content_ref);
-		Trace::function_exit();
 	}
 	
 	public function test_3()
@@ -103,7 +99,6 @@ class Test_hed_location extends LocalTestcase
 			'odometer' => "2030405",
 			"day_number" => "29",
 		];
-		Trace::function_entry();
 		$o = new HEDObject();
 		$o->get_from_file(dirname(__FILE__)."/data/test_location/content_2.php");
 		
@@ -124,7 +119,6 @@ class Test_hed_location extends LocalTestcase
 		$this->assert_true($le->content_ref === "REF");
 		$this->assert_true($le->latitude === $parms['latitude']);
 		$this->assert_true($le->longitude === $parms['longitude']);
-		Trace::function_exit();
 		// var_dump($le->slug);
 		// var_dump($le->type);
 		// var_dump($le->miles);
@@ -144,7 +138,6 @@ class Test_hed_location extends LocalTestcase
 	// To do this we need to have a clean state of the database before each test
 	public function test4()
 	{
-		Trace::function_entry();
 		// $loc_2 = \Database\Models\Item::get_by_slug("slug_2");
 		// var_dump($loc_2);
 		//         $o = new HEDObject();
@@ -163,6 +156,5 @@ class Test_hed_location extends LocalTestcase
 		// 	print "Slug: ".($loc->slug);
 		// 	print " Type: ".($loc->type). "\n";
 		// }
-		Trace::function_exit();
 	}
 }

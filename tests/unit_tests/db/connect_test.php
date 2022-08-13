@@ -11,7 +11,6 @@ class ConnectTest extends LocalTestcase
 {
 	function setUp()
 	{
-		\Trace::disable();
 	    //print "test connect db\n";
 		global $config;
 		Db::init($config);
@@ -20,7 +19,6 @@ class ConnectTest extends LocalTestcase
 	}	
 	function testConnectAndInit()
 	{
-	    \Trace::function_entry();
 		$db = $this->db;
 		$this->assertFalse($db == null);
 		$this->assertEqual(get_class($db), "Database\DbObject");
@@ -30,7 +28,6 @@ class ConnectTest extends LocalTestcase
 
 		$this->assertFalse(Db::$locator == null);
 		$this->assertEqual(get_class(Db::$locator), "Database\Locator");
-	    \Trace::function_exit();
 	}
 }
 ?>

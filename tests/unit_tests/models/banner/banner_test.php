@@ -14,7 +14,6 @@ class BannersTest extends LocalTestcase
 {
 	public function setUp()
 	{
-		\Trace::disable();
 		global $config;
 		Db::init($config);
 		$db = Db::get_instance();
@@ -41,22 +40,17 @@ class BannersTest extends LocalTestcase
 	}
 	function testGetByTripSlug()
 	{
-		Trace::function_entry();
 		// print "Lets get started\n";
 		$result = Database\Models\Banner::get_by_trip_slug($this->test_trip, $this->test_slug);
 		$this->assert_test_banner($result);
-		Trace::function_exit();
 	}
 	function testGetBySlug()
 	{
-		Trace::function_entry();
 		$result = Database\Models\Banner::get_by_slug($this->test_slug);
-		Trace::function_exit();
 	}
 
 	function testCreateWithSkeleton()
 	{
-		Trace::function_entry();
 		$trip = 'rtw';
 		$slug='170707';
 		$edate = '2017-07-07';
@@ -76,12 +70,10 @@ class BannersTest extends LocalTestcase
 
 		// var_dump($model);
 
-		Trace::function_exit();
 	}
 
 	function testInsertDelete()
 	{
-		Trace::function_entry();
 		$r = Database\Models\Banner::get_by_slug($this->test_slug);
 		$this->assertNotEqual($r, null);
 		$this->assert_test_banner($r);
@@ -96,13 +88,11 @@ class BannersTest extends LocalTestcase
 		$r2 = Database\Models\Banner::get_by_slug($this->test_slug);
 		$this->assertNotEqual($r2, null);
 		$this->assert_test_banner($r2);
-		Trace::function_exit();
 	}
 
 
 	function testImportExport()
 	{
-		Trace::function_entry();
 		// confirm we have the test album
 		$result = Database\Models\Banner::get_by_slug($this->test_slug);
 		$this->assert_test_banner($result);
@@ -118,7 +108,6 @@ class BannersTest extends LocalTestcase
 		$result = Database\Models\Banner::get_by_slug($this->test_slug);
 		$this->assert_test_banner($result);
 
-		Trace::function_exit();
 	}
 	function testGetLatestBanner()
 	{

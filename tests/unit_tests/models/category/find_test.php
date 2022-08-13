@@ -15,7 +15,6 @@ class CategoryRepeatTest extends LocalTestcase
 {
 	function setUp()
 	{
-		\Trace::disable();
 		global $config;
 		Db::init($config);
 		$db = Db::get_instance();
@@ -23,7 +22,6 @@ class CategoryRepeatTest extends LocalTestcase
 	}
 	function testFind()
 	{
-		Trace::function_entry();
 		$result = TripCategory::find();
 		$cats = array();
 		foreach ($result as $c) {
@@ -34,11 +32,9 @@ class CategoryRepeatTest extends LocalTestcase
 		$this->assertTrue(is_array($result));
 		$this->assertFalse(count($result) === 0);
 		$this->assertEqual(get_class($result[0]), "Database\Models\TripCategory");
-		Trace::function_exit();
 	}
 	function testFindForTrip()
 	{
-		Trace::function_entry();
 		$trip='rtw';
 		$result = TripCategory::find_for_trip($trip);
 		$cats = array();
@@ -51,14 +47,11 @@ class CategoryRepeatTest extends LocalTestcase
 		$this->assertTrue(is_array($result));
 		$this->assertFalse(count($result) === 0);
 		$this->assertEqual(get_class($result[0]), "Database\Models\TripCategory");
-		Trace::function_exit();
 	}
 	function testExists()
 	{
-		Trace::function_entry();
 		$result = TripCategory::exists('vehicle');
 		// var_dump($result);
 		$this->assertTrue($result);
-		Trace::function_exit();
 	}
 }

@@ -13,7 +13,6 @@ class POstTest extends LocalTestcase
 {
 	function setUp()
 	{
-		Trace::disable();
         global $config;
 		Db::init($config);
 		DbPreloader::load();
@@ -22,7 +21,6 @@ class POstTest extends LocalTestcase
 	}
 	function testGetDeleteInsert()
 	{
-	    Trace::function_entry();
 	    $r = Item::get_by_slug('electricalpart1');
 	    $this->assertNotEqual($r, null);
         $r->sql_delete();

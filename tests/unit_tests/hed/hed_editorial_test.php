@@ -17,7 +17,6 @@ class HEDEditorialTest extends NoSqlTestcase
 {
 	public function setUp()
 	{
-		\Trace::disable();
 		global $config;
 		Db::init($config);
 		$this->trip = "rtw";
@@ -31,7 +30,6 @@ class HEDEditorialTest extends NoSqlTestcase
 
 	public function testEditorial()
 	{
-		\Trace::function_entry();
 		$locator = Locator::get_instance();
 		$p = $locator->editorial_filepath($this->trip, $this->slug);
 		\HedTest\Tools\ensureDoesNotExistsDir($locator->editorial_dir($this->trip, $this->slug));
@@ -92,7 +90,6 @@ EOD;
 		$this->assertEqual($a->image_name, "anImage");
 		$this->assertEqual($a->main_content, $expected);
 
-		\Trace::function_exit();
 	}
 	public function testImageUrl()
 	{

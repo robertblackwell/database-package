@@ -15,7 +15,6 @@ class AddRemoveTest extends LocalTestcase
 {
 	function setUp()
 	{
-		\Trace::disable();
 		global $config;
 		Db::init($config);
 		DbPreloader::load();
@@ -24,7 +23,6 @@ class AddRemoveTest extends LocalTestcase
 	}
 	// function test_1()
 	// {
-	// 	Trace::function_entry();
 	
 	// 	$this->assertFalse(CategorizedItem::exists("my_category_test", "thefirstrtw"));
 	// 	CategorizedItem::add('my_category_test', "thefirstrtw");
@@ -32,11 +30,9 @@ class AddRemoveTest extends LocalTestcase
 	// 	CategorizedItem::delete('my_category_test', "thefirstrtw");
 	// 	$this->assertFalse(CategorizedItem::exists("my_category_test", "thefirstrtw"));
 	// 	//Category::remove("my_category_test");
-	// 	Trace::function_exit();
 	// }
 	function test_2()
 	{
-		Trace::function_entry();
 	
 		$this->assertFalse(CategorizedItem::exists("my_category_test", "130417"));
 		$this->assertFalse(CategorizedItem::exists("my_category_test", "120705"));
@@ -63,6 +59,5 @@ class AddRemoveTest extends LocalTestcase
 		*/
 		//$this->assertFalse($this->category_exists("my_category_test"));//and the category as nothing else referes to it
 		//Category::remove("my_category_test");
-		Trace::function_exit();
 	}
 }

@@ -12,7 +12,6 @@ require_once dirname(__FILE__)."/DbPreLoader.php";
 require_once dirname(__FILE__)."/LocalTestcase.php";
 require_once dirname(__FILE__)."/NoSqlTestcase.php";
 
-\Trace::disable();
 UnitTestRegistry::init();
 global $config;
 $config = UnitTestRegistry::$config;

@@ -31,7 +31,6 @@ class ArticleTest extends LocalTestcase
 
 	function testsArticle()
 	{
-		\Trace::function_entry();
 		$locator = Locator::get_instance();
 		$p = $locator->item_filepath($this->trip, $this->slug);
 		$tmp = $locator->item_dir($this->trip, $this->slug);
@@ -81,7 +80,6 @@ class ArticleTest extends LocalTestcase
 		$this->assertEqual($a->title, "aTitle");
 		$this->assertEqual($a->abstract, "this is an abstract");
 
-		\Trace::function_exit();
 	}
 
 }

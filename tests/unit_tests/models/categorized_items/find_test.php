@@ -15,7 +15,6 @@ class CategorizedItemsTest extends LocalTestcase
 {
 	function setUp()
 	{
-		\Trace::disable();
 		global $config;
 		Db::init($config);
 		$db = Db::get_instance();
@@ -23,20 +22,16 @@ class CategorizedItemsTest extends LocalTestcase
 	}
 	function testFind()
 	{
-		Trace::function_entry();
 		$result = CategorizedItem::find();
 		// print_r($result);
 		$this->assertTrue($result !== null);
 		$this->assertTrue(is_array($result));
 		$this->assertTrue(count($result) !== 0);
 		$this->assertEqual(get_class($result[0]), "Database\Models\CategorizedItem");
-		Trace::function_exit();
 	}
 	function testRelationshipExists()
 	{
-		Trace::function_entry();
 		$result = CategorizedItem::exists('vehicle', "electricalpart1");
 		$this->assertTrue($result);
-		Trace::function_exit();
 	}
 }

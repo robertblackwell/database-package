@@ -20,7 +20,6 @@ class FindTest extends LocalTestcase
 	}
 	function testDateOrder()
 	{
-		Trace::function_entry();
 		$result = EntryLocation::find_date_order();
 		$this->assertNotEqual($result, null);
 		$this->assertNotEqual(count($result), 0);
@@ -29,11 +28,9 @@ class FindTest extends LocalTestcase
 		// print_r($result[0]->getStdClass());
 		// note these are in increasing cronological order and the test db is only part of the full db
 		$this->assertEqual($result[0]->trip, "er");
-		Trace::function_exit();
 	}
 	function testForTrip()
 	{
-		Trace::function_entry();
 		$result = EntryLocation::find_for_trip('rtw');
 		$this->assertNotEqual($result, null);
 		$this->assertNotEqual(count($result), 0);
@@ -44,6 +41,5 @@ class FindTest extends LocalTestcase
 			$this->assertEqual($i->trip, "rtw");
 		}
 		$this->assertEqual(count($result), 19);
-		Trace::function_exit();
 	}
 }

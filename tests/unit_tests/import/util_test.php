@@ -15,7 +15,6 @@ class DeportImportTest extends LocalTestcase
 {
 	function setUp()
 	{
-		\Trace::disable();
         global $config;
 		Db::init($config);
 		\DbPreloader::load();
@@ -25,7 +24,6 @@ class DeportImportTest extends LocalTestcase
 	}
 	function testAlbum()
 	{
-	    Trace::function_entry();
 	    $slug = "scotland";
 	    $r = Album::get_by_slug($slug);
 	    $this->assertNotEqual($r, null);
@@ -40,11 +38,9 @@ class DeportImportTest extends LocalTestcase
         
 	    $r = Album::get_by_slug($slug);
 	    $this->assertNotEqual($r, null);
-	    Trace::function_exit();
 	}
 	function testArticle()
 	{
-	    Trace::function_entry();
 	    $slug = "tires";
 	    $r = Item::get_by_slug($slug);
 	    $this->assertNotEqual($r, null);
@@ -59,11 +55,9 @@ class DeportImportTest extends LocalTestcase
         
 	    $r = Item::get_by_slug($slug);
 	    $this->assertNotEqual($r, null);
-	    Trace::function_exit();
 	}
 	function testEntry()
 	{
-	    Trace::function_entry();
 	    $slug = "130417";
 	    $r = Item::get_by_slug($slug);
 	    $this->assertNotEqual($r, null);
@@ -77,11 +71,9 @@ class DeportImportTest extends LocalTestcase
         // var_dump($x);
 	    $r = Item::get_by_slug($slug);
 	    $this->assertNotEqual($r, null);
-	    Trace::function_exit();
 	}
 	function testPost()
 	{
-	    Trace::function_entry();
 	    $r = Item::get_by_slug('electricalpart1');
 	    $this->assertNotEqual($r, null);
  		$trip = $r->trip;   
@@ -94,6 +86,5 @@ class DeportImportTest extends LocalTestcase
         
 	    $r = Item::get_by_slug('electricalpart1');
 	    $this->assertNotEqual($r, null);
-	    Trace::function_exit();
 	}
 }
