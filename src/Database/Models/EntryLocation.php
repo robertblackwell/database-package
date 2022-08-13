@@ -112,7 +112,7 @@ class EntryLocation extends ItemBase //Base\ModelBase
 
 		$this->properties = self::$field_names;
 		$derived_props = [
-			"excerpts" => "text"
+			"excerpt" => "text"
 		];
 		$props = array_diff_key($this->properties, $derived_props);
 		$this->sql_properties = array_keys($props);
