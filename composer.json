@@ -17,7 +17,7 @@
     },
 
     "repositories": [
-        {"type": "git","url": "/home/robert/git-repos/litetest"}
+        {"type": "git","url": "git@github.com:robertblackwell/litetest.git"}
     ],
     "minimum-stability":"dev",
     "require":{
@@ -26,8 +26,10 @@
 		"robertblackwell/litetest":"^4.1.0"
     },
     "autoload": {
-        "psr-0": {
-            "Database": "src/"
+        "psr-4": {
+            "Database\\": "src/Database",
+            "Gallery\\": "src/Gallery",
+            "Gps\\": "src/Gps"
         },
         "classmap":[]
     }

@@ -83,7 +83,7 @@ ACTIVE_TESTS=\
 #   $(hed_tests) \
 
 mine: prepare_test_data
-	$(LITETEST) $(hed_tests)
+	$(LITETEST) $(nextprev_tests)
 
 all: prepare_test_data
 	$(LITETEST) $(ACTIVE_TESTS)

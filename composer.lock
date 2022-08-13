@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "2f180b11264ea908ca258302a33eebe2",
+    "content-hash": "d428b63b073a0a2e4a97b15f9396fe9a",
     "packages": [],
     "packages-dev": [
         {
@@ -115,7 +115,7 @@
             "version": "v4.1.0",
             "source": {
                 "type": "git",
-                "url": "/home/robert/git-repos/litetest",
+                "url": "git@github.com:robertblackwell/litetest.git",
                 "reference": "c0db2e60f762e1302152495c1db06c0a04d50913"
             },
             "require": {
@@ -647,5 +647,5 @@
     "prefer-lowest": false,
     "platform": [],
     "platform-dev": [],
-    "plugin-api-version": "2.3.0"
+    "plugin-api-version": "2.1.0"
 }

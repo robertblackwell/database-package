@@ -1,12 +1,9 @@
-<?php
+<?
     $title = "Our Mog";
     $article_class = "our_mog";
 ?>
-<?php
-$x = $this->findInclude("article.php");
-include $x;
-?>
-<?php startblock('article_content');?>
+<? include "article.php"  ; ?>
+<? startblock('article_content');?>
 <div id="main_content">
     <p>This article consists mainly of photographs. The majority of the images are of our yellow Unimog U500. However
     there are also images of other Unimogs. In part this is to give the reader an impression of what ours will 
@@ -14,4 +11,4 @@ include $x;
     here also. </p>
     <?php RenderPostGallery($trip, $slug, "picts");?></div>
 </body></html>
-<?php endblock('article_content');?>
+<? endblock('article_content');?>

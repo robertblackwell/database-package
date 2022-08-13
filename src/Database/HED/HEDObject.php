@@ -321,33 +321,33 @@ class HEDObject implements \ArrayAccess
 		return $a;
 	}
 	/**
-	* Gets the content of a field and turns it into a GPSCoordinate object
+	* Gets the content of a field and turns it into a \Gps\Coordinate object
 	* which has been initialized as a longitude.
 	* @param string $field Id value of the target field.
-	* @return GPSCoordinate|null
+	* @return \Gps\Coordinate|null
 	*/
 	public function get_longitude(string $field)
 	{
 		$s = $this->get_text($field);
 		if (is_null($s))
 			return null;
-		$lng = GPSCoordinate::createDD_DDDLongitude($s);
+		$lng = \Gps\Coordinate::createDD_DDDLongitude($s);
 		//print "<p>get_longitude $field  s[$s]</p>";
 		//var_dump($lng);
 		return $lng;
 	}
 	/**
-	* Gets the content of a field and turns it into a GPSCoordinate object.
+	* Gets the content of a field and turns it into a \Gps\Coordinate object.
 	* which has been initialized as a latitude.
 	* @param string $field Id value of the target field.
-	* @return GPSCoordinate|null
+	* @return \Gps\Coordinate|null
 	*/
 	public function get_latitude(string $field)
 	{
 		$s =  $this->get_text($field);
 		if (is_null($s))
 			return null;
-		$lat = GPSCoordinate::createDD_DDDLatitude($s);
+		$lat = \Gps\Coordinate::createDD_DDDLatitude($s);
 		//print "<p>get_latitude $field  s[$s]</p>";
 		//var_dump($lat);
 		return $lat;

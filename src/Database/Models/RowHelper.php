@@ -190,29 +190,29 @@ class RowHelper
 		return $a;
 	}
 	/**
-	* Get a longitude as a GPSCoordinate type
+	* Get a longitude as a Gps\Coordinate type
 	*
 	* @param string $field The field name, the nodes id attribute.
-	* @return GPSCoordinate|null
+	* @return Gps\Coordinate|null
 	*/
 	public function get_longitude(string $field)
 	{
 		$s = $this->get_text($field);
-		$lng = \GPSCoordinate::createDD_DDDLongitude($s);
+		$lng = \Gps\Coordinate::createDD_DDDLongitude($s);
 		//print "<p>get_longitude $field  s[$s]</p>";
 		//var_dump($lng);
 		return $lng;
 	}
 	/**
-	* Get a latitude as a GPSCoordinate type
+	* Get a latitude as a Gps\Coordinate type
 	*
 	* @param string $field The field name, the nodes id attribute.
-	* @return GPSCoordinate|null
+	* @return Gps\Coordinate|null
 	*/
 	public function get_latitude(string $field)
 	{
 		$s =  $this->get_text($field);
-		$lat = \GPSCoordinate::createDD_DDDLatitude($s);
+		$lat = \Gps\Coordinate::createDD_DDDLatitude($s);
 		//print "<p>get_latitude $field  s[$s]</p>";
 		//var_dump($lat);
 		return $lat;

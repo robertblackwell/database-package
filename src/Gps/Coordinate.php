@@ -1,9 +1,10 @@
 <?php
+namespace Gps;
 /*!
- * @defgroup GPSCoordinates
- * see class GPSCoordinate
+ * @defgroup Coordinates
+ * see class Coordinate
  */
-/*! @ingroup GPSCoordinates
+/*! @ingroup Coordinates
  * Represents a single GPS coordinate either a latitude or a longitude.
  * Two constuctors are privided, one each for Latitudes Longitude, so
  * that the correct N, S, E, W
@@ -12,18 +13,18 @@
  * three common forms of GPS cordinates,
  * namely DD.DDD, DDMM.MMM, and DDMMSS.SSS
  */
-class GPSCoordinate
+class Coordinate
 {
     /*!
-     * Creates a new GPSCoordinate and sets up the values. The input parameter
+     * Creates a new Coordinate and sets up the values. The input parameter
      * is a coordinate value in string +/- DD.MM.MMM format. So for example
      * -34.12.345 is S 34 degrees 12.345 minutes.
      * @param string $s
-     * @return GPSCoordinate 
+     * @return Coordinate 
      */
     public static function createLatitude($s)
 	{
-		$tmp = new GPSCoordinate();
+		$tmp = new Coordinate();
 		$tmp->setDirections(array("1"=>"N","-1"=>"S"));
 		$tmp->setCoordinateDDMM_MMM($s);
 		return $tmp;
@@ -33,7 +34,7 @@ class GPSCoordinate
 	*/
     public static function createDD_DDDLatitude($s)
 	{
-		$tmp = new GPSCoordinate();
+		$tmp = new Coordinate();
 		$tmp->setDirections(array("1"=>"N","-1"=>"S"));
 		$tmp->setCoordinateDD_DDD($s);
 		return $tmp;
@@ -41,18 +42,18 @@ class GPSCoordinate
     /*!
      * Create a new longitude object. See comments in Createatitude.
      * @param string $s
-     * @return GPSCoordinate
+     * @return Coordinate
      */
 	public static function createLongitude($s)
 	{
-		$tmp = new GPSCoordinate();
+		$tmp = new Coordinate();
 		$tmp->setDirections(array("1"=>"E","-1"=>"W"));
 		$tmp->setCoordinateDDMM_MMM($s);
 		return $tmp;	
 	}
 	public static function createDD_DDDLongitude($s)
 	{
-		$tmp = new GPSCoordinate();
+		$tmp = new Coordinate();
 		$tmp->setDirections(array("1"=>"E","-1"=>"W"));
 		$tmp->setCoordinateDD_DDD($s);
 		return $tmp;	
