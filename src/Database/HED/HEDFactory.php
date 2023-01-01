@@ -165,7 +165,7 @@ class HEDFactory
 		if (file_exists($file_path))
 			throw new \Exception("create $type failed $file_path already exists");
 		$class_name = self::type_to_class($type);
-		$fields = $class_name::get_fields();
+		$fields = $class_name::get_field();
 		// print "Class name" . " " . $class_name . "\n";
 		// print __FUNCTION__." fields:";
 		// var_dump($fields);

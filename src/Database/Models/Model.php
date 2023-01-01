@@ -52,7 +52,8 @@ class Model implements iSqlIzable
 		self::$sql = $sql;
 		self::$locator = $locator;
 	}
-	public static function get_field_names()
+	/** RB added 2/1/2023 */
+	public static function get_fields()
 	{
 		return static::$field_names;
 	}
