@@ -1,307 +1,232 @@
-# GNU Make 4.2.1
-# Built for x86_64-pc-linux-gnu
-# Copyright (C) 1988-2016 Free Software Foundation, Inc.
-# License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
-# This is free software: you are free to change and redistribute it.
-# There is NO WARRANTY, to the extent permitted by law.
+make all --print-data-base --no-builtin-variables --no-builtin-rules --question
+# GNU Make 3.81
+# Copyright (C) 2006  Free Software Foundation, Inc.
+# This is free software; see the source for copying conditions.
+# There is NO warranty; not even for MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE.
 
-# Make data base, printed on Sat Aug 13 14:32:44 2022
+# This program built for i386-apple-darwin11.3.0
+ 
+
+# Make data base, printed on Mon Aug 14 19:19:59 2023
 
 # Variables
 
-# 'override' directive
-GNUMAKEFLAGS := 
 # automatic
 <D = $(patsubst %/,%,$(dir $<))
 # automatic
 ?F = $(notdir $?)
 # environment
-DESKTOP_SESSION = ubuntu
-# environment
-OPAM_SWITCH_PREFIX = /home/robert/.opam/4.14.0
-# default
-.SHELLFLAGS := -c
-# environment
-OCAML_TOPLEVEL_PATH = /home/robert/.opam/4.14.0/lib/toplevel
-# environment
-XDG_SESSION_CLASS = user
-# makefile (from 'makefile', line 9)
-TEST_DATA_SRC = $(HOME)/Sites/whiteacorn/data
-# environment
-SNAP_COMMON = /var/snap/code/common
-# makefile (from 'makefile', line 34)
-import_tests = unit_tests/import/album_test.php unit_tests/import/article_test.php unit_tests/import/entry_test.php unit_tests/import/locations.php unit_tests/import/post_test.php unit_tests/import/util_test.php
-# environment
-XDG_SESSION_TYPE = x11
-# automatic
-?D = $(patsubst %/,%,$(dir $?))
-# environment
-IM_CONFIG_PHASE = 1
-# automatic
-@D = $(patsubst %/,%,$(dir $@))
-# environment
-XAUTHORITY = /run/user/1000/gdm/Xauthority
-# environment
-GDMSESSION = ubuntu
-# environment
-XMODIFIERS = @im=ibus
-# makefile
-CURDIR := /home/robert/MyPhpPackages/database-package/tests
-# makefile
-SHELL = /bin/sh
-# environment
-SNAP_DATA = /var/snap/code/104
-# environment
-VTE_VERSION = 6003
-# environment
-VSCODE_NLS_CONFIG = {"locale":"en-gb","availableLanguages":{},"_languagePackSupport":true}
-# environment
-JOURNAL_STREAM = 8:64816
-# makefile (from 'makefile', line 11)
-db_tests = unit_tests/db/preload.php unit_tests/db/load.php unit_tests/db/connect_test.php unit_tests/db/meta_test.php unit_tests/db/query_test.php unit_tests/db/select_test.php
-# environment
-XDG_CONFIG_DIRS = /etc/xdg/xdg-ubuntu:/etc/xdg
-# environment
-SNAP_INSTANCE_NAME = code
-# environment
-SNAP_ARCH = amd64
-# makefile (from 'makefile', line 1)
-MAKEFILE_LIST :=  makefile
-# makefile (from 'makefile', line 68)
-props_tests = unit_tests/props/album_test.php unit_tests/props/article_test.php unit_tests/props/banner_test.php unit_tests/props/editorial_test.php unit_tests/props/post_test.php unit_tests/props/entry_test.php
-# automatic
-@F = $(notdir $@)
-# makefile (from 'makefile', line 246)
-CP = @cp -r
-# environment
-GIO_LAUNCHED_DESKTOP_FILE = /var/lib/snapd/desktop/applications/code_code.desktop
-# environment
-USERNAME = robert
-# makefile (from 'makefile', line 7)
-DATA_DIR = $(TESTS_DIR)/test_data
-# environment
-XDG_DATA_DIRS = /usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop
-# environment
-DBUS_SESSION_BUS_ADDRESS = unix:path=/run/user/1000/bus
-# environment
-MANAGERPID = 1829
-# environment
-LESSOPEN = | /usr/bin/lesspipe %s
-# environment
-VSCODE_CWD = /home/robert/MyPhpPackages/database-package
-# environment
-GSETTINGS_SCHEMA_DIR = /snap/code/104/usr/share/glib-2.0/schemas
-# default
-MAKE_HOST := x86_64-pc-linux-gnu
-# environment
-PATH = /home/robert/.opam/4.14.0/bin:/home/robert/.local/share/swift-5.6.1-RELEASE-ubuntu20.04/usr/bin:/home/robert/bin:/home/robert/zig:/home/robert/.local/bin:/home/robert/.cargo/bin:/home/robert/.local/bin:/home/robert/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/robert/.dotnet/tools:/home/robert/.local/share/coursier/bin:/usr/local/go/bin:/home/robert/.local/share/coursier/bin
-# environment
-GPG_AGENT_INFO = /run/user/1000/gnupg/S.gpg-agent:0:1
-# environment
-SESSION_MANAGER = local/robert-MS-7C35:@/tmp/.ICE-unix/2309,unix/robert-MS-7C35:/tmp/.ICE-unix/2309
-# environment
-XDG_RUNTIME_DIR = /run/user/1000
-# environment
-GDK_PIXBUF_MODULE_FILE = /home/robert/snap/code/common/.cache/gdk-pixbuf-loaders.cache
-# environment
-SNAP = /snap/code/104
-# makefile (from 'makefile', line 61)
-nextprev_tests = unit_tests/nextprev/category_test.php unit_tests/nextprev/country_test.php unit_tests/nextprev/months_test.php unit_tests/nextprev/none_test.php unit_tests/nextprev/trip_test.php
-# makefile (from 'makefile', line 2)
-bootstrap = "include/bootstrap.php"
-# environment
-SNAP_VERSION = 6d9b74a7
-# environment
-XDG_MENU_PREFIX = gnome-
-# environment
-BASHRC_X = :bashrc_x
-# environment
-DISABLE_WAYLAND = 1
-# environment
-ELECTRON_RUN_AS_NODE = 1
-# environment
-INVOCATION_ID = 14f963e068a04434b655762d596fcda7
-# environment
-GDK_PIXBUF_MODULEDIR = /snap/code/104/usr/lib/x86_64-linux-gnu/gdk-pixbuf-2.0/2.10.0/loaders
-# default
-.FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
-# environment
-LS_COLORS = rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:
-# environment
-XDG_SESSION_DESKTOP = ubuntu
-# environment
-SSH_AUTH_SOCK = /run/user/1000/keyring/ssh
-# environment
-GIO_LAUNCHED_DESKTOP_FILE_PID = 1646298
-# automatic
-%F = $(notdir $%)
-# environment
-DISPLAY = :0
-# environment
-SNAP_INSTANCE_KEY = 
-# environment
-PWD = /home/robert/MyPhpPackages/database-package/tests
-# default
-.LOADED := 
-# environment
-SSH_AGENT_PID = 2205
-# environment
-ORIGINAL_XDG_CURRENT_DESKTOP = ubuntu:GNOME
-# environment
-GTK_MODULES = gail:atk-bridge
-# environment
-MANPATH = :/home/robert/.opam/4.14.0/man
-# environment
-VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
-# environment
-HOME = /home/robert
-# makefile (from 'makefile', line 76)
-ACTIVE_TESTS = $(db_tests) $(db_pdo_tests) $(locator_tests) $(props_tests) $(model_tests) $(nextprev_tests) 
-# environment
-LESSCLOSE = /usr/bin/lesspipe %s %s
-# environment
-VSCODE_CLI = 1
-# environment
-VSCODE_CODE_CACHE_PATH = /home/robert/.config/Code/CachedData/6d9b74a70ca9c7733b29f0456fd8195364076dda
-# environment
-LOGNAME = robert
-# environment
-APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = true
-# environment
-SNAP_LIBRARY_PATH = /var/lib/snapd/lib/gl:/var/lib/snapd/lib/gl32:/var/lib/snapd/void
-# environment
-SNAP_CONTEXT = jR30gR75E_WC9-c3Y6daL9bhdrzCzfjJc8ED5sELEaFG8_yQE5nS
+OPAM_SWITCH_PREFIX = /Users/robertblackwell/.opam/4.13.1
 # environment
 ELECTRON_NO_ATTACH_CONSOLE = 1
 # environment
-SNAP_USER_COMMON = /home/robert/snap/code/common
+OCAML_TOPLEVEL_PATH = /Users/robertblackwell/.opam/4.13.1/lib/toplevel
+# environment
+VSCODE_CRASH_REPORTER_PROCESS_TYPE = extensionHost
+# makefile (from `makefile', line 9)
+TEST_DATA_SRC = $(HOME)/Sites/whiteacorn/data
+# makefile (from `makefile', line 34)
+import_tests = unit_tests/import/album_test.php unit_tests/import/article_test.php unit_tests/import/entry_test.php unit_tests/import/locations.php unit_tests/import/post_test.php unit_tests/import/util_test.php
+# automatic
+?D = $(patsubst %/,%,$(dir $?))
+# automatic
+@D = $(patsubst %/,%,$(dir $@))
+# automatic
+@F = $(notdir $@)
+# makefile
+CURDIR := /Users/robertblackwell/MyPhpPackages/database-package/tests
+# makefile
+SHELL = /bin/sh
+# environment
+VSCODE_NLS_CONFIG = {"locale":"en-us","osLocale":"en-us","availableLanguages":{},"_languagePackSupport":true}
+# environment
+_ = /usr/bin/make
+# makefile (from `makefile', line 11)
+db_tests = unit_tests/db/preload.php unit_tests/db/load.php unit_tests/db/connect_test.php unit_tests/db/meta_test.php unit_tests/db/query_test.php unit_tests/db/select_test.php
+# makefile (from `makefile', line 1)
+MAKEFILE_LIST :=  makefile
+# makefile (from `makefile', line 68)
+props_tests = unit_tests/props/album_test.php unit_tests/props/article_test.php unit_tests/props/banner_test.php unit_tests/props/editorial_test.php unit_tests/props/post_test.php unit_tests/props/entry_test.php
+# makefile (from `makefile', line 246)
+CP = @cp -r
+# environment
+SCALA_HOME = /Users/robertblackwell/.sdkman/candidates/scala/current
+# makefile (from `makefile', line 7)
+DATA_DIR = $(TESTS_DIR)/test_data
+# environment
+__CFBundleIdentifier = com.microsoft.VSCode
+# environment
+VSCODE_CWD = /Users/robertblackwell/MyPhpPackages/database-package/tests
+# environment
+PATH = /usr/local/opt/sphinx-doc/bin:/Users/robertblackwell/.opam/4.13.1/bin:/Users/robertblackwell/.cabal/bin:/Users/robertblackwell/.ghcup/bin:/Users/robertblackwell/.sdkman/candidates/scala/current/bin:/Users/robertblackwell/.sdkman/candidates/sbt/current/bin:/Users/robertblackwell/.sdkman/candidates/groovy/current/bin:/usr/local/smlnj/bin:/Users/robertblackwell/.dotnet:/Users/robertblackwell/.composer/vendor/bin:/Users/robertblackwell/.local/bin:/Users/robertblackwell/bin:/usr/local/sbin:/usr/local/bin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/go/bin:/usr/local/share/dotnet:~/.dotnet/tools:/Library/Apple/usr/bin:/Applications/Pololu USB AVR Programmer v2.app/Contents/MacOS:/Users/robertblackwell/.cargo/bin:/Users/robertblackwell/Library/Android/sdk/tools:/Users/robertblackwell/Library/Android/sdk/tools/bin:/Users/robertblackwell/Library/Android/sdk/platform-tools
+# environment
+LSCOLORS = Gxfxcxdxbxegedabagacad
+# environment
+SDKMAN_DIR = /Users/robertblackwell/.sdkman
+# environment
+SDKMAN_CANDIDATES_API = https://api.sdkman.io/2
+# makefile (from `makefile', line 2)
+bootstrap = "include/bootstrap.php"
+# environment
+GOPATH = /Users/robertblackwell/go
+# environment
+SDKMAN_PLATFORM = DarwinX64
+# environment
+ELECTRON_RUN_AS_NODE = 1
+# environment
+ANDROID_HOME = /Users/robertblackwell/Library/Android/sdk
+# default
+.FEATURES := target-specific order-only second-expansion else-if archives jobserver check-symlink
+# environment
+SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.pl5OTZZ7gI/Listeners
+# automatic
+%F = $(notdir $%)
+# makefile (from `makefile', line 4)
+LITETEST = @$(VENDORBIN)/litetest --bootstrap-file="$(bootstrap)" run 
+# environment
+SQLITE_EXEMPT_PATH_FROM_VNODE_GUARDS = /Users/robertblackwell/Library/WebKit/Databases
+# environment
+PWD = /Users/robertblackwell/MyPhpPackages/database-package/tests
+# environment
+GROOVY_HOME = /Users/robertblackwell/.sdkman/candidates/groovy/current
+# environment
+ORIGINAL_XDG_CURRENT_DESKTOP = undefined
+# environment
+VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
+# environment
+HOME = /Users/robertblackwell
+# makefile (from `makefile', line 76)
+ACTIVE_TESTS = $(db_tests) $(db_pdo_tests) $(locator_tests) $(props_tests) $(model_tests) $(nextprev_tests) 
+# default
+MAKEFILEPATH := /Applications/Xcode.app/Contents/Developer/Makefiles
+# environment
+VSCODE_CLI = 1
+# environment
+VSCODE_CODE_CACHE_PATH = /Users/robertblackwell/Library/Application Support/Code/CachedData/6c3e3dba23e8fadc360aed75ce363ba185c49794
+# environment
+LOGNAME = robertblackwell
+# environment
+APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
 # environment
 VSCODE_HANDLES_UNCAUGHT_ERRORS = true
-# environment
-GNOME_DESKTOP_SESSION_ID = this-is-deprecated
 # automatic
 ^D = $(patsubst %/,%,$(dir $^))
-# makefile (from 'makefile', line 25)
+# makefile (from `makefile', line 25)
 hed_tests = unit_tests/hed/hed_album_test.php unit_tests/hed/hed_article_test.php unit_tests/hed/hed_banner_test.php unit_tests/hed/hed_editorial_test.php unit_tests/hed/hed_entry_test.php unit_tests/hed/hed_factory_test.php unit_tests/hed/hed_post_test.php 
 # environment
-MAKELEVEL := 0
+XPC_FLAGS = 0x0
 # environment
-SNAP_REAL_HOME = /home/robert
+SDKMAN_VERSION = 5.10.0+617
 # environment
 COLORTERM = truecolor
 # default
 MAKE = $(MAKE_COMMAND)
-# default
-MAKECMDGOALS := all
 # environment
-QT_IM_MODULE = ibus
-# environment
-SNAP_USER_DATA = /home/robert/snap/code/104
-# makefile (from 'makefile', line 43)
+LC_TERMINAL = iTerm2
+# makefile (from `makefile', line 43)
 model_tests = unit_tests/models/albums/album_test.php unit_tests/models/article/find_test.php unit_tests/models/article/title_test.php unit_tests/models/article_title/title_test.php unit_tests/models/banner/banner_test.php unit_tests/models/categorized_items/add_remove_test.php unit_tests/models/categorized_items/find_test.php unit_tests/models/category/add_test.php unit_tests/models/category/find_test.php unit_tests/models/entry/entry_test.php unit_tests/models/entry_country/entry_country_test.php unit_tests/models/item/find_item_test.php  unit_tests/models/item/get_by_slug_test.php unit_tests/models/locations/location_test.php unit_tests/models/post/post_test.php unit_tests/models/tripmonths/trip_month_test.php
 # environment
-SHLVL = 1
+SHLVL = 3
 # environment
-GNOME_SHELL_SESSION_MODE = ubuntu
+SBT_HOME = /Users/robertblackwell/.sdkman/candidates/sbt/current
 # default
-MAKE_VERSION := 4.2.1
+MAKE_VERSION := 3.81
 # environment
-USER = robert
+USER = robertblackwell
 # environment
-SNAP_REVISION = 104
-# environment
-CAML_LD_LIBRARY_PATH = /home/robert/.opam/4.14.0/lib/stublibs:/home/robert/.opam/4.14.0/lib/ocaml/stublibs:/home/robert/.opam/4.14.0/lib/ocaml
-# makefile (from 'makefile', line 1)
+CAML_LD_LIBRARY_PATH = /Users/robertblackwell/.opam/4.13.1/lib/stublibs:/Users/robertblackwell/.opam/4.13.1/lib/ocaml/stublibs:/Users/robertblackwell/.opam/4.13.1/lib/ocaml
+# makefile (from `makefile', line 1)
 VENDORBIN = "../vendor/bin"
 # makefile
 .DEFAULT_GOAL := mine
+# default
+MAKECMDGOALS := all
 # environment
-XDG_CURRENT_DESKTOP = Unity
+TERM_SESSION_ID = w0t2p0:31974952-F922-491D-A93C-79AAE37CF708
+# environment
+LESS = -R
 # automatic
 %D = $(patsubst %/,%,$(dir $%))
 # default
-MAKE_COMMAND := make
+MAKE_COMMAND := /Applications/Xcode.app/Contents/Developer/usr/bin/make
 # environment
-OLDPWD = /home/robert/MyPhpPackages/database-package/tests
+TERM_PROGRAM = iTerm.app
 # default
 .VARIABLES := 
+# environment
+TMPDIR = /var/folders/0q/2653mqdd1cx8k5f5fsl5s2sc0000gn/T/
 # automatic
 *F = $(notdir $*)
+# makefile (from `makefile', line 41)
+locator_tests = unit_tests/locator/locator_test.php 
 # environment
-LANGUAGE = en_AU:en
+VSCODE_IPC_HOOK = /Users/robertblackwell/Library/Application Support/Code/1.81-main.sock
+# makefile (from `makefile', line 61)
+nextprev_tests = unit_tests/nextprev/category_test.php unit_tests/nextprev/country_test.php unit_tests/nextprev/months_test.php unit_tests/nextprev/none_test.php unit_tests/nextprev/trip_test.php
 # environment
-VSCODE_IPC_HOOK = /run/user/1000/vscode-0f755e2e-1.70.1-main.sock
-# environment
-BAMF_DESKTOP_FILE_HINT = /var/lib/snapd/desktop/applications/code_code.desktop
-# makefile (from 'makefile', line 20)
+MallocNanoZone = 0
+# makefile (from `makefile', line 20)
 fi_tests = unit_tests/featured_image/fi_test.php unit_tests/featured_image/fi_test_hed.php unit_tests/featured_image/fi_test_path.php
 # makefile
-MAKEFLAGS = pqrR
+MAKEFLAGS = Rrqp
 # environment
-MFLAGS = -pqrR
+MFLAGS = -Rrqp
 # automatic
 *D = $(patsubst %/,%,$(dir $*))
-# makefile (from 'makefile', line 41)
-locator_tests = unit_tests/locator/locator_test.php 
+# environment
+TERM_PROGRAM_VERSION = 3.4.20
+# environment
+XPC_SERVICE_NAME = application.com.microsoft.VSCode.207270796.207270802.73F6B7F6-7A58-430F-91B8-BDDF0CD8431D
+# environment
+LC_TERMINAL_VERSION = 3.4.20
 # automatic
 +D = $(patsubst %/,%,$(dir $+))
-# environment
-GDK_BACKEND = x11
 # automatic
 +F = $(notdir $+)
 # environment
-NO_AT_BRIDGE = 1
+ITERM_SESSION_ID = w0t2p0:31974952-F922-491D-A93C-79AAE37CF708
 # environment
-QT_ACCESSIBILITY = 1
+COLORFGBG = 15;0
+# environment
+__CF_USER_TEXT_ENCODING = 0x1F5:0x0:0x0
+# environment
+COMMAND_MODE = unix2003
 # default
 MAKEFILES := 
-# environment
-SNAP_COOKIE = jR30gR75E_WC9-c3Y6daL9bhdrzCzfjJc8ED5sELEaFG8_yQE5nS
 # automatic
 <F = $(notdir $<)
 # environment
-SNAP_NAME = code
+ITERM_PROFILE = Default
+ 
+# environment
+SDKMAN_CANDIDATES_DIR = /Users/robertblackwell/.sdkman/candidates
+# environment
+EDITOR = vi
+# environment
+PAGER = less
 # environment
 LC_ALL = C
-# environment
-GJS_DEBUG_TOPICS = JS ERROR;JS LOG
-# environment
-GNOME_TERMINAL_SCREEN = /org/gnome/Terminal/screen/0ff7e700_f34a_406b_b5c0_dc7001ebde2b
 # automatic
 ^F = $(notdir $^)
-# environment
-GNOME_TERMINAL_SERVICE = :1.1505
 # default
 SUFFIXES := 
-# environment
-SNAP_REEXEC = 
-# environment
-CHROME_DESKTOP = code-url-handler.desktop
-# environment
-WINDOWPATH = 2
-# makefile (from 'makefile', line 4)
- 
-LITETEST = @$(VENDORBIN)/litetest --bootstrap-file="$(bootstrap)" run 
 # default
-.INCLUDE_DIRS = /usr/include /usr/local/include /usr/include
+.INCLUDE_DIRS = /usr/local/include
 # environment
-GJS_DEBUG_OUTPUT = stderr
-# default
-.RECIPEPREFIX := 
-# makefile (from 'makefile', line 18)
+MAKELEVEL := 0
+# makefile (from `makefile', line 18)
 db_pdo_tests = unit_tests/db_pdo/index.php
-# environment
-PROFILEX = :profilex
-# makefile (from 'makefile', line 6)
+# makefile (from `makefile', line 6)
 TESTS_DIR = $(shell pwd)
 # environment
 LANG = C
 # environment
 TERM = xterm-256color
 # environment
-VSCODE_PID = 1646350
+VSCODE_PID = 8806
 # variable set hash-table stats:
-# Load=145/1024=14%, Rehash=0, Collisions=21/182=12%
+# Load=106/1024=10%, Rehash=0, Collisions=6/140=4%
 
 # Pattern-specific Variable Values
 
@@ -309,9 +234,10 @@ VSCODE_PID = 1646350
 
 # Directories
 
-# . (device 66306, inode 31328806): 10 files, no impossibilities.
+# . (device 16777221, inode 181963313): 12 files, no impossibilities.
+ 
 
-# 10 files, no impossibilities in 1 directories.
+# 12 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -323,7 +249,7 @@ data_mkdirs:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'makefile', line 228):
+#  commands to execute (from `makefile', line 228):
 	@rm -Rf $(DATA_DIR)/data || true
 	@mkdir -p $(DATA_DIR)/data
 	@mkdir -p $(DATA_DIR)/data/rtw/banners
@@ -341,23 +267,25 @@ data_mkdirs:
 	@mkdir -p $(DATA_DIR)/data/bmw11/editorial
 	@mkdir -p $(DATA_DIR)/data/bmw11/gps
 	@mkdir -p $(DATA_DIR)/data/bmw11/photos/galleries
+	
 
 mine: prepare_test_data
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'makefile', line 86):
-	$(LITETEST) $(hed_tests)
+#  commands to execute (from `makefile', line 86):
+	$(LITETEST) $(nextprev_tests)
+	
 
 all: prepare_test_data
-#  Command line target.
+#  Command-line target.
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has been updated.
 #  Needs to be updated (-q is set).
 # variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/10=0%
-#  recipe to execute (from 'makefile', line 89):
+# Load=0/32=0%, Rehash=0, Collisions=0/8=0%
+#  commands to execute (from `makefile', line 89):
 	$(LITETEST) $(ACTIVE_TESTS)
 	
 
@@ -365,20 +293,22 @@ data_cp_bmw11:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'makefile', line 308):
+#  commands to execute (from `makefile', line 308):
 	$(CP) $(TEST_DATA_SRC)/bmw11/content/180624 $(DATA_DIR)/data/bmw11/content/
 	$(CP) $(TEST_DATA_SRC)/bmw11/content/180726 $(DATA_DIR)/data/bmw11/content/
 	$(CP) $(TEST_DATA_SRC)/bmw11/content/180727 $(DATA_DIR)/data/bmw11/content/
+	
 
 data_cp_er:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'makefile', line 300):
+#  commands to execute (from `makefile', line 300):
 	$(CP) $(TEST_DATA_SRC)/er/content/110620 $(DATA_DIR)/data/er/content/
 	$(CP) $(TEST_DATA_SRC)/er/content/110621 $(DATA_DIR)/data/er/content/
 	$(CP) $(TEST_DATA_SRC)/er/content/160706 $(DATA_DIR)/data/er/content/
 	$(CP) $(TEST_DATA_SRC)/er/content/160707 $(DATA_DIR)/data/er/content/
+	
 
 # Not a target:
 .SUFFIXES:
@@ -389,15 +319,15 @@ data_cp_er:
 # Not a target:
 makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-08-13 14:30:18.150844194
+#  Last modified 2022-08-13 15:38:53
 #  File has been updated.
 #  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
-# 'override' directive
-prepare_test_data: .SHELLSTATUS := 0
 prepare_test_data:
 #  Implicit rule search has not been done.
-#  Implicit/static pattern stem: ''
+#  Implicit/static pattern stem: `'
 #  File does not exist.
 #  File has been updated.
 #  Needs to be updated (-q is set).
@@ -418,20 +348,21 @@ prepare_test_data:
 # automatic
 # ? := 
 # variable set hash-table stats:
-# Load=9/32=28%, Rehash=0, Collisions=9/19=47%
-#  recipe to execute (from 'makefile', line 220):
+# Load=8/32=25%, Rehash=0, Collisions=7/16=44%
+#  commands to execute (from `makefile', line 220):
 	@echo $(TEST_DATA_SRC)
 	@echo $(DATA_DIR)
 	@make data_mkdirs
 	@make data_cp_rtw
 	@make data_cp_er
 	@make data_cp_bmw11
+	
 
 data_cp_rtw:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'makefile', line 249):
+#  commands to execute (from `makefile', line 249):
 	$(CP) $(TEST_DATA_SRC)/rtw/content/120705 $(DATA_DIR)/data/rtw/content/
 	$(CP) $(TEST_DATA_SRC)/rtw/content/120708 $(DATA_DIR)/data/rtw/content/
 	$(CP) $(TEST_DATA_SRC)/rtw/content/130407 $(DATA_DIR)/data/rtw/content/
@@ -471,15 +402,17 @@ data_cp_rtw:
 	$(CP) $(TEST_DATA_SRC)/rtw/editorial/scotland $(DATA_DIR)/data/rtw/editorial/
 	$(CP) $(TEST_DATA_SRC)/rtw/content/tires $(DATA_DIR)/data/rtw/content/
 	$(CP) $(TEST_DATA_SRC)/bmw11/content/tuk18A $(DATA_DIR)/data/bmw11/content/
+	
 
 utility:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'makefile', line 214):
+#  commands to execute (from `makefile', line 214):
 	$(LITETEST) --bootstrap-file="include/bootstrap.php" \
-		unit_tests/utility/create_tables.php \
-		unit_tests/utility/load_tables.php
+	unit_tests/utility/create_tables.php \
+	unit_tests/utility/load_tables.php
+	
 
 # Not a target:
 .DEFAULT:
@@ -491,23 +424,23 @@ paths:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'makefile', line 211):
+#  commands to execute (from `makefile', line 211):
 	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/paths/path_tests.php
+	
 
 # files hash-table stats:
-# Load=12/1024=1%, Rehash=0, Collisions=0/27=0%
+# Load=12/1024=1%, Rehash=0, Collisions=0/28=0%
 # VPATH Search Paths
 
-# No 'vpath' search paths.
+# No `vpath' search paths.
 
-# No general ('VPATH' variable) search path.
+# No general (`VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 23 / storage = 234 B / avg = 10 B
-# current buf: size = 8162 B / used = 234 B / count = 23 / avg = 10 B
+# # of strings in strcache: 1
+# # of strcache buffers: 1
+# strcache size: total = 4096 / max = 4096 / min = 4096 / avg = 4096
+# strcache free: total = 4087 / max = 4087 / min = 4087 / avg = 4087
 
-# strcache performance: lookups = 40 / hit rate = 42%
-# hash-table stats:
-# Load=23/8192=0%, Rehash=0, Collisions=1/40=2%
-# Finished Make data base on Sat Aug 13 14:32:44 2022
+# Finished Make data base on Mon Aug 14 19:19:59 2023
 
  

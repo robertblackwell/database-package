@@ -68,10 +68,11 @@ class SqlObject
 		$host = self::$config["db_host"];
 		$user = self::$config["db_user"];
 		$pwd = self::$config["db_passwd"];
+        $db_port = (array_key_exists('db_port', self::$config)) ? self::$config["db_port"] : null;
 		//var_dump(self::$config);
 		//print "<h2>".__METHOD__."() db_name[$db_name] host[$host] user[$user] pwd[$pwd]</h2>";
 		try {
-			$conn = mysqli_connect($host, $user, $pwd, $db_name);
+			$conn = (is_null($db_port)) ? mysqli_connect($host, $user, $pwd, $db_name) : mysqli_connect($host, $user, $pwd, $db_name, $db_port);
 			if (! isset($conn)) {
 				throw new \Exception(
 					"could not connect to data base db:$db_name user:$user in ".__FILE__." at line ".__LINE__
@@ -86,7 +87,7 @@ class SqlObject
 		$this->db_connection = $conn;
 
 		$charset = 'utf8';
-		$dsn = "mysql:host=$host;dbname=$db_name;charset=$charset";
+		$dsn = ($db_port) ?  "mysql:host=$host;dbname=$db_name;charset=$charset;port=3307" : "mysql:host=$host;dbname=$db_name;charset=$charset" ;
 		$opt = [
 			\PDO::ATTR_ERRMODE            => \PDO::ERRMODE_EXCEPTION,
 			\PDO::ATTR_DEFAULT_FETCH_MODE => \PDO::FETCH_ASSOC,

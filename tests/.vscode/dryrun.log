@@ -1,0 +1,11 @@
+make --dry-run --always-make --keep-going --print-directory
+make: Entering directory `/Users/robertblackwell/MyPhpPackages/database-package/tests'
+echo /Users/robertblackwell/Sites/whiteacorn/data
+echo /Users/robertblackwell/MyPhpPackages/database-package/tests/test_data
+make data_mkdirs
+make data_cp_rtw
+make data_cp_er
+make data_cp_bmw11
+"../vendor/bin"/litetest --bootstrap-file=""include/bootstrap.php"" run  unit_tests/nextprev/category_test.php unit_tests/nextprev/country_test.php unit_tests/nextprev/months_test.php unit_tests/nextprev/none_test.php unit_tests/nextprev/trip_test.php
+make: Leaving directory `/Users/robertblackwell/MyPhpPackages/database-package/tests'
+ 
