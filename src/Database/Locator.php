@@ -43,6 +43,7 @@ namespace Database;
 class Locator
 {
 	private static $instance;
+    private static array $entity_table;
 		
 	public $data_root;		  //the full path to the top directory of the HED database.
 	public $url_root;		  //the (site relative) URL to the top level directory of the HED database.
@@ -66,6 +67,13 @@ class Locator
 		$inst->full_url_root = $configuration['full_url_root'];
 		$inst->url_root = $configuration['url_root'];
 		self::$instance = $inst;
+        self::$entity_table = [
+            "post" => "content",
+            "item" => "content",
+            "album" => "photos/galleries",
+            "banner"=> "banners",
+            "editorial" => "editorial",
+        ];
 	}
 	/**
 	* @return singleton instance of this class
@@ -163,6 +171,52 @@ class Locator
 		$ret = $this->data_root."/".$trip;
 		return $ret;
 	}
+    public function path2relative(string $path): string
+    {
+        return str_replace($this->doc_root, "", $path);
+    }
+    public function path2url(string $path): string
+    {
+        // $this->>url_root is wrong for this application
+        return str_replace($this->doc_root,"", $path);
+    }
+///
+/// Entity interface. Entities are
+/// -   post
+/// -   item
+/// -   album
+/// -   banner
+/// -   editorial
+///
+    public function entity_root(string $entity, string $trip): string
+    {
+        return $this->trip_root($trip) . "/" . self::$entity_table[$entity];
+    }
+    public function entity_relative_root(string $entity, string $trip): string
+    {
+        $ret = $this->path2relative($this->entity_root($entity, $trip));
+        return $ret;
+    }
+    public function entity_filename(string $entity)
+    {
+        return "content.php";
+    }
+    public function entity_instance_dir(string $entity, string $trip, string $slug): string
+    {
+        return $this->entity_root($entity, $trip) . "/{$slug}";
+    }
+    public function entity_instance_relative_dir(string $entity, string $trip, string $slug): string
+    {
+        return $this->entity_relative_root($entity, $trip) . "/{$slug}";
+    }
+    public function entity_instance_filepath(string $entity, string $trip, string $slug): string
+    {
+        return $this->entity_root($entity, $trip) . "/{$slug}/{$this->entity_filename($entity)}";
+    }
+    public function entity_instance_exists(string $entity, string $trip, string $slug): string
+    {
+        return is_dir($this->entity_root($entity, $trip) . "/{$slug}/{$this->entity_filename($entity)}");
+    }
 //////////
 //start of content item path methods
 /////////

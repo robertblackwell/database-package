@@ -14,7 +14,7 @@ class UnitTestRegistry
 		$config = [
 			'sql'=>[
 				'db_name'=>"database_package_test_db",
-				'db_user'=>"dbp_user",
+				'db_user'=>"root", //"dbp_user",
 				'db_host'=>"localhost",
 				'db_passwd'=>"wara2074",
 			],

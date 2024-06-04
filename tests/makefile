@@ -154,8 +154,8 @@ all: prepare_test_data
 # 	unit_tests/featured_image/fi_test_hed.php \
 # 	unit_tests/featured_image/fi_test_path.php
 
-# locator:
-# 	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/locator/locator_test.php
+locator:
+	$(LITETEST) --bootstrap-file="include/bootstrap.php" unit_tests/locator/locator_test.php
 
 # nextprev:
 # 	$(LITETEST) --bootstrap-file="include/bootstrap.php" \

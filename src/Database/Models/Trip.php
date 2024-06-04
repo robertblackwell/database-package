@@ -11,7 +11,9 @@ class Trip
 	const AUST = "aust";
 	const ASIA2020 = "asia2020";
 	const ASIA2021 = "asia2021";
-	const SURINAME = "suriname";
+//	const SURINAME = "suriname";
+    const LightningRidge = "lightning_ridge";
+    const GreatTrainJourney2024 = "great_train_journey_2024";
 	const SITE = "site";
 
 	private static $trips = [
@@ -21,9 +23,11 @@ class Trip
 		self::AUST,
 		self::BMW11,
 		self::ER,
+        self::GreatTrainJourney2024,
+        self::LightningRidge,
 		self::RTW,
 		self::SITE,
-		self::SURINAME,
+//		self::SURINAME,
 		self::THEAMERICAS
 	];
 	/**

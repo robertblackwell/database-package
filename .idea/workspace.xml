@@ -1,15 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="c80bae66-2ae6-4cc0-b963-e040b502919e" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/database-package.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/database-package.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Database/Locator.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Database/Locator.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Database/Models/Trip.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Database/Models/Trip.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/.vscode/targets.log" beforeDir="false" afterPath="$PROJECT_DIR$/tests/.vscode/targets.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/include/UnitTestRegistry.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/include/UnitTestRegistry.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/make_test_user.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/make_test_user.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/makefile" beforeDir="false" afterPath="$PROJECT_DIR$/tests/makefile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/test_data/data/rtw/content/mog/main_content.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data/data/rtw/content/mog/main_content.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/unit_tests/locator/locator_test.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/unit_tests/locator/locator_test.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -85,10 +89,8 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="PhpServers">
-    <servers />
-  </component>
-  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP 7">
+  <component name="PhpDebugGeneral" listening_started="true" />
+  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP 8.1">
     <include_path>
       <path value="$PROJECT_DIR$/vendor/composer" />
       <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php73" />
@@ -102,6 +104,9 @@
       <path value="$PROJECT_DIR$/vendor/robertblackwell/litetest" />
     </include_path>
   </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 0
+}]]></component>
   <component name="ProjectFrameBounds">
     <option name="y" value="22" />
     <option name="width" value="1440" />
@@ -374,13 +379,20 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/robert/MyPhpPackages/database-package&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "/Users/robertblackwell/MyPhpPackages/database-package",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected="PHP Script.php models/hed/album">
     <configuration default="true" type="BashConfigurationType" factoryName="Bash">
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -438,6 +450,14 @@
       <item itemvalue="PHPUnit.phpunit album" />
     </list>
   </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-1d06a55b98c1-0b3e54e931b4-JavaScript-PS-241.17011.119" />
+        <option value="bundled-php-predefined-ba97393d7c68-48a1a656d44e-com.jetbrains.php.sharedIndexes-PS-241.17011.119" />
+      </set>
+    </attachedChunks>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
@@ -452,6 +472,9 @@
       <workItem from="1660382296060" duration="1656000" />
       <workItem from="1660409202683" duration="5000" />
       <workItem from="1660409216230" duration="97000" />
+      <workItem from="1715651151929" duration="6117000" />
+      <workItem from="1716155866441" duration="16000" />
+      <workItem from="1717466034705" duration="1761000" />
     </task>
     <servers />
   </component>
@@ -528,6 +551,11 @@
           <url>file://$PROJECT_DIR$/tests/make_test_user.php</url>
           <line>10</line>
           <option name="timeStamp" value="134" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/tests/unit_tests/locator/locator_test.php</url>
+          <line>53</line>
+          <option name="timeStamp" value="139" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
