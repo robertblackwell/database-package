@@ -11,7 +11,6 @@ class Trip
 	const AUST = "aust";
 	const ASIA2020 = "asia2020";
 	const ASIA2021 = "asia2021";
-//	const SURINAME = "suriname";
     const LightningRidge = "lightning_ridge";
     const GreatTrainJourney2024 = "great_train_journey_2024";
 	const SITE = "site";
@@ -27,7 +26,6 @@ class Trip
         self::LightningRidge,
 		self::RTW,
 		self::SITE,
-//		self::SURINAME,
 		self::THEAMERICAS
 	];
 	/**

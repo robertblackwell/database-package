@@ -5,15 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c80bae66-2ae6-4cc0-b963-e040b502919e" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Database/Locator.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Database/Locator.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Database/Models/Trip.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Database/Models/Trip.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/.vscode/targets.log" beforeDir="false" afterPath="$PROJECT_DIR$/tests/.vscode/targets.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/include/UnitTestRegistry.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/include/UnitTestRegistry.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/makefile" beforeDir="false" afterPath="$PROJECT_DIR$/tests/makefile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/data/rtw/content/mog/main_content.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data/data/rtw/content/mog/main_content.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/unit_tests/locator/locator_test.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/unit_tests/locator/locator_test.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -89,7 +81,6 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="PhpDebugGeneral" listening_started="true" />
   <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP 8.1">
     <include_path>
       <path value="$PROJECT_DIR$/vendor/composer" />
@@ -104,9 +95,9 @@
       <path value="$PROJECT_DIR$/vendor/robertblackwell/litetest" />
     </include_path>
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 0
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 0
+}</component>
   <component name="ProjectFrameBounds">
     <option name="y" value="22" />
     <option name="width" value="1440" />
@@ -379,20 +370,20 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "/Users/robertblackwell/MyPhpPackages/database-package",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/robertblackwell/MyPhpPackages/database-package&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="PHP Script.php models/hed/album">
     <configuration default="true" type="BashConfigurationType" factoryName="Bash">
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -474,7 +465,7 @@
       <workItem from="1660409216230" duration="97000" />
       <workItem from="1715651151929" duration="6117000" />
       <workItem from="1716155866441" duration="16000" />
-      <workItem from="1717466034705" duration="1761000" />
+      <workItem from="1717466034705" duration="2901000" />
     </task>
     <servers />
   </component>
