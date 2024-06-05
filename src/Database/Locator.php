@@ -124,7 +124,7 @@ class Locator
 	* @param string $trip A trip code.
 	* @return string The path to the "journals" directory for a trip.
 	*/
-	public function journals_root(string $trip = 'theamericas') : string
+	public function journals_root(string $trip = Models\Trip::THEAMERICAS) : string
 	{
 		$ret = $this->data_root."/".$trip."/journals";
 		return $ret;
@@ -136,7 +136,7 @@ class Locator
 	* @param string $trip A trip code.
 	* @return string The path to the "entries" directory for a trip.
 	*/
-	public function entries_root(string $trip = 'theamericas') : string
+	public function entries_root(string $trip = \Database\Models\Trip::THEAMERICAS) : string
 	{
 		//var_dump($this->journals_root($trip)."/entries"); exit();
 		$ret = $this->journals_root($trip)."/entries";
@@ -144,10 +144,10 @@ class Locator
 	}
 	/**
 	* Get the info.html file full path.
-	* @param string $trip Trip code, default to "theamericas".
+	* @param string $trip Trip code, default to Models\Trip::THEAMERICAS.
 	* @return string
 	*/
-	public function journal_introfile_path(string $trip = "theamericas") : string
+	public function journal_introfile_path(string $trip = Models\Trip::THEAMERICAS) : string
 	{
 		$ret = $this->journals_root($trip)."/intro.html";
 		return $ret;
