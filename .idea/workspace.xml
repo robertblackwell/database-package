@@ -6,7 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="c80bae66-2ae6-4cc0-b963-e040b502919e" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Database/Locator.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Database/Locator.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -438,8 +437,8 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="PHPUnit.phpunit album" />
       <item itemvalue="PHP Script.php models/hed/album" />
+      <item itemvalue="PHPUnit.phpunit album" />
     </list>
   </component>
   <component name="SharedIndexes">
@@ -468,7 +467,7 @@
       <workItem from="1716155866441" duration="16000" />
       <workItem from="1717466034705" duration="2901000" />
       <workItem from="1717544537134" duration="108000" />
-      <workItem from="1717569374686" duration="170000" />
+      <workItem from="1717569374686" duration="442000" />
     </task>
     <servers />
   </component>
