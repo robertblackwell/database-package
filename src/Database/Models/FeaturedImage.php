@@ -148,6 +148,10 @@ class FeaturedImage
 			} else {
 				throw new \Exception("Not sure why we got here. Invalid featured_image {$text}");
 			}
+            if(is_null($gal)) {
+                //probably did not find the Images/Thumbnails dirs or they were empty
+                return null;
+            }
 			$image = (count($gal->images) > $index) ? $gal->images[$index] : null;
 			//$res = ( count($gal->images) > $index ) ? $gal->images[$index]->getSiteRelativeThumbnailURL() : NULL;
 			$res = (count($gal->images) > $index) ? $gal->images[$index]->getThumbnailPath() : null;
