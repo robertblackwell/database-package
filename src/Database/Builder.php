@@ -124,7 +124,7 @@ class Builder
 				`creation_date` date DEFAULT NULL,
 				`published_date` date DEFAULT NULL,
 				`last_modified_date` date DEFAULT NULL,
-				`trip` varchar(20)   CHARSET UTF8 DEFAULT NULL,
+				`trip` varchar(50)   CHARSET UTF8 DEFAULT NULL,
 				`vehicle` varchar(20)   CHARSET UTF8 DEFAULT NULL,
 				`title` mediumtext  CHARSET UTF8,
 				`abstract` mediumtext	 CHARSET UTF8,
@@ -161,7 +161,7 @@ class Builder
 				`creation_date` date DEFAULT NULL,
 				`published_date` date DEFAULT NULL,
 				`last_modified_date` date DEFAULT NULL,
-				`trip` varchar(20) CHARSET UTF8  DEFAULT NULL,
+				`trip` varchar(50) CHARSET UTF8  DEFAULT NULL,
 				`title` mediumtext CHARSET UTF8 ,
 				`abstract` mediumtext CHARSET UTF8 ,
 				PRIMARY KEY (`slug`)
@@ -202,7 +202,7 @@ class Builder
 				`creation_date` date DEFAULT NULL,
 				`published_date` date DEFAULT NULL,
 				`last_modified_date` date DEFAULT NULL,
-				`trip` varchar(20) CHARSET UTF8  DEFAULT NULL,
+				`trip` varchar(50) CHARSET UTF8  DEFAULT NULL,
 				PRIMARY KEY (`slug`)
 			) ENGINE=InnoDB DEFAULT CHARSET UTF8;";
 				
@@ -227,7 +227,7 @@ class Builder
 				`creation_date` date DEFAULT NULL,
 				`published_date` date DEFAULT NULL,
 				`last_modified_date` date DEFAULT NULL,
-				`trip` varchar(20) CHARSET UTF8  DEFAULT NULL,
+				`trip` varchar(50) CHARSET UTF8  DEFAULT NULL,
 				`main_content` mediumtext CHARSET UTF8 ,
 				`image_name` mediumtext CHARSET UTF8 ,
 				PRIMARY KEY (`slug`)
