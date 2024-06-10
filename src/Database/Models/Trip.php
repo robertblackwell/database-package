@@ -12,7 +12,7 @@ class Trip
 	const ASIA2020 = "asia2020";
 	const ASIA2021 = "asia2021";
     const LightningRidge = "lightning_ridge";
-    const GreatTrainJourney2024 = "great_train_journey_2024";
+    const GreatTrainJourney2024 = "gtj24";
 	const SITE = "site";
 
 	private static $trips = [
