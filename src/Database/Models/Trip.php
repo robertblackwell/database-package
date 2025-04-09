@@ -15,7 +15,7 @@ class Trip
     const GreatTrainJourney2024 = "gtj24";
 	const SITE = "site";
 	const MOTORCYCLE_ROUND_AUSTRALIA = "motorcycle_round_australia";
-	const CRUISE_ASIA_AFRICA_EUROPE = 	"cruise_asia_africa_to_europe"
+	const CRUISE_ASIA_AFRICA_EUROPE = 	"cruise_asia_africa_to_europe";
 
 	private static $trips = [
 		self::ANTARCTICA,
@@ -30,7 +30,7 @@ class Trip
 		self::SITE,
 		self::THEAMERICAS,
 		self::MOTORCYCLE_ROUND_AUSTRALIA,
-		self::CRUISE_ASIA_AFRICA_EUROPE
+		self::CRUISE_ASIA_AFRICA_EUROPE,
 	];
 	/**
 	* Tests a string is a valid trip code.

@@ -437,8 +437,8 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="PHP Script.php models/hed/album" />
       <item itemvalue="PHPUnit.phpunit album" />
+      <item itemvalue="PHP Script.php models/hed/album" />
     </list>
   </component>
   <component name="SharedIndexes">
