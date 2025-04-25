@@ -27,7 +27,8 @@ class SqlObject
 	 * @var \mysqli $db_connection Database connection
 	 */
 	public $db_connection = null;
-
+	public $pdo;
+	public $db_name;
 	/**
 	 * @var $pdo Development only.
 	 */
