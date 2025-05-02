@@ -30,10 +30,6 @@ class SqlObject
 	public $pdo;
 	public $db_name;
 	/**
-	 * @var $pdo Development only.
-	 */
-	public $pdo;
-	/**
 	* Configures and opens a connection to the sql database server and selects the correct database
 	* as the current db.
 	 * @param array $config DB config details.
