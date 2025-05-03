@@ -34,7 +34,7 @@ class Model implements iSqlIzable
 	*                            Each derived class MUST provide a value.
 	*/
 	protected $sql_properties;
-
+	protected $properties;
 	/**
 	* @var string $sql_primary_key A string name of this models primary key property.
 	*                            Each derived class MUST provide a value.
