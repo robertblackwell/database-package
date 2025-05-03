@@ -154,7 +154,7 @@ class NextPrev extends \stdClass
 	* @param string      $class    A class name. The returned value will be of this class.
 	* @return Entry|Post|Article|null
 	*/
-	public function next_within_category(string $category = null, string $class = '\Database\Models\Item')
+	public function next_within_category(?string $category = null, string $class = '\Database\Models\Item')
 	{
 		$category_str = ($category) ? " where ( b.category = '$category' ) and"
 									: " where " ;
@@ -173,7 +173,7 @@ class NextPrev extends \stdClass
 	* @param string      $class    A class name. The returned value will be of this class.
 	* @return Entry|Post|Article|null
 	*/
-	public function prev_within_category(string $category = null, string $class = '\Database\Models\Item')
+	public function prev_within_category(?string $category = null, string $class = '\Database\Models\Item')
 	{
 		$category_str = ($category) ? " where ( b.category = '$category' ) and "
 									: " where " ;

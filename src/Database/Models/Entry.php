@@ -172,7 +172,7 @@ class Entry extends ItemBase
 	* @param integer $count Limits the number returned.
 	* @return array Of Entry objects.
 	*/
-	public static function find(int $count = null)
+	public static function find(?int $count = null)
 	{
 		$count_str = ($count)? "limit 0, $count": "" ;
 		$c = " where type='entry' order by last_modified_date desc $count_str ";

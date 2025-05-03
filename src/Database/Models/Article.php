@@ -121,7 +121,7 @@ class Article extends ItemBase
 	* @return Article|null
 	*
 	*/
-	public static function find_for_trip(string $trip, int $count = null)
+	public static function find_for_trip(string $trip, ?int $count = null)
 	{
 		$where = " where ( trip='".$trip."' and type = 'article' )";
 		$count_str = ($count)? "limit 0, $count": "" ;
@@ -135,7 +135,7 @@ class Article extends ItemBase
 	* @param integer $count Limits the number returned.
 	* @return array|null Of Article objects
 	*/
-	public static function find(int $count = null)
+	public static function find(?int $count = null)
 	{
 		$count_str = ($count)? "limit 0, $count": "" ;
 		$c = " where type='article' order by last_modified_date desc, slug desc $count_str ";

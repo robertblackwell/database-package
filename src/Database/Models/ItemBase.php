@@ -38,7 +38,7 @@ class ItemBase extends Model
 	* @param string $class    The class of item to be returned.
 	* @return Item | null
 	*/
-	public function next(array $criteria = null, string $class = '\Database\Models\Item')
+	public function next(?array $criteria = null, string $class = '\Database\Models\Item')
 	{
 		return $this->next_prev->next($criteria, $class);
 	}
@@ -49,7 +49,7 @@ class ItemBase extends Model
 	* @param string $class    The class of item to be returned.
 	* @return Item | null
 	*/
-	public function prev(array $criteria = null, string $class = '\Database\Models\Item')
+	public function prev(?array $criteria = null, string $class = '\Database\Models\Item')
 	{
 		return $this->next_prev->prev($criteria, $class);
 	}

@@ -188,7 +188,7 @@ class Album extends Model
 	* @param integer $count Limits the number returned.
 	* @return array Of Album objects.
 	*/
-	public static function find(int $count = null) : array
+	public static function find(?int $count = null) : array
 	{
 		$count_str = ($count)? "limit 0, $count": "" ;
 		$c = " order by last_modified_date desc, slug asc $count_str ";
@@ -210,7 +210,7 @@ class Album extends Model
 	* @param integer $count Limits the number returned.
 	* @return array Of Album objects
 	*/
-	public static function find_for_trip(string $trip, int $count = null) : array
+	public static function find_for_trip(string $trip, ?int $count = null) : array
 	{
 		$where = ( is_null($trip) )? "": "where trip=\"".$trip."\" ";
 		$count_str = ($count)? "limit 0, $count": "" ;

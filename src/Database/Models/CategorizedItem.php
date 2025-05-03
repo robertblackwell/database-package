@@ -48,7 +48,7 @@ class CategorizedItem extends Model
 	* @param integer $count Limit the number returned to the count value.
 	* @return array
 	*/
-	public static function find(int $count = null) : array
+	public static function find(?int $count = null) : array
 	{
 		$count_str = ($count)? "limit 0, $count": "" ;
 		$c = "   order by category asc $count_str ";
