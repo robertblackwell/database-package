@@ -30,7 +30,7 @@ class Trip
 		self::SITE,
 		self::THEAMERICAS,
 		self::MOTORCYCLE_ROUND_AUSTRALIA,
-		self::CRUISE_ASIA_AFRICA_EUROPE,
+		// self::CRUISE_ASIA_AFRICA_EUROPE,
 	];
 	/**
 	* Tests a string is a valid trip code.
