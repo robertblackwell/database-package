@@ -468,7 +468,7 @@ class Item extends ItemBase
 	* @param integer $count    Limit on number returned.
 	* @return array | null Of Item.
 	*/
-	public static function find_for_trip_category(string $trip, string $category = null, ?int $count = null)
+	public static function find_for_trip_category(string $trip, ?string $category = null, ?int $count = null)
 	{
 		//print "<p>".__METHOD__."</p>";
 		$count_str = ($count)? "limit 0, $count": "" ;
