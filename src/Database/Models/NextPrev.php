@@ -16,6 +16,7 @@ class NextPrev extends \stdClass
 	* @var Entry|Post|Article $obj The object for which this class is finding the next or prev.
 	*/
 	private $obj;
+	private $sql;
 
 	private $order_by_asc_with_limit = " order by published_date asc, slug asc limit 0, 1  ";
 	private $join_order_by_asc_with_limit = " order by a.published_date asc, a.slug asc limit 0, 1  ";
@@ -30,8 +31,8 @@ class NextPrev extends \stdClass
 	protected function join_after() : string
 	{
 		$s = "( "
-			. " ( a.published_date > '" . $this->_obj->published_date."')"
-			. " or ( a.published_date = '". $this->_obj->published_date. "' and a.slug > '".$this->_obj->slug."' ) "
+			. " ( a.published_date > '" . $this->obj->published_date."')"
+			. " or ( a.published_date = '". $this->obj->published_date. "' and a.slug > '".$this->obj->slug."' ) "
 			. ")";
 		return $s;
 	}
@@ -43,8 +44,8 @@ class NextPrev extends \stdClass
 	protected function after() : string
 	{
 		$s = "( "
-			. " ( published_date > '" . $this->_obj->published_date."')"
-			. " or ( published_date = '". $this->_obj->published_date. "' and slug > '".$this->_obj->slug."' ) "
+			. " ( published_date > '" . $this->obj->published_date."')"
+			. " or ( published_date = '". $this->obj->published_date. "' and slug > '".$this->obj->slug."' ) "
 			. ")";
 		return $s;
 	}
@@ -56,8 +57,8 @@ class NextPrev extends \stdClass
 	protected function join_before() : string
 	{
 		$s = "( "
-			. " ( a.published_date < '" . $this->_obj->published_date."')"
-			. " or ( a.published_date = '". $this->_obj->published_date. "' and a.slug<'".$this->_obj->slug."' )"
+			. " ( a.published_date < '" . $this->obj->published_date."')"
+			. " or ( a.published_date = '". $this->obj->published_date. "' and a.slug<'".$this->obj->slug."' )"
 			." ) ";
 		return $s;
 	}
@@ -69,8 +70,8 @@ class NextPrev extends \stdClass
 	protected function before() : string
 	{
 		$s = "( "
-			. " ( published_date < '" . $this->_obj->published_date."')"
-			. " or ( published_date = '". $this->_obj->published_date. "'  and  slug < '".$this->_obj->slug."' )"
+			. " ( published_date < '" . $this->obj->published_date."')"
+			. " or ( published_date = '". $this->obj->published_date. "'  and  slug < '".$this->obj->slug."' )"
 			." ) ";
 		return $s;
 	}
@@ -82,7 +83,7 @@ class NextPrev extends \stdClass
 	*/
 	public function __construct($xyObj, SqlObject $sql)
 	{
-		$this->_obj = $xyObj;
+		$this->obj = $xyObj;
 		$this->sql = $sql;
 	}
 	/**
