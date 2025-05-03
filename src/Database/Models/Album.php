@@ -52,6 +52,8 @@ class Album extends Model
 	/** @var string $entity_path */
 	// public $entity_path;
 
+	public $content_path;
+	
 	/** @var \Gallery\GalObject $gallery */
 	public $gallery;
 
