@@ -36,7 +36,8 @@ class Editorial extends Model
 	public $main_content;
 	/** @var string $image_name */
 	public $image_name;
-
+	public $image_url;
+	
 	/** These are derived properties*/
 	/** @var string $file_path */
 	public $image_path;

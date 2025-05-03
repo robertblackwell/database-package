@@ -10,7 +10,7 @@ use Database\iSqlIzable;
 /**
 * Provides base class for all models that require sql functions, and common constructor signature to models.
 */
-class Model extends \stdClass implements iSqlIzable
+class Model implements iSqlIzable
 {
 	/**
 	* @var $sql \Database\SqlObject - used for models to make sql calls. Set up during initialization

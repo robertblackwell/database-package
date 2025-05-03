@@ -76,6 +76,7 @@ class EntryLocation extends ItemBase //Base\ModelBase
 	public $longitude;
 	/** @var string $title */
 	public $title;
+	public $excerpt;
 
 
 	public static $table_name = "my_items";
