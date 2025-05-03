@@ -22,7 +22,8 @@ class ActiveMonth extends Model
 	];
 	/**
 	* Constructor.
-	* @param ArrayAccess|array $row Sql result row as associative array or HEDObject.
+	* @param ArrayAccess|array $row Sql result row as associative array or HEDObject. 
+	*								show have 2 keys 'tear' and 'month'
 	* @return ActiveMonth.
 	*/
 	public function __construct(/*array*/ $row)

@@ -18,23 +18,31 @@ class Album extends Model
 {
 	/** These are essential non derived properties */
 	/** @var string $version */
-	public $version;
+	public string $version;
+
 	/** @var string $type */
-	public $type;
+	public string $type;
+	
 	/** @var string $slug */
-	public $slug;
+	public string $slug;
+	
 	/** @var string $status */
 	public $status;
+	
 	/** @var string $creation_date */
 	public $creation_date;
+	
 	/** @var string $published_date */
 	public $published_date;
+	
 	/** @var string $last_modified_date */
 	public $last_modified_date;
+	
 	/** @var string $trip */
-	public $trip;
+	public string $trip;
+	
 	/** @var string $title */
-	public $title;
+	public ?string $title;
 
 	/** These are derived properties*/
 	/** @var string $file_path */
@@ -116,6 +124,9 @@ class Album extends Model
 		$this->content_path = $loc->album_filepath($this->trip, $this->slug);
 		$this->gallery = $this->valueForGalleryProperty();
 //		print "after fill";
+/**
+ * Really not calling the parent constructor ?
+ */
 		return;
 		$this->properties = self::$field_names;
 		$this->table = self::$table_name;

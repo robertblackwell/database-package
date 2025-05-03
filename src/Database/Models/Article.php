@@ -34,7 +34,7 @@ class Article extends ItemBase
 	public $excerpt;
 	/** @var string $featured_image */
 	public $featured_image;
-
+	public $camping;
 	/** These are derived properties*/
 	/** @var string $main_content */
 	public $main_content;
