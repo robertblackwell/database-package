@@ -53,7 +53,7 @@ class ArticleTitle extends Model
 	* @param integer $count Number of items to return.
 	* @return null|ArticleTitle
 	*/
-	public static function find_for_trip(string $trip, int $count = null)
+	public static function find_for_trip(string $trip, ?int $count = null)
 	{
 		//print "<p>".__METHOD__."</p>";
 		$count_str = (!is_null($count))? "limit 0, $count": "" ;
@@ -75,7 +75,7 @@ class ArticleTitle extends Model
 	* @param integer $count Number of items to return.
 	* @return null|ArticleTitle
 	*/
-	public static function find(int $count = null)
+	public static function find(?int $count = null)
 	{
 		//print "<p>".__METHOD__."</p>";
 		$count_str = ($count)? "limit 0, $count": "" ;

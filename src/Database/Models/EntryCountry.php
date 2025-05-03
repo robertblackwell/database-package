@@ -46,7 +46,7 @@ class EntryCountry extends Model
 	* @param integer $count Howmany to return.
 	* @return array | null
 	*/
-	public static function find_for_trip(string $trip, int $count = null)
+	public static function find_for_trip(string $trip, ?int $count = null)
 	{
 		$where = " where trip='".$trip."' and type='entry' ";
 		$count_str = ($count)? "limit 0, $count": "" ;
@@ -59,7 +59,7 @@ class EntryCountry extends Model
 	* @param integer $count Limits the number returned.
 	* @return array Of EntryCountry objects.
 	*/
-	public static function find(int $count = null)
+	public static function find(?int $count = null)
 	{
 		//print "<p>".__METHOD__."</p>";
 		$count_str = ($count)? "limit 0, $count": "" ;

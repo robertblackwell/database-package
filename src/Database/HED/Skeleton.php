@@ -360,7 +360,7 @@ EOD;
 		string $slug,
 		string $published_date,
 		string $image_name,
-		string $main_content = null
+		?string $main_content = null
 	) : HEDObject {
 		assert(func_num_args() == 5 || func_num_args() == 4);
 		$path = \Database\Locator::get_instance()->editorial_filepath($trip, $slug);
@@ -384,7 +384,7 @@ EOD;
 		string $slug,
 		string $published_date,
 		string $image_name,
-		string $main_content = null
+		?string $main_content = null
 	) : HEDObject {
 		ob_start();
 
@@ -437,8 +437,8 @@ EOD;
 		string $latitude,
 		string $longitude,
 		// string $categories = null, // self::empty_categories(),
-		string $featured_image = null, //  self::default_featured_image(),
-		string $main_content = null //self::default_main_content()
+		?string $featured_image = null, //  self::default_featured_image(),
+		?string $main_content = null //self::default_main_content()
 	) : HEDObject {
 		$na = func_num_args();
 		// print "\nXXXX num args = {$na}\n"; exit();
@@ -499,8 +499,8 @@ EOD;
 		string $country,
 		string $latitude,
 		string $longitude,
-		string $featured_image = null, //  self::default_featured_image(),
-		string $main_content = null //self::default_main_content()
+		?string $featured_image = null, //  self::default_featured_image(),
+		?string $main_content = null //self::default_main_content()
 	) : HEDObject {
 		ob_start();
 
@@ -551,9 +551,9 @@ EOD;
 		string $slug,
 		string $published_date,
 		string $title,
-		string $categories = null, //self::empty_categories(),
-		string $featured_image = null, //self::default_featured_image(),
-		string $main_content = null //self::default_main_content()
+		?string $categories = null, //self::empty_categories(),
+		?string $featured_image = null, //self::default_featured_image(),
+		?string $main_content = null //self::default_main_content()
 	) : HEDObject {
 		assert(func_num_args() == 4);
 		$path = \Database\Locator::get_instance()->item_filepath($trip, $slug);
@@ -587,9 +587,9 @@ EOD;
 		string $slug,
 		string $published_date,
 		string $title,
-		string $categories = null, //self::empty_categories(),
-		string $featured_image = null, //self::default_featured_image(),
-		string $main_content = null //self::default_main_content()
+		?string $categories = null, //self::empty_categories(),
+		?string $featured_image = null, //self::default_featured_image(),
+		?string $main_content = null //self::default_main_content()
 	) : HEDObject {
 		ob_start();
 

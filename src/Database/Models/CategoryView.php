@@ -44,7 +44,7 @@ class CategoryView extends Model
 	* @param integer $count How many to return.
 	* @return array|null
 	*/
-	public static function find_for_trip(string $trip, int $count = null)
+	public static function find_for_trip(string $trip, ?int $count = null)
 	{
 		$count_str = ($count)? "limit 0, $count": "" ;
 		$q = "select distinct categorized_items.category".
@@ -63,7 +63,7 @@ class CategoryView extends Model
 	* @param integer $count Limits the number returned.
 	* @return array Of Category objects.
 	*/
-	public static function find(int $count = null)
+	public static function find(?int $count = null)
 	{
 		$count_str = ($count)? "limit 0, $count": "" ;
 		$q = "select distinct categorized_items.category".

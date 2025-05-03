@@ -151,7 +151,7 @@ class EntryLocation extends ItemBase //Base\ModelBase
 	* @param integer $count Limits the number returned.
 	* @return array Of EntryLocation objects
 	*/
-	public static function find_for_trip(string $trip, int $count = null)
+	public static function find_for_trip(string $trip, ?int $count = null)
 	{
 		$count_str = ($count)? "limit 0, $count": "" ;
 		$slist = self::selectList();
@@ -170,7 +170,7 @@ class EntryLocation extends ItemBase //Base\ModelBase
 	* @param integer $count Limits the number returned.
 	* @return array Of EntryLocation objects
 	*/
-	public static function find_for_trip_order_by_date(string $trip, int $count = null)
+	public static function find_for_trip_order_by_date(string $trip, ?int $count = null)
 	{
 		//print "<p>".__METHOD__."</p>";
 		$count_str = ($count)? "limit 0, $count": "" ;
@@ -190,7 +190,7 @@ class EntryLocation extends ItemBase //Base\ModelBase
 	* @param integer $count Limits the number returned.
 	* @return array Of EntryLocation objects ordered by published_date.
 	*/
-	public static function find_date_order(int $count = null)
+	public static function find_date_order(?int $count = null)
 	{
 		//print "<p>".__METHOD__."</p>";
 		$count_str = ($count)? "limit 0, $count": "" ;
@@ -211,7 +211,7 @@ class EntryLocation extends ItemBase //Base\ModelBase
 	* @param integer $count Limits the number returned.
 	* @return array Of EntryLocation objects
 	*/
-	public static function find(int $count = null)
+	public static function find(?int $count = null)
 	{
 		//print "<p>".__METHOD__."</p>";
 		$count_str = ($count)? "limit 0, $count": "" ;

@@ -49,7 +49,7 @@ class TripMonth extends Model
 	* @return array | null TripMonth
 	*
 	*/
-	public static function find_for_trip(string $trip, int $count = null)
+	public static function find_for_trip(string $trip, ?int $count = null)
 	{
 		//print "<p>".__METHOD__."</p>";
 		$where = " where ( (trip = '".$trip."') and (type='post' or type='entry') )";
@@ -66,7 +66,7 @@ class TripMonth extends Model
 	* @param integer $count Limits the number returned.
 	* @return array|null Of TripMonth objects
 	*/
-	public static function find(int $count = null)
+	public static function find(?int $count = null)
 	{
 		//print "<p>".__METHOD__."</p>";
 		$count_str = ($count)? "limit 0, $count": "" ;

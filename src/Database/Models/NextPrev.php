@@ -225,7 +225,7 @@ class NextPrev extends \stdClass
 	* @return Post|Entry|Article|null
 	* @throws \Exception Criteria invalid.
 	*/
-	public function next($criteria = null, string $class = '\Database\Models\Item')
+	public function next(?array $criteria = null, string $class = '\Database\Models\Item')
 	{
 		if (($criteria != null)) {
 			if (!is_array($criteria)) {

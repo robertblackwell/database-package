@@ -49,7 +49,7 @@ class ActiveMonth extends Model
 	* @return array | null ActiveMonth
 	*
 	*/
-	public static function find_for_trip(string $trip, int $count = null)
+	public static function find_for_trip(string $trip, ?int $count = null)
 	{
 		//print "<p>".__METHOD__."</p>";
 		$where = " where ( (trip = '".$trip."') and (type='post' or type='entry') )";
@@ -66,7 +66,7 @@ class ActiveMonth extends Model
 	* @param integer $count Limits the number returned.
 	* @return array|null Of ActiveMonth objects
 	*/
-	public static function find(int $count = null)
+	public static function find(?int $count = null)
 	{
 		//print "<p>".__METHOD__."</p>";
 		$count_str = ($count)? "limit 0, $count": "" ;
