@@ -10,7 +10,7 @@ use \Database\SqlObject;
 **
 ** The iterator only returns an instance of Item or null.
 */
-class NextPrev
+class NextPrev extends \stdClass
 {
 	/**
 	* @var Entry|Post|Article $obj The object for which this class is finding the next or prev.
