@@ -234,7 +234,7 @@ class Item extends ItemBase
 	* @return array|null Of Item
 	*
 	*/
-	public static function find_for_trip(string $trip, int $count = null)
+	public static function find_for_trip(string $trip, ?int $count = null)
 	{
 		$where = " where trip='".$trip."'";
 		$count_str = ($count)? "limit 0, $count": "" ;
@@ -248,7 +248,7 @@ class Item extends ItemBase
 	* @return array|null Of Item
 	*
 	*/
-	public static function find_for_trip_asc(string $trip, int $count = null)
+	public static function find_for_trip_asc(string $trip, ?int $count = null)
 	{
 		$where = " where trip='".$trip."'";
 		$count_str = ($count)? "limit 0, $count": "" ;
@@ -261,7 +261,7 @@ class Item extends ItemBase
 	* @return array|null Of Item
 	*
 	*/
-	public static function findAllTypes(int $count = null)
+	public static function findAllTypes(?int $count = null)
 	{
 		$count_str = ($count)? "limit 0, $count": "" ;
 		$c = " order by published_date desc, slug desc $count_str ";
@@ -273,7 +273,7 @@ class Item extends ItemBase
 	* @return array|null Of Item
 	*
 	*/
-	public static function find(int $count = null)
+	public static function find(?int $count = null)
 	{
 		$count_str = ($count)? "limit 0, $count": "" ;
 		$c = " where type<>'location' order by published_date desc, slug desc $count_str ";
@@ -284,7 +284,7 @@ class Item extends ItemBase
 	* @param integer $count Optional - can limit the number returned.
 	* @return array Of Item objects.
 	*/
-	public static function find_latest(int $count = null)
+	public static function find_latest(?int $count = null)
 	{
 		$count_str = ($count)? "limit 0, $count": "" ;
 		$c = " where type<>'location' order by last_modified_date desc, slug desc $count_str ";
@@ -296,7 +296,7 @@ class Item extends ItemBase
 	* @param integer $count Optional - can limit the number returned.
 	* @return array Of Item objects.
 	*/
-	public static function find_latest_after(string $after = "2000-01-01", int $count = null)
+	public static function find_latest_after(string $after = "2000-01-01", ?int $count = null)
 	{
 		$count_str = ($count)? "limit 0, $count": "" ;
 		$c = " where type<>'location' and published_date > '{$after}' order by last_modified_date desc, slug desc $count_str ";
@@ -308,7 +308,7 @@ class Item extends ItemBase
 	* @param integer $count Optional - can limit the number returned.
 	* @return array Of Item objects.
 	*/
-	public static function find_latest_for_trip(string $trip, int $count = null)
+	public static function find_latest_for_trip(string $trip, ?int $count = null)
 	{
 		$where = " where trip='".$trip."' ";
 		$count_str = ($count)? "limit 0, $count": "" ;
@@ -321,7 +321,7 @@ class Item extends ItemBase
 	* @param integer $count      Optional can limit the number returned.
 	* @return array of Item | null
 	*/
-	public static function find_for_month(string $year_month, int $count = null)
+	public static function find_for_month(string $year_month, ?int $count = null)
 	{
 		$start = mk_start_of_month($year_month);
 		$start_of_next_month = mk_start_of_next_month($year_month);
@@ -340,7 +340,7 @@ class Item extends ItemBase
 	* @param integer $count      Optional can limit the number returned.
 	* @return array of Item | null
 	*/
-	public static function find_for_trip_month(string $trip, string $year_month, int $count = null)
+	public static function find_for_trip_month(string $trip, string $year_month, ?int $count = null)
 	{
 		$start = mk_start_of_month($year_month);
 		$start_of_next_month = mk_start_of_next_month($year_month);
@@ -361,7 +361,7 @@ class Item extends ItemBase
 	* @param integer $count   Optional can limit the number returned.
 	* @return array of Item | null
 	*/
-	public static function find_for_country(string $country, int $count = null)
+	public static function find_for_country(string $country, ?int $count = null)
 	{
 		$count_str = ($count)? "limit 0, $count": "" ;
 		$c = " WHERE  (type='entry' or type = 'post')  and country = \"$country\" "
@@ -375,7 +375,7 @@ class Item extends ItemBase
 	* @param integer $count   Optional can limit the number returned.
 	* @return array of Item | null
 	*/
-	public static function find_for_trip_country(string $trip, string $country, int $count = null)
+	public static function find_for_trip_country(string $trip, string $country, ?int $count = null)
 	{
 		$count_str = ($count)? "limit 0, $count": "" ;
 		$c = " WHERE (trip='".$trip."' and (type='entry' or type = 'post')  and country = \"$country\") "
@@ -446,7 +446,7 @@ class Item extends ItemBase
 	* @param integer $count    Limit on number returned.
 	* @return array | null Of Item.
 	*/
-	public static function find_for_category(string $category = null, int $count = null)
+	public static function find_for_category(string $category = null, ?int $count = null)
 	{
 		//print "<p>".__METHOD__."</p>";
 		$count_str = ($count)? "limit 0, $count": "" ;
@@ -468,7 +468,7 @@ class Item extends ItemBase
 	* @param integer $count    Limit on number returned.
 	* @return array | null Of Item.
 	*/
-	public static function find_for_trip_category(string $trip, string $category = null, int $count = null)
+	public static function find_for_trip_category(string $trip, string $category = null, ?int $count = null)
 	{
 		//print "<p>".__METHOD__."</p>";
 		$count_str = ($count)? "limit 0, $count": "" ;

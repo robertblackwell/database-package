@@ -144,7 +144,7 @@ class HEDObject implements \ArrayAccess
 	* @param string $fn Full path to file where object is to be put in HED encoding.
 	* @return void
 	*/
-	public function put_to_file(string $fn = null) : void
+	public function put_to_file(?string $fn = null) : void
 	{
 		if (is_null($fn))
 			$fn = $this->file_path;
