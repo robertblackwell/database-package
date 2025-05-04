@@ -76,6 +76,7 @@ class Item extends ItemBase
 	public $excerpt;
 	/** @var string $featured_image */
 	public $featured_image;
+	public $featured_image_path;
 	/** @var string $miles */
 	public $miles;
 	/** @var string $odometer */
@@ -116,6 +117,7 @@ class Item extends ItemBase
 		"abstract"=>"html",
 		"excerpt"=>"text",
 		"featured_image"=>'text',
+		"featured_image_path" => "text",
 		"miles"=>"text",
 		"odometer"=>"int",
 		"day_number"=>"int",
@@ -141,6 +143,7 @@ class Item extends ItemBase
 			"abstract"=>"html",
 			"excerpt"=>"text",
 			"featured_image"=>'text',
+			"featured_image_path"=>'text',
 			"miles"=>"text",
 			"odometer"=>"int",
 			"day_number"=>"int",

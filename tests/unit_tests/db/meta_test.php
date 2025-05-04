@@ -9,6 +9,8 @@ use Unittests\LocalTestcase;
 
 class MetaDataTest extends LocalTestcase
 {
+	public $db;
+	public $sql;
 	function setUp()
 	{
 	    //print "test connect db\n";

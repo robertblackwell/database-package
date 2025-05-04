@@ -15,6 +15,9 @@ use Unittests\NoSqlTestcase;
 
 class EntryTest extends NoSqlTestcase
 {
+	public $trip;
+	public $slug;
+
 	/** per test setup */
 	function setUp()
 	{

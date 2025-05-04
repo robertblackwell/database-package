@@ -15,6 +15,8 @@ use Unittests\NoSqlTestcase;
 
 class BannerTest extends NoSqlTestcase
 {
+	public $trip;
+	public $slug;
 	function setUp()
 	{
 		global $config;

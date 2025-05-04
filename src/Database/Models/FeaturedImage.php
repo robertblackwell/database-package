@@ -104,7 +104,7 @@ class FeaturedImage
 	* @return string|null  A string full path to the thumbnail of a featured image, or null if no featured image.
 	* @throws \Exception If the $fi_text cannot be decoded.
 	*/
-	public static function fromPathAndText(string $itemDir, string $fi_text) : string | null
+	public static function fromPathAndText(string $itemDir, ?string $fi_text) : string | null
 	{
 		$text = $fi_text;
 		if (is_null($text) || ($text == '')) {

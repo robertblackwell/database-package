@@ -221,98 +221,98 @@ utility:
 # this prepares the minimum necessary test data
 
 
-# prepare_test_data:
-# 	@echo $(TEST_DATA_SRC)
-# 	@echo $(DATA_DIR)
-# 	@make data_mkdirs
-# 	@make data_cp_rtw
-# 	@make data_cp_er
-# 	@make data_cp_bmw11
+prepare_test_data:
+	@echo $(TEST_DATA_SRC)
+	@echo $(DATA_DIR)
+	@make data_mkdirs
+	@make data_cp_rtw
+	@make data_cp_er
+	@make data_cp_bmw11
 
-# data_mkdirs:
-# 	@rm -Rf $(DATA_DIR)/data || true
-# 	@mkdir -p $(DATA_DIR)/data
-# 	@mkdir -p $(DATA_DIR)/data/rtw/banners
-# 	@mkdir -p $(DATA_DIR)/data/rtw/content
-# 	@mkdir -p $(DATA_DIR)/data/rtw/editorial
-# 	@mkdir -p $(DATA_DIR)/data/rtw/gps
-# 	@mkdir -p $(DATA_DIR)/data/rtw/photos/galleries
-# 	@mkdir -p $(DATA_DIR)/data/er/banners
-# 	@mkdir -p $(DATA_DIR)/data/er/content
-# 	@mkdir -p $(DATA_DIR)/data/er/editorial
-# 	@mkdir -p $(DATA_DIR)/data/er/gps
-# 	@mkdir -p $(DATA_DIR)/data/er/photos/galleries
-# 	@mkdir -p $(DATA_DIR)/data/bmw11/banners
-# 	@mkdir -p $(DATA_DIR)/data/bmw11/content
-# 	@mkdir -p $(DATA_DIR)/data/bmw11/editorial
-# 	@mkdir -p $(DATA_DIR)/data/bmw11/gps
-# 	@mkdir -p $(DATA_DIR)/data/bmw11/photos/galleries
+data_mkdirs:
+	@rm -Rf $(DATA_DIR)/data || true
+	@mkdir -p $(DATA_DIR)/data
+	@mkdir -p $(DATA_DIR)/data/rtw/banners
+	@mkdir -p $(DATA_DIR)/data/rtw/content
+	@mkdir -p $(DATA_DIR)/data/rtw/editorial
+	@mkdir -p $(DATA_DIR)/data/rtw/gps
+	@mkdir -p $(DATA_DIR)/data/rtw/photos/galleries
+	@mkdir -p $(DATA_DIR)/data/er/banners
+	@mkdir -p $(DATA_DIR)/data/er/content
+	@mkdir -p $(DATA_DIR)/data/er/editorial
+	@mkdir -p $(DATA_DIR)/data/er/gps
+	@mkdir -p $(DATA_DIR)/data/er/photos/galleries
+	@mkdir -p $(DATA_DIR)/data/bmw11/banners
+	@mkdir -p $(DATA_DIR)/data/bmw11/content
+	@mkdir -p $(DATA_DIR)/data/bmw11/editorial
+	@mkdir -p $(DATA_DIR)/data/bmw11/gps
+	@mkdir -p $(DATA_DIR)/data/bmw11/photos/galleries
 
-# CP=@cp -r
+CP=@cp -r
 
-# data_cp_rtw:
-# 	$(CP) $(TEST_DATA_SRC)/rtw/content/120705 $(DATA_DIR)/data/rtw/content/
-# 	$(CP) $(TEST_DATA_SRC)/rtw/content/120708 $(DATA_DIR)/data/rtw/content/
-# 	$(CP) $(TEST_DATA_SRC)/rtw/content/130407 $(DATA_DIR)/data/rtw/content/
-# 	$(CP) $(TEST_DATA_SRC)/rtw/content/130408 $(DATA_DIR)/data/rtw/content/
-# 	$(CP) $(TEST_DATA_SRC)/rtw/content/130412 $(DATA_DIR)/data/rtw/content/
-# 	$(CP) $(TEST_DATA_SRC)/rtw/content/130413 $(DATA_DIR)/data/rtw/content/
-# 	$(CP) $(TEST_DATA_SRC)/rtw/content/130414 $(DATA_DIR)/data/rtw/content/
-# 	$(CP) $(TEST_DATA_SRC)/rtw/content/130416 $(DATA_DIR)/data/rtw/content/
-# 	$(CP) $(TEST_DATA_SRC)/rtw/content/130417 $(DATA_DIR)/data/rtw/content/
-# 	$(CP) $(TEST_DATA_SRC)/rtw/content/130418 $(DATA_DIR)/data/rtw/content/
-# 	$(CP) $(TEST_DATA_SRC)/rtw/content/130427B $(DATA_DIR)/data/rtw/content/
-# 	$(CP) $(TEST_DATA_SRC)/rtw/content/130427 $(DATA_DIR)/data/rtw/content/
-# 	$(CP) $(TEST_DATA_SRC)/rtw/content/130428 $(DATA_DIR)/data/rtw/content/
-# 	$(CP) $(TEST_DATA_SRC)/rtw/content/130713 $(DATA_DIR)/data/rtw/content/
-# 	$(CP) $(TEST_DATA_SRC)/rtw/content/130716 $(DATA_DIR)/data/rtw/content/
+data_cp_rtw:
+	$(CP) $(TEST_DATA_SRC)/rtw/content/120705 $(DATA_DIR)/data/rtw/content/
+	$(CP) $(TEST_DATA_SRC)/rtw/content/120708 $(DATA_DIR)/data/rtw/content/
+	$(CP) $(TEST_DATA_SRC)/rtw/content/130407 $(DATA_DIR)/data/rtw/content/
+	$(CP) $(TEST_DATA_SRC)/rtw/content/130408 $(DATA_DIR)/data/rtw/content/
+	$(CP) $(TEST_DATA_SRC)/rtw/content/130412 $(DATA_DIR)/data/rtw/content/
+	$(CP) $(TEST_DATA_SRC)/rtw/content/130413 $(DATA_DIR)/data/rtw/content/
+	$(CP) $(TEST_DATA_SRC)/rtw/content/130414 $(DATA_DIR)/data/rtw/content/
+	$(CP) $(TEST_DATA_SRC)/rtw/content/130416 $(DATA_DIR)/data/rtw/content/
+	$(CP) $(TEST_DATA_SRC)/rtw/content/130417 $(DATA_DIR)/data/rtw/content/
+	$(CP) $(TEST_DATA_SRC)/rtw/content/130418 $(DATA_DIR)/data/rtw/content/
+	$(CP) $(TEST_DATA_SRC)/rtw/content/130427B $(DATA_DIR)/data/rtw/content/
+	$(CP) $(TEST_DATA_SRC)/rtw/content/130427 $(DATA_DIR)/data/rtw/content/
+	$(CP) $(TEST_DATA_SRC)/rtw/content/130428 $(DATA_DIR)/data/rtw/content/
+	$(CP) $(TEST_DATA_SRC)/rtw/content/130713 $(DATA_DIR)/data/rtw/content/
+	$(CP) $(TEST_DATA_SRC)/rtw/content/130716 $(DATA_DIR)/data/rtw/content/
 
-# 	$(CP) $(TEST_DATA_SRC)/rtw/content/180928 $(DATA_DIR)/data/rtw/content/
-# 	$(CP) $(TEST_DATA_SRC)/rtw/content/180929 $(DATA_DIR)/data/rtw/content/
-# 	$(CP) $(TEST_DATA_SRC)/rtw/content/180930 $(DATA_DIR)/data/rtw/content/
-# 	$(CP) $(TEST_DATA_SRC)/rtw/content/181001 $(DATA_DIR)/data/rtw/content/
-# 	$(CP) $(TEST_DATA_SRC)/rtw/content/181002 $(DATA_DIR)/data/rtw/content/
-
-
-# 	$(CP) $(TEST_DATA_SRC)/rtw/content/vladivostok $(DATA_DIR)/data/rtw/content/
-# 	$(CP) $(TEST_DATA_SRC)/rtw/content/whatsbeenhappening $(DATA_DIR)/data/rtw/content/
-# 	$(CP) $(TEST_DATA_SRC)/rtw/content/tires $(DATA_DIR)/data/rtw/content/
-
-# 	$(CP) $(TEST_DATA_SRC)/rtw/content/bolivia-1 $(DATA_DIR)/data/rtw/content/
-# 	$(CP) $(TEST_DATA_SRC)/rtw/content/mog $(DATA_DIR)/data/rtw/content/
-
-# 	$(CP) $(TEST_DATA_SRC)/rtw/photos/galleries/spain $(DATA_DIR)/data/rtw/photos/galleries/
-# 	$(CP) $(TEST_DATA_SRC)/rtw/photos/galleries/scotland $(DATA_DIR)/data/rtw/photos/galleries/
-# 	$(CP) $(TEST_DATA_SRC)/rtw/photos/galleries/england $(DATA_DIR)/data/rtw/photos/galleries/
-
-# 	$(CP) $(TEST_DATA_SRC)/rtw/content/vehicle1 $(DATA_DIR)/data/rtw/content/
-# 	$(CP) $(TEST_DATA_SRC)/rtw/content/vehicle2 $(DATA_DIR)/data/rtw/content/
-# 	$(CP) $(TEST_DATA_SRC)/rtw/content/vehicle3 $(DATA_DIR)/data/rtw/content/
-# 	$(CP) $(TEST_DATA_SRC)/rtw/content/plumbing2 $(DATA_DIR)/data/rtw/content/
-# 	$(CP) $(TEST_DATA_SRC)/rtw/content/electricalpart1 $(DATA_DIR)/data/rtw/content/
-# 	$(CP) $(TEST_DATA_SRC)/rtw/content/electricalpart9 $(DATA_DIR)/data/rtw/content/
-
-# 	$(CP) $(TEST_DATA_SRC)/rtw/banners/england $(DATA_DIR)/data/rtw/banners/
-# 	$(CP) $(TEST_DATA_SRC)/rtw/banners/active $(DATA_DIR)/data/rtw/banners/
-
-# 	$(CP) $(TEST_DATA_SRC)/rtw/editorial/scotland $(DATA_DIR)/data/rtw/editorial/
-
-# 	$(CP) $(TEST_DATA_SRC)/rtw/content/tires $(DATA_DIR)/data/rtw/content/
-# 	$(CP) $(TEST_DATA_SRC)/bmw11/content/tuk18A $(DATA_DIR)/data/bmw11/content/
+	$(CP) $(TEST_DATA_SRC)/rtw/content/180928 $(DATA_DIR)/data/rtw/content/
+	$(CP) $(TEST_DATA_SRC)/rtw/content/180929 $(DATA_DIR)/data/rtw/content/
+	$(CP) $(TEST_DATA_SRC)/rtw/content/180930 $(DATA_DIR)/data/rtw/content/
+	$(CP) $(TEST_DATA_SRC)/rtw/content/181001 $(DATA_DIR)/data/rtw/content/
+	$(CP) $(TEST_DATA_SRC)/rtw/content/181002 $(DATA_DIR)/data/rtw/content/
 
 
-# data_cp_er:
-# 	$(CP) $(TEST_DATA_SRC)/er/content/110620 $(DATA_DIR)/data/er/content/
-# 	$(CP) $(TEST_DATA_SRC)/er/content/110621 $(DATA_DIR)/data/er/content/
+	$(CP) $(TEST_DATA_SRC)/rtw/content/vladivostok $(DATA_DIR)/data/rtw/content/
+	$(CP) $(TEST_DATA_SRC)/rtw/content/whatsbeenhappening $(DATA_DIR)/data/rtw/content/
+	$(CP) $(TEST_DATA_SRC)/rtw/content/tires $(DATA_DIR)/data/rtw/content/
 
-# 	$(CP) $(TEST_DATA_SRC)/er/content/160706 $(DATA_DIR)/data/er/content/
-# 	$(CP) $(TEST_DATA_SRC)/er/content/160707 $(DATA_DIR)/data/er/content/
+	$(CP) $(TEST_DATA_SRC)/rtw/content/bolivia-1 $(DATA_DIR)/data/rtw/content/
+	$(CP) $(TEST_DATA_SRC)/rtw/content/mog $(DATA_DIR)/data/rtw/content/
+
+	$(CP) $(TEST_DATA_SRC)/rtw/photos/galleries/spain $(DATA_DIR)/data/rtw/photos/galleries/
+	$(CP) $(TEST_DATA_SRC)/rtw/photos/galleries/scotland $(DATA_DIR)/data/rtw/photos/galleries/
+	$(CP) $(TEST_DATA_SRC)/rtw/photos/galleries/england $(DATA_DIR)/data/rtw/photos/galleries/
+
+	$(CP) $(TEST_DATA_SRC)/rtw/content/vehicle1 $(DATA_DIR)/data/rtw/content/
+	$(CP) $(TEST_DATA_SRC)/rtw/content/vehicle2 $(DATA_DIR)/data/rtw/content/
+	$(CP) $(TEST_DATA_SRC)/rtw/content/vehicle3 $(DATA_DIR)/data/rtw/content/
+	$(CP) $(TEST_DATA_SRC)/rtw/content/plumbing2 $(DATA_DIR)/data/rtw/content/
+	$(CP) $(TEST_DATA_SRC)/rtw/content/electricalpart1 $(DATA_DIR)/data/rtw/content/
+	$(CP) $(TEST_DATA_SRC)/rtw/content/electricalpart9 $(DATA_DIR)/data/rtw/content/
+
+	$(CP) $(TEST_DATA_SRC)/rtw/banners/england $(DATA_DIR)/data/rtw/banners/
+	$(CP) $(TEST_DATA_SRC)/rtw/banners/active $(DATA_DIR)/data/rtw/banners/
+
+	$(CP) $(TEST_DATA_SRC)/rtw/editorial/scotland $(DATA_DIR)/data/rtw/editorial/
+
+	$(CP) $(TEST_DATA_SRC)/rtw/content/tires $(DATA_DIR)/data/rtw/content/
+	$(CP) $(TEST_DATA_SRC)/bmw11/content/tuk18A $(DATA_DIR)/data/bmw11/content/
 
 
-# data_cp_bmw11:
-# 	$(CP) $(TEST_DATA_SRC)/bmw11/content/180624 $(DATA_DIR)/data/bmw11/content/
-# 	$(CP) $(TEST_DATA_SRC)/bmw11/content/180726 $(DATA_DIR)/data/bmw11/content/
-# 	$(CP) $(TEST_DATA_SRC)/bmw11/content/180727 $(DATA_DIR)/data/bmw11/content/
+data_cp_er:
+	$(CP) $(TEST_DATA_SRC)/er/content/110620 $(DATA_DIR)/data/er/content/
+	$(CP) $(TEST_DATA_SRC)/er/content/110621 $(DATA_DIR)/data/er/content/
+
+	$(CP) $(TEST_DATA_SRC)/er/content/160706 $(DATA_DIR)/data/er/content/
+	$(CP) $(TEST_DATA_SRC)/er/content/160707 $(DATA_DIR)/data/er/content/
+
+
+data_cp_bmw11:
+	$(CP) $(TEST_DATA_SRC)/bmw11/content/180624 $(DATA_DIR)/data/bmw11/content/
+	$(CP) $(TEST_DATA_SRC)/bmw11/content/180726 $(DATA_DIR)/data/bmw11/content/
+	$(CP) $(TEST_DATA_SRC)/bmw11/content/180727 $(DATA_DIR)/data/bmw11/content/
 
 
 

@@ -12,6 +12,9 @@ use \DbPreloader as DbPreloader;
 
 class PostPostTest extends LocalTestcase
 {
+	public $test_trip;
+	public $test_slug;
+
 	function setUp()
 	{
 		global $config;

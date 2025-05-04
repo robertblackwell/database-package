@@ -12,6 +12,8 @@ use Trace;
 
 class QueryTest extends LocalTestcase
 {
+	public $db;
+	public $sql;
 	function setUp()
 	{
 	    //print "test connect db\n";

@@ -12,6 +12,9 @@ use \DbPreloader as DbPreloader;
 
 class BannersTest extends LocalTestcase
 {
+	public $test_trip;
+	public $test_slug;
+
 	public function setUp()
 	{
 		global $config;

@@ -15,6 +15,9 @@ use Unittests\LocalTestcase;
 
 class ArticleTest extends LocalTestcase
 {
+	public $trip;
+	public $slug;
+
 	function setUp()
 	{
 		global $config;

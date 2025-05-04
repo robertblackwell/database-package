@@ -48,6 +48,7 @@ class Entry extends ItemBase
 	public $longitude;
 	/** @var string|null $featureed_image */
 	public $featured_image;
+	public $featured_image_path;
 	/** @var string $title */
 	public $title;
 	/** @var string $abstract */
@@ -91,6 +92,7 @@ class Entry extends ItemBase
 		"longitude"=>"text",
 		//"featured_image"=>"getter",
 		"featured_image"=>"text",
+		"featured_image_path" => "text",
 		"title"=>"html",
 		// "abstract"=>"html",
 		//"excerpt"=>"getter",
@@ -118,6 +120,7 @@ class Entry extends ItemBase
 			"excerpt"=>"text",
 			"main_content" => "html",
 			"featured_image"=>"text",
+			"featured_image_path" => "text",
 			"has_camping"=>"has",
 			"has_border"=>"has",
 		];
@@ -125,13 +128,14 @@ class Entry extends ItemBase
 		];
 		$props = array_diff_key($this->properties, $derived_props);
 
-		$this->sql_properties = array_keys($this->properties);
+		$this->sql_properties = array_keys($props);
 		/**
 		* fill all "required" and straightforward properties
 		*/
 		foreach ($props as $prop => $type) {
 			$this->$prop = $helper->get_property_value($prop, $type);
 		}
+
 		$loc = Locator::get_instance();
 		$this->country = $helper->fix_country($this->country);
 		/**
@@ -142,28 +146,19 @@ class Entry extends ItemBase
 		/**
 		* optional properties
 		*/
-		$this->excerpt = $helper->get_optional_property_value(
-			"excerpt",
-			$this->properties["excerpt"]
-		);
-		$this->featured_image = $helper->get_optional_property_value(
-			"featured_image",
-			$this->properties["featured_image"]
-		);
+		$this->excerpt = $helper->get_optional_property_value("excerpt",$this->properties["excerpt"]);
+		$this->featured_image = $helper->get_optional_property_value("featured_image",$this->properties["featured_image"]);
 		if (is_null($this->featured_image)) {
 			$this->featured_image = "[0]";
 		}
-		$this->camping = $helper->get_optional_property_value(
-			"camping",
-			$this->properties["camping"]
-		);
+		$this->featured_image_path = \Database\Models\FeaturedImage::pathFromTripSlugText($this->trip, $this->slug, $this->featured_image);
+
+		$this->camping = $helper->get_optional_property_value("camping",$this->properties["camping"]);
+
 		$k = ($this->camping !== null) ? strlen(trim($this->camping)) : 0;
 		$this->has_camping = (! is_null($this->camping)) && ($k != 0);
 
-		$this->border = $helper->get_optional_property_value(
-			"border",
-			$this->properties["border"]
-		);
+		$this->border = $helper->get_optional_property_value("border",$this->properties["border"]);
 		$this->has_border = (! is_null($this->border))  && ($k != 0);
 		parent::__construct($obj);
 	}

@@ -15,6 +15,8 @@ use Unittests\LocalTestcase;
 
 class AlbumTest extends LocalTestcase
 {
+	public $trip;
+	public $slug;
 	function setUp()
 	{
 		global $config;

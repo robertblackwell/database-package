@@ -15,6 +15,9 @@ use Unittests\NoSqlTestcase;
 
 class PostTest extends NoSqlTestcase
 {
+	public $trip;
+	public $slug;
+
 	function setUp()
 	{
 		global $config;

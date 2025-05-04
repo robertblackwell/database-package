@@ -13,6 +13,8 @@ use \DbPreloader as DbPreloader;
 
 class AlbumTest extends LocalTestcase
 {
+	public $test_trip;
+	public $test_slug;
 	/**
 	 * @return void
 	 */

@@ -87,6 +87,9 @@ class Utility
 			self::fix_country($x);
 		}
 		$x->sql_insert();
+
+		$z = Item::get_by_slug($slug);
+
 		if (!is_null($x->featured_image)) {
 			$x->featured_image_path =
 				\Database\Models\FeaturedImage::pathFromTripSlugText($x->trip, $x->slug, $x->featured_image);

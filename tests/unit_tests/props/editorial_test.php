@@ -16,6 +16,9 @@ use Unittests\NoSqlTestcase;
 
 class EditorialTest extends NoSqlTestcase
 {
+	public $trip;
+	public $slug;
+
 	function setUp()
 	{
 		global $config;

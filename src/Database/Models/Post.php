@@ -35,6 +35,7 @@ class Post extends ItemBase
 	public $excerpt;
 	/** @var string $featured_image */
 	public $featured_image;
+	public $featured_image_path;
 	/** @var string $miles */
 	public $topic;
 	/** @var string $odometer */
@@ -64,7 +65,7 @@ class Post extends ItemBase
 		"tags"=>"list",
 		"categories"=>"list",
 		"featured_image"=>"text",
-		//"featured_image"=>"getter",
+		"featured_image_path"=>"text",
 		"main_content"=>"html",
 		];
 	/**
@@ -85,10 +86,11 @@ class Post extends ItemBase
 			"tags"=>"list",
 			"categories"=>"list",
 			"featured_image"=>"text",
+			"featured_image_path" => "text",
 			"main_content"=>"html",
 		];
 		$props = array_diff_key($this->properties, $derived_props);
-		$this->sql_properties = array_keys($this->properties);
+		$this->sql_properties = array_keys($props);
 		// parent::__construct($obj);
 		
 		foreach ($props as $prop => $type) {
@@ -98,33 +100,18 @@ class Post extends ItemBase
 		/**
 		* optional properties
 		*/
-		$this->abstract = $helper->get_optional_property_value(
-			"abstract",
-			$this->properties["abstract"]
-		);
-		$this->excerpt = $helper->get_optional_property_value(
-			"excerpt",
-			$this->properties["excerpt"]
-		);
-		$this->featured_image = $helper->get_optional_property_value(
-			"featured_image",
-			$this->properties["featured_image"]
-		);
+		$this->abstract = $helper->get_optional_property_value("abstract",$this->properties["abstract"]);
+		$this->excerpt = $helper->get_optional_property_value("excerpt",$this->properties["excerpt"]);
+		$this->featured_image = $helper->get_optional_property_value("featured_image",$this->properties["featured_image"]);
+
 		if (is_null($this->featured_image)) {
 			$this->featured_image = "[0]";
 		}
-		$this->topic = $helper->get_optional_property_value(
-			"topic",
-			$this->properties["topic"]
-		);
-		$this->tags = $helper->get_optional_property_value(
-			"tags",
-			$this->properties["tags"]
-		);
-		$this->categories = $helper->get_optional_property_value(
-			"categories",
-			$this->properties["categories"]
-		);
+		$this->featured_image_path = \Database\Models\FeaturedImage::pathFromTripSlugText($this->trip, $this->slug, $this->featured_image);
+
+		$this->topic = $helper->get_optional_property_value("topic",$this->properties["topic"]);
+		$this->tags = $helper->get_optional_property_value("tags",$this->properties["tags"]);
+		$this->categories = $helper->get_optional_property_value("categories",$this->properties["categories"]);
 		/**
 		* main_content, only available if $obj is a HEDObject
 		*/
