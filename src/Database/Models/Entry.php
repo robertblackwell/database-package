@@ -90,7 +90,6 @@ class Entry extends ItemBase
 		"country"=>"text",
 		"latitude"=>"text",
 		"longitude"=>"text",
-		//"featured_image"=>"getter",
 		"featured_image"=>"text",
 		"featured_image_path" => "text",
 		"title"=>"html",
@@ -119,7 +118,6 @@ class Entry extends ItemBase
 			"border" => "html",
 			// "excerpt"=>"text",
 			"main_content" => "html",
-			// "featured_image"=>"text",
 			"featured_image_path" => "text",
 			"has_camping"=>"has",
 			"has_border"=>"has",
@@ -133,11 +131,20 @@ class Entry extends ItemBase
 		* fill all "required" and straightforward properties
 		*/
 		foreach ($props as $prop => $type) {
-			$this->$prop = $helper->get_property_value($prop, $type);
+			if($prop == "featured_image") {
+				$this->featured_image = $helper->get_optional_property_value("featured_image",$this->properties["featured_image"]);
+				if (is_null($this->featured_image)) {
+					$this->featured_image = "[0]";
+				}
+			} else {
+				$this->$prop = $helper->get_property_value($prop, $type);
+			}
 		}
 
 		$loc = Locator::get_instance();
 		$this->country = $helper->fix_country($this->country);
+		// some generattions of content.php did not have featured_image
+		// so patch it
 		/**
 		* main_content, only available if $obj is a HEDObject
 		*/
@@ -147,10 +154,6 @@ class Entry extends ItemBase
 		* optional properties
 		*/
 		$this->excerpt = $helper->get_optional_property_value("excerpt",$this->properties["excerpt"]);
-		$this->featured_image = $helper->get_optional_property_value("featured_image",$this->properties["featured_image"]);
-		if (is_null($this->featured_image)) {
-			$this->featured_image = "[0]";
-		}
 		$this->featured_image_path = \Database\Models\FeaturedImage::pathFromTripSlugText($this->trip, $this->slug, $this->featured_image);
 
 		$this->camping = $helper->get_optional_property_value("camping",$this->properties["camping"]);

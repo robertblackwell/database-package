@@ -85,7 +85,6 @@ class Post extends ItemBase
 			"topic"=>"text",
 			"tags"=>"list",
 			"categories"=>"list",
-			// "featured_image"=>"text",
 			"featured_image_path" => "text",
 			"main_content"=>"html",
 		];
@@ -94,7 +93,14 @@ class Post extends ItemBase
 		// parent::__construct($obj);
 		
 		foreach ($props as $prop => $type) {
-			$this->$prop = $helper->get_property_value($prop, $type);
+			if($prop == "featured_image") {
+				$this->featured_image = $helper->get_optional_property_value("featured_image",$this->properties["featured_image"]);
+				if (is_null($this->featured_image)) {
+					$this->featured_image = "[0]";
+				}
+			} else {
+				$this->$prop = $helper->get_property_value($prop, $type);
+			}
 		}
 		$loc = Locator::get_instance();
 		/**
