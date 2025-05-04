@@ -173,6 +173,9 @@ class Item extends ItemBase
 
 		// now do the optional properties
 		$this->featured_image = $helper->get_optional_property_value("featured_image",$this->properties["featured_image"]);
+		if($this->featured_image == null) {
+			$this->featured_image = "[0]";
+		}
 		$this->abstract = $helper->get_optional_property_value("abstract",$this->properties["abstract"]);
 		$this->excerpt = $helper->get_optional_property_value("excerpt",$this->properties["excerpt"]);
 		$this->camping = $helper->get_optional_property_value("camping",$this->properties["camping"]);
