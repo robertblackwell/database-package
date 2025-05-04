@@ -94,7 +94,7 @@ class Entry extends ItemBase
 		"featured_image"=>"text",
 		"featured_image_path" => "text",
 		"title"=>"html",
-		"abstract"=>"html",
+		// "abstract"=>"html",
 		//"excerpt"=>"getter",
 		"excerpt"=>"html",
 		"main_content"=>"html",

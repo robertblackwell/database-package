@@ -58,7 +58,7 @@ class Post extends ItemBase
 		"last_modified_date"=>"date",
 		"trip"=>"text",
 		"title"=>"html",
-		"abstract"=>"html",
+		// "abstract"=>"html",
 		"excerpt"=>"text",
 
 		"topic"=>"text",
@@ -100,9 +100,9 @@ class Post extends ItemBase
 		/**
 		* optional properties
 		*/
-		$this->abstract = $helper->get_optional_property_value("abstract",$this->properties["abstract"]);
-		$this->excerpt = $helper->get_optional_property_value("excerpt",$this->properties["excerpt"]);
-		$this->featured_image = $helper->get_optional_property_value("featured_image",$this->properties["featured_image"]);
+		// $this->abstract = $helper->get_optional_property_value("abstract",$this->properties["abstract"]);
+		// $this->excerpt = $helper->get_optional_property_value("excerpt",$this->properties["excerpt"]);
+		// $this->featured_image = $helper->get_optional_property_value("featured_image",$this->properties["featured_image"]);
 
 		if (is_null($this->featured_image)) {
 			$this->featured_image = "[0]";
