@@ -52,6 +52,32 @@ class SqlObject
 	{
 		return self::$instance;
 	}
+	public function db_init_with_create()
+	{
+		try {
+			$this->init();
+			return;
+		} catch(\Exception $e) {
+			if (! self::$config) throw new \Exception("database ".__FUNCTION__." config not set");
+			$db_name = self::$config["db_name"];
+			$this->db_name = $db_name;
+			$host = self::$config["db_host"];
+			$user = self::$config["db_user"];
+			$pwd = self::$config["db_passwd"];
+			$conn = mysqli_connect($host, $user, $pwd);
+			if (! isset($conn)) {
+				throw new \Exception(
+					"could not connect to data base db:$db_name user:$user in ".__FILE__." at line ".__LINE__
+				);
+			}
+			$r = $conn->query("CREATE DATABASE {$db_name}");
+			if(!($r === true)) {
+				throw new \Exception("database create of {$db_name} failed");
+			}
+			$conn->close();
+			$this->init();
+		}
+	}
 	/**
 	* Initialize a database connection. Precondition - config has been set
 	 * @return void

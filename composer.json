@@ -23,7 +23,7 @@
     "require":{
     },
     "require-dev":{
-		"robertblackwell/litetest":"^4.1.0"
+		"robertblackwell/litetest":"dev-master"
     },
     "autoload": {
         "psr-4": {
