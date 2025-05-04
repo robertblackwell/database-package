@@ -170,27 +170,13 @@ class Item extends ItemBase
 		$loc = Locator::get_instance();
 		if (!is_null($this->country))
 			$this->country = $helper->fix_country($this->country);
+
 		// now do the optional properties
-		// $this->featured_image = $helper->get_optional_property_value(
-		// 	"featured_image",
-		// 	$this->properties["featured_image"]
-		// );
-		// $this->abstract = $helper->get_optional_property_value(
-		// 	"abstract",
-		// 	$this->properties["abstract"]
-		// );
-		// $this->excerpt = $helper->get_optional_property_value(
-		// 	"excerpt",
-		// 	$this->properties["excerpt"]
-		// );
-		// $this->camping = $helper->get_optional_property_value(
-		// 	"camping",
-		// 	$this->properties["camping"]
-		// );
-		// $this->border = $helper->get_optional_property_value(
-		// 	"border",
-		// 	$this->properties["border"]
-		// );
+		$this->featured_image = $helper->get_optional_property_value("featured_image",$this->properties["featured_image"]);
+		$this->abstract = $helper->get_optional_property_value("abstract",$this->properties["abstract"]);
+		$this->excerpt = $helper->get_optional_property_value("excerpt",$this->properties["excerpt"]);
+		$this->camping = $helper->get_optional_property_value("camping",$this->properties["camping"]);
+		$this->border = $helper->get_optional_property_value("border",$this->properties["border"]);
 		parent::__construct($obj);
 	}
 	/**
