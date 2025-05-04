@@ -225,7 +225,7 @@ class HEDObject implements \ArrayAccess
 	{
 		$mc = $this->get_html("main_content");
 		if (is_null($mc)) {
-			return null;
+			return "";
 		}
 		$v = $this->get_first_p("main_content");
 		return $v;
@@ -394,7 +394,7 @@ class HEDObject implements \ArrayAccess
 				}
 			}
 		}
-		return null;
+		return "";
 		throw new \Exception("property {$field} has no first para");
 	}
 	/**
