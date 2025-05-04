@@ -114,7 +114,6 @@ class Item extends ItemBase
 		"trip"=>"text",
 
 		"title"=>"html",
-		"abstract"=>"html",
 		"excerpt"=>"text",
 		"featured_image"=>'text',
 		"featured_image_path" => "text",
