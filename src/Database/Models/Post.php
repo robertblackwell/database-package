@@ -80,12 +80,12 @@ class Post extends ItemBase
 
 		$this->properties = self::$field_names;
 		$derived_props = [
-			"abstract"=>"html",
-			"excerpt"=>"text",
+			// "abstract"=>"html",
+			// "excerpt"=>"text",
 			"topic"=>"text",
 			"tags"=>"list",
 			"categories"=>"list",
-			"featured_image"=>"text",
+			// "featured_image"=>"text",
 			"featured_image_path" => "text",
 			"main_content"=>"html",
 		];
