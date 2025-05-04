@@ -9,7 +9,7 @@ namespace Database;
 interface iSqlIzable
 // phpcs:enable
 {
-	public function __construct($obj);
+	// public function __construct($obj);
 	/**
 	* @return string The name of the sql table or view that this object lives in.
 	*/

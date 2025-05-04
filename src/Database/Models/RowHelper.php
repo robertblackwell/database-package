@@ -64,7 +64,7 @@ class RowHelper
 	* @param array|ArrayAccess $row Sql result row.
 	* @return RowHelper
 	*/
-	public function __construct(\ArrayAccess $row)
+	public function __construct(\ArrayAccess|array|ArrayObject $row)
 	{
 		$this->row = $row;
 	}

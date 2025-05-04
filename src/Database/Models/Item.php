@@ -129,10 +129,10 @@ class Item extends ItemBase
 		];
 	/**
 	* Constructor.
-	* @param mixed $obj Sql query result associative array or HEDObject.
+	* @param mixed $obj Sql query result associative array or HEDObject. Something indexable
 	* @return Item
 	*/
-	public function __construct($obj)
+	public function __construct(HEDObject|array|ArrayObject $obj)
 	{
 		$helper = new RowHelper($obj);
 		$this->table = "my_items";
