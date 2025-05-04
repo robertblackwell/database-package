@@ -360,7 +360,7 @@ class Factory
 	/**
 	* General from end method that makes model objects from HEDObects.
 	* @param HEDObject $hed_obj The source.
-	* @return Models\Base\Model One of the derived classes.
+	* @return Models\Base\Model One of the derived classes. But only Album, Article, Banner, Editorial, Entry, Post but not Item
 	*/
 	public static function model_from_hed(HEDObject $hed_obj)
 	{

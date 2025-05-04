@@ -37,9 +37,17 @@ function mk_start_of_next_month(string $year_month)
 
 /**
 ** @ingroup Models
-* This class represents all types of content items (posts, entry, article) when there
-* are a set of them retrieved and
-* only summary data (stored in the sql database) is required.
+* This class represents all types of content items (posts, entry, locations) when the slug 
+* is in the my_items table.
+*
+* An Item instance has the ability to carry all the none null fields in a row of the my_items table. 
+*
+* Item instances are useful as a means of finding the trip associated with a slug and thereafter provide a means of 
+* accessing the fully content of the file associated with the trip/slug pair.
+*
+* Items are also useful when only summary information about Entry and Post instances are required. 
+*
+* Only some of the fields of the my_items table are required for an instance of this class to be complete
 *
 * This class provides all static methods for finding individual or sets of content items
 *
@@ -185,7 +193,7 @@ class Item extends ItemBase
 	* Get an/the Item for a trip-slug pair.
 	* @param string $trip Trip code.
 	* @param string $slug Item ID.
-	* @return Item | null
+	* @return not Item but one of Article, Album, Banner, Editorial, Entry, Location or Post
 	*/
 	public static function get_by_trip_slug(string $trip, string $slug)
 	{
@@ -195,6 +203,9 @@ class Item extends ItemBase
 		$obj = new HEDObject();
 		$fn = self::$locator->item_filepath($trip, $slug);
 		$obj->get_from_file($fn);
+		/**
+		 * Note the next call can only make Album, Article, Banner, Editorial, Entry, Post
+		 */
 		$item = Factory::model_from_hed($obj);
 		
 		return $item;
@@ -202,7 +213,7 @@ class Item extends ItemBase
 	/**
 	* Retrieve an/the Item by unique identifier (slug).
 	* @param string $slug Item unique ID.
-	* @return Item|null
+	* @return not Item but one of Entry, Location or Post as the slug must be in the my_items table
 	*/
 	public static function get_by_slug(string $slug)
 	{
@@ -211,11 +222,6 @@ class Item extends ItemBase
 		if (is_null($r) || !$r) return null;
 		$trip = $r->trip;
 		$item = self::get_by_trip_slug($trip, $slug);
-		// $obj = new HEDObject();
-		// $fn = self::$locator->item_filepath($trip, $slug);
-		// // print __FUNCTION__ . " file name " . $fn. "\n";
-		// $obj->get_from_file($fn);
-		// $item = Factory::model_from_hed($obj);
 		return $item;
 	}
 	/**
