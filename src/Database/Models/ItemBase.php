@@ -15,7 +15,7 @@ class ItemBase extends Model
 	protected $next_prev;
 	/**
 	* Constructor.
-	* @param mixed $obj Sql query result as associatibe array, HEDOBject.
+	* @param mixed $obj Sql query result as associatibe array, or HEDOBject.
 	* @return Item
 	*/
 	public function __construct($obj)

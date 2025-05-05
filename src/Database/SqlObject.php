@@ -587,7 +587,12 @@ class SqlObject
 		}
 		$query = $query . "($cols) VALUES(" . $vals . " );";
 		//print "\n".__FUNCTION__. "query: $query \n";
+		try {
 		$result = mysqli_query($this->db_connection, $query);
+		} catch(\Exception $e) {
+			$result = false;
+			
+		}
 		//var_dump($result);
 		if ($throw_error &&  ! $result)
 			throw new \Exception(

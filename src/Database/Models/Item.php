@@ -34,7 +34,6 @@ function mk_start_of_next_month(string $year_month)
 	$res = sprintf("%4d-%02d-%02s", $y, $next_month, 1);
 	return $res;
 }
-
 /**
 ** @ingroup Models
 * This class represents all types of content items (posts, entry, locations) when the slug 
@@ -55,6 +54,7 @@ function mk_start_of_next_month(string $year_month)
 * summary of a content item.
 *
 */
+
 class Item extends ItemBase
 {
 	/**
@@ -62,10 +62,10 @@ class Item extends ItemBase
 	*/
 	/** @var string $version */
 	public $version;
-	/** @var string $type */
-	public $type;
 	/** @var string $slug */
 	public $slug;
+	/** @var string $type */
+	public $type;
 	/** @var string $status */
 	public $status;
 	/** @var string $creation_date */
@@ -78,13 +78,17 @@ class Item extends ItemBase
 	public $trip;
 	/** @var string $title */
 	public $title;
-	/** @var string $abstract */
+
+	/** @var string $abstract - article only*/
 	public $abstract;
-	/** @var string $excerpt */
+
+	/** @var string $excerpt - entry and post*/
 	public $excerpt;
-	/** @var string $featured_image */
+	/** @var string $featured_image  - entry and post*/
 	public $featured_image;
 	public $featured_image_path;
+
+	/**                              entry only */
 	/** @var string $miles */
 	public $miles;
 	/** @var string $odometer */
@@ -101,6 +105,7 @@ class Item extends ItemBase
 	public $longitude;
 	/** @var string|null $camping */
 	public $camping;
+
 	/** @var string|null $border */
 	public $border;
 
@@ -111,30 +116,64 @@ class Item extends ItemBase
 	public $has_border;
 
 	public static $table_name = "my_items";
-	public static $field_names = [
+	// these next 3 arrays define the fields in the my_items table and what kind of entity they
+	// are relevant to
+	private static $core_field_names = [
 		"version"=>"text",
-		"type"=>"text",
 		"slug"=>"text",
+		"type"=>"text",
 		"status"=>"text",
 		"creation_date"=>"date",
 		"published_date"=>"date",
 		"last_modified_date"=>"date",
 		"trip"=>"text",
-
 		"title"=>"html",
+	];
+	private static $entry_extra_field_names = [ 
 		"excerpt"=>"text",
-		"featured_image"=>'text',
-		"featured_image_path" => "text",
 		"miles"=>"text",
 		"odometer"=>"int",
 		"day_number"=>"int",
-		"place"=>"text",
-		"country"=>"text",
 		"latitude"=>"latitude",
 		"longitude"=>"longitude",
+		"country"=>"text",
+		"place"=>"text",
+		"featured_image"=>'text',
+	];
+	private static $post_extra_field_names = [
+		"excerpt" => "text",
+		"featured_image" => "text",
+	]; 
+	private static $article_extra_field_names = [
+		"abstract" => "text",
+	];
+	public static $field_names = [
+		"version"=>"text",
+		"slug"=>"text",
+		"type"=>"text",
+		"status"=>"text",
+		"creation_date"=>"date",
+		"published_date"=>"date",
+		"last_modified_date"=>"date",
+		"trip"=>"text",
+		"title"=>"html",
+
+		"excerpt"=>"text",
+		"miles"=>"text",
+		"odometer"=>"int",
+		"day_number"=>"int",
+		"latitude"=>"latitude",
+		"longitude"=>"longitude",
+		"country"=>"text",
+		"place"=>"text",
+		"featured_image"=>'text',
 		"camping"=>"html",
-		"border" => "html"
-		];
+
+		"excerpt" => "text",
+		"featured_image" => "text",
+
+		"abstract" => "text",
+	];
 	/**
 	* Constructor.
 	* @param mixed $obj Sql query result associative array or HEDObject. Something indexable
@@ -145,44 +184,63 @@ class Item extends ItemBase
 		$helper = new RowHelper($obj);
 		$this->table = "my_items";
 		$this->properties = self::$field_names;
-		$optional_props = [
-			// "title"=>"html",
-			// "abstract"=>"html",
-			// "excerpt"=>"text",
-			// "featured_image"=>'text',
-			"featured_image_path"=>'text',
-			"miles"=>"text",
-			"odometer"=>"int",
-			"day_number"=>"int",
-			"place"=>"text",
-			"country"=>"text",
-			"latitude"=>"latitude",
-			"longitude"=>"longitude",
-			"camping"=>"html",
-			"border" => "html"
-		];
-		$props = array_diff_key($this->properties, $optional_props);
-		$this->sql_properties = array_keys($props);
-		// parent::__construct($obj);
-		
-		foreach ($props as $prop => $type) {
-			$this->$prop = $helper->get_property_value($prop, $type);
-		}
-		foreach ($optional_props as $prop => $type) {
-			$this->$prop = $helper->get_optional_property_value($prop, $type);
-		}
-		if (is_null($this->featured_image)) {
-			$this->featured_image = "[0]";
-		}
+		$trip = $helper->get_property_value("trip", "text");
+		$slug = $helper->get_property_value("slug", "text");
+		$type = $helper->get_property_value("type", "text");
 		$loc = Locator::get_instance();
-		if (!is_null($this->country))
-			$this->country = $helper->fix_country($this->country);
+		switch($type) {
+			case "entry":
+				$props = array_merge(self::$core_field_names, self::$entry_extra_field_names);
+				foreach($props as $prop=>$kind) {
+					$this->$prop = $helper->get_property_value($prop, $kind);
+				}
+				$this->camping = $helper->get_optional_property_value("camping", "text");
+				if (!is_null($this->country))
+					$this->country = $helper->fix_country($this->country);
+						break;
+			case "post":
+				$props = array_merge(self::$core_field_names, self::$post_extra_field_names);
+				foreach($props as $prop=>$kind) {
+					$this->$prop = $helper->get_property_value($prop, $kind);
+				}
+				break;
+			case "article":
+				$props = array_merge(self::$core_field_names, self::$article_extra_field_names);
+				foreach($props as $prop=>$kind) {
+					$this->$prop = $helper->get_property_value($prop, $kind);
+				}
+				break;
+			default:
+				throw new \Exception("invalid type: {$type} in Item constructor");
+		}
+		// $props = array_diff_key($this->properties, $optional_props, ["type"=>"text", "trip"=>"text", "slug"=>"text"]);
+		// if($type == "post") {
+		// 	$props = array_merge($props, ["excerpt"=>"text", "featured_image"=>"text"]);
+		// } else if($type == "entry") {
+
+		// } else if($type == "article") {
+		// 	$props = array_diff_key($props, ["excerpt"=>"text", "featured_image"=>"text"]);
+		// }
+		// $this->sql_properties = array_keys($props);
+		// // parent::__construct($obj);
+		// foreach ($props as $prop => $type) {
+		// 	$this->$prop = $helper->get_property_value($prop, $type);
+		// }
+		// foreach ($optional_props as $prop => $type) {
+		// 	$this->$prop = $helper->get_optional_property_value($prop, $type);
+		// }
+		// if (is_null($this->featured_image)) {
+		// 	$this->featured_image = "[0]";
+		// }
+		// $loc = Locator::get_instance();
+		// if (!is_null($this->country))
+		// 	$this->country = $helper->fix_country($this->country);
 
 		// now do the optional properties
 		// $this->featured_image = $helper->get_optional_property_value("featured_image",$this->properties["featured_image"]);
-		if($this->featured_image == null) {
-			$this->featured_image = "[0]";
-		}
+		// if($this->featured_image == null) {
+		// 	$this->featured_image = "[0]";
+		// }
 		// $this->abstract = $helper->get_optional_property_value("abstract",$this->properties["abstract"]);
 		// $this->excerpt = $helper->get_optional_property_value("excerpt",$this->properties["excerpt"]);
 		// $this->camping = $helper->get_optional_property_value("camping",$this->properties["camping"]);

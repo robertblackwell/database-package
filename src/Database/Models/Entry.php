@@ -74,15 +74,15 @@ class Entry extends ItemBase
 	public static $table_name = "my_items";
 	public static $field_names = [
 		"version"=>"text",
-		"type"=>"text",
-		"trip"=>"text",
-		"vehicle"=>"text",
 		"slug"=>"text",
+		"type"=>"text",
 		"status"=>"text",
 		"creation_date"=>"date",
 		"published_date"=>"date",
 		"last_modified_date"=>"date",
-		//"entry_date"=>"date",
+		"trip"=>"text",
+		"title"=>"text",
+		"excerpt"=>"html",
 		"miles"=>"text",
 		"odometer"=>"text",
 		"day_number"=>"text",
@@ -90,12 +90,13 @@ class Entry extends ItemBase
 		"country"=>"text",
 		"latitude"=>"text",
 		"longitude"=>"text",
+		"country"=>"text",
+		"place" => "text",
+
 		"featured_image"=>"text",
 		"featured_image_path" => "text",
-		"title"=>"html",
-		// "abstract"=>"html",
-		//"excerpt"=>"getter",
-		"excerpt"=>"html",
+
+		"vehicle"=>"text",
 		"main_content"=>"html",
 		"camping"=>"html",
 		"border"=>"html",
@@ -103,7 +104,7 @@ class Entry extends ItemBase
 		"has_border"=>"has",
 		];
 	/**
-	* Consttructor.
+	* Constructor.
 	* @param array|ArrayAccess $obj Sql query result as an associative array.
 	* @return Entry
 	*/
@@ -114,7 +115,6 @@ class Entry extends ItemBase
 
 		$this->properties = self::$field_names;
 		$derived_props = [
-			"camping"=>"html",
 			"border" => "html",
 			// "excerpt"=>"text",
 			"main_content" => "html",
@@ -136,6 +136,8 @@ class Entry extends ItemBase
 				if (is_null($this->featured_image)) {
 					$this->featured_image = "[0]";
 				}
+			} else if($prop == "camping") {
+				$this->camping = $helper->get_optional_property_value($prop, $type);
 			} else {
 				$this->$prop = $helper->get_property_value($prop, $type);
 			}

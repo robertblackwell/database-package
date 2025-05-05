@@ -33,7 +33,7 @@ class Article extends ItemBase
 	/** @var string $excerpt */
 	public $excerpt;
 	/** @var string $featured_image */
-	public $featured_image;
+	// public $featured_image;
 	public $camping;
 	/** These are derived properties*/
 	/** @var string $main_content */
@@ -64,10 +64,10 @@ class Article extends ItemBase
 		"trip"=>"text",
 		"title"=>"html",
 		"abstract"=>"html",
-		"excerpt"=>"text",
+		// "excerpt"=>"text",
 		//"excerpt"=>"getter",
 		"main_content"=>"include", // only comes from a hed_object
-		"featured_image"=>"text",
+		// "featured_image"=>"text",
 		//"featured_image"=>"getter",
 		"content_path" => "text",
 		"entity_path" => "text"
@@ -84,8 +84,8 @@ class Article extends ItemBase
 
 		$this->properties = self::$field_names;
 		$derived_props = [
-			"excerpt"=>"text",
-			"featured_image"=>"text",
+			// "excerpt"=>"text",
+			// "featured_image"=>"text",
 			"main_content"=>"include",
 			"content_path" => "text",
 			"entity_path" => "text"
@@ -100,14 +100,16 @@ class Article extends ItemBase
 		/**
 		* optional properties
 		*/
-		$this->camping = $helper->get_optional_property_value(
-			"excerpt",
-			$this->properties["excerpt"]
-		);
-		$this->featured_image = $helper->get_optional_property_value(
-			"featured_image",
-			$this->properties["featured_image"]
-		);
+		// $this->excerpt = $helper->get_property_excerpt();
+		// $xx = $helper->get_optional_property_value("excerpt", "text");
+		// $this->camping = $helper->get_optional_property_value(
+		// 	"excerpt",
+		// 	$this->properties["excerpt"]
+		// );
+		// $this->featured_image = $helper->get_optional_property_value(
+		// 	"featured_image",
+		// 	$this->properties["featured_image"]
+		// );
 
 		$this->main_content = $helper->get_property_main_content();
 		$this->content_path = $loc->article_main_content_filepath($this->trip, $this->slug);

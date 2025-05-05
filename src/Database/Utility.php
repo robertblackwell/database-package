@@ -360,6 +360,20 @@ class Utility
 			// print __METHOD__."<p> {$items_dir} {$iname}";
 			$pa = "$items_dir/$iname/content.php"; 
 			if(is_file($items_dir."/".$iname."/content.php")) {
+				// if($iname == "tires") {
+				// 	print("{$iname}");
+				// 	$o = new \Database\HED\HEDObject();
+				// 	$o->get_from_file($items_dir."/".$iname."/content.php");
+				// 	$obj = \Database\Models\Factory::model_from_hed($o);
+				// 	$sl = $o->get_html("slug");
+				// 	$h = $o->get_html("main_content");
+				// 	$ex = $o->get_excerpt();
+				// 	$el = $o->doc->getElementById("main_content");
+				// 	$r = \Database\HED\ExtendedDOMNode::create($el)->innerHTML();
+				// 	$t = $el->text_content;
+				// 	// $t = $doc->text_content;
+				// 	print($t);
+				// }
 				$o = new \Database\HED\HEDObject();
 				$o->get_from_file($items_dir."/".$iname."/content.php");
 				$obj = \Database\Models\Factory::model_from_hed($o);

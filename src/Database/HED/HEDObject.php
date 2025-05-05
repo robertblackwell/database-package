@@ -27,7 +27,7 @@ class HEDObject implements \ArrayAccess
 	/**
 	* @var DOMDocument $doc THe DOMDocument that holds the loaded HED file.
 	*/
-	private $doc;
+	public $doc;
 
 	/**
 	* Constructor empty
@@ -178,12 +178,14 @@ class HEDObject implements \ArrayAccess
 	*/
 	public function __isset(string $field) : bool
 	{
+		$v = "";
 		if ($field == "excerpt") {
 			$v = $this->get_excerpt();
 		} else {
 			$v = $this->get_text($field);
 		}
-		return (! is_null($v));
+		$r = (! is_null($v));
+		return $r;
 	}
 	/**
 	* Magic get function to simulate properties. Determines type of psuedo property
