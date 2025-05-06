@@ -19,8 +19,8 @@
 	<div id="country">A_Country</div>
 	<div id="latitude">12.23456</div>
 	<div id="longitude">-125.0900</div>
-	<div id="content_ref">ref</div>
 	<div id="main_content">
+		<p>First para</p>
 	</div>
 
 </body>

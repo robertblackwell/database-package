@@ -28,8 +28,8 @@ hed_tests=unit_tests/hed/hed_album_test.php \
   unit_tests/hed/hed_editorial_test.php \
   unit_tests/hed/hed_entry_test.php \
   unit_tests/hed/hed_factory_test.php \
-  unit_tests/hed/hed_post_test.php 
-#   unit_tests/hed/hed_location_test.php \
+  unit_tests/hed/hed_post_test.php \
+  unit_tests/hed/hed_location_test.php 
 
 import_tests=unit_tests/import/album_test.php \
   unit_tests/import/article_test.php \
@@ -86,6 +86,7 @@ all: prepare_test_data
 
 location: prepare_test_data
 	$(LITETEST)   unit_tests/models/locations/location_test.php 
+	$(LITETEST)   unit_tests/hed/hed_location_test.php 
 
 
 post:

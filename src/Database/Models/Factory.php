@@ -312,15 +312,15 @@ class Factory
 	*/
 	public static function location_from_hed(HEDObject $hed_obj) : EntryLocation
 	{
-		$fields = EntryLocation::get_fields();
-		$vals = [];
-		foreach ($fields as $k => $t) {
-			$method = "get_".$t;
-			$vals[$k] = $hed_obj->$method($k);
-		}
-		// print __FUNCTION__ . "\n";
-		/** @var EntryLoccation $x  */
-		$x = new EntryLocation($vals);
+		// $fields = EntryLocation::get_fields();
+		// $vals = [];
+		// foreach ($fields as $k => $t) {
+		// 	$method = "get_".$t;
+		// 	$vals[$k] = $hed_obj->$method($k);
+		// }
+		// // print __FUNCTION__ . "\n";
+		// /** @var EntryLoccation $x  */
+		$x = new EntryLocation($hed_obj);
 		// var_dump($x);
 		return $x;
 	}

@@ -25,7 +25,6 @@ class Test_hed_location extends LocalTestcase
 		$this->assert_true($o->type === "location");
 		$this->assert_true($o->place === "A_Place");
 		$this->assert_true($o->country === "A_Country");
-		$this->assert_true($o->content_ref === "ref");
 		$this->assert_true($o->latitude === "12.23456");
 		$this->assert_true($o->longitude === "-125.0900");
 		// var_dump($o->slug);
@@ -67,7 +66,6 @@ class Test_hed_location extends LocalTestcase
 
 		$this->assert_true($o->place === $parms['place']);
 		$this->assert_true($o->country === $parms["country"]);
-		$this->assert_true($o->content_ref === "REF");
 		$this->assert_true($o->latitude === $parms['latitude']);
 		$this->assert_true($o->longitude === $parms['longitude']);
 		// var_dump($o);
@@ -94,31 +92,35 @@ class Test_hed_location extends LocalTestcase
 			"longitude" => "-45.67890",
 			"place" => "APLace",
 			"country" => "ACountry",
-			"content_ref" => "REF",
 			'miles' => "12345",
-			'odometer' => "2030405",
-			"day_number" => "29",
+			'odometer' => 2030405,
+			"day_number" => 29,
 		];
 		$o = new HEDObject();
 		$o->get_from_file(dirname(__FILE__)."/data/test_location/content_2.php");
 		
 		$le = Database\Models\Factory::model_from_hed($o);
 		$this->assertNotEqual($le, null);
-		$this->assertEqual(get_class($le), "Database\Models\EntryLocation");
+		$c = get_class($le);
+		/*
+		* Cannot make an EntryLocation object from a HEDObject - must be Entry
+		*/
+		$this->assertEqual(get_class($le), "Database\Models\Entry");
 		
 		$this->assert_true($le->slug === "slug_2");
-		$this->assert_true($le->type === "location");
+		$this->assert_true($le->type === "entry");
 
 		$this->assert_true($le->miles === $parms['miles']);
 		$this->assert_true($le->odometer === $parms['odometer']);
 		$this->assert_true($le->day_number === $parms['day_number']);
 		$this->assert_true($le->has_camping);
 
+		$lng = ($le->longitude)->__toString();
+		$lat = ($le->latitude)->__toString();
 		$this->assert_true($le->place === $parms['place']);
 		$this->assert_true($le->country === $parms["country"]);
-		$this->assert_true($le->content_ref === "REF");
-		$this->assert_true($le->latitude === $parms['latitude']);
-		$this->assert_true($le->longitude === $parms['longitude']);
+		$this->assert_true($le->latitude->__toString() === $parms['latitude']);
+		$this->assert_true($le->longitude->__toString() === $parms['longitude']);
 		// var_dump($le->slug);
 		// var_dump($le->type);
 		// var_dump($le->miles);
