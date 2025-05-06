@@ -42,12 +42,12 @@ class ItemFields
 		"longitude"=>"longitude",
 		"country"=>"text",
 		"place"=>"text",
-		"featured_image"=>'text',
+		// "featured_image"=>'text',
 	];
     // the extra fields required to be none null for a valid Post variant of a my_items row to be loaded
 	private static $post_extra_field_myitems = [
 		"excerpt" => "text",
-		"featured_image" => "text",
+		// "featured_image" => "text",
 	]; 
     // the extra fields required to be none null for a valid Article variant of a my_items row to be loaded
 	private static $article_extra_field_myitems = [
@@ -84,18 +84,23 @@ class ItemFields
 
     public $entry_required_myitems_fields;
     public $entry_optional_myitems_fields;
+    public $entry_all_myitems_fields;
     public $entry_required_entryrecord_fields;
     public $entry_optional_entryrecord_fields;
 
     public $post_required_myitems_fields;
     public $post_optional_myitems_fields;
+    public $post_all_myitems_fields;
     public $post_required_postrecord_fields;
     public $post_optional_postrecord_fields;
 
     public $article_required_myitems_fields;
     public $article_optional_myitems_fields;
+    public $article_all_myitems_fields;
     public $article_required_articlerecord_fields;
     public $article_optional_articlerecord_fields;
+
+    public $sql_myitems_fields;
 
     private static $instance = null;
     public static function getInstance(): ItemFields
@@ -108,19 +113,27 @@ class ItemFields
     private function __construct()
     {
         $this->entry_required_myitems_fields = array_merge(self::$core_field_myitems, self::$entry_extra_field_myitems);
-        $this->entry_optional_myitems_fields = ["camping"=>"text"];
+        $this->entry_optional_myitems_fields = ["camping"=>"text", "featured_image" => "text"];
+        $this->entry_all_myitems_fields = array_merge($this->entry_required_myitems_fields, $this->entry_optional_myitems_fields);
         $this->entry_required_entryrecord_fields = array_merge($this->entry_required_myitems_fields, ["main_content"=>"html"]);
-        $this->entry_optional_entryrecord_fields = array_merge($this->entry_optional_myitems_fields, ["border"=>"html"]);
+        $this->entry_optional_entryrecord_fields = array_merge($this->entry_optional_myitems_fields, ["border"=>"html", "vehicle"=>"text"]);
 
         $this->post_required_myitems_fields = array_merge(self::$core_field_myitems, self::$post_extra_field_myitems);
-        $this->post_optional_myitems_fields = [];
+        $this->post_optional_myitems_fields = ["featured_image"=>"text"];
+        $this->post_all_myitems_fields = array_merge($this->post_required_myitems_fields, $this->post_optional_myitems_fields);
         $this->post_required_postrecord_fields = array_merge($this->post_required_myitems_fields, ["main_content"=>"html"]);
         $this->post_optional_postrecord_fields = array_merge($this->post_optional_myitems_fields, []);
 
         $this->article_required_myitems_fields = array_merge(self::$core_field_myitems, self::$article_extra_field_myitems);
         $this->article_optional_myitems_fields = [];
+        $this->article_all_myitems_fields = array_merge($this->article_required_myitems_fields, $this->post_optional_myitems_fields);
         $this->article_required_articlerecord_fields = array_merge($this->article_required_myitems_fields, ["main_content"=>"html"]);
         $this->article_optional_articlerecord_fields = array_merge($this->article_optional_myitems_fields, []);
+
+        $this->sql_myitems_fields = array_merge($this->entry_required_myitems_fields, $this->entry_optional_myitems_fields,
+                                                $this->post_required_myitems_fields, $this->post_optional_myitems_fields,
+                                                $this->article_required_myitems_fields, $this->article_optional_myitems_fields);
+
     }
 
 }

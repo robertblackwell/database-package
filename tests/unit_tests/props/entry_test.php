@@ -66,9 +66,9 @@ EOD;
 			'adate',
 			"aTitle",
 			'someVehicle',
-			'1234miles',
-			'1212odometer',
-			'12_day',
+			'1234',
+			'1212',
+			'12',
 			'aplace',
 			'BC',
 			'12.3245',
@@ -85,9 +85,9 @@ EOD;
 		$this->assertEqual($obj['title'], "aTitle");
 
 		$this->assertEqual($obj['vehicle'], "someVehicle");
-		$this->assertEqual($obj['miles'], "1234miles");
-		$this->assertEqual($obj['odometer'], "1212odometer");
-		$this->assertEqual($obj['day_number'], "12_day");
+		$this->assertEqual($obj['miles'], "1234");
+		$this->assertEqual($obj['odometer'], "1212");
+		$this->assertEqual($obj['day_number'], "12");
 		$this->assertEqual($obj['place'], "aplace");
 		$this->assertEqual($obj['country'], "BC");
 		$this->assertEqual($obj['latitude'], "12.3245");
@@ -111,9 +111,9 @@ EOD;
 		$this->assertEqual($nobj['title'], "aTitle");
 
 		$this->assertEqual($nobj['vehicle'], "someVehicle");
-		$this->assertEqual($nobj['miles'], "1234miles");
-		$this->assertEqual($nobj['odometer'], "1212odometer");
-		$this->assertEqual($nobj['day_number'], "12_day");
+		$this->assertEqual($nobj['miles'], "1234");
+		$this->assertEqual($nobj['odometer'], "1212");
+		$this->assertEqual($nobj['day_number'], "12");
 		$this->assertEqual($nobj['place'], "aplace");
 		$this->assertEqual($nobj['country'], "BC");
 		$this->assertEqual($nobj['latitude'], "12.3245");
@@ -133,9 +133,9 @@ EOD;
 		$this->assertEqual($a->title, "aTitle");
 
 		$this->assertEqual($a->vehicle, "someVehicle");
-		$this->assertEqual($a->miles, "1234miles");
-		$this->assertEqual($a->odometer, "1212odometer");
-		$this->assertEqual($a->day_number, "12_day");
+		$this->assertEqual($a->miles, "1234");
+		$this->assertEqual($a->odometer, "1212");
+		$this->assertEqual($a->day_number, "12");
 		$this->assertEqual($a->place, "aplace");
 		$country = \Database\Models\Country::get_by_code("BC"); // demonstrates fix country
 		$this->assertEqual($a->country, $country);

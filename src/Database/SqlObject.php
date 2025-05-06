@@ -567,9 +567,10 @@ class SqlObject
 			//$v = $row[$k];
 			$v = $object->$k;
 			if (is_object($v)) {
-				throw new \Exception("<p>object found not string</p>");
-				//var_dump($v);
-				exit();
+				$v = $v->__toString();
+				// throw new \Exception("<p>object found not string</p>");
+				// //var_dump($v);
+				// exit();
 			}
 			if (is_null($v)) {
 				continue;

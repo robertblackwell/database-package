@@ -72,37 +72,37 @@ class Entry extends ItemBase
 
 
 	public static $table_name = "my_items";
-	public static $field_names = [
-		"version"=>"text",
-		"slug"=>"text",
-		"type"=>"text",
-		"status"=>"text",
-		"creation_date"=>"date",
-		"published_date"=>"date",
-		"last_modified_date"=>"date",
-		"trip"=>"text",
-		"title"=>"text",
-		"excerpt"=>"html",
-		"miles"=>"text",
-		"odometer"=>"text",
-		"day_number"=>"text",
-		"place"=>"text",
-		"country"=>"text",
-		"latitude"=>"text",
-		"longitude"=>"text",
-		"country"=>"text",
-		"place" => "text",
+	// public static $field_names = [
+	// 	"version"=>"text",
+	// 	"slug"=>"text",
+	// 	"type"=>"text",
+	// 	"status"=>"text",
+	// 	"creation_date"=>"date",
+	// 	"published_date"=>"date",
+	// 	"last_modified_date"=>"date",
+	// 	"trip"=>"text",
+	// 	"title"=>"text",
+	// 	"excerpt"=>"html",
+	// 	"miles"=>"text",
+	// 	"odometer"=>"text",
+	// 	"day_number"=>"text",
+	// 	"place"=>"text",
+	// 	"country"=>"text",
+	// 	"latitude"=>"text",
+	// 	"longitude"=>"text",
+	// 	"country"=>"text",
+	// 	"place" => "text",
 
-		"featured_image"=>"text",
-		"featured_image_path" => "text",
+	// 	"featured_image"=>"text",
+	// 	"featured_image_path" => "text",
 
-		"vehicle"=>"text",
-		"main_content"=>"html",
-		"camping"=>"html",
-		"border"=>"html",
-		"has_camping"=>"has",
-		"has_border"=>"has",
-		];
+	// 	"vehicle"=>"text",
+	// 	"main_content"=>"html",
+	// 	"camping"=>"html",
+	// 	"border"=>"html",
+	// 	"has_camping"=>"has",
+	// 	"has_border"=>"has",
+	// 	];
 	/**
 	* Constructor.
 	* @param array|ArrayAccess $obj Sql query result as an associative array.
@@ -112,58 +112,56 @@ class Entry extends ItemBase
 	{
 		$helper = new RowHelper($obj);
 		$this->table = "my_items";
-
-		$this->properties = self::$field_names;
-		$derived_props = [
-			"border" => "html",
-			// "excerpt"=>"text",
-			"main_content" => "html",
-			"featured_image_path" => "text",
-			"has_camping"=>"has",
-			"has_border"=>"has",
-		];
-		$non_sql = [
-		];
-		$props = array_diff_key($this->properties, $derived_props);
-
-		$this->sql_properties = array_keys($props);
-		/**
-		* fill all "required" and straightforward properties
-		*/
-		foreach ($props as $prop => $type) {
-			if($prop == "featured_image") {
-				$this->featured_image = $helper->get_optional_property_value("featured_image",$this->properties["featured_image"]);
-				if (is_null($this->featured_image)) {
-					$this->featured_image = "[0]";
-				}
-			} else if($prop == "camping") {
-				$this->camping = $helper->get_optional_property_value($prop, $type);
-			} else {
-				$this->$prop = $helper->get_property_value($prop, $type);
-			}
+		$field_sets = ItemFields::getInstance();
+		$this->sql_properties = array_keys($field_sets->entry_all_myitems_fields);
+		$rprops = $field_sets->entry_required_entryrecord_fields;
+		$oprops = $field_sets->entry_optional_entryrecord_fields;
+		foreach($rprops as $prop => $kind) {
+			$this->$prop = $helper->get_property_value($prop, $kind);
 		}
+		foreach($oprops as $prop => $kind) {
+			$this->$prop = $helper->get_optional_property_value($prop, $kind);
+		}
+		// $this->properties = self::$field_names;
+		// $derived_props = [
+		// 	"border" => "html",
+		// 	// "excerpt"=>"text",
+		// 	"main_content" => "html",
+		// 	"featured_image_path" => "text",
+		// 	"has_camping"=>"has",
+		// 	"has_border"=>"has",
+		// ];
+		// $non_sql = [
+		// ];
+		// $props = array_diff_key($this->properties, $derived_props);
+
+		// /**
+		// * fill all "required" and straightforward properties
+		// */
+		// $rprops = $field_sets->entry_required_entryrecord_fields;
+		// foreach ($rprops as $prop => $type) {
+		// 	if($prop == "main_content") {
+		// 		$this->main_content = $helper->get_property_value("main_content", "html");
+		// 	} else {
+		// 		$this->$prop = $helper->get_property_value($prop, $type);
+		// 	}
+		// }
+		// $oprops = $field_sets->entry_optional_myitems_fields;
+		// foreach ($oprops as $prop => $type) {
+		// 	$this->$prop = $helper->get_optional_property_value($prop, $type);
+		// }
 
 		$loc = Locator::get_instance();
 		$this->country = $helper->fix_country($this->country);
 		// some generattions of content.php did not have featured_image
 		// so patch it
-		/**
-		* main_content, only available if $obj is a HEDObject
-		*/
-		$this->main_content = $helper->get_property_main_content();
-		$this->excerpt = $helper->get_property_excerpt();
-		/**
-		* optional properties
-		*/
-		$this->excerpt = $helper->get_optional_property_value("excerpt",$this->properties["excerpt"]);
-		$this->featured_image_path = \Database\Models\FeaturedImage::pathFromTripSlugText($this->trip, $this->slug, $this->featured_image);
 
-		$this->camping = $helper->get_optional_property_value("camping",$this->properties["camping"]);
-
+		if(!is_null($this->featured_image)) {
+			$this->featured_image_path = \Database\Models\FeaturedImage::pathFromTripSlugText($this->trip, $this->slug, $this->featured_image);
+		}
 		$k = ($this->camping !== null) ? strlen(trim($this->camping)) : 0;
 		$this->has_camping = (! is_null($this->camping)) && ($k != 0);
 
-		$this->border = $helper->get_optional_property_value("border",$this->properties["border"]);
 		$this->has_border = (! is_null($this->border))  && ($k != 0);
 		parent::__construct($obj);
 	}

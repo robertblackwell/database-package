@@ -99,6 +99,11 @@ class Coordinate
 	{
 		return $this->direction[$sign];
 	}
+	public function __toString()
+	{
+		$m = (float)($this->seconds / 3600.0 + (float) $this->minutes / 60.0 );
+		return sprintf("%3.5f", ($this->sign*($this->degrees + $m)));
+	}
 	public function toString()
 	{
 		return "GPSCordinate sign: $this->sign deg: $this->degrees min: $this->minutes secs: $this->seconds";

@@ -55,7 +55,8 @@ class Model implements iSqlIzable
 	/** RB added 2/1/2023 */
 	public static function get_fields()
 	{
-		return static::$field_names;
+		throw new \Exception("this function is deprecated");
+		// return static::$field_names;
 	}
 	/**
 	* Constructor.

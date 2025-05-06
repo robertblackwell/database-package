@@ -84,7 +84,7 @@ class EntryLocation extends ItemBase //Base\ModelBase
 		"version"=>"text",
 		"type"=>"text",
 		"trip"=>"text",
-		"vehicle"=>"text",
+		// "vehicle"=>"text",
 		"slug"=>"text",
 		"status"=>"text",
 		"creation_date"=>"date",
