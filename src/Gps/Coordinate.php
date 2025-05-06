@@ -131,6 +131,12 @@ class Coordinate
 		$s = (string)( $this->Direction($this->sign)." ".  $this->ff_fff($df)) . $degsym;
 		return $s;
 	}
+	public function asFloat(): float
+	{
+		$m = (float)($this->seconds / 3600.0 + (float) $this->minutes / 60.0 );
+		$df = (float) ($this->degrees + $m);
+		return $this->sign*($this->degrees + $m);
+	}
 	/*!
 	* Returns the coordinated as a string in dd° mm" ss.sss' notation with a suitable S-S E-W prefix
 	* @return string
