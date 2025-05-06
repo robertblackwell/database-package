@@ -80,26 +80,26 @@ class EntryLocation extends ItemBase //Base\ModelBase
 
 
 	public static $table_name = "my_items";
-	public static $field_names = [
-		"version"=>"text",
-		"type"=>"text",
-		"trip"=>"text",
-		"vehicle"=>"text",
-		"slug"=>"text",
-		"status"=>"text",
-		"creation_date"=>"date",
-		"published_date"=>"date",
-		"last_modified_date"=>"date",
-		"miles"=>"text",
-		"odometer"=>"text",
-		"day_number"=>"text",
-		"place"=>"text",
-		"country"=>"text",
-		"latitude"=>"text",
-		"longitude"=>"text",
-		"title"=>"html",
-		"excerpt" => "text"
-	];
+	// public static $field_names = [
+	// 	"version"=>"text",
+	// 	"type"=>"text",
+	// 	"trip"=>"text",
+	// 	"vehicle"=>"text",
+	// 	"slug"=>"text",
+	// 	"status"=>"text",
+	// 	"creation_date"=>"date",
+	// 	"published_date"=>"date",
+	// 	"last_modified_date"=>"date",
+	// 	"miles"=>"text",
+	// 	"odometer"=>"text",
+	// 	"day_number"=>"text",
+	// 	"place"=>"text",
+	// 	"country"=>"text",
+	// 	"latitude"=>"text",
+	// 	"longitude"=>"text",
+	// 	"title"=>"html",
+	// 	"excerpt" => "text"
+	// ];
 	/**
 	* Constructor.
 	* @param mixed $obj Sql query row result as associative array or HEDObject.
@@ -146,19 +146,6 @@ class EntryLocation extends ItemBase //Base\ModelBase
 		// );
 	}
 	/**
-	* returns a comma sep list of fields to be returned by any select.
-	* @return string
-	*
-	*/
-	private static function selectList() : string
-	{
-		/**
-		* A string containing a comma separated list of sql fields to be retreived with a select
-		*/
-		$select_property_list = implode(",", array_keys(self::$field_names));
-		return $select_property_list;
-	}
-	/**
 	* Find the locations data for all/count EntryLocation for a trip.
 	* Return them as an array of EntryLocation objects
 	* @param string  $trip  Trip code.
@@ -168,7 +155,6 @@ class EntryLocation extends ItemBase //Base\ModelBase
 	public static function find_for_trip(string $trip, ?int $count = null)
 	{
 		$count_str = ($count)? "limit 0, $count": "" ;
-		$slist = self::selectList();
 		$slist = "*";
 		$c = "SELECT {$slist} 
 				FROM my_items 
@@ -186,9 +172,7 @@ class EntryLocation extends ItemBase //Base\ModelBase
 	*/
 	public static function find_for_trip_order_by_date(string $trip, ?int $count = null)
 	{
-		//print "<p>".__METHOD__."</p>";
 		$count_str = ($count)? "limit 0, $count": "" ;
-		$slist = self::selectList();
 		$slist = "*";
 		$c = "SELECT {$slist} 
 				FROM my_items 
@@ -209,7 +193,6 @@ class EntryLocation extends ItemBase //Base\ModelBase
 	{
 		//print "<p>".__METHOD__."</p>";
 		$count_str = ($count)? "limit 0, $count": "" ;
-		$slist = self::selectList();
 		$slist = "*";
 		$c = "SELECT {$slist} 
 					FROM my_items 

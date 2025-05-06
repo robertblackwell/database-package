@@ -113,7 +113,6 @@ class Entry extends ItemBase
 		$count_str = ($count)? "limit 0, $count": "" ;
 		$c = " where type='entry' order by last_modified_date desc $count_str ";
 		return self::$sql->select_array_of_objects(self::$table_name, __CLASS__, $c);
-		// return \Database::getInstance()->select_objects(self::$table_name, __CLASS__, $c, true);
 	}
 	/**
 	* Insert this instance into the sql database.

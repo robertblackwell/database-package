@@ -133,7 +133,6 @@ class Item extends ItemBase
 		$loc = Locator::get_instance();
 		switch($type) {
 			case "entry":
-				// $props = array_merge(self::$core_field_names, self::$entry_extra_field_names);
 				$props = $field_sets->entry_required_myitems_fields;
 				foreach($props as $prop=>$kind) {
 					$this->$prop = $helper->get_property_value($prop, $kind);
@@ -322,14 +321,12 @@ class Item extends ItemBase
 	{
 		$start = mk_start_of_month($year_month);
 		$start_of_next_month = mk_start_of_next_month($year_month);
-		//var_dump($start);var_dump($end);
 		$count_str = ($count)? "limit 0, $count": "" ;
 		$c = " WHERE trip = '".$trip."' and ".
 			" (type='entry' or type = 'post') and ".
 			" (published_date >= \"$start\" ) and ".
 			" (published_date <\"$start_of_next_month\") ".
 			" order by published_date asc, slug asc $count_str ";
-		//var_dump($c);
 		$res = self::$sql->select_array_of_objects(self::$table_name, __CLASS__, $c);
 		return $res;
 	}
@@ -367,16 +364,12 @@ class Item extends ItemBase
 	*/
 	public static function find_camping_for_country(string $country)
 	{
-		//print "<p>".__METHOD__."</p>";
 		$where = " where b.category = 'camping' and a.country='$country'" ;
 		$query =
 		"select a.* from my_items a INNER JOIN categorized_items b on a.slug = b.item_slug "
 			."$where "
 			." order by published_date asc, slug asc ";
-		//var_dump($query);
 		$r = self::$sql->query_objects($query, __CLASS__);
-		//var_dump($r);
-		//exit();
 		return $r;
 	}
 	/**
@@ -386,16 +379,12 @@ class Item extends ItemBase
 	*/
 	public static function find_camping_for_trip(string $trip)
 	{
-		//print "<p>".__METHOD__."</p>";
 		$where = " where b.category = 'camping' and a.trip = '".$trip."' " ;
 		$query =
 		"select a.* from my_items a INNER JOIN categorized_items b on a.slug = b.item_slug "
 			."$where "
 			." order by published_date asc, slug asc ";
-		//var_dump($query);
 		$r = self::$sql->query_objects($query, __CLASS__);
-		//var_dump($r);
-		//exit();
 		return $r;
 	}
 	/**
@@ -406,16 +395,12 @@ class Item extends ItemBase
 	*/
 	public static function find_camping_for_trip_country(string $trip, string $country)
 	{
-		//print "<p>".__METHOD__."</p>";
 		$where = " where b.category = 'camping' and a.country='$country' and a.trip = '".$trip."' " ;
 		$query =
 		"select a.* from my_items a INNER JOIN categorized_items b on a.slug = b.item_slug "
 			."$where "
 			." order by published_date asc, slug asc ";
-		//var_dump($query);
 		$r = self::$sql->query_objects($query, __CLASS__);
-		//var_dump($r);
-		//exit();
 		return $r;
 	}
 	/**
@@ -426,17 +411,13 @@ class Item extends ItemBase
 	*/
 	public static function find_for_category(?string $category = null, ?int $count = null)
 	{
-		//print "<p>".__METHOD__."</p>";
 		$count_str = ($count)? "limit 0, $count": "" ;
 		$category_str = ($category)? " where b.category = '$category' ": " " ;
 		$query =
 		"select a.* from my_items a INNER JOIN categorized_items b on a.slug = b.item_slug "
 			."$category_str "
 			." order by published_date asc, slug asc $count_str;";
-		//var_dump($query);
 		$r = self::$sql->query_objects($query, __CLASS__);
-		//var_dump($r);
-		//exit();
 		return $r;
 	}
 	/**
@@ -448,7 +429,6 @@ class Item extends ItemBase
 	*/
 	public static function find_for_trip_category(string $trip, ?string $category = null, ?int $count = null)
 	{
-		//print "<p>".__METHOD__."</p>";
 		$count_str = ($count)? "limit 0, $count": "" ;
 		$category_str = ($category)? " and b.category = '$category' ": " " ;
 		$where = " where a.trip='".$trip."' ".$category_str ;
@@ -456,10 +436,7 @@ class Item extends ItemBase
 		"select a.* from my_items a INNER JOIN categorized_items b on a.slug = b.item_slug "
 			."$where "
 			." order by published_date asc, slug asc $count_str;";
-		//var_dump($query);
 		$r = self::$sql->query_objects($query, __CLASS__);
-		//var_dump($r);
-		//exit();
 		return $r;
 	}
 }
