@@ -84,7 +84,7 @@ class EntryLocation extends ItemBase //Base\ModelBase
 		"version"=>"text",
 		"type"=>"text",
 		"trip"=>"text",
-		// "vehicle"=>"text",
+		"vehicle"=>"text",
 		"slug"=>"text",
 		"status"=>"text",
 		"creation_date"=>"date",
@@ -110,26 +110,40 @@ class EntryLocation extends ItemBase //Base\ModelBase
 	{
 		$helper = new RowHelper($obj);
 		$this->table = "my_items";
+		$field_sets = ItemFields::getInstance();
+		$rprops = $field_sets->location_required_myitems_fields;
+		$oprops = $field_sets->location_optional_myitems_fields;
+		$type = $helper->get_property_value("type", "text");
+		if($type != "entry") {
+			throw new \Exception("EntryLocation requires amn Item of type: 'entry' given: {$type} ");
+		}
+		$this->sql_properties = $field_sets->sql_myitems_fields;
 
-		$this->properties = self::$field_names;
-		$derived_props = [
-			"excerpt" => "text"
-		];
-		$props = array_diff_key($this->properties, $derived_props);
-		$this->sql_properties = array_keys($props);
+		foreach($rprops as $prop => $kind) {
+			$this->$prop = $helper->get_property_value($prop, $kind);
+		}
+		foreach($oprops as $prop => $kind) {
+			$this->$prop = $helper->get_optional_property_value($prop, $kind);
+		}
+		// $this->properties = self::$field_names;
+		// $derived_props = [
+		// 	"excerpt" => "text"
+		// ];
+		// $props = array_diff_key($this->properties, $derived_props);
+		// $this->sql_properties = array_keys($props);
 		// $this->select_property_list = implode(",", array_keys($this->properties));
 		// var_dump($this->select_property_list);
 		// exit();
 		/**
 		* fill all "required" properties
 		*/
-		foreach ($props as $prop => $type) {
-			$this->$prop = $helper->get_property_value($prop, $type);
-		}
-		$this->excerpt = $helper->get_optional_property_value(
-			"excerpt",
-			$this->properties["excerpt"]
-		);
+		// foreach ($props as $prop => $type) {
+		// 	$this->$prop = $helper->get_property_value($prop, $type);
+		// }
+		// $this->excerpt = $helper->get_optional_property_value(
+		// 	"excerpt",
+		// 	$this->properties["excerpt"]
+		// );
 	}
 	/**
 	* returns a comma sep list of fields to be returned by any select.
@@ -184,6 +198,7 @@ class EntryLocation extends ItemBase //Base\ModelBase
 		$result = self::$sql->query_objects($c, __CLASS__);
 		return $result;
 	}
+
 	/**
 	* Find the locations data of all/count EntryLocation for ALL trips.
 	* Return them as an array of EntryLocation objects ordered by published_date.
@@ -205,58 +220,58 @@ class EntryLocation extends ItemBase //Base\ModelBase
 		return $result;
 	}
 
-	/**
-	* Find the locations data of all/count EntryLocation for ALL trips.
-	* Return them as an array of EntryLocation objects no particular ordering.
-	* @param integer $count Limits the number returned.
-	* @return array Of EntryLocation objects
-	*/
-	public static function find(?int $count = null)
-	{
-		//print "<p>".__METHOD__."</p>";
-		$count_str = ($count)? "limit 0, $count": "" ;
-		$slist = self::selectList();
-		$slist = "*";
-		$c = "SELECT {$slist} 
-					FROM my_items 
-					WHERE (type='entry' OR type='location')   
-					order by country asc {$count_str}";
+	// /**
+	// * Find the locations data of all/count EntryLocation for ALL trips.
+	// * Return them as an array of EntryLocation objects no particular ordering.
+	// * @param integer $count Limits the number returned.
+	// * @return array Of EntryLocation objects
+	// */
+	// public static function find(?int $count = null)
+	// {
+	// 	//print "<p>".__METHOD__."</p>";
+	// 	$count_str = ($count)? "limit 0, $count": "" ;
+	// 	$slist = self::selectList();
+	// 	$slist = "*";
+	// 	$c = "SELECT {$slist} 
+	// 				FROM my_items 
+	// 				WHERE (type='entry' OR type='location')   
+	// 				order by country asc {$count_str}";
 		
-		return self::$sql->query_objects($c, __CLASS__);
-	}
-	/**
-	* Insert this instance into the sql database.
-	* @return void
-	* @throws \Exception If fails.
-	*/
-	public function sql_insert()
-	{
-		// Insert the item first otherwise a foreign key constraint will fail
-		parent::sql_insert();
-		if ($this->has_camping) {
-			CategorizedItem::add("camping", $this->slug);
-		}
-		if ($this->has_border) {
-			CategorizedItem::add("border", $this->slug);
-		}
-	}
-	/**
-	* Delete this instance into the sql database.
-	* @return void
-	* @throws \Exception If fails.
-	*/
-	public function sql_delete()
-	{
-		//print "<p>".__METHOD__."</p>";
-		if ($this->has_camping) {
-			//print "<p>deleting camping</p>";
-			CategorizedItem::delete("camping", $this->slug);
-		//print "<p>".__METHOD__."camping </p>";
-		}
-		if ($this->has_border) {
-			CategorizedItem::delete("border", $this->slug);
-		//print "<p>".__METHOD__."border </p>";
-		}
-		parent::sql_delete();
-	}
+	// 	return self::$sql->query_objects($c, __CLASS__);
+	// }
+	// /**
+	// * Insert this instance into the sql database.
+	// * @return void
+	// * @throws \Exception If fails.
+	// */
+	// public function sql_insert()
+	// {
+	// 	// Insert the item first otherwise a foreign key constraint will fail
+	// 	parent::sql_insert();
+	// 	if ($this->has_camping) {
+	// 		CategorizedItem::add("camping", $this->slug);
+	// 	}
+	// 	if ($this->has_border) {
+	// 		CategorizedItem::add("border", $this->slug);
+	// 	}
+	// }
+	// /**
+	// * Delete this instance into the sql database.
+	// * @return void
+	// * @throws \Exception If fails.
+	// */
+	// public function sql_delete()
+	// {
+	// 	//print "<p>".__METHOD__."</p>";
+	// 	if ($this->has_camping) {
+	// 		//print "<p>deleting camping</p>";
+	// 		CategorizedItem::delete("camping", $this->slug);
+	// 	//print "<p>".__METHOD__."camping </p>";
+	// 	}
+	// 	if ($this->has_border) {
+	// 		CategorizedItem::delete("border", $this->slug);
+	// 	//print "<p>".__METHOD__."border </p>";
+	// 	}
+	// 	parent::sql_delete();
+	// }
 }

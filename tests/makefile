@@ -84,6 +84,10 @@ mine: prepare_test_data
 all: prepare_test_data
 	$(LITETEST) $(ACTIVE_TESTS)
 
+location: prepare_test_data
+	$(LITETEST)   unit_tests/models/locations/location_test.php 
+
+
 post:
 	$(LITETEST) $(post_test)
 

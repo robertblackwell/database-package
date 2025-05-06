@@ -44,6 +44,17 @@ class ItemFields
 		"place"=>"text",
 		// "featured_image"=>'text',
 	];
+	private static $location_extra_field_myitems = [
+		"excerpt"=>"text",
+		"miles"=>"text",
+		"odometer"=>"int",
+		"day_number"=>"int",
+		"latitude"=>"latitude",
+		"longitude"=>"longitude",
+		"country"=>"text",
+		"place"=>"text",
+	];
+
     // the extra fields required to be none null for a valid Post variant of a my_items row to be loaded
 	private static $post_extra_field_myitems = [
 		"excerpt" => "text",
@@ -88,6 +99,13 @@ class ItemFields
     public $entry_required_entryrecord_fields;
     public $entry_optional_entryrecord_fields;
 
+    public $location_required_myitems_fields;
+    public $location_optional_myitems_fields;
+    public $location_all_myitems_fields;
+	// location are only ever retreived, never inserted or deleted. Hence only need the myitem field sets
+    // public $location_required_entryrecord_fields;
+    // public $location_optional_entryrecord_fields;
+
     public $post_required_myitems_fields;
     public $post_optional_myitems_fields;
     public $post_all_myitems_fields;
@@ -117,6 +135,10 @@ class ItemFields
         $this->entry_all_myitems_fields = array_merge($this->entry_required_myitems_fields, $this->entry_optional_myitems_fields);
         $this->entry_required_entryrecord_fields = array_merge($this->entry_required_myitems_fields, ["main_content"=>"html"]);
         $this->entry_optional_entryrecord_fields = array_merge($this->entry_optional_myitems_fields, ["border"=>"html", "vehicle"=>"text"]);
+
+        $this->location_required_myitems_fields = array_merge(self::$core_field_myitems, self::$location_extra_field_myitems);
+        $this->location_optional_myitems_fields = ["vehicle"=>"text"];
+        $this->location_all_myitems_fields = array_merge($this->location_required_myitems_fields, $this->location_optional_myitems_fields);
 
         $this->post_required_myitems_fields = array_merge(self::$core_field_myitems, self::$post_extra_field_myitems);
         $this->post_optional_myitems_fields = ["featured_image"=>"text"];

@@ -129,8 +129,6 @@ class Item extends ItemBase
 		$field_sets = ItemFields::getInstance();
 		$this->table = "my_items";
 		$this->properties = $field_sets->sql_myitems_fields;
-		$trip = $helper->get_property_value("trip", "text");
-		$slug = $helper->get_property_value("slug", "text");
 		$type = $helper->get_property_value("type", "text");
 		$loc = Locator::get_instance();
 		switch($type) {
