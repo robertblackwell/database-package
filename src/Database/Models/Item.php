@@ -89,6 +89,8 @@ class Item extends ItemBase
 	public $featured_image_path;
 
 	/**                              entry only */
+	/** string vehicle */
+	public $vehicle;
 	/** @var string $miles */
 	public $miles;
 	/** @var string $odometer */

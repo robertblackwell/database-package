@@ -113,7 +113,7 @@ class ItemFields
     private function __construct()
     {
         $this->entry_required_myitems_fields = array_merge(self::$core_field_myitems, self::$entry_extra_field_myitems);
-        $this->entry_optional_myitems_fields = ["camping"=>"text", "featured_image" => "text"];
+        $this->entry_optional_myitems_fields = ["camping"=>"text", "featured_image" => "text", "vehicle"=>"text"];
         $this->entry_all_myitems_fields = array_merge($this->entry_required_myitems_fields, $this->entry_optional_myitems_fields);
         $this->entry_required_entryrecord_fields = array_merge($this->entry_required_myitems_fields, ["main_content"=>"html"]);
         $this->entry_optional_entryrecord_fields = array_merge($this->entry_optional_myitems_fields, ["border"=>"html", "vehicle"=>"text"]);
