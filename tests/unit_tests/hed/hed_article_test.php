@@ -13,6 +13,9 @@ use Unittests\LocalTestcase;
 
 class HEDArticleTest extends LocalTestcase
 {
+	private $trip;
+	private $slug;
+
 	public function setUp()
 	{
 		global $config;

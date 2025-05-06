@@ -553,6 +553,9 @@ class SqlObject
 		//var_dump($this->getFieldNames($table));
 		//var_dump($object->getFieldNames());
 		//exit();
+		if(isset($object->type) && $object->type === "post") {
+			print("");
+		}
 		$tflds = $this->getFieldNames($table);
 		$oflds = $object->getSqlProperties();
 		$i_flds = array_intersect($tflds, $oflds);
@@ -565,15 +568,18 @@ class SqlObject
 		//$row = $object->to_row();
 		foreach ($i_flds as $k) {
 			//$v = $row[$k];
+			if(!isset($object->$k)) {
+				continue;
+			}
+			if(!isset($f[$k])) {
+				continue;
+			}
 			$v = $object->$k;
 			if (is_object($v)) {
 				$v = $v->__toString();
 				// throw new \Exception("<p>object found not string</p>");
 				// //var_dump($v);
 				// exit();
-			}
-			if (is_null($v)) {
-				continue;
 			}
 			if (($k != "id")) {
 				if ($first) {

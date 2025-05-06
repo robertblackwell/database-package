@@ -14,6 +14,9 @@ use Unittests\NoSqlTestcase;
 
 class HEDPostTest extends NoSqlTestcase
 {
+	private $trip;
+	private $slug;
+
 	public function setUp()
 	{
 		global $config;

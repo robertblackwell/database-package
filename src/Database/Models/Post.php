@@ -48,26 +48,6 @@ class Post extends ItemBase
 	public $main_content;
 
 	public static $table_name = "my_items";
-	public static $field_names = [
-		"version"=>"text",
-		"type"=>"text",
-		"slug"=>"text",
-		"status"=>"text",
-		"creation_date"=>"date",
-		"published_date"=>"date",
-		"last_modified_date"=>"date",
-		"trip"=>"text",
-		"title"=>"html",
-		// "abstract"=>"html",
-		"excerpt"=>"text",
-
-		"topic"=>"text",
-		"tags"=>"list",
-		"categories"=>"list",
-		"featured_image"=>"text",
-		"featured_image_path"=>"text",
-		"main_content"=>"html",
-		];
 	/**
 	* Constructor.
 	* @param array|ArrayAccess $obj Sql query result row as associative array.
@@ -77,47 +57,29 @@ class Post extends ItemBase
 	{
 		$helper = new RowHelper($obj);
 		$this->table = "my_items";
+		$field_sets = ItemFields::getInstance();
+		$this->sql_properties = $field_sets->sql_myitems_fields;
 
-		$this->properties = self::$field_names;
-		$derived_props = [
-			// "abstract"=>"html",
-			// "excerpt"=>"text",
-			"topic"=>"text",
-			"tags"=>"list",
-			"categories"=>"list",
-			"featured_image_path" => "text",
-			"main_content"=>"html",
-		];
-		$props = array_diff_key($this->properties, $derived_props);
-		$this->sql_properties = array_keys($props);
-		// parent::__construct($obj);
-		
-		foreach ($props as $prop => $type) {
-			if($prop == "featured_image") {
-				$this->featured_image = $helper->get_optional_property_value("featured_image",$this->properties["featured_image"]);
-				if (is_null($this->featured_image)) {
-					$this->featured_image = "[0]";
-				}
-			} else {
-				$this->$prop = $helper->get_property_value($prop, $type);
-			}
+		$rprops = $field_sets->post_required_postrecord_fields;
+		$oprops = $field_sets->post_optional_postrecord_fields;
+		foreach($rprops as $prop => $kind) {
+			$this->$prop = $helper->get_property_value($prop, $kind);
 		}
-		$loc = Locator::get_instance();
-		/**
-		* optional properties
-		*/
-		// $this->abstract = $helper->get_optional_property_value("abstract",$this->properties["abstract"]);
-		// $this->excerpt = $helper->get_optional_property_value("excerpt",$this->properties["excerpt"]);
-		// $this->featured_image = $helper->get_optional_property_value("featured_image",$this->properties["featured_image"]);
+		foreach($oprops as $prop => $kind) {
+			$this->$prop = $helper->get_optional_property_value($prop, $kind);
+		}
 
 		if (is_null($this->featured_image)) {
 			$this->featured_image = "[0]";
 		}
 		$this->featured_image_path = \Database\Models\FeaturedImage::pathFromTripSlugText($this->trip, $this->slug, $this->featured_image);
 
-		$this->topic = $helper->get_optional_property_value("topic",$this->properties["topic"]);
-		$this->tags = $helper->get_optional_property_value("tags",$this->properties["tags"]);
-		$this->categories = $helper->get_optional_property_value("categories",$this->properties["categories"]);
+		/**
+		 * NOTE the next linecd 
+		 */
+		// $this->topic = $helper->get_optional_property_value("topic","list");
+		$this->tags = $helper->get_optional_property_value("tags","list");
+		$this->categories = $helper->get_optional_property_value("categories", "list");
 		/**
 		* main_content, only available if $obj is a HEDObject
 		*/

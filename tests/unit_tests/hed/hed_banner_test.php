@@ -13,6 +13,9 @@ use Unittests\NoSqlTestcase;
 
 class HEDBannerTest extends NoSqlTestcase
 {
+	private $trip;
+	private $slug;
+
 	public function setUp()
 	{
 		global $config;

@@ -12,6 +12,8 @@ use Unittests\LocalTestcase;
 
 class HEDAlbumTest extends LocalTestcase
 {
+	private $trip;
+	private $slug;
 	function setUp()
 	{
 		global $config;

@@ -122,7 +122,7 @@ class ItemFields
         $this->post_optional_myitems_fields = ["featured_image"=>"text"];
         $this->post_all_myitems_fields = array_merge($this->post_required_myitems_fields, $this->post_optional_myitems_fields);
         $this->post_required_postrecord_fields = array_merge($this->post_required_myitems_fields, ["main_content"=>"html"]);
-        $this->post_optional_postrecord_fields = array_merge($this->post_optional_myitems_fields, []);
+        $this->post_optional_postrecord_fields = array_merge($this->post_optional_myitems_fields, ["topic"=>"text"]);
 
         $this->article_required_myitems_fields = array_merge(self::$core_field_myitems, self::$article_extra_field_myitems);
         $this->article_optional_myitems_fields = [];
@@ -130,9 +130,9 @@ class ItemFields
         $this->article_required_articlerecord_fields = array_merge($this->article_required_myitems_fields, ["main_content"=>"html"]);
         $this->article_optional_articlerecord_fields = array_merge($this->article_optional_myitems_fields, []);
 
-        $this->sql_myitems_fields = array_merge($this->entry_required_myitems_fields, $this->entry_optional_myitems_fields,
+        $this->sql_myitems_fields = array_keys(array_merge($this->entry_required_myitems_fields, $this->entry_optional_myitems_fields,
                                                 $this->post_required_myitems_fields, $this->post_optional_myitems_fields,
-                                                $this->article_required_myitems_fields, $this->article_optional_myitems_fields);
+                                                $this->article_required_myitems_fields, $this->article_optional_myitems_fields));
 
     }
 

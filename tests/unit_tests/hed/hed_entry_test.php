@@ -14,6 +14,9 @@ use Unittests\NoSqlTestcase;
 
 class HEDEntryTest extends NoSqlTestcase
 {
+	private $trip;
+	private $slug;
+
 	public function setUp()
 	{
 		global $config;
@@ -125,8 +128,8 @@ EOD;
 
 		$this->assertEqual($a->vehicle, "someVehicle");
 		$this->assertEqual($a->miles, "1234miles");
-		$this->assertEqual($a->odometer, "1212odometer");
-		$this->assertEqual($a->day_number, "12_day");
+		$this->assertEqual($a->odometer, 1212);
+		$this->assertEqual($a->day_number, 12);
 		$this->assertEqual($a->place, "aplace");
 		$country = \Database\Models\Country::get_by_code("BC"); // demonstrates fix country
 		$this->assertEqual($a->country, $country);

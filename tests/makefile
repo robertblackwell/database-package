@@ -58,6 +58,9 @@ model_tests= \
   unit_tests/models/tripmonths/trip_month_test.php
 #   unit_tests/models/editorial/editorial_test.php \
 
+post_test=\
+  unit_tests/models/post/post_test.php
+
 nextprev_tests=unit_tests/nextprev/category_test.php \
   unit_tests/nextprev/country_test.php \
   unit_tests/nextprev/months_test.php \
@@ -73,14 +76,7 @@ props_tests=unit_tests/props/album_test.php \
   unit_tests/props/entry_test.php
 
 # comment out the tests you dont want to run
-ACTIVE_TESTS=\
-  $(db_tests) \
-  $(db_pdo_tests) \
-  $(locator_tests) \
-  $(props_tests) \
-  $(model_tests) \
-  $(nextprev_tests) 
-#   $(hed_tests) \
+ACTIVE_TESTS=$(model_tests) $(db_tests) $(db_pdo_tests) $(locator_tests) $(props_tests) $(nextprev_tests) $(hed_tests)
 
 mine: prepare_test_data
 	$(LITETEST) $(nextprev_tests)
@@ -88,8 +84,20 @@ mine: prepare_test_data
 all: prepare_test_data
 	$(LITETEST) $(ACTIVE_TESTS)
 
+post:
+	$(LITETEST) $(post_test)
+
+hed:
+	$(LITETEST) $(hed_tests) \
+
+
 allnop:
-	$(LITETEST) $(ACTIVE_TESTS)
+	$(LITETEST) $(model_tests)
+	$(LITETEST) $(db_tests)
+	$(LITETEST) $(db_pdo_tests) 
+	$(LITETEST) $(locator_tests)
+	$(LITETEST) $(props_tests)
+	$(LITETEST) $(nextprev_tests) 
 
 # db:
 # 	$(LITETEST) --bootstrap-file="include/bootstrap.php" \

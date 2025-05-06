@@ -72,37 +72,6 @@ class Entry extends ItemBase
 
 
 	public static $table_name = "my_items";
-	// public static $field_names = [
-	// 	"version"=>"text",
-	// 	"slug"=>"text",
-	// 	"type"=>"text",
-	// 	"status"=>"text",
-	// 	"creation_date"=>"date",
-	// 	"published_date"=>"date",
-	// 	"last_modified_date"=>"date",
-	// 	"trip"=>"text",
-	// 	"title"=>"text",
-	// 	"excerpt"=>"html",
-	// 	"miles"=>"text",
-	// 	"odometer"=>"text",
-	// 	"day_number"=>"text",
-	// 	"place"=>"text",
-	// 	"country"=>"text",
-	// 	"latitude"=>"text",
-	// 	"longitude"=>"text",
-	// 	"country"=>"text",
-	// 	"place" => "text",
-
-	// 	"featured_image"=>"text",
-	// 	"featured_image_path" => "text",
-
-	// 	"vehicle"=>"text",
-	// 	"main_content"=>"html",
-	// 	"camping"=>"html",
-	// 	"border"=>"html",
-	// 	"has_camping"=>"has",
-	// 	"has_border"=>"has",
-	// 	];
 	/**
 	* Constructor.
 	* @param array|ArrayAccess $obj Sql query result as an associative array.
@@ -122,39 +91,8 @@ class Entry extends ItemBase
 		foreach($oprops as $prop => $kind) {
 			$this->$prop = $helper->get_optional_property_value($prop, $kind);
 		}
-		// $this->properties = self::$field_names;
-		// $derived_props = [
-		// 	"border" => "html",
-		// 	// "excerpt"=>"text",
-		// 	"main_content" => "html",
-		// 	"featured_image_path" => "text",
-		// 	"has_camping"=>"has",
-		// 	"has_border"=>"has",
-		// ];
-		// $non_sql = [
-		// ];
-		// $props = array_diff_key($this->properties, $derived_props);
-
-		// /**
-		// * fill all "required" and straightforward properties
-		// */
-		// $rprops = $field_sets->entry_required_entryrecord_fields;
-		// foreach ($rprops as $prop => $type) {
-		// 	if($prop == "main_content") {
-		// 		$this->main_content = $helper->get_property_value("main_content", "html");
-		// 	} else {
-		// 		$this->$prop = $helper->get_property_value($prop, $type);
-		// 	}
-		// }
-		// $oprops = $field_sets->entry_optional_myitems_fields;
-		// foreach ($oprops as $prop => $type) {
-		// 	$this->$prop = $helper->get_optional_property_value($prop, $type);
-		// }
-
 		$loc = Locator::get_instance();
 		$this->country = $helper->fix_country($this->country);
-		// some generattions of content.php did not have featured_image
-		// so patch it
 
 		if(!is_null($this->featured_image)) {
 			$this->featured_image_path = \Database\Models\FeaturedImage::pathFromTripSlugText($this->trip, $this->slug, $this->featured_image);
