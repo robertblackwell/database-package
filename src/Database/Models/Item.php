@@ -182,6 +182,7 @@ class Item extends ItemBase
 	public function __construct(HEDObject|array|ArrayObject $obj)
 	{
 		$helper = new RowHelper($obj);
+		$field_sets = ItemFields::getInstance();
 		$this->table = "my_items";
 		$this->properties = self::$field_names;
 		$trip = $helper->get_property_value("trip", "text");
@@ -190,25 +191,37 @@ class Item extends ItemBase
 		$loc = Locator::get_instance();
 		switch($type) {
 			case "entry":
-				$props = array_merge(self::$core_field_names, self::$entry_extra_field_names);
+				// $props = array_merge(self::$core_field_names, self::$entry_extra_field_names);
+				$props = $field_sets->entry_required_myitems_fields;
 				foreach($props as $prop=>$kind) {
 					$this->$prop = $helper->get_property_value($prop, $kind);
 				}
-				$this->camping = $helper->get_optional_property_value("camping", "text");
+                $oprops = $field_sets->entry_optional_myitems_fields;
+                foreach($oprops as $p=>$kind) {
+                    $this->$p = $helper->get_optional_property_value($p, $kind);
+                }
 				if (!is_null($this->country))
 					$this->country = $helper->fix_country($this->country);
 						break;
 			case "post":
-				$props = array_merge(self::$core_field_names, self::$post_extra_field_names);
+				$props = $field_sets->post_required_myitems_fields;
 				foreach($props as $prop=>$kind) {
 					$this->$prop = $helper->get_property_value($prop, $kind);
 				}
+                $oprops = $field_sets->post_optional_myitems_fields;
+                foreach($oprops as $p=>$kind) {
+                    $this->$p = $helper->get_optional_property_value($p, $kind);
+                }
 				break;
 			case "article":
-				$props = array_merge(self::$core_field_names, self::$article_extra_field_names);
+				$props = $field_sets->article_required_myitems_fields;
 				foreach($props as $prop=>$kind) {
 					$this->$prop = $helper->get_property_value($prop, $kind);
 				}
+                $oprops = $field_sets->article_optional_myitems_fields;
+                foreach($oprops as $p=>$kind) {
+                    $this->$p = $helper->get_optional_property_value($p, $kind);
+                }
 				break;
 			default:
 				throw new \Exception("invalid type: {$type} in Item constructor");
