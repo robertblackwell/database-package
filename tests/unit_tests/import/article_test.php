@@ -11,6 +11,8 @@ use \DbPreloader;
 
 class ArticleTest extends LocalTestcase
 {
+	public $db;
+	public $locator;
 	function setUp(){
         global $config;
 		Db::init($config);

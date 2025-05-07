@@ -95,6 +95,15 @@ post:
 hed:
 	$(LITETEST) $(hed_tests) \
 
+article_tests=unit_tests/hed/hed_article_test.php \
+  unit_tests/import/article_test.php \
+  unit_tests/models/article/find_test.php \
+  unit_tests/models/article/title_test.php \
+  unit_tests/models/article_title/title_test.php \
+  unit_tests/props/article_test.php
+
+article: prepare_test_data
+	$(LITETEST) $(article_tests)
 
 allnop:
 	$(LITETEST) $(model_tests)

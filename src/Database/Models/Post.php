@@ -75,7 +75,7 @@ class Post extends ItemBase
 		$this->featured_image_path = \Database\Models\FeaturedImage::pathFromTripSlugText($this->trip, $this->slug, $this->featured_image);
 
 		/**
-		 * NOTE the next linecd 
+		 * NOTE the next line 
 		 */
 		// $this->topic = $helper->get_optional_property_value("topic","list");
 		$this->tags = $helper->get_optional_property_value("tags","list");

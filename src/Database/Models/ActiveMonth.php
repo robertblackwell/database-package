@@ -68,10 +68,8 @@ class ActiveMonth extends Model
 	*/
 	public static function find(?int $count = null)
 	{
-		//print "<p>".__METHOD__."</p>";
 		$count_str = ($count)? "limit 0, $count": "" ;
 		$c = "SELECT distinct year(published_date) as `year`, month(published_date) as `month` "
-		// ." FROM my_items WHERE (type='post' or type='entry')   order by published_date desc";
 		." FROM my_items WHERE (type='post' or type='entry')   order by year desc , month desc";
 		return self::$sql->query_array_of_objects($c, __CLASS__);
 	}

@@ -81,7 +81,15 @@ class Article extends ItemBase
 	{
 		$helper = new RowHelper($obj);
 		$this->table = "my_items";
-
+		$field_sets = ItemFields::getInstance();
+		$rprops = $field_sets->article_required_articlerecord_fields;
+		$oprops = $field_sets->article_optional_articlerecord_fields;
+		// foreach($rprops as $prop => $kind) {
+		// 	$this->$prop = $helper->get_property_value($prop, $kind);
+		// }
+		// foreach($oprops as $prop => $kind) {
+		// 	$this->$prop = $helper->get_optional_property_value($prop, $kind);
+		// }
 		$this->properties = self::$field_names;
 		$derived_props = [
 			// "excerpt"=>"text",
@@ -129,7 +137,6 @@ class Article extends ItemBase
 		$count_str = ($count)? "limit 0, $count": "" ;
 		$c = " $where order by last_modified_date desc, slug desc $count_str ";
 		$r = self::$sql->select_array_of_objects(self::$table_name, __CLASS__, $c);
-		//var_dump($r);exit();
 		return $r;
 	}
 	/**
@@ -142,7 +149,6 @@ class Article extends ItemBase
 		$count_str = ($count)? "limit 0, $count": "" ;
 		$c = " where type='article' order by last_modified_date desc, slug desc $count_str ";
 		$r = self::$sql->select_array_of_objects(self::$table_name, __CLASS__, $c);
-		//var_dump($r);exit();
 		return $r;
 	}
 	/**
